@@ -447,7 +447,7 @@ function action_register ()
 			$session_email = $_SESSION[VT_EMAIL_REGISTER];
 			
 			$email_code = ! empty($_POST['email_code']) ? trim($_POST['email_code']) : '';
-			if(true)
+			/*if(true)
 			{
 				
 			}
@@ -462,7 +462,7 @@ function action_register ()
 			else if($email_code != $record['record_code'])
 			{
 				make_json_error($_LANG['invalid_email_code']);
-			}
+			}*/
 			
 			/* 邮箱注册时 */
 			$username = generate_username();

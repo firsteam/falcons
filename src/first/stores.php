@@ -47,7 +47,7 @@ if (!$smarty->is_cached($tpl, $cache_id))
 	$shop_list = get_all_supplier();
 	
 	//推荐分类中的店铺
-	$tuijian = get_tuijian_shop($cats['tuijian']);
+	//$tuijian = get_tuijian_shop($cats['tuijian']);
 	
 	
     /* 模板赋值 */
@@ -57,7 +57,7 @@ if (!$smarty->is_cached($tpl, $cache_id))
     $smarty->assign('ur_here',          $position['ur_here'] . '> ' . $topic['title']);     // 当前位置
     $smarty->assign('helps',            get_shop_help()); // 网店帮助
     $smarty->assign('all',   	$cats['all']);
-    $smarty->assign('tuijian',       $tuijian);
+    //$smarty->assign('tuijian',       $tuijian);
     
     $smarty->assign('logopath',		'/'.DATA_DIR.'/supplier/logo/');
     $smarty->assign('shops_list',   $shop_list['shops']);
@@ -106,7 +106,7 @@ function get_all_category(){
  * 获取推荐类中相关店铺
  * @param array $tuijian 分类信息
  */
-function get_tuijian_shop($tuijian){
+/*function get_tuijian_shop($tuijian){
 	$keys = array_keys($tuijian);
 	$types = implode(',',$keys);
 	if(empty($types)){
@@ -118,7 +118,7 @@ function get_tuijian_shop($tuijian){
 		$tuijian[$v['supplier_type']]['shoplist'][$v['supplier_id']] = $v;
 	}
 	return $tuijian;
-}
+}*/
 
 /**
  * 获取店铺店铺街中的店铺
@@ -215,8 +215,8 @@ function get_street_goods_info($suppid){
 
 	$allnum = count($goodsInfo);
 	if($allnum > 0){
-		if($allnum > 4){
-			array_splice($goodsInfo, 4);
+		if($allnum > 6){
+			array_splice($goodsInfo, 6);
 		}
 		foreach($goodsInfo as $key=>$row){
 			$goodsInfo[$key]['shop_price']       = price_format($row['shop_price']);

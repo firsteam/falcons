@@ -118,7 +118,7 @@ function action_send_email_code ()
 	$content = $GLOBALS['smarty']->fetch('str:' . $template['template_content']);
 	
 	/* 发送激活验证邮件 */
-	$result = send_mail($email, $email, $template['template_subject'], $content, $template['is_html']);
+	/*$result = send_mail($email, $email, $template['template_subject'], $content, $template['is_html']);
 	if($result)
 	{
 		// 保存验证码到Session中
@@ -131,7 +131,7 @@ function action_send_email_code ()
 	else
 	{
 		echo '注册邮箱验证码发送失败';
-	}
+	}*/
 }
 
 /* 发送注册邮箱验证码到邮箱 */
@@ -442,7 +442,7 @@ function action_register ()
 			
 			$email_code = ! empty($_POST['email_code']) ? trim($_POST['email_code']) : '';
 			
-			if(empty($email_code))
+			/*if(empty($email_code))
 			{
 				show_message($_LANG['msg_email_code_blank'], $_LANG['sign_up'], 'register.php', 'error');
 			}
@@ -453,7 +453,7 @@ function action_register ()
 			else if($email_code != $record['record_code'])
 			{
 				show_message($_LANG['invalid_email_code'], $_LANG['sign_up'], 'register.php', 'error');
-			}
+			}*/
 			
 			/* 邮箱注册时 */
 			$username = generate_username();

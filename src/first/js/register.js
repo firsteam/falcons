@@ -354,14 +354,14 @@ function reg_by_email() {
 	if (home_phone.length > 0) {
 		var reg = /^[\d|\-|\s]+$/;
 
-		if (!reg.test(home_phone)) {
+		/*if (!reg.test(home_phone)) {
 			msg += msg_email_code_blank + '\n';
-		}
+		}*/
 	}
 
-	if ($("#email_code").size() > 0 && email_code.length == 0) {
+	/*if ($("#email_code").size() > 0 && email_code.length == 0) {
 		msg += msg_email_code_blank + '\n';
-	}
+	}*/
 
 	if ($("#captcha").size() > 0 && captcha.length == 0) {
 		msg += msg_captcha_blank + '\n';
