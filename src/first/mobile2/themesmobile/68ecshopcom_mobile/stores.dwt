@@ -1,0 +1,163 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/public.css"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/stores.css">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<style>
+.goods_nav{ width:30%; float:right; right:5px; overflow:hidden; position:fixed;margin-top:25px; z-index:9999999}
+@charset "utf-8";
+
+@media screen {
+	*{-webkit-tap-highlight-color:transparent;overflow:hidden}
+}
+</style>
+
+</head>
+<body style=" background:#F5F5F5">
+      <header>
+      <div class="tab_nav">
+        <div class="header">
+          <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
+          <div class="h-mid">店铺街</div>
+          <div class="h-right">
+            <aside class="top_bar">
+              <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      </header>
+       	<!-- #BeginLibraryItem "/library/up_menu.lbi" --><!-- #EndLibraryItem --> <!--弹出菜单-->
+        <!--店铺分类--->        
+<div class="Packages">
+ <div class="page_guide_slider">
+	<div class="page_guide_balloon" style=" display:none">
+		<div class="page_guide_bar">
+			<div class="page_guide_progress">
+				<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+			</div>
+		</div>
+	</div>	
+	<div class="page_guide_container" onMouseDown="pageGuideMousedown(this,event)" onMouseMove="pageGuideMousemove(this,event)" onMouseUp="pageGuideMouseup(this,event)" onMouseOut="pageGuideMouseout(this,event)" ontouchstart="pageGuideTouchstart(this,event)" ontouchmove="pageGuideTouchmove(this,event)" ontouchend="pageGuideTouchend(this,event)">
+		<div class="page_guide_items" style=" position:relative">		 
+          	<div  class="page_guide_item">
+				<div class="page_guide_item_text">全部</div>
+			</div>
+            <div  class="page_guide_item">
+		<div class="page_guide_item_text">美食</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">美容</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">住房</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">交通</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">美妆</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">面膜</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">护理</div>
+			</div>
+            <div  class="page_guide_item">
+				<div class="page_guide_item_text">养生</div>
+			</div>
+		</div>
+	</div>
+	
+</div>  
+</div>
+<!--main--->
+<section class="rzs_info">
+<dl>
+<dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg"></dt>
+<dd><strong>卖家:美乐乐<em>中级店铺</em></strong>
+<p>所在地：秦皇岛海港区</p>
+</dd>
+</dl>
+<ul>
+<li><span>宝贝描述</span><strong>:{if $c_rank gt 0}{$c_rank}{else}5.0{/if}</strong><em>高</em></li>
+<li><span>卖家服务</span><strong>:{if $serv_rank gt 0}{$serv_rank}{else}5.0{/if}</strong><em>高</em></li>
+<li><span>物流服务</span><strong>:{if $shipp_rank gt 0}{$shipp_rank}{else}5.0{/if}</strong><em>高</em></li>
+</ul>
+<div class="index_taocan">
+    <h2>共18件宝贝</h2>
+          <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+           <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+           <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+           <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+  </div>
+<div class="s_dianpu">
+<span><a href="tel:{$servicephone}" ><em class="bg1"></em>联系客服</a></span>
+<span><a href="supplier.php?suppId={$suppid}"><em class="bg2"></em>进入店铺</a></span>
+</div>
+</section>
+<section class="rzs_info">
+<div class="top_info">
+<dl>
+<dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg"></dt>
+<dd><strong>卖家:美乐乐<em>中级店铺</em></strong>
+<p>所在地：秦皇岛海港区</p>
+</dd>
+</dl>
+<ul>
+<li><span>宝贝描述</span><strong>:{if $c_rank gt 0}{$c_rank}{else}5.0{/if}</strong><em>高</em></li>
+<li><span>卖家服务</span><strong>:{if $serv_rank gt 0}{$serv_rank}{else}5.0{/if}</strong><em>高</em></li>
+<li><span>物流服务</span><strong>:{if $shipp_rank gt 0}{$shipp_rank}{else}5.0{/if}</strong><em>高</em></li>
+</ul>
+
+</div>
+<div class="index_taocan">
+    <h2>共18件宝贝</h2>
+          <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+           <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+           <dl>
+          <dt><img src="themesmobile/68ecshopcom_mobile/images/thumb.jpg" class="B_eee" ><em>￥89.00</em></dt>
+          <dd>咕嘟咕嘟欢乐火锅</dd>
+           </dl>
+  </div>
+<div class="s_dianpu">
+<span><a href="tel:{$servicephone}" ><em class="bg1"></em>联系客服</a></span>
+<span><a href="supplier.php?suppId={$suppid}"><em class="bg2"></em>进入店铺</a></span>
+</div>
+</section>
+<!---footer--->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/footer_nav.lbi" --><!-- #EndLibraryItem -->
+<!--滑动js-->
+<script type="text/javascript">
+reg_package();
+</script>
+<script src="themesmobile/68ecshopcom_mobile/js/slider.js" type="text/javascript"></script>
+</body>
+</html>
