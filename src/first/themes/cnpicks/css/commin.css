@@ -84,6 +84,7 @@ button, input, select, textarea {
 	margin-right: 28px;
 }
 .content-wrap {
+	width:980px;
 	margin: 0 auto;
 	background-color: #fff;
 	position: relative;
@@ -174,11 +175,11 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
  * 常用宽度、高度、边距、边框属性
  * ========================== */
 .w {
-	width: 1210px;
+	width: 980px;
 	margin: 0 auto;
 }
 .wrapper {
-	width: 1210px;
+	width: 980px;
 	margin: auto;
 }
 .fl {
@@ -422,7 +423,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	PADDING-BOTTOM: 0px;
 	MARGIN: 0px;
 	PADDING-TOP: 0px;
-	WIDTH: 988px;
+	WIDTH: 758px;
 }
 #recent-view-track {
 	BORDER-RIGHT: #ddd 0px solid;
@@ -561,8 +562,8 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	BACKGROUND-REPEAT: no-repeat
 }
 #maybe-like .mc LI {
-	PADDING-RIGHT: 20px;
-	PADDING-LEFT: 20px;
+	/*PADDING-RIGHT: 20px;
+	PADDING-LEFT: 20px;*/
 	PADDING-BOTTOM: 10px;
 	WIDTH: 133px;
 	PADDING-TOP: 10px;
@@ -578,7 +579,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	color: #E22A40
 }
 #guess-scroll {
-	MARGIN-LEFT: 40px;
+	MARGIN-LEFT: 16px;
 }
 #maybe-like .disabled {
 	CURSOR: default
@@ -719,7 +720,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 #site-nav .sn-cart .mui-global-iconfont {
 	position: relative;
 }
-#site-nav .sn-logout, #site-nav .menu-hd, #site-nav .sn-cart, #site-nav .sn-mybrand, #site-nav .sn-mobile, #site-nav .sn-home, #site-nav .sn-quick-menu .sn-cart {
+#site-nav .sn-logout, #site-nav .menu-hd, #site-nav .sn-mybrand, #site-nav .sn-mobile, #site-nav .sn-home, #site-nav .sn-quick-menu .sn-cart {
 	padding: 0 10px
 }
 #site-nav .sn-login, #site-nav .sn-seller-center, #site-nav .sn-register{
@@ -1031,6 +1032,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	_zoom: 1
 }
 #site-nav .sn-quick-menu .sn-cart {
+	padding: 0px 10px;
 	position: relative;
 	text-align: center;
 	text-decoration: none
@@ -1123,13 +1125,13 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 #header {
 	height: 60px;
 	background: #fff;
-	max-width: 1210px;
+	max-width: 980px;
 	width: auto!important;
 	position: relative;
 	z-index: 1000
 }
 .headerLayout {
-	max-width: 1210px;
+	max-width: 980px;
 	margin: 0 auto
 }
 .header-extra {
@@ -1238,7 +1240,7 @@ margin:0
 }
 .main-container {
 	position: relative;
-	width: 1210px;
+	width: 980px;
 	margin: auto
 }
 #header .mallSearch-form {
@@ -1325,7 +1327,7 @@ margin:0
 	position: absolute
 }
 #sn-bd, #header .headerLayout, #header .headerCon, #mallNav .wrapper, .mallNav-con {
-	max-width: 1210px!important
+	max-width: 980px!important
 }
 #site-nav .sn-mobile, #site-nav .sn-sitemap {
 	display: block
@@ -2838,7 +2840,11 @@ a:hover img {
 	color: #e4393c;
 }
 .p-price strong.best_goods_price{
-	color:#ffffff;	
+	color:#000;	
+}
+.breadcrumb{
+	font-size:14px;
+	margin:10px 0px;
 }
 .breadcrumb i{
 	background-position:-427px -208px;

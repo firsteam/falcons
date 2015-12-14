@@ -183,8 +183,8 @@ function get_street_goods_info($brand_id){
 
 	$allnum = count($goodsInfo);
 	if($allnum > 0){
-		if($allnum > 6){
-			array_splice($goodsInfo, 6);
+		if($allnum > 5){
+			array_splice($goodsInfo, 5);
 		}
 		foreach($goodsInfo as $key=>$row){
 			$goodsInfo[$key]['shop_price']       = price_format($row['shop_price']);

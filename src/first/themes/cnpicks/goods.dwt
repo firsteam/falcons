@@ -32,7 +32,7 @@
 <div id="site-nav"> <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="blank"></div>
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
-  <div class="w1048 content-wrap" style="height:auto;">
+  <div class="content-wrap" style="height:auto;">
     <!-- <div id="product-intro" class="goods_photo"> -->
     <div>
       <!--name end--> 
@@ -49,14 +49,14 @@
             <!-- {/if}-->
           </a>
           </div>
-          <div style="width: 570px;padding: 10px;">
-            <div id="view-bigimg" class="fr" style="margin-left:20px;"><b></b>
-              <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">查看大图</a>
-            </div>
-            <div style="height:10px; line-height:10px; clear:both;"></div>
+          <div style="width: 460px;"> 
             <!--相册 START-->
             <!-- #BeginLibraryItem "/library/goods_gallery.lbi" --><!-- #EndLibraryItem -->
-            <!--相册 END-->
+            <!--相册 END-->			
+          </div>
+		  
+		  <div id="view-bigimg" class="fr" style="margin:15px 0px 0px 0px;"><b></b>
+              <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">查看大图</a>
           </div>
         </div>
 
@@ -138,7 +138,7 @@
     </div>
       <div class="goods_right">
       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
-        <div class="clearfix" style="min-height:510px;overflow: hidden">
+        <div class="clearfix">
           <div class="goods_info">
             <div id="name">
               <h1>{$goods.goods_style_name}</h1>

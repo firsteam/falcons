@@ -97,7 +97,7 @@
       <ul class="list_pic">
         <!--{foreach from=$goods_list item=goods name=name}--> 
         <!-- {if $goods.goods_id} -->
-        <li class="item" {if $smarty.foreach.name.iteration % 5 eq 1}style="margin-left:0px;"{/if} id="li_{$goods.goods_id}">
+        <li class="item" {if $smarty.foreach.name.iteration % 4 eq 1}style="margin-left:0px;"{/if} id="li_{$goods.goods_id}">
           <div class="goods-content" style="position:relative">
 		<!-- {if $goods.is_hot eq 1} --><span class="little_pic">爆款</span><!--{/if}--> 
 		<!-- {if $goods.is_best eq 1} --><span class="little_pic">精品</span><!--{/if}-->

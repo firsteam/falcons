@@ -66,9 +66,7 @@
                   <img src="data/brandlogo/{$brand.brand_logo}" /> 
                   <!-- {/if} --> 
                 </div></td>
-              <td bgcolor="#ffffff"> {$brand.brand_desc|nl2br}<br />
-                <!-- {if $brand.site_url} --><!-- {/if} -->
-                <!-- <a href="{$brand.site_url}" target="_blank" class="f6">{$brand.site_url}</a> -->
+              <td bgcolor="#ffffff" style="padding:20px;font-size:15px; line-height:20pt;"> {$brand.brand_desc|nl2br}<br />
               </td>
             </tr>
           </table>

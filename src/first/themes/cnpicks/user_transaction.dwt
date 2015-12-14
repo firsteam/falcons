@@ -753,9 +753,9 @@ menu.className=i==cursel?"active":"";
 </script>
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active" id="tab1" onClick="setTabCatGoods('tab',1,3)">基本信息</li>
-              <li class="normal" id="tab2" onClick="setTabCatGoods('tab',2,3)">更换头像</li>
-              <li class="normal" id="tab3" onClick="setTabCatGoods('tab',3,3)">实名认证</li>
+              <li class="active" id="tab1" onClick="setTabCatGoods('tab',1,3)">My Information</li>
+              <li class="normal" id="tab2" onClick="setTabCatGoods('tab',2,3)" style="display:none">更换头像</li>
+              <li class="normal" id="tab3" onClick="setTabCatGoods('tab',3,3)" style="display:none">实名认证</li>
             </ul>
           </div>
           <div class="ncm-user-profile">
@@ -763,16 +763,16 @@ menu.className=i==cursel?"active":"";
               <form name="formEdit" action="user.php" method="post" onSubmit="return userEdit()">
                 <table width="100%" border="0"  cellpadding="10" cellspacing="1"  bgcolor="#E6E6E6">
                 <tr>
-                  <td width="28%" align="right" bgcolor="#FFFFFF">用户名称：</td>
+                  <td width="28%" align="right" bgcolor="#FFFFFF">User name </td>
                   <td width="72%" align="left" bgcolor="#FFFFFF"><input type="text" name="username" value="{$profile.user_name}" onblur="check_username(this.value)" size="25" class="inputBg" />
                     <span id="username_message" style="color:#F00"></span></td>
                 </tr>
                 <tr>
-                  <td width="28%" align="right" bgcolor="#FFFFFF">出生日期：</td>
+                  <td width="28%" align="right" bgcolor="#FFFFFF">Birthday </td>
                   <td width="72%" align="left" bgcolor="#FFFFFF"> {html_select_date field_order=YMD prefix=birthday start_year=-60 end_year=+1 display_days=true month_format=%m day_value_format=%02d time=$profile.birthday} </td>
                 </tr>
                 <tr>
-                  <td width="28%" align="right" bgcolor="#FFFFFF">性别：</td>
+                  <td width="28%" align="right" bgcolor="#FFFFFF">Gender </td>
                   <td width="72%" align="left" bgcolor="#FFFFFF"><label>
                       <input type="radio" name="sex" value="0" {if $profile.sex==0}checked="checked"{/if} />
                       {$lang.secrecy}&nbsp;&nbsp; </label>
@@ -988,33 +988,23 @@ menu.className=i==cursel?"active":"";
           <!--{/if}--> 
           
           <!--{if $action eq 'account_security'}-->
-          <h5 class="user-title user-title-t"><span> 安全级别： 
-            <!--余额额支付密码_更改_START_www.68ecshop.com--> 
-           {if $info.is_validated eq 0 && $info.validated eq 0 && $info.is_surplus_open eq 0}很危险&nbsp;<i class="validated1"></i>建议您启动全部安全设置，以保障账户及资金安全{/if}
-            {if $info.is_validated eq 0 && $info.validated eq 0 && $info.is_surplus_open eq 1}比较危险&nbsp;<i class="validated2"></i>建议您启动全部安全设置，以保障账户及资金安全{/if}
-            {if $info.is_validated eq 0 && $info.validated eq 1 && $info.is_surplus_open eq 0}比较危险&nbsp;<i class="validated2"></i>建议您启动全部安全设置，以保障账户及资金安全{/if}
-            {if $info.is_validated eq 1 && $info.validated eq 0 && $info.is_surplus_open eq 0}比较危险&nbsp;<i class="validated2"></i>建议您启动全部安全设置，以保障账户及资金安全{/if}
-            {if $info.is_validated eq 0 && $info.validated eq 1 && $info.is_surplus_open eq 1}一般&nbsp;<i class="validated3"></i>{/if}
-            {if $info.is_validated eq 1 && $info.validated eq 1 && $info.is_surplus_open eq 0}一般&nbsp;<i class="validated3"></i>{/if}
-            {if $info.is_validated eq 1 && $info.validated eq 0 && $info.is_surplus_open eq 1}一般&nbsp;<i class="validated3"></i>{/if}
-            {if $info.is_validated eq 1 && $info.validated eq 1 && $info.is_surplus_open eq 1}高&nbsp;<i class="validated5"></i>{/if} 
-            <!--余额额支付密码_更改_END_www.68ecshop.com--> 
+          <h5 class="user-title user-title-t"><span> Security
             </span></h5>
           <div class="blank"></div>
           <div class="m m5" id="safe05">
             <div class="mc">
-              <div class="fore1"><s class="fore1_3"></s><strong>登录密码</strong></div>
-              <div class="fore2"><span class="ftx-03">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span><span style="color:#CF0F02;"></span></div>
-              <div class="fore3"><a href="user.php?act=update_password" class="btn btn-8">&nbsp;&nbsp;修&nbsp;&nbsp;改&nbsp;&nbsp;</a></div>
+              <div class="fore1"><s class="fore1_3"></s><strong>Password</strong></div>
+              <div class="fore2" style="display:none"><span class="ftx-03">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span><span style="color:#CF0F02;"></span></div>
+              <div class="fore3"><a href="user.php?act=update_password" class="btn btn-8">&nbsp;&nbsp;Change&nbsp;&nbsp;</a></div>
             </div>
-            <div class="mc">
+            <div class="mc" style="display:none">
               <div class="fore1"> <s class="{if $info.is_validated eq 0}fore1_1{else}fore1_3{/if}"></s><strong>邮箱验证</strong></div>
               <div class="fore2">{if $info.is_validated eq 0}<span style="color:#ED5854;">验证后，可用于快速找回登录密码，接收账户余额变动提醒</span>{else}<span class="ftx-03">您验证的邮箱：{$info.email}{/if}</span></div>
               <div class="fore3">{if $info.is_validated eq 0}
                 <input type="button" value="验证邮箱" onclick="window.location.href='user.php?act=re_binding_email'" class="btn btn-7">
                 {else}<a href="user.php?act=update_email" class="btn btn-8">&nbsp;&nbsp;修&nbsp;&nbsp;改&nbsp;&nbsp;</a>{/if} </div>
             </div>
-            <div class="mc">
+            <div class="mc" style="display:none">
               <div class="fore1"><s class="{if $info.validated eq 0}fore1_1{else}fore1_3{/if}"></s><strong>手机验证</strong></div>
               <div class="fore2">{if $info.validated eq 0}<span style="color:#ED5854;">验证后，可用于快速找回登录密码及支付密码，接收账户余额变动提醒</span>{else}<span class="ftx-03" >您验证的手机：{$info.mobile_phone},若已丢失或停用，请立即更换，避免账户被盗{/if}</span></div>
               <div class="fore3">{if $info.validated eq 0}
@@ -1023,7 +1013,7 @@ menu.className=i==cursel?"active":"";
             </div>
             
             <!--余额额支付密码_添加_START_www.68ecshop.com-->
-            <div class="mc" id="surplus-mc">
+            <div class="mc" id="surplus-mc" style="display:none">
                         <div class="fore1"><s class="{if $info.is_surplus_open eq 0}fore1_1{else}fore1_3{/if}"></s><strong>余额支付</strong></div>
 						<div class="fore2">{if $info.is_surplus_open eq 0}<span style="color:#ED5854;">开启后，可保障您账户余额支付的安全</span>{else}<span class="ftx-03" >您已开启账户余额支付密码功能{/if}</span></div>
 						<div class="fore3">
@@ -1534,36 +1524,36 @@ menu.className=i==cursel?"active":"";
           </div>
           <div class="blank"></div>
           <div id="J_Remide" class="remide-box">
-            <h3 style=" width:100px;line-height:35px;background:none">我的交易提醒：</h3>
+            <h3 style=" width:100px;line-height:35px;background:none">Summary</h3>
             <ul>
               <li{if $smarty.get.composite_status eq '0'} style="background:#CCC; color:#FFF"
-{/if}><a href="user.php?act=order_list&composite_status={$status.unconfirmed}">未确认订单<span class="num">({$order_count.unconfirmed})</span></a></li>
+{/if}><a href="user.php?act=order_list&composite_status={$status.unconfirmed}">Unconfirmed<span class="num">({$order_count.unconfirmed})</span></a></li>
               <li{if $smarty.get.composite_status eq '100'} style="background:#CCC; color:#FFF"
-{/if}><a href="user.php?act=order_list&composite_status={$status.await_pay}">待付款<span class="num">({$order_count.await_pay})</span></a></li>
+{/if}><a href="user.php?act=order_list&composite_status={$status.await_pay}">Unpaid<span class="num">({$order_count.await_pay})</span></a></li>
               <li{if $smarty.get.composite_status eq '101'} style="background:#CCC; color:#FFF"
-{/if}><a href="user.php?act=order_list&composite_status={$status.await_ship}">待发货<span class="num">({$order_count.await_ship})</span></a></li>
+{/if}><a href="user.php?act=order_list&composite_status={$status.await_ship}">Unshipped<span class="num">({$order_count.await_ship})</span></a></li>
               <li{if $smarty.get.composite_status eq '102'} style="background:#CCC; color:#FFF"
-{/if}><a href="user.php?act=order_list&composite_status={$status.finished}">已成交订单数<span class="num">({$order_count.finished})</span></a></li>
+{/if}><a href="user.php?act=order_list&composite_status={$status.finished}">Finished<span class="num">({$order_count.finished})</span></a></li>
             </ul>
           </div>
           <div class="extra-r" style="display:none">
             <div class="search-01">
-              <input id="ip_keyword" name="" class="s-itxt" value="商品名称、商品编号、订单编号" onfocus="if (this.value==this.defaultValue) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue" onkeydown="javascript:if(event.keyCode==13) OrderSearch('ip_keyword');" type="text">
-              <!--input name="" type="button" value="查 询" class="btn-13" onclick="OrderSearch('ip_keyword')" clstag="click|keycount|orderinfo|search"/--> 
+              <input id="ip_keyword" name="" class="s-itxt" value="Name \ Item No. \ Order No." onfocus="if (this.value==this.defaultValue) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue" onkeydown="javascript:if(event.keyCode==13) OrderSearch('ip_keyword');" type="text">
+              <!--input name="" type="button" value="Search" class="btn-13" onclick="OrderSearch('ip_keyword')" clstag="click|keycount|orderinfo|search"/--> 
               <a href="javascript:;" class="btn-13" onclick="OrderSearch('ip_keyword')" clstag="click|keycount|orderinfo|search">查 询</a> </div>
             <div class="blank"></div>
           </div>
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bought-table">
             <thead>
               <tr class="col-name">
-                <th width="32%" style="border-left: 1px solid #E6E6E6;">宝贝</th>
-                <th width="10%">属性</th>
-                <th width="9%">单价(元)</th>
-                <th width="5%">数量</th>
-                <th width="13%">售后</th>
+                <th width="32%" style="border-left: 1px solid #E6E6E6;">Name</th>
+                <th width="10%">Attribute</th>
+                <th width="9%">Unit cost</th>
+                <th width="5%">Quantity</th>
+                <th width="13%">Service</th>
                 <th width="8%">{$lang.order_money}</th>
-                <th width="10%">状态</th>
-                <th width="13%" style="border-right: 1px solid #E6E6E6;">操作</th>
+                <th width="10%">State</th>
+                <th width="13%" style="border-right: 1px solid #E6E6E6;">Operation</th>
               </tr>
             </thead>
             
@@ -1618,26 +1608,26 @@ menu.className=i==cursel?"active":"";
             	<!-- {if $item.extension_code != 'pre_sale' || $item.pre_sale_status > 1} -->
                   <div class="goods_desc {if $smarty.foreach.goods.last}last{/if}"> 
                     <!-- {if ($item.shipping_status eq 0 || $item.shipping_status eq 3) && $item.pay_status eq 2} --> 
-                    {if $goods.back_can == 1} <a href="user.php?act=back_order&order_id={$item.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}&x=1" class="red2" >退款(整个订单)</a><br />
+                    {if $goods.back_can == 1} <a href="user.php?act=back_order&order_id={$item.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}&x=1" class="red2" >Refund(Whole order)</a><br />
                     {else}
-                    <p>[已申请 退款]</p>
+                    <p>[Refunding]</p>
                     {/if} 
                     <!-- {/if} --> 
                     <!-- {if $item.shipping_status neq 0 && $item.shipping_status neq 3} --> 
                     {if $goods.back_can == 1}
                     <p> <a href="user.php?act=back_order&order_id={$item.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}" class="red2"> {if $item.shipping_status eq 1}
-                      退货
+                      Return
                       {else if $item.shipping_status eq 2}
-                      {if $item.weixiu_time eq 0}[申请返修 已超期]{else}申请返修{/if}
+                      {if $item.weixiu_time eq 0}[Request Return  Exceed the time limit]{else}Request service{/if}
                       {/if} </a> </p>
                     {else}
-                    <p>[已申请
-                      {if $item.shipping_status eq 1}退货{else}返修{/if}
+                    <p>[Application 
+                      {if $item.shipping_status eq 1}Return{else}Service{/if}
                       ]</p>
                     {/if} 
                     <!-- {/if} --> 
                     <!-- {/if} -->
-                    <a href="user.php?act=message_list">留言/投诉</a> </div>
+                    <a href="user.php?act=message_list">Message/Complaint</a> </div>
                   
                   <!--{/foreach}--></td>
                 <td rowspan="1" align="center" class="amount no-border-right"><p class="post-type"><strong>
@@ -1649,7 +1639,7 @@ menu.className=i==cursel?"active":"";
                 <!-- {/if} -->
                 </strong></p></td>
                 <td rowspan="1" align="center" class="trade-status no-border-right">{$item.order_status}</br>
-                  <a href="user.php?act=order_detail&order_id={$item.order_id}" class="red2">查看详情</a>
+                  <a href="user.php?act=order_detail&order_id={$item.order_id}" class="red2">Detail</a>
                   <!-- {if $item.invoice_no && $item.shipping_name neq '门店自提'} -->
                   
                   <div style="position:relative">
@@ -1660,11 +1650,11 @@ menu.className=i==cursel?"active":"";
                     <!-- {else} -->
                 <div onmouseover="showSubNav2('subNav_{$item.invoice_no}','{$item.shipping_name_2}','{$item.invoice_no}');">
                       <!-- {/if} --> 
-                <a href="javascript:;" class="nav_a">物流跟踪</a></div>
+                <a href="javascript:;" class="nav_a">Tracking Information</a></div>
                     <div id="subNav_{$item.invoice_no}" class="wuliu" style="display:none; position:absolute;">
                       <div class="wuliu_info">
                         <div class="wuliu_info_name">{$item.shipping_name}</div>
-                        <div class="wuliu_info_num">运单号：{$item.invoice_no}</div>
+                        <div class="wuliu_info_num">Tracking Number{$item.invoice_no}</div>
                         <div><img src="images/drop.gif" width="12" height="12" onclick="hiddenSubNav('subNav_{$item.invoice_no}')" /></div>
                       </div>
                       <!-- {if $item.result_content} --> 
@@ -1681,7 +1671,7 @@ menu.className=i==cursel?"active":"";
                 	<!-- {if $item.order_status1 eq 2 || $item.order_status1 eq 3} -->
                   <!-- {else} --> 
                   <!-- {if $item.pay_status eq 0 && !empty($item.pay_id)} --> 
-                  <a href="user.php?act=order_detail&order_id={$item.order_id}" class="on_money">立即付款</a><br />
+                  <a href="user.php?act=order_detail&order_id={$item.order_id}" class="on_money">Pay Now</a><br />
                   
                   <!-- {/if} --> 
                   <!-- {/if} --> 
@@ -1689,20 +1679,20 @@ menu.className=i==cursel?"active":"";
                   
                   <!-- {if $item.shipping_status eq 2} --> 
                   <!-- {if $item.comment_s eq 0} --> 
-                  已全部评价 
+                  Reviewed
                   <!-- {else} --> 
-                  <a href="user.php?act=my_comment&s={$item.comment_s}&order_id={$item.order_id}#commtr_{$item.comment_s}" class="on_comment">评价</a> 
+                  <a href="user.php?act=my_comment&s={$item.comment_s}&order_id={$item.order_id}#commtr_{$item.comment_s}" class="on_comment">Review</a> 
                   <!-- {/if} --><br />
                   
                   <!-- {if $item.shaidan_s eq 0} --> 
-                  已全部晒单 
+                  Show Photo 
                   <!-- {else} --> 
-                  <a href="user.php?act=shaidan_send&id={$item.shaidan_s}" class="on_comment">晒单</a> 
+                  <a href="user.php?act=shaidan_send&id={$item.shaidan_s}" class="on_comment">Show</a> 
                   <!-- {/if} --><br />
                   
                   <!-- {/if} --> 
                   <!-- {if $item.shipping_status eq 2 || $item.order_status1 eq 2 || $item.order_status1 eq 3} --> 
-                  <a href="goods.php?id={$item.goods_list.0.goods_id}" target="_blank">再次购买</a> 
+                  <a href="goods.php?id={$item.goods_list.0.goods_id}" target="_blank">Order again</a> 
                   <!-- {/if} --></td>
               </tr>
             </tbody>
@@ -1730,7 +1720,7 @@ menu.className=i==cursel?"active":"";
 					document.getElementById(s_have_val).style.display = 'none';
 				}
 				document.getElementById(id).style.display = 'block';
-				document.getElementById("retData2").innerHTML="<center>正在查询物流信息，请稍后...</center>";
+				document.getElementById("retData2").innerHTML="<center>Processing...</center>";
 				document.getElementById("s_have_hidden").value = id;
 				var expressid2 = s_name;
 				var expressno2 = s_no;
@@ -1789,19 +1779,19 @@ menu.className=i==cursel?"active":"";
           <!-- {if $action eq back_order_detail} -->
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active">退款/退货/维修详情</li>
+              <li class="active">Refund/Return</li>
             </ul>
           </div>
           <div class="blank"></div>
           <table width="100%" border="0" cellpadding="5" cellspacing="1"  bgcolor="#E6E6E6">
             <tr>
-              <td width="100%" height=25  bgcolor="#FFFFFF" style="padding-left:10px">原订单号：{$back_shipping.order_sn}</td>
+              <td width="100%" height=25  bgcolor="#FFFFFF" style="padding-left:10px">Order number:{$back_shipping.order_sn}</td>
             </tr>
             <tr>
-              <td width="100%" height=25  bgcolor="#FFFFFF" style="padding-left:10px">商品名称：{$back_shipping.goods_name}</td>
+              <td width="100%" height=25  bgcolor="#FFFFFF" style="padding-left:10px">Product name:{$back_shipping.goods_name}</td>
             </tr>
             <tr>
-              <td width="100%" height=25  bgcolor="#FFFFFF"  style="padding-left:10px">售后类型：{if $back_shipping.back_type eq 1}退货{/if}{if $back_shipping.back_type eq 2}换货{/if}{if $back_shipping.back_type eq 3}申请返修{/if}{if $back_shipping.back_type eq 4}退款（无需退货）{/if}</td>
+              <td width="100%" height=25  bgcolor="#FFFFFF"  style="padding-left:10px">Service:{if $back_shipping.back_type eq 1}Return{/if}{if $back_shipping.back_type eq 2}Exchange{/if}{if $back_shipping.back_type eq 3}Repair{/if}{if $back_shipping.back_type eq 4}Refund{/if}</td>
             </tr>
           </table>
           <div class="blank"></div>
@@ -1809,43 +1799,43 @@ menu.className=i==cursel?"active":"";
           <table width="100%" border="0" cellpadding="5" cellspacing="1"  bgcolor="#E6E6E6">
             {foreach from= $list_backgoods.0.goods_list item=bgoods}
             <tr>
-              <td width="15%" align=center bgcolor="#FFFFFF"><font color=#ff3300>退回商品</font></td>
+              <td width="15%" align=center bgcolor="#FFFFFF"><font color=#ff3300>Return</font></td>
               <td width="40%" bgcolor="#FFFFFF">{$bgoods.goods_name} </td>
               <td width="25%" bgcolor="#FFFFFF">{if $bgoods.goods_attr}{$bgoods.goods_attr|nl2br}{/if} </td>
-              <td width="10%" bgcolor="#FFFFFF">数量：{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
-              <td width="10%" bgcolor="#FFFFFF">类型：退货 </td>
+              <td width="10%" bgcolor="#FFFFFF">Quantity:{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
+              <td width="10%" bgcolor="#FFFFFF">Return</td>
             </tr>
             {/foreach}
             
-	    <tr> <td  align=center bgcolor="#FFFFFF">退款金额</td><td colspan=4 bgcolor="#FFFFFF">应退金额：{$bgoods.back_goods_money} </td></tr>
-	    <tr><td  align=center bgcolor="#FFFFFF">处理状态</td><td colspan=4 bgcolor="#FFFFFF">{$bgoods.status_back}</td></tr>
-	    <tr><td align=center bgcolor="#FFFFFF">退款状态</td><td colspan=4 bgcolor="#FFFFFF">{$bgoods.status_refund} </td></tr>
+	    <tr> <td  align=center bgcolor="#FFFFFF">Refund</td><td colspan=4 bgcolor="#FFFFFF">Sum{$bgoods.back_goods_money} </td></tr>
+	    <tr><td  align=center bgcolor="#FFFFFF">Status</td><td colspan=4 bgcolor="#FFFFFF">{$bgoods.status_back}</td></tr>
+	    <tr><td align=center bgcolor="#FFFFFF">Status</td><td colspan=4 bgcolor="#FFFFFF">{$bgoods.status_refund} </td></tr>
 	    </table>
 	{/if}
 	{if $list_backgoods.3}
 	<table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
     {foreach from= $list_backgoods.3.goods_list item=bgoods}
 	<tr bgcolor=#ffffff >
-	<td width="15%" align=center><font color=#ff3300>退回商品</font></td><td width="40%">{$bgoods.goods_name} </td>
+	<td width="15%" align=center><font color=#ff3300>Return</font></td><td width="40%">{$bgoods.goods_name} </td>
 	<td width="25%">{if $bgoods.goods_attr}{$bgoods.goods_attr|nl2br}{/if} </td>
-	<td width="10%">数量：{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
-	<td width="10%">类型：申请返修 </td></tr>
+	<td width="10%">Quantity:{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
+	<td width="10%">Repair </td></tr>
 	{/foreach}
-	<tr bgcolor=#ffffff ><td  align=center>处理状态</td><td colspan=4>{$bgoods.status_back}</td></tr>
+	<tr bgcolor=#ffffff ><td  align=center>Status</td><td colspan=4>{$bgoods.status_back}</td></tr>
 	</table>
 	{/if}
 	{if $list_backgoods.4}
 	<table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
     {foreach from= $list_backgoods.4.goods_list item=bgoods}
 	<tr bgcolor=#ffffff >
-	<td width="15%" align=center><font color=#ff3300>退回商品</font></td><td width="40%">{$bgoods.goods_name} </td>
+	<td width="15%" align=center><font color=#ff3300>Return</font></td><td width="40%">{$bgoods.goods_name} </td>
 	<td width="25%">{if $bgoods.goods_attr}{$bgoods.goods_attr|nl2br}{/if} </td>
-	<td width="10%">数量：{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
-	<td width="10%">类型：退款<br />（无需退货） </td></tr>
+	<td width="10%">Quantity{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
+	<td width="10%">Refund</td></tr>
 	{/foreach}
-	<tr bgcolor=#ffffff ><td  align=center>退款金额</td><td colspan=4>应退金额：{$bgoods.back_goods_money} </td></tr>
-	<tr bgcolor=#ffffff ><td  align=center>处理状态</td><td colspan=4>{$bgoods.status_back}</td></tr>
-	<tr bgcolor=#ffffff ><td  align=center>退款状态</td><td colspan=4>{$bgoods.status_refund} </td></tr>
+	<tr bgcolor=#ffffff ><td  align=center>Refund</td><td colspan=4>Sum:{$bgoods.back_goods_money} </td></tr>
+	<tr bgcolor=#ffffff ><td  align=center>Status</td><td colspan=4>{$bgoods.status_back}</td></tr>
+	<tr bgcolor=#ffffff ><td  align=center>Status</td><td colspan=4>{$bgoods.status_refund} </td></tr>
 	</table>
           {/if}
           <div class="blank"></div>
@@ -1853,45 +1843,45 @@ menu.className=i==cursel?"active":"";
           <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
             {foreach from= $list_backgoods.1.goods_list name="list_backgoods_1" item=bgoods}
             <tr>
-              <td width="15%" align=center bgcolor="#FFFFFF"><font color=#ff3300>{if $smarty.foreach.list_backgoods_1.iteration eq 1}退回{else}换回{/if}商品</font></td>
+              <td width="15%" align=center bgcolor="#FFFFFF"><font color=#ff3300>{if $smarty.foreach.list_backgoods_1.iteration eq 1}Return{else}Exchange{/if}</font></td>
               <td width="40%" bgcolor="#FFFFFF">{$bgoods.goods_name}</td>
-              <td width="25%" bgcolor="#FFFFFF">{if $bgoods.goods_attr}属性：{$bgoods.goods_attr}{/if} </td>
-              <td width="10%" bgcolor="#FFFFFF">数量：{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
-              <td width="10%" bgcolor="#FFFFFF">{if $smarty.foreach.list_backgoods_1.iteration eq 1}类型：换货{/if}</td>
+              <td width="25%" bgcolor="#FFFFFF">{if $bgoods.goods_attr}Attribute{$bgoods.goods_attr}{/if} </td>
+              <td width="10%" bgcolor="#FFFFFF">Quantity{if $bgoods.back_goods_number}{$bgoods.back_goods_number}{/if} </td>
+              <td width="10%" bgcolor="#FFFFFF">{if $smarty.foreach.list_backgoods_1.iteration eq 1}Exchange{/if}</td>
             </tr>
             {/foreach}
             <tr>
-              <td align=center bgcolor="#FFFFFF">退款金额</td>
-              <td colspan=4 bgcolor="#FFFFFF">应退金额：{$bgoods.back_goods_money}</td>
+              <td align=center bgcolor="#FFFFFF">Refund</td>
+              <td colspan=4 bgcolor="#FFFFFF">Sum:{$bgoods.back_goods_money}</td>
             </tr>
             <tr>
-              <td align=center  bgcolor="#FFFFFF">处理状态</td>
+              <td align=center  bgcolor="#FFFFFF">Status</td>
               <td colspan=4 bgcolor="#FFFFFF">{$bgoods.status_back}</td>
             </tr>
             <tr>
-              <td align=center bgcolor="#FFFFFF">退款状态</td>
+              <td align=center bgcolor="#FFFFFF">Status</td>
               <td colspan=4  bgcolor="#FFFFFF">{$bgoods.status_refund} </td>
             </tr>
           </table>
           <div class="blank"></div>
           <table width="100%" border="0" cellpadding="5" cellspacing="1"  bgcolor="#E6E6E6">
             <tr>
-              <td align=center width="15%"  bgcolor="#FFFFFF">寄回商品<br>
-                收件人信息</td>
-              <td colspan=4  bgcolor="#FFFFFF">商品寄回地址：{$back_shipping.country_name} {$back_shipping.province_name} {$back_shipping.city_name} {$back_shipping.district_name} {$back_shipping.address}<br>
-                邮政编码：{$back_shipping.zipcode}<br>
-                收件人：{$back_shipping.consignee}<br></td>
+              <td align=center width="15%"  bgcolor="#FFFFFF">Return<br>
+                Address</td>
+              <td colspan=4  bgcolor="#FFFFFF">Address:{$back_shipping.country_name} {$back_shipping.province_name} {$back_shipping.city_name} {$back_shipping.district_name} {$back_shipping.address}<br>
+                Post Code:{$back_shipping.zipcode}<br>
+                Consignee:{$back_shipping.consignee}<br></td>
             </tr>
             <tr>
-              <td align=center width="15%"  bgcolor="#FFFFFF">退款信息</td>
-              <td colspan=4  bgcolor="#FFFFFF">应退金额：{$back_shipping.refund_money_1}&nbsp;&nbsp;&nbsp;&nbsp;实退金额：{$back_shipping.refund_money_2}</td>
+              <td align=center width="15%"  bgcolor="#FFFFFF">Refund</td>
+              <td colspan=4  bgcolor="#FFFFFF">Sum:{$back_shipping.refund_money_1}&nbsp;&nbsp;&nbsp;&nbsp;Received:{$back_shipping.refund_money_2}</td>
             </tr>
             <tr>
-              <td align=center width="15%"  bgcolor="#FFFFFF">退款形式</td>
+              <td align=center width="15%"  bgcolor="#FFFFFF">Refund Type</td>
               <td colspan=4  bgcolor="#FFFFFF">{$back_shipping.refund_type_name}</td>
             </tr>
             <tr>
-              <td align=center width="15%"  bgcolor="#FFFFFF">退款说明</td>
+              <td align=center width="15%"  bgcolor="#FFFFFF">Refund Description</td>
               <td colspan=4  bgcolor="#FFFFFF">{$back_shipping.refund_desc}</td>
             </tr>
           </table>
@@ -1900,7 +1890,7 @@ menu.className=i==cursel?"active":"";
 	{if $back_shipping.back_type neq 4 && $back_shipping.status_back lt 6}
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active"> <a href="#"> 快递信息（请填写您寄回商品的快递信息）：</a> </li>
+              <li class="active"> <a href="#"> Return Tracking Information</a> </li>
             </ul>
           </div>
           <div class="blank"></div>
@@ -1997,18 +1987,18 @@ menu.className=i==cursel?"active":"";
           <!-- {if $action eq back_list} -->
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active">退款/退货/维修订单列表</li>
+              <li class="active">Refund/Return</li>
             </ul>
           </div>
           <div class="blank"></div>
           <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
             <tr align="center">
-              <td bgcolor="#ffffff">退款/退货/维修<br>
-                申请单号</td>
-              <td bgcolor="#ffffff">原订单号</td>
-              <td bgcolor="#ffffff" width="20%">商品名称</td>
-              <td bgcolor="#ffffff">申请时间</td>
-              <td bgcolor="#ffffff">应退金额</td>
+              <td bgcolor="#ffffff">Refund/Return<br>
+                Request Number</td>
+              <td bgcolor="#ffffff">Order Number</td>
+              <td bgcolor="#ffffff" width="20%">Product Name</td>
+              <td bgcolor="#ffffff">Request Time</td>
+              <td bgcolor="#ffffff">Sum</td>
               <td bgcolor="#ffffff">{$lang.order_status}</td>
               <td bgcolor="#ffffff">{$lang.handle}</td>
             </tr>
@@ -2020,7 +2010,7 @@ menu.className=i==cursel?"active":"";
               <td align="center" bgcolor="#ffffff">{$item.order_time}</td>
               <td align="right" bgcolor="#ffffff">{$item.refund_money_1}</td>
               <td align="center" bgcolor="#ffffff">{$item.status_back}</td>
-              <td align="center" bgcolor="#ffffff">{if $item.status_back eq 0} <a href="user.php?act=del_back_order&id={$item.back_id}" onclick="return confirm('你确认要取消吗？')">取消</a> | {/if} <a href="user.php?act=back_order_detail&id={$item.back_id}">查看</a></td>
+              <td align="center" bgcolor="#ffffff">{if $item.status_back eq 0} <a href="user.php?act=del_back_order&id={$item.back_id}" onclick="return confirm('Cancel or not?')">Cancel</a> | {/if} <a href="user.php?act=back_order_detail&id={$item.back_id}">Detail</a></td>
             </tr>
             <!--{/foreach}-->
           </table>
@@ -2033,10 +2023,10 @@ menu.className=i==cursel?"active":"";
           <div class="tabmenu">
             <ul class="tab pngFix">
               <li class="active"> <a href="#"><!-- {if $back_goods.shipping_time_end == 0} -->
-    退款\退货
+    Refund/Return
     <!-- {else} -->
-    申请返修
-    <!-- {/if} -->退换货订单提交</a> </li>
+    Repair
+    <!-- {/if} -->Application</a> </li>
             </ul>
           </div>
           <div class="blank"></div>
@@ -2047,7 +2037,7 @@ menu.className=i==cursel?"active":"";
 		{
 			if (document.getElementById("huan_box").innerHTML == "")
 			{
-				alert("请添加换货商品！");
+				alert("Please add the product you want to return.");
 				document.getElementById("add_huan_btton").focus();
 				show_huan_goods();
 				return false;	
@@ -2056,7 +2046,7 @@ menu.className=i==cursel?"active":"";
 		
 		if (document.getElementById("back_reason").value == '')
 		{
-			alert("请输入问题描述！");	
+			alert("Please add the issue description.");	
 			document.getElementById("back_reason").focus();
 			return false;
 		}
@@ -2065,25 +2055,25 @@ menu.className=i==cursel?"active":"";
 		{
 			if (document.getElementById("back_address").value == '')
 			{
-				alert("请输入收货地址！");	
+				alert("Please add the consignee address.");	
 				document.getElementById("back_address").focus();
 				return false;
 			}
 			if (document.getElementById("back_zipcode").value == '')
 			{
-				alert("请输入邮政编码！");	
+				alert("Please add the post code.");	
 				document.getElementById("back_zipcode").focus();
 				return false;
 			}
 			if (document.getElementById("back_consignee").value == '')
 			{
-				alert("请输入联系人姓名！");	
+				alert("Please add the consignee name.");	
 				document.getElementById("back_consignee").focus();
 				return false;
 			}
 			if (document.getElementById("back_mobile").value == '')
 			{
-				alert("请输入手机号码！");	
+				alert("Please add the Phone Number.");	
 				document.getElementById("back_mobile").focus();
 				return false;
 			}
@@ -2093,12 +2083,12 @@ menu.className=i==cursel?"active":"";
           <form action="user.php?act=back_order_act" name="theForm" id="theForm" method="post" onsubmit="return check_back_form();">
             <table width="100%" border="0" cellpadding="5" cellspacing="1"  bgcolor="#E6E6E6">
               <tr>
-                <td align=center bgcolor="#FFFFFF">订单编号</td>
-                <td align=center bgcolor="#FFFFFF">商品名称</td>
-                <td align=center bgcolor="#FFFFFF">商品属性</td>
-                <td align=center bgcolor="#FFFFFF">商品价格</td>
-                <td align=center bgcolor="#FFFFFF">购买数量</td>
-                <td align=center bgcolor="#FFFFFF">小计</td>
+                <td align=center bgcolor="#FFFFFF">Order Number</td>
+                <td align=center bgcolor="#FFFFFF">Product Name</td>
+                <td align=center bgcolor="#FFFFFF">Product Attribute</td>
+                <td align=center bgcolor="#FFFFFF">Product Price</td>
+                <td align=center bgcolor="#FFFFFF">Quantity</td>
+                <td align=center bgcolor="#FFFFFF">Sum</td>
               </tr>
               <tr>
                 <td align=center bgcolor="#FFFFFF">{$back_goods.order_sn}</td>
@@ -2113,14 +2103,14 @@ menu.className=i==cursel?"active":"";
             <div class="blank"></div>
             <table width="100%" border="0" cellpadding="5" cellspacing="1" >
               <tr>
-                <td width="15%" align="right" valign=top>服务类型：</td>
+                <td width="15%" align="right" valign=top>Service Type</td>
         <td>
         	<!-- {if $back_goods.shipping_time_end == 0} -->
-            {if $smarty.get.x != 1}<input type="radio" name="back_type" id="back_type_1" value="1" {if $smarty.get.x != 1}checked="checked" {/if}onclick="tui_box_show(1)" />退货　{/if}
-            <!--<input type="radio" name="back_type" id="back_type_2" value="2" onclick="tui_box_show(2)" />换货　-->
-            <input type="radio" name="back_type" id="back_type_4" value="4" {if $smarty.get.x == 1}checked="checked" {/if}onclick="tui_box_show(3)" />退款（无需退货）　
+            {if $smarty.get.x != 1}<input type="radio" name="back_type" id="back_type_1" value="1" {if $smarty.get.x != 1}checked="checked" {/if}onclick="tui_box_show(1)" />Return　{/if}
+            <!--<input type="radio" name="back_type" id="back_type_2" value="2" onclick="tui_box_show(2)" />Exchange　-->
+            <input type="radio" name="back_type" id="back_type_4" value="4" {if $smarty.get.x == 1}checked="checked" {/if}onclick="tui_box_show(3)" />Refund　
             <!-- {else} -->
-            <input type="radio" name="back_type" id="back_type_3" value="3" checked="checked" />申请返修
+            <input type="radio" name="back_type" id="back_type_3" value="3" checked="checked" />Repair
             <!-- {/if} -->
             
             <input type="hidden" name="tui_goods_price" value ="{$back_goods.goods_price}">
@@ -2131,11 +2121,11 @@ menu.className=i==cursel?"active":"";
               <tr id="thh_2" style="display:none">
                 <td width="15%" align="right" valign=top></td>
                 <td><div>
-                    <input type="button" name="add_huan_btton" id="add_huan_btton" value="添加换货商品" onclick="javascript:show_huan_goods();">
+                    <input type="button" name="add_huan_btton" id="add_huan_btton" value="Add Exchange Product" onclick="javascript:show_huan_goods();">
                     <font color=#ff3300>（*）</font> </div>
                   <table id="huan_goods" style="padding:10px;background:#eee;display:none;">
                     <tr>
-                      <td align=right>商品名称：</td>
+                      <td align=right>Product Name:</td>
                       <td>{$back_goods.goods_name} </td>
                     </tr>
                     <!-- {foreach from=$specification item=spec key=spec_key} --> 
@@ -2154,14 +2144,14 @@ menu.className=i==cursel?"active":"";
                     <!-- {/if} --> 
                     <!-- {/foreach} -->
                     <tr>
-                      <td colspan=2><input type="button" value="确定" onclick="add_huan_goods({$back_goods.goods_id});"></td>
+                      <td colspan=2><input type="button" value="Ok" onclick="add_huan_goods({$back_goods.goods_id});"></td>
                     </tr>
                   </table>
                   <table id="huan_box" >
                   </table></td>
               </tr>
               <tr>
-                <td width="15%" align="right" valign=top>提交数量：</td>
+                <td width="15%" align="right" valign=top>Quantity:</td>
                 <td><script>
 			function check_tui_goods_number()
 			{
@@ -2169,13 +2159,13 @@ menu.className=i==cursel?"active":"";
 				var goods_number = {$back_goods.goods_number};
 				if (now_number < 1)
 				{
-					alert("提交数量不能小于1");
+					alert("Quantity must bigger than 1");
 					document.getElementById("tui_goods_number").value = 1;
 					document.getElementById("tui_goods_number").focus();
 				}
 				else if (now_number > goods_number)
 				{
-					alert("提交数量不能超过购买数量"+goods_number);
+					alert("Quantity must smaller than"+goods_number);
 					document.getElementById("tui_goods_number").value = goods_number;
 					document.getElementById("tui_goods_number").focus();
 				}
@@ -2184,13 +2174,13 @@ menu.className=i==cursel?"active":"";
                   <input type="text" name="tui_goods_number" id="tui_goods_number" onblur="check_tui_goods_number()" value="1" size=5></td>
               </tr>
               <tr>
-                <td width="15%" align="right" valign=top>问题描述：</td>
+                <td width="15%" align="right" valign=top>Issue Description</td>
                 <td><textarea name="back_reason" id="back_reason" rows=5 cols=50></textarea>
                   <font color=#ff3300>（*）</font>
-                  <div style="color:#999">请您如实填写申请原因及商品情况，字数在500字内。</div></td>
+                  <div style="color:#999"></div></td>
               </tr>
               <tr>
-                <td width="15%" align="right" valign=top>图片信息：</td>
+                <td width="15%" align="right" valign=top>Photo</td>
                 <td><link rel="stylesheet" href="includes/kindeditor/themes/default/default.css" />
                   <script src="includes/kindeditor/kindeditor.js"></script> 
                   <script src="includes/kindeditor/lang/zh_CN.js"></script> 
@@ -2218,15 +2208,15 @@ menu.className=i==cursel?"active":"";
 			</style>
                   <div id="back_order_img_list" class="clearfix"> </div>
                   <div><img id="back_order_img" src="images/back_order_img.gif" /></div>
-                  <div style="margin-top:10px;">为了帮助我们更好的解决问题，请您上传图片</div>
-                  <div style="color:#999">每张图片大小不超过2M，支持gif,jpg,png,jpeg格式文件</div></td>
+                  <div style="margin-top:10px;">Please upload photo to help us solve this issue.</div>
+                  <div style="color:#999">Photo size must less than 2M, file should be gif,jpg,png,jpeg</div></td>
               </tr>
     <!-- {if $back_goods.shipping_time_end == 0} -->
     <tr id="thh_1">
     <!-- {else} -->
     <tr id="thh_1" style="display:none">
     <!-- {/if} -->
-                <td width="15%" align="right" valign=top>退款方式：</td>
+                <td width="15%" align="right" valign=top>Refund</td>
                 <td><input type="radio" name="back_pay" value="1" />
                   退款至账户余额<br />
                   <input type="radio" name="back_pay" value="2" checked="checked" />
@@ -2240,7 +2230,7 @@ menu.className=i==cursel?"active":"";
 	<tbody id="thh_address">
     <!-- {/if} -->
                 <tr>
-                  <td width="15%" align="right" >收货地址：</td>
+                  <td width="15%" align="right" >Consignee Address:</td>
                   <td> {insert_scripts files='utils.js,transport.js,region.js,shopping_flow.js'}
                     <select name="country" id="selCountries_1" onchange="region.changed(this, 1, 'selProvinces_1')">
                       <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
@@ -2271,23 +2261,23 @@ menu.className=i==cursel?"active":"";
                       <font color=#ff3300>（*）</font></div></td>
                 </tr>
                 <tr>
-                  <td width="15%" align="right" >邮政编码：</td>
+                  <td width="15%" align="right" >Post Code:</td>
                   <td><input type="text" name="back_zipcode"  id="back_zipcode" size=20 value="{$order.zipcode}">
                     <font color=#ff3300>（*）</font></td>
                 </tr>
                 <tr>
-                  <td width="15%" align="right" >联系人姓名：</td>
+                  <td width="15%" align="right" >Consignee Name:</td>
                   <td><input type="text" name="back_consignee"  id="back_consignee" size=20 value="{$order.consignee}">
                     <font color=#ff3300>（*）</font></td>
                 </tr>
                 <tr>
-                  <td width="15%" align="right" >手机号码：</td>
+                  <td width="15%" align="right" >Phone Number:</td>
                   <td><input type="text" name="back_mobile"  id="back_mobile" size=20 value="{$order.mobile}">
                     <font color=#ff3300>（*）</font></td>
                 </tr>
               </tbody>
               <tr>
-                <td width="15%" align="right" >我要留言：</td>
+                <td width="15%" align="right" >Note:</td>
                 <td><textarea name="back_postscript" rows=5 cols=50></textarea></td>
               </tr>
               <tr>
@@ -2298,8 +2288,8 @@ menu.className=i==cursel?"active":"";
                   <input type="hidden" name="goods_name" value="{$back_goods.goods_name}">
                   <input type="hidden" name="goods_sn" value="{$back_goods.goods_sn}">
                   <input type="hidden" name="old_goods_number" value="{$back_goods.goods_number}">
-                  <input name="submit" type="submit" value="确认" class="bnt_blue_1" style="border:none;" />
-                  <input name="reset" type="reset" value="取消" class="bnt_blue_1" style="border:none;" /></td>
+                  <input name="submit" type="submit" value="Ok" class="bnt_blue_1" style="border:none;" />
+                  <input name="reset" type="reset" value="Cancel" class="bnt_blue_1" style="border:none;" /></td>
               </tr>
             </table>
             <script>
@@ -2365,7 +2355,7 @@ menu.className=i==cursel?"active":"";
 	{
 	if (tr_number.length > 0)
 	{
-		if (confirm("确定删除吗？") == false)
+		if (confirm("Are you sure?") == false)
 		{
 			return false;
 		}
@@ -2418,12 +2408,12 @@ menu.className=i==cursel?"active":"";
 	if (frm.elements['back_consignee'].value == "" )
 	{
 	     err = true;
-	     msg.push('换回商品收件人不能为空！');
+	     msg.push('Consignee Name could not be blank.');
         }
 	if (frm.elements['back_address'].value == "" )
 	{
 	     err = true;
-	     msg.push('收货人地址不能为空！');
+	     msg.push('Consignee Address could not be blank.');
         }
 	
 	var back_type_list = frm.elements["back_type"];
@@ -2444,7 +2434,7 @@ menu.className=i==cursel?"active":"";
 	if (all_goods_number > old_goods_number)
 	{
 	     err = true;
-	     msg.push('退货/维修总数不能大于原订单购买数量！');
+	     msg.push('Return quantity could not exceed order quantity.');
 	}
 
 	if (err)
@@ -2464,11 +2454,11 @@ menu.className=i==cursel?"active":"";
             <ul class="tab pngFix">
               <li class="active"> 
     <!-- {if $back_act_w eq 'tuihuo'} -->
-    退货&nbsp;申请已提交
+    Return Application have submited.
     <!-- {elseif $back_act_w eq 'tuikuan'} -->
-	退款&nbsp;申请已提交
+	Refund Application have submited.
     <!-- {elseif $back_act_w eq 'weixiu'} -->
-    维修&nbsp;申请已提交
+    Repair Application have submited.
     <!-- {/if} -->
     </li>
             </ul>
@@ -2478,28 +2468,28 @@ menu.className=i==cursel?"active":"";
             <tr>
               <td bgcolor="#FFFFFF" style="font-size:15px;font-weight:bold;line-height:180%;padding:20px;color:#555"> 
     	<!-- {if $back_act_w eq 'tuihuo'} -->
-	      商品寄回地址：{$back_address}<br>
-                邮政编码：{$back_zipcode}<br>
-                收件人：{$back_consignee} 
+	      Return Address: {$back_address}<br>
+                Post code: {$back_zipcode}<br>
+                Name: {$back_consignee} 
 		</td>
             </tr>
             <tr>
-              <td bgcolor="#FFFFFF" style="padding:10px 20px 20px 30px"> 1、请尽快将退换货商品寄出<br>
+              <td bgcolor="#FFFFFF" style="padding:10px 20px 20px 30px"> 1. Please ship it out ASAP.<br>
 	2、退货商品寄出后，请您在“用户中心 》退款/退货及维修 》详情”中填写快递信息<br>
 	3、您随时可以在“退款/退货及维修”中查看退货进度<br>
                 4、如果您有其他需要，请随时联系我们的客服。 </td>
     <!-- {elseif $back_act_w eq 'tuikuan'} -->
-    退款申请已提交，请耐心等待卖家处理。
+    Application have been received, will response within 1 working day.
     <!-- {elseif $back_act_w eq 'weixiu'} -->
-    维修申请已提交，请耐心等待卖家处理。<br>
-	商品寄回地址：{$back_address}<br>
-	邮政编码：{$back_zipcode}<br>
-	收件人：{$back_consignee}
+    Application have been received, will response within 1 working day.<br>
+	Return Address: {$back_address}<br>
+	Post code: {$back_zipcode}<br>
+	Name: {$back_consignee}
     <!-- {/if} -->
 	</td>
             </tr>
             <tr>
-              <td bgcolor="#FFFFFF" align=center><input type="button" value="确定" onclick='location.href="user.php?act=back_list";' style="cursor:pointer;border:none; background:#ED5854;color:#fff;padding:5px 15px"></td>
+              <td bgcolor="#FFFFFF" align=center><input type="button" value="Ok" onclick='location.href="user.php?act=back_list";' style="cursor:pointer;border:none; background:#ED5854;color:#fff;padding:5px 15px"></td>
             </tr>
           </table>
           <!-- {/if} --> 
@@ -2550,7 +2540,7 @@ menu.className=i==cursel?"active":"";
           	<!-- {if $order.tc_express} -->
           <div class="tabmenu">
               <ul class="tab pngFix">
-				  <li class="first active">物流跟踪 [ 本单为同城快递，信息由本网站提供 ] </li>
+				  <li class="first active">Tracking Information </li>
 				</ul>
 			  </div>
               <div class="blank"></div>
@@ -2562,7 +2552,7 @@ menu.className=i==cursel?"active":"";
 	  		<!-- {else} -->
 			  <div class="tabmenu">
 				<ul class="tab pngFix">
-                <li class="first active">物流跟踪</li>
+                <li class="first active">Tracking Information</li>
               </ul>
           </div>
        	  <div class="blank"></div>
@@ -2615,7 +2605,7 @@ menu.className=i==cursel?"active":"";
               <th width="15%" align="center" bgcolor="#ffffff">{$lang.goods_price}<!-- {if $order.extension_code eq "group_buy"} -->{$lang.gb_deposit}<!-- {/if} --></th>
               <th width="9%" align="center" bgcolor="#ffffff">{$lang.number}</th>
               <th width="17%" align="center" bgcolor="#ffffff">{$lang.subtotal}</th>
-              <th width="21%" align="center" bgcolor="#ffffff">申请退换货</th>
+              <th width="21%" align="center" bgcolor="#ffffff">Refund/Return</th>
             </tr>
             <!-- {foreach from=$goods_list item=goods} -->
             <tr>
@@ -2645,34 +2635,34 @@ menu.className=i==cursel?"active":"";
               <td align="center" bgcolor="#ffffff">{$goods.goods_number}</td>
               <td align="center" bgcolor="#ffffff">{$goods.subtotal}</td>
               <td align="center" bgcolor="#ffffff">{* 代码增加_start  By  www.68ecshop.com *}
-                {if $goods.extension_code eq 'virtual_good'}不支持此功能{else}
+                {if $goods.extension_code eq 'virtual_good'}Virtual good could not return{else}
                 {if $not_back eq 0}
                 {if $order.shipping_status_id eq '1' || $order.shipping_status_id eq '2' || $order.shipping_status_id eq '4'} <font color=#ff3300> {if $goods.back_can}
-                [<a href="user.php?act=back_order&order_id={$order.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}" style="color:#ff3300;">申请返修/退换货</a>]
+                [<a href="user.php?act=back_order&order_id={$order.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}" style="color:#ff3300;">Refund/Return</a>]
                 {else}	      
-                [已申请]
+                [Processing]
                 {/if} </font> {/if}
-                {else} <font style="color:#ff3300;">[暂不可申请退换货,请在规定时间内申请]</font> {/if}{/if}
+                {else} <font style="color:#ff3300;">[Exceed limit time]</font> {/if}{/if}
                 {* 代码增加_end  By  www.68ecshop.com  *}</td>
             </tr>
 			
  <!-- {if $order.exist_real_goods eq false} -->
  <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
 <tr>
-    <th align="center" bgcolor="#ffffff">验证码</th>
-    <th align="center" bgcolor="#ffffff">过期时间</th>
-    <th align="center" bgcolor="#ffffff">验证时间</th>
-    <th align="center" bgcolor="#ffffff">状态</th>
+    <th align="center" bgcolor="#ffffff">Verification Code</th>
+    <th align="center" bgcolor="#ffffff">Limit Time</th>
+    <th align="center" bgcolor="#ffffff">Verification Time</th>
+    <th align="center" bgcolor="#ffffff">Status</th>
 </tr>
  {foreach from=$goods.virtual_goods_card item=virtual_goods_card}
 <tr>
     <td align="center" bgcolor="#ffffff">{$virtual_goods_card.card_sn}</td>
     <td align="center" bgcolor="#ffffff">{$virtual_goods_card.end_date}</td>
-    <td align="center" bgcolor="#ffffff">{if $virtual_goods_card.buy_date eq ''}未使用{else}{$virtual_goods_card.buy_date}{/if}</td>
+    <td align="center" bgcolor="#ffffff">{if $virtual_goods_card.buy_date eq ''}Unused{else}{$virtual_goods_card.buy_date}{/if}</td>
     <td align="center" bgcolor="#ffffff">
     {if $virtual_goods_card.buy_date_time eq '' && $smarty.now lt $virtual_goods_card.end_date_time} <div class="countdown" end_date ="{$virtual_goods_card.end_date}"></div>{/if}
-    {if $virtual_goods_card.buy_date_time eq '' && $smarty.now gt $virtual_goods_card.end_date_time}已经过期{/if}
-    {if $virtual_goods_card.buy_date_time neq ''}已使用{/if}
+    {if $virtual_goods_card.buy_date_time eq '' && $smarty.now gt $virtual_goods_card.end_date_time}Exceed Limit Time{/if}
+    {if $virtual_goods_card.buy_date_time neq ''}Used{/if}
 </td>
 </tr>
   {/foreach}
@@ -2700,7 +2690,7 @@ function updateEndTime(){
           var minite = Math.floor((lag / 60) % 60);
           var hour = Math.floor((lag / 3600) % 24);
           var day = Math.floor((lag / 3600) / 24);
-          $(this).html("剩余时间:"+day+"天"+hour+"小时"+minite+"分"+second+"秒");
+          $(this).html("Remaining Time:"+day+"Day"+hour+"Hour"+minite+"Minute"+second+"Second");
          }
          else
           $(this).css('display','none');
@@ -3161,7 +3151,7 @@ function updateEndTime(){
             </tr>
             <!--{/foreach}-->
             <tr>
-              <td colspan="4" align="center" bgcolor="#ffffff"><div align="right">您当前消费的金额为：{$surplus_amount}</div></td>
+              <td colspan="4" align="center" bgcolor="#ffffff"><div align="right">Sum{$surplus_amount}</div></td>
             </tr>
             <!--会员可用的余额 jx 2015-1-1-->
             <tr>
@@ -3196,11 +3186,11 @@ function updateEndTime(){
             </tr>
             <!--{/foreach}-->
             <tr>
-              <td colspan="7" align="right" bgcolor="#ffffff">您当前消费的金额为：{$surplus_amount}</td>
+              <td colspan="7" align="right" bgcolor="#ffffff">Sum:{$surplus_amount}</td>
             </tr>
             <!--资金管理余额-->
             <tr>
-              <td colspan="7" align="right" bgcolor="#ffffff">{$lang.current_surplus}￥{$surplus_yue}</td>
+              <td colspan="7" align="right" bgcolor="#ffffff">{$lang.current_surplus}${$surplus_yue}</td>
             </tr>
           </table>
           <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
@@ -3227,11 +3217,11 @@ function updateEndTime(){
             </script>
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="first active">地址列表</li>
+              <li class="first active">Consignee Address</li>
             </ul>
           </div>
-          <div class="alert alert-success">
-            <h4>操作提示：</h4>
+          <div class="alert alert-success" style="display:none">
+            <h4>Tips:</h4>
             <ul>
               <li>您可对已有的地址进行编辑及删除，亦可新增收货地址</li>
             </ul>

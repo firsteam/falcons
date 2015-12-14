@@ -38,7 +38,7 @@
         <!-- *用户中心默认显示页面 start--> 
         <!-- {if $action eq 'default'} -->
         <div class="account">
-          <div class="money">
+          <div class="money" style="display:none">
             <ul class="clearfix">
               <li class="first">
                 <div class="title"><span>账号余额</span></div>
@@ -57,7 +57,7 @@
               </li>
             </ul>
           </div>
-          <div class="security">
+          <div class="security" style="display:none">
             <div class="improve">
               <p>账户安全</p>
               <strong class="low"> {if $info.is_validated eq 0 && $info.validated eq 0 && $info.is_surplus_open eq 0}危险{/if}
@@ -96,18 +96,18 @@
           </div>
           <div class="middle order">
             <div class="line1 clearfix">
-              <div class="title"><i></i><span>交易提醒</span></div>
+              <div class="title"><i></i><span>Transactions</span></div>
               <div class="status">
                 <ul>
-                  <li><a href="user.php?act=order_list&composite_status=0" title="未确认订单">未确认<span id="uc_dfkdd">{$shu.daif}</span></a><i></i></li>
-                  <li><a href="user.php?act=order_list&composite_status=100" title="待付款订单">待付款<span id="uc_dshdd">{$shu.dais}</span></a><i></i></li>
-                  <li><a href="user.php?act=my_comment" title="待评价商品">待评价<span id="uc_dpjsp">{$num_comment}</span></a></li>
+                  <li><a href="user.php?act=order_list&composite_status=0" title="Unfinished">Unfinished<span id="uc_dfkdd">{$shu.daif}</span></a><i></i></li>
+                  <li><a href="user.php?act=order_list&composite_status=100" title="Unpaid">Unpaid<span id="uc_dshdd">{$shu.dais}</span></a><i></i></li>
+                  <li><a href="user.php?act=my_comment" title="Unvalued">Unvalued<span id="uc_dpjsp">{$num_comment}</span></a></li>
                 </ul>
               </div>
-              <a class="more" href="user.php?act=order_list" title="查看全部订单">查看全部订单 &gt;</a></div>
+              <a class="more" href="user.php?act=order_list" title="All">All &gt;</a></div>
             <!-- *待付款数量为0时 start--> 
             {if $reminding eq array() }
-            <div class="emptyFrame clearfix" > <i class="user_bg"></i><span>您好久没在商城购物了，这里空空的，赶快去购物吧！</span> </div>
+            <div class="emptyFrame clearfix" > <i class="user_bg"></i><span>Could not find any record</span> </div>
             <!-- *待付款数量为0时 end--> 
             <!-- *待付款数量不为0时,限制最多显示4个付款订单 start--> 
             {else}
@@ -133,13 +133,13 @@
             {/if} 
             <!-- *待付款数量不为0时 end--> 
           </div>
-          <div class="middle cart">
+          <div class="middle cart"  style="display:none">
             <div class="line1 clearfix">
               <div class="title"><i></i><span>我的购物车</span></div>
             </div>
             {if $gouwuche eq array()} 
             <!-- *购物车内数量为0时 start-->
-            <div class="emptyFrame_cart" > <i class="user_bg"></i><span>您的购物车里空空的，赶快去购物吧！</span> </div>
+            <div class="emptyFrame_cart" > <i class="user_bg"></i><span>Could not find any record</span> </div>
             {else} 
             <!-- *购物车内数量为0时 end--> 
             <!-- *购物车内数量不为0时 start--> 
@@ -156,18 +156,18 @@
                   </ul>
                 </div>
               </div>
-              <p class="more"> <a href="flow.php" target="_blank" title="查看购物车所有商品">查看购物车所有商品</a> </p>
+              <p class="more"> <a href="flow.php" target="_blank" title="All">All</a> </p>
             </div>
             {/if} 
             <!-- *购物车内数量不为0时 end--> 
           </div>
-          <div class="middle exchange">
+          <div class="middle exchange" style="display:none">
             <div class="line1 clearfix">
               <div class="title"><i></i><span>积分兑换</span></div>
               <a class="more" href="exchange.php" title="进入积分商城">进入积分商城 &gt;</a> </div>
             {if $jifen eq array() } 
             <!-- *积分兑换商品为0时 start-->
-            <div class="emptyFrame_exchange clearfix" > <i class="user_bg"></i><span>没有可兑换的商品呦！随便去逛逛吧！</span> </div>
+            <div class="emptyFrame_exchange clearfix" > <i class="user_bg"></i><span>Could not find any record</span> </div>
             <!-- *积分兑换商品为0时 end--> 
             {else} 
             <!-- *积分兑换商品不为0时,限制最多显示4个付款订单 start-->
@@ -184,11 +184,11 @@
             {/if} </div>
           <div class="middle history">
             <div class="line1 clearfix">
-              <div class="title"><i></i><span>我的足迹</span></div>
+              <div class="title"><i></i><span>Browsing History</span></div>
             </div>
             {if $mai eq array()} 
             <!-- *浏览历史为0时 start-->
-            <div class="emptyFrame_history" > <i class="user_bg"></i><span>您还没有留下任何足迹！</span> </div>
+            <div class="emptyFrame_history" > <i class="user_bg"></i><span>Could not find any record</span> </div>
             <!-- *浏览历史为0时 end--> 
             <!-- *浏览历史不为0时 start--> 
             {else}
@@ -199,12 +199,12 @@
                   <li class="first"> <a href="#" title="{$li.goods_name}" target="_blank" class="img">
                     <div class="mask"></div>
                     <img src="{$li.goods_thumb}" alt="{$li.goods_name}"> </a> <a href="#" title="{$li.goods_name}" target="_blank" class="name">{$li.goods_name}</a>
-                    <p class="pri">￥{$li.goods_price}</p>
+                    <p class="pri">${$li.goods_price}</p>
                   </li>
                   {/foreach}
                 </ul>
               </div>
-              <p class="more"> <a href="index.php" target="_blank" title="继续购物">继续购物 &gt;</a> </p>
+              <p class="more"> <a href="index.php" target="_blank" title="Go on">Go on &gt;</a> </p>
             </div>
             {/if} 
             <!-- *浏览历史不为0时 end--> 
@@ -222,16 +222,16 @@ menu.className=i==cursel?"line1":"line2";
 </script>
           <div class="middle collect">
             <div class="line1" id="tab1" onmouseover="setTabCatGoods('tab',1,2)">
-              <div class="title"><i></i><span>商品收藏</span></div>
+              <div class="title"><i></i><span>Favorite Items</span></div>
             </div>
-            <div class="line2" id="tab2" onmouseover="setTabCatGoods('tab',2,2)">
-              <div class="title"><i></i><span>店铺关注</span></div>
+            <div class="line2" id="tab2" onmouseover="setTabCatGoods('tab',2,2)" style="display:none;">
+              <div class="title"><i></i><span>Favorite Stores</span></div>
             </div>
             <div style="height:0px;line-height:0px;clear:both"></div>
             <div class="tab_con" style="width:100%">
               <div class=""  id="con_tab_1"> {if $collection eq array() } 
                 <!-- *商品收藏数量为0时 start-->
-                <div class="emptyFrame_collect"> <i class="user_bg"></i><span>您的收藏空空的，赶快去购物吧！</span> </div>
+                <div class="emptyFrame_collect"> <i class="user_bg"></i><span>Could not find any record</span> </div>
                 <!-- *商品收藏数量为0时 end--> 
                 <!-- *商品收藏数量不为0时 start--> 
                 {else}
@@ -245,14 +245,14 @@ menu.className=i==cursel?"line1":"line2";
                       {/foreach}
                     </ul>
                   </div>
-                  <p class="more"> <a href="user.php?act=collection_list" title="查看收藏的所有商品">查看收藏的所有商品 &gt;</a> </p>
+                  <p class="more"> <a href="user.php?act=collection_list" title="All">All &gt;</a> </p>
                 </div>
                 {/if} 
                 <!-- *商品收藏数量不为0时 end--> 
               </div>
               <div id="con_tab_2" style="display:none"> {if $guanzhu eq array()} 
                 <!-- *店铺收藏数量为0时 start-->
-                <div class="emptyFrame_shop"  > <i class="user_bg"></i><span>您的店铺收藏空空的，赶快去收藏店铺吧！</span> </div>
+                <div class="emptyFrame_shop"  > <i class="user_bg"></i><span>Could not find any record</span> </div>
                 <!-- *店铺收藏数量为0时 end--> 
                 <!-- *店铺收藏数量不为0时 start--> 
                 {else}
@@ -268,7 +268,7 @@ menu.className=i==cursel?"line1":"line2";
                       {/foreach}
                     </ul>
                   </div>
-                  <p class="more"> <a href="user.php?act=follow_shop" title="查看收藏的所有店铺">查看收藏的所有店铺 &gt;</a> </p>
+                  <p class="more"> <a href="user.php?act=follow_shop" title="All favorite stores">All &gt;</a> </p>
                 </div>
                  
                 <!-- *店铺收藏数量不为0时 end--> 
@@ -289,21 +289,28 @@ menu.className=i==cursel?"line1":"line2";
                 </ul>
               </div>
               <div class="mar_top">
-                <div class="box"> 
-                  <!--{foreach from=$message_list item=message key=key} -->
-                  <div class="f_l"> <b>{$message.msg_type}:</b>&nbsp;&nbsp;<font class="f4">{$message.msg_title}</font> ({$message.msg_time}) </div>
-                  <div class="f_r"> <a href="user.php?act=del_msg&amp;id={$key}&amp;order_id={$message.order_id}" title="{$lang.drop}" onclick="if (!confirm('{$lang.confirm_remove_msg}')) return false;" class="f6">{$lang.drop}</a> </div>
-                  <div class="msgBottomBorder"> {$message.msg_content} 
-                    <!-- {if $message.message_img} 如果上传了图片-->
-                    <div align="right"> <a href="data/feedbackimg/{$message.message_img}" target="_bank" class="f6">{$lang.view_upload_file}</a> </div>
-                    <!-- {/if} --> 
-                    <br />
-                    <!-- {if $message.re_msg_content} --> 
-                    <a href="mailto:{$message.re_user_email}" class="f6">{$lang.shopman_reply}</a> ({$message.re_msg_time})<br />
-                    {$message.re_msg_content} 
-                    <!-- {/if} --> 
-                  </div>
-                  <!-- {/foreach} --> 
+                <div class="box">
+					<div style="padding:15px 20px;">
+                        <!--{foreach from=$message_list item=message key=key} -->
+                        <div class="f_l"> <b>{$message.msg_type}:</b>&nbsp;&nbsp;<font class="">{$message.msg_title}</font> ({$message.msg_time}) </div>
+						<div class="f_r"> <a href="user.php?act=del_msg&amp;id={$key}&amp;order_id={$message.order_id}" title="{$lang.drop}" onclick="if (!confirm('{$lang.confirm_remove_msg}')) return false;" class="f6">{$lang.drop}</a> </div>
+							<div class="msgBottomBorder"> {$message.msg_content} 
+								<!-- {if $message.message_img} 如果上传了图片-->
+								<div align="right"> <a href="data/feedbackimg/{$message.message_img}" target="_bank" class="f6">{$lang.view_upload_file}</a> </div>
+								<!-- {/if} --> 
+								<br />                    
+							</div>
+					
+						<!-- {if $message.re_msg_content} --> 
+						<b style="color:#E31939">{$lang.shopman_reply}</b> ({$message.re_msg_time})<br />
+						<div class="msgBottomBorder">
+							{$message.re_msg_content} 
+							<br />                    
+						</div>
+						<!-- {/if} --> 
+						<!-- {/foreach} --> 					
+					</div>
+					
                   <!-- {if $message_list}-->
                   <div class="f_r"> <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> </div>
                   <!-- {/if}-->
@@ -342,7 +349,7 @@ menu.className=i==cursel?"line1":"line2";
                       </tr>
                       <tr>
                         <td align="right">{$lang.upload_img}：</td>
-                        <td><input type="file" name="message_img"  size="45"  class="inputBg" /></td>
+                        <td><input type="file" name="message_img"  size="45"  class="" /></td>
                       </tr>
                       <tr>
                         <td>&nbsp;</td>
@@ -414,11 +421,11 @@ menu.className=i==cursel?"line1":"line2";
                 <table class="ncm-default-table">
                   <thead>
                     <tr>
-                      <th colspan="2">店铺</th>
-                      <th class="w150">商家名称</th>
-                      <th class="w150">联系QQ</th>
-                      <th class="w100">联系旺旺</th>
-                      <th class="w110">操作</th>
+                      <th colspan="2">Store</th>
+                      <th class="w150">Name</th>
+                      <th class="w150">QQ</th>
+                      <th class="w100">WangWang</th>
+                      <th class="w110">Option</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -431,7 +438,7 @@ menu.className=i==cursel?"line1":"line2";
                       <td><a href="{$shop.url}" class="f6">{$shop.supplier_name|escape:html}</a></td>
                       <td>{$shop.qq}</td>
                       <td>{$shop.ww}</td>
-                      <td class="ncm-table-handle"><span><a href="javascript:if (confirm('确定取消关注？')) location.href='user.php?act=del_follow&rec_id={$shop.id}'" class="f6">取消关注</a></span></td>
+                      <td class="ncm-table-handle"><span><a href="javascript:if (confirm('Confirm your option')) location.href='user.php?act=del_follow&rec_id={$shop.id}'" class="f6">取消关注</a></span></td>
                     </tr>
                     <!--{/foreach} -->
                   </tbody>
@@ -445,7 +452,7 @@ menu.className=i==cursel?"line1":"line2";
               {insert_scripts files='transport.js,utils.js'}
               <div class="tabmenu">
                 <ul class="tab pngFix">
-                  <li class="first active"><a>{$lang.label_collection}</a><span style="font-size:12px;margin-left:15px">(关注以下的商品后，您绑定的邮箱可随时接受到关注商品的最新动态)</span></li>
+                  <li class="first active"><a>{$lang.label_collection}</a></li>
                 </ul>
               </div>
               <div class="mar_top">
@@ -460,7 +467,7 @@ menu.className=i==cursel?"line1":"line2";
                               <dl>
                                 <dt>
                                 <!-- {if $goods.is_pre_sale == 1} -->
-                                <a href="{$goods.url}" target="_blank">【<span style="color: red;">{$lang.label_pre_sale}</span>】{$goods.goods_name|escape:html}</a>
+                                <a href="{$goods.url}" target="_blank">[<span style="color: red;">{$lang.label_pre_sale}</span>]{$goods.goods_name|escape:html}</a>
                                 <!-- {else} -->
                                 <a href="{$goods.url}" target="_blank">{$goods.goods_name|escape:html}</a>
                                 <!-- {/if} -->
@@ -509,12 +516,12 @@ $(document).ready(function() {
                   </tbody>
                 </table>
                 <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> </div>
-              <div class="tabmenu">
+              <div class="tabmenu" style="display:none">
                 <ul class="tab pngFix">
                   <li class="first active"><a>{$lang.label_affiliate}</a></li>
                 </ul>
               </div>
-              <div class="mar_top">
+              <div class="mar_top" style="display:none">
                 <form name="theForm" method="post" action="">
                   <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E7E7E7">
                     <tr>

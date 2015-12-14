@@ -12,7 +12,7 @@
       <div class="slider1 colFrame" >
 		<ul>
       	<!--{foreach from=$category_related_brand_goods key=key item=goods name=best_goods}-->
-      	<li <!--{if $key%2 eq 0}-->style="padding:0 10px;"<!--{/if}-->>
+      	<li <!--{if $key%2 eq 0}-->style=""<!--{/if}-->>
             	<div class="p-img"><a href="{$goods.url}" title="{$goods.name}"><img width="160" height="160" alt="{$goods.name}"  src="{$goods.goods_thumb}"/></a></div>
                 <div class="rain-product-info">
             	<div class="p-price"><strong class="best_goods_price"> 
@@ -30,79 +30,6 @@
     	</ul>
       </div>
     </div>
-    <script type="text/javascript">
- var _scrolling="";
-var a=1;
-var $slider1 = $('.slider1 ul');
-var $slider1_child_l = $('.slider1 ul li').length;
-var $slider1_width = $('.slider1 ul li').width();
-console.log($slider1_width);
-$slider1.width($slider1_child_l * $slider1_width);
-
-var slider1_count = 0;
-if ($slider1_child_l <=6) {
-	$('#btn-right1').css({cursor: 'auto'});
-	$('#btn-right1').removeClass("dasabled");
-}
-var time="";
-function bottom3(){
-	if (slider1_count >= $slider1_child_l - 6){
-		a=0;
-		top1();
-	}else{
-		slider1_count++;
-		$slider1.animate({left: '-=' + $slider1_width + 'px'}, 'slow');	
-		slider1_pic();
-		time = setTimeout("bottom3()",5000);
-	}
-}
-function top3(){
-	if (slider1_count <= 0) {
-		a=1;
-		bottom1();	
-	}else{
-		slider1_count--;
-		$slider1.animate({left: '+=' + $slider1_width + 'px'}, 'slow');
-		slider1_pic();
-		time = setTimeout("top3();",5000);
-	}
-}
-function bottom4(){
-	if (slider1_count >= $slider1_child_l - 6){
-		return false;
-	}else{
-		slider1_count++;
-		$slider1.animate({left: '-=' + $slider1_width + 'px'}, 'slow');	
-		slider1_pic();
-	}
-}
-function top4(){
-	if (slider1_count <= 0) {
-		return false;
-	}else{
-		slider1_count--;
-		$slider1.animate({left: '+=' + $slider1_width + 'px'}, 'slow');
-		slider1_pic();
-	}
-}
-
-function slider1_pic() {
-	if (slider1_count >= $slider1_child_l - 6) {
-		$('#btn-right1').css({cursor: 'auto'});
-		$('#btn-right1').addClass("dasabled");
-	}
-	else if (slider1_count > 0 && slider1_count <= $slider1_child_l - 6) {
-		$('#btn-left1').css({cursor: 'pointer'});
-		$('#btn-left1').removeClass("dasabled");
-		$('#btn-right1').css({cursor: 'pointer'});
-		$('#btn-right1').removeClass("dasabled");
-	}
-	else if (slider1_count <= 0) {
-		$('#btn-left1').css({cursor: 'auto'});
-		$('#btn-left1').addClass("dasabled");
-	}
-}
-
-</script>
+    
 </div>
 <!--{/if}--> 

@@ -577,13 +577,13 @@ html {
 	color: #fff
 }
 .flow {
-	width: 1210px;
+	width: 980px;
 	position: relative;
 	margin: 0px auto;
 	overflow: hidden;
 }
 .flow-wrap {
-	width: 1210px;
+	width: 980px;
 }
 .nav-title {
 	position: relative;
@@ -655,16 +655,17 @@ html {
 .flow-item .flow-content {
 	/*width: 200px;*/
 	float: left;
-	margin-left: 25px;
+	margin-left: 5px;
 	margin-top: 10px;
 }
 .flow-title {
 	float:left;
 	font-size: 14px;
-	width: 100px;
+	width: 90px;
 	height: 30px;
 	line-height: 30px;
-	overflow: hidden
+	overflow: hidden;
+	padding-left:10px;
 }
 .flow-title a {
 	display: block;
@@ -694,7 +695,7 @@ html {
 .flow-desc {
 	float: right;
 	font-size: 12px;
-	width: 100px;
+	width: 80px;
 	height: 30px;
 	line-height: 30px;
 	/*overflow: hidden;*/
@@ -726,7 +727,7 @@ html {
 	float: right;
 	position: relative;
 	z-index: 2;
-	width: 960px;
+	width: 785px;
 	height: 160px;
 	margin-top: 10px;
 }
@@ -754,7 +755,7 @@ html {
 	background-position: -428px -29px;
 }
 .picMarquee-left .bda {
-	padding: 0px 10px 0px 10px;
+	padding: 0px 0px 0px 0px;
 	height: 165px;
 }
 .picMarquee-left .bda .picListta{
@@ -868,7 +869,7 @@ html {
 .w1190 .flow-wrap {
 	width: 1250px
 }
-@media (min-width:1210px) {
+@media (min-width:980px) {
 .top-inner {
 	width: 1190px!important
 }

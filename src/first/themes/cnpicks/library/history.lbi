@@ -5,7 +5,6 @@
 $GLOBALS['smarty']->assign('cainixihuan',   get_cainixihuan()); //猜你喜欢
 ?>
 {if $cainixihuan}
-<script type="text/javascript" src="themes/cnpicks/js/scrollpic.js"></script>
 <DIV class=w>
 <DIV id=product-track>
   <DIV class=right>
@@ -16,15 +15,13 @@ $GLOBALS['smarty']->assign('cainixihuan',   get_cainixihuan()); //猜你喜欢
       </DIV>
       <DIV class=mc >
         
-        <a class="guess-control" id="guess-forward">&lt;</a><a class="guess-control" id="guess-backward">&gt;</a>
+        
         <div id="guess-scroll" >
- <ul class="lh" style="float:left;">
+ <ul class="lh" style="height:220px">
  <!--{foreach from=$cainixihuan item=goods}-->
    <li>
               <div class="p-img"> <a target="_blank" title="{$goods.goods_name}" href="{$goods.url}"><img height="130" width="130" alt="{$goods.goods_name}" src="{$goods.goods_thumb}"></a></div>
               <div class="p-name"> <a target="_blank" title="{$goods.goods_name}" href="{$goods.url}">{$goods.goods_name|truncate:20}</a> </div>
-              <div class="p-comm"> <span class="star sa5"></span><br/>
-                <a target="_blank" href="{$goods.url}">(已有{$goods.evaluation}人评价)</a> </div>
               <div class="p-price"> <strong >{$goods.shop_price}</strong> </div>
             </li>
  <!--{/foreach}-->
@@ -32,27 +29,7 @@ $GLOBALS['smarty']->assign('cainixihuan',   get_cainixihuan()); //猜你喜欢
         </DIV>
       </DIV>
       <!--maybe-like--></DIV>
-      <script language=javascript type=text/javascript>
-
-		var scrollPic_01 = new ScrollPic();
-		scrollPic_01.scrollContId   = "guess-scroll"; //内容容器ID
-		scrollPic_01.arrLeftId      = "guess-forward";//左箭头ID
-		scrollPic_01.arrRightId     = "guess-backward"; //右箭头ID
-if(pageConfig.wideVersion&&pageConfig.compatible){
-	scrollPic_01.frameWidth     = 900;//显示框宽度
-	scrollPic_01.pageWidth      = 184; //翻页宽度
-	}else{
-		scrollPic_01.frameWidth     = 900;//显示框宽度
-		scrollPic_01.pageWidth      = 184; //翻页宽度
-		}
-		scrollPic_01.speed          = 10; //移动速度(单位毫秒，越小越快)
-		scrollPic_01.space          = 10; //每次移动像素(单位px，越大越快)
-		scrollPic_01.autoPlay       = true; //自动播放
-		scrollPic_01.autoPlayTime   = 3; //自动播放间隔时间(秒)
-
-		scrollPic_01.initialize(); //初始化
-
-</script>
+      
     <!-- right -->
     </DIV>
     <DIV class=left>
@@ -72,14 +49,4 @@ if(pageConfig.wideVersion&&pageConfig.compatible){
     <!-- left --><SPAN class=clr></SPAN></DIV>
 </DIV>
 
-<script type="text/javascript">
-function clear_history()
-{
-Ajax.call('user.php', 'act=clear_history',clear_history_Response, 'GET', 'TEXT',1,1);
-}
-function clear_history_Response(res)
-{
-document.getElementById('history_list').innerHTML = '{$lang.no_history}';
-}
-</script> 
 {/if}

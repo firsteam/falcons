@@ -34,13 +34,7 @@ h1, h2, h3, h4, h5, h6, ul, li, dl, dt, dd, form, img, p {
 .servers {
 	margin: 5px 0 12px 0
 }
-.block {
-	width: 1210px;
-	padding: 0px;
-	background: #fff;
-	height: auto;
-	margin: 0 auto;
-}
+
 em, strong, th {
 	font-style: normal;
 	font-weight: normal;
@@ -160,35 +154,36 @@ A:focus {
 }
 .bnt_blue_1 {
 	background: #ED5854;
-	width: 77px;
+	/*width: 77px;*/
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
 	color: #fff;
 	border: none;
 	cursor: pointer;
+	padding: 0px 10px;
 }
 .bnt_blue_2 {
 	background: #ED5854;
-	width: 139px;
+	/*width: 139px;*/
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
 	color: #fff;
 	border: none;
 	cursor: pointer;
-	overflow: hidden
+	padding: 0px 10px;
 }
 .bnt_bonus {
 	background: #ED5854;
-	width: 52px;
+	/*width: 52px;*/
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
 	color: #333;
 	border: none;
 	cursor: pointer;
-	overflow: hidden
+	padding: 0px 10px;
 }
 .white {
 	color: #ffffff;
@@ -543,7 +538,7 @@ h6 span {
 	float: left;
 }
 .AreaR {
-	width: 1000px;
+	width: 770px;
 	float: right;
 	overflow: hidden
 }
@@ -714,7 +709,7 @@ h6 span {
 }
 .box_1 .userCenterBox {
 	background-color: #fff;
-	width: 985px;
+	width: 755px;
 	float: right
 }
 .box_1 .userCenterBox .userMenu {
@@ -1386,7 +1381,7 @@ span.goods_add {
 	display: block;
 }
 .block {
-	width: 1210px;
+	width: 980px;
 	padding: 0px;
 	background: #fff;
 	height: auto;
@@ -1583,12 +1578,12 @@ margin-top:
 /*侧导航列表*/
 .navList {
 	width: 210px;
-	height: 814px;
+	height: 850px;
 	background-color: #fbfbfb;
 	overflow: hidden;
 }
 .navList .func {
-	margin-left: 30px;
+	margin-left: 20px;
 	clear: both;
 	height: auto
 }
@@ -1633,7 +1628,7 @@ margin-top:
 	background-position: -96px 0;
 }
 .func .item {
-	width: 109px;
+	width: 125px;
 	height: 30px;
 	display: block;
 	padding: 0 28px 0 31px;
@@ -1696,7 +1691,7 @@ margin-top:
 }
 /*中部购买信息begin*/
 .usBox_y .account {
-	width: 1000px;
+	width: 770px;
 	height: auto;
 	border-top: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
@@ -2010,8 +2005,8 @@ margin-top:
 	color: #E31939;
 }
 .account .order {
-	float: left;
-	width: 692px;
+	/*float: left;
+	width: 692px;*/
 	height: 308px;
 	padding: 10px 0px;
 	border-bottom: 1px solid #e4e4e4;
@@ -2375,11 +2370,11 @@ margin-top:
 }
 /*浏览历史*/
 .account .history {
-	float: left;
-	width: 306px;
+	/*float: left;
+	width: 306px;*/
 	height: 225px;
 	padding: 10px 0px;
-	border: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
 	border-top: none
 }
 /*判断浏览历史没有商品的状态*/
@@ -2500,12 +2495,12 @@ margin-top:
 }
 /*商品收藏*/
 .account .collect {
-	float: left;
-	width: 999px;
+	/*float: left;
+	width: 999px;*/
 	height: 260px;
 	padding: 10px 0px 0px;
-	border-bottom: 1px solid #e4e4e4;
-	border-right: 1px solid #e4e4e4;
+	/*border-bottom: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;*/
 }
 .collect .line1 {
 	float: left;
@@ -2762,7 +2757,7 @@ margin-top:
 /*用户信息*/
 .boxCenterList .tabmenu {
 	background-color: #FFF;
-	width: 985px;
+	width: 755px;
 	height: 40px;
 	margin-left: 0px;
 	display: block;
@@ -2828,12 +2823,12 @@ margin-top:
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.10);
 }
 .ncm-user-profile {
-	width: 985px;
+	width: 755px;
 	height: auto;
 	margin: 0 auto;
 }
 .ncm-default-form {
-	width: 985px;
+	width: 755px;
 	margin: 30px auto;
 }
 .ncm-default-form dl {
@@ -3114,7 +3109,7 @@ margin-top:expression(32-this.height/2);
 }
 /*我的红包*/
 .mar_top ul.bonus_con {
-	width: 985px;
+	width: 755px;
 }
 .mar_top ul.bonus_con li {
 	width: 218px;
@@ -3766,7 +3761,7 @@ h5.user-title-t span {
 	clear: both
 }
 .message .message_all {
-	width: 1150px;
+	width: 900px;
 	height: auto;
 	margin: 0 auto;
 	padding: 15px 30px;
@@ -3781,7 +3776,7 @@ h5.user-title-t span {
 .message .message_all .message_con {
 	min-height: 80px;
 	height: auto;
-	width: 1150px;
+	width: 900px;
 	padding: 60px 0px;
 	text-align: center;
 }

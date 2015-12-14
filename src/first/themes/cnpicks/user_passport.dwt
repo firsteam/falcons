@@ -33,11 +33,9 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 	<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
   </div>
 </div>
-  <div class="blank"></div>
-  <div class="blank"></div>
   <div class="w"> 
     
-    <!--#登录界面 start--> 
+    <!--#Login Page start--> 
     <!-- {if $action eq 'login'} -->
     
     <div class="w" id="entry">
@@ -45,23 +43,28 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
       <div id="reg-pic" class="box-pic"></div>
       <div id="login-box" class="uc_box">
         <form name="formLogin" action="user.php?XDEBUG_SESSION_START=ECLIPSE_DBGP" method="post" onSubmit="return userLogin()">
-          <h2><span>还没有账号？<a href="register.php">立即注册</a></span></h2>
+          <h2><span><a href="register.php">Sign up for a new account</a></span></h2>
           <div class="form">
           
-            <div class="item"> <span class="label">账户名</span>
-      
-                <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="手机号/用户名/邮箱"/>
-  
+            <div class="item" style="margin:30px 0px 30px 0px;">       
+                <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="UserName or Email"/>  
             </div>
-            <div class="item"> <span class="label">密码</span>
-          
-                <input type="password" id="password" name="password" class="text" tabindex="2"/>
-         
+			
+            <div class="item" style="margin:0px 0px 5px 0px;">           
+                <input type="password" id="password" name="password" class="text" tabindex="2" placeholder="Password"/>         
             </div>
+			
+			<div class="item" style="margin:0px 0px 15px 0px;"> 
+			<!-- 
+            <a class="forget_password" href="user.php?act=forget_password">Forgot Password?</a>
+            -->
+            <a class="forget_password" href="findPwd.php" style="color:#E4393C">Forgot Password?</a>
+			</div>
+			
             <!-- 判断是否启用验证码{if $enabled_captcha} -->
-            <div class="item " id="o-authcode"> <span class="label">验证码</span>
+            <div class="item " id="o-authcode"> <span class="label" style="display:none;">Verification Code</span>
               <div>
-                <input type="text" id="authcode" name="captcha" class="text text-1" tabindex="3"/>
+                <input type="text" id="authcode" name="captcha" class="text text-1" tabindex="3" placeholder="Verification Code"/>
                 <label class="img"> <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /> </label>
               </div>
             </div>
@@ -70,16 +73,13 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
               <div class="safety">
                 <input type="checkbox" value="1" name="remember" id="remember" class="checkbox"/>
                 <label for="remember" class="mar-b">{$lang.remember}</label>
-                <!-- 
-                <a class="forget_password" href="user.php?act=forget_password">忘记密码？</a>
-                 -->
-                <a class="forget_password" href="findPwd.php" style="color:#E4393C">忘记密码？</a>
+                
             </div>
             </div>
             <div class="item">
               <input type="hidden" name="act" value="act_login" />
               <input type="hidden" name="back_act" value="{$back_act}" />
-              <input type="submit" name="submit" class="btn-img btn-entry" id="loginsubmit" value="立即登录" />
+              <input type="submit" name="submit" class="btn-img btn-entry" id="loginsubmit" value="Sign in" />
             </div>
             <div class="blank"></div>
             <div class="item">
@@ -119,7 +119,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
         <script>var mobile_field=''; var mobile_field_sms='';</script>
         <form action="user.php" method="post" name="formUser" onsubmit="return register2();">
           <div class="form">
-	  <h2><strong>欢迎注册</strong><span>已有账号！<a href="user.php?act=login">立即登录</a></span></h2>
+			<h2><strong>欢迎注册</strong><span>已有账号！<a href="user.php?act=login">立即登录</a></span></h2>
             <div class="item">
               <input name="username" type="text" id="username" placeholder="{$lang.label_username}" onblur="is_registered(this.value);" class="text" >
               <i class="i-name"></i>

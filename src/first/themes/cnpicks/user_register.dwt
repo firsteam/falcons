@@ -39,8 +39,6 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 			<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
 		</div>
 	</div>
-	<div class="blank"></div>
-	<div class="blank"></div>
 	<div class="w">
 		<!-- {if $shop_reg_closed eq 1} -->
 		<div class="usBox">
@@ -54,42 +52,30 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 			<div class="mcon register_con">
 				<div id="reg-pic" class="box-pic box-pic1"></div>
 				<div id="login-box" class="uc_box uc_box_reg">
-                	<form action="register.php" method="post" id="formRegister" name="formRegister">
-                        <input type="hidden" id="register_type" name="register_type" value="${register_type}" />
-                        <ul class="register_tab">
-                            <li id="li_register_type_mobile" class="tab_item fl" register_type="mobile">手机注册<span class="bg_ff"></span></li>
-                            <li id="li_register_type_email" class="tab_item cur fl" register_type="email">邮箱注册<span class="bg_ff"></span></li>
-                            <li class="have_account fr">已有账号！<a href="user.php?act=login">登录</a></li>
-                        </ul>
-                    </form>
+                	
 					<form action="register.php" method="post" id="formUser" name="formUser" >
+						<h2><span>Have a account? <a href="user.php?act=login">Sign in</a></span></h2>
+
 						<div class="form">
+						
 						<input type="hidden" name="register_type" value="{$register_type}" />
-							<!-- {if $register_type eq 'email'} -->
+							
 							<div class="item">
 								<input name="email" type="text" id="email" placeholder="{$lang.label_email}" onblur="checkEmail(this)" class="text email" />
 								<i class="i-email"></i>
-								<div>
+								<div style="display:none;">
 									<span class="label" id="email_notice"></span>
 								</div>
 							</div>
-							<!-- {else} -->
-							<div class="item">
-								<input name="mobile_phone" type="text" id="mobile_phone" placeholder="{$lang.other_mobile_phone}" onblur="checkMobilePhone(this)"  class="text" />
-								<i class="i-phone"></i>
-								<div>
-									<span class="label" id="mobile_phone_notice"></span>
-								</div>
-							</div>
-							<!-- {/if} -->
+							
 							<div id="o-password">
-								<div class="item">
+								<div class="item" style="margin:30px 0px 0px 0px;">
 									<input name="password" type="password" id="password" placeholder="{$lang.label_password}" onblur="check_password(this.value);" onkeyup="checkIntensity(this.value)" class="text" />
 									<i class="i-pass"></i>
 									<div id="pwd_notice" style="display: none;">
 										<span class="label" id="password_notice"></span>
 									</div>
-									<div id="pwd_intensity">
+									<div id="pwd_intensity" >
 										<span class="label">
 										<table width="295" height="25px" border="0" cellspacing="0" cellpadding="0" style="padding: 0px 0px 10px;">
 											<tr align="center">
@@ -101,10 +87,10 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 										</span>
 									</div>
 								</div>
-								<div class="item">
+								<div class="item" style="margin:0px 0px 30px 0px;">
 									<input type="password" id="conform_password" name="confirm_password" class="text" placeholder="{$lang.label_confirm_password}" onblur="check_conform_password(this.value);" autocomplete="off" />
 									<i class="i-pass"></i>
-									<div>
+									<div style="display:none;">
 										<span class="label" id="conform_password_notice"></span>
 									</div>
 								</div>
@@ -121,7 +107,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 							<div class="item" style="margin-top: 30px; *margin-top: 15px;">
 								<input name="passwd_answer" type="text" class="text" placeholder="{$lang.passwd_answer}" />
 								<i class="i-pass"></i>
-								<div>
+								<div style="display:none;">
 									<span class="label" {if $field.is_need}id="passwd_quesetion"{/if}></span>
 								</div>
 							</div>
@@ -129,34 +115,12 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 							<div class="item">
 								<input name="extend_field{$field.id}" id="extend_field{$field.id}" type="text" class="text" placeholder="{$field.reg_field_name}" />
 								<i class="{if $field.id eq 1}i-msn{elseif $field.id eq 2}i-qq{elseif $field.id eq 3}i-bgphone{elseif $field.id eq 4}i-jtphone{elseif $field.id eq 5}i-phone{else}i-phone{/if}"></i>
-								<div>
+								<div style="display:none;">
 									<span class="label" {if $field.is_need}id="extend_field{$field.id}i"{/if}></span>
 								</div>
 							</div>
 							<!-- {/if} -->
 							<!--{/foreach}-->
-							
-							<!-- {if $register_type eq 'email' } -->
-							<!-- 邮箱验证码 -->
-							<div class="item" style="margin-bottom: 30px;">
-								<input id="email_code" class="text text_te" type="text" placeholder="邮箱验证码" name="email_code" maxlength="6">
-								<i class="i-email"></i>
-								<input id="zemail" class="zemail" type="button" value="获取邮箱验证码 ">
-								<div>
-									<span id="extend_field5i" class="label"></span>
-								</div>
-							</div>
-							<!-- {elseif $register_type eq 'mobile'} -->
-							<!-- 手机验证码-->
-							<div class="item" style="margin-bottom: 30px;">
-								<input id="mobile_code" class="text text_te" type="text" placeholder="手机验证码" name="mobile_code">
-								<i class="i-phone"></i>
-								<input id="zphone" class="zphone" type="button" value="获取手机验证码 ">
-								<div>
-									<span id="extend_field5i" class="label"></span>
-								</div>
-							</div>
-							<!-- {/if} -->
 							
 							<!-- 判断是否启用验证码{if $enabled_captcha} -->
 							<div class="item">
@@ -200,7 +164,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 	
 	$().ready(function(){
 		//设置高度
-		$(".mcon").height($(".uc_box").height());
+		//$(".mcon").height($(".uc_box").height());
 		
 		$("#formUser").submit(function(){
 			return register('{$register_type}');

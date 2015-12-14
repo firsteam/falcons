@@ -1133,7 +1133,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 	font-size: 0;
 	*word-spacing:-1px/*IE6、7*/;
 	display: block;
-	width: 1210px;
+	width: 980px;
 	/*margin-left: -3px;*/
 }
 .squares .list_pic li {
@@ -1145,7 +1145,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 *display: inline/*IE6,7*/;
 	width: 232px;
 	height: 296px;
-	margin: 22px 0 0 12px;
+	margin: 22px 0 0 17px;
 *zoom:1;
 }
 .squares .goods-content {

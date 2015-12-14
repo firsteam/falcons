@@ -126,7 +126,7 @@ body {
 	-moz-box-shadow: #ccc 0px 0px 5px;
 	box-shadow: #ccc 0px 0px 5px;*/
 }
-#entry h2 {
+#entry h2, #regist h2{
 	height: 30px;
 	line-height: 30px;
 }
@@ -143,16 +143,18 @@ body {
 	font-size: 24px;
 	font-weight: 400;
 }
-#entry h2 span, #regist .form h2 span {
-	font-size: 12px;
+#entry h2 span, #regist h2 span {
+	font-size: 15px;
 	float: right;
 	font-weight: normal;
 }
-#entry h2 span a, #regist .form h2 span a {
-	color: #E4393C
+#entry h2 span a, #regist h2 span a {
+	font-size: 15px;
+	color: #E4393C;
 }
 #entry #autoentry {
 	height: 45px;
+	margin: 10px 0px;
 }
 #entry .item_te {
 	margin-top: 10px;
@@ -315,10 +317,10 @@ body {
 	line-height: 26px;
 	margin-left: 5px
 }
-#entry .safety .forget_password {
+#entry .forget_password {
 	float: right;
 	text-decoration: none;
-	margin-top: -2px;
+	margin-top: 0px;
 }
 #entry .mar {
 	margin-right: 10px;
@@ -412,6 +414,7 @@ body {
 	left: 10px;
 }
 #regist .safety {
+	margin: 10px 0px;
 	height: 40px;
 	line-height: 40px;
 }

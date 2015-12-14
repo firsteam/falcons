@@ -71,26 +71,7 @@ function countdown(obj, msg) {
 							<!-- {if $action eq 'account_security'} -->
 							<h5 class="user-title user-title-t">
 								<span>
-									安全级别：
-									<!--余额额支付密码_更改_START_www.68ecshop.com-->
-									{if $info.is_validated eq 0 && $info.validated eq 0 && $info.is_surplus_open eq 0}很危险&nbsp;
-									<i class="validated1"></i>
-									&nbsp;建议您启动全部安全设置，以保障账户及资金安全{/if} {if $info.is_validated eq 0 && $info.validated eq 0 && $info.is_surplus_open eq 1}较低&nbsp;
-									<i class="validated2"></i>
-									&nbsp;建议您启动全部安全设置，以保障账户及资金安全{/if} {if $info.is_validated eq 0 && $info.validated eq 1 && $info.is_surplus_open eq 0}较低&nbsp;
-									<i class="validated2"></i>
-									&nbsp;建议您启动全部安全设置，以保障账户及资金安全{/if} {if $info.is_validated eq 1 && $info.validated eq 0 && $info.is_surplus_open eq 0}较低&nbsp;
-									<i class="validated2"></i>
-									&nbsp;建议您启动全部安全设置，以保障账户及资金安全{/if} {if $info.is_validated eq 0 && $info.validated eq 1 && $info.is_surplus_open eq 1}一般&nbsp;
-									<i class="validated3"></i>
-									{/if} {if $info.is_validated eq 1 && $info.validated eq 1 && $info.is_surplus_open eq 0}一般&nbsp;
-									<i class="validated3"></i>
-									{/if} {if $info.is_validated eq 1 && $info.validated eq 0 && $info.is_surplus_open eq 1}一般&nbsp;
-									<i class="validated3"></i>
-									{/if} {if $info.is_validated eq 1 && $info.validated eq 1 && $info.is_surplus_open eq 1}高&nbsp;
-									<i class="validated5"></i>
-									{/if}
-									<!--余额额支付密码_更改_END_www.68ecshop.com-->
+									Security
 								</span>
 							</h5>
 							<div class="blank"></div>
@@ -98,26 +79,26 @@ function countdown(obj, msg) {
 								<div class="mc">
 									<div class="fore1">
 										<s class="fore1_3"></s>
-										<strong>登录密码</strong>
+										<strong>Password</strong>
 									</div>
 									<div class="fore2">
-										<span class="ftx-03">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span>
+										<span class="ftx-03"></span>
 										<span style="color: #CF0F02;"></span>
 									</div>
 									<div class="fore3">
-										<input type="button" value="修改" onclick="window.location.href='security.php?act=password_reset'" class="btn btn-7" />
+										<input type="button" value="Change" onclick="window.location.href='security.php?act=password_reset'" class="btn btn-7" />
 									</div>
 								</div>
-								<div class="mc">
+								<div class="mc" style="display:none">
 									<div class="fore1">
 										<s class="{if $info.is_validated eq 0}fore1_1{else}fore1_3{/if}"></s>
-										<strong>邮箱验证</strong>
+										<strong>Mail Verification</strong>
 									</div>
 									<div class="fore2">
 										<!-- {if $info.is_validated eq 0} -->
 										<span style="color: #ED5854;">验证后，可用于快速找回登录密码，接收账户余额变动提醒</span>
 										<!-- {else} -->
-										<span class="ftx-03">您验证的邮箱：{$info.email}{/if}</span>
+										<span class="ftx-03">Email:{$info.email}{/if}</span>
 									</div>
 									<div class="fore3">
 										<!-- {if $info.email eq ''} -->

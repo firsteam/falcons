@@ -97,12 +97,12 @@
         </div>
         <div class="ub ub-f1 ub-pc ub-ac ulev-1">
           <div class="user-zj-icon2 ub-img h-w-2"></div>
-          <div class="m-l2">积分</div>
+          <div class="m-l2">Credits</div>
           <div class="m-l2 f-color-red">{$info.integral|default:0}</div>
         </div>
         <div class="ub ub-f1 ub-pc ub-ac ulev-1 user_capital">
           <div class="user-zj-icon3 ub-img h-w-2"></div>
-          <div class="m-l2">余额</div>
+          <div class="m-l2">Balance</div>
           <div class="m-l2 f-color-red">{$info.surplus|default:0}</div>
         </div>
       </div>
@@ -112,14 +112,14 @@
        <div class="ub bg-color-w ub ub-ac ub-pc" id="address-list">
             <div class="ub-img h-w-6 user-icon1 m-l-r1"></div>
             <div class="ub ub-ac ubb border-faxian ub-f1 p-t-b4">
-                <div class="ulev-9 f-color-zi ub-f1">收货地址</div>
+                <div class="ulev-9 f-color-zi ub-f1">Address</div>
                 <div class="jiantou-right h-w-1 ub-img umar-ar6"></div>
             </div>
        </div>
        <div class="ub bg-color-w ub ub-ac ub-pc" id="user_store_card">
             <div class="ub-img h-w-6 user-icon2 m-l-r1"></div>
             <div class="ub ub-ac ub-f1 p-t-b4">
-                <div class="ulev-9 f-color-zi ub-f1">储值卡充值</div>
+                <div class="ulev-9 f-color-zi ub-f1">Recharge</div>
                 <div class="jiantou-right h-w-1 ub-img umar-ar6"></div>
             </div>
        </div>
@@ -129,21 +129,21 @@
    		<div class="ub bg-color-w ub ub-ac ub-pc" id="user_sun">
             <div class="ub-img h-w-6 user-icon6 m-l-r1"></div>
             <div class="ub ub-ac ubb border-faxian ub-f1 p-t-b4">
-                <div class="ulev-9 f-color-zi ub-f1">商品评价/晒单</div>
+                <div class="ulev-9 f-color-zi ub-f1">Reviews</div>
                 <div class="jiantou-right h-w-1 ub-img umar-ar6"></div>
             </div>
        </div>
        <div class="ub bg-color-w ub ub-ac ub-pc" id="user_less_list">
             <div class="ub-img h-w-6 user-icon3 m-l-r1"></div>
             <div class="ub ub-ac ubb border-faxian ub-f1 p-t-b4">
-                <div class="ulev-9 f-color-zi ub-f1">缺货登记</div>
+                <div class="ulev-9 f-color-zi ub-f1">Stockout Register</div>
                 <div class="jiantou-right h-w-1 ub-img umar-ar6"></div>
             </div>
        </div>
        <div class="ub bg-color-w ub ub-ac ub-pc" id="user_message">
             <div class="ub-img h-w-6 user-icon4 m-l-r1"></div>
             <div class="ub ub-ac ub-f1 p-t-b4">
-                <div class="ulev-9 f-color-zi ub-f1">我的留言</div>
+                <div class="ulev-9 f-color-zi ub-f1">My Message</div>
                 <div class="jiantou-right h-w-1 ub-img umar-ar6"></div>
             </div>
        </div>
@@ -155,7 +155,7 @@
        <div class="ub bg-color-w ub ub-ac ub-pc" id='logout_button'>
             <div class="ub-img h-w-6 user-icon5 m-l-r1"></div>
             <div class="ub ub-ac ub-f1 p-t-b5">
-                <div class="ulev-9 f-color-zi ub-f1">退出</div>
+                <div class="ulev-9 f-color-zi ub-f1">Sign Out</div>
                 <div class="jiantou-right h-w-1 ub-img umar-ar6"></div>
             </div>
        </div>
