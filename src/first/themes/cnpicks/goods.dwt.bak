@@ -12,15 +12,15 @@
 <!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/common_www_ecshop68_com.js" ></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/magiczoom.js" ></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/magiczoom_plus.js" ></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.7.2_www_ecshop68_com.js" ></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/script.js" ></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/scrollpic.js"></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/gw_totop.js" ></script>
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/pshow.css" />
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/goods.css" />
+<script type="text/javascript" src="themes/cnpicks/js/common_www_ecshop68_com.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/magiczoom.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/magiczoom_plus.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/jquery-1.7.2_www_ecshop68_com.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/script.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/scrollpic.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/gw_totop.js" ></script>
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/pshow.css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/goods.css" />
 {insert_scripts files='common.js'}
 </head>
 <body>

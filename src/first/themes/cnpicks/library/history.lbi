@@ -5,7 +5,7 @@
 $GLOBALS['smarty']->assign('cainixihuan',   get_cainixihuan()); //猜你喜欢
 ?>
 {if $cainixihuan}
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/scrollpic.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/scrollpic.js"></script>
 <DIV class=w>
 <DIV id=product-track>
   <DIV class=right>

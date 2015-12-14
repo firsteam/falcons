@@ -8,6 +8,17 @@
     <td><input type="text" name="brand_name" maxlength="60" value="{$brand.brand_name}" />{$lang.require_field}</td>
   </tr>
   <tr>
+        <td class="label">品牌类型:</td>
+        <td>
+		<select name="supplier_type">
+		<option value="0">请选择</option>
+		{foreach from=$stype key=value item=name}
+		<option value="{$value}" {if $sinfo.supplier_type == $value} selected {/if}>{$name}</option>
+		{/foreach}
+		</select>
+		</td>
+      </tr>
+  <tr>
     <td class="label">{$lang.site_url}</td>
     <td><input type="text" name="site_url" maxlength="60" size="40" value="{$brand.site_url}" /></td>
   </tr>

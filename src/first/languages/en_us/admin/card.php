@@ -1,62 +1,60 @@
 <?php
 
 /**
- * ECSHOP Greetings card management language item
+ * ECSHOP 贺卡管理语言项
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: card.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['card_name'] = 'Card name';
-$_LANG['card_fee'] = 'Card money';
-$_LANG['free_money'] = 'Card free allowance';
-$_LANG['card_img'] = 'Card image';
-$_LANG['card_desc'] = 'Description';
+$_LANG['card_name'] = '贺卡名称';
+$_LANG['card_fee'] = '贺卡费用';
+$_LANG['free_money'] = '贺卡免费额度';
+$_LANG['card_img'] = '贺卡图纸';
+$_LANG['card_desc'] = '贺卡描述';
 
-$_LANG['card_edit'] = 'Edit card';
+$_LANG['card_edit'] = '编辑贺卡';
 
-$_LANG['drop_card_img'] = 'Delete card image';
-$_LANG['confirm_drop_card_img'] = 'Are you sure delete the card image?';
-$_LANG['drop_card_img_success'] = 'Delete card image successfully!';
+$_LANG['drop_card_img'] = '删除贺卡图纸';
+$_LANG['confirm_drop_card_img'] = '你确认删除该贺卡图纸吗？';
+$_LANG['drop_card_img_success'] = '删除贺卡图片成功';
 
-$_LANG['card_edit_lnk'] = 'Reedit the card';
-$_LANG['card_list_lnk'] = 'Return list page';
+$_LANG['card_edit_lnk'] = '重新编辑该贺卡';
+$_LANG['card_list_lnk'] = '返回列表页面';
 
-/* Help */
-$_LANG['notice_cardfee'] = 'Use the card money, and if it free set as 0.';
-$_LANG['notice_cardfreemoney'] = 'When user\'s money amount more than this value, he(she) will free use the card <br />set as 0 means he(she) must pay the cost.';
+/*帮助信息*/
+$_LANG['notice_cardfee'] = '使用这个贺卡所需要支付的费用，免费时设置为0';
+$_LANG['notice_cardfreemoney'] = '当用户消费金额超过这个值时，将免费使用这个贺卡<br />设置为0表明必须支付贺卡费用';
 
-$_LANG['warn_cardimg'] = 'You have uploaded a image. Reupload will cover the old image.';
+$_LANG['warn_cardimg'] = '你已经上传过图片。再次上传时将覆盖原图片';
 
-/* Prompting message*/
-$_LANG['cardname_exist'] ='%s already exists.';
-$_LANG['cardadd_succeed'] ='Added successfully.';
-$_LANG['carddrop_fail'] ='Delete failed';
-$_LANG['carddrop_succeed'] ='Delete successfully.';
-$_LANG['cardedit_succeed'] ='Card %s is changed successfully.';
-$_LANG['cardedit_fail'] ='Card %s is changed failed.';
-$_LANG['drop_confirm'] ='Are you sure delete %s ?';
-$_LANG['enter_num'] ='Please enter a figure!';
+/*提示信息*/
+$_LANG['cardname_exist'] ='贺卡名 %s 已经存在';
+$_LANG['cardadd_succeed'] ='已成功添加';
+$_LANG['carddrop_fail'] ='删除失败';
+$_LANG['carddrop_succeed'] ='删除成功';
+$_LANG['cardedit_succeed'] ='贺卡 %s 修改成功';
+$_LANG['cardedit_fail'] ='贺卡 %s 修改失败';
+$_LANG['drop_confirm'] ='你确认要删除这条记录吗？';
+$_LANG['enter_num'] ='请输入一个数字！';
 
-$_LANG['no_cardname'] ='The name is blank that you entered!';
+$_LANG['no_cardname'] ='你输入的卡片名称为空！';
 
-$_LANG['back_list'] ='Return to card list';
-$_LANG['continue_add'] ='Continue add a new card';
+$_LANG['back_list'] ='返回贺卡列表';
+$_LANG['continue_add'] ='继续添加新贺卡';
 
-$_LANG['upfile_type_error'] = "You can upload jpg, gif, png image.";
-$_LANG['upfile_error'] = "Wrong, please ensure the writability of data catalog files.";
+$_LANG['upfile_type_error'] = "只能上传jpg，gif，png类型的图片";
+$_LANG['upfile_error'] = "图片无法上传，请确保data目录下所有子目录的可写性";
 
-/*JS language item*/
-$_LANG['js_languages']['no_cardname'] = 'Please enter card name.';
-$_LANG['js_languages']['cardfee_un_num'] = 'Cart money is invalid.';
-$_LANG['js_languages']['cardmoney_un_num'] = 'Card free allowance is invalid.';
+/*JS 语言项*/
+$_LANG['js_languages']['no_cardname'] = '没有输入贺卡名';
+$_LANG['js_languages']['cardfee_un_num'] = '贺卡费用为空或不是数字';
+$_LANG['js_languages']['cardmoney_un_num'] = '贺卡免费额度为空或不是数字';
 
 ?>

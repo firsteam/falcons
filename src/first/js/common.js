@@ -1133,14 +1133,14 @@ function opencartDiv(price, name, pic, goods_brief, goods_id, total, number) {
 	var html = '';
 
 	// 生成层内内容
-	html = '<div class=cardivfloat><span class=cartdivfloattitle>商品已成功添加到购物车！</span><a href=\'javascript:cancel_div()\' style="float:right;padding:0 26px 0 0;background:url(themes/68ecshopcom_360buy/images/ico_closebig1.gif) right center no-repeat;cursor:pointer;color:#ffffff;font-size:12px;" >关闭</a></div><div class="cartpopDiv"><div class="toptitle"><a href="goods.php?id=' + goods_id + '" class="pic"><img src=' + pic + ' width="98" height="98" style="border:#dddddd 1px solid; display:block;"/></a><p><font style="font-weight:bold">' + name + '</font>  <br>' + goods_brief + '<br>购买价格：<font style="color:#cc0000">' + price + '</font><br></p></div>';
+	html = '<div class=cardivfloat><span class=cartdivfloattitle>商品已成功添加到购物车！</span><a href=\'javascript:cancel_div()\' style="float:right;padding:0 26px 0 0;background:url(themes/cnpicks/images/ico_closebig1.gif) right center no-repeat;cursor:pointer;color:#ffffff;font-size:12px;" >关闭</a></div><div class="cartpopDiv"><div class="toptitle"><a href="goods.php?id=' + goods_id + '" class="pic"><img src=' + pic + ' width="98" height="98" style="border:#dddddd 1px solid; display:block;"/></a><p><font style="font-weight:bold">' + name + '</font>  <br>' + goods_brief + '<br>购买价格：<font style="color:#cc0000">' + price + '</font><br></p></div>';
 
 	html += '<div class="coninfo">';
 	html += '<table cellpadding="0" height="30"><tr><td align="center" >购物车共有<font style="color:#ff6701;"><strong>' + number + '</strong></font>种商品  合计：<font style="color:#cc0000;"><strong>' + total + '</strong></font></td></tr>';
 	html += '</table>';
 	html += '</div>';
 
-	html += "<div class=cartbntfloat ><a href='flow.php'><img src='themes/68ecshopcom_360buy/images/jsico1.gif'></a><a href=\'javascript:cancel_div()\'><img src='themes/68ecshopcom_360buy/images/goon_ico1.gif'></a></div>";
+	html += "<div class=cartbntfloat ><a href='flow.php'><img src='themes/cnpicks/images/jsico1.gif'></a><a href=\'javascript:cancel_div()\'><img src='themes/cnpicks/images/goon_ico1.gif'></a></div>";
 	html += '</div></div>';
 	newDiv.innerHTML = html;
 	document.body.appendChild(newDiv);

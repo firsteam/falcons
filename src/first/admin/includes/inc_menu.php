@@ -29,8 +29,9 @@ $modules['02_cat_and_goods']['05_order_comment']   = 'order_comment.php?act=list
 $modules['02_cat_and_goods']['05_shaidan_manage']   = 'shaidan.php?act=list';
 $modules['02_cat_and_goods']['05_goods_tags']       = 'goods_tags.php?act=list';
 /* 晒单插件 增加 by www.68ecshop.com */
-//$modules['02_cat_and_goods']['05_question_manage']   = 'question_manage.php?act=list';
+//$modules['02_cat_and_goods']['05_question_manage']   = 'question_manage.php?act=list';$_LANG['0688_goods_brand_cat'] = '品牌分类';
 $modules['02_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
+$modules['02_cat_and_goods']['0688_goods_brand_cat'] = 'brands_category.php?act=list';
 $modules['02_cat_and_goods']['08_goods_type']       = 'goods_type.php?act=manage';
 $modules['02_cat_and_goods']['11_goods_trash']      = 'goods.php?act=trash';        // 商品回收站
 $modules['02_cat_and_goods']['12_batch_pic']        = 'picture_batch.php';

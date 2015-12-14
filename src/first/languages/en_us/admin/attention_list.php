@@ -13,15 +13,15 @@
  * $Id: attention_list.php 17217 2011-01-19 06:29:08Z liubo $
  */
 
-$_LANG['goods_name'] = 'Trade names';
-$_LANG['goods_last_update'] = 'Last updated';
-$_LANG['attention_addtolist'] = 'Insert Send Queue';
-$_LANG['attention_ckaddtolist'] = 'The concern is determined to send the merchandise merchandise-to-date information? This merchandise would be the latest information sent to users concerned about this merchandise';
-$_LANG['pri'][0] = 'Ordinary';
-$_LANG['pri'][1] = 'High';
-$_LANG['goods_edit'] = 'Editor merchandise';
-$_LANG['finish_list'] = 'Has been inserted into %s records, please later ~';
-$_LANG['finishing'] = 'Are generated later';
-$_LANG['edit_ok'] = 'Operation successful!';
-$_LANG['batch_note'] = 'After the date of this update all merchandise insert send queue:';
+$_LANG['goods_name'] = '商品名称';
+$_LANG['goods_last_update'] = '最新更新日期';
+$_LANG['attention_addtolist'] = '插入发送队列';
+$_LANG['attention_ckaddtolist'] = '确定给关注此商品的用户发送商品最新信息?此操作会将此商品的最新信息发送给关注此商品的用户';
+$_LANG['pri'][0] = '普通';
+$_LANG['pri'][1] = '高';
+$_LANG['goods_edit'] = '编辑商品';
+$_LANG['finish_list'] = '已经插入 %s 条记录,请稍后~';
+$_LANG['finishing'] = '正在生成请稍后';
+$_LANG['edit_ok'] = '操作成功！';
+$_LANG['batch_note'] = '将此日期后更新的商品全部插入发送队列：';
 ?>

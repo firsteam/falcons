@@ -1,58 +1,56 @@
 <?php
 
 /**
- * ECSHOP Convert a program language file
+ * ECSHOP 转换程序语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: convert.php 17217 2011-01-19 06:29:08Z liubo $
  */
 
-$_LANG['confirm_convert'] ='Attention: To convert program will lose the existing data, please operate with caution.';
-$_LANG['backup_data'] ='If the existing data still has value probably to you, please backup first.';
-$_LANG['backup'] ='Backup now.';
-$_LANG['select_system'] ='Please choose the system that you want to convert:';
-$_LANG['note_select_system'] ='(If your system not in the list, you can arrive <a href="http://www.ecshop.com" target="_ blank"> <strong> our website </strong></a>look for a help).';
-$_LANG['select_charset'] ='Please choose the character list that the system that you have to convert use to gather:';
-$_LANG['note_select_charset']='(If your system isn\'t UTF-8 character, converting need a long time.)';
-$_LANG['dir_notes'] ='Please notice root directory path of the old shop, please use opposite path of the admin directory.<Br/>For example:The old shop directory is shop in root directory, but the ecshop put in root directory, that path is../shop.';
-$_LANG['your_config'] ='Please config an original system to install an information:';
-$_LANG['your_host'] ='Host name or address:';
-$_LANG['your_user'] ='Username:';
-$_LANG['your_pass'] ='Password:';
-$_LANG['your_db'] ='Database name:';
-$_LANG['your_prefix'] ='Datasheet prefixion:';
-$_LANG['your_path'] ='Old shop root directory:';
-$_LANG['convert'] ='Convert Data';
-$_LANG['remark'] ='Remarks:';
+$_LANG['confirm_convert'] = '注意：执行转换程序将会使现有数据丢失，请您三思而行！！！';
+$_LANG['backup_data'] = '如果现有数据对您可能还有价值，请您先做好备份。';
+$_LANG['backup'] = '现在就去备份';
+$_LANG['select_system'] = '请选择您要转换的系统：';
+$_LANG['note_select_system'] = '（如果您的系统不在左边的列表中，您可以到<a href="http://www.ecshop.com" target="_blank"><strong>我们的网站</strong></a>寻求帮助）';
+$_LANG['select_charset'] = '请选择您要转换的系统使用的字符集：';
+$_LANG['note_select_charset'] = '（如果你的系统使用的不是 UTF-8 字符集，转换可能需要较长时间）';
+$_LANG['dir_notes'] = '请注意原商城的根目录路径请使用相对于admin目录的路径。<br />例如：原商城的目录在根目录下的shop，而ecshop放在根目录下，则该路径为 ../shop';
+$_LANG['your_config'] = '请设置原系统的配置信息：';
+$_LANG['your_host'] = '主机名称或地址：';
+$_LANG['your_user'] = '登录帐号：';
+$_LANG['your_pass'] = '登录密码：';
+$_LANG['your_db'] = '数据库名称：';
+$_LANG['your_prefix'] = '数据库表前缀：';
+$_LANG['your_path'] = '原商城根目录：';
+$_LANG['convert'] = '转换数据';
+$_LANG['remark'] = '备注：';
 $_LANG['remark_info'] = '<ul>' .
-        '<Li>For the promotion product, you need to edit its original price(this shop selling price) and sales promotion date;</li>' .
-        '<Li>Please re-create watermark;</li>' .
-        '<Li>Please re-create an advertisement;</li>' .
-        '<Li>Please re-create shipping method;</li>' .
-        '<Li>Please re-create payment method;</li>' .
-        '<li>Please move the former product of not bottom category to bottom category:</li>' .
+        '<li>对于特价的商品，您需要编辑其原价（本店售价）和促销期；</li>' .
+        '<li>请重新设置水印；</li>' .
+        '<li>请重新设置广告；</li>' .
+        '<li>请重新设置配送方式；</li>' .
+        '<li>请重新设置支付方式；</li>' .
+        '<li>请把原来不属于末级分类的商品转移到末级分类；</li>' .
         '</ul>';
 
-$_LANG['connect_db_error'] ='Can\'t connect database, please check install information.';
-$_LANG['table_error'] ='Shortage of essential form %s, please check install information.';
-$_LANG['dir_error'] ='Shortage of essential directory %s, please check install information.';
-$_LANG['dir_not_readable'] ='The directory can\'t be read %s.';
-$_LANG['dir_not_writable'] ='The directory can\'t be wrote %s.';
-$_LANG['file_not_readable'] ='The file can\'t be read %s';
-$_LANG['js_languages']['check_your_db'] ='Checking the database of your system...';
-$_LANG['js_languages']['act_ok'] ='Congratulations, operate successfully!';
+$_LANG['connect_db_error'] = '无法连接数据库，请检查配置信息。';
+$_LANG['table_error'] = '缺少必需的表 %s ，请检查配置信息。';
+$_LANG['dir_error'] = '缺少必需的目录 %s ，请检查配置信息。';
+$_LANG['dir_not_readable'] = '目录不可读 %s';
+$_LANG['dir_not_writable'] = '目录不可写 %s';
+$_LANG['file_not_readable'] = '文件不可读 %s';
+$_LANG['js_languages']['check_your_db'] = '正在检查您的系统的数据库...';
+$_LANG['js_languages']['act_ok'] = '恭喜您，操作成功！';
 
-$_LANG['js_languages']['no_system'] ='There is no available convert program.';
-$_LANG['js_languages']['host_not_null'] ='The host name or address can\'t be blank.';
-$_LANG['js_languages']['db_not_null'] ='The database name can\'t be blank.';
-$_LANG['js_languages']['user_not_null'] ='Register ID can\'t be blank.';
-$_LANG['js_languages']['path_not_null'] ='Original shop root directory can\'t be blank.';
+$_LANG['js_languages']['no_system'] = '没有可用的转换程序';
+$_LANG['js_languages']['host_not_null'] = '主机名称或地址不能为空';
+$_LANG['js_languages']['db_not_null'] = '数据库名称不能为空';
+$_LANG['js_languages']['user_not_null'] = '登录帐号不能为空';
+$_LANG['js_languages']['path_not_null'] = '原商城根目录不能为空';
 ?>

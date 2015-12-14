@@ -189,14 +189,14 @@ $this->assign('promotion_info1', get_promotion_info1());
           <form class="mallSearch-form" method="get" name="searchForm" id="searchForm" action="search.php" onSubmit="return checkSearchForm()">
 	   		<input type='hidden' name='type' id="searchtype" value="{$smarty.request.type|default:0}">
             <fieldset>
-              <legend>搜索</legend>
+              <legend>Search</legend>
               <div class="mallSearch-input clearfix">
                 <div id="s-combobox-135" class="s-combobox">
                   <div class="s-combobox-input-wrap">
                     <input aria-haspopup="true" role="combobox" class="s-combobox-input" name="keywords" id="keyword" tabindex="9" accesskey="s" onkeyup="STip(this.value, event);" autocomplete="off"  value="{if $search_keywords}{$search_keywords|escape}{else}请输入关键词{/if}" onFocus="if(this.value=='请输入关键词'){this.value='';}else{this.value=this.value;}" onBlur="if(this.value=='')this.value='请输入关键词'" type="text">
                   </div>
                 </div>
-                <input type="submit" value="搜索" class="button"  >
+                <input type="submit" value="Search" class="button"  >
               </div>
             </fieldset>
           </form>
@@ -212,9 +212,9 @@ $this->assign('promotion_info1', get_promotion_info1());
     </div>
   </div>
 </div>
-<div class="globa-nav">
+<div class="globa-nav" style="visible:hidden">
   <div class="w">
-  	<div class="allGoodsCat Left" > 
+  	<div class="allGoodsCat Left"> 
     	<a href="catalog.php" class="menuEvent" title="查看全部商品分类"><strong class="catName">全部商品分类</strong><i></i></a>
    </div>
    {include file='library/head_nav.lbi'}

@@ -264,7 +264,7 @@
 	width:50px;
 	height:22px;
 	border:0;
-	background:url(/themes/68ecshopcom_360buy/images/misc/201007/skin/df/i/bg_hotsale.gif) no-repeat 0 -632px;
+	background:url(/themes/cnpicks/images/misc/201007/skin/df/i/bg_hotsale.gif) no-repeat 0 -632px;
 	text-align:center;
 	line-height:22px;
 	color:#000
@@ -575,7 +575,7 @@
 #product-track .left .m2 .mt {
 	height:28px;
 	line-height:28px;
-	background:url(/themes/68ecshopcom_360buy/images/misc/product/skin/2012/i/newicon20120718.png) 0 -287px repeat-x;
+	background:url(/themes/cnpicks/images/misc/product/skin/2012/i/newicon20120718.png) 0 -287px repeat-x;
 	border-right:0;
 	border-bottom:1px solid #ccc
 }
@@ -637,7 +637,7 @@
 #recent-view-track .no-track {
 	margin:10px;
 	height:230px;
-	background:url(/themes/68ecshopcom_360buy/images/misc/product/skin/2012/i/foot.png) left bottom no-repeat;
+	background:url(/themes/cnpicks/images/misc/product/skin/2012/i/foot.png) left bottom no-repeat;
 	color:#999
 }
 #recent-view-track .no-track p {
@@ -652,7 +652,7 @@
 }
 #maybe-like .mt {
 	height:28px;
-	background:url(/themes/68ecshopcom_360buy/images/misc/product/skin/2012/i/newicon20120718.png) 0 -287px repeat-x;
+	background:url(/themes/cnpicks/images/misc/product/skin/2012/i/newicon20120718.png) 0 -287px repeat-x;
 	border-right:0;
 	border-bottom:1px solid #ccc
 }
@@ -692,7 +692,7 @@
 	margin-top:2px
 }
 .star {
-	background-image:url(/themes/68ecshopcom_360buy/images/misc/product/skin/2012/i/newicon20120718.png);
+	background-image:url(/themes/cnpicks/images/misc/product/skin/2012/i/newicon20120718.png);
 	background-repeat:no-repeat
 }
 #maybe-like .mc li {

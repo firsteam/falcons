@@ -3,122 +3,119 @@
 /**
  * ECSHOP
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: database.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['db_manage'] ='Database management';
-$_LANG['start_backup'] ='Start backup';
-$_LANG['backup_name'] ='Bbackup name';
-$_LANG['backup_time'] ='Backup time';
-$_LANG['backup_size'] ='Bbackup size';
-$_LANG['restore'] ='Restore backup';
-$_LANG['restore_ok'] ='Restore successfully.';
-$_LANG['download'] ='Download';
-$_LANG['restored'] ='The backup has already restored.';
-$_LANG['upload_sql'] ='Upload backup file';
+$_LANG['db_manage'] = '数据库管理';
+$_LANG['start_backup'] = '开始备份';
+$_LANG['backup_name'] = '备份名称';
+$_LANG['backup_time'] = '备份时间';
+$_LANG['backup_size'] = '备份大小';
+$_LANG['restore'] = '恢复备份';
+$_LANG['restore_ok'] = '恢复成功';
+$_LANG['download'] = '下载';
+$_LANG['restored'] = '备份已经恢复过了';
+$_LANG['upload_sql'] = '上传备份文件';
 
-$_LANG['table'] ='Datasheet';
-$_LANG['type'] ='Type';
-$_LANG['rec_num'] ='Records quantity';
-$_LANG['rec_size'] ='Data';
-$_LANG['rec_chip'] ='Fragment';
-$_LANG['start_optimize'] ='Start optimize.';
-$_LANG['chip_count'] ='Total fragments quantity';
-$_LANG['charset'] ='Character list';
-$_LANG['status'] ='Status';
+$_LANG['table'] = '数据表';
+$_LANG['type'] = '数据表类型';
+$_LANG['rec_num'] = '记录数';
+$_LANG['rec_size'] = '数据';
+$_LANG['rec_chip'] = '碎片';
+$_LANG['start_optimize'] = '开始进行数据表优化';
+$_LANG['chip_count'] = '总碎片数';
+$_LANG['charset'] = '字符集';
+$_LANG['status'] = '状态';
 
-$_LANG['backup_type'] ='Backup type';
-$_LANG['full_backup'] ='Full backup';
-$_LANG['full_backup_note'] ='Backup all database tables';
-$_LANG['stand_backup'] ='Standard backup(recommend)';
-$_LANG['stand_backup_note'] ='Backup in common use datasheet';
-$_LANG['min_backup'] ='Minimum backup';
-$_LANG['min_backup_note'] ='Only include the product table, the order table, the customer table.';
-$_LANG['custom_backup'] ='Custom backup';
-$_LANG['custom_backup_note'] ='According to choose the backup datasheet by oneself.';
+$_LANG['backup_type'] ='备份类型';
+$_LANG['full_backup'] ='全部备份';
+$_LANG['full_backup_note'] ='备份数据库所有表';
+$_LANG['stand_backup'] ='标准备份(推荐)';
+$_LANG['stand_backup_note'] ='备份常用的数据表';
+$_LANG['min_backup'] ='最小备份';
+$_LANG['min_backup_note'] ='仅包括商品表，订单表，用户表';
+$_LANG['custom_backup'] ='自定义备份';
+$_LANG['custom_backup_note'] ='根据自行选择备份数据表';
 
-$_LANG['option'] ='Other options';
-$_LANG['ext_insert'] ='Use expand to insert mode (the Extended Insert).';
-$_LANG['is_pack'] ='Pack backup data?';
-$_LANG['notice_is_pack'] ='Pack can minish the backup size, but you have to decompress the backup before upload when restoring.';
-$_LANG['vol_size'] ='Volume backup - The file limit size(kb).';
-$_LANG['sql_name'] ='Backup file';
-$_LANG['backup_failure'] ='Backup failure';
+$_LANG['option'] = '其他选项';
+$_LANG['ext_insert'] = '使用扩展插入(Extended Insert)方式';
+$_LANG['is_pack'] = '是否将备份数据打包';
+$_LANG['notice_is_pack'] = '打包能减小备份大小，但恢复备份时需要先解压备份才能上传';
+$_LANG['vol_size'] = '分卷备份 - 文件长度限制(kb)';
+$_LANG['sql_name'] = '备份文件名';
+$_LANG['backup_failure'] = '备份出错';
 
-$_LANG['sqlfile'] ='Local sql file';
-$_LANG['update_table_pre'] ='Change table prefixion';
-$_LANG['old_table_pre'] ='At first table prefixion';
-$_LANG['new_table_pre'] ='New table prefixion';
-$_LANG['use_new_pre'] ='Use the new table prefixion.';
-$_LANG['notice_use_new_pre'] ='Only just can choose while recover all backups "Yes", otherwise it will can\'t be used that the table without backup  .<Br/>you can also modify data/config.php in the $prefix to decide to use prefixion.';
-$_LANG['upload_and_exe'] = 'Upload the sql file and execute.';
+$_LANG['sqlfile'] = '本地sql文件';
+$_LANG['update_table_pre'] = '更改表前缀';
+$_LANG['old_table_pre'] = '原表前缀';
+$_LANG['new_table_pre'] = '新表前缀';
+$_LANG['use_new_pre'] = '使用新表前缀';
+$_LANG['notice_use_new_pre'] = '只有在恢复全部备份时才可以选择“是”，否则没有备份的表将无法使用。<br />您也可以手动修改 data/config.php 中的 $prefix 变量来决定使用哪个表前缀';$_LANG['upload_and_exe'] = '上传并执行sql文件';
 
-/* Prompting message */
-$_LANG['fail_get_tables'] ='Obtain the backup datasheet failure.';
-$_LANG['fail_open_file'] ='Open file failure.';
-$_LANG['fail_remove'] ='Delete file failure.';
-$_LANG['fail_get_content'] ='Obtain the datasheet contents failure.';
-$_LANG['fail_upload'] ='Upload file failure.';
-$_LANG['fail_upload_move'] ='Upload to move file failure.';
-$_LANG['unrecognize_version'] ='Can\'t identify the ECShop version of the backup sql.';
-$_LANG['unrecognize_mysql_version'] ='Can\'t identify the mysql version of the backup sql.';
-$_LANG['mysql_version_error'] ='Current mysql version the %s and the mysql version of the backup data the %s is different, may appear a problem, are you sure import it?';
-$_LANG['confirm_ver'] = 'Yes, please import it!';
-$_LANG['unconfirm_ver'] = 'Cancel!';
-$_LANG['version_error'] ='ECShop current version the %s and the backup data version the %s is different, the backup restore failure.';
-$_LANG['not_sql_file'] ='This isn\'t a sql file, if the file is true, please change the file suffixal name as .sql.';
-$_LANG['sqlfile_error'] ='You upload the file failure, the backup restore failure.';
-$_LANG['restore_success'] ='Restore successfully.';
-$_LANG['fail_optimize'] ='Optimize datasheet %s failure.';
-$_LANG['optimize_ok'] ='Optimize datasheet successfully, tidying up fragment totally %d.';
-$_LANG['restore_confirm'] ='Restore database will clear existing all contents, are you sure recover it?';
-$_LANG['fail_import'] ='The data ducting failure.';
-$_LANG['no_file'] ='The file is nonexistent.';
-$_LANG['not_support_zip_format'] ='The server nonsupport zip format, please decompress the file and upload again.';
+/* 提示信息 */
+$_LANG['fail_get_tables'] = '获取备份数据表失败';
+$_LANG['fail_open_file'] = '文件打开失败';
+$_LANG['fail_remove'] = '文件删除失败';
+$_LANG['fail_get_content'] = '获取数据表内容失败';
+$_LANG['fail_upload'] = '文件上传失败';
+$_LANG['fail_upload_move'] = '文件上传移动失败';
+$_LANG['unrecognize_version'] = '不能识别备份sql的ECShop版本';
+$_LANG['unrecognize_mysql_version'] = '不能识别备份sql的mysql版本';
+$_LANG['mysql_version_error'] = '当前mysql版本%s与备份数据的mysql版本%s不同，你确认要导入该备份文件吗?';
+$_LANG['confirm_ver'] = '是，确认导入';
+$_LANG['unconfirm_ver'] = '否，取消导入';
+$_LANG['version_error'] = 'ECShop 当前版本%s与备份数据版本%s不同，备份恢复失败';
+$_LANG['not_sql_file'] = '你上传的好象不是sql文件，如果文件确实是sql文件，请将文件扩展名改为.sql';
+$_LANG['sqlfile_error'] = '你上传的sql文件执行出错，备份恢复失败';
+$_LANG['restore_success'] = '恢复成功';
+$_LANG['fail_optimize'] = '优化数据表 %s 失败';
+$_LANG['optimize_ok'] = '数据表优化成功，共清理碎片 %d';
+$_LANG['restore_confirm'] = '恢复数据库会清除现有的所有内容，您确定要恢复吗？';
+$_LANG['fail_import'] = '数据导入失败';
+$_LANG['no_file'] = '文件不存在';
+$_LANG['not_support_zip_format'] = '服务器不支持zip格式，请将文件解压后再上传';
 
 /* js */
-$_LANG['js_languages']['remove_confirm'] ='Are you sure delete the backup?';
-$_LANG['js_languages']['lang_remove'] ='Remove';
-$_LANG['js_languages']['lang_restore'] ='Restore backup';
-$_LANG['js_languages']['lang_download'] ='Download';
-$_LANG['js_languages']['sql_name_not_null'] ='The file can\'t be blank.';
-$_LANG['js_languages']['vol_size_not_null'] ='Please enter the backup size.';
+$_LANG['js_languages']['remove_confirm'] = '你确认要删除该备份吗？';
+$_LANG['js_languages']['lang_remove'] = '移除';
+$_LANG['js_languages']['lang_restore'] = '恢复备份';
+$_LANG['js_languages']['lang_download'] = '下载';
+$_LANG['js_languages']['sql_name_not_null'] = '文件名不能为空';
+$_LANG['js_languages']['vol_size_not_null'] = '请填入备份大小';
 
-/* buckup center */
-$_LANG['backup_title'] = 'The part %s of backup is created, It is running automatism.';
-$_LANG['backup_notice'] = 'Please chick here ,if your browse has redirect automatism.';
-$_LANG['backup_success'] = 'Success';
+/* 数据备份 */
+$_LANG['backup_title'] = '数据文件 %s 成功创建，程序将自动继续。';
+$_LANG['backup_notice'] = '如果您的浏览器没有自动跳转，请点击这里';
+$_LANG['backup_success'] = '备份成功';
 
-$_LANG['name'] = 'File Name';
-$_LANG['ver'] = 'Version';
-$_LANG['add_time'] = 'Time';
-$_LANG['file_size'] = 'Size';
-$_LANG['empty_upload'] = 'It is empty';
-$_LANG['fail_write_file'] = 'The file %s can not writting';
-$_LANG['vol'] = 'VOL';
-$_LANG['import'] = 'Import';
-$_LANG['server_sql'] = 'Server Backup';
-$_LANG['submit_remove'] = 'Delete';
-$_LANG['remove_success'] = 'Delete Success';
-$_LANG['confirm_import'] = 'Do you want to import other backup';
-$_LANG['also_continue'] = 'Yes, I want do it';
+$_LANG['name'] = '文件名';
+$_LANG['ver'] = '版本';
+$_LANG['add_time'] = '时间';
+$_LANG['file_size'] = '大小';
+$_LANG['empty_upload'] = '你上传了一个空文件';
+$_LANG['fail_write_file'] = '备份文件 %s 无法写入';
+$_LANG['vol'] = '卷';
+$_LANG['import'] = '导入';
+$_LANG['server_sql'] = '服务器上备份文件';
+$_LANG['submit_remove'] = '删除';
+$_LANG['remove_success'] = '删除成功';
+$_LANG['confirm_import'] = '导入一个分卷可能导致数据不完整，是否一起导入其他分卷数据';
+$_LANG['also_continue'] = '是，我要导入其他分卷数据';
 
-$_LANG['dir_priv'] = 'The problem with directory %s :';
-$_LANG['dir_not_exist'] = 'This directory %s is not exist, please create it';
-$_LANG['cannot_read'] = 'Can not Read';
-$_LANG['cannot_write'] = 'Can not Write';
-$_LANG['cannot_add'] = 'Can not Add data';
-$_LANG['cannot_modify'] = 'Can not Modify';
+$_LANG['dir_priv'] = '目录 %s 权限有以下问题：';
+$_LANG['dir_not_exist'] = '目录 %s 不存在,请手动创建';
+$_LANG['cannot_read'] = '不可读';
+$_LANG['cannot_write'] = '不可写';
+$_LANG['cannot_add'] = '追加数据';
+$_LANG['cannot_modify'] = '不能修改文件';
 
-$_LANG['confirm_remove'] = 'Are you sure delete Items?';
+$_LANG['confirm_remove'] = '你确定要删除选中数据吗？';
 
 ?>

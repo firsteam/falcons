@@ -279,7 +279,7 @@ BUTTON {
 }
 .goods_right {
 	float: left;
-	margin-left: 10px;
+	margin-left: 0px;
 }
 #wrapper .mc {
 	width: 820px;
@@ -333,7 +333,7 @@ BUTTON {
 	HEIGHT: 14px
 }
 #product-intro {
-	PADDING-LEFT: 400px;
+	PADDING-LEFT: 450px;
 	Z-INDEX: 1;
 	MIN-HEIGHT: 510px;
 	ZOOM: 1;
@@ -827,7 +827,7 @@ BUTTON {
 	FLOAT: left
 }
 #name H1 {
-	width: 550px;
+	/*width: 550px;*/
 	height: 40px;
 	line-height: 40px;
 	font-size: 16px;
@@ -842,7 +842,7 @@ BUTTON {
 #preview {
 	Z-INDEX: 4;
 	LEFT: 0px;
-	WIDTH: 400px;
+	/*WIDTH: 400px;*/
 	POSITION: absolute;
 	TOP: 0px;
 }
@@ -904,6 +904,7 @@ BUTTON {
 	min-height: 510px;
 	border: 1px solid #DDD;
 	padding: 0px 10px 5px;
+	display: none;
 }
 #brand-bar-pop .shop_title {
 	font-size: 13px;
@@ -1548,7 +1549,7 @@ span.scrright {
 }
 .goods_info {
 	float: left;
-	width: 560px;
+	width: 510px;
 	padding: 0px 12px 0px 25px;
 }
 #supp_info {
@@ -1578,7 +1579,7 @@ span.scrright {
 }
 .goods_img {
 	padding: 10px;
-	width: 380px;
+	width: 432px;
 	border: 1px solid #DDD;
 }
 .shop_self {
@@ -1682,7 +1683,7 @@ span.scrright {
 }
 /*精品推荐*/
 .goods_best {
-	width: 1210px;
+	width: 990px;
 	height: 260px;
 	margin: 10px auto;
 	overflow: hidden;
@@ -1713,7 +1714,7 @@ span.scrright {
 	border: 1px #ddd solid;
 }
 .goods_best .colList .colFrame {
-	width: 1108px;
+	width: 908px;
 	height: 160px;
 	padding: 25px 0px;
 	float: left;

@@ -12,7 +12,7 @@
 <!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/68ecshop_commin.css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/commin.css" />
 <link type="text/css" rel="stylesheet" href="themes/cnpicks/css/passport.css"/>
 <script type="text/javascript" src="themes/cnpicks/js/jquery_email.js"></script>
 <script type="text/javascript" src="themes/cnpicks/js/jquery-1.9.1.min.js" ></script>
@@ -29,7 +29,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 <div class="Logo-r">
   <div class="Logo-info-r"> 
   	<a href="./" class="logo"></a>
-    <span class="findpw">欢迎登录</span>
+    <span class="findpw">Sign in</span>
 	<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
   </div>
 </div>

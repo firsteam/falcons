@@ -1,36 +1,34 @@
 <?php
 
 /**
- * ECSHOP Plug-in management language file
+ * ECSHOP 插件管理语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: plugins.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['plugin_name'] = 'Name';
-$_LANG['plugin_desc'] = 'Description';
-$_LANG['plugin_version'] = 'Version';
-$_LANG['plugin_author'] = 'Author';
+$_LANG['plugin_name'] = '名称';
+$_LANG['plugin_desc'] = '描述';
+$_LANG['plugin_version'] = '版本';
+$_LANG['plugin_author'] = '作者';
 
-$_LANG['upgrade'] = 'Upgrade';
-$_LANG['upgrade_success'] = 'Upgrade seccessfully!';
+$_LANG['upgrade'] = '升级';
+$_LANG['upgrade_success'] = '升级成功';
 
-$_LANG['uninstall_confirm'] = "Uninstall plug-in will delete all data of the plug-in. \nAre you sure uninstall this plug-in?";
-$_LANG['create_table_failed'] = 'Create datasheet of plug-in failed, the plug-in may be invalid. <br/> Wrong message:<br />%s.';
-$_LANG['dir_readonly'] = '%s directory can\'t be wrote, please check your server config.';
-$_LANG['file_readonly'] = '%s file can\'t be wrote, please check your server config.';
-$_LANG['uninstall_success'] = 'The appointed plug-in has uninstalled successfully.';
-$_LANG['install_success'] = 'The appointed plug-in has installed successfully.';
-$_LANG['upgrade_success'] = 'The appointed plug-in has upgraded successfully.';
-$_LANG['plugin_not_exists'] = 'We havn\'t got the appoint plug-in file, please confirm the plug-in whether has existed.';
-$_LANG['class_not_exists'] = 'We havn\'t got the appoint plug-in class, the plug-in may be damaged.';
+$_LANG['uninstall_confirm'] = '卸载插件将删除该插件的所有数据。\n您确定要卸载这个插件吗？';
+$_LANG['create_table_failed'] = '创建插件的数据表失败，该插件可能是一个无效的插件。<br />错误信息：<br />%s';
+$_LANG['dir_readonly'] = '%s 目录不可写，请检查您的服务器设置。';
+$_LANG['file_readonly'] = '%s 文件不可写，请检查您的服务器设置。';
+$_LANG['uninstall_success'] = '指定的插件已经卸载成功。';
+$_LANG['install_success'] = '指定的插件已经安装成功。';
+$_LANG['upgrade_success'] = '指定的插件已经升级成功。';
+$_LANG['plugin_not_exists'] = '没有找到指定的插件文件，请确认该插件是否确实存在。';
+$_LANG['class_not_exists'] = '没有找到指定的插件类，该插件可能已经被损坏。';
 
 ?>

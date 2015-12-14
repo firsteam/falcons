@@ -13,28 +13,29 @@
  * $Id: captcha_manage.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['captcha_manage'] = 'Verification Code Set';
-$_LANG['captcha_note'] = 'Open Verification Code required GD library server support, and your server does not install the GD library.';
+$_LANG['captcha_manage'] = '验证码设置';
+$_LANG['captcha_note'] = '开启验证码需要服务GD库支持，而您的服务器不支持GD。';
 
-$_LANG['captcha_setting'] = 'Verification Code Set';
-$_LANG['captcha_turn_on'] = 'Enable Verification Code';
-$_LANG['turn_on_note'] = 'Image Verification Code to avoid malicious bulk submit comments or information, recommend Open Verification Code function. Note: The Verification Code will make the opening part of the operation becomes complicated, it is recommended only when necessary to open';
-$_LANG['captcha_register'] = 'New User Registration';
-$_LANG['captcha_login'] = 'User Login';
-$_LANG['captcha_comment'] = 'Comment';
-$_LANG['captcha_admin'] = 'Backgrounds Administrator Login';
-$_LANG['captcha_login_fail'] = 'Login Failed display Verification Code';
-$_LANG['login_fail_note'] = 'Select /"Yes/" in the User Login failed 3 times before show Verification Code, select /"No/" will always be displayed when logging in Verification Code. Note: Only in the opening of the user login when the Verification Code set to be valid';
-$_LANG['captcha_width'] = 'Verification Code picture width';
-$_LANG['width_note'] = 'Verification Code picture width, ranging between 40 ~ 145';
-$_LANG['captcha_height'] = 'Verification Code picture height';
-$_LANG['height_note'] = 'Verification Code picture height, the range of between 15 ~ 50';
+$_LANG['captcha_setting'] = '验证码设置';
+$_LANG['captcha_turn_on'] = '启用验证码';
+$_LANG['turn_on_note'] = '图片验证码可以避免恶意批量评论或提交信息，推荐打开验证码功能。注意: 启用验证码会使得部分操作变得繁琐，建议仅在必需时打开';
+$_LANG['captcha_register'] = '新用户注册';
+$_LANG['captcha_login'] = '用户登录';
+$_LANG['captcha_comment'] = '发表评论';
+$_LANG['captcha_admin'] = '后台管理员登录';
+$_LANG['captcha_login_fail'] = '登录失败时显示验证码';
+$_LANG['login_fail_note'] = '选择“是”将在用户登录失败 3 次后才显示验证码，选择“否”将始终在登录时显示验证码。注意: 只有在启用了用户登录验证码时本设置才有效';
+$_LANG['captcha_width'] = '验证码图片宽度';
+$_LANG['width_note'] = '验证码图片的宽度，范围在 40～145 之间';
+$_LANG['captcha_height'] = '验证码图片高度';
+$_LANG['height_note'] = '验证码图片的高度，范围在 15～50 之间';
 
-$_LANG['js_languages']['width_number'] = 'Please enter the picture width number!';
-$_LANG['js_languages']['proper_width'] = 'The width of the picture must between 40 t0 145!';
-$_LANG['js_languages']['height_number'] = 'Please enter the picture height number!';
-$_LANG['js_languages']['proper_height'] = 'The height of the picture must between 40 t0 145!';
+$_LANG['js_languages']['width_number'] = '图片宽度请输入数字!';
+$_LANG['js_languages']['proper_width'] = '图片宽度要在40到145之间!';
+$_LANG['js_languages']['height_number'] = '图片高度请输入数字!';
+$_LANG['js_languages']['proper_height'] = '图片高度要在15到50之间!';
 
-$_LANG['save_ok'] = 'Set up to preserve the success of';
-$_LANG['captcha_message'] = 'Message Board Guest Book';
+$_LANG['save_ok'] = '设置保存成功';
+$_LANG['captcha_message'] = '留言板留言';
+
 ?>

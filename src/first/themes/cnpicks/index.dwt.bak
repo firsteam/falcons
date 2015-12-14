@@ -14,11 +14,11 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
-<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/index.css">
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/68ecshop_commin.css" />
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jqueryAll.index.min.js"></script>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jump.js"></script>
+<link rel="stylesheet" href="themes/cnpicks/css/index.css">
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/commin.css" />
+<script type="text/javascript" src="themes/cnpicks/js/jquery-lazyload.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/jqueryAll.index.min.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/jump.js"></script>
 
 <script type="text/javascript">
 $(function(){
@@ -196,7 +196,7 @@ var select_spe = "{$lang.select_spe}";
           <li>
             <dl>
               <dt class="goods-name"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a> </dt>
-              <dd class="goods-thumb"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"> <img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}"> </a> </dd>
+              <dd class="goods-thumb"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"> <img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}"> </a> </dd>
               <dd class="goods-price">商城价： <em> 
                 <!-- {if $goods.promote_price neq ""} --> 
                 {$goods.promote_price} 
@@ -302,7 +302,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -343,7 +343,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -372,7 +372,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -411,11 +411,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -434,8 +434,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -468,7 +468,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -509,7 +509,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -538,7 +538,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -577,11 +577,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -600,8 +600,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -634,7 +634,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -675,7 +675,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -704,7 +704,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -743,11 +743,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -766,8 +766,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -800,7 +800,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -841,7 +841,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -870,7 +870,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -909,11 +909,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -932,8 +932,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -966,7 +966,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -1007,7 +1007,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -1036,7 +1036,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -1075,11 +1075,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -1098,8 +1098,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -1132,7 +1132,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -1173,7 +1173,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -1202,7 +1202,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -1241,11 +1241,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -1264,8 +1264,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -1298,7 +1298,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -1339,7 +1339,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -1368,7 +1368,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -1407,11 +1407,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -1430,8 +1430,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -1464,7 +1464,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	 ?>
         {foreach from=$index_image3 item=ad name=index_image} 
         <a href="{$ad.url}" class="j_ItemInfo_tong"> 
-        	<img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading1.gif" alt="" height="100" width="1210"> 
+        	<img data-original="{$ad.image}" src="themes/cnpicks/images/loading1.gif" alt="" height="100" width="1210"> 
         </a> 
         {/foreach}
     <div class="m-floor">
@@ -1505,7 +1505,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'-左侧图片', 1));
 	 ?>
           <!-- {if $index_image} --> 
-          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading.gif" height="297" width="240"> </a> {/foreach} 
+          {foreach from=$index_image item=ad name=index_image} <a href="{$ad.url}" target="_blank" class="banner" > <img data-original="{$ad.image}" src="themes/cnpicks/images/loading.gif" height="297" width="240"> </a> {/foreach} 
           <!-- {/if} --> 
         </div>
       </div>
@@ -1534,7 +1534,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/68ecshopcom_360buy/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
@@ -1573,11 +1573,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
-        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
+        {foreach from=$index_image1 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="278" width="150"> </a> {/foreach}
         <?php
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
-        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/68ecshopcom_360buy/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
+        {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
       <div class="promo_brand">
       	<div class="recommend-brand">
         <div class="gw_con">
@@ -1596,8 +1596,8 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 	   			{/foreach}
 				</ul>
               <div class="anniu">
-            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-left.png" /></a>
-				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/icon-slide-right.png"/></a>
+            	<a class="gw_left right_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-left.png" /></a>
+				<a class="gw_right left_{$goods_cat.id}" href="javascript:void(0)"><img src="themes/cnpicks/images/upgrade_ad/icon-slide-right.png"/></a>
             </div>
 			</div>
 		  </div>
@@ -1639,12 +1639,12 @@ function(){
 <!-- TemplateEndEditable --> </div>
 </div>
 <div class="n-footer"> </div>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/indexPrivate.min.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/indexPrivate.min.js"></script>
 <!-- #BeginLibraryItem "/library/page_footerindex.lbi" --><!-- #EndLibraryItem --> 
 <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem -->
 <!-- #BeginLibraryItem "/library/left_bar.lbi" --><!-- #EndLibraryItem -->
 </body>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/home_index.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/home_index.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
 var goods_id = {$goods_id};

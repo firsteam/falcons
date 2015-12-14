@@ -1,45 +1,45 @@
 <?php
 /**
- * ECSHOP Control panel mail template manage language file
+ * ECSHOP 管理中心邮件模板管理语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: mail_template.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['select_template'] = 'Please select mail template:';
-$_LANG['update_success'] = 'Saved template content successfully.';
-$_LANG['update_failed'] = 'Saved template content failed.';
-$_LANG['mail_subject'] = 'Mail subject';
-$_LANG['mail_type'] = 'Mail type';
-$_LANG['mail_plain_text'] = 'Plain text mail';
-$_LANG['mail_html'] = 'HTML mail';
+$_LANG['select_template'] = '请选择邮件模版：';
+$_LANG['update_success'] = '保存模板内容成功。';
+$_LANG['update_failed'] = '保存模板内容失败。';
+$_LANG['mail_subject'] = '邮件主题';
+$_LANG['mail_type'] = '邮件类型';
+$_LANG['mail_plain_text'] = '纯文本邮件';
+$_LANG['mail_html'] = 'HTML 邮件';
 
-/* Template description */
-$_LANG['order_confirm'] = 'Confirm order template';
-$_LANG['deliver_notice'] = 'Shipping notice template';
-$_LANG['send_password'] = 'Send password template';
-$_LANG['order_cancel'] = 'Cancel order template';
-$_LANG['order_invalid'] = 'Fail order template';
-$_LANG['send_bonus'] = 'Send bonus template';
-$_LANG['group_buy'] = 'Associates template';
-$_LANG['register_validate'] = 'E-mail authentication template';
-$_LANG['virtual_card'] = 'Virtual card templates';
-$_LANG['remind_of_new_order'] = 'Remind of new order template';
-$_LANG['goods_booking'] = 'Reply to goods booking template';
-$_LANG['user_message'] = 'Reply to message template';
-$_LANG['recomment'] = 'Reply to comment template';
+/* 模板描述 */
+$_LANG['order_confirm'] = '订单确认模板';
+$_LANG['deliver_notice'] = '发货通知模板';
+$_LANG['send_password'] = '发送密码模板';
+$_LANG['order_cancel'] = '订单取消模板';
+$_LANG['order_invalid'] = '订单无效模板';
+$_LANG['send_bonus'] = '发送红包模板';
+$_LANG['group_buy'] = '团购商品模板';
+$_LANG['register_validate'] = '邮件验证模板';
+$_LANG['virtual_card'] = '虚拟卡片模板';
+$_LANG['remind_of_new_order'] = '新订单提醒模板';
+$_LANG['goods_booking'] = '缺货回复模板';
+$_LANG['user_message'] = '留言回复模板';
+$_LANG['recomment'] = '用户评论回复模板';
+$_LANG['reg_email_code'] = '注册邮箱验证码模块';
+$_LANG['findPwd_email_code'] = '找回密码箱验证码模块';
 
-$_LANG['subject_empty'] = 'Sorry, mail subject can\'t be blank.';
-$_LANG['content_empty'] = 'Sorry, mail content can\'t be blank.';
+$_LANG['subject_empty'] = '对不起，邮件的主题不能为空。';
+$_LANG['content_empty'] = '对不起，邮件的内容不能为空。';
 
-$_LANG['js_languages']['save_confirm'] = 'You have modified template content, are you sure don\'t save it?';
+$_LANG['js_languages']['save_confirm'] = '您已经修改了模板内容，您确定不保存么？';
 
 ?>

@@ -13,60 +13,60 @@
  * $Id: ebao_commend.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['select_method'] = 'Ways to choose merchandise:';
-$_LANG['by_cat'] = 'From the classification, under the choice of brand merchandise';
-$_LANG['by_sn'] = 'Classification, under the brand names of all merchandise';
-$_LANG['select_cat'] = 'Select Categories:';
-$_LANG['select_brand'] = 'Select brand merchandise:';
-$_LANG['goods_list'] = 'Merchandise list:';
-$_LANG['src_list'] = 'List to be elected:';
-$_LANG['dest_list'] = 'Selected list:';
-$_LANG['search'] = 'Search';
-$_LANG['return_method'] = 'Back is the way:';
-$_LANG['return_value'] = 'Return is the amount of:';
-$_LANG['money'] = 'Yuan';
-$_LANG['percentprice'] = 'The percentage of the price';
-$_LANG['all_same'] = 'Cash back';
-$_LANG['go_insert'] = 'Add complete';
-$_LANG['goods_class'] = 'Merchandise categories';
-$_LANG['goods_name'] = 'Trade names';
-$_LANG['brand'] = 'Brand';
-$_LANG['goods_cat'] = 'Their classification:';
-$_LANG['js_languages']['please_select_goods'] = 'Please select your merchandise';
-$_LANG['js_languages']['goods_cat_not_leaf'] = 'Please select at the end of class Classification';
-$_LANG['js_languages']['please_select_cat'] = 'Please select the category that';
+$_LANG['select_method'] = '选择商品的方式：';
+$_LANG['by_cat'] = '从分类、品牌下选择商品';
+$_LANG['by_sn'] = '分类、品牌下所有商品';
+$_LANG['select_cat'] = '选择商品分类：';
+$_LANG['select_brand'] = '选择商品品牌：';
+$_LANG['goods_list'] = '商品列表：';
+$_LANG['src_list'] = '待选列表：';
+$_LANG['dest_list'] = '选定列表：';
+$_LANG['search'] = '搜索';
+$_LANG['return_method'] = '返现方式：';
+$_LANG['return_value'] = '返现额度：';
+$_LANG['money'] = '元';
+$_LANG['percentprice'] = '价格的百分比';
+$_LANG['all_same'] = '返现金额';
+$_LANG['go_insert'] = '添加完成';
+$_LANG['goods_class'] = '商品类别';
+$_LANG['goods_name'] = '商品名称';
+$_LANG['brand'] = '品牌';
+$_LANG['goods_cat'] = '所属分类：';
+$_LANG['js_languages']['please_select_goods'] = '请您选择商品';
+$_LANG['js_languages']['goods_cat_not_leaf'] = '请选择底级分类';
+$_LANG['js_languages']['please_select_cat'] = '请您选择所属分类';
 // 标题栏
-$_LANG['ebao_commend'] = 'Epro recommend to add';
-$_LANG['searchkey'] = 'Merchandise search keywords';
-$_LANG['ebao_list'] = 'Epro recommend a list of';
+$_LANG['ebao_commend'] = '易宝推荐添加';
+$_LANG['searchkey'] = '商品搜索关键字';
+$_LANG['ebao_list'] = '易宝推荐列表';
 
 //
-$_LANG['goods_cat'] = 'All Categories';
-$_LANG['goods_brand'] = 'All brands';
-$_LANG['intro_type'] = 'Recommend';
-$_LANG['keyword'] = 'Keyword';
-$_LANG['is_best'] = 'Boutique';
-$_LANG['is_new'] = 'New Products';
-$_LANG['is_hot'] = 'Hot';
-$_LANG['is_promote'] = 'Special Offers';
+$_LANG['goods_cat'] = '所有分类';
+$_LANG['goods_brand'] = '所有品牌';
+$_LANG['intro_type'] = '推荐';
+$_LANG['keyword'] = '关键字';
+$_LANG['is_best'] = '精品';
+$_LANG['is_new'] = '新品';
+$_LANG['is_hot'] = '热销';
+$_LANG['is_promote'] = '特价';
 
-$_LANG['goods_name'] = 'Trade names';
-$_LANG['goods_sn'] = 'NO';
-$_LANG['shop_price'] = 'Price';
-$_LANG['is_on_sale'] = 'Shelves';
-$_LANG['goods_number'] = 'Stock';
+$_LANG['goods_name'] = '商品名称';
+$_LANG['goods_sn'] = '货号';
+$_LANG['shop_price'] = '价格';
+$_LANG['is_on_sale'] = '上架';
+$_LANG['goods_number'] = '库存';
 
-$_LANG['copy'] = 'Copy';
+$_LANG['copy'] = '复制';
 
-$_LANG['integral'] = 'Integral limit';
-$_LANG['on_sale'] = 'Shelves';
-$_LANG['not_on_sale'] = 'Shelves';
-$_LANG['best'] = 'Boutique';
-$_LANG['not_best'] = 'Cancel Boutique';
-$_LANG['new'] = 'New Products';
-$_LANG['not_new'] = 'Cancel New Products';
-$_LANG['hot'] = 'Hot';
-$_LANG['not_hot'] = 'The abolition of sales';
-$_LANG['move_to'] = 'Transferred to the classification';
+$_LANG['integral'] = '积分额度';
+$_LANG['on_sale'] = '上架';
+$_LANG['not_on_sale'] = '下架';
+$_LANG['best'] = '精品';
+$_LANG['not_best'] = '取消精品';
+$_LANG['new'] = '新品';
+$_LANG['not_new'] = '取消新品';
+$_LANG['hot'] = '热销';
+$_LANG['not_hot'] = '取消热销';
+$_LANG['move_to'] = '转移到分类';
 
 ?>

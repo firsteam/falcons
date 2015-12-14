@@ -3,50 +3,48 @@
 /**
  * ECSHOP
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: repay.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['back_list'] = 'Return to list';
-$_LANG['dispose_succed'] = 'Successfully';
+$_LANG['back_list'] = '返回列表';
+$_LANG['dispose_succed'] = '处理成功';
 
-$_LANG['rec_id'] = 'ID';
-$_LANG['user_name'] = 'Username';
-$_LANG['amount'] = 'Refundment';
-$_LANG['apply_time'] = 'Apply time';
-$_LANG['action_user'] = 'Action user';
-$_LANG['action_time'] = 'Action time';
+$_LANG['rec_id'] = '编号';
+$_LANG['user_name'] = '申请用户';
+$_LANG['amount'] = '退款金额';
+$_LANG['apply_time'] = '申请时间';
+$_LANG['action_user'] = '处理用户';
+$_LANG['action_time'] = '处理时间';
 
-$_LANG['button_dipose'] = 'Agreement with refundment';
-$_LANG['button_skip'] = 'Neglect the application';
-$_LANG['button_modify'] = 'Modify remarks';
+$_LANG['button_dipose'] = '同意退款';
+$_LANG['button_skip'] = '忽略申请';
+$_LANG['button_modify'] = '修改备注';
 
-$_LANG['is_repayed'] = 'Repay?';
-$_LANG['repayed'] = 'Repayed';
-$_LANG['unrepayed'] = 'Unrepayed';
+$_LANG['is_repayed'] = '是否处理';
+$_LANG['repayed'] = '已处理';
+$_LANG['unrepayed'] = '未处理';
 
-$_LANG['view'] = 'View';
+$_LANG['view'] = '查看详情';
 
-$_LANG['from'] = 'From';
-$_LANG['reply'] = 'Reply';
-$_LANG['had_reply_content'] = 'TIP: This application has be disposed, and the money of user\'s application has be deducted, the old message will be rewrote if continue reply! But don\'t deduct the money again.';
-$_LANG['have_reply_content'] = 'TIP: This application has be neglected, the old message will be rewrote if continue reply!';
+$_LANG['from'] = '于';
+$_LANG['reply'] = '回复';
+$_LANG['had_reply_content'] = '提示: 此条申请已处理,并已经扣除用户申请金额, 如果继续回复将更新原来回复的内容!但不再扣除用户金额';
+$_LANG['have_reply_content'] = '提示: 此条申请已被忽略, 如果继续回复将更新原来回复的内容!';
 
-$_LANG['user_money'] = 'Balance';
-$_LANG['action_note'] = 'Disposal remark';
+$_LANG['user_money'] = '用户余额';
+$_LANG['action_note'] = '处理备注';
 
-$_LANG['dispose'] = 'Process application for refundment';
-$_LANG['undispose_repay'] = 'Unprocess application of refundment';
-$_LANG['list_all'] = 'All application of refundment';
+$_LANG['dispose'] = '退款申请处理';
+$_LANG['undispose_repay'] = '未处理的退款申请';
+$_LANG['list_all'] = '全部退款申请';
 
-$_LANG['js_languages']['no_action_note'] = 'Please enter disposal remark.';
+$_LANG['js_languages']['no_action_note'] = '必须输入处理备注';
 
 ?>

@@ -25,7 +25,7 @@ overflow-x:hidden; /*隐藏水平滚动条*/
 </style>
 </head>
 <body>
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/base-2011.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/base-2011.js"></script>
 <div id="site-nav"> 
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <link href="themes/{$template_dir}/images/ghs/css/ghs_style.css" rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@ overflow-x:hidden; /*隐藏水平滚动条*/
 <!-- #BeginLibraryItem "/library/ghs_category.lbi" --><!-- #EndLibraryItem -->
 <!-- #BeginLibraryItem "/library/ghs_top10.lbi" --><!-- #EndLibraryItem -->
 </div>
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/category.css" media="all" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/category.css" media="all" />
 <div class="ghs_right" style="width:1000px;">
 <!-- {if $cat_pic} -->
 <a href="{$cat_pic_url}" target="_blank" style="width:1000px; height:260px; margin:4px 0;"><img src="{$cat_pic}" width="1000" height="260" /></a>

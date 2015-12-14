@@ -1,5 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery.plus.js"></script>
+<script type="text/javascript" src="themes/cnpicks/js/jquery.plus.js"></script>
 <div class="slide">
   <ul class="bd">
     {foreach from=$flash_img_list name="flash_img_list" item=fimg}

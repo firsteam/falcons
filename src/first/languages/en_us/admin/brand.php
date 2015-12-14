@@ -1,61 +1,59 @@
 <?php
 
 /**
- * ECSHOP Brand management language item
+ * ECSHOP 品牌管理语言项
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: brand.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['brand_name'] = 'Brand';
-$_LANG['site_url'] = 'Website';
-$_LANG['brand_desc'] = 'Description';
-$_LANG['brand_logo'] = 'LOGO';
-$_LANG['sort_order'] = 'Sort';
-$_LANG['is_show'] = 'Display';
-$_LANG['drop_brand_logo'] = 'Delete the logo';
-$_LANG['confirm_drop_logo'] = 'Are you sure delete the logo?';
-$_LANG['drop_brand_logo_success'] = 'Delete the logo successfully!';
+$_LANG['brand_name'] = '品牌名称';
+$_LANG['site_url'] = '品牌网址';
+$_LANG['brand_desc'] = '品牌描述';
+$_LANG['brand_logo'] = '品牌LOGO';
+$_LANG['sort_order'] = '排序';
+$_LANG['is_show'] = '是否显示';
+$_LANG['drop_brand_logo'] = '删除图标';
+$_LANG['confirm_drop_logo'] = '你确认要删除该图标吗？';
+$_LANG['drop_brand_logo_success'] = '删除品牌logo成功';
 
-$_LANG['brand_edit_lnk']='Re-edit that brand';
-$_LANG['brand_list_lnk'] = 'Return to the list page';
+$_LANG['brand_edit_lnk'] = '重新编辑该品牌';
+$_LANG['brand_list_lnk'] = '返回列表页面';
 
-/*Help information*/
-$_LANG['up_brandlogo'] = 'Please upload image as brand LOGO!';
-$_LANG['warn_brandlogo'] = 'You has uploaded the image. If upload again, the old image will be covered!';
+/*帮助信息*/
+$_LANG['up_brandlogo'] = '请上传图片，做为品牌的LOGO！';
+$_LANG['warn_brandlogo'] = '你已经上传过图片。再次上传时将覆盖原图片！';
 
-/*Prompting message*/
-$_LANG['brand_edit'] = 'Edit brand record';
-$_LANG['upload_failure'] = 'Upload image has failed!';
-$_LANG['brandedit_fail'] = 'Edit brand %s has failed!';
-$_LANG['brandadd_succed'] = 'Add new brand successsfully!';
-$_LANG['brandedit_succed'] = 'Edit brand %s successfully!';
-$_LANG['brandname_exist'] = '%s already exists.';
-$_LANG['drop_confirm'] = 'Are you sure delete this brand?';
-$_LANG['drop_succeed'] = 'Delete successfully!';
-$_LANG['drop_fail'] = 'Delete has failed!';
+/*提示信息*/
+$_LANG['brand_edit'] = '编辑品牌记录';
+$_LANG['upload_failure'] = '图片上传失败！';
+$_LANG['brandedit_fail'] = '品牌 %s 修改失败！';
+$_LANG['brandadd_succed'] = '新品牌添加成功！';
+$_LANG['brandedit_succed'] = '品牌 %s 修改成功！';
+$_LANG['brandname_exist'] = '品牌 %s 已经存在！';
+$_LANG['drop_confirm'] = '你确认要删除选定的商品品牌吗？';
+$_LANG['drop_succeed'] = '已成功删除！';
+$_LANG['drop_fail'] = '删除失败！';
 
-$_LANG['no_brandname'] = 'Please enter a brand name!';
-$_LANG['enter_int'] = 'Please enter an integer!';
+$_LANG['no_brandname'] = '您必须输入品牌名称！';
+$_LANG['enter_int'] = '请输入一个整数！';
 
-$_LANG['back_list'] = 'Return to brand list';
-$_LANG['continue_add'] = 'Continue add new brand';
+$_LANG['back_list'] = '返回品牌列表';
+$_LANG['continue_add'] = '继续添加新品牌';
 
-$_LANG['upfile_type_error'] = "The uploaded image type must be jpg,gif or png.";
-$_LANG['upfile_error'] = "Wrong, please ensure files\' writability of data directory!";
+$_LANG['upfile_type_error'] = "只能上传jpg，gif，png类型的图片";
+$_LANG['upfile_error'] = "图片无法上传，请确保data目录下所有子目录的可写性！";
 
-$_LANG['visibility_notes'] = 'When brand merchandise under no time and the breakdown of home pages of the brand areas will not be displayed to the brand.';
+$_LANG['visibility_notes'] = '当品牌下还没有商品的时候，首页及分类页的品牌区将不会显示该品牌。';
 
-/*JS language item*/
-$_LANG['js_languages']['no_brandname'] = 'Please enter brand name!';
-$_LANG['js_languages']['require_num']='The sort ordinal number must be a figure.';
+/*JS 语言项*/
+$_LANG['js_languages']['no_brandname'] = '您必须输入品牌名称！';
+$_LANG['js_languages']['require_num'] =  '排序序号必须是一个数字';
 
 ?>

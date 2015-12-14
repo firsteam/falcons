@@ -122,9 +122,9 @@ body {
 	height: auto;
 }
 #entry .form, #entry1 .form {
-	-webkit-box-shadow: #ccc 0px 0px 5px;
+	/*-webkit-box-shadow: #ccc 0px 0px 5px;
 	-moz-box-shadow: #ccc 0px 0px 5px;
-	box-shadow: #ccc 0px 0px 5px;
+	box-shadow: #ccc 0px 0px 5px;*/
 }
 #entry h2 {
 	height: 30px;
@@ -523,7 +523,7 @@ body {
 	width: 290px;
 	height: 70px;
 	background: url(../images/header/logo.jpg) no-repeat;
-	margin: 10px 0 0 0px;
+	margin: 20px 0 0 0px;
 	float: left;
 }
 .Logo-info-r a.sina, .Logo-info-r a.qq, .Logo-info-r span.weixin, .item table td a i {
@@ -651,7 +651,7 @@ body {
 	height: 44px;
 	line-height: 44px;
 	font-size: 28px;
-	margin: 26px 0px 0px 15px;
+	margin: 16px 0px 0px 15px;
 	float: left;
 	padding: 0px 15px;
 }

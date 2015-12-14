@@ -1,65 +1,63 @@
 <?php
 
 /**
- * ECSHOP Article\'s Category management program language file
+ * ECSHOP 文章分类管理程序语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: articlecat.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['cat_name'] = 'Name';
-$_LANG['type'] = 'Category Type';
-$_LANG['type_name'][COMMON_CAT] = 'General classification';
-$_LANG['type_name'][SYSTEM_CAT] = 'Taxonomy';
-$_LANG['type_name'][INFO_CAT]   = 'Shop information';
-$_LANG['type_name'][UPHELP_CAT] = 'Help Category';
-$_LANG['type_name'][HELP_CAT]   = 'Shop help';
+$_LANG['cat_name'] = '文章分类名称';
+$_LANG['type'] = '分类类型';
+$_LANG['type_name'][COMMON_CAT] = '普通分类';
+$_LANG['type_name'][SYSTEM_CAT] = '系统分类';
+$_LANG['type_name'][INFO_CAT]   = '网店信息';
+$_LANG['type_name'][UPHELP_CAT] = '帮助分类';
+$_LANG['type_name'][HELP_CAT]   = '网店帮助';
 
-$_LANG['cat_keywords'] = 'Keywords';
-$_LANG['cat_desc'] = 'Description';
-$_LANG['parent_cat'] = 'Superior Categories';
-$_LANG['cat_top'] = 'Top Categories';
-$_LANG['not_allow_add'] = 'Classification does not allow you to add the selected sub-classification';
-$_LANG['not_allow_remove'] = 'System to retain the classification does not allow delete';
-$_LANG['is_fullcat'] = 'There are sub-classified under the classification, first delete its sub-classification';
-$_LANG['show_in_nav'] = 'Display in navigation';
+$_LANG['cat_keywords'] = '关键字';
+$_LANG['cat_desc'] = '描述';
+$_LANG['parent_cat'] = '上级分类';
+$_LANG['cat_top'] = '顶级分类';
+$_LANG['not_allow_add'] = '你所选分类不允许添加子分类';
+$_LANG['not_allow_remove'] = '系统保留分类，不允许删除';
+$_LANG['is_fullcat'] = '该分类下还有子分类，请先删除其子分类';
+$_LANG['show_in_nav'] = '是否显示在导航栏';
 
-$_LANG['isopen'] = 'Yes';
-$_LANG['isclose'] = 'No';
-$_LANG['add_article'] = 'Add new article';
+$_LANG['isopen'] = '显示';
+$_LANG['isclose'] = '不显示';
+$_LANG['add_article'] = '添加文章';
 
-$_LANG['articlecat_edit'] = 'Edit article category';
+$_LANG['articlecat_edit'] = '文章分类编辑';
 
 
-/* Prompting message */
-$_LANG['catname_exist'] = '%s already exists.';
-$_LANG['parent_id_err'] = 'Category name %s parent classification should not set itself or its own sub-classification';
-$_LANG['back_list'] = 'Return to category list';
-$_LANG['continue_add'] = 'Continue add new category';
-$_LANG['catadd_succed'] = 'Add successfully!';
-$_LANG['catedit_succed'] = 'Edit category %s successfully!';
-$_LANG['back_list'] = 'Return to category list';
-$_LANG['continue_add'] = 'Continue add new category';
-$_LANG['no_catname'] = 'Please enter a category name.';
-$_LANG['edit_fail'] = 'Edit failed.';
-$_LANG['enter_int'] = 'Please enter an integer';
-$_LANG['not_emptycat'] = 'Wrong, there are articles in the category.';
+/* 提示信息 */
+$_LANG['catname_exist'] = '分类名 %s 已经存在';
+$_LANG['parent_id_err'] = '分类名 %s 的父分类不能设置成本身或本身的子分类';
+$_LANG['back_list'] = '返回分类列表';
+$_LANG['continue_add'] = '继续添加新分类';
+$_LANG['catadd_succed'] = '已成功添加';
+$_LANG['catedit_succed'] = '分类 %s 编辑成功';
+$_LANG['back_list'] = '返回分类列表';
+$_LANG['continue_add'] = '继续添加分类';
+$_LANG['no_catname'] = '请填入分类名';
+$_LANG['edit_fail'] = '编辑失败';
+$_LANG['enter_int'] = '请输入一个整数';
+$_LANG['not_emptycat'] = '分类下还有文章，不允许删除非空分类';
 
-/* Help */
-$_LANG['notice_keywords'] ='The keywords is optional, for search conveniently.';
-$_LANG['notice_isopen'] ='Whether display the category in navigation.';
+/*帮助信息*/
+$_LANG['notice_keywords'] ='关键字为选填项，其目的在于方便外部搜索引擎搜索';
+$_LANG['notice_isopen'] ='该文章分类是否显示在前台的主导航栏中。';
 
-/* JS language item */
-$_LANG['js_languages']['no_catname'] = 'Please enter article category name.';
-$_LANG['js_languages']['sys_hold'] = 'Retain the classification system is not permitted to add sub-categories';
-$_LANG['js_languages']['remove_confirm'] = 'Are you sure delete the selected category?';
+/*JS 语言项*/
+$_LANG['js_languages']['no_catname'] = '没有输入分类的名称';
+$_LANG['js_languages']['sys_hold'] = '系统保留分类，不允许添加子分类';
+$_LANG['js_languages']['remove_confirm'] = '您确定要删除选定的分类吗？';
 
 ?>

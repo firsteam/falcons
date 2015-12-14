@@ -11,8 +11,8 @@
 <!-- TemplateEndEditable -->
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/68ecshop_commin.css" />
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/style_jm.css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/commin.css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/style_jm.css" />
 {insert_scripts files='jquery-1.6.2.min.js '}
 {insert_scripts files='jquery.json.js,transport.js'}
 {* 包含脚本文件 *}

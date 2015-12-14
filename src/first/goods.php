@@ -500,7 +500,8 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $properties = get_goods_properties($goods_id);  // 获得商品的规格和属性
 
         $smarty->assign('properties',          $properties['pro']);                              // 商品属性
-
+		//增加同分类同品牌下的商品
+		$smarty->assign('category_related_brand_goods',       category_related_brand_goods($goods['cat_id'], $goods['brand_id'])); 
 
 		/* 代码增加_start  By  www.ecshop68.com */	
 		$sql_zhyh_qq = "select attr_id from ".$ecs->table('attribute')." where cat_id='". $goods['goods_type'] ."' and is_attr_gallery='1' ";
@@ -1352,6 +1353,47 @@ function get_goods_volume($goods_id)
     }
     return $volume_price;
 }
+
+//增加同分类同品牌下的商品
+function category_related_brand_goods($category_id,$brand_id)
+{
+    $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND ".
+            "g.is_delete = 0 AND g.cat_id=$category_id AND g.brand_id = $brand_id ";
+    $sql = 'SELECT g.goods_id,g.brand_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+                "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
+                'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
+            'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
+            'LEFT JOIN ' . $GLOBALS['ecs']->table('member_price') . ' AS mp ' .
+                "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
+            "WHERE $where ORDER BY g.goods_id limit 12";
+    $res = $GLOBALS['db']->query($sql);
+    $arr = array();
+    while ($row = $GLOBALS['db']->fetchRow($res))
+    {
+        $arr[$row['goods_id']]['goods_id']     = $row['goods_id'];
+
+        $arr[$row['goods_id']]['brand_id']     = $row['brand_id'];
+        $arr[$row['goods_id']]['goods_name']   = $row['goods_name'];
+        $arr[$row['goods_id']]['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
+            sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+        $arr[$row['goods_id']]['goods_thumb']  = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+        $arr[$row['goods_id']]['goods_img']    = get_image_path($row['goods_id'], $row['goods_img']);
+        $arr[$row['goods_id']]['market_price'] = price_format($row['market_price']);
+        $arr[$row['goods_id']]['shop_price']   = price_format($row['shop_price']);
+        $arr[$row['goods_id']]['url']          = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
+        if ($row['promote_price'] > 0)
+        {
+            $arr[$row['goods_id']]['promote_price'] = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);
+            $arr[$row['goods_id']]['formated_promote_price'] = price_format($arr[$row['goods_id']]['promote_price']);
+        }
+        else
+        {
+            $arr[$row['goods_id']]['promote_price'] = 0;
+        }
+    }
+    return $arr;
+}
+
 
 
 /* 代码增加_start  By  www.68ecshop.com */

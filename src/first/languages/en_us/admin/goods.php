@@ -1,296 +1,296 @@
 <?php
 
 /**
- * ECSHOP Manage a center start page language file
+ * ECSHOP 管理中心起始页语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it mean that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: goods.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['edit_goods'] ='Edit';
-$_LANG['copy_goods'] ='Copy';
-$_LANG['continue_add_goods'] ='Continue add new product';
-$_LANG['back_goods_list'] ='Return product list';
-$_LANG['add_goods_ok'] ='Add successfully';
-$_LANG['edit_goods_ok'] ='Edit successfully';
-$_LANG['trash_goods_ok'] ='Move to recycle bin successfully.';
-$_LANG['restore_goods_ok'] ='Restore successfully.';
-$_LANG['drop_goods_ok'] ='Delete successfully.';
-$_LANG['batch_handle_ok']       = 'Batch operation successfully.';
-$_LANG['drop_goods_confirm']    = 'Are you sure delete the product?';
-$_LANG['batch_drop_confirm']    = 'All related products will be deleted if you thorough delete the pruduct!';
-$_LANG['trash_goods_confirm']   = 'Are you sure move the product to recycle bin?';
-$_LANG['batch_trash_confirm']   = 'Are you sure move the checked product to recycle bin?';
-$_LANG['trash_product_confirm'] = 'Are you sure you take the goods removed?';
-$_LANG['restore_goods_confirm'] = 'Are you sure restore the product?';
-$_LANG['batch_restore_confirm'] = 'Are you sure restore the checked product?';
-$_LANG['batch_on_sale_confirm'] = 'Are you sure set the checked product as on sale?';
-$_LANG['batch_not_on_sale_confirm'] = 'Are you sure cancel the checked on sale product?';
-$_LANG['batch_best_confirm']    = 'Are you sure set the checked product as best?';
-$_LANG['batch_not_best_confirm']    = 'Are you sure cancel the checked best product?';
-$_LANG['batch_new_confirm']     = 'Are you sure set the checked product as new?';
-$_LANG['batch_not_new_confirm'] = 'Are you sure cancel the checked new product?';
-$_LANG['batch_hot_confirm']     = 'Are you sure set the checked product as hot?';;
-$_LANG['batch_not_hot_confirm']='Are you surecancel the checked hot product?';
-$_LANG['cannot_found_goods'] = 'Don\'t find appointed product.';
-$_LANG['sel_goods_type'] = 'Please choose the type of merchandise';
-$_LANG['sel_goods_suppliers'] = 'Please select the suppliers';
+$_LANG['edit_goods'] = '编辑商品信息';
+$_LANG['copy_goods'] = '复制商品信息';
+$_LANG['continue_add_goods'] = '继续添加新商品';
+$_LANG['back_goods_list'] = '返回商品列表';
+$_LANG['add_goods_ok'] = '添加商品成功。';
+$_LANG['edit_goods_ok'] = '编辑商品成功。';
+$_LANG['trash_goods_ok'] = '把商品放入回收站成功。';
+$_LANG['restore_goods_ok'] = '还原商品成功。';
+$_LANG['drop_goods_ok'] = '删除商品成功。';
+$_LANG['batch_handle_ok'] = '批量操作成功。';
+$_LANG['drop_goods_confirm'] = '您确实要删除该商品吗？';
+$_LANG['batch_drop_confirm'] = '彻底删除商品将删除与该商品有关的所有信息。\n您确实要删除选中的商品吗？';
+$_LANG['trash_goods_confirm'] = '您确实要把该商品放入回收站吗？';
+$_LANG['trash_product_confirm'] = '您确实要把该货品删除吗？';
+$_LANG['batch_trash_confirm'] = '您确实要把选中的商品放入回收站吗？';
+$_LANG['restore_goods_confirm'] = '您确实要把该商品还原吗？';
+$_LANG['batch_restore_confirm'] = '您确实要把选中的商品还原吗？';
+$_LANG['batch_on_sale_confirm'] = '您确实要把选中的商品上架吗？';
+$_LANG['batch_not_on_sale_confirm'] = '您确实要把选中的商品下架吗？';
+$_LANG['batch_best_confirm'] = '您确实要把选中的商品设为精品吗？';
+$_LANG['batch_not_best_confirm'] = '您确实要把选中的商品取消精品吗？';
+$_LANG['batch_new_confirm'] = '您确实要把选中的商品设为新品吗？';
+$_LANG['batch_not_new_confirm'] = '您确实要把选中的商品取消新品吗？';
+$_LANG['batch_hot_confirm'] = '您确实要把选中的商品设为热销吗？';
+$_LANG['batch_not_hot_confirm'] = '您确实要把选中的商品取消热销吗？';
+$_LANG['cannot_found_goods'] = '找不到指定的商品。';
+$_LANG['sel_goods_type'] = '请选择商品类型';
+$_LANG['sel_goods_suppliers'] = '请选择供货商';
+/*------------------------------------------------------ */
+//-- 图片处理相关提示信息
+/*------------------------------------------------------ */
+$_LANG['no_gd'] = '您的服务器不支持 GD 或者没有安装处理该图片类型的扩展库。';
+$_LANG['img_not_exists'] = '没有找到原始图片，创建缩略图失败。';
+$_LANG['img_invalid'] = '创建缩略图失败，因为您上传了一个无效的图片文件。';
+$_LANG['create_dir_failed'] = 'images 文件夹不可写，创建缩略图失败。';
+$_LANG['safe_mode_warning'] = '您的服务器运行在安全模式下，而且 %s 目录不存在。您可能需要先行创建该目录才能上传图片。';
+$_LANG['not_writable_warning'] = '目录 %s 不可写，您需要把该目录设为可写才能上传图片。';
 
 /*------------------------------------------------------ */
-//-- The picture processing is related to hint an information
+//-- 商品列表
 /*------------------------------------------------------ */
-$_LANG['no_gd'] ='Your server nonsupport GD or didn\'t install to operate the picture type to expand a database perhaps.';
-$_LANG['img_not_exists'] ='Don\'t find out an original picture, create thumbnail failure.';
-$_LANG['img_invalid'] ='Create thumbnail failure, because you upload an invalid picture file.';
-$_LANG['create_dir_failed'] ='The images file clip and can\'t write, create thumbnail failure.';
-$_LANG['safe_mode_warning'] ='Your server circulate under the safe mode, and %s directory nonentity. Your needing probably to establish a directory in advance then can upload a picture.';
-$_LANG['not_writable_warning']='The %s directory can\'t be wrote, you need to config the directory as writable then can upload a picture.';
+$_LANG['goods_cat'] = '所有分类';
+$_LANG['goods_brand'] = '所有品牌';
+$_LANG['intro_type'] = '全部';
+$_LANG['keyword'] = '关键字';
+$_LANG['is_best'] = '精品';
+$_LANG['is_new'] = '新品';
+$_LANG['is_hot'] = '热销';
+$_LANG['is_promote'] = '特价';
+$_LANG['all_type'] = '全部推荐';
+$_LANG['sort_order'] = '推荐排序';
 
-/*------------------------------------------------------ */
-//-- Product list
-/*------------------------------------------------------ */
-$_LANG['goods_cat'] ='All Categories';
-$_LANG['goods_brand'] ='All Brands';
-$_LANG['intro_type'] =' All';
-$_LANG['keyword'] ='Keywords';
-$_LANG['is_best'] ='Best';
-$_LANG['is_new'] ='New';
-$_LANG['is_hot'] ='Hot';
-$_LANG['is_promote'] ='Sales promotion';
-$_LANG['all_type'] = 'All recommend';
-$_LANG['sort_order'] = 'Recommend to sort';
+$_LANG['goods_name'] = '商品名称';
+$_LANG['goods_sn'] = '货号';
+$_LANG['shop_price'] = '价格';
+$_LANG['is_on_sale'] = '上架';
+$_LANG['goods_number'] = '库存';
 
-$_LANG['goods_name'] ='Name';
-$_LANG['goods_sn'] ='NO.';
-$_LANG['shop_price'] ='Price';
-$_LANG['is_on_sale'] ='On sale';
-$_LANG['goods_number'] ='Stock';
+$_LANG['copy'] = '复制';
+$_LANG['item_list'] = '货品列表';
 
-$_LANG['copy'] ='Copy';
-$_LANG['item_list'] = 'Item List';
+$_LANG['integral'] = '积分额度';
+$_LANG['on_sale'] = '上架';
+$_LANG['not_on_sale'] = '下架';
+$_LANG['best'] = '精品';
+$_LANG['not_best'] = '取消精品';
+$_LANG['new'] = '新品';
+$_LANG['not_new'] = '取消新品';
+$_LANG['hot'] = '热销';
+$_LANG['not_hot'] = '取消热销';
+$_LANG['move_to'] = '转移到分类';
 
-$_LANG['integral'] ='Points limit';
-$_LANG['on_sale'] ='On sale';
-$_LANG['not_on_sale'] ='Not on sale';
-$_LANG['best'] ='Best product';
-$_LANG['not_best'] ='Cancel best product';
-$_LANG['new'] ='New product';
-$_LANG['not_new'] ='Cancel new product';
-$_LANG['hot'] ='Hot product';
-$_LANG['not_hot'] ='Cancel hot product';
-$_LANG['move_to'] ='Move to category';
+$_LANG['pass_audit'] = '审核通过';
+$_LANG['not_audit'] = '未审核';
+$_LANG['not_pass_audit'] = '审核未通过';
 
 // ajax
-$_LANG['goods_name_null'] ='Please enter product name.';
-$_LANG['goods_sn_null'] ='Please enter product NO..';
-$_LANG['shop_price_not_number']='Price must be a figure.';
-$_LANG['shop_price_invalid'] = 'You have entered an illegal market price.';
-$_LANG['goods_sn_exists'] ='The product NO. already exist, please change a number.';
+$_LANG['goods_name_null'] = '请输入商品名称';
+$_LANG['goods_sn_null'] = '请输入货号';
+$_LANG['shop_price_not_number'] = '价格不是数字';
+$_LANG['shop_price_invalid'] = '您输入了一个非法的市场价格。';
+$_LANG['goods_sn_exists'] = '您输入的货号已存在，请换一个';
 
 /*------------------------------------------------------ */
-//-- Add /edit a product information
+//-- 添加/编辑商品信息
 /*------------------------------------------------------ */
-$_LANG['tab_general'] ='Brief';
-$_LANG['tab_detail'] ='Details';
-$_LANG['tab_mix'] ='Others';
-$_LANG['tab_properties'] ='Attribute';
-$_LANG['tab_gallery'] ='Gallery';
-$_LANG['tab_linkgoods'] ='Relational products';
-$_LANG['tab_groupgoods'] ='Accessories';
-$_LANG['tab_article'] ='Relational articles';
+$_LANG['tab_general'] = '通用信息';
+$_LANG['tab_detail'] = '详细描述';
+$_LANG['tab_mix'] = '其他信息';
+$_LANG['tab_properties'] = '商品属性';
+$_LANG['tab_gallery'] = '商品相册';
+$_LANG['tab_linkgoods'] = '关联商品';
+$_LANG['tab_groupgoods'] = '配件';
+$_LANG['tab_article'] = '关联文章';
 
-$_LANG['lab_goods_name'] ='Name:';
-$_LANG['lab_goods_sn'] ='NO.:';
-$_LANG['lab_goods_cat'] ='Category:';
-$_LANG['lab_other_cat'] ='Extend category:';
-$_LANG['lab_goods_brand'] ='Brand:';
-$_LANG['lab_shop_price'] ='Shop price:';
-$_LANG['lab_market_price'] ='Market price:';
-$_LANG['lab_user_price'] ='Member price:';
-$_LANG['lab_promote_price'] ='Promotion price:';
-$_LANG['lab_promote_date'] ='Promotion date:';
-$_LANG['lab_picture'] ='Upload picture:';
-$_LANG['lab_thumb'] ='Upload thumbnail:';
-$_LANG['auto_thumb'] ='Create thumbnail automatically';
-$_LANG['lab_keywords'] ='Keywords:';
-$_LANG['lab_goods_brief'] ='Brief:';
-$_LANG['lab_seller_note'] ='Shop notice:';
-$_LANG['lab_goods_type'] = 'Goods type：';
-$_LANG['lab_picture_url'] = 'Merchandise picture external URL';
-$_LANG['lab_thumb_url'] = 'External merchandise Thumbnail URL';
+$_LANG['lab_goods_name'] = '商品名称：';
+$_LANG['lab_goods_sn'] = '商品货号：';
+$_LANG['lab_goods_cat'] = '商品分类：';
+$_LANG['lab_other_cat'] = '扩展分类：';
+$_LANG['lab_goods_brand'] = '商品品牌：';
+$_LANG['lab_shop_price'] = '本店售价：';
+$_LANG['lab_market_price'] = '市场售价：';
+$_LANG['lab_user_price'] = '会员价格：';
+$_LANG['lab_promote_price'] = '促销价：';
+$_LANG['lab_cost_price'] = '分成金额：';
+$_LANG['lab_promote_date'] = '促销日期：';
+$_LANG['lab_picture'] = '上传商品图片：';
+$_LANG['lab_thumb'] = '上传商品缩略图：';
+$_LANG['auto_thumb'] = '自动生成商品缩略图';
+$_LANG['lab_keywords'] = '商品关键词：';
+$_LANG['lab_goods_brief'] = '商品简单描述：';
+$_LANG['lab_seller_note'] = '商家备注：';
+$_LANG['lab_goods_type'] = '商品类型：';
+$_LANG['lab_picture_url'] = '商品图片外部URL';
+$_LANG['lab_thumb_url'] = '商品缩略图外部URL';
 
-$_LANG['lab_goods_weight'] ='Weight:';
-$_LANG['unit_g'] ='Gram';
-$_LANG['unit_kg'] ='Kilogram';
-$_LANG['lab_goods_number'] ='Stock quantity:';
-$_LANG['lab_warn_number'] ='Stock warning quantity:';
-$_LANG['lab_integral'] ='Integral purchase amount:';
-$_LANG['lab_give_integral'] = 'Consumption presented a few points:';
-$_LANG['lab_rank_integral'] = 'Presented a number of grade points:';
-$_LANG['lab_intro'] ='Recommend:';
-$_LANG['lab_is_on_sale'] ='On sale:';
-$_LANG['lab_is_alone_sale'] ='Common product:';
-$_LANG['lab_is_free_shipping'] = 'Free shipping：';
+$_LANG['lab_goods_weight'] = '商品重量：';
+$_LANG['unit_g'] = '克';
+$_LANG['unit_kg'] = '千克';
+$_LANG['lab_goods_number'] = '商品库存数量：';
+$_LANG['lab_warn_number'] = '库存警告数量：';
+$_LANG['lab_integral'] = '积分购买金额：';
+$_LANG['lab_give_integral'] = '赠送消费积分数：';
+$_LANG['lab_rank_integral'] = '赠送等级积分数：';
+$_LANG['lab_intro'] = '加入推荐：';
+$_LANG['lab_is_on_sale'] = '上架：';
+$_LANG['lab_is_alone_sale'] = '能作为普通商品销售：';
+$_LANG['lab_is_free_shipping'] = '是否为免运费商品';
 
+$_LANG['compute_by_mp'] = '按市场价计算';
 
-$_LANG['compute_by_mp'] ='Calculate';
+$_LANG['notice_goods_sn'] = '如果您不输入商品货号，系统将自动生成一个唯一的货号。';
+$_LANG['notice_integral'] = '(此处需填写金额)购买该商品时最多可以使用积分的金额';
+$_LANG['notice_give_integral'] = '购买该商品时赠送消费积分数,-1表示按商品价格赠送';
+$_LANG['notice_rank_integral'] = '购买该商品时赠送等级积分数,-1表示按商品价格赠送';
+$_LANG['notice_seller_note'] = '仅供商家自己看的信息';
+$_LANG['notice_storage'] = '库存在商品为虚货或商品存在货品时为不可编辑状态，库存数值取决于其虚货数量或货品数量';
+$_LANG['notice_keywords'] = '用空格分隔';
+$_LANG['notice_user_price'] = '会员价格为-1时表示会员价格按会员等级折扣率计算。你也可以为每个等级指定一个固定价格';
+$_LANG['notice_goods_type'] = '请选择商品的所属类型，进而完善此商品的属性';
+$_LANG['notice_cost_price'] = '分成金额为客户购买本商品，其推荐人能够通过分成获得的金额基数';
+$_LANG['on_sale_desc'] = '打勾表示允许销售，否则不允许销售。';
+$_LANG['alone_sale'] = '打勾表示能作为普通商品销售，否则只能作为配件或赠品销售。';
+$_LANG['free_shipping'] = '打勾表示此商品不会产生运费花销，否则按照正常运费计算。';
 
-$_LANG['notice_goods_sn'] ='If you don\'t enter product NO., the system will create unique NO. automatically.';
-$_LANG['notice_integral'] ='（This required amount）Buy the goods can use points.';
-$_LANG['notice_give_integral'] = 'Purchase the merchandise when presented fraction of consumption, express -1 presented by commodity prices';
-$_LANG['notice_rank_integral'] = 'Purchase the merchandise when presented fraction grading, express -1 presented by commodity prices';
-$_LANG['notice_seller_note'] ='Only provide information for shop owner.';
-$_LANG['notice_storage'] = 'Inventories of goods for the virtual goods or commodities when there is non-editable state of goods, inventory value depends on its quantity or volume of goods virtual goods';
-$_LANG['notice_keywords'] ='Divided by blank character.';
-$_LANG['notice_user_price'] = 'Member price is -1, said member prices Member grade discount rate. You can also specify a hierarchy for each fixed-price';
-$_LANG['notice_goods_type'] = 'Please select the type of the goods, then complete the attributes of the goods';
+$_LANG['invalid_goods_img'] = '商品图片格式不正确！';
+$_LANG['invalid_goods_thumb'] = '商品缩略图格式不正确！';
+$_LANG['invalid_img_url'] = '商品相册中第%s个图片格式不正确!';
 
-$_LANG['on_sale_desc'] ='Checked means it can be allowed to sale, otherwise can be disallowed to sale.';
-$_LANG['alone_sale'] ='Checked means it can be sold as common product, otherwise can be sold as accessories or gifts.';
-$_LANG['free_shipping'] = 'Checked means it can shipped free, otherwise as regular.';
+$_LANG['goods_img_too_big'] = '商品图片文件太大了（最大值：%s），无法上传。';
+$_LANG['goods_thumb_too_big'] = '商品缩略图文件太大了（最大值：%s），无法上传。';
+$_LANG['img_url_too_big'] = '商品相册中第%s个图片文件太大了（最大值：%s），无法上传。';
 
-$_LANG['invalid_goods_img'] ='Product picture format inaccuracy!';
-$_LANG['invalid_goods_thumb']='Product thumbnail format inaccuracy!';
-$_LANG['invalid_img_url'] ='Product gallery the %s picture format inaccuracy!';
+$_LANG['integral_market_price'] = '取整数';
+$_LANG['upload_images'] = '上传图片';
+$_LANG['spec_price'] = '属性价格';
+$_LANG['drop_img_confirm'] = '您确实要删除该图片吗？';
 
-$_LANG['goods_img_too_big'] ='Product picture file is too big(the biggest value: %s), can\'t upload.';
-$_LANG['goods_thumb_too_big']='Product thumbnail file is too big(the biggest value: %s), can\'t upload.';
-$_LANG['img_url_too_big'] ='Product gallery in the %s picture file is too big(the biggest value: %s), can\'t upload.';
+$_LANG['select_font'] = '字体样式';
+$_LANG['font_styles'] = array('strong' => '加粗', 'em' => '斜体', 'u' => '下划线', 'strike' => '删除线');
 
-$_LANG['integral_market_price']='Take integral';
-$_LANG['upload_images'] ='Upload a picture';
-$_LANG['spec_price'] = 'Attribute price';
-$_LANG['drop_img_confirm'] = 'Are you sure delete the picture?';
+$_LANG['rapid_add_cat'] = '添加分类';
+$_LANG['rapid_add_brand'] = '添加品牌';
+$_LANG['category_manage'] = '分类管理';
+$_LANG['brand_manage'] = '品牌管理';
+$_LANG['hide'] = '隐藏';
 
-$_LANG['select_font'] = 'Font Style';
-$_LANG['font_styles'] = array('strong' => 'Bold', 'em' => 'Italic', 'u' => 'Underline', 'strike' => 'Strike Through');
+$_LANG['lab_volume_price']         = '商品优惠价格：';
+$_LANG['volume_number']            = '优惠数量';
+$_LANG['volume_price']             = '优惠价格';
+$_LANG['notice_volume_price']      = '购买数量达到优惠数量时享受的优惠价格';
+$_LANG['volume_number_continuous'] = '优惠数量重复！';
 
-$_LANG['rapid_add_cat'] = 'Add category';
-$_LANG['rapid_add_brand'] = 'Rapid add brand';
-$_LANG['category_manage'] = 'Category manage';
-$_LANG['brand_manage'] = 'Brand manage';
-$_LANG['hide'] = 'Hide';
-
-$_LANG['lab_volume_price'] = 'Goods favourable price：';
-$_LANG['volume_number'] = 'volume number';
-$_LANG['volume_price'] = 'Favourable price';
-$_LANG['notice_volume_price'] = 'Purchase quantity discount when the total number of preferential prices';
-$_LANG['volume_number_continuous'] = 'Repeat quantity discount!';
-
-$_LANG['label_suppliers']          = 'Choice of supplier:';
-$_LANG['suppliers_no']             = 'Do not specify a supplier of goods belonging to our';
-$_LANG['suppliers_move_to']        = 'Transferred to the supplier';
-$_LANG['lab_to_shopex']         = 'Transferred to the Shop';
-
-/*------------------------------------------------------ */
-//-- Connection product
-/*------------------------------------------------------ */
-
-$_LANG['all_goods'] ='Choose product';
-$_LANG['link_goods'] ='Relational products';
-$_LANG['single'] ='Single';
-$_LANG['double'] ='Double';
-$_LANG['all_article'] ='Choose product';
-$_LANG['goods_article'] ='Relational articles';
-$_LANG['top_cat'] = 'Top Categories';
+$_LANG['label_suppliers']          = '选择供货商：';
+$_LANG['suppliers_no']             = '不指定供货商属于本店商品';
+$_LANG['suppliers_move_to']        = '转移到供货商';
+$_LANG['lab_to_shopex']         = '转移到网店';
 
 /*------------------------------------------------------ */
-//-- Combine a product
+//-- 关联商品
 /*------------------------------------------------------ */
 
-$_LANG['group_goods'] ='Accessories';
-$_LANG['price'] ='Price';
+$_LANG['all_goods'] = '可选商品';
+$_LANG['link_goods'] = '跟该商品关联的商品';
+$_LANG['single'] = '单向关联';
+$_LANG['double'] = '双向关联';
+$_LANG['all_article'] = '可选文章';
+$_LANG['goods_article'] = '跟该商品关联的文章';
+$_LANG['top_cat'] = '顶级分类';
 
 /*------------------------------------------------------ */
-//-- Product gallery
+//-- 组合商品
 /*------------------------------------------------------ */
 
-$_LANG['img_desc'] ='Description';
-$_LANG['img_url'] ='Upload a file';
-$_LANG['img_file'] = 'or input the url of the image';
+$_LANG['group_goods'] = '该商品的配件';
+$_LANG['price'] = '价格';
 
 /*------------------------------------------------------ */
-//-- Connection article
+//-- 商品相册
 /*------------------------------------------------------ */
-$_LANG['article_title'] ='Article title';
 
-$_LANG['goods_not_exist'] = 'The product doesn\'t exist. ';
-$_LANG['goods_not_in_recycle_bin'] = 'The product can\'t be deleted until it is removed to recycle bin.';
+$_LANG['img_desc'] = '图片描述';
+$_LANG['img_url'] = '上传文件';
+$_LANG['img_file'] = '或者输入外部图片链接地址';
 
-$_LANG['js_languages']['goods_name_not_null']='Product name can\'t be blank.';
-$_LANG['js_languages']['goods_cat_not_null'] ='Please select product category.';
-$_LANG['js_languages']['category_cat_not_null'] = 'Category name can not null';
-$_LANG['js_languages']['brand_cat_not_null'] = 'Brand name can not null';
-$_LANG['js_languages']['goods_cat_not_leaf'] ='You selected product category isn\'t a bottom class category, please select a bottom class category.';
-$_LANG['js_languages']['shop_price_not_null']='The shop selling price can\'t be blank.';
-$_LANG['js_languages']['shop_price_not_number']='The shop selling price isn\'t a figure.';
+/*------------------------------------------------------ */
+//-- 关联文章
+/*------------------------------------------------------ */
+$_LANG['article_title'] = '文章标题';
 
-$_LANG['js_languages']['select_please'] ='Please select...';
-$_LANG['js_languages']['button_add'] ='Add';
-$_LANG['js_languages']['button_del'] ='Delete';
-$_LANG['js_languages']['spec_value_not_null'] ='The specification can\'t be blank.';
-$_LANG['js_languages']['spec_price_not_number'] ='The price markup isn\'t a fugure.';
-$_LANG['js_languages']['market_price_not_number']='The market price isn\'t a figure.';
-$_LANG['js_languages']['goods_number_not_int'] ='The product stock isn\'t an integer.';
-$_LANG['js_languages']['warn_number_not_int'] ='The stock warning isn\'t an integer.';
-$_LANG['js_languages']['promote_not_lt'] = 'Sales start date can not be greater than the end date';
-$_LANG['js_languages']['promote_start_not_null'] = 'Promotions start time should not be empty';
-$_LANG['js_languages']['promote_end_not_null'] = 'Ending time promotions should not be empty';
+$_LANG['goods_not_exist'] = '该商品不存在';
+$_LANG['goods_not_in_recycle_bin'] = '该商品尚未放入回收站，不能删除';
 
-$_LANG['js_languages']['drop_img_confirm'] = 'Are you sure delete the picture?';
-$_LANG['js_languages']['batch_no_on_sale'] = 'Are you sure stop sale the checked product?';
-$_LANG['js_languages']['batch_trash_confirm'] = 'Are you sure move the checked product to recycle bin?';
-$_LANG['js_languages']['go_category_page'] = "This page's data will lost, are you sure to go to adding category page？";
-$_LANG['js_languages']['go_brand_page'] = "This page's data will lost, are you sure to go to adding brand page？";
+$_LANG['js_languages']['goods_name_not_null'] = '商品名称不能为空。';
+$_LANG['js_languages']['goods_cat_not_null'] = '商品分类必须选择。';
+$_LANG['js_languages']['category_cat_not_null'] = '分类名称不能为空';
+$_LANG['js_languages']['brand_cat_not_null'] = '品牌名称不能为空';
+$_LANG['js_languages']['goods_cat_not_leaf'] = '您选择的商品分类不是底级分类，请选择底级分类。';
+$_LANG['js_languages']['shop_price_not_null'] = '本店售价不能为空。';
+$_LANG['js_languages']['shop_price_not_number'] = '本店售价不是数值。';
 
-$_LANG['js_languages']['volume_num_not_null'] = 'Please enter a quantity discount';
-$_LANG['js_languages']['volume_num_not_number'] = 'Quantity discount is not a figure';
-$_LANG['js_languages']['volume_price_not_null'] = 'Please enter at preferential prices';
-$_LANG['js_languages']['volume_price_not_number'] = 'Discounted prices not figure';
+$_LANG['js_languages']['select_please'] = '请选择...';
+$_LANG['js_languages']['button_add'] = '添加';
+$_LANG['js_languages']['button_del'] = '删除';
+$_LANG['js_languages']['spec_value_not_null'] = '规格不能为空';
+$_LANG['js_languages']['spec_price_not_number'] = '加价不是数字';
+$_LANG['js_languages']['market_price_not_number'] = '市场价格不是数字';
+$_LANG['js_languages']['goods_number_not_int'] = '商品库存不是整数';
+$_LANG['js_languages']['warn_number_not_int'] = '库存警告不是整数';
+$_LANG['js_languages']['promote_not_lt'] = '促销开始日期不能大于结束日期';
+$_LANG['js_languages']['promote_start_not_null'] = '促销开始时间不能为空';
+$_LANG['js_languages']['promote_end_not_null'] = '促销结束时间不能为空';
 
-$_LANG['js_languages']['cancel_color'] = 'no font';
+$_LANG['js_languages']['drop_img_confirm'] = '您确实要删除该图片吗？';
+$_LANG['js_languages']['batch_no_on_sale'] = '您确实要将选定的商品下架吗？';
+$_LANG['js_languages']['batch_trash_confirm'] = '您确实要把选中的商品放入回收站吗？';
+$_LANG['js_languages']['go_category_page'] = '本页数据将丢失，确认要去商品分类页添加分类吗？';
+$_LANG['js_languages']['go_brand_page'] = '本页数据将丢失，确认要去商品品牌页添加品牌吗？';
+
+$_LANG['js_languages']['volume_num_not_null'] = '请输入优惠数量';
+$_LANG['js_languages']['volume_num_not_number'] = '优惠数量不是数字';
+$_LANG['js_languages']['volume_price_not_null'] = '请输入优惠价格';
+$_LANG['js_languages']['volume_price_not_number'] = '优惠价格不是数字';
+
+$_LANG['js_languages']['cancel_color'] = '无样式';
 
 /* 虚拟卡 */
-$_LANG['card'] = 'See the virtual card information';
-$_LANG['replenish'] = 'Replenishment';
-$_LANG['batch_card_add'] = 'Batch Replenishment';
-$_LANG['add_replenish'] = 'Add virtual Kaka Micronesia';
+$_LANG['card'] = '查看虚拟卡信息';
+$_LANG['replenish'] = '补货';
+$_LANG['batch_card_add'] = '批量补货';
+$_LANG['add_replenish'] = '添加虚拟卡卡密';
 
-$_LANG['goods_number_error'] = 'Merchandise inventory quantity errors';
+$_LANG['goods_number_error'] = '商品库存数量错误';
 
 /*------------------------------------------------------ */
 //-- 货品
 /*------------------------------------------------------ */
-$_LANG['product'] = 'Goods';
-$_LANG['product_info'] = 'Item Information';
-$_LANG['specifications'] = 'Specifications';
-$_LANG['total'] = 'Total:';
-$_LANG['add_products'] = 'Add Item';
-$_LANG['save_products'] = 'Save the success of goods';
-$_LANG['product_id_null'] = 'Goods id is empty';
-$_LANG['cannot_found_products'] = 'Specified items not found';
-$_LANG['product_batch_del_success'] = 'Remove the success of bulk goods';
-$_LANG['product_batch_del_failure'] = 'Goods bulk delete failed';
-$_LANG['batch_product_add'] = 'Bulk Add';
-$_LANG['batch_product_edit'] = 'Batch Edit';
-$_LANG['products_title'] = 'Product Name:%s';
-$_LANG['products_title_2'] = 'Item:%s';
-$_LANG['good_shop_price'] = '(Price:%d)';
-$_LANG['good_goods_sn'] = '(Product Code:%s)';
-$_LANG['exist_same_goods_sn'] = 'Item No. Item and products are not allowed to repeat';
-$_LANG['exist_same_product_sn'] = 'No duplication of goods';
-$_LANG['cannot_add_products'] = 'Add a failure of goods';
-$_LANG['exist_same_goods_attr'] = 'Item Specifications Property repeat';
-$_LANG['cannot_goods_number'] = 'Item Specifications Property repeat';
-$_LANG['not_exist_goods_attr'] = 'This product does not exist specifications, please add the size of their';
-$_LANG['goods_sn_exists'] = 'The goods_sn you entered already exists';
-
+$_LANG['product'] = '货品';
+$_LANG['product_info'] = '货品信息';
+$_LANG['specifications'] = '规格';
+$_LANG['total'] = '合计：';
+$_LANG['add_products'] = '添加货品';
+$_LANG['save_products'] = '保存货品成功';
+$_LANG['product_id_null'] = '货品id为空';
+$_LANG['cannot_found_products'] = '未找到指定货品';
+$_LANG['product_batch_del_success'] = '货品批量删除成功';
+$_LANG['product_batch_del_failure'] = '货品批量删除失败';
+$_LANG['batch_product_add'] = '批量添加';
+$_LANG['batch_product_edit'] = '批量编辑';
+$_LANG['products_title'] = '商品名称：%s';
+$_LANG['products_title_2'] = '货号：%s';
+$_LANG['good_shop_price'] = '（商品价格：%d）';
+$_LANG['good_goods_sn'] = '（商品货号：%s）';
+$_LANG['exist_same_goods_sn'] = '货品货号不允许与产品货号重复';
+$_LANG['exist_same_product_sn'] = '货品货号重复';
+$_LANG['cannot_add_products'] = '货品添加失败';
+$_LANG['exist_same_goods_attr'] = '货品规格属性重复';
+$_LANG['cannot_goods_number'] = '此商品存在货品，不能修改商品库存';
+$_LANG['not_exist_goods_attr'] = '此商品不存在规格，请为其添加规格';
+$_LANG['goods_sn_exists'] = '您输入的货号已存在，请换一个';
 ?>

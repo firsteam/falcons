@@ -139,7 +139,7 @@ while ($row = $db->fetchRow($res))
 	    	$row[$v['code']] = $v['value'];
 	    }
     }else{
-    	$row['shop_logo'] = '../themes/68ecshopcom_360buy/images/ziying.jpg';
+    	$row['shop_logo'] = '../themes/cnpicks/images/ziying.jpg';
     }
     
 

@@ -180,9 +180,9 @@ function get_promotion_info1($goods_id = '')
 }
 $this->assign('promotion_info1', get_promotion_info1());
 ?>
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/base.css" media="all" />
-<link rel="stylesheet" type="text/css" href="themes/68ecshopcom_360buy/css/increase-68.css" media="all" />
-<link rel="stylesheet" href="themes/68ecshopcom_360buy/css/68ecshop_commin.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/increase-68.css" media="all" />
+<link rel="stylesheet" href="themes/cnpicks/css/commin.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="themes/{$template_dir}/images/misc/201007/skin/df/computer20120221.css" media="all" />
 {include file='library/user_header.lbi'} 
 <!--header start-->
@@ -191,11 +191,11 @@ $this->assign('promotion_info1', get_promotion_info1());
   <div class="headerLayout">
     <div class="headerCon ">
       <h1 id="mallLogo" class="mall-logo"> 
-     	<a href="index.php" class="header-logo"><img src="themes/68ecshopcom_360buy/images/header/logo.jpg" /></a>
+     	<a href="index.php" class="header-logo"><img src="themes/cnpicks/images/header/logo.jpg" /></a>
       </h1>
       <div class="header-extra">
         <div class="header-banner">
-          <div style="display: block;" id="J_FpEventBanner" class="fp-event-banner  hidden" data-spm="20000004"> <a href="index.php" data-spm="d2"> <img class="j_EventBannerPic event-banner-pic" src="themes/68ecshopcom_360buy/images/TB14nYUFVXXXXbsXpXXD1MBIXXX-190-80.png" alt="1" height="80" width="190"> </a> </div>
+          <div style="display: block;" id="J_FpEventBanner" class="fp-event-banner  hidden" data-spm="20000004"> <a href="index.php" data-spm="d2"> <img class="j_EventBannerPic event-banner-pic" src="themes/cnpicks/images/TB14nYUFVXXXXbsXpXXD1MBIXXX-190-80.png" alt="1" height="80" width="190"> </a> </div>
         </div> 
         <div id="mallSearch" class="mall-search" style="position:relative; z-index:999999999; overflow:visible">
         <div id="search_tips" style="display:none;"></div>

@@ -3,38 +3,36 @@
 /**
  * ECSHOP
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: shopinfo.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-$_LANG['id'] = 'ID';
-$_LANG['title'] = 'Title';
-$_LANG['add_time'] = 'Add time';
-$_LANG['shopinfo_add'] = 'Add New Article';
-$_LANG['shopinfo_list'] = 'Articles List';
+$_LANG['id'] = '编号';
+$_LANG['title'] = '文章标题';
+$_LANG['add_time'] = '添加时间';
+$_LANG['shopinfo_add'] = '添加新文章';
+$_LANG['shopinfo_list'] = '文章列表';
 
-$_LANG['back_list'] = 'Return to list';
-$_LANG['continue_add'] = 'Continue';
-$_LANG['articleadd_succeed']= 'Succeed';
+$_LANG['back_list'] = '返回列表';
+$_LANG['continue_add'] = '继续添加';
+$_LANG['articleadd_succeed']= '添加成功';
 
-/* Prompting message */
-$_LANG['title_exist'] = '%s already exists.';
-$_LANG['articleedit_succeed'] = 'Article %s has edited successfully.';
-$_LANG['back_list'] = 'Return to shop\'s information list.';
-$_LANG['edit_fail'] = 'Edit name failed.';
-$_LANG['remove_fail'] = 'Delete failed.';
-$_LANG['title_empty'] = 'Title can\'t be blank!';
+/* 提示信息 */
+$_LANG['title_exist'] = '文章名 %s 已经存在';
+$_LANG['articleedit_succeed'] = '文章  %s 更新成功';
+$_LANG['back_list'] = '返回网店信息列表';
+$_LANG['edit_fail'] = '编辑名称失败';
+$_LANG['remove_fail'] = '删除失败';
+$_LANG['title_empty'] = '文章标题不能为空！';
 
-/*JS language item*/
-$_LANG['js_languages']['no_title'] = 'Please enter a title.';
-$_LANG['js_languages']['remove_confirm'] = 'Are you sure delete the record?';
+/*JS 语言项*/
+$_LANG['js_languages']['no_title'] = '没有文章标题';
+$_LANG['js_languages']['remove_confirm'] = '你确定要删除这条记录吗？';
 
 ?>

@@ -52,6 +52,7 @@ elseif ($_REQUEST['act'] == 'add')
     $smarty->assign('ur_here',     $_LANG['07_brand_add']);
     $smarty->assign('action_link', array('text' => $_LANG['06_goods_brand_list'], 'href' => 'brand.php?act=list'));
     $smarty->assign('form_action', 'insert');
+    $smarty->assign('stype',get_street_type());
 
     assign_query_info();
     $smarty->assign('brand', array('sort_order'=>50, 'is_show'=>1));
@@ -63,8 +64,10 @@ elseif ($_REQUEST['act'] == 'insert')
     admin_priv('brand_manage');
 
     $is_show = isset($_REQUEST['is_show']) ? intval($_REQUEST['is_show']) : 0;
+    $brand_cat = intval($_REQUEST['supplier_type']);
 
     $is_only = $exc->is_only('brand_name', $_POST['brand_name']);
+    $save['supplier_type'] = intval($_REQUEST['supplier_type']);
 
     if (!$is_only)
     {
@@ -85,8 +88,8 @@ elseif ($_REQUEST['act'] == 'insert')
 
     /*插入数据*/
 
-    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, site_url, brand_desc, brand_logo, is_show, sort_order) ".
-           "VALUES ('$_POST[brand_name]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]')";
+    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, site_url, brand_desc, brand_logo, is_show, sort_order,brand_cat) ".
+           "VALUES ('$_POST[brand_name]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]','$brand_cat')";
     $db->query($sql);
 
     admin_log($_POST['brand_name'],'add','brand');
@@ -110,7 +113,7 @@ elseif ($_REQUEST['act'] == 'edit')
 {
     /* 权限判断 */
     admin_priv('brand_manage');
-    $sql = "SELECT brand_id, brand_name, site_url, brand_logo, brand_desc, brand_logo, is_show, sort_order ".
+    $sql = "SELECT brand_id, brand_name, site_url, brand_logo, brand_desc, brand_logo, is_show, sort_order,brand_cat ".
             "FROM " .$ecs->table('brand'). " WHERE brand_id='$_REQUEST[id]'";
     $brand = $db->GetRow($sql);
 
@@ -118,7 +121,7 @@ elseif ($_REQUEST['act'] == 'edit')
     $smarty->assign('action_link', array('text' => $_LANG['06_goods_brand_list'], 'href' => 'brand.php?act=list&' . list_link_postfix()));
     $smarty->assign('brand',       $brand);
     $smarty->assign('form_action', 'updata');
-
+    $smarty->assign('stype',get_street_type());
     assign_query_info();
     $smarty->display('brand_info.htm');
 }
@@ -143,12 +146,13 @@ elseif ($_REQUEST['act'] == 'updata')
     }
 
     $is_show = isset($_REQUEST['is_show']) ? intval($_REQUEST['is_show']) : 0;
+    $brand_cat = intval($_REQUEST['supplier_type']);
      /*处理URL*/
     $site_url = sanitize_url( $_POST['site_url'] );
 
     /* 处理图片 */
     $img_name = basename($image->upload_image($_FILES['brand_logo'],'brandlogo'));
-    $param = "brand_name = '$_POST[brand_name]',  site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]' ";
+    $param = "brand_name = '$_POST[brand_name]',  site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]',brand_cat ='$brand_cat' ";
     if (!empty($img_name))
     {
         //有图片上传
@@ -397,6 +401,16 @@ function get_brandlist()
     }
 
     return array('brand' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
+}
+
+function get_street_type(){
+    $sql = "select cat_id,cat_name from ".$GLOBALS['ecs']->table('brands_category')." where is_show = 1";
+    $info = $GLOBALS['db']->getAll($sql);
+    $ret = array();
+    foreach($info as $k=>$v){
+        $ret[$v['cat_id']] = $v['cat_name'];
+    }
+    return $ret;
 }
 
 ?>

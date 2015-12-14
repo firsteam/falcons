@@ -13,66 +13,66 @@
  * $Id: flashplay.php 17217 2011-01-19 06:29:08Z liubo $
  */
 
-$_LANG['schp_imgsrc'] = 'Carousel picture Address';
-$_LANG['schp_imgurl'] = 'Carousel Picture Link';
-$_LANG['schp_imgdesc'] = 'Photo Caption';
-$_LANG['schp_sort'] = 'Sort';
-$_LANG['trash_img_confirm'] = 'You want to delete this Carousel picture it?';
-$_LANG['custom_del_confirm'] = 'You want to delete it?';
-$_LANG['tab_change_alert'] = 'Close all of custom ADS before click Default AD';
-$_LANG['trash_img'] = 'Delete Image';
-$_LANG['custom_drop_img'] = 'Delete AD';
-$_LANG['custom_change_img'] = 'Edit Status';
-$_LANG['add_new'] = 'Add Image';
-$_LANG['add_flash'] = 'Add Player';
-$_LANG['add_ad'] = 'Add Custom AD';
-$_LANG['add_picad'] = 'Add Image AD';
-$_LANG['edit_picad'] = 'Edit Image AD';
-$_LANG['edit_ad'] = 'Edit Custom AD';
-$_LANG['title_flash_name'] = 'AD Name';
-$_LANG['title_flash_type'] = 'AD type';
-$_LANG['title_flash_time'] = 'Addtion time';
-$_LANG['title_flash_status'] = 'Status';
-$_LANG['title_upload_notice'] = 'Upload a picture Or input a URL';
+$_LANG['schp_imgsrc'] = '轮播图片地址';
+$_LANG['schp_imgurl'] = '轮播图片链接';
+$_LANG['schp_imgdesc'] = '图片说明';
+$_LANG['schp_sort'] = '排序';
+$_LANG['trash_img_confirm'] = '您要删除这张轮播图片么？';
+$_LANG['custom_del_confirm'] = '您确定删除此广告吗？';
+$_LANG['tab_change_alert'] = '请先将自定义广告全部“关闭”,\n\n然后才可以点击系统默认。';
+$_LANG['trash_img'] = '删除这张轮播图片';
+$_LANG['custom_drop_img'] = '删除此广告';
+$_LANG['custom_change_img'] = '修改状态';
+$_LANG['add_new'] = '添加图片';
+$_LANG['add_flash'] = '添加播放器';
+$_LANG['add_ad'] = '自定义添加广告';
+$_LANG['add_picad'] = '添加图片广告';
+$_LANG['edit_picad'] = '编辑图片广告';
+$_LANG['edit_ad'] = '自定义编辑广告';
+$_LANG['title_flash_name'] = '广告名称';
+$_LANG['title_flash_type'] = '广告类型';
+$_LANG['title_flash_time'] = '添加时间';
+$_LANG['title_flash_status'] = '状态';
+$_LANG['title_upload_notice'] = '上传该广告的图片文件,或者你也可以指定一个远程URL地址为广告的图片';
 
-$_LANG['img_src'] = 'Image Address';
-$_LANG['img_url'] = 'Image URL';
-$_LANG['form_none'] = 'Failed,the form is imperfect.';
-$_LANG['web_url_no'] = 'Error in address.Please input the full URL.';
-$_LANG['src_empty'] = 'Error in address.';
-$_LANG['back_custom_set'] = 'Return to Custom AD';
-$_LANG['edit_ok'] = 'OK';
-$_LANG['edit_no'] = 'Failed';
-$_LANG['id_error'] = 'No Image';
-$_LANG['src_empty'] = 'Input Image Address';
-$_LANG['link_empty'] = 'Input Link Address';
-$_LANG['go_url'] = 'Image List';
-$_LANG['ad_play_url'] = 'AD List';
-$_LANG['return_edit'] = 'Return to edit';
-$_LANG['width_height'] = 'Image\'s width:%s height:%s';
-$_LANG['invalid_type'] = 'Error in image type';
-$_LANG['flash_template'] = 'Flash Player List';
-$_LANG['current_theme'] = 'Current style';
-$_LANG['install_success'] = 'The successful opening of the Flash style.';
-$_LANG['ad_img'] = 'Image';
+$_LANG['img_src'] = '图片地址';
+$_LANG['img_url'] = '图片链接';
+$_LANG['form_none'] = '表单信息不全,添加失败';
+$_LANG['web_url_no'] = '远程地址错误。请填写完整的 URL 地址！';
+$_LANG['src_empty'] = '地址错误。';
+$_LANG['back_custom_set'] = '返回自定义设置页';
+$_LANG['edit_ok'] = '操作成功';
+$_LANG['edit_no'] = '操作失败';
+$_LANG['id_error'] = '没有指定的轮播图片！';
+$_LANG['src_empty'] = '请填写轮播图片地址';
+$_LANG['link_empty'] = '请填写链接地址';
+$_LANG['go_url'] = '轮播图片列表';
+$_LANG['ad_play_url'] = '广告轮播列表';
+$_LANG['return_edit'] = '返回编辑页';
+$_LANG['width_height'] = '此模板的图片标准宽度为：%s 标准高度为：%s';
+$_LANG['invalid_type'] = '您上传的图片格式不正确！';
+$_LANG['flash_template'] = '可用Flash轮播图片样式';
+$_LANG['current_theme'] = '当前样式';
+$_LANG['install_success'] = '启用Flash样式成功。';
+$_LANG['ad_img'] = '图片';
 $_LANG['ad_flash'] = 'Flash';
-$_LANG['ad_html'] = 'Code';
-$_LANG['ad_text'] = 'Character';
+$_LANG['ad_html'] = '代码';
+$_LANG['ad_text'] = '文字';
 
 
 /* 内容页标签 */
-$_LANG['lable_flash_name'] = 'AD Name:';
-$_LANG['lable_flash_type'] = 'AD Type:';
-$_LANG['lable_flash_status'] = 'Status:';
-$_LANG['lable_upload'] = 'Upload:';
-$_LANG['lable_url'] = 'Link:';
-$_LANG['lable_from_web'] = 'URL:';
-$_LANG['lable_content'] = 'Content:';
+$_LANG['lable_flash_name'] = '广告名称：';
+$_LANG['lable_flash_type'] = '广告类型：';
+$_LANG['lable_flash_status'] = '状态：';
+$_LANG['lable_upload'] = '上传：';
+$_LANG['lable_url'] = '链接地址：';
+$_LANG['lable_from_web'] = '或者远程URL地址：';
+$_LANG['lable_content'] = '内容：';
 
 /* 标签 */
-$_LANG['system_set'] = 'Default AD';
-$_LANG['custom_set'] = 'Custom AD';
+$_LANG['system_set'] = '系统默认';
+$_LANG['custom_set'] = '自定义';
 
 /* JS 语言项 */
-$_LANG['js_languages']['setupConfirm'] = 'The opening of the new Flash style will cover the original style. \n Are you sure you want to enable the selected style it?';
+$_LANG['js_languages']['setupConfirm'] = '启用新的Flash样式将覆盖原来的样式。\n您确定要启用选定的样式吗？';
 ?>

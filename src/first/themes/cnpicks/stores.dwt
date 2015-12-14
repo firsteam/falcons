@@ -26,20 +26,7 @@
   <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div id="content">
     <div class="flow">
-      <div class="cate_attr">
-      <div class="nav-tag clearfix"> 
-        <div class="cate_attr_con">
-        	<div class="filter-all-ab">
-      			<a {if !$smarty.request.id} class="selected" {/if} target="_self" href="stores.php"><span>全部</span></a>
-            </div>
-            <div class="district-tab">
-        		{foreach from=$all item=cat} 
-        		<a {if $smarty.request.id == $cat.str_id} class="selected" {/if} target="_self" href="{$cat.url}"><span>{$cat.str_name}</span></a>
-        		{/foreach}
-            </div> 
-        </div>
-      </div>
-    </div>
+      
       <!-- #BeginLibraryItem "/library/stores_list.lbi" --><!-- #EndLibraryItem --> 
 	  <!-- #BeginLibraryItem "/library/stores_pager.lbi" --><!-- #EndLibraryItem --> 
     </div>

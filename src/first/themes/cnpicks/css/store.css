@@ -626,7 +626,7 @@ html {
 	overflow: hidden;
 	background-color: #fff;
 	white-space: normal;
-	margin-top: 18px;
+	margin: 0 0 18px 0;
 	/*border: 1px #ddd solid;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.2);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,.2);
@@ -644,10 +644,10 @@ html {
 	display: block;
 }
 .flow-item a.flow-datu {
-	width: 150px;
+	/*width: 150px;
 	height: 150px;
 	border: 1px #ddd solid;
-	margin: 15px 0 0 10px;
+	margin: 15px 0 0 10px;*/
 }
 .flow-item a.flow-datu img {
 	margin: auto;
@@ -655,11 +655,12 @@ html {
 .flow-item .flow-content {
 	width: 200px;
 	float: left;
-	margin-left: 25px;
-	margin-top: 15px;
+	margin-left: 40px;
+	margin-top: 10px;
 }
 .flow-title {
 	font-size: 14px;
+	width: 60px;
 	height: 30px;
 	line-height: 30px;
 	overflow: hidden
@@ -690,16 +691,17 @@ html {
 	height: 33px;
 }
 .flow-desc {
-	fonts-size: 12px;
-	height: 20px;
-	line-height: 20px;
+	float: right;
+	font-size: 12px;
+	width: 70px;
+	/*height: 20px;
+	line-height: 20px;*/
 	overflow: hidden;
 	color: #606060;
 	margin-bottom: 10px
 }
-.flow-desc span, .flow-desc a {
-	float: left;
-	margin-right: 5px;
+.flow-desc span, .flow-desc a {	
+	margin-right: 5px;/**/
 	display: block
 }
 .flow-desc a {
@@ -719,10 +721,10 @@ html {
 	color: #E22A40;
 }
 .flow-main {
-	float: right;
+	/*float: right;*/
 	position: relative;
 	z-index: 2;
-	width: 945px;
+	/*width: 945px;*/
 	height: 160px;
 	margin-top: 10px;
 }
@@ -750,7 +752,7 @@ html {
 	background-position: -428px -29px;
 }
 .picMarquee-left .bda {
-	padding: 0px 10px;
+	padding: 0px 10px 0px 40px;
 	height: 165px;
 }
 .picMarquee-left .bda .picListta{

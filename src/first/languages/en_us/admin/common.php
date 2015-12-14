@@ -1,343 +1,501 @@
 <?php
 
 /**
- * ECSHOP Control panel common language file
+ * ECSHOP 管理中心共用语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * * 版权所有 2005-2012 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: common.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
 $_LANG['app_name'] = 'ECSHOP';
-$_LANG['cp_home'] = 'ECSHOP Management';
-$_LANG['copyright'] = ' &copy; 2005-2011 ECSHOP Copyright, <br> All Right Reserved.';
-$_LANG['query_info'] = 'Run %d queries, spend %s seconds';
-$_LANG['memory_info'] = ',memory occupied:%0.3f MB';
-$_LANG['gzip_enabled'] = ',Gzip enabled';
-$_LANG['gzip_disabled'] = ',Gzip disabled';
-$_LANG['loading'] = 'Processing...';
-$_LANG['js_languages']['process_request'] = 'Processing...';
-$_LANG['js_languages']['todolist_caption'] = 'To do list';
-$_LANG['js_languages']['todolist_autosave'] = 'Auto save';
-$_LANG['js_languages']['todolist_save'] = 'Save';
-$_LANG['js_languages']['todolist_clear'] = 'Clear';
-$_LANG['js_languages']['todolist_confirm_save'] = 'Are you sure save change to To do list?';
-$_LANG['js_languages']['todolist_confirm_clear'] = 'Are you sure clear text?';
-$_LANG['auto_redirection'] = 'If you don\'t select, <span id="spanSeconds">3</span> seconds ago, it will jump to the first URL.';
-$_LANG['password_rule'] = 'Password should only contain english character, figure, long between 6 and 16 bits.';
-$_LANG['username_rule'] = 'Username should be chinese ,english character, figure combination, between 3 and 15 bits.';
-$_LANG['plugins_not_found'] = 'Plug-in %s can\'t be fixed position';
-$_LANG['no_records'] = 'Did not find any record';
-$_LANG['role_describe'] = 'Description';
+$_LANG['cp_home'] = '商之翼 管理中心';
+$_LANG['copyright'] = '版权所有 &copy; 2008-2015 秦皇岛商之翼网络科技有限公司，并保留所有权利。';
+$_LANG['query_info'] = '共执行 %d 个查询，用时 %s 秒';
+$_LANG['memory_info'] = '，内存占用 %0.3f MB';
+$_LANG['gzip_enabled'] = '，Gzip 已启用';
+$_LANG['gzip_disabled'] = '，Gzip 已禁用';
+$_LANG['loading'] = '正在处理您的请求...';
+$_LANG['js_languages']['process_request'] = '正在处理您的请求...';
+$_LANG['js_languages']['todolist_caption'] = '记事本';
+$_LANG['js_languages']['todolist_autosave'] = '自动保存';
+$_LANG['js_languages']['todolist_save'] = '保存';
+$_LANG['js_languages']['todolist_clear'] = '清除';
+$_LANG['js_languages']['todolist_confirm_save'] = '是否将更改保存到记事本？';
+$_LANG['js_languages']['todolist_confirm_clear'] = '是否清空内容？';
+$_LANG['auto_redirection'] = '如果您不做出选择，将在 <span id="spanSeconds">3</span> 秒后跳转到第一个链接地址。';
+$_LANG['password_rule'] = '密码应只包含英文字符、数字.长度在6--16位之间';
+$_LANG['username_rule'] = '用户名应为汉字、英文字符、数字组合，3到15位';
+$_LANG['plugins_not_found'] = '插件 %s 无法定位';
+$_LANG['no_records'] = '没有找到任何记录';
+$_LANG['role_describe'] = '角色描述';
 
 $_LANG['require_field'] = '<span class="require-field">*</span>';
-$_LANG['yes'] = 'Yes';
-$_LANG['no'] = 'No';
-$_LANG['record_id'] = 'ID';
-$_LANG['handler'] = 'Operate';
-$_LANG['install'] = 'Install';
-$_LANG['uninstall'] = 'Uninstall';
-$_LANG['list'] = 'List';
-$_LANG['add'] = 'Add';
-$_LANG['edit'] = 'Edit';
-$_LANG['view'] = 'View';
-$_LANG['remove'] = 'Remove';
-$_LANG['drop'] = 'Delete';
-$_LANG['confirm_delete'] = 'Are you sure you want to delete?';
-$_LANG['disabled'] = 'Disabled';
-$_LANG['enabled'] = 'Enabled';
-$_LANG['setup'] = 'Setup';
-$_LANG['success'] = 'Success';
-$_LANG['sort_order'] = 'Sort';
-$_LANG['trash'] = 'Recycle bin';
-$_LANG['restore'] = 'Restore';
-$_LANG['close_window'] = 'Close Window';
-$_LANG['btn_select'] = 'Choose';
-$_LANG['operator'] = 'Operator';
-$_LANG['cancel'] = 'Cancel';
+$_LANG['yes'] = '是';
+$_LANG['no'] = '否';
+$_LANG['record_id'] = '编号';
+$_LANG['handler'] = '操作';
+$_LANG['install'] = '安装';
+$_LANG['uninstall'] = '卸载';
+$_LANG['list'] = '列表';
+$_LANG['add'] = '添加';
+$_LANG['edit'] = '编辑';
+$_LANG['view'] = '查看';
+$_LANG['remove'] = '移除';
+$_LANG['drop'] = '删除';
+$_LANG['confirm_delete'] = '您确定要删除吗？';
+$_LANG['disabled'] = '禁用';
+$_LANG['enabled'] = '启用';
+$_LANG['setup'] = '设置';
+$_LANG['success'] = '成功';
+$_LANG['sort_order'] = '排序';
+$_LANG['trash'] = '回收站';
+$_LANG['restore'] = '还原';
+$_LANG['close_window'] = '关闭窗口';
+$_LANG['btn_select'] = '选择';
+$_LANG['operator'] = '操作人';
+$_LANG['cancel'] = '取消';
 
-$_LANG['empty'] = 'Can\'t be blank';
-$_LANG['repeat'] = 'Existed';
-$_LANG['is_int'] = 'It must be an integer';
+$_LANG['empty'] = '不能为空';
+$_LANG['repeat'] = '已存在';
+$_LANG['is_int'] = '应该为整数';
 
-$_LANG['button_submit'] = ' Submit ';
-$_LANG['button_save'] = ' Save ';
-$_LANG['button_reset'] = ' Reset ';
-$_LANG['button_search'] = ' Search ';
+//yyy添加start
+$_LANG['button_new'] = ' 新建 ';
+$_LANG['top_huanying'] = ' ，欢迎您！ ';
+//yyy添加end
+/* 代码增加_start   By www.ecshop68.com */
+$_LANG['17_pickup_point_manage'] = '自提点管理';
+$_LANG['pickup_point_list'] = '自提点列表';
+$_LANG['pickup_point_add']  = '添加自提点';
+$_LANG['pickup_point_batch_add'] = '自提点批量上传';
+/* 代码增加_end   By www.ecshop68.com */
+$_LANG['button_submit'] = ' 确定 ';
+$_LANG['button_save'] = ' 保存 ';
+$_LANG['button_reset'] = ' 重置 ';
+$_LANG['button_search'] = ' 搜索 ';
 
-$_LANG['priv_error'] = 'Sorry, you haven\'t authorization to run this operation!';
-$_LANG['drop_confirm'] = 'Are you sure delete this record?';
-$_LANG['form_notice'] = 'View notices';
-$_LANG['upfile_type_error'] = 'Upload file type error!';
-$_LANG['upfile_error'] = 'Upload file error!';
-$_LANG['no_operation'] = 'You do not choose any action';
+$_LANG['priv_error'] = '对不起,您没有执行此项操作的权限!';
+$_LANG['drop_confirm'] = '您确认要删除这条记录吗?';
+$_LANG['form_notice'] = '点击此处查看提示信息';
+$_LANG['upfile_type_error'] = '上传文件的类型不正确!';
+$_LANG['upfile_error'] = '上传文件失败!';
+$_LANG['no_operation'] = '您没有选择任何操作';
 
-$_LANG['go_back'] = 'Previous';
-$_LANG['back'] = 'Back';
-$_LANG['continue'] = 'Continue';
-$_LANG['system_message'] = 'System information';
-$_LANG['check_all'] = 'Check all';
-$_LANG['select_please'] = 'Please select...';
-$_LANG['all_category'] = 'All categories';
-$_LANG['all_brand'] = 'All brand';
-$_LANG['refresh'] = 'Refresh';
-$_LANG['update_sort'] = 'Update sort';
-$_LANG['modify_failure'] = 'Modify failure!';
-$_LANG['attradd_succed'] = 'Operate successfully!';
-$_LANG['todolist'] = 'To do list';
+$_LANG['go_back'] = '返回上一页';
+$_LANG['back'] = '返回';
+$_LANG['continue'] = '继续';
+$_LANG['system_message'] = '系统信息';
+$_LANG['check_all'] = '全选';
+$_LANG['select_please'] = '请选择...';
+$_LANG['all_category'] = '所有分类';
+$_LANG['all_brand'] = '所有品牌';
+$_LANG['refresh'] = '刷新';
+$_LANG['update_sort'] = '更新排序';
+$_LANG['modify_failure'] = '修改失败!';
+$_LANG['attradd_succed'] = '操作成功!';
+$_LANG['todolist'] = '记事本';
 $_LANG['n_a'] = 'N/A';
 
-/* Coding */
-$_LANG['charset']['utf8'] = 'Internationalization coding(utf8)';
-$_LANG['charset']['zh_cn'] = 'Simplified chinese';
-$_LANG['charset']['zh_tw'] = 'Traditional Chinese';
-$_LANG['charset']['en_us'] = 'America english';
-$_LANG['charset']['en_uk'] = 'English';
+/* 提示 */
+$_LANG['sys']['wrong'] = '错误：';
 
-/* New order notify */
-$_LANG['order_notify'] = 'New order notify';
-$_LANG['new_order_1'] = 'You have ';
-$_LANG['new_order_2'] = ' New orders and ';
-$_LANG['new_order_3'] = ' New paid orders';
-$_LANG['new_order_link'] = 'View new orders';
+/* 编码 */
+$_LANG['charset']['utf8'] = '国际化编码（utf8）';
+$_LANG['charset']['zh_cn'] = '简体中文';
+$_LANG['charset']['zh_tw'] = '繁体中文';
+$_LANG['charset']['en_us'] = '美国英语';
+$_LANG['charset']['en_uk'] = '英文';
 
-/* Language item*/
-$_LANG['chinese_simplified'] = 'Simplified chinese';
-$_LANG['english'] = 'English';
+/* 新订单通知 */
+$_LANG['order_notify'] = '新订单通知';
+$_LANG['new_order_1'] = '您有 ';
+$_LANG['new_order_2'] = ' 个新订单以及 ';
+$_LANG['new_order_3'] = ' 个新付款的订单';
+$_LANG['new_order_link'] = '点击查看新订单';
 
-/* Pagination */
-$_LANG['total_records'] = 'Total ';
-$_LANG['total_pages'] = 'records, divided into ';
-$_LANG['page_size'] = 'page, per page';
-$_LANG['page_current'] = 'pages,  current No.';
-$_LANG['page_first'] = 'First';
-$_LANG['page_prev'] = 'Prev';
-$_LANG['page_next'] = 'Next';
-$_LANG['page_last'] = 'Last';
-$_LANG['admin_home'] = 'HOME';
+/*语言项*/
+$_LANG['chinese_simplified'] = '简体中文';
+$_LANG['english'] = '英文';
 
-/* Weight */
-$_LANG['gram'] = 'Gram';
-$_LANG['kilogram'] = 'Kilogram';
+/* 分页 */
+$_LANG['total_records'] = '总计 ';
+$_LANG['total_pages'] = '个记录分为';
+$_LANG['page_size'] = '页，每页';
+$_LANG['page_current'] = '页当前第';
+$_LANG['page_first'] = '第一页';
+$_LANG['page_prev'] = '上一页';
+$_LANG['page_next'] = '下一页';
+$_LANG['page_last'] = '最末页';
+$_LANG['admin_home'] = '起始页';
 
-/* Menu category */
-$_LANG['02_cat_and_goods'] = 'Product';
-$_LANG['03_promotion'] = 'Sales promotion';
-$_LANG['04_order'] = 'Order';
-$_LANG['05_banner'] = 'Advertisement';
-$_LANG['06_stats'] = 'Reports Statistic';
-$_LANG['07_content'] = 'Article';
-$_LANG['08_members'] = 'Member';
-$_LANG['09_others'] = 'Others';
-$_LANG['10_priv_admin'] = 'Authorization';
-$_LANG['11_system'] = 'System Setup';
-$_LANG['12_template'] = 'Template';
-$_LANG['13_backup'] = 'Database';
-$_LANG['14_sms'] = 'Short Message';
-$_LANG['15_rec'] = 'Recommend management';
-$_LANG['16_email_manage'] = 'Mass-mailing management';
+/* 重量 */
+$_LANG['gram'] = '克';
+$_LANG['kilogram'] = '千克';
 
-/* Product management */
-$_LANG['01_goods_list'] = 'Product List';
-$_LANG['02_goods_add'] = 'New Product';
-$_LANG['03_category_list'] = 'Product Category';
-$_LANG['04_category_add'] = 'New Category';
-$_LANG['05_comment_manage'] = 'User Comments';
-$_LANG['06_goods_brand_list'] = 'Product Brand';
-$_LANG['07_brand_add'] = 'New Brand';
-$_LANG['08_goods_type'] = 'Product Type';
-$_LANG['09_attribute_list'] = 'Product Attribute';
-$_LANG['10_attribute_add'] = 'Add Attribute';
-$_LANG['11_goods_trash'] = 'Recycle Bin';
-$_LANG['12_batch_pic'] = 'Pictures Processor ';
-$_LANG['13_batch_add'] = 'Upload Products';
-$_LANG['15_batch_edit'] = 'Batch Edit';
-$_LANG['16_goods_script'] = 'Product Code';
-$_LANG['17_tag_manage'] = 'Tag';
-$_LANG['52_attribute_add'] = 'Edit Attribute';
-$_LANG['53_suppliers_goods'] = 'Management of suppliers of goods';
+/* 菜单分类部分 */
+$_LANG['02_cat_and_goods'] = '商品管理';
+$_LANG['03_promotion'] = '促销管理';
+$_LANG['04_order'] = '订单管理';
+$_LANG['05_banner'] = '广告管理';
+$_LANG['06_stats'] = '报表统计';
+$_LANG['07_content'] = '文章管理';
+$_LANG['08_members'] = '会员管理';
+$_LANG['09_others'] = '杂项管理';
+$_LANG['10_priv_admin'] = '权限管理';
+$_LANG['11_system'] = '系统设置';
+$_LANG['12_template'] = '模板管理';
+$_LANG['13_backup'] = '数据库管理';
+$_LANG['14_sms'] = '短信管理';
+$_LANG['15_rec'] = '推荐管理';
+$_LANG['16_email_manage'] = '邮件群发管理';
+$_LANG['18_virtual'] = '虚拟团购管理';
+$_LANG['01_virtual_goods_classify']	= '虚拟劵商品分类管理';
+$_LANG['01_virtual_goods_district']	= '入驻商商圈管理';
 
-$_LANG['14_goods_export'] = 'Merchandise export volume';
+/* 商品管理 */
+/* 代码增加_start  By  supplier.68ecshop.com */
+$_LANG['01_goods_list'] = '商品列表';
+$_LANG['02_supplier_goods_list'] = '入驻商商品列表';
+$_LANG['03_goods_add'] = '添加新商品';
+$_LANG['04_category_list'] = '商品分类';
+/* 代码增加_end  By  supplier.68ecshop.com */
+$_LANG['04_category_add'] = '添加分类';
+$_LANG['05_comment_manage'] = '用户评论';
+//代码增加
+$_LANG['05_order_comment'] = '订单评论';
+//代码增加
+$_LANG['05_question_manage'] = '用户咨询';  
+$_LANG['05_shaidan_manage'] = '用户晒单';
+$_LANG['05_goods_tags'] = '标签审核';
+$_LANG['06_goods_brand_list'] = '商品品牌';
+$_LANG['0688_goods_brand_cat'] = '品牌分类';
+$_LANG['07_brand_add'] = '添加品牌';
+$_LANG['08_goods_type'] = '商品类型';
+$_LANG['09_attribute_list'] = '商品属性';
+$_LANG['10_attribute_add'] = '添加属性';
+$_LANG['11_goods_trash'] = '商品回收站';
+$_LANG['12_batch_pic'] = '图片批量处理';
+$_LANG['13_batch_add'] = '商品批量上传';
+$_LANG['15_batch_edit'] = '商品批量修改';
+$_LANG['16_goods_script'] = '生成商品代码';
+$_LANG['17_tag_manage'] = '标签管理';
+$_LANG['18_product_list'] = '货品列表';
+$_LANG['52_attribute_add'] = '编辑属性';
+$_LANG['53_suppliers_goods'] = '入驻商商品管理';
 
-$_LANG['50_virtual_card_list'] = 'Virtual Goods List';
-$_LANG['51_virtual_card_add'] = 'New Virtual Goods';
-$_LANG['52_virtual_card_change'] = 'Change encrypt string';
-$_LANG['goods_auto'] = 'Automatic merchandise from top to bottom rack';
-$_LANG['article_auto'] = 'Published article automatically';
-$_LANG['navigator'] = 'Custom navigation bar';
+$_LANG['14_goods_export'] = '商品批量导出';
 
-/* Sales promotion management */
-$_LANG['02_snatch_list'] = 'Dutch Auction';
-$_LANG['snatch_add'] = 'Add Dutch Auction';
-$_LANG['04_bonustype_list'] = 'Bonus Type';
-$_LANG['bonustype_add'] = 'Add Bonus Type';
-$_LANG['05_bonus_list'] = 'Bonus Offline';
-$_LANG['bonus_add'] = 'Add User Bonus';
-$_LANG['06_pack_list'] = 'Product Packing';
-$_LANG['07_card_list'] = 'Greetings Card';
-$_LANG['pack_add'] = 'New Packing';
-$_LANG['card_add'] = 'New Card';
-$_LANG['08_group_buy'] = 'Associates';
-$_LANG['09_topic'] = 'Topic';
-$_LANG['topic_add'] = 'Add Topic';
-$_LANG['topic_list'] = 'Topic List';
-$_LANG['10_auction'] = 'Auction';
-$_LANG['12_favourable'] = 'Favourable Activity';
-$_LANG['13_wholesale'] = 'Wholesale';
-$_LANG['ebao_commend'] = 'Ebao commend';
-$_LANG['14_package_list'] = 'Preferential Packeage';
-$_LANG['package_add'] = 'Add Preferential Packeage';
+$_LANG['50_virtual_card_list_sup'] = '入驻商虚拟商品列表';
+$_LANG['50_virtual_card_list'] = '自营虚拟商品列表';
+$_LANG['51_virtual_card_add'] = '添加虚拟商品';
+$_LANG['52_virtual_card_change'] = '更改加密串';
+$_LANG['53_virtual_card_verification'] = '虚拟卷验证';
+$_LANG['goods_auto'] = '商品自动上下架';
+$_LANG['scan_store'] = '出入库管理';
+$_LANG['price_batch'] = '批量修改价格'; //代码增加 By www.68ecshop.com
+$_LANG['article_auto'] = '文章自动发布';
+$_LANG['navigator'] = '自定义导航栏';
+/* 虚拟团购 代码增加 by www.68ecshop.com start */
+$_LANG['virtual_goods_validate'] = '虚拟卷验证';
+$_LANG['virtual_card_list'] = '虚拟卷订单列表';
+/* 虚拟团购 代码增加 by www.68ecshop.com end */
 
-/* Orders management */
-$_LANG['02_order_list'] = 'Order List';
-$_LANG['03_order_query'] = 'Order Query';
-$_LANG['04_merge_order'] = 'Combine Orders';
-$_LANG['05_edit_order_print'] = 'Print Orders';
-$_LANG['06_undispose_booking'] = 'Booking Records';
-$_LANG['08_add_order'] = 'Add Order';
-$_LANG['09_delivery_order'] = 'Delivery Order';
-$_LANG['10_back_order'] = 'Returned Order';
+/* 促销管理 */
+$_LANG['02_snatch_list'] = '夺宝奇兵';
+$_LANG['snatch_add'] = '添加夺宝奇兵';
+$_LANG['04_bonustype_list'] = '红包类型';
+$_LANG['bonustype_add'] = '添加红包类型';
+$_LANG['05_bonus_list'] = '线下红包';
+$_LANG['bonus_add'] = '添加会员红包';
+$_LANG['06_pack_list'] = '商品包装';
+$_LANG['07_card_list'] = '祝福贺卡';
+$_LANG['pack_add'] = '添加新包装';
+$_LANG['card_add'] = '添加新贺卡';
+$_LANG['08_group_buy'] = '团购活动';
+$_LANG['09_topic'] = '专题管理';
+$_LANG['topic_add'] = '添加专题';
+$_LANG['topic_list'] = '专题列表';
+$_LANG['10_auction'] = '拍卖活动';
+$_LANG['12_favourable'] = '优惠活动';
+$_LANG['13_pre_sale'] = '预售管理';
+$_LANG['13_wholesale'] = '批发管理';
+$_LANG['ebao_commend'] = '易宝推荐';
+$_LANG['14_package_list'] = '超值礼包';
+$_LANG['package_add'] = '添加超值礼包';
+$_LANG['25_pre_sale_list'] = '预售管理';
 
-/* AD management */
-$_LANG['ad_position'] = 'AD Position';
-$_LANG['ad_list'] = 'AD List';
+/* 订单管理 */
+/* 代码增加_start  By  supplier.68ecshop.com */
+$_LANG['01_order_list'] = '订单列表';
+$_LANG['02_supplier_order'] = '入驻商订单列表';
+/* 代码增加_end  By  supplier.68ecshop.com */
+$_LANG['03_order_query'] = '订单查询';
+$_LANG['04_merge_order'] = '合并订单';
+$_LANG['05_edit_order_print'] = '订单打印模板';
+$_LANG['06_undispose_booking'] = '缺货登记';
+$_LANG['08_add_order'] = '添加订单';
+$_LANG['09_delivery_order'] = '发货单列表';
+$_LANG['10_back_order'] = '退款/退货及维修';
+$_LANG['11_supplier_back_order'] = '入驻商退换货列表';
+//ecshop add start 2013-08-06
+$_LANG['12_order_excel'] = '订单导出';
+//ecshop add end 2013-08-06
+/*增值税发票_添加_START_www.68ecshop.com*/
+$_LANG['12_invoice_list'] = '发票列表';
+/*增值税发票_添加_END_www.68ecshop.com*/
+$_LANG['11_kuaidi_order'] = '快递单列表';
+$_LANG['12_kuaidi_order2'] = '快递单历史';
 
-/* Report statistic */
-$_LANG['flow_stats'] = 'Flux Analyse';
-$_LANG['searchengine_stats'] = 'Search engine';
-$_LANG['report_order'] = 'Order Statistic';
-$_LANG['report_sell'] = 'Sales Survey';
-$_LANG['sell_stats'] = 'Sales Ranking';
-$_LANG['sale_list'] = 'Sales Details';
-$_LANG['report_guest'] = 'Client Statistic';
-$_LANG['report_users'] = 'User Ranking';
-$_LANG['visit_buy_per'] = 'Visit Purchase Rate';
-$_LANG['z_clicks_stats'] = 'External Laid JS';
+/* 广告管理 */
+$_LANG['ad_position'] = '广告位置';
+$_LANG['ad_list'] = '广告列表';
 
-/* Article management */
-$_LANG['02_articlecat_list'] = 'Article Category';
-$_LANG['articlecat_add'] = 'New Article Category';
-$_LANG['03_article_list'] = 'Articles';
-$_LANG['article_add'] = 'New Article';
-$_LANG['shop_article'] = 'Shop Article';
-$_LANG['shop_info'] = 'Shop Information';
-$_LANG['shop_help'] = 'Shop Help';
-$_LANG['vote_list'] = 'Vote Online';
+/* 报表统计 */
+$_LANG['flow_stats'] = '流量分析';
+/* 代码添加_START  By   www.68ecshop.com */
+$_LANG['keyword'] = '客户搜索记录';
+/* 代码添加_END By   www.68ecshop.com */
+$_LANG['searchengine_stats'] = '搜索引擎';
+$_LANG['report_order'] = '订单统计';
+$_LANG['report_sell'] = '销售概况';
+$_LANG['sell_stats'] = '销售排行';
+$_LANG['sale_list'] = '销售明细';
+$_LANG['report_guest'] = '客户统计';
+$_LANG['report_users'] = '会员排行';
+$_LANG['visit_buy_per'] = '访问购买率';
+$_LANG['z_clicks_stats'] = '站外投放JS';
 
-/* User management */
-$_LANG['08_unreply_msg'] = 'User Message';
-$_LANG['03_users_list'] = 'Users';
-$_LANG['04_users_add'] = 'New User';
-$_LANG['05_user_rank_list'] = 'User Rank';
-$_LANG['06_list_integrate'] = 'Integrate User';
-$_LANG['09_user_account'] = 'Saving and drawing application';
-$_LANG['10_user_account_manage'] = 'account_manage';
+/* 文章管理 */
+$_LANG['02_articlecat_list'] = '文章分类';
+$_LANG['articlecat_add'] = '添加文章分类';
+$_LANG['03_article_list'] = '文章列表';
+$_LANG['article_add'] = '添加新文章';
+$_LANG['shop_article'] = '网店文章';
+$_LANG['shop_info'] = '网店信息';
+$_LANG['shop_help'] = '网店帮助';
+$_LANG['vote_list'] = '在线调查';
 
-/* Authorization  management */
-$_LANG['admin_list'] = 'Administrators';
-$_LANG['admin_list_role'] = 'Role list';
-$_LANG['admin_role'] = 'Management role';
-$_LANG['admin_add'] = 'New Administrator';
-$_LANG['admin_add_role'] = 'Add role';
-$_LANG['admin_edit_role'] = 'Modify role';
-$_LANG['admin_logs'] = 'Logs';
-$_LANG['agency_list'] = 'Agency';
-$_LANG['suppliers_list'] = 'Suppliers';
+/* 会员管理 */
+$_LANG['08_unreply_msg'] = '会员留言';
+$_LANG['03_users_list'] = '会员列表';
 
-/* System setup */
-$_LANG['01_shop_config'] = 'Configuration';
-$_LANG['shop_authorized'] = 'Authorized';
-$_LANG['shp_webcollect'] = 'Webcollect';
-$_LANG['02_payment_list'] = 'Payment';
-$_LANG['03_shipping_list'] = 'Shipping';
-$_LANG['04_mail_settings'] = 'Mail Settings';
-$_LANG['05_area_list'] = 'Area List';
-$_LANG['07_cron_schcron'] = 'Cron';
-$_LANG['08_friendlink_list'] = 'Links';
-$_LANG['shipping_area_list'] = 'Shipping Area';
-$_LANG['sitemap'] = 'Sitemap';
-$_LANG['check_file_priv'] = 'File Authorization';
-$_LANG['captcha_manage'] = 'Verification Code Management';
-$_LANG['fckfile_manage'] = 'Fck From document management';
-$_LANG['ucenter_setup'] = 'UCenter Set';
-$_LANG['file_check'] = 'Check File';
-$_LANG['021_reg_fields'] = 'Register options settings';
+$_LANG['04_users_export'] = '会员导出';  //代码增加   By   www.68ecshop.com
 
-/* Template management */
-$_LANG['02_template_select'] = 'Select Template';
-$_LANG['03_template_setup'] = 'Setup Template';
-$_LANG['04_template_library'] = 'Library Item';
-$_LANG['mail_template_manage'] = 'Mail Template';
-$_LANG['05_edit_languages'] = 'Language Item';
-$_LANG['06_template_backup'] = 'Template Settings backup';
-/* Database management */
-$_LANG['02_db_manage'] = 'Backup';
-$_LANG['03_db_optimize'] = 'Optimize';
-$_LANG['04_sql_query'] = 'SQL Query';
-$_LANG['05_synchronous'] = 'Synchronous';
-$_LANG['convert'] = 'Convertor';
+$_LANG['04_users_add'] = '添加会员';
+$_LANG['05_user_rank_list'] = '会员等级';
+$_LANG['06_list_integrate'] = '会员整合';
+$_LANG['09_user_account'] = '充值和提现申请';
+$_LANG['10_user_account_manage'] = '资金管理';
+$_LANG['09_postman_list'] = '快递员列表';
 
-/* Short management */
-$_LANG['02_sms_my_info'] = 'Accounts';
-$_LANG['03_sms_send'] = 'Send Message';
-$_LANG['04_sms_charge'] = 'Accounts Charge';
-$_LANG['05_sms_send_history'] = 'Send Record';
-$_LANG['06_sms_charge_history'] = 'Charge History';
+/* 权限管理 */
+$_LANG['admin_list'] = '管理员列表';
+$_LANG['admin_list_role'] = '角色列表';
+$_LANG['admin_role'] = '角色管理';
+$_LANG['admin_add'] = '添加管理员';
+$_LANG['admin_add_role'] = '添加角色';
+$_LANG['admin_edit_role'] = '修改角色';
+$_LANG['admin_logs'] = '管理员日志';
+$_LANG['agency_list'] = '办事处列表';
+$_LANG['suppliers_list'] = '供货商列表';
 
-$_LANG['affiliate'] = 'Recommended settings';
-$_LANG['affiliate_ck'] = 'Divided into management';
-$_LANG['flashplay'] = 'Flash Player Management';
-$_LANG['search_log'] = 'Search keywords';
-$_LANG['email_list'] = 'E-mail subscription management';
-$_LANG['magazine_list'] = 'Journal of Management';
-$_LANG['attention_list'] = 'Concerned about the management';
-$_LANG['view_sendlist'] = 'Mail queue management';
+/* 系统设置 */
+$_LANG['01_shop_config'] = '商店设置';
+$_LANG['shop_authorized'] = '授权证书';
+$_LANG['shp_webcollect'] = '网罗天下';
+$_LANG['02_payment_list'] = '支付方式';
+$_LANG['03_shipping_list'] = '配送方式';
+$_LANG['04_mail_settings'] = '邮件服务器设置';
+$_LANG['05_area_list'] = '地区列表';
+$_LANG['07_cron_schcron'] = '计划任务';
+$_LANG['08_friendlink_list'] = '友情链接';
+$_LANG['shipping_area_list'] = '配送区域';
+$_LANG['sitemap'] = '站点地图';
+$_LANG['check_file_priv'] = '文件权限检测';
+$_LANG['captcha_manage'] = '验证码管理';
+$_LANG['fckfile_manage'] = 'Fck上传文件管理';
+$_LANG['ucenter_setup'] = 'UCenter设置';
+$_LANG['file_check'] = '文件校验';
+$_LANG['021_reg_fields'] = '会员注册项设置';
+
+/* 模板管理 */
+$_LANG['02_template_select'] = '模板选择';
+$_LANG['03_template_setup'] = '设置模板';
+$_LANG['04_template_library'] = '库项目管理';
+$_LANG['mail_template_manage'] = '邮件模板';
+$_LANG['05_edit_languages'] = '语言项编辑';
+$_LANG['06_template_backup'] = '模板设置备份';
+/* 数据库管理 */
+$_LANG['02_db_manage'] = '数据备份';
+$_LANG['03_db_optimize'] = '数据表优化';
+$_LANG['04_sql_query'] = 'SQL查询';
+$_LANG['05_synchronous'] = '同步数据';
+$_LANG['convert'] = '转换数据';
+
+/* 短信管理 */
+$_LANG['02_sms_my_info'] = '账号信息';
+$_LANG['03_sms_send'] = '发送短信';
+$_LANG['04_sms_charge'] = '账户充值';
+$_LANG['05_sms_send_history'] = '发送记录';
+$_LANG['06_sms_charge_history'] = '充值记录';
+
+$_LANG['affiliate'] = '推荐设置';
+$_LANG['affiliate_ck'] = '分成管理';
+$_LANG['flashplay'] = '首页主广告管理';
+$_LANG['search_log'] = '搜索关键字';
+$_LANG['email_list'] = '邮件订阅管理';
+$_LANG['magazine_list'] = '杂志管理';
+$_LANG['attention_list'] = '关注管理';
+$_LANG['view_sendlist'] = '邮件队列管理';
 
 /* 积分兑换管理 */
-$_LANG['15_exchange_goods'] = 'Integral Mall Goods';
-$_LANG['15_exchange_goods_list'] = 'Points Mall commodity list';
-$_LANG['exchange_goods_add'] = 'Add new merchandise';
+$_LANG['15_exchange_goods'] = '积分商城商品';
+$_LANG['15_exchange_goods_list'] = '积分商城商品列表';
+$_LANG['exchange_goods_add'] = '添加新商品';
 
-/* cls_image */
-$_LANG['directory_readonly'] = 'The directory % is not existed or unable to write.';
-$_LANG['invalid_upload_image_type'] = 'Not a allowable image type.';
-$_LANG['upload_failure'] = '%s failed to upload';
-$_LANG['missing_gd'] = 'GD is missing';
-$_LANG['missing_orgin_image'] = 'Can not find %s.';
-$_LANG['nonsupport_type'] = 'Nonsupport type of %s.';
-$_LANG['creating_failure'] = 'Fail to create image.';
-$_LANG['writting_failure'] = 'Fail to write image.';
-$_LANG['empty_watermark'] = 'The parameter of watermark is empty.';
-$_LANG['missing_watermark'] = 'Can not find %s.';
-$_LANG['create_watermark_res'] = 'Fail to create resource of watermark. The image type is %s.';
-$_LANG['create_origin_image_res'] = 'Fail to create resource of origin image. The image type is %s.';
-$_LANG['invalid_image_type'] = 'Unknown watermark image %s.';
-$_LANG['file_unavailable'] = 'File %s don\'t exist or are unreadable.';
+/* cls_image类的语言项 */
+$_LANG['directory_readonly'] = '目录 % 不存在或不可写';
+$_LANG['invalid_upload_image_type'] = '不是允许的图片格式';
+$_LANG['upload_failure'] = '文件 %s 上传失败。';
+$_LANG['missing_gd'] = '没有安装GD库';
+$_LANG['missing_orgin_image'] = '找不到原始图片 %s ';
+$_LANG['nonsupport_type'] = '不支持该图像格式 %s ';
+$_LANG['creating_failure'] = '创建图片失败';
+$_LANG['writting_failure'] = '图片写入失败';
+$_LANG['empty_watermark'] = '水印文件参数不能为空';
+$_LANG['missing_watermark'] = '找不到水印文件%s';
+$_LANG['create_watermark_res'] = '创建水印图片资源失败。水印图片类型为%s';
+$_LANG['create_origin_image_res'] = '创建原始图片资源失败，原始图片类型%s';
+$_LANG['invalid_image_type'] = '无法识别水印图片 %s ';
+$_LANG['file_unavailable'] = '文件 %s 不存在或不可读';
 
-/* SMTP ERROR */
-$_LANG['smtp_setting_error'] = 'There is an error in SMTP setting.';
-$_LANG['smtp_connect_failure'] = 'Unable to connect to SMTP server %s.';
-$_LANG['smtp_login_failure'] = 'Invalid SMTP username or password.';
-$_LANG['sendemail_false'] = 'E-mail failed, please check your mail server settings!';
-$_LANG['smtp_refuse'] = 'SMTP server refuse to send this mail.';
-$_LANG['disabled_fsockopen'] = 'Fsocketopen server function is disabled.';
+/* 邮件发送错误信息 */
+$_LANG['smtp_setting_error'] = '邮件服务器设置信息不完整';
+$_LANG['smtp_connect_failure'] = '无法连接到邮件服务器 %s';
+$_LANG['smtp_login_failure'] = '邮件服务器验证帐号或密码不正确';
+$_LANG['sendemail_false'] = '邮件发送失败，请检查您的邮件服务器设置！';
+$_LANG['smtp_refuse'] = '服务器拒绝发送该邮件';
+$_LANG['disabled_fsockopen'] = '服务器已禁用 fsocketopen 函数。';
 
 /* 虚拟卡 */
-$_LANG['virtual_card_oos'] = 'Virtual card out of stock';
+$_LANG['virtual_card_oos'] = '虚拟卡已缺货';
 
-$_LANG['span_edit_help'] = 'Click to edit content';
-$_LANG['href_sort_help'] = 'Click on the list to sort';
+$_LANG['span_edit_help'] = '点击修改内容';
+$_LANG['href_sort_help'] = '点击对列表排序';
 
-$_LANG['catname_exist'] = 'Has exist the same category!';
-$_LANG['brand_name_exist'] = 'Has exist the same brand!';
+$_LANG['catname_exist'] = '已存在相同的分类名称!';
+$_LANG['brand_name_exist'] = '已存在相同的品牌名称!';
 
-$_LANG['alipay_login'] = '<a href="https://www.alipay.com/user/login.htm?goto=https%3A%2F%2Fwww.alipay.com%2Fhimalayas%2Fpracticality_profile_edit.htm%3Fmarket_type%3Dfrom_agent_contract%26customer_external_id%3D%2BC4335319945672464113" target="_blank">Immediate payment interface for free jurisdiction</a>';
-$_LANG['alipay_look'] = '<a href=\"https://www.alipay.com/himalayas/practicality.htm\" target=\"_blank\">Please apply after successful login pay treasure account check</a>';
+$_LANG['alipay_login'] = '<a href="https://www.alipay.com/user/login.htm?goto=https%3A%2F%2Fwww.alipay.com%2Fhimalayas%2Fpracticality_profile_edit.htm%3Fmarket_type%3Dfrom_agent_contract%26customer_external_id%3D%2BC4335319945672464113" target="_blank">立即免费申请支付接口权限</a>';
+$_LANG['alipay_look'] = '<a href=\"https://www.alipay.com/himalayas/practicality.htm\" target=\"_blank\">请申请成功后登录支付宝账户查看</a>';
+
+
+/* 代码增加_start  By   supplier.68ecshop.com */
+$_LANG['02_supplier'] = '入驻商管理';  
+$_LANG['05_supplier_rank'] = '入驻商等级';
+$_LANG['06_supplier_tag'] = '店铺标签';
+
+$_LANG['01_supplier_reg'] = '入驻商申请列表';
+$_LANG['02_supplier_list'] = '入驻商列表';
+$_LANG['03_rebate_nopay'] = '本期待结';
+$_LANG['03_rebate_pay'] = '往期结算';
+$_LANG['04_shop_category'] = '店铺街分类';
+$_LANG['05_shop_street'] = '店铺街列表';
+$_LANG['cfg_name']['company_type'] = '入驻商企业类型';
+$_LANG['cfg_desc']['company_type'] = '入驻商申请时会用到，填写时注意每行一个企业类型';
+
+$_LANG['supplier'] = '入驻商管理';
+$_LANG['supplier_manage'] = '供应商编辑与审核';
+$_LANG['supplier_rank'] = '供应商等级';
+$_LANG['supplier_rebate'] = '平台入驻商佣金';
+$_LANG['supplier_tag'] = '店铺标签';
+
+$_LANG['cfg_name']['supplier_privilege'] = '入驻商设置';
+$_LANG['cfg_name']['supplier_addbest'] = '加入推荐权限';
+$_LANG['cfg_name']['supplier_editgoods'] = '更改商品信息权限';
+$_LANG['cfg_name']['supplier_secondadd'] = '审核未通过商品再次提交';
+//代码增加
+$_LANG['cfg_name']['supplier_comment'] = '能否控制订单评论';
+$_LANG['cfg_range']['supplier_comment']['1'] = '开启';
+$_LANG['cfg_range']['supplier_comment']['0']= '关闭';
+$_LANG['cfg_desc']['supplier_comment']= '开启时，商家可禁止公开订单评论';
+//代码增加
+/* 能否删除评论 */
+$_LANG['cfg_name']['supplier_commentdel'] = '删除评论权限';
+$_LANG['cfg_range']['supplier_commentdel']['1'] = '开启';
+$_LANG['cfg_range']['supplier_commentdel']['0']= '关闭';
+/* 能否删除评论 */
+
+/* 能否控制显示和隐藏评论 */
+$_LANG['cfg_name']['supplier_commentshow'] = '能否控制显示和隐藏评论';
+$_LANG['cfg_range']['supplier_commentshow']['1'] = '开启';
+$_LANG['cfg_range']['supplier_commentshow']['0']= '关闭';
+/* 能否控制显示和隐藏评论 */
+
+$_LANG['cfg_range']['supplier_addbest']['1'] = '开启';
+$_LANG['cfg_range']['supplier_addbest']['0']= '关闭';
+$_LANG['cfg_range']['supplier_editgoods']['1'] = '开启';
+$_LANG['cfg_range']['supplier_editgoods']['0']= '关闭';
+$_LANG['cfg_desc']['supplier_editgoods']= '注意：这里的商品指的是 “审核通过后的商品”';
+$_LANG['cfg_range']['supplier_secondadd']['1'] = '开启';
+$_LANG['cfg_range']['supplier_secondadd']['0']= '关闭';
+$_LANG['cfg_name']['supplier_notice'] = '入驻商公告';
+$_LANG['cfg_name']['supplier_rebate_paytype'] = '佣金支付方式';
+
+
+$_LANG['01_goods_list_pass1'] = '审核通过商品';
+$_LANG['01_goods_list_pass2'] = '未审核商品';
+$_LANG['01_goods_list_pass3'] = '审核未通过商品';
+
+
+
+$_LANG['02_rebate_manage'] = '佣金管理';
+$_LANG['03_rebate_nopay'] = '本期待结';
+$_LANG['03_rebate_pay'] = '往期结算';
+
+
+$_LANG['05_dianpu_manage'] 		= '店铺系统设置';
+$_LANG['01_base'] 				= '店铺基本设置';
+$_LANG['02_menu'] 				= '店铺导航栏';
+$_LANG['03_guanggao'] 			= '店铺主广告';
+$_LANG['04_article'] 			= '店铺文章';
+$_LANG['05_header'] 			= '店铺头部自定义';
+$_LANG['06_templates'] 			= '店铺模板选择';
+$_LANG['07_street'] 			= '店铺街信息设置';
+$_LANG['08_shipping_list'] 			= '配送方式';
+
+$_LANG['06_pickup_point_manage'] 			= '自提点管理';
+
+// 即时通讯菜单
+$_LANG['20_chat']				= '即时通信';
+$_LANG['chat_server']		= '聊天服务器设置';
+$_LANG['customer']			= '客服管理';
+
+/* 代码增加_end  By   supplier.68ecshop.com */
+
+$_LANG['website'] = '合作登录管理';  //名字你可以自己定
+/* 代码增加_start  By  www.68ecshop.com */
+$_LANG['16_takegoods_list']			= '提货券管理';
+$_LANG['16_takegoods_order']		= '提货券提货列表';
+$_LANG['takegoods_list']   = '提货券管理';
+$_LANG['takegoods_order']   = '提货券提货列表';
+$_LANG['cfg_name']['takegoods_send_email'] = '提货时给买卖双方发送邮件';
+$_LANG['cfg_range']['takegoods_send_email']['1'] = '开启';
+$_LANG['cfg_range']['takegoods_send_email']['0'] = '关闭';
+$_LANG['cfg_name']['takegoods_send_sms'] = '提货时给买卖双方发送手机短信';
+$_LANG['cfg_range']['takegoods_send_sms']['1'] = '开启';
+$_LANG['cfg_range']['takegoods_send_sms']['0'] = '关闭';
+$_LANG['cfg_name']['takegoods_check_money'] = '给提货券配置商品时是否验证商品价格';
+$_LANG['cfg_range']['takegoods_check_money']['1'] = '开启';
+$_LANG['cfg_range']['takegoods_check_money']['0'] = '关闭';
+$_LANG['template_files']['takegoods'] = '提货商品页模板';
+/* 代码增加_end  By  www.68ecshop.com */
+$_LANG['sendmail'] = '发送邮件';
+
 ?>

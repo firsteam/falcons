@@ -1,121 +1,121 @@
 <?php
 
 /**
- * ECSHOP Member ID management language files
+ * ECSHOP 会员账号管理语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: users.php 17217 2011-01-19 06:29:08Z liubo $
 */
-/* List page */
-$_LANG['label_user_name'] = 'Username:';
-$_LANG['label_pay_points_gt'] = 'Points more than:';
-$_LANG['label_pay_points_lt'] = ' Less than:';
-$_LANG['label_rank_name'] = 'Rank';
-$_LANG['all_option'] = 'All...';
+/* 列表页面 */
+$_LANG['label_user_name'] = '会员名称';
+$_LANG['label_pay_points_gt'] = '会员积分大于';
+$_LANG['label_pay_points_lt'] = '会员积分小于';
+$_LANG['label_rank_name'] = '会员等级';
+$_LANG['all_option'] = '所有等级';
 
-$_LANG['view_order'] = 'View the order';
-$_LANG['view_deposit'] = 'View Account details';
-$_LANG['username'] = 'Username';
-$_LANG['email'] = 'Email';
-$_LANG['is_validated'] = 'is_validated';
-$_LANG['reg_date'] = 'Register date';
-$_LANG['button_remove'] = 'Delete';
-$_LANG['users_edit'] = 'Edit';
-$_LANG['goto_list'] = 'Return list';
-$_LANG['username_empty'] = 'Please enter a username!';
+$_LANG['view_order'] = '查看自营订单';
+$_LANG['view_order1'] = '查看入驻商订单';
+$_LANG['view_deposit'] = '查看账目明细';
+$_LANG['username'] = '会员名称';
+$_LANG['email'] = '邮件地址';
+$_LANG['is_validated'] = '是否已验证';
+$_LANG['reg_date'] = '注册日期';
+$_LANG['button_remove'] = '删除会员';
+$_LANG['users_edit'] = '编辑会员账号';
+$_LANG['goto_list'] = '返回会员账号列表';
+$_LANG['username_empty'] = '会员名称不能为空！';
 
-/* List relative language item */
-$_LANG['password'] = 'Password';
-$_LANG['newpass'] = 'Password';
-$_LANG['confirm_password'] = 'confirm password';
-$_LANG['question'] = 'Secret question';
-$_LANG['answer'] = 'Secret answer';
-$_LANG['gender'] = 'Sex';
-$_LANG['birthday'] = 'Birthday';
-$_LANG['sex'][0] = 'Secrecy';
-$_LANG['sex'][1] = 'Male';
-$_LANG['sex'][2] = 'Female';
-$_LANG['pay_points'] = 'Payment points';
-$_LANG['rank_points'] = 'Rank points';
-$_LANG['user_money'] = 'Available money';
-$_LANG['frozen_money'] = 'Frozen money';
-$_LANG['credit_line'] = 'Credit line';
-$_LANG['user_rank'] = 'Rank';
-$_LANG['not_special_rank'] = 'Nonspecial rank';
-$_LANG['view_detail_account']='View details.';
-$_LANG['parent_user'] = 'Recommend people';
-$_LANG['parent_remove'] = 'From relations recommend';
-$_LANG['affiliate_user'] = 'Recommended Member';
-$_LANG['show_affiliate_users'] = 'See a detailed list of recommended';
-$_LANG['show_affiliate_orders'] = 'See Recommended Order Details';
-$_LANG['affiliate_lever'] = 'Level';
-$_LANG['affiliate_num'] = 'Number of user';
-$_LANG['page_note'] = 'This list shows the user all the recommended membership information,';
-$_LANG['how_many_user'] = 'users.';
-$_LANG['back_note'] = 'Return to the user-edited page';
-$_LANG['affiliate_level'] = 'Recommended Level';
+/* 表单相关语言项 */
+$_LANG['password'] = '登录密码';
+$_LANG['confirm_password'] = '确认密码';
+$_LANG['newpass'] = '新密码';
+$_LANG['question'] = '密码提示问题';
+$_LANG['answer'] = '密码提示问题答案';
+$_LANG['gender'] = '性别';
+$_LANG['birthday'] = '出生日期';
+$_LANG['sex'][0] = '保密';
+$_LANG['sex'][1] = '男';
+$_LANG['sex'][2] = '女';
+$_LANG['pay_points'] = '消费积分';
+$_LANG['rank_points'] = '等级积分';
+$_LANG['user_money'] = '可用资金';
+$_LANG['frozen_money'] = '冻结资金';
+$_LANG['credit_line'] = '信用额度';
+$_LANG['user_rank'] = '会员等级';
+$_LANG['not_special_rank'] = '非特殊等级';
+$_LANG['view_detail_account'] = '查看明细';
+$_LANG['parent_user'] = '推荐人';
+$_LANG['parent_remove'] = '脱离推荐关系';
+$_LANG['affiliate_user'] = '推荐会员';
+$_LANG['show_affiliate_users'] = '查看推荐详细名单';
+$_LANG['show_affiliate_orders'] = '查看推荐订单详情';
+$_LANG['affiliate_lever'] = '等级';
+$_LANG['affiliate_num'] = '人数';
+$_LANG['page_note'] = '此列表显示用户推荐的全部会员信息，';
+$_LANG['how_many_user'] = '个会员。';
+$_LANG['back_note'] = '返回会员编辑页面';
+$_LANG['affiliate_level'] = '推荐等级';
 
 $_LANG['msn'] = 'MSN';
 $_LANG['qq'] = 'QQ';
-$_LANG['home_phone'] = 'Home phone';
-$_LANG['office_phone'] = 'Office Phone';
-$_LANG['mobile_phone'] = 'Mobile';
+$_LANG['home_phone'] = '家庭电话';
+$_LANG['office_phone'] = '办公电话';
+$_LANG['mobile_phone'] = '手机';
 
-$_LANG['notice_pay_points'] = 'Payment points is a sort of monetary in the shop, to allow user use to a scale points for shopping.';
-$_LANG['notice_rank_points'] = 'Rank points is a sort of aggregate points, the system according to points to estimate user\'s rank.';
-$_LANG['notice_user_money'] = 'User obligate money in the shop.';
+$_LANG['notice_pay_points'] = '消费积分是一种站内货币，允许用户在购物时支付一定比例的积分。';
+$_LANG['notice_rank_points'] = '等级积分是一种累计的积分，系统根据该积分来判定用户的会员等级。';
+$_LANG['notice_user_money'] = '用户在站内预留下的金额';
 
-/* Notice */
-$_LANG['username_exists'] = 'The username has existed.';
-$_LANG['email_exists'] = 'The email address has existed.';
-$_LANG['edit_user_failed'] = 'Edit user data failed.';
-$_LANG['invalid_email'] = 'The email address is invalid.';
-$_LANG['update_success'] = 'Edit user data successfully.';
-$_LANG['still_accounts'] = 'This member have balance or arrears\n';
-$_LANG['remove_confirm'] = 'Are you sure delete the user\\\'s account?';
-$_LANG['list_still_accounts'] = 'Some user selected still have balance or arrears\n';
-$_LANG['list_remove_confirm'] = 'Are you sure delete all user\\\'s account selected?';
-$_LANG['remove_order_confirm'] = 'The user\'s account already exists, if you delete the user account, then the order data will be deleted. <br />Are you sure delete it?';
-$_LANG['remove_order'] = 'Yes, I will delete the user account and orders.';
-$_LANG['remove_cancel'] = 'No, I won\'t delete the user account.';
-$_LANG['remove_success'] = 'User account %s has deleted successfully.';
-$_LANG['add_success'] = 'User account %s has added successfully.';
-$_LANG['batch_remove_success'] = 'You has deleted %d user accounts.';
-$_LANG['no_select_user'] = 'You do not need to delete a member!';
-$_LANG['register_points'] = 'Register Tanjie';
-$_LANG['username_not_allow'] = 'User not allowed to register';
-$_LANG['username_invalid'] = 'Invalid user name';
-$_LANG['email_invalid'] = 'Invalid email address';
-$_LANG['email_not_allow'] = 'E-mail does not allow';
+/* 提示信息 */
+$_LANG['username_exists'] = '已经存在一个相同的用户名。';
+$_LANG['email_exists'] = '该邮件地址已经存在。';
+$_LANG['mobile_phone_exists'] = '该手机号已经存在。';
+$_LANG['edit_user_failed'] = '修改会员资料失败。';
+$_LANG['invalid_email'] = '输入了非法的邮件地址。';
+$_LANG['update_success'] = '编辑用户信息已经成功。';
+$_LANG['still_accounts'] = '该会员有余额或欠款\n';
+$_LANG['remove_confirm'] = '您确定要删除该会员账号吗？';
+$_LANG['list_still_accounts'] = '选中的会员账户中仍有余额或欠款\n';
+$_LANG['list_remove_confirm'] = '您确定要删除所有选中的会员账号吗？';
+$_LANG['remove_order_confirm'] = '该会员账号已经有订单存在，删除该会员账号的同时将清除订单数据。<br />您确定要删除吗？';
+$_LANG['remove_order'] = '是，我确定要删除会员账号及其订单数据';
+$_LANG['remove_cancel'] = '不，我不想删除该会员账号了。';
+$_LANG['remove_success'] = '会员账号 %s 已经删除成功。';
+$_LANG['add_success'] = '会员账号 %s 已经添加成功。';
+$_LANG['batch_remove_success'] = '已经成功删除了 %d 个会员账号。';
+$_LANG['no_select_user'] = '您现在没有需要删除的会员！';
+$_LANG['register_points'] = '注册送积分';
+$_LANG['username_not_allow'] = '用户名不允许注册';
+$_LANG['username_invalid'] = '无效的用户名';
+$_LANG['email_invalid'] = '无效的email地址';
+$_LANG['email_not_allow'] = '邮件不允许';
 
 /* 地址列表 */
-$_LANG['address_list'] = 'Receiving Address';
-$_LANG['consignee'] = 'Consignee';
-$_LANG['address'] = 'Address';
-$_LANG['link'] = 'Contact';
-$_LANG['other'] = 'Other';
-$_LANG['tel'] = 'Phone';
-$_LANG['mobile'] = 'Mobile';
-$_LANG['best_time'] = 'The best delivery time';
-$_LANG['sign_building'] = 'Building signs';
+$_LANG['address_list'] = '收货地址';
+$_LANG['consignee'] = '收货人';
+$_LANG['address'] = '地址';
+$_LANG['link'] = '联系方式';
+$_LANG['other'] = '其他';
+$_LANG['tel'] = '电话';
+$_LANG['mobile'] = '手机';
+$_LANG['best_time'] = '最佳送货时间';
+$_LANG['sign_building'] = '标志建筑';
 
-/* JS language item */
-$_LANG['js_languages']['no_username'] = 'Please enter a username.';
-$_LANG['js_languages']['invalid_email'] = 'Please enter a valid eamil address.';
-$_LANG['js_languages']['no_password'] = 'Please enter your password.';
-$_LANG['js_languages']['less_password'] = 'The password entered can`t less than six.';
-$_LANG['js_languages']['passwd_balnk'] = 'The password entered can`t have blank';
-$_LANG['js_languages']['no_confirm_password'] = 'Please enter your confirm password.';
-$_LANG['js_languages']['password_not_same'] = 'the password and the confirm password is not same.';
-$_LANG['js_languages']['invalid_pay_points'] = 'The points of payment must be an integer.';
-$_LANG['js_languages']['invalid_rank_points'] = 'The points of rank must be an integer.';
-$_LANG['js_languages']['password_len_err'] = 'New Password and Confirm Password should not less than the length of 6';
+/* JS 语言项 */
+$_LANG['js_languages']['no_username'] = '没有输入用户名。';
+$_LANG['js_languages']['invalid_email'] = '没有输入邮件地址或者输入了一个无效的邮件地址。';
+$_LANG['js_languages']['no_password'] = '没有输入密码。';
+$_LANG['js_languages']['less_password'] = '输入的密码不能少于六位。';
+$_LANG['js_languages']['passwd_balnk'] = '密码中不能包含空格';
+$_LANG['js_languages']['no_confirm_password'] = '没有输入确认密码。';
+$_LANG['js_languages']['password_not_same'] = '输入的密码和确认密码不一致。';
+$_LANG['js_languages']['invalid_pay_points'] = '消费积分数不是一个整数。';
+$_LANG['js_languages']['invalid_rank_points'] = '等级积分数不是一个整数。';
+$_LANG['js_languages']['password_len_err'] = '新密码和确认密码的长度不能小于6';
 ?>

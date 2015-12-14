@@ -1,44 +1,42 @@
 <?php
 
 /**
- * ECSHOP Vote management
+ * ECSHOP
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
+ *
  * $Author: liubo $
  * $Id: goods_export.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
 $_LANG['user_guide'] =
-        '<br/>Help:' .
+        '<br/>使用说明：' .
         '<ol>' .
-          '<li>Use the search conditions permit only english eligible merchandise 50.</li>' .
-          '<li>If the user required to export certain categories of merchandise all under the conditions choose to triage, no click search, the direct choice of data formats and encoding can be derived.</li>' .
+          '<li>使用搜索条件每次只允许搜索符合条件的50个商品。</li>' .
+          '<li>如果用户需要导出某分类下的所有的商品，在条件中选择分类后，不需点击搜索，直接选择数据格式和编码导出即可。</li>' .
         '</ol>';
-$_LANG['export_taobao'] = 'Export Taobao Assistant Supporting data formats';
-$_LANG['export_taobao_v43'] = 'Export Taobao AssistantV4.3 upporting data formats';
-$_LANG['export_taobao_v46'] = 'Export Taobao AssistantV4.6 upporting data formats';
-$_LANG['good_cat'] = 'Merchandise categories';
-$_LANG['select_please'] = 'Please select Export Classification';
-$_LANG['select_charset'] = 'Please choose to export charset';
+$_LANG['export_taobao'] = '导出淘宝助理支持数据格式';
+$_LANG['export_taobao_v43'] = '导出淘宝助理V4.3支持数据格式';
+$_LANG['export_taobao_v46'] = '导出淘宝助理V4.6支持数据格式';
+$_LANG['good_cat'] = '商品分类';
+$_LANG['select_please'] = '请选择要导出的分类';
+$_LANG['select_charset'] = '请选择要导出的编码';
 
-$_LANG['goods_class'] = 'Precious columnsID';
-$_LANG['tabobao_shipping'] = 'Taobao distribution';
-$_LANG['post_express'] = 'Ordinary price';
-$_LANG['express'] = 'Express Price';
-$_LANG['ems'] = 'EMS Price';
-$_LANG['notice_goods_class'] = 'ID for the baby section Taobao classification ID, if uncertain, please fill 0';
+$_LANG['goods_class'] = '宝贝栏目ID';
+$_LANG['tabobao_shipping'] = '淘宝配送';
+$_LANG['post_express'] = '平邮价格';
+$_LANG['express'] = '快递价格';
+$_LANG['ems'] = 'EMS价格';
+$_LANG['notice_goods_class'] = '宝贝栏目ID为淘宝分类的ID，如若不确定，请填写0';
 
-$_LANG['post_express_not_null'] = 'Ordinary price must be greater than 0';
-$_LANG['express_not_null'] = 'Express the price must be greater than 0';
-$_LANG['ems_not_null'] = 'EMS price must be greater than 0';
-
+$_LANG['post_express_not_null'] = '平邮价格必须大于0';
+$_LANG['express_not_null'] = '快递价格必须大于0';
+$_LANG['ems_not_null'] = 'EMS价格必须大于0';
 
 /* 淘宝 */
 $_LANG['taobao']['goods_name'] = '宝贝名称';
@@ -75,7 +73,8 @@ $_LANG['taobao']['discount'] = '会员打折';
 $_LANG['taobao']['modify_time'] = '修改时间';
 $_LANG['taobao']['upload_status'] = '上传状态';
 $_LANG['taobao']['img_status'] = '图片状态';
-/* 淘宝 */
+
+/*淘宝4.6*/
 $_LANG['taobao46']['goods_name'] = '宝贝名称';
 $_LANG['taobao46']['goods_class'] = '宝贝类目';
 $_LANG['taobao46']['shop_class'] = '店铺类目';
@@ -111,19 +110,20 @@ $_LANG['taobao46']['modify_time'] = '修改时间';
 $_LANG['taobao46']['upload_status'] = '上传状态';
 $_LANG['taobao46']['img_status'] = '图片状态';
 
-$_LANG['taobao46']['img_status'] = '返点比例';
-$_LANG['taobao46']['img_status'] = '新图片';
-$_LANG['taobao46']['img_status'] = '视频';
-$_LANG['taobao46']['img_status'] = '销售属性组合';
-$_LANG['taobao46']['img_status'] = '用户输入ID串';
-$_LANG['taobao46']['img_status'] = '用户输入名-值对';
-$_LANG['taobao46']['img_status'] = '商家编码';
-$_LANG['taobao46']['img_status'] = '销售属性别名';
-$_LANG['taobao46']['img_status'] = '代充类型';
-$_LANG['taobao46']['img_status'] = '宝贝编号';
-$_LANG['taobao46']['img_status'] = '数字ID';
+$_LANG['taobao46']['rebate_proportion'] = '返点比例';
+$_LANG['taobao46']['new_picture'] = '新图片';
+$_LANG['taobao46']['video'] = '视频';
+$_LANG['taobao46']['marketing_property_mix'] = '销售属性组合';
+$_LANG['taobao46']['user_input_ID_numbers'] = '用户输入ID串';
+$_LANG['taobao46']['input_user_name_value'] = '用户输入名-值对';
+$_LANG['taobao46']['sellers_code'] = '商家编码';
+$_LANG['taobao46']['another_of_marketing_property'] = '销售属性别名';
+$_LANG['taobao46']['charge_type'] = '代充类型';
+$_LANG['taobao46']['treasure_number'] = '宝贝编号';
+$_LANG['taobao46']['ID_number'] = '数字ID';
 
-$_LANG['export_paipai'] = 'Export to patted Assistant Supporting data formats';
+
+$_LANG['export_paipai'] = '导出到拍拍助理支持数据格式';
 $_LANG['paipai']['id'] = 'id';
 $_LANG['paipai']['tree_node_id'] = 'tree_node_id';
 $_LANG['paipai']['old_tree_node_id'] = 'old_tree_node_id';
@@ -162,8 +162,7 @@ $_LANG['paipai']['pic_height'] = 'pic_height';
 $_LANG['paipai']['skin'] = 'skin';
 $_LANG['paipai']['prop'] = 'prop';
 
-
-$_LANG['export_paipai4'] = 'Export to patted Assistant Supporting 3.0 data formats';
+$_LANG['export_paipai4'] = '导出到拍拍助理3.0支持数据格式';
 $_LANG['paipai4']['id'] = 'id';
 $_LANG['paipai4']['goods_name'] = '商品名称';
 $_LANG['paipai4']['auctionType'] = '出售方式';
@@ -196,7 +195,7 @@ $_LANG['paipai4']['chengBao'] = '诚保';
 $_LANG['paipai4']['shopWindow'] = '橱窗';
 
 // 批量上传商品的字段
-$_LANG['export_ecshop'] = 'Export to ECShop data format';
+$_LANG['export_ecshop'] = '导出到ECShop数据格式';
 $_LANG['ecshop']['goods_name'] = '商品名称';
 $_LANG['ecshop']['goods_sn'] = '商品货号';
 $_LANG['ecshop']['brand_name'] = '商品品牌';   // 需要转换成brand_id
@@ -220,43 +219,43 @@ $_LANG['ecshop']['is_alone_sale'] = '能否作为普通商品销售';
 $_LANG['ecshop']['is_real'] = '是否实体商品';
 
 //自定义导出数据格式
-$_LANG['export_custom'] = 'Export to a custom data format';
-$_LANG['custom']['goods_name'] = 'goods_name';
-$_LANG['custom']['goods_sn'] = 'goods_sn';
-$_LANG['custom']['brand_name'] = 'brand_name';
-$_LANG['custom']['market_price'] = 'market_price';
-$_LANG['custom']['shop_price'] = 'shop_price';
-$_LANG['custom']['integral'] = 'integral';
-$_LANG['custom']['original_img'] = 'riginal_img';
-$_LANG['custom']['goods_img'] = 'goods_img';
-$_LANG['custom']['goods_thumb'] = 'goods_thumb';
-$_LANG['custom']['keywords'] = 'keywords';
-$_LANG['custom']['goods_brief'] = 'goods_brief';
-$_LANG['custom']['goods_desc'] = 'goods_desc';
-$_LANG['custom']['goods_weight'] = 'goods_weight(kg)';
-$_LANG['custom']['goods_number'] = 'goods_number';
-$_LANG['custom']['warn_number'] = 'warn_number';
-$_LANG['custom']['is_best'] = 'is_best';
-$_LANG['custom']['is_new'] = 'is_new';
-$_LANG['custom']['is_hot'] = 'is_hot';
-$_LANG['custom']['is_on_sale'] = 'is_on_sale';
-$_LANG['custom']['is_alone_sale'] = 'is_alone_sale';
-$_LANG['custom']['is_real'] = 'is_real';
+$_LANG['export_custom'] = '导出到自定义数据格式';
+$_LANG['custom']['goods_name'] = '商品名称';
+$_LANG['custom']['goods_sn'] = '商品货号';
+$_LANG['custom']['brand_name'] = '商品品牌';
+$_LANG['custom']['market_price'] = '市场售价';
+$_LANG['custom']['shop_price'] = '本店售价';
+$_LANG['custom']['integral'] = '积分购买额度';
+$_LANG['custom']['original_img'] = '商品原始图';
+$_LANG['custom']['goods_img'] = '商品图片';
+$_LANG['custom']['goods_thumb'] = '商品缩略图';
+$_LANG['custom']['keywords'] = '商品关键词';
+$_LANG['custom']['goods_brief'] = '简单描述';
+$_LANG['custom']['goods_desc'] = '详细描述';
+$_LANG['custom']['goods_weight'] = '商品重量（kg）';
+$_LANG['custom']['goods_number'] = '库存数量';
+$_LANG['custom']['warn_number'] = '库存警告数量';
+$_LANG['custom']['is_best'] = '是否精品';
+$_LANG['custom']['is_new'] = '是否新品';
+$_LANG['custom']['is_hot'] = '是否热销';
+$_LANG['custom']['is_on_sale'] = '是否上架';
+$_LANG['custom']['is_alone_sale'] = '能否作为普通商品销售';
+$_LANG['custom']['is_real'] = '是否实体商品';
 
-$_LANG['custom_keyword'] = 'Keyword';
-$_LANG['custom_goods_cat'] = 'All Categories';
-$_LANG['custom_goods_brand'] = 'All brands';
-$_LANG['custom_goods_list'] = 'Select merchandise data columns';
-$_LANG['custom_goods_type'] = 'All types of merchandise';
-$_LANG['custom_export_list'] = 'Merchandise export data columns';
-$_LANG['custom_up'] = 'On';
-$_LANG['custom_down'] = 'Under';
-$_LANG['custom_goods_search'] = 'Export conditions';
-$_LANG['custom_goods_field_not_null'] = 'Output data out of the merchandise should not be empty';
+$_LANG['custom_keyword'] = '关键字';
+$_LANG['custom_goods_cat'] = '所有分类';
+$_LANG['custom_goods_brand'] = '所有品牌';
+$_LANG['custom_goods_list'] = '选择商品数据列';
+$_LANG['custom_goods_type'] = '所有商品类型';
+$_LANG['custom_export_list'] = '输出商品数据列';
+$_LANG['custom_up'] = '上';
+$_LANG['custom_down'] = '下';
+$_LANG['custom_goods_search'] = '导出条件';
+$_LANG['custom_goods_field_not_null'] = '输出的商品数据列不能为空';
 
 // 导出条件
-$_LANG['export_condition'] = 'Export volume of goods data';
-$_LANG['export_condition_search'] = 'Search';
-$_LANG['export_format'] = 'Data Format';
+$_LANG['export_condition'] = '商品数据批量导出';
+$_LANG['export_condition_search'] = '搜 索';
+$_LANG['export_format'] = '数据格式';
 
 ?>

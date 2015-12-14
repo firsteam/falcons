@@ -12,7 +12,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/68ecshop_commin.css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/commin.css" />
 <link href="themes/cnpicks/css/store_joinin.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="themes/cnpicks/js/jquery-1.9.1.min.js"></script>
 {insert_scripts files='jquery.json.js,transport.js'}

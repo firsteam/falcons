@@ -13,28 +13,28 @@
  * $Id: filecheck.php 15013 2008-10-23 09:31:42Z testyang $
 */
 
-$_LANG['filecheck_verifying'] = 'Check files in progress, please wait......';
-$_LANG['filecheck_tips_step1'] = 'ECSHOP check documents for the official release of the documents as the basis for cross-checking, click the button below to start checking。';
-$_LANG['filecheck_start'] = 'Start';
-$_LANG['fileperms_confirm'] = 'To confirm the beginning of';
-$_LANG['fileperms_verify'] = 'Start verify';
-$_LANG['filecheck_completed'] = 'Check the results';
-$_LANG['filecheck_return'] = 'Return to re-check';
-$_LANG['filecheck_status'] = 'State';
-$_LANG['result_modify'] = '<em class="edited">To be revised</em>';
-$_LANG['result_delete'] = '<em class="del">Deleted</em>';
-$_LANG['result_unknown'] = '<em class="unknown">unknown</em>';
-$_LANG['filecheck_modify'] = 'To be revised';
-$_LANG['filecheck_delete'] = 'Deleted';
-$_LANG['filecheck_unknown'] = 'unknown';
-$_LANG['filecheck_check_ok'] = 'Correct';
-$_LANG['jump_info'] = 'If your browser does not automatically jump, please click here';
-$_LANG['tips'] = 'Tips: ';
-$_LANG['filecheck_tips'] = '<li>“<em class="edited">To be revised</em>”、“<em class="del">Deleted</em>” The list of documents, instantly, through FTP or other tools to check the validity of their documents in order to ensure the normal function of ECSHOP Shop use。</li>
-    <li>“<em class="unknown">unknown</em>” The documents listed, please check whether it was illegal Shop into the other documents。</li>
-    <li style="">“<em class="unknown">The week were revised</em>” Listed in the document, make sure that the recently revised。</li>';
-$_LANG['filename'] = 'File Name';
-$_LANG['filesize'] = 'File size';
-$_LANG['filemtime'] = 'Last modified';
-$_LANG['filecheck_nofound_md5file'] = 'Check file does not exist and can not do this';
+$_LANG['filecheck_verifying'] = '正在进行文件校验，请稍候......';
+$_LANG['filecheck_tips_step1'] = '文件校验是针对 ECSHOP 官方发布的文件为基础进行核对，点击下面按钮开始进行校验。';
+$_LANG['filecheck_start'] = '开 始';
+$_LANG['fileperms_confirm'] = '确认开始';
+$_LANG['fileperms_verify'] = '开始校验';
+$_LANG['filecheck_completed'] = '校验结果';
+$_LANG['filecheck_return'] = '返回重新校验';
+$_LANG['filecheck_status'] = '状态';
+$_LANG['result_modify'] = '<em class="edited">被修改</em>';
+$_LANG['result_delete'] = '<em class="del">被删除</em>';
+$_LANG['result_unknown'] = '<em class="unknown">未知</em>';
+$_LANG['filecheck_modify'] = '被修改';
+$_LANG['filecheck_delete'] = '被删除';
+$_LANG['filecheck_unknown'] = '未知';
+$_LANG['filecheck_check_ok'] = '正确';
+$_LANG['jump_info'] = '如果您的浏览器没有自动跳转，请点击这里';
+$_LANG['tips'] = '技巧提示: ';
+$_LANG['filecheck_tips'] = '<li>“<em class="edited">被修改</em>”、“<em class="del">被删除</em>” 中的列出的文件，请即刻通过 FTP 或其他工具检查其文件的正确性，以确保ECSHOP网店功能的正常使用。</li>
+    <li>“<em class="unknown">未知</em>” 中的列出的文件，请检查网店是否被人非法放入了其他文件。</li>
+    <li style="">“<em class="unknown">一周内被修改</em>” 中列出的文件，请确认最近是否修改过。</li>';
+$_LANG['filename'] = '文件名';
+$_LANG['filesize'] = '文件大小';
+$_LANG['filemtime'] = '最后修改时间';
+$_LANG['filecheck_nofound_md5file'] = '不存在校验文件，无法进行此操作';
 ?>

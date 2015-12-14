@@ -1,152 +1,150 @@
 <?php
 /**
- * ECSHOP Short message module language file
+ * ECSHOP 短信模块语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: sms.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-/* Navigation */
-$_LANG['register_sms'] = 'Register Or Enable Sms Account.';
+/* 导航条 */
+$_LANG['register_sms'] = '注册或启用短信账号';
 
-/* Register or enable sms */
-$_LANG['email'] = 'Email';
-$_LANG['password'] = 'Password';
-$_LANG['domain'] = 'Domain';
-$_LANG['error_tips'] = 'Set in the shop - "SMS settings, first register and properly configure the SMS messaging service!';
-$_LANG['register_new'] = 'Register';
-$_LANG['enable_old'] = 'Enable account';
+/* 注册和启用短信功能 */
+$_LANG['email'] = '电子邮箱';
+$_LANG['password'] = '登录密码';
+$_LANG['domain'] = '网店域名';
+$_LANG['register_new'] = '注册新账号';
+$_LANG['error_tips'] = '请在商店设置->短信设置，先注册短信服务并正确配置短信服务！';
+$_LANG['enable_old'] = '启用已有账号';
 
-/* Sms special service message */
-$_LANG['sms_user_name'] = 'Username:';
-$_LANG['sms_password'] = 'Password:';
-$_LANG['sms_domain'] = 'Domain:';
-$_LANG['sms_num'] = 'Sms special service number:';
-$_LANG['sms_count'] = 'Send smsquantity:';
-$_LANG['sms_total_money'] = 'Total money:';
-$_LANG['sms_balance'] = 'Balance:';
-$_LANG['sms_last_request'] = 'Latest request time:';
-$_LANG['disable'] = 'Disable sms service';
+/* 短信特服信息 */
+$_LANG['sms_user_name'] = '用户名：';
+$_LANG['sms_password'] = '密码：';
+$_LANG['sms_domain'] = '域名：';
+$_LANG['sms_num'] = '短信特服号：';
+$_LANG['sms_count'] = '发送短信条数：';
+$_LANG['sms_total_money'] = '总共冲值金额：';
+$_LANG['sms_balance'] = '余额：';
+$_LANG['sms_last_request'] = '最后一次请求时间：';
+$_LANG['disable'] = '注销短信服务';
 
-/* Send sms */
-$_LANG['phone'] = 'Mobile phone';
-$_LANG['user_rand'] = 'Send short message by the user level';
-$_LANG['phone_notice'] = 'More than one phone number divided by DBC case comma.';
-$_LANG['msg'] = 'Message';
-$_LANG['msg_notice'] = '70 character at most';
-$_LANG['send_date'] = 'Send at certain times';
-$_LANG['send_date_notice'] = 'Format is YYYY-MM-DD HH:II. If it is blank then send immediately.';
-$_LANG['back_send_history'] = 'Return to send history';
-$_LANG['back_charge_history'] = 'Return to charge history';
+/* 发送短信 */
+$_LANG['phone'] = '接收手机号码';
+$_LANG['user_rand'] = '按用户等级发送短消息';
+$_LANG['phone_notice'] = '多个手机号码用半角逗号分开';
+$_LANG['msg'] = '消息内容';
+$_LANG['msg_notice'] = '最长70字符';
+$_LANG['send_date'] = '定时发送时间';
+$_LANG['send_date_notice'] = '格式为YYYY-MM-DD HH:II。为空表示立即发送。';
+$_LANG['back_send_history'] = '返回发送历史列表';
+$_LANG['back_charge_history'] = '返回充值历史列表';
 
-/* Record query interface */
-$_LANG['start_date'] = 'Start date';
-$_LANG['date_notice'] = 'Format:YYYY-MM-DD. Allowed blank.';
-$_LANG['end_date'] = 'Deadline';
-$_LANG['page_size'] = 'Display every page';
-$_LANG['page_size_notice'] = 'Can be blank, diaplay every 20 records.';
-$_LANG['page'] = 'Page quantity';
-$_LANG['page_notice'] = 'Can be blank,express display every 1 page.';
-$_LANG['charge'] = 'Please enter the charge what you want to recharge.';
+/* 记录查询界面 */
+$_LANG['start_date'] = '开始日期';
+$_LANG['date_notice'] = '格式为YYYY-MM-DD。可为空。';
+$_LANG['end_date'] = '结束日期';
+$_LANG['page_size'] = '每页显示数量';
+$_LANG['page_size_notice'] = '可为空，表示每页显示20条记录';
+$_LANG['page'] = '页数';
+$_LANG['page_notice'] = '可为空，表示显示1页';
+$_LANG['charge'] = '请输入您想要充值的金额';
 
-/* Confirm action information */
-$_LANG['history_query_error'] = 'Sorry, error in the process of query.';
-$_LANG['enable_ok'] = 'Congratulations, you have enabled sms service!';
-$_LANG['enable_error'] = 'Sorry, you enable sms service has failed.';
-$_LANG['disable_ok'] = 'You logout sms service successfully.';
-$_LANG['disable_error'] = 'Logout sms service has failed.';
-$_LANG['register_ok'] = 'Congratulations, you register sms service successfully!';
-$_LANG['register_error'] = 'Sorry, you register sms service has failed.';
-$_LANG['send_ok'] = 'Congratulations ,your message has be sent successfully!';
-$_LANG['send_error'] = 'Sorry, error in the process of send.';
-$_LANG['error_no'] = 'Error mark';
-$_LANG['error_msg'] = 'Error description';
-$_LANG['empty_info'] = 'Your sms special service is blank.';
+/* 动作确认信息 */
+$_LANG['history_query_error'] = '对不起，在查询过程中发生错误。';
+$_LANG['enable_ok'] = '恭喜，您已成功启用短信服务！';
+$_LANG['enable_error'] = '对不起，您启用短信服务失败。';
+$_LANG['disable_ok'] = '您已经成功注销短信服务。';
+$_LANG['disable_error'] = '注销短信服务失败。';
+$_LANG['register_ok'] = '恭喜，您已成功注册短信服务！';
+$_LANG['register_error'] = '对不起，您注册短信服务失败。';
+$_LANG['send_ok'] = '恭喜，您的短信已经成功发送！';
+$_LANG['send_error'] = '对不起，在发送短信过程中发生错误。';
+$_LANG['error_no'] = '错误标识';
+$_LANG['error_msg'] = '错误描述';
+$_LANG['empty_info'] = '您的短信特服信息为空。';
 
-/* cellphone replenishing record */
-$_LANG['order_id'] = 'Order ID';
-$_LANG['money'] = 'Recharge money';
-$_LANG['log_date'] = 'Recharge date';
+/* 充值记录 */
+$_LANG['order_id'] = '订单号';
+$_LANG['money'] = '充值金额';
+$_LANG['log_date'] = '充值日期';
 
-/* Send logs */
-$_LANG['sent_phones'] = 'Sent cellphone number';
-$_LANG['content'] = 'Content';
-$_LANG['charge_num'] = 'Payments';
-$_LANG['sent_date'] = 'Sent date';
-$_LANG['send_status'] = 'Send status';
-$_LANG['status'][0] = 'Fail';
-$_LANG['status'][1] = 'Succeed';
-$_LANG['user_list'] = 'All user';
-$_LANG['please_select'] = 'Please choose the membership grade';
+/* 发送记录 */
+$_LANG['sent_phones'] = '发送手机号码';
+$_LANG['content'] = '发送内容';
+$_LANG['charge_num'] = '计费条数';
+$_LANG['sent_date'] = '发送日期';
+$_LANG['send_status'] = '发送状态';
+$_LANG['status'][0] = '失败';
+$_LANG['status'][1] = '成功';
+$_LANG['user_list'] = '全体会员';
+$_LANG['please_select'] = '请选择会员等级';
 
-/* Prompting message */
+/* 提示 */
 $_LANG['test_now'] = '<span style="color:red;"></span>';
-$_LANG['msg_price'] = '<span style="color:green;">0.1 yuan(RMB) every message</span>';
+$_LANG['msg_price'] = '<span style="color:green;">短信每条0.1元(RMB)</span>';
 
-/* API return error information */
-//--register
-$_LANG['api_errors']['register'][1] = 'Domain name can\'t be blank.';
-$_LANG['api_errors']['register'][2] = 'Mailbox is invalid.';
-$_LANG['api_errors']['register'][3] = 'Username already exists.';
-$_LANG['api_errors']['register'][4] = 'Unknown error.';
-$_LANG['api_errors']['register'][5] = 'Port error.';
-//--Gain balance
-$_LANG['api_errors']['get_balance'][1] = 'Password is invalid.';
-$_LANG['api_errors']['get_balance'][2] = 'User disable.';
-//--Send sms
-$_LANG['api_errors']['send'][1] = 'Password is invalid.';
-$_LANG['api_errors']['send'][2] = 'Sms content length is invalid.';
-$_LANG['api_errors']['send'][3] = 'Send time should later than current time.';
-$_LANG['api_errors']['send'][4] = 'Error number.';
-$_LANG['api_errors']['send'][5] = 'Balance not enough.';
-$_LANG['api_errors']['send'][6] = 'Account is stoped.';
-$_LANG['api_errors']['send'][7] = 'Port error.';
-//--History record
-$_LANG['api_errors']['get_history'][1] = 'Password is invalid.';
-$_LANG['api_errors']['get_history'][2] = 'No record.';
-//--User verify
-$_LANG['api_errors']['auth'][1] = 'Password error.';
-$_LANG['api_errors']['auth'][2] = 'No user.';
+/* API返回的错误信息 */
+//--注册
+$_LANG['api_errors']['register'][1] = '域名不能为空。';
+$_LANG['api_errors']['register'][2] = '邮箱填写不正确。';
+$_LANG['api_errors']['register'][3] = '用户名已存在。';
+$_LANG['api_errors']['register'][4] = '未知错误。';
+$_LANG['api_errors']['register'][5] = '接口错误。';
+//--获取余额
+$_LANG['api_errors']['get_balance'][1] = '用户名密码不正确。';
+$_LANG['api_errors']['get_balance'][2] = '用户被禁用。';
+//--发送短信
+$_LANG['api_errors']['send'][1] = '用户名密码不正确。';
+$_LANG['api_errors']['send'][2] = '短信内容过长。';
+$_LANG['api_errors']['send'][3] = '发送日期应大于当前时间。';
+$_LANG['api_errors']['send'][4] = '错误的号码。';
+$_LANG['api_errors']['send'][5] = '账户余额不足。';
+$_LANG['api_errors']['send'][6] = '账户已被停用。';
+$_LANG['api_errors']['send'][7] = '接口错误。';
+//--历史记录
+$_LANG['api_errors']['get_history'][1] = '用户名密码不正确。';
+$_LANG['api_errors']['get_history'][2] = '查无记录。';
+//--用户验证
+$_LANG['api_errors']['auth'][1] = '密码错误。';
+$_LANG['api_errors']['auth'][2] = '用户不存在。';
 
-/* User server detected error information */
-$_LANG['server_errors'][1] = 'error invalid register information.';//ERROR_INVALID_REGISTER_INFO
-$_LANG['server_errors'][2] = 'error invalid enable information.';//ERROR_INVALID_ENABLE_INFO
-$_LANG['server_errors'][3] = 'error invalid send information.';//ERROR_INVALID_SEND_INFO
-$_LANG['server_errors'][4] = 'error invalid history query.';//ERROR_INVALID_HISTORY_QUERY
-$_LANG['server_errors'][5] = 'error invalid passport.';//ERROR_INVALID_PASSPORT
-$_LANG['server_errors'][6] = 'error invalid URL.';//ERROR_INVALID_URL
-$_LANG['server_errors'][7] = 'error empty response.';//ERROR_EMPTY_RESPONSE
-$_LANG['server_errors'][8] = 'error invalid xml file.';//ERROR_INVALID_XML_FILE
-$_LANG['server_errors'][9] = 'error invalid node name.';//ERROR_INVALID_NODE_NAME
-$_LANG['server_errors'][10] = 'error cant store.';//ERROR_CANT_STORE
-$_LANG['server_errors'][11] = 'SMS feature is not yet activated.';//ERROR_INVALID_PASSPORT
+/* 用户服务器检测到的错误信息 */
+$_LANG['server_errors'][1] = '注册信息无效。';//ERROR_INVALID_REGISTER_INFO
+$_LANG['server_errors'][2] = '启用信息无效。';//ERROR_INVALID_ENABLE_INFO
+$_LANG['server_errors'][3] = '发送的信息有误。';//ERROR_INVALID_SEND_INFO
+$_LANG['server_errors'][4] = '填写的查询信息有误。';//ERROR_INVALID_HISTORY_QUERY
+$_LANG['server_errors'][5] = '无效的身份信息。';//ERROR_INVALID_PASSPORT
+$_LANG['server_errors'][6] = 'URL不对。';//ERROR_INVALID_URL
+$_LANG['server_errors'][7] = 'HTTP响应体为空。';//ERROR_EMPTY_RESPONSE
+$_LANG['server_errors'][8] = '无效的XML文件。';//ERROR_INVALID_XML_FILE
+$_LANG['server_errors'][9] = '无效的节点名字。';//ERROR_INVALID_NODE_NAME
+$_LANG['server_errors'][10] = '存储失败。';//ERROR_CANT_STORE
+$_LANG['server_errors'][11] = '短信功能尚未激活。';//ERROR_INVALID_PASSPORT
 
-/* Client JS language item */
-//--Register or  invocation
-$_LANG['js_languages']['password_empty_error'] = 'Please enter password.';
-$_LANG['js_languages']['username_empty_error'] = 'Please enter username.';
-$_LANG['js_languages']['username_format_error'] = 'Username format is invalid.';
-$_LANG['js_languages']['domain_empty_error'] = 'Domain can\'t be blank.';
-$_LANG['js_languages']['domain_format_error'] = 'Domain format is invalid.';
-$_LANG['js_languages']['send_empty_error'] = 'Send phone number and send at least fill out a rating！';
+/* 客户端JS语言项 */
+//--注册或启用
+$_LANG['js_languages']['password_empty_error'] = '密码不能为空。';
+$_LANG['js_languages']['username_empty_error'] = '用户名不能为空。';
+$_LANG['js_languages']['username_format_error'] = '用户名格式不对。';
+$_LANG['js_languages']['domain_empty_error'] = '域名不能为空。';
+$_LANG['js_languages']['domain_format_error'] = '域名格式不对。';
+$_LANG['js_languages']['send_empty_error'] = '发送手机号与发送等级至少填写一项！';
+//--发送
+$_LANG['js_languages']['phone_empty_error'] = '请填写手机号。';
+$_LANG['js_languages']['phone_format_error'] = '手机号码格式不对。';
+$_LANG['js_languages']['msg_empty_error'] = '请填写消息内容。';
+$_LANG['js_languages']['send_date_format_error'] = '定时发送时间格式不对。';
+//--历史记录
+$_LANG['js_languages']['start_date_format_error'] = '开始日期格式不对。';
+$_LANG['js_languages']['end_date_format_error'] = '结束日期格式不对。';
+//--充值
+$_LANG['js_languages']['money_empty_error'] = '请输入您要充值的金额。';
+$_LANG['js_languages']['money_format_error'] = '金额格式不对。';
 
-//--Send
-$_LANG['js_languages']['phone_empty_error'] = 'Please enter phone number.';
-$_LANG['js_languages']['phone_format_error'] = 'Phone member format is invalid.';
-$_LANG['js_languages']['msg_empty_error'] = 'Please enter meaasge content.';
-$_LANG['js_languages']['send_date_format_error'] = 'Timing format is invalid.';
-//--History record
-$_LANG['js_languages']['start_date_format_error'] = 'Start time format is invalid.';
-$_LANG['js_languages']['end_date_format_error'] = 'Deadline format is invalid.';
-//--Recharge
-$_LANG['js_languages']['money_empty_error'] = 'Please enter charge what you want to recharge.';
-$_LANG['js_languages']['money_format_error'] = 'Money format is invalid.';
 ?>

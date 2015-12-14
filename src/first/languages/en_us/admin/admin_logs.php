@@ -1,45 +1,43 @@
 <?php
 
 /**
- * ECSHOP Control panel operate language file
+ * ECSHOP 管理中心管理员操作内容语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: admin_logs.php 17217 2011-01-19 06:29:08Z liubo $
 */
-/* Field information */
-$_LANG['log_id'] = 'NO.';
-$_LANG['log_time'] = 'Time';
-$_LANG['user_id'] = 'Operator';
-$_LANG['log_info'] = 'Operation log';
-$_LANG['ip_address'] = 'IP';
+/* 字段信息 */
+$_LANG['log_id'] = '编号';
+$_LANG['log_time'] = '操作日期';
+$_LANG['user_id'] = '操作者';
+$_LANG['log_info'] = '操作记录';
+$_LANG['ip_address'] = 'IP地址';
 
-$_LANG['drop_logs'] = 'Delete';
+$_LANG['drop_logs'] = '删除日志';
 
-$_LANG['view_ip'] = 'IP';
-$_LANG['select_ip'] = 'Please select...';
-$_LANG['drop_logs'] = 'Delete logs';
-$_LANG['select_date'] = 'Please select...';
-$_LANG['comfrom'] = 'OK';
+$_LANG['view_ip'] = '按IP地址查看';
+$_LANG['select_ip'] = '选择IP地址...';
+$_LANG['drop_logs'] = '清除日志';
+$_LANG['select_date'] = '选择清除的日期...';
+$_LANG['comfrom'] = '确定';
 
-$_LANG['week_date'] = 'One week ago';
-$_LANG['month_date'] = 'One month ago';
-$_LANG['three_month'] = 'Three month ago';
-$_LANG['six_month'] = 'Six month ago';
-$_LANG['a_yaer'] = 'One year ago';
-$_LANG['back_list'] = 'Return to logs list.';
+$_LANG['week_date'] = '一周之前';
+$_LANG['month_date'] = '一个月之前';
+$_LANG['three_month'] = '三个月之前';
+$_LANG['six_month'] = '半年之前';
+$_LANG['a_yaer'] = '一年之前';
+$_LANG['back_list'] = '返回日志列表';
 
-$_LANG['js_languages']['select_date_value'] = 'If you will delete the log, please select date of deletion.';
+$_LANG['js_languages']['select_date_value'] = '如果您要清除日志,请选择清除的日期';
 
-/* Prompting message */
-$_LANG['drop_sueeccud'] = 'Successfully!';
-$_LANG['batch_drop_success'] = 'Delete %d records successfully.';
+/* 提示信息 */
+$_LANG['drop_sueeccud'] = '操作成功!';
+$_LANG['batch_drop_success'] = '成功删除了 %d 个日志记录';
 
 ?>

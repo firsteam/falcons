@@ -1,46 +1,44 @@
 <?php
 /**
- * ECSHOP Create display product JS coding language file
+ * ECSHOP 生成显示商品的js代码语言文件
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: gen_goods_script.php 17217 2011-01-19 06:29:08Z liubo $
  */
-$_LANG['label_category'] = 'Category:';
-$_LANG['label_brand'] = 'Brand:';
-$_LANG['label_intro_type'] = 'Recommend type:';
-$_LANG['label_need_image'] = 'Display product image:';
-$_LANG['label_goods_num'] = 'Display product quantity:';
-$_LANG['label_arrange'] = 'Arrange method:';
-$_LANG['label_rows_num'] = 'Showing entries with a few:';
-$_LANG['label_charset'] = 'Charset:';
-$_LANG['label_sitename'] = 'Quote website:';
+$_LANG['label_category'] = '选择商品分类：';
+$_LANG['label_brand'] = '选择商品品牌：';
+$_LANG['label_intro_type'] = '选择推荐类型：';
+$_LANG['label_need_image'] = '是否显示商品图片：';
+$_LANG['label_goods_num'] = '显示商品数量：';
+$_LANG['label_arrange'] = '选择商品排列方式：';
+$_LANG['label_rows_num'] = '排列显示条目数：';
+$_LANG['label_charset'] = '选择编码：';
+$_LANG['label_sitename'] = '引用站点名称：';
 
-$_LANG['all_category'] = 'All categories';
-$_LANG['all_brand'] = 'All brand';
-$_LANG['all_intro_type'] = 'All recommend type';
-$_LANG['need'] = 'Display';
-$_LANG['need_not'] = 'Conceal';
-$_LANG['horizontal'] = 'Horizontal';
-$_LANG['verticle'] = 'Vertical';
-$_LANG['generate'] = 'Create code';
+$_LANG['all_category'] = '所有分类';
+$_LANG['all_brand'] = '所有品牌';
+$_LANG['all_intro_type'] = '所有推荐类型';
+$_LANG['need'] = '显示';
+$_LANG['need_not'] = '不显示';
+$_LANG['horizontal'] = '横排';
+$_LANG['verticle'] = '竖排';
+$_LANG['generate'] = '生成代码';
 
-$_LANG['intro']['is_best'] = 'Best';
-$_LANG['intro']['is_new'] = 'New';
-$_LANG['intro']['is_hot'] = 'Hot';
-$_LANG['intro']['is_promote'] = 'Sales promotion';
-$_LANG['intro']['is_random'] = 'Random';
+$_LANG['intro']['is_best'] = '精品';
+$_LANG['intro']['is_new'] = '新品';
+$_LANG['intro']['is_hot'] = '热销';
+$_LANG['intro']['is_promote'] = '特价';
+$_LANG['intro']['is_random'] = '随机';
 
-$_LANG['js_languages']['goods_num_must_be_int'] = 'Product quantity should be an integer.';
-$_LANG['js_languages']['goods_num_must_over_0'] = 'Product quantity should more than 0.';
+$_LANG['js_languages']['goods_num_must_be_int'] = '商品数量应该是整数';
+$_LANG['js_languages']['goods_num_must_over_0'] = '商品数量应该大于0';
 
-$_LANG['js_languages']['rows_num_must_be_int'] = 'With show entries should be rounded';
-$_LANG['js_languages']['rows_num_must_over_0'] = 'ith show entries should be greater than 0';
+$_LANG['js_languages']['rows_num_must_be_int'] = '排列显示条目数应该是整数';
+$_LANG['js_languages']['rows_num_must_over_0'] = '排列显示条目数应该大于0';
 ?>

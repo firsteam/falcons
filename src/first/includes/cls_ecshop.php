@@ -1,16 +1,16 @@
 <?php
 
 /**
- * ECSHOP åŸºç¡€ç±»
+ * ECSHOP »ù´¡Àà
  * ============================================================================
- * ç‰ˆæƒæ‰€æœ‰ 2005-2011 ä¸Šæµ·å•†æ´¾ç½‘ç»œç§‘æŠ€æœ‰é™å…¬å¸ï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
- * ç½‘ç«™åœ°å€: http://www.ecshop.comï¼›
+ * °æÈ¨ËùÓĞ 2005-2010 ÉÏº£ÉÌÅÉÍøÂç¿Æ¼¼ÓĞÏŞ¹«Ë¾£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
+ * ÍøÕ¾µØÖ·: http://www.ecshop.com£»
  * ----------------------------------------------------------------------------
- * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
- * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
+ * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
+ * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
  * ============================================================================
- * $Author: liubo $
- * $Id: cls_ecshop.php 17217 2011-01-19 06:29:08Z liubo $
+ * $Author: liuhui $
+ * $Id: cls_ecshop.php 17171 2010-06-04 06:14:00Z liuhui $
 */
 
 if (!defined('IN_ECS'))
@@ -18,10 +18,9 @@ if (!defined('IN_ECS'))
     die('Hacking attempt');
 }
 
-define('APPNAME', '68ECSHOP');
-define('VERSION', 'v4_1');
-define('RELEASE', '20150811');
-define('PRODUCTNAME', 'xjd_dan');
+define('APPNAME', 'ECSHOP');
+define('VERSION', 'v2.7.1');
+define('RELEASE', '20100604');
 
 class ECS
 {
@@ -29,10 +28,10 @@ class ECS
     var $prefix  = 'ecs_';
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
      * @access  public
-     * @param   string      $ver        ç‰ˆæœ¬å·
+     * @param   string      $ver        °æ±¾ºÅ
      *
      * @return  void
      */
@@ -43,10 +42,10 @@ class ECS
     }
 
     /**
-     * å°†æŒ‡å®šçš„è¡¨ååŠ ä¸Šå‰ç¼€åè¿”å›
+     * ½«Ö¸¶¨µÄ±íÃû¼ÓÉÏÇ°×ººó·µ»Ø
      *
      * @access  public
-     * @param   string      $str        è¡¨å
+     * @param   string      $str        ±íÃû
      *
      * @return  string
      */
@@ -56,10 +55,10 @@ class ECS
     }
 
     /**
-     * ECSHOP å¯†ç ç¼–è¯‘æ–¹æ³•;
+     * ECSHOP ÃÜÂë±àÒë·½·¨;
      *
      * @access  public
-     * @param   string      $pass       éœ€è¦ç¼–è¯‘çš„åŸå§‹å¯†ç 
+     * @param   string      $pass       ĞèÒª±àÒëµÄÔ­Ê¼ÃÜÂë
      *
      * @return  string
      */
@@ -69,18 +68,18 @@ class ECS
     }
 
     /**
-     * å–å¾—å½“å‰çš„åŸŸå
+     * È¡µÃµ±Ç°µÄÓòÃû
      *
      * @access  public
      *
-     * @return  string      å½“å‰çš„åŸŸå
+     * @return  string      µ±Ç°µÄÓòÃû
      */
     function get_domain()
     {
-        /* åè®® */
+        /* Ğ­Òé */
         $protocol = $this->http();
 
-        /* åŸŸåæˆ–IPåœ°å€ */
+        /* ÓòÃû»òIPµØÖ· */
         if (isset($_SERVER['HTTP_X_FORWARDED_HOST']))
         {
             $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
@@ -91,7 +90,7 @@ class ECS
         }
         else
         {
-            /* ç«¯å£ */
+            /* ¶Ë¿Ú */
             if (isset($_SERVER['SERVER_PORT']))
             {
                 $port = ':' . $_SERVER['SERVER_PORT'];
@@ -120,7 +119,7 @@ class ECS
     }
 
     /**
-     * è·å¾— ECSHOP å½“å‰ç¯å¢ƒçš„ URL åœ°å€
+     * »ñµÃ ECSHOP µ±Ç°»·¾³µÄ URL µØÖ·
      *
      * @access  public
      *
@@ -143,7 +142,7 @@ class ECS
     }
 
     /**
-     * è·å¾— ECSHOP å½“å‰ç¯å¢ƒçš„ HTTP åè®®æ–¹å¼
+     * »ñµÃ ECSHOP µ±Ç°»·¾³µÄ HTTP Ğ­Òé·½Ê½
      *
      * @access  public
      *
@@ -155,11 +154,11 @@ class ECS
     }
 
     /**
-     * è·å¾—æ•°æ®ç›®å½•çš„è·¯å¾„
+     * »ñµÃÊı¾İÄ¿Â¼µÄÂ·¾¶
      *
      * @param int $sid
      *
-     * @return string è·¯å¾„
+     * @return string Â·¾¶
      */
     function data_dir($sid = 0)
     {
@@ -177,11 +176,11 @@ class ECS
     }
 
     /**
-     * è·å¾—å›¾ç‰‡çš„ç›®å½•è·¯å¾„
+     * »ñµÃÍ¼Æ¬µÄÄ¿Â¼Â·¾¶
      *
      * @param int $sid
      *
-     * @return string è·¯å¾„
+     * @return string Â·¾¶
      */
     function image_dir($sid = 0)
     {

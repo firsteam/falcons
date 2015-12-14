@@ -1,42 +1,40 @@
 <?php
 
 /**
- * ECSHOP Edit language
+ * ECSHOP 语言编辑
  * ============================================================================
- * All right reserved (C) 2005-2011 Beijing Yi Shang Interactive Technology
- * Development Ltd.
- * Web site: http://www.ecshop.com
+ * 版权所有 2005-2011 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
  * ----------------------------------------------------------------------------
- * This is a free/open source software；it means that you can modify, use and
- * republish the program code, on the premise of that your behavior is not for
- * commercial purposes.
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
  * $Author: liubo $
  * $Id: edit_languages.php 17217 2011-01-19 06:29:08Z liubo $
  */
 
-$_LANG['edit_languages'] = 'Edit Language Item';
-$_LANG['enter_keywords'] = 'Enter language keywords';
-$_LANG['edit_button'] = 'Submit';
-$_LANG['reset_button'] = 'Reset';
+$_LANG['edit_languages'] = '语言项编辑';
+$_LANG['enter_keywords'] = '输入语言项关键字';
+$_LANG['edit_button'] = '确认修改';
+$_LANG['reset_button'] = '还 原';
 
-$_LANG['back_list'] = 'Return to edit language';
+$_LANG['back_list'] = '返回编辑语言项';
 
-$_LANG['item_name'] = 'Language item name';
-$_LANG['item_value'] = 'Language item value';
-$_LANG['notice_edit'] = 'Notice: Language item will be not update if there is blank.';
-$_LANG['edit_languages_success'] = 'Congratulations! Edit language item successfully!';
-$_LANG['edit_languages_false'] = 'Sorry! Edit language item has failed!';
+$_LANG['item_name'] = '语言项名称';
+$_LANG['item_value'] = '语言项值';
+$_LANG['notice_edit'] = '说明：留空将不会更新语言项';
+$_LANG['edit_languages_success'] = '恭喜！语言项编辑成功！';
+$_LANG['edit_languages_false'] = '对不起！语言项编辑失败！';
 
-$_LANG['js_languages']['keyword_empty_error'] = "Please enter keywords what you want to edit! \\nThe language item list related the keywords by search.";
+$_LANG['js_languages']['keyword_empty_error'] = '请输入您要编辑的语言关键字!\n通过搜索, 列出与此关键字相关的语言项列表';
 
-/* language item */
-$_LANG['language_files']['common'] = 'Common language files';
-$_LANG['language_files']['shopping_flow'] = 'Shopping flow language files';
-$_LANG['language_files']['user'] = 'Member center language files';
+/* 每一个语言文件对应的语言项 */
+$_LANG['language_files']['common'] = '公共语言包';
+$_LANG['language_files']['shopping_flow'] = '购物流程语言包';
+$_LANG['language_files']['user'] = '会员中心语言包';
 
-/* Operate description */
-$_LANG['handle_tips'] = 'Please enter the language item keywords what you want to edit!';
-$_LANG['file_attribute'] = 'The language item can\'t be edit, because the current language files has no unreadability and unwritablility.';
+/* 操作描述 */
+$_LANG['handle_tips'] = '请输入您需要修改的语言关键字!';
+$_LANG['file_attribute'] = '当前语言包文件没有可读写的权限！这样您将不能进行语言项的编辑操作。';
 
 ?>

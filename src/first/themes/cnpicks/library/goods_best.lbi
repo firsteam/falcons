@@ -1,12 +1,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- {if $best_goods} -->
 <div class="clearfix"></div> 
-<div class="goods_best">
+<div class="right goods_best">
 	<div class="mt">
     	<h2>推荐精品</h2>
     </div>
     <div class="colList"> 
-     <a id="btn-left1"  class="prev" title="上一个" onclick="top4()"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/goods_best_l.png" /></a>
+     <a id="btn-left1"  class="prev" title="上一个" onclick="top4()"><img src="themes/cnpicks/images/upgrade_ad/goods_best_l.png" /></a>
       <div class="slider1 colFrame" >
 		<ul>
       	<!--{foreach from=$best_goods item=goods name=best_goods}-->
@@ -27,7 +27,7 @@
       	<!--{/foreach}-->
     	</ul>
       </div>
-     <a id="btn-right1" class="next" title="下一个" onclick="bottom4()"><img src="themes/68ecshopcom_360buy/images/upgrade_ad/goods_best_r.png" /></a> 
+     <a id="btn-right1" class="next" title="下一个" onclick="bottom4()"><img src="themes/cnpicks/images/upgrade_ad/goods_best_r.png" /></a> 
     </div>
     <script type="text/javascript">
  var _scrolling="";

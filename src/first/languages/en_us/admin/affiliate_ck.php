@@ -14,44 +14,44 @@
  */
 
 
-$_LANG['order_id'] = 'Order No.';
-$_LANG['affiliate_separate'] = 'Divided into';
-$_LANG['affiliate_cancel'] = 'Cancel';
-$_LANG['affiliate_rollback'] = 'Revocation';
-$_LANG['log_info'] = 'Operation information';
-$_LANG['edit_ok'] = 'Successful operation';
-$_LANG['edit_fail'] = 'Operation failed';
-$_LANG['separate_info'] = 'Order No. %s, divided into: money %s points %s';
-$_LANG['separate_info2'] = 'User ID %s (%s), divided into: money %s points %s';
-$_LANG['sch_order'] = 'Search Order No.';
+$_LANG['order_id'] = '订单号';
+$_LANG['affiliate_separate'] = '分成';
+$_LANG['affiliate_cancel'] = '取消';
+$_LANG['affiliate_rollback'] = '撤销';
+$_LANG['log_info'] = '操作信息';
+$_LANG['edit_ok'] = '操作成功';
+$_LANG['edit_fail'] = '操作失败';
+$_LANG['separate_info'] = '订单号 %s, 分成:金钱 %s 积分 %s';
+$_LANG['separate_info2'] = '用户ID %s ( %s ), 分成:金钱 %s 积分 %s';
+$_LANG['sch_order'] = '搜索订单号';
 
-$_LANG['sch_stats']['name'] = 'Operational status';
-$_LANG['sch_stats']['info'] = 'According to operational status search:';
-$_LANG['sch_stats']['all'] = 'All';
-$_LANG['sch_stats'][0] = 'Wait for treatment';
-$_LANG['sch_stats'][1] = 'Has been divided into';
-$_LANG['sch_stats'][2] = 'Cancel divided into';
-$_LANG['sch_stats'][3] = 'Revoked';
-$_LANG['order_stats']['name'] = 'Order Status';
-$_LANG['order_stats'][0] = 'Not confirmed';
-$_LANG['order_stats'][1] = 'Has confirmed';
-$_LANG['order_stats'][2] = 'Has been canceled';
-$_LANG['order_stats'][3] = 'Invalid';
-$_LANG['order_stats'][4] = 'Return';
-$_LANG['js_languages']['cancel_confirm'] = 'Are you sure you want to cancel into it? This action can not be revoked.';
-$_LANG['js_languages']['rollback_confirm'] = 'You sure you want to revoke this into it?';
-$_LANG['js_languages']['separate_confirm'] = 'Are you sure you want into it?';
-$_LANG['loginfo'][0] = 'User id:';
-$_LANG['loginfo'][1] = 'Cash:';
-$_LANG['loginfo'][2] = 'Points:';
-$_LANG['loginfo']['cancel'] = 'Divided by the administrator canceled!';
+$_LANG['sch_stats']['name'] = '操作状态';
+$_LANG['sch_stats']['info'] = '按操作状态查找:';
+$_LANG['sch_stats']['all'] = '全部';
+$_LANG['sch_stats'][0] = '等待处理';
+$_LANG['sch_stats'][1] = '已分成';
+$_LANG['sch_stats'][2] = '取消分成';
+$_LANG['sch_stats'][3] = '已撤销';
+$_LANG['order_stats']['name'] = '订单状态';
+$_LANG['order_stats'][0] = '未确认';
+$_LANG['order_stats'][1] = '已确认';
+$_LANG['order_stats'][2] = '已取消';
+$_LANG['order_stats'][3] = '无效';
+$_LANG['order_stats'][4] = '退货';
+$_LANG['js_languages']['cancel_confirm'] = '您确定要取消分成吗？此操作不能撤销。';
+$_LANG['js_languages']['rollback_confirm'] = '您确定要撤销此次分成吗？';
+$_LANG['js_languages']['separate_confirm'] = '您确定要分成吗？';
+$_LANG['loginfo'][0] = '用户id:';
+$_LANG['loginfo'][1] = '现金:';
+$_LANG['loginfo'][2] = '积分:';
+$_LANG['loginfo']['cancel'] = '分成被管理员取消！';
 
-$_LANG['separate_type'] = 'Divided into types';
-$_LANG['separate_by'][0] = 'Recommend register is divided into';
-$_LANG['separate_by'][1] = 'Recommend orders into';
-$_LANG['separate_by'][-1] = 'Recommend register is divided into';
-$_LANG['separate_by'][-2] = 'Recommend orders into';
+$_LANG['separate_type'] = '分成类型';
+$_LANG['separate_by'][0] = '推荐注册分成';
+$_LANG['separate_by'][1] = '推荐订单分成';
+$_LANG['separate_by'][-1] = '推荐注册分成';
+$_LANG['separate_by'][-2] = '推荐订单分成';
 
-$_LANG['show_affiliate_orders'] = 'This list shows the recommended order information for this user.';
-$_LANG['back_note'] = 'Return to the user-edited page';
+$_LANG['show_affiliate_orders'] = '此列表显示此用户推荐的订单信息。';
+$_LANG['back_note'] = '返回会员编辑页面';
 ?>
