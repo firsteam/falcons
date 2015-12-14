@@ -16,6 +16,14 @@ Template Type: type_0
 	bottom: 0;
 	right: 70px;
 	z-index: 999;
+	cursor:pointer;
+	text-decoration:none;
+}
+#compareBox:hover{
+	text-decoration:none;
+}
+#compareBox:link{
+	text-decoration:none;
 }
 #compareBox .menu {
 	position: relative;
@@ -195,7 +203,7 @@ Template Type: type_0
 }
 .collet-btn {
 	float: right;
-	margin-right: 40px;
+	margin-right: 5px;
 	height: 21px;
 	overflow: hidden;
 	width: 58px;

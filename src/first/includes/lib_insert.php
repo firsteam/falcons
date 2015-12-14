@@ -238,8 +238,9 @@ function insert_cart_info()
         $amount = 0;
     }
 
-    $GLOBALS['smarty']->assign('str',sprintf($GLOBALS['_LANG']['cart_info'], $number, price_format($amount, false)));
-		$GLOBALS['smarty']->assign('goods',$arr);
+    // $GLOBALS['smarty']->assign('str',sprintf($GLOBALS['_LANG']['cart_info'], $number, price_format($amount, false)));
+    $GLOBALS['smarty']->assign('str',sprintf($GLOBALS['_LANG']['cart_info_empty'], $number));
+	$GLOBALS['smarty']->assign('goods',$arr);
 		
     $output = $GLOBALS['smarty']->fetch('library/cart_info.lbi');
     return $output;

@@ -1,16 +1,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- {if $category_related_brand_goods} -->
 <div class="clearfix"></div> 
-<div class="left goods_best">
-	<div class="mt">
-    	<h2><a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></h2>
+<div class="left brands_goods_list">
+	<div class="brands_goods_title">
+		<a href="{$goods.goods_brand_url}" >
+			<span style="font-size: 16px;font-weight: 500;padding:10px 0;">{$goods.goods_brand}</span>
+			<span><img title="{$goods.goods_brand}" alt="" data-original="data/brandlogo/{$goods.brand_logo}" src="data/brandlogo/{$goods.brand_logo}" width="120" ></span>
+		</a>
     </div>
-    <div class="colList"> 
-     <a id="btn-left1"  class="prev" title="上一个" onclick="top4()"><img src="themes/cnpicks/images/upgrade_ad/goods_best_l.png" /></a>
+    <div class="colList">    
       <div class="slider1 colFrame" >
 		<ul>
-      	<!--{foreach from=$category_related_brand_goods item=goods name=best_goods}-->
-    		<li>
+      	<!--{foreach from=$category_related_brand_goods key=key item=goods name=best_goods}-->
+      	<li <!--{if $key%2 eq 0}-->style="padding:0 10px;"<!--{/if}-->>
             	<div class="p-img"><a href="{$goods.url}" title="{$goods.name}"><img width="160" height="160" alt="{$goods.name}"  src="{$goods.goods_thumb}"/></a></div>
                 <div class="rain-product-info">
             	<div class="p-price"><strong class="best_goods_price"> 
@@ -27,7 +29,6 @@
       	<!--{/foreach}-->
     	</ul>
       </div>
-     <a id="btn-right1" class="next" title="下一个" onclick="bottom4()"><img src="themes/cnpicks/images/upgrade_ad/goods_best_r.png" /></a> 
     </div>
     <script type="text/javascript">
  var _scrolling="";
@@ -35,6 +36,7 @@ var a=1;
 var $slider1 = $('.slider1 ul');
 var $slider1_child_l = $('.slider1 ul li').length;
 var $slider1_width = $('.slider1 ul li').width();
+console.log($slider1_width);
 $slider1.width($slider1_child_l * $slider1_width);
 
 var slider1_count = 0;

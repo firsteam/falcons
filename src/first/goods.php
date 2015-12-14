@@ -491,7 +491,19 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
             $smarty->assign('next_good', $next_good);//下一个商品
         }
 
-        $position = assign_ur_here($goods['cat_id'], $goods['goods_name']);
+        $brand_info = get_brand_info($goods['brand_id']);       
+        $brand_cat_arr = get_brand_cat($brand_info['brand_cat']);
+        $brand_cat_str = '';       
+        if( !empty($brand_info) && !empty($brand_info['brand_cat']) )
+        {
+        	$brand_cat_str = ' <code>&gt;</code> <a href="' . build_uri('brand_cat', array('bid'=>$brand_cat_arr['cat_id']), $val['cat_name']) . '">' . htmlspecialchars($brand_cat_arr['cat_name']) . '</a>';
+        }
+        if( !empty($brand_info['brand_name']) )
+        {
+        	$brand_cat_str .= ' <code>&gt;</code> <a href="' . build_uri('brand', array('bid'=>$brand_info['brand_id']), $val['brand_name']) . '">' . htmlspecialchars($brand_info['brand_name']) . '</a>';
+        }
+
+        $position = assign_ur_here(0, $goods['goods_name'], $brand_cat_str);
 
         /* current position */
         $smarty->assign('page_title',          $position['title']);                    // 页面标题
@@ -1394,7 +1406,27 @@ function category_related_brand_goods($category_id,$brand_id)
     return $arr;
 }
 
+/**
+ * 获得指定品牌的详细信息
+ *
+ * @access  private
+ * @param   integer $id
+ * @return  void
+ */
+function get_brand_info($id)
+{
+    $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('brand') . " WHERE brand_id = '$id'";
 
+    return $GLOBALS['db']->getRow($sql);
+}
+
+/**
+ * 获取所有品牌分类
+ */
+function get_brand_cat($cat_id){
+    $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('brands_category')." where is_show=1 AND cat_id = '$cat_id' order by sort_order";
+    return $GLOBALS['db']->getRow($sql);
+}
 
 /* 代码增加_start  By  www.68ecshop.com */
 make_html();

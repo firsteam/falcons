@@ -56,9 +56,8 @@
   <div class="blank"></div>
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   <div class="w main">
-    <div class="right-extra">
+    <div class="">
       <div class="box">
-        <h3 class="goods_sxtitle"><span>{$brand.brand_name}</span></h3>
         <div class="boxCenterList">
           <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
             <tr>
@@ -68,11 +67,9 @@
                   <!-- {/if} --> 
                 </div></td>
               <td bgcolor="#ffffff"> {$brand.brand_desc|nl2br}<br />
-                
-                <!-- {if $brand.site_url} --> 
-                {$lang.official_site} <a href="{$brand.site_url}" target="_blank" class="f6">{$brand.site_url}</a><br />
-                
-                <!-- {/if} --></td>
+                <!-- {if $brand.site_url} --><!-- {/if} -->
+                <!-- <a href="{$brand.site_url}" target="_blank" class="f6">{$brand.site_url}</a> -->
+              </td>
             </tr>
           </table>
         </div>
@@ -81,16 +78,6 @@
       <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
 	  <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
     </div>
-    <div class="left"> 
-	  <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
-      <div class="blank5"></div>
-      <!-- #BeginLibraryItem "/library/top10.lbi" --><!-- #EndLibraryItem --> 
-      <!--rank end-->
-      <div id="alsobuy" class="hide m m0"></div>
-      <!--关注手机为您推荐--> 
-      <!--recent end--> 
-    </div>
-    <!--left end-->
     <div style="height:0px; line-height:0px; clear:both;"></div>
   </div>
   <!-- #BeginLibraryItem "/library/history.lbi" --><!-- #EndLibraryItem -->

@@ -95,13 +95,17 @@ if (!$smarty->is_cached('brand.dwt', $cache_id))
         exit;
     }
 
+    $brand_cat_arr = get_brand_cat($brand_info['brand_cat']);
+    $brand_cat_str = ' <code>&gt;</code> <a href="' . build_uri('brand_cat', array('bid'=>$brand_cat_arr['cat_id']), $val['cat_name']) . '">' . htmlspecialchars($brand_cat_arr['cat_name']) . '</a>';
+
     $smarty->assign('data_dir',    DATA_DIR);
     $smarty->assign('keywords',    htmlspecialchars($brand_info['brand_desc']));
     $smarty->assign('description', htmlspecialchars($brand_info['brand_desc']));
 
     /* 赋值固定内容 */
     assign_template();
-    $position = assign_ur_here($cate, $brand_info['brand_name']);
+    $position = assign_ur_here($cate, $brand_info['brand_name'], $brand_cat_str);
+    
     $smarty->assign('page_title',     $position['title']);   // 页面标题
     $smarty->assign('ur_here',        $position['ur_here']); // 当前位置
     $smarty->assign('brand_id',       $brand_id);
@@ -168,6 +172,14 @@ function get_brand_info($id)
 {
     $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('brand') . " WHERE brand_id = '$id'";
 
+    return $GLOBALS['db']->getRow($sql);
+}
+
+/**
+ * 获取所有品牌分类
+ */
+function get_brand_cat($cat_id){
+    $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('brands_category')." where is_show=1 AND cat_id = '$cat_id' order by sort_order";
     return $GLOBALS['db']->getRow($sql);
 }
 

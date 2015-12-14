@@ -1131,10 +1131,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 /*大图模式列表页*/
 .squares .list_pic {
 	font-size: 0;
-*word-spacing:-1px/*IE6、7*/;
+	*word-spacing:-1px/*IE6、7*/;
 	display: block;
-	width: 996px;
-	margin-left: -3px;
+	width: 1210px;
+	/*margin-left: -3px;*/
 }
 .squares .list_pic li {
 	font-size: 12px;
@@ -1143,8 +1143,8 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 	word-spacing: normal;
 	display: inline-block;
 *display: inline/*IE6,7*/;
-	width: 240px;
-	height: 382px;
+	width: 232px;
+	height: 296px;
 	margin: 22px 0 0 12px;
 *zoom:1;
 }
@@ -1152,7 +1152,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 	line-height: 18px;
 	background-color: #FFF;
 	width: 230px;
-	height: 382px;
+	height: 296px;
 	margin: 3px auto;
 	border: solid 1px #F0F0F0;
 	border-radius: 2px;
@@ -1361,7 +1361,7 @@ margin-top:expression(28-this.height/2);
 	display: block;
 	height: 20px;
 	clear: both;
-	padding: 8px 0;
+	padding: 4px 0;
 	border-top: solid 1px #EEE;
 }
 .squares .store a {
@@ -1391,7 +1391,7 @@ margin-top:expression(28-this.height/2);
 	text-decoration: none;
 }
 .squares li:hover .goods-content {
-	height: 412px;
+	height: 328px;
 	margin: 0;
 	border: solid 4px #E4393C;
 	border-radius: 0;

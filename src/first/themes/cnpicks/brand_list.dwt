@@ -67,8 +67,8 @@ con.style.display=i==cursel?"block":"none";
           <div class="mb"> <b class="bl"></b> <b class="br"></b> </div>
         </div>
         <?php
-	  $GLOBALS['smarty']->assign('categories',       get_categories_tree(0)); // 分类树
-	  ?>
+	         $GLOBALS['smarty']->assign('categories',       get_categories_tree(0)); // 分类树
+	      ?>
         <div style=" margin:0px auto; margin-bottom:20px; padding-bottom:20px;" id="b-allbrand">
           <ul id="tab-sort" class="tab">
             <!--{foreach from=$categories item=cat name=categories}--> 

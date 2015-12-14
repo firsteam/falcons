@@ -5,26 +5,26 @@
 			<!--{if $smarty.request.page==1}-->
 			<b class="mui-page-prev">&lt;</b>
 			<!--{else}-->
-			<a href="brands.php?id={$smarty.request.id|default:0}&page=1" class="j_PageChange" style="border-left: 1px solid #E5E5E5;">&lt;</a> 
+			<a href="index.php?id={$smarty.request.id|default:0}&page=1" class="j_PageChange" style="border-left: 1px solid #E5E5E5;">&lt;</a> 
 			<!--{/if}-->
 			<!--{if $start}-->
-			<a href="brands.php?id={$smarty.request.id|default:0}&page={$start}" class="j_PageChange">...</a> 
+			<a href="index.php?id={$smarty.request.id|default:0}&page={$start}" class="j_PageChange">...</a> 
 			<!--{/if}-->
 			<!--{foreach from=$page_array item=num}-->
 				<!--{if $smarty.request.page == $num }-->
 					<b class="mui-page-cur">{$num}</b> 
 				<!--{else}-->
-					<a href="brands.php?id={$smarty.request.id|default:0}&page={$num}" class="j_PageChange" data-page="{$num}">{$num}</a> 
+					<a href="index.php?id={$smarty.request.id|default:0}&page={$num}" class="j_PageChange" data-page="{$num}">{$num}</a> 
 				<!--{/if}-->
 
 			<!--{/foreach}-->
 			<!--{if $end}-->
-			<a href="brands.php?id={$smarty.request.id|default:0}&page={$end}" class="j_PageChange">...</a> 
+			<a href="index.php?id={$smarty.request.id|default:0}&page={$end}" class="j_PageChange">...</a> 
 			<!--{/if}-->
 			<!--{if $smarty.request.page==$page_count}-->
 			<b class="mui-page-prev">&gt;</b>
 			<!--{else}-->
-			<a class="mui-page-next  j_PageChange " data-page="{$page_count}" href="brands.php?id={$smarty.request.id|default:0}&page={$page_count}">&gt;</a> 
+			<a class="mui-page-next  j_PageChange " data-page="{$page_count}" href="index.php?id={$smarty.request.id|default:0}&page={$page_count}">&gt;</a> 
 			<!--{/if}-->
 			
 		</b> 

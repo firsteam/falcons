@@ -13,7 +13,7 @@
 		<select name="supplier_type">
 		<option value="0">请选择</option>
 		{foreach from=$stype key=value item=name}
-		<option value="{$value}" {if $sinfo.supplier_type == $value} selected {/if}>{$name}</option>
+		<option value="{$value}" {if $brand.brand_cat == $value} selected {/if}>{$name}</option>
 		{/foreach}
 		</select>
 		</td>

@@ -10,7 +10,9 @@ var process_request = "{$lang.process_request}";
 			{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'}
 		</font>
       <li class="sn-cart mini-cart menu">
-      	<a id="mc-menu-hd" class="sn-cart-link mui-global-iconfont" href="flow.php" target="_top" rel="nofollow">Cart</a>
+          <div id="ECS_CARTINFO" class="">
+            {insert name='cart_info'}
+          </div>
       </li>
       
       <script type="text/javascript">

@@ -333,9 +333,9 @@ BUTTON {
 	HEIGHT: 14px
 }
 #product-intro {
-	PADDING-LEFT: 450px;
+	PADDING-LEFT: 580px;
 	Z-INDEX: 1;
-	MIN-HEIGHT: 510px;
+	MIN-HEIGHT: 310px;
 	ZOOM: 1;
 	POSITION: relative;
 	HEIGHT: auto !important;
@@ -840,11 +840,15 @@ BUTTON {
 	WIDTH: 100%;
 }
 #preview {
-	Z-INDEX: 4;
-	LEFT: 0px;
+	/*Z-INDEX: 4;*/
+	/*LEFT: 0px;*/
 	/*WIDTH: 400px;*/
-	POSITION: absolute;
-	TOP: 0px;
+	/*POSITION: absolute;*/
+	/*TOP: 0px;*/
+}
+#ECS_FORMBUY {
+	float: left;
+	width: 392px;
 }
 .jqzoom {
 	PADDING-RIGHT: 0px;
@@ -1549,8 +1553,6 @@ span.scrright {
 }
 .goods_info {
 	float: left;
-	width: 510px;
-	padding: 0px 12px 0px 25px;
 }
 #supp_info {
 	position: absolute;
@@ -1579,7 +1581,7 @@ span.scrright {
 }
 .goods_img {
 	padding: 10px;
-	width: 432px;
+	width: 560px;
 	border: 1px solid #DDD;
 }
 .shop_self {
@@ -1681,6 +1683,16 @@ span.scrright {
 	background-position: -151px -274px;
 	margin-left: 10px;
 }
+
+.brands_goods_list {
+	overflow: hidden;
+    float: left;
+    width: 350px;
+    /*padding: 0px 12px 0px 25px;*/
+    border: 1px solid #ddd;
+    border-top: 2px #E31939 solid;
+}
+
 /*精品推荐*/
 .goods_best {
 	width: 990px;
@@ -1742,10 +1754,11 @@ span.scrright {
 }
 .rain-product-info {
 	position: absolute;
-	bottom: -25px;
+	bottom: 5px;
+	height: 30px;
 	width: 160px;
 	color: #fff;
-	line-height: 22px;
+	line-height: 30px;
 	text-align: left;
 	transition: all .2s ease;
 	font-size: 12px;
@@ -2270,3 +2283,109 @@ _top:       expression(eval(document.compatMode &&
 	height:22px;
 	background:url(../images/comments/red_line.png) no-repeat right 2px;  
 }
+.brands_goods_list .colList{
+	overflow: hidden;
+}
+.brands_goods_list .colList ul{
+	overflow: hidden;
+}
+.brands_goods_list .colList ul li{
+	width:160px;
+	float:left;
+	position: relative;
+}
+.brands_goods_list .brands_goods_title span{
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+.goods_desc{
+	width: 570px;
+	float: left;
+	overflow: hidden;
+}
+.goods_desc:after{
+	clear:both;
+}
+.goods_desc .tab {
+    float: left;
+    PLAY: inline;
+    margin-left: -1px;
+    overflow: visible;
+}
+.goods_desc .tab li.h_list {
+    display: inline;
+    background: #E31939;
+    border-top: #E31939 1px solid;
+    border-right: #E31939 1px solid;
+    border-left: #E31939 1px solid;
+    color: #ffffff;
+}
+.goods_desc .tab li {
+    border-right: #ddd 1px solid;
+    border-top: #ddd 1px solid;
+}
+.goods_desc .tab a {
+    padding:0 45px;
+    line-height: 34px;
+    height: 34px;
+    float: left;
+}
+.goods_desc #main-nav-holder {
+    z-index: 9999999;
+    width: 989px;
+    background: #ffffff;
+    height: 35px;
+    line-height: 35px;
+    border-left: 1px solid #ddd;
+}
+.goods-desc .m .dt {
+    FONT: 14px/30px 'microsoft yahei';
+}
+.goods_desc li, .tab a, .tab-item {
+    float: left;
+    text-align: center;
+}
+.goods_desc .dt {
+    BORDER-left: #ddd 1px solid;
+    border-bottom: 2px #E31939 solid;
+    BACKGROUND: 0px 50%;
+    OVERFLOW: visible;
+    LINE-HEIGHT: 35px;
+    HEIGHT: 35px;
+    BACKGROUND-COLOR: #ffffff;
+}
+.goods_desc .tab .h_list A, .goods_desc .tab li:hover a {
+    COLOR: #fff;
+    LINE-HEIGHT: 34px;
+}
+.goods_desc #wrapper{
+
+}
+#wrapper .dc{
+	width: 570px;
+	overflow: hidden;
+}
+#wrapper .dt{
+	width: 570px;
+	overflow: hidden;
+}
+
+.goods_left {
+	float: left;
+}
+.goods_right {
+	float: right;
+	width: 442px;
+}
+
+
+
+
+
+
+
+
+
+
+

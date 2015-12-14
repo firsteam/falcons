@@ -149,7 +149,7 @@ function get_user_info($id=0)
  * @param   string      $str    商品名、文章标题或其他附加的内容（无链接）
  * @return  array
  */
-function assign_ur_here($cat = 0, $str = '')
+function assign_ur_here($cat = 0, $str = '', $brand_cat_str = '')
 {
     /* 判断是否重写，取得文件名 */
     $cur_url = basename(PHP_SELF);
@@ -165,6 +165,11 @@ function assign_ur_here($cat = 0, $str = '')
     /* 初始化“页面标题”和“当前位置” */
     $page_title = $GLOBALS['_CFG']['shop_title'] . '  ' . '';
     $ur_here    = '<a href=".">' . $GLOBALS['_LANG']['home'] . '</a>';
+
+    if ($brand_cat_str!='')
+    {
+        $ur_here .= $brand_cat_str;
+    }
 
     /* 根据文件名分别处理中间的部分 */
     if ($filename != 'index')

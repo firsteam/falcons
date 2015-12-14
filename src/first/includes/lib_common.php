@@ -2598,6 +2598,56 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             }
 
             break;
+        case 'brand_cat':
+            if (empty($bid))
+            {
+                return false;
+            }
+            else
+            {
+                if ($rewrite)
+                {
+                    $uri = 'brandcat-' . $bid;
+                    if (isset($cid))
+                    {
+                        $uri .= '-c' . $cid;
+                    }
+                    if (!empty($page))
+                    {
+                        $uri .= '-' . $page;
+                    }
+                    if (!empty($sort))
+                    {
+                        $uri .= '-' . $sort;
+                    }
+                    if (!empty($order))
+                    {
+                        $uri .= '-' . $order;
+                    }
+                }
+                else
+                {
+                    $uri = 'brandcat.php?id=' . $bid;
+                    if (!empty($cid))
+                    {
+                        $uri .= '&amp;cat=' . $cid;
+                    }
+                    if (!empty($page))
+                    {
+                        $uri .= '&amp;page=' . $page;
+                    }
+                    if (!empty($sort))
+                    {
+                        $uri .= '&amp;sort=' . $sort;
+                    }
+                    if (!empty($order))
+                    {
+                        $uri .= '&amp;order=' . $order;
+                    }
+                }
+            }
+
+            break;
         case 'article_cat':
             if (empty($acid))
             {

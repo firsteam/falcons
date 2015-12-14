@@ -10,7 +10,7 @@
           <dd  class=<!-- {if $pager.sort == 'shop_price'} -->curr<!--{/if}-->><a href="{$jiage}">价格</a><b class="icon-order-{if $pager.sort == 'shop_price'}{$pager.order}{else}DESC{/if}ending"></b></dd>
           <dd  class=<!-- {if $pager.sort == 'last_update'} -->curr<!-- {/if} -->><a href="{$gengxin}">更新</a><b class="icon-order-{if $pager.sort == 'last_update'}{$pager.order}{else}DESC{/if}ending"></b></dd>
           <dd class=<!-- {if $pager.sort == 'click_count'} -->curr<!-- {/if} -->><a href="{$renqi}" rel='nofollow'>人气</a><b class="icon-order-{if $pager.sort == 'click_count'}{$pager.order}{else}DESC{/if}ending"></b></dd>
-	</dl>
+	       </dl>
     	
         <div class='pagin pagin-m'><span class='text'><font>{$pager.page}</font>/{$pager.page_count}</span><!-- {if $pager.page_prev} --> 
           <a href="{$pager.page_prev}" class="prev" >&lt;</a> 
@@ -28,7 +28,6 @@
       <div class='fore1 fore3'>
         <dl class='order goods_number'>
           <dt></dt>
-          <dd class=<!-- {if $pager.sort == 'goods_number'} -->curr<!-- {/if} -->><a href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter={$filterid}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_number&order=<!-- {if $pager.sort == 'goods_number' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" rel='nofollow'>仅显示有货</a></dd>
      	  <dd class="leixing">
 	  		<!--{foreach from=$filterinfo item=filter}-->
 	  		<input type='radio' style="display:none" name='fff' onclick='top.location.href="{$filter.url}"' <!-- {if $filter.selected} --> checked <!-- {/if} --> ><a href="{$filter.url}" style="float:left <!-- {if $filter.selected} --> ;color:red <!-- {/if} -->">{$filter.name}</a>
@@ -98,7 +97,7 @@
       <ul class="list_pic">
         <!--{foreach from=$goods_list item=goods name=name}--> 
         <!-- {if $goods.goods_id} -->
-        <li class="item" {if $smarty.foreach.name.iteration % 4 eq 1}style="margin-left:0px;"{/if} id="li_{$goods.goods_id}">
+        <li class="item" {if $smarty.foreach.name.iteration % 5 eq 1}style="margin-left:0px;"{/if} id="li_{$goods.goods_id}">
           <div class="goods-content" style="position:relative">
 		<!-- {if $goods.is_hot eq 1} --><span class="little_pic">爆款</span><!--{/if}--> 
 		<!-- {if $goods.is_best eq 1} --><span class="little_pic">精品</span><!--{/if}-->
@@ -108,23 +107,10 @@
 		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1"></a><!-- {/if} -->
             <div class="goods-info"> 
               <div class="goods-name"><a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.name|escape:html}<em></em></a></div>
-              <div class="goods-price"> <em class="sale-price" title="本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></em> <em class="market-price" title="">{$goods.market_price}</em></div>
-              <div class="sell-stat">
-                <ul>
-                  <li><a href="{$goods.url}" target="_blank" class="status">{$goods.count}</a>
-                    <p>商品销量</p>
-                  </li>
-                  <li><a href="{$goods.url}#product-detail" target="_blank">{$goods.comment_count}</a>
-                    <p>用户评论</p>
-                  </li>
-                  <li><em member_id="46"><a class="chat chat_offline" href="javascript:;">{$goods.click_count}</a>&nbsp;</em>
-                    <p>关注人气</p>
-                  </li>
-                </ul>
+              <div class="goods-price"> <em class="sale-price" title="本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></em> <em class="market-price" title="">{$goods.market_price}</em>
+              <a id="collect_{$goods.goods_id}" href="javascript:collect({$goods.goods_id}); re_collect({$goods.goods_id})" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
               </div>
               <div class="store"> 
-              	<a id="collect_{$goods.goods_id}" href="javascript:collect({$goods.goods_id}); re_collect({$goods.goods_id})" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a> 
-              	<a class="compare-btn shop-compare" data-goods="{$goods.goods_id}" data-type="{$goods.type}" onclick="Compare.add({$goods.goods_id},'{$goods.name|escape:"html"}','{$goods.type}', '{$goods.goods_thumb}', '{$goods.shop_price}')"></a> </div>
               <div class="add-cart"> <a href="javascript:addToCart({$goods.goods_id});"><i class="icon-shopping-cart"></i>加入购物车</a> </div>
             </div>
           </div>
@@ -181,6 +167,14 @@
 {literal}
 re_collect();
 
+var sdelay=0;
+function returnTop() {
+ window.scrollBy(0,-100);//Only for y vertical-axis
+ if(document.body.scrollTop>0) { 
+  sdelay= setTimeout('returnTop()',50);
+ }
+}
+
 function re_collect(id)
 {
   goods_id = (typeof(id) == "undefined" ? 0 : id);
@@ -213,7 +207,6 @@ function selectPage(sel)
 <script type="text/javascript">
 window.onload = function()
 {
-  Compare.init();
   fixpng();
 }
 {foreach from=$lang.compare_js item=item key=key}
@@ -301,23 +294,10 @@ $(document).ready(function(e) {
 	if(count>0)
 	{
 		$('#compareBox').css('display', 'block');
-		$('.compareHolder').css('display', 'none');
 	}
 	
 });
-function toggle_compare_box()
-{
-	if($('#compareBox').css('display') == 'none')
-	{
-		$('#compareBox').css('display', 'block');
-		$('.compareHolder').css('display', 'none');
-	}
-	else
-	{
-		$('#compareBox').css('display', 'none');
-		$('.compareHolder').css('display', 'block');
-	}
-}
+
 </script>
 <div align="center" id="compareBox" style="display:none">
   <div class="menu">
@@ -333,6 +313,6 @@ function toggle_compare_box()
     <div class="scroll_wrap"> {insert name='history_list'} </div>
   </div>
 </div>
-<a class="compareHolder" href="javascript:void(0)" onClick="toggle_compare_box()">对比栏</a> 
+<a class="compareHolder" href="javascript:returnTop();">返回顶部</a> 
 <!-- 代码增加_end  By  www.68ecshop.com --> 
 

@@ -1,21 +1,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <form id="formCart" name="formCart" method="post" action="flow.php" >
-  <a href="flow.php" class="btn" style="height:135px; padding-top:5px; color:#fff;" id="collectBox"> <i></i> 购<br/>
-  物<br/>
-  车<br/>
-  <span style="margin-top:7px;" >{$str}</span> </a>
+  <a id="mc-menu-hd" class="sn-cart-link mui-global-iconfont" href="flow.php" target="_top" rel="nofollow"></a>
+  <a href="flow.php" class="btn" style="height:135px;color:#E31939;padding-top:5px;" id="collectBox">
+    <span style="margin-top:7px;" >Cart ({$str})</span>
+  </a>
   <div class="dropdown" id="J-flow-drop" style="opacity: 1; margin-right: 0px; display:none;"> 
     <!-- {if $goods} -->
-    <div class="bar clearfix">
-      <div class="tip grid-c-l">共<span class="count">{$str}</span>件宝贝</div>
-      <div class="btn-bar grid-c-r"> <a href="flow.php" class="submit-btn" rel="nofollow">去购物车结算</a> </div>
-    </div>
     <div class="cart_goods">
     <div class="cart_goods_list">
     <ul class="unstyled">
      {foreach from=$goods item=goods name=goods}
-      <li><a href="{$goods.url}"><img src="{if $goods.goods_thumb eq 'package_img'}themes/cnpicks/images/jmpic/ico_cart_package.gif{else}{$goods.goods_thumb}{/if}">
+      <li><a href="{$goods.url}">
         <h4>{$goods.short_name}</h4>
         <span>{$goods.goods_price}<strong style="margin:0 7px;">×</strong>{$goods.goods_number}</span></a> <i class="del-btn" title="删除" onClick="deleteCartGoods({$goods.rec_id})">×</i></li>
      {/foreach}
@@ -51,17 +47,17 @@ function deleteCartGoodsResponse(res)
 }
 </script> 
   <script>
-$("#ECS_CARTINFO").mouseover(function() {
-    $("#J-flow-drop").show();
-});
-$("#ECS_CARTINFO").mouseout(function() {
- $("#J-flow-drop").hide();
-});
-$("#ECS_CARTINFO").mouseenter(function() {
-    $("#J-flow-drop").show();
-});
-$("#ECS_CARTINFO").mouseleave(function() {
- $("#J-flow-drop").hide();
-});
+// $("#ECS_CARTINFO").mouseover(function() {
+//     $("#J-flow-drop").show();
+// });
+// $("#ECS_CARTINFO").mouseout(function() {
+//  $("#J-flow-drop").hide();
+// });
+// $("#ECS_CARTINFO").mouseenter(function() {
+//     $("#J-flow-drop").show();
+// });
+// $("#ECS_CARTINFO").mouseleave(function() {
+//  $("#J-flow-drop").hide();
+// });
 </script>
 </form>

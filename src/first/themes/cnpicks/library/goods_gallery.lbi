@@ -8,11 +8,7 @@
         <ul id="goods_gallery">
           <!-- {foreach from=$pictures item=picture}-->
           <li>
-
-	    <a  href="{$picture.img_original}" rel="zoom-id: zoom;" rev="{$picture.img_url}"   title="{$picture.img_desc|escape:html}" {if $smarty.foreach.pictures.iteration eq 1}class="gallery_img_cur"{/if}>
-	    <img src="{if $picture.thumb_url}{$picture.thumb_url}{else}{$picture.img_url}{/if}" alt="{$goods.goods_name}" class="B_blue"  />
-	    </a>
-
+	           <img src="{if $picture.thumb_url}{$picture.img_url}{else}{$picture.img_url}{/if}" alt="{$goods.goods_name}" class="B_blue" onclick="change_img(this.src)" />
           </li>
           <!--{/foreach}-->
         </ul>
