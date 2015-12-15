@@ -756,6 +756,28 @@ BUTTON {
 	margin-left: 15px;
 	text-decoration: none;
 }
+
+.collect_btn {
+	padding-top: 20px;
+	height: 40px;
+    padding-left: 3px;
+	clear: both;
+}
+.collect_btn .btn-coll {
+	WIDTH: auto;
+	LINE-HEIGHT: 34px;
+	HEIGHT: 34px;
+	font-size: 14px;
+	border: 1px solid #C8C9CD;
+	padding-left: 30px;
+	padding-right: 10px;
+	display: block;
+	float: left;
+	text-decoration: none;
+	background: url(../images/shengji_ad/goods_act.png) no-repeat;
+	background-position:-75px 4px;
+}
+
 #phone_tan {
 	position: absolute;
 	top: -120px;
