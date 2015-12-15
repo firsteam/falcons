@@ -371,7 +371,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
 	$sql = 'select region_id, region_name from ' . $ecs->table('region') . ' where parent_id=' . $_CFG['shop_country'];
 	$country_list = $GLOBALS['db']->getAll($sql);
 	$smarty->assign('country_list',   $country_list);
-	$city_id = $country_list[0]['region_id'];
+	$city_id = $country_list[0]['region_id']>0?$country_list[0]['region_id']:0;
 	$smarty->assign('city_id',        $city_id);
 	$district_id = $db->getOne('select region_id from ' . $ecs->table('region') . ' where parent_id=' . $city_id);
 	$smarty->assign('district_id',    $district_id);
