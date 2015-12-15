@@ -9,7 +9,7 @@ $db_name   = "cnpicks";
 $db_user   = "root";
 
 // database password
-$db_pass   = "";
+$db_pass   = "wangyabener";
 
 // table prefix
 $prefix    = "ecs_";
