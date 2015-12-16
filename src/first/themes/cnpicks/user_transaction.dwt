@@ -985,7 +985,13 @@ menu.className=i==cursel?"active":"";
               </tr>
             </table>
           </form>
-          <!--{/if}--> 
+          <!--{/if}-->
+
+          <!--{if $action eq 'update_password'}-->
+            <h5 class="user-title user-title-t"><span> Security
+            </span></h5>
+          <div class="blank"></div>
+          <!--{/if}-->
           
           <!--{if $action eq 'account_security'}-->
           <h5 class="user-title user-title-t"><span> Security
@@ -1214,7 +1220,7 @@ menu.className=i==cursel?"active":"";
             select_phone();
           }
         }
-	function get_verify_code()
+	     function get_verify_code()
         {
             var phone = document.getElementById('v_phone').value;
             Ajax.call('user.php?act=get_verify_code', 'phone=' + phone, get_verify_code_response, 'POST', 'JSON');
