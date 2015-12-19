@@ -41,13 +41,12 @@
       <div class="goods_left" class="w570">
         <div id="preview" class="w570">
           <div  class="goods_img" id="li_{$goods.goods_id}">
-          <a href="{if $pictures.0.img_original}{$pictures.0.img_original}{else}{$goods.original_img}{/if}" class="MagicZoom" id="zoom" rel="zoom-position: right;">
             <!-- {if $pictures}-->
             <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid; width:560px; height:560px;" name="goods_img" />
             <!-- {else} -->
             <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid;width:560px; height:560px;" />
             <!-- {/if}-->
-          </a>
+          
           </div>
           <div style="width: 460px;"> 
             <!--相册 START-->
@@ -56,7 +55,7 @@
           </div>
 		  
 		  <div id="view-bigimg" class="fr" style="margin:15px 0px 0px 0px;"><b></b>
-              <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">查看大图</a>
+              <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">zoom</a>
           </div>
         </div>
 
@@ -64,12 +63,12 @@
         <div id="wrapper" class="m m1">
           <div class="dt">
             <ul class="tab" id="nav">
-              <li class="boldtit_list h_list" onclick="change_widget(1, this);"><a href="{$url}#os_canshu">描述</a></li>
+              <li class="boldtit_list h_list" onclick="change_widget(1, this);"><a href="{$url}#os_canshu">Description</a></li>
               <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_jieshao" >商品介绍</a></li>
               <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_pinglun" >商品评价({$review_count})</a></li>
               <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_shouhou" >售后保障</a></li>
             </ul>
-            <div style="display:none;width:170px;float:right; position:relative;left:0;top:0"> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart"  class="right_add" >加入购物车</a>
+            <div style="display:none;width:170px;float:right; position:relative;left:0;top:0"> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart"  class="right_add" >Add to Cart</a>
               <div class="ce_right">
                 <ul class="abs_ul">
                   <li class="abs_active"><i></i><span>规格参数</span></li>
@@ -140,7 +139,7 @@
       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
         <div class="clearfix">
           <div class="goods_info">
-            <div id="name">
+            <div id="name" style="display:none">
               <h1>{$goods.goods_style_name}</h1>
             </div>
             <!-- {if $goods.goods_brief} -->
@@ -150,22 +149,22 @@
               <div class="mar_l">
                 <p> 
                   <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
-                  <span class="price">促销价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                  <span class="price"></span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
                   <!--{else}--> 
-                  <span class="price">售价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                  <span class="price"></span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
                   <!--{/if}--> 
                   <span class="depreciate" style="display:none;"><a href="javascript:showDiv({$goods.goods_id});" style="color:#ffffff;text-decoration:none;">降价通知</a></span> </p>
               </div>
-              <div class="show_price" style="z-index:101"> 
+              <div class="show_price" style="display:none; z-index:101"> 
                 <!-- {if $cfg.show_marketprice} 市场价格-->
-                <div class="market_prices_t"> <span class="price">市场价</span><font class="market_price">{$goods.market_price}</font> </div>
+                <div class="market_prices_t"> <span class="price"></span><font class="market_price">{$goods.market_price}</font> </div>
                 <!-- {/if} --> 
                 <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
                 <div class="market_prices_t">{insert_scripts files='lefttime.js'} <i></i><font class="f4" id="leftTime">{$lang.please_waiting}</font> </div>
                 <!--{/if}--> 
                 <!-- {if $rank_prices} 会员等级价格-->
                 <div class="rank_prices">
-                  <div id="vip1" onmouseover="hidevip1()"> <span class="rmbPrice">会员等级价格<i></i></span> </div>
+                  <div id="vip1" onmouseover="hidevip1()"> <span class="rmbPrice">Member Level Price<i></i></span> </div>
                   <div class="hover" style="display:none;" id="vip2" onmouseover="hidevip1()" onmouseout="showvip1()"> <span class="rmbPrice">会员等级价格<i></i></span> 
                     <!-- {foreach from=$rank_prices item=rank_price key=key}--> 
                     </br>
@@ -191,14 +190,12 @@
             <ul id="summary1">
               <!-- {if $cfg.show_goodssn} 显示商品货号 -->
               <li class="padd1">
-                <div class="dt">商品货号</div>
-                <div class="dd"> {$goods.goods_sn} </div>
+                <div class="dt">Product Number: {$goods.goods_sn} </div>
               </li>
               <!-- {/if} --> 
               <!-- {if $goods.goods_brand neq "" and $cfg.show_brand} 显示商品品牌-->
-              <li class="padd1">
-                <div class="dt">商品品牌</div>
-                <div class="dd"> <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></div>
+              <li class="padd1" style="display:none;">
+                <div class="dt">Product Brand: <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></div>
               </li>
               <!--{/if}--> 
               <!-- {if $cfg.use_integral} 购买此商品可使用积分-->
@@ -209,8 +206,7 @@
               <!-- {/if} --> 
               <!-- {if $cfg.show_goodsweight} 商品重量-->
               <li class="padd1">
-                <div class="dt">商品重量</div>
-                <div class="dd"> {$goods.goods_weight} </div>
+                <div class="dt">Weight: {$goods.goods_weight} </div>
                 </dd>
               </li>
               <!-- {/if} --> 
@@ -244,7 +240,7 @@
                 <!-- {/if} -->
               </ul>
             </div>
-            <ul id="summary">
+            <ul id="summary" style="display:none">
               <script type="text/javascript">
               $(document).ready(function(){
                 var a = $("#summary").children("li");
@@ -259,7 +255,7 @@
               });
               </script> 
               <!-- {if $promotion} -->
-              <li class="padd padd-promotion clearfix" style="display:none"> {foreach from=$promotion item=item key=key name=name} 
+              <li class="padd padd-promotion clearfix"> {foreach from=$promotion item=item key=key name=name} 
                 {if $smarty.foreach.name.first}
                 <div class="dt">促销信息</div>
                 {else}
@@ -419,19 +415,19 @@
               <!--代码修改_end  By www.ecshop68.com--> 
               <!-- {* 结束循环可选属性 *} -->
               <li id="choose-amount">
-                <div class="dt">数量：</div>
+                <div class="dt">Quantity:</div>
                 <div class="dd">
                   <div class="wrap-input"> 
                     <script language="javascript" type="text/javascript">  function goods_cut(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  if(Num>1)Num=Num-1;  num_val.value=Num;  }  function goods_add(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  Num=Num+1;  num_val.value=Num;  } </script> 
-                    <a class="btn-reduce" href="javascript:;" onclick="goods_cut();changePrice();">减少数量</a>
+                    <a class="btn-reduce" href="javascript:;" onclick="goods_cut();changePrice();">Decrease</a>
                     <input name="number" type="text" class="text"  id="number" value="1" onblur="changePrice();"/>
-                    <a class="btn-add" href="javascript:;" onclick="goods_add();changePrice();">增加数量</a> （库存<font id="shows_number">{$goods.goods_number} </font>） </div>
+                    <a class="btn-add" href="javascript:;" onclick="goods_add();changePrice();">Increase</a> ( In Stock: <font id="shows_number">{$goods.goods_number} </font>) </div>
                 </div>
               </li>
               <!--{if $tag eq 1}-->
               <li class="padd1">
                 <div>
-                  <div class="dt">限购数量：</div>
+                  <div class="dt">Max: </div>
                   <div class="dd">{$goods.buymax}</div>
                 </div>
               </li>
@@ -443,12 +439,12 @@
                
                 <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>到货通知</a>
                 
-                <a href="javascript:collect({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">{if $goods.is_collet eq 1}已{/if}收藏</a>   
+                <a href="javascript:collect({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">Favorite{if $goods.is_collet eq 1}d{/if}</a>   
               </div>
      
               <div id="choose-btns" class="buyNub-buy"> 
                 <!--{if $goods_n>0}--> 
-                <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1" style="display:none;">立即购买</a> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">加入购物车</a> 
+                <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1" style="display:none;">立即购买</a> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">Add to Cart</a> 
                 <!-- {else}--> 
                 <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>到货通知</a>
                 <!-- {/if}--> 
@@ -457,6 +453,7 @@
                   <div class="m-qrcode-wrap"> <img src="erweima_png.php?id={$goods.goods_id}" width="100" height="100" /> </div>
                 </div>
                 </a>
+				<a href="javascript:collect({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">Favorite{if $goods.is_collet eq 1}d{/if}</a>
               </div>          
               <script type="text/javascript">
               		$("#phone").mouseover( function(){	
@@ -466,9 +463,6 @@
               			$( "#phone_tan" ).hide();
               		});
               </script> 
-            </div>
-            <div class="collect_btn">
-                  <a href="javascript:collect({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">{if $goods.is_collet eq 1}已{/if}收藏</a>
             </div>
             <div class="collect_btn">
                   <span class='st_googleplus' displayText='Google +'></span>

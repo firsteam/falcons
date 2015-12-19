@@ -3,7 +3,7 @@
 <div class="package">
 	<div class="pa_tit" id="package_tit">
 	{foreach from=$package_goods_list_120 name="pa_list" item=pa_item}
-	<h2 {if $smarty.foreach.pa_list.iteration eq 1}class="current"{/if}>优惠套餐{$smarty.foreach.pa_list.iteration}</h2>
+	<h2 {if $smarty.foreach.pa_list.iteration eq 1}class="current"{/if}>Discount Package{$smarty.foreach.pa_list.iteration}</h2>
 	{/foreach}
 	</div>
 	<div class="pa_box clearfix" >		

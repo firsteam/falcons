@@ -140,7 +140,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 							<div class="item">
 								<input name="act" type="hidden" value="register">
 								<input type="hidden" name="back_act" value="user.php" />
-								<input type="submit" id="btn_submit" name="Submit" class="btn-img btn-regist" value="立即注册" />
+								<input type="submit" id="btn_submit" name="Submit" class="btn-img btn-regist" value="Register" />
 							</div>
 						</div>
 					</form>

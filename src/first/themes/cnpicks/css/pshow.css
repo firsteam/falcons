@@ -374,7 +374,7 @@ BUTTON {
 }
 #summary-price {
 	background: #F5F5F5;
-	margin: 10px 0px;
+	margin: 0px 0px;
 	padding: 6px 15px;
 	z-index: 2;
 	position:relative
@@ -385,7 +385,7 @@ BUTTON {
 }
 #summary-price p span.price {
 	display: inline-block;
-	width: 45px;
+	width: 8px;
 }
 #summary-price p span.depreciate {
 	display: inline-block;
@@ -1578,7 +1578,7 @@ span.scrright {
 .goods_info {
 	width:368px;
 	margin:0px 0px 20px 0px;
-	min-height:510px;
+	min-height:300px;
 	/*float: left;*/
 }
 #supp_info {
@@ -2044,9 +2044,10 @@ span.scrright {
 }
 .pa_tit h2 {
 	float: left;
-	width: 132px;
+	/*width: 132px;
 	height: 34px;
-	line-height: 34px;
+	line-height: 34px;*/
+	padding: 0px 20px;
 	border-right: #ddd 1px solid;
 	border-top: #ddd 1px solid;
 	font-size: 14px;
@@ -2356,7 +2357,7 @@ _top:       expression(eval(document.compatMode &&
     border-top: #ddd 1px solid;
 }
 .goods_desc .tab a {
-    padding:0 45px;
+    padding:0 25px;
     line-height: 34px;
     height: 34px;
     float: left;

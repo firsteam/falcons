@@ -723,6 +723,12 @@ html {
 .flow-desc a strong {
 	color: #E22A40;
 }
+.flow-logo img{
+	width: 180px;
+	height:100px;
+	overflow: hidden;
+}
+
 .flow-main {
 	float: right;
 	position: relative;

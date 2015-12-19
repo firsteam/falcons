@@ -37,7 +37,7 @@
 	</div>
 <!--{foreachelse}-->
 </div>
-<div class="flow-wrap clearfix"  style="width:1208px;text-align:center;padding:55px 0px;border:1px #dddddd solid;margin:30px auto">
+<div class="flow-wrap clearfix"  style="width:980px;text-align:center;padding:55px 0px;border:1px #dddddd solid;margin:30px auto">
 没有找到分类下的品牌
 </div>
 <!--{/foreach}-->	

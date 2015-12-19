@@ -141,7 +141,7 @@ caption {
 	text-align: left;
 }
 body {
-	font: 12px/150%  microsoft yahei;
+	font: 14px/150%  microsoft yahei;
 	color: #666666;
 	background: #fff none repeat scroll 0 0;
 	margin: 0;
@@ -2843,7 +2843,7 @@ a:hover img {
 	color:#000;	
 }
 .breadcrumb{
-	font-size:14px;
+	font-size:16px;
 	margin:10px 0px;
 }
 .breadcrumb i{
