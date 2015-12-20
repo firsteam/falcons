@@ -182,6 +182,7 @@ $this->assign('promotion_info1', get_promotion_info1());
 <link rel="stylesheet" type="text/css" href="themes/cnpicks/css/increase-68.css" />
 <link rel="stylesheet" href="themes/cnpicks/css/commin.css" type="text/css" />
 {include file='library/user_header.lbi'} 
+<div class="" id="mengban"></div>
 <!--header start-->
 <div id="header">
   <div class="headerLayout">

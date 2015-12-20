@@ -64,6 +64,11 @@
     </div>
   </div>
 </div>
+
+<div id="login_module" style="display:none;z-index: 10000;top: 80px;left: 35%;position: absolute;">
+<!-- {include file='library/member_login.lbi'} -->
+</div>
+
 <!-- footer end  -->
 <script type="text/javascript">
 Ajax.call('api/okgoods.php', '', '', 'GET', 'JSON');
