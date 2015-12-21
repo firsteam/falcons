@@ -83,9 +83,9 @@ body {
 /*entry*/
 .w .mcon {
 	margin-bottom: 20px;
-	height: 470px;
+	/*height: 470px;
 	width: 990px;
-	overflow: hidden;
+	overflow: hidden;*/
 	position: relative;
 }
 .w .mcon .box-pic {
@@ -104,9 +104,10 @@ body {
 	background: url(../images/login/forgetPic.jpg) no-repeat 0;
 }
 .w .mcon .uc_box {
-	position: absolute;
+	margin: auto;
+	/*position: absolute;
 	top: 0px;
-	right: -385px;
+	right: -385px;*/
 	width: 385px;
 }
 .w .mcon .uc_box_reg {
@@ -117,6 +118,7 @@ body {
 	overflow: hidden;
 	border: 1px #ddd solid;
 	padding: 20px 40px;
+	margin: 0px 0px 40px 0px;
 	width: 300px;
 	min-height: 370px;
 	height: auto;
@@ -516,7 +518,7 @@ body {
 	width: 100%;
 }
 .Logo-info-r {
-	width: 920px;
+	width: 450px;
 	margin: 0 auto;
 	position: relative;
 	z-index: 5
@@ -647,16 +649,26 @@ body {
 #regist #pwd_intensity .label {
 	padding-bottom: 10px;
 }
-/*找回密码流程*/
-.Logo-info-r span.findpw {
+.Logo-info-r span.register {
 	border-left: 1px #ddd solid;
-	width: 290px;
+	/*width: 290px;*/
 	height: 44px;
 	line-height: 44px;
 	font-size: 28px;
 	margin: 16px 0px 0px 15px;
 	float: left;
-	padding: 0px 15px;
+	padding: 0px 0px 0px 15px;
+}
+/*找回密码流程*/
+.Logo-info-r span.findpw {
+	border-left: 1px #ddd solid;
+	/*width: 290px;*/
+	height: 44px;
+	line-height: 44px;
+	font-size: 18px;
+	margin: 16px 0px 0px 15px;
+	float: left;
+	padding: 0px 0px 0px 15px;
 }
 #find_pw, #find_pw3 {
 	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
@@ -814,7 +826,6 @@ dl.done {
 	width: 230px;
 	line-height: 15px;
 	color: #999;
-	font-size: 12px;
 	margin-left: 10px;
 }
 #find-box input.text_te {
@@ -908,7 +919,7 @@ dl.done {
 	height: 35px;
 	color: #fff;
 	border: 0;
-	width: 120px;
+	/*width: 120px;*/
 }
 #find_pw3 .btn_next {
 	margin-left: 67px;

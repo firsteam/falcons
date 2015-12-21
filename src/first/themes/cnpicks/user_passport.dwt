@@ -22,14 +22,12 @@
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,user.js'}
 </head>
-<body onclick="ecshop68_onclick();">
-<script>
-function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sType == 'show') { oDiv.style.display = 'block';} if (sType == 'hide') { oDiv.style.display = 'none';} }
-</script>
+<body>
+
 <div class="Logo-r">
   <div class="Logo-info-r"> 
   	<a href="./" class="logo"></a>
-    <span class="findpw">Sign in</span>
+    <span class="register">Sign in</span>
 	<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
   </div>
 </div>
@@ -40,7 +38,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
     
     <div class="w" id="entry">
     <div class="mcon">
-      <div id="reg-pic" class="box-pic"></div>
+      <div id="reg-pic" class="box-pic" style="display:none;"></div>
       <div id="login-box" class="uc_box">
         <form name="formLogin" action="user.php?XDEBUG_SESSION_START=ECLIPSE_DBGP" method="post" onSubmit="return userLogin()">
           <h2><span><a href="register.php">Sign up for a new account</a></span></h2>

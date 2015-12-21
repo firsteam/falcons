@@ -28,14 +28,12 @@ label .error{
 }
 </style>
 </head>
-<body onclick="ecshop68_onclick();">
-	<script>
-function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sType == 'show') { oDiv.style.display = 'block';} if (sType == 'hide') { oDiv.style.display = 'none';} }
-</script>
+<body>
+
 	<div class="Logo-r">
 		<div class="Logo-info-r">
 			<a href="./" class="logo"></a>
-            <span class="findpw">Register</span>
+            <span class="register">Register</span>
 			<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
 		</div>
 	</div>
@@ -50,7 +48,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 		{insert_scripts files='utils.js'}
 		<div class="w" id="regist">
 			<div class="mcon register_con">
-				<div id="reg-pic" class="box-pic box-pic1"></div>
+				<div id="reg-pic" class="box-pic box-pic1" style="display:none;"></div>
 				<div id="login-box" class="uc_box uc_box_reg">
                 	
 					<form action="register.php" method="post" id="formUser" name="formUser" >

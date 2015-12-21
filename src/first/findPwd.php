@@ -92,7 +92,7 @@ function action_check_username ()
 	
 	if(empty($username))
 	{
-		show_message('请输入用户名/邮箱/已验证的手机号！', '返回', 'findPwd.php?act=index', 'info');
+		show_message('Please enter Account / Email', 'Return', 'findPwd.php?act=index', 'info');
 	}
 	
 	// 处理验证码
@@ -152,7 +152,7 @@ function action_check_username ()
 		}
 		if($index > 1)
 		{
-			show_message('本网站有多个会员ID绑定了和您相同的手机号，请使用其他登录方式，如：邮箱或用户名。', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
+			show_message('The mobile have binded other account, please use account / Email.', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
 		}
 		else if($index == 1)
 		{
@@ -167,7 +167,7 @@ function action_check_username ()
 	// 检查用户名是否存在
 	if(! $username_exist)
 	{
-		show_message('您输入的账户名不存在，请核对后重新输入。', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
+		show_message('The account is not exist, please double check.', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
 	}
 	
 	// 获取用户信息，判断用户是否验证了手机、邮箱
@@ -177,7 +177,7 @@ function action_check_username ()
 	
 	if($row == false)
 	{
-		show_message('您输入的账户名不存在，请核对后重新输入。', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
+		show_message('The account does not exist, please double check.', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
 	}
 	
 	$validate_types = array();
@@ -188,7 +188,7 @@ function action_check_username ()
 		$mobile_phone = $row['mobile_phone'];
 		$mobile_phone = substr($mobile_phone, 0, 3) . '*****' . substr($mobile_phone, - 3);
 		$validate_types[] = array(
-			'type' => 'mobile_phone','name' => '已验证的手机号码','value' => $mobile_phone
+			'type' => 'mobile_phone','name' => 'Verified Mobile','value' => $mobile_phone
 		);
 	}
 	if(isset($row['email']) && ! empty($row['email']))
@@ -215,7 +215,7 @@ function action_check_username ()
 			$email = substr($email_head, 0, 3) . '*****' . substr($email_head, - 3) . $email_domain;
 		}
 		$validate_types[] = array(
-			'type' => 'email','name' => '邮箱','value' => $email
+			'type' => 'email','name' => 'Email','value' => $email
 		);
 	}
 	
@@ -249,14 +249,14 @@ function action_validate ()
 	if(!isset($_SESSION['find_password']))
 	{
 		//show_message('账户名不能为空', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
-		exit(json_encode(array('error' => 1, 'content' => '账户名不能为空', 'url' => 'findPwd.php')));
+		exit(json_encode(array('error' => 1, 'content' => 'Account should not be empty', 'url' => 'findPwd.php')));
 	}
 	
 	$validate_type = $_POST['validate_type'];
 	
 	if(!isset($_POST['validate_type']) || empty($_POST['validate_type']))
 	{
-		exit(json_encode(array('error' => 1, 'content' => '验证类型不能为空', 'url' => 'findPwd.php')));
+		exit(json_encode(array('error' => 1, 'content' => 'Verification type should not be empty', 'url' => 'findPwd.php')));
 	}
 	
 	require_once (ROOT_PATH . 'includes/lib_passport.php');
@@ -324,7 +324,7 @@ function action_validate ()
 	else
 	{
 		/* 无效的注册类型 */
-		exit(json_encode(array('error' => 1, 'content' => '非法验证参数', 'url' => 'findPwd.php')));
+		exit(json_encode(array('error' => 1, 'content' => 'Invalid validate parameter', 'url' => 'findPwd.php')));
 	}
 	
 	exit(json_encode(array('error' => 0, 'content' => '', 'url' => 'findPwd.php')));
@@ -341,7 +341,7 @@ function action_to_reset_password()
 	
 	if(!isset($_SESSION['find_password']))
 	{
-		show_message('账户名不能为空！', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
+		show_message('Account should not be empty.', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
 	}
 
 	$smarty->assign("action", "step_3");
@@ -361,12 +361,12 @@ function action_reset_password()
 	
 	if(!isset($_POST['password']) || empty($_POST['password']))
 	{
-		exit(json_encode(array('error' => 1, 'content' => '密码不能为空', 'url' => '')));
+		exit(json_encode(array('error' => 1, 'content' => 'Password should not be empty.', 'url' => '')));
 	}
 	
 	if(!isset($_SESSION['find_password']))
 	{
-		exit(json_encode(array('error' => 1, 'content' => '账户名不能为空', 'url' => 'findPwd.php')));
+		exit(json_encode(array('error' => 1, 'content' => 'Account should not be empty.', 'url' => 'findPwd.php')));
 	}
 	
 	$user = $_SESSION['find_password'];
@@ -375,7 +375,7 @@ function action_reset_password()
 	
 	if($result == false)
 	{
-		exit(json_encode(array('error' => 1, 'content' => '重置密码失败，请重新尝试', 'url' => '')));
+		exit(json_encode(array('error' => 1, 'content' => 'Reset Password fail, please try again.', 'url' => '')));
 	}
 	else 
 	{
@@ -401,7 +401,7 @@ function action_to_success()
 function get_takegoods_orders ($user_id, $num = 10, $start = 0)
 {
 	$order_status = array(
-		'0' => '提货成功，等待发货','1' => '确认收货','2' => '完成'
+		'0' => '提货成功，等待发货','1' => '确认收货','2' => 'Finish'
 	);
 	/* 取得订单列表 */
 	$arr = array();
