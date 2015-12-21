@@ -76,12 +76,12 @@
     	</li>
     	<li class="list_price">
     	<!-- {if $show_marketprice} -->
-   		{$lang.market_price}<font class="market">{$goods.market_price}</font><br />
+   		{$lang.market_price}<font class="market">${$goods.market_price}</font><br />
     	<!-- {/if} -->
     	<!--{if $goods.promote_price neq "" } -->
-    	{$lang.promote_price}<font class="shop">{$goods.promote_price}</font><br />
+    	{$lang.promote_price}<font class="shop">${$goods.promote_price}</font><br />
     	<!--{else}-->
-    	{$lang.shop_price}<font class="shop">{$goods.shop_price}</font><br />
+    	{$lang.shop_price}<font class="shop">${$goods.shop_price}</font><br />
     	<!--{/if}-->
     	</li>
     	<li class="action">
@@ -107,7 +107,7 @@
 		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1"></a><!-- {/if} -->
             <div class="goods-info"> 
               <div class="goods-name"><a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.name|escape:html}<em></em></a></div>
-              <div class="goods-price"> <em class="sale-price" title="本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></em> <em class="market-price" title="">{$goods.market_price}</em>
+              <div class="goods-price"> <em class="sale-price" title="本店价：<!--{if $goods.promote_price neq "" } -->${$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->#{$goods.promote_price}<!--{else}-->${$goods.shop_price}<!--{/if}--></em> <em class="market-price" title="">${$goods.market_price}</em>
               <a id="collect_{$goods.goods_id}" href="javascript:collect({$goods.goods_id}); re_collect({$goods.goods_id})" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
               </div>
               <div class="store"> 
@@ -137,12 +137,12 @@
     </li>
     <li class="list_price">
     <!-- {if $show_marketprice} -->
-    {$lang.market_price}<font class="market">{$goods.market_price}</font><br />
+    {$lang.market_price}<font class="market">${$goods.market_price}</font><br />
     <!-- {/if} -->
     <!--{if $goods.promote_price neq "" } -->
-    {$lang.promote_price}<font class="shop">{$goods.promote_price}</font><br />
+    {$lang.promote_price}<font class="shop">${$goods.promote_price}</font><br />
     <!--{else}-->
-    {$lang.shop_price}<font class="shop">{$goods.shop_price}</font><br />
+    {$lang.shop_price}<font class="shop">${$goods.shop_price}</font><br />
     <!--{/if}-->
     </li>
     <li class="action">
