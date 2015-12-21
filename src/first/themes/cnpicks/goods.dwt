@@ -14,7 +14,7 @@
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <script type="text/javascript" src="themes/cnpicks/js/common_www_ecshop68_com.js" ></script>
 <!-- <script type="text/javascript" src="themes/cnpicks/js/magiczoom.js" ></script> -->
-<!-- <script type="text/javascript" src="themes/cnpicks/js/magiczoom_plus.js" ></script> -->
+<script type="text/javascript" src="themes/cnpicks/js/magiczoom_plus.js" ></script>
 <script type="text/javascript" src="themes/cnpicks/js/jquery-1.7.2_www_ecshop68_com.js" ></script>
 <script type="text/javascript" src="themes/cnpicks/js/script.js" ></script>
 <script type="text/javascript" src="themes/cnpicks/js/scrollpic.js"></script>
