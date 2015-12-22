@@ -312,9 +312,9 @@ CREATE TABLE IF NOT EXISTS `ecs_admin_log` (
   PRIMARY KEY (`log_id`),
   KEY `log_time` (`log_time`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2874 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2892 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_admin_log 的数据：2,873 rows
+-- 正在导出表  cnpicks.ecs_admin_log 的数据：2,891 rows
 DELETE FROM `ecs_admin_log`;
 /*!40000 ALTER TABLE `ecs_admin_log` DISABLE KEYS */;
 INSERT INTO `ecs_admin_log` (`log_id`, `log_time`, `user_id`, `log_info`, `ip_address`) VALUES
@@ -3190,7 +3190,25 @@ INSERT INTO `ecs_admin_log` (`log_id`, `log_time`, `user_id`, `log_info`, `ip_ad
 	(2870, 1450474892, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
 	(2871, 1450474955, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
 	(2872, 1450475046, 1, '添加: Accessory', '127.0.0.1'),
-	(2873, 1450475390, 1, '编辑品牌管理: Nuff', '127.0.0.1');
+	(2873, 1450475390, 1, '编辑品牌管理: Nuff', '127.0.0.1'),
+	(2874, 1450641677, 1, '编辑品牌管理: Neuf', '127.0.0.1'),
+	(2875, 1450652823, 1, '编辑商品: Waterproof Temporary Tattoo sleeve black antler deer horn', '127.0.0.1'),
+	(2876, 1450730103, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2877, 1450730142, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2878, 1450730188, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2879, 1450730349, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2880, 1450730365, 1, '商品: 4238', '127.0.0.1'),
+	(2881, 1450730394, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2882, 1450730414, 1, '商品: 4238', '127.0.0.1'),
+	(2883, 1450730414, 1, '商品: 4238', '127.0.0.1'),
+	(2884, 1450730466, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2885, 1450730515, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2886, 1450730703, 1, '编辑商品: black antler deer horn temporary tatoo', '127.0.0.1'),
+	(2887, 1450733610, 1, '编辑商品: Waterproof temporary tatoo deer horn antler', '127.0.0.1'),
+	(2888, 1450733623, 1, '商品: 2', '127.0.0.1'),
+	(2889, 1450733642, 1, '商品: 2', '127.0.0.1'),
+	(2890, 1450733642, 1, '商品: 2', '127.0.0.1'),
+	(2891, 1450739227, 1, '编辑商品: Waterproof temporary tatoo deer horn antler', '127.0.0.1');
 /*!40000 ALTER TABLE `ecs_admin_log` ENABLE KEYS */;
 
 
@@ -3242,7 +3260,7 @@ CREATE TABLE IF NOT EXISTS `ecs_admin_user` (
 DELETE FROM `ecs_admin_user`;
 /*!40000 ALTER TABLE `ecs_admin_user` DISABLE KEYS */;
 INSERT INTO `ecs_admin_user` (`user_id`, `user_name`, `email`, `password`, `ec_salt`, `add_time`, `last_login`, `last_ip`, `action_list`, `nav_list`, `lang_type`, `agency_id`, `suppliers_id`, `todolist`, `role_id`) VALUES
-	(1, 'admin', '222@qq.com', '53660e6be6421bdefa4675439a89828c', '7292', 1416555690, 1450471316, '127.0.0.1', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', 0, 0, '', 0),
+	(1, 'admin', '222@qq.com', '53660e6be6421bdefa4675439a89828c', '7292', 1416555690, 1450730040, '127.0.0.1', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', 0, 0, '', 0),
 	(5, 'cy', 'cy@1.com', '03dec43242eef9bfa6ccf8bd9e5e6ca1', NULL, 1447980773, 0, '', 'goods_manage,remove_back,cat_manage,cat_drop,attr_manage,brand_manage,comment_priv,tag_manage,goods_type,goods_auto,virualcard,picture_batch,goods_export,goods_batch,gen_goods_script,question_manage,shaidan_manage,scan_store,order_comment_priv,article_cat,article_manage,shopinfo_manage,shophelp_manage,vote_priv,article_auto,feedback_priv,integrate_users,sync_users,users_manage,users_drop,user_rank,surplus_manage,account_manage,template_manage,admin_manage,admin_drop,allot_priv,logs_manage,logs_drop,agency_manage,suppliers_manage,role_manage,shop_config,ship_manage,payment,shiparea_manage,area_manage,friendlink,db_backup,db_renew,flash_manage,navigator,cron,affiliate,affiliate_ck,sitemap,file_priv,file_check,reg_fields,shop_authorized,webcollect_manage,order_os_edit,order_ps_edit,order_ss_edit,order_edit,order_view,order_view_finished,repay_manage,booking,sale_order_stats,client_flow_stats,delivery_view,back_view,invoice_manage,topic_manage,snatch_manage,ad_manage,gift_manage,card_manage,pack,bonus_manage,auction,group_by,favourable,whole_sale,package_manage,exchange_goods,takegoods_list,takegoods_order,attention_list,email_list,magazine_list,view_sendlist,send_mail,template_select,template_setup,library_manage,lang_edit,backup_setting,mail_template,db_backup,db_renew,db_optimize,sql_query,convert,sms_send,supplier_manage,supplier_rank,supplier_rebate,supplier_tag,weixin_config,weixin_addconfig,weixin_menu,weixin_notice,weixin_keywords,weixin_fans,weixin_news,weixin_addqcode,weixin_qcode,weixin_reg,pickup_point_manage,pickup_point_batch', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit', '', 0, 0, NULL, 0);
 /*!40000 ALTER TABLE `ecs_admin_user` ENABLE KEYS */;
 
@@ -3634,9 +3652,9 @@ CREATE TABLE IF NOT EXISTS `ecs_attribute` (
 DELETE FROM `ecs_attribute`;
 /*!40000 ALTER TABLE `ecs_attribute` DISABLE KEYS */;
 INSERT INTO `ecs_attribute` (`attr_id`, `cat_id`, `attr_name`, `attr_input_type`, `attr_type`, `attr_values`, `attr_index`, `sort_order`, `is_linked`, `attr_group`, `is_attr_gallery`, `attr_txm`) VALUES
-	(2, 23, '颜色', 1, 1, 'Gold\r\nSilver\r\nBlack\r\nWhite\r\nYellow\r\n', 1, 0, 1, 0, 1, 0),
-	(232, 27, '颜色1', 1, 1, '黄色\r\n白色\r\n绿色', 1, 0, 1, 1, 0, 0),
-	(233, 27, '颜色2', 1, 1, 'Gold\r\nSilver', 0, 0, 0, 1, 0, 0),
+	(2, 23, 'Color', 1, 1, 'Gold\r\nSilver\r\nBlack\r\nWhite\r\nYellow', 1, 0, 1, 0, 1, 0),
+	(232, 27, 'Color1', 1, 1, 'Yellow\r\nWhite\r\nBlack', 1, 0, 1, 1, 0, 0),
+	(233, 27, 'Color2', 1, 1, 'Gold\r\nSilver', 0, 0, 0, 1, 0, 0),
 	(5, 24, '商家', 0, 0, '', 1, 0, 0, 0, 0, 0),
 	(6, 24, '厂家', 0, 0, '', 1, 0, 0, 0, 0, 0),
 	(10, 24, '品牌', 0, 0, '', 0, 0, 0, 0, 0, 0),
@@ -3936,7 +3954,7 @@ CREATE TABLE IF NOT EXISTS `ecs_brand` (
 DELETE FROM `ecs_brand`;
 /*!40000 ALTER TABLE `ecs_brand` DISABLE KEYS */;
 INSERT INTO `ecs_brand` (`brand_id`, `brand_name`, `brand_logo`, `brand_img`, `brand_desc`, `wap_brand_desc`, `site_url`, `sort_order`, `is_show`, `brand_cat`) VALUES
-	(3, 'Nuff', '1450475390323526207.jpg', '', '', '', 'http://', 50, 1, 0);
+	(3, 'Neuf', '1450641677654055347.jpg', '', 'Skin have something to say', '', 'http://', 50, 1, 150);
 /*!40000 ALTER TABLE `ecs_brand` ENABLE KEYS */;
 
 
@@ -4017,13 +4035,14 @@ CREATE TABLE IF NOT EXISTS `ecs_cart` (
   `promote_price` decimal(10,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`rec_id`),
   KEY `session_id` (`session_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=214 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=215 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_cart 的数据：1 rows
+-- 正在导出表  cnpicks.ecs_cart 的数据：2 rows
 DELETE FROM `ecs_cart`;
 /*!40000 ALTER TABLE `ecs_cart` DISABLE KEYS */;
 INSERT INTO `ecs_cart` (`rec_id`, `user_id`, `session_id`, `goods_id`, `goods_sn`, `product_id`, `goods_name`, `market_price`, `goods_price`, `goods_number`, `goods_attr`, `is_real`, `extension_code`, `parent_id`, `rec_type`, `is_gift`, `is_shipping`, `can_handsel`, `goods_attr_id`, `add_time`, `package_attr_id`, `cost_price`, `promote_price`) VALUES
-	(213, 0, 'e35862320ef0200ca2510135a5f0591a', 4238, 'YSHD004238', 0, 'black antler deer horn temporary tatoo', 9.60, 8.00, 1, '', 1, 'False', 0, 0, 0, 0, 0, '', 1450471441, '', 0.00, 0.00);
+	(213, 0, 'e35862320ef0200ca2510135a5f0591a', 4238, 'YSHD004238', 0, 'black antler deer horn temporary tatoo', 9.60, 8.00, 1, '', 1, 'False', 0, 0, 0, 0, 0, '', 1450471441, '', 0.00, 0.00),
+	(214, 0, 'ba6a8241c0f6b81ee7b8aa90c757432c', 11, 'YSHD000011', 0, 'Waterproof temporary tatoo blue dog', 6.00, 5.00, 1, '', 1, '', 0, 0, 0, 0, 0, '', 1450746894, '', 0.00, 0.00);
 /*!40000 ALTER TABLE `ecs_cart` ENABLE KEYS */;
 
 
@@ -4311,70 +4330,10 @@ CREATE TABLE IF NOT EXISTS `ecs_comment` (
   KEY `id_value` (`id_value`)
 ) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_comment 的数据：140 rows
+-- 正在导出表  cnpicks.ecs_comment 的数据：60 rows
 DELETE FROM `ecs_comment`;
 /*!40000 ALTER TABLE `ecs_comment` DISABLE KEYS */;
 INSERT INTO `ecs_comment` (`comment_id`, `comment_type`, `title`, `id_value`, `email`, `user_name`, `content`, `comment_rank`, `add_time`, `ip_address`, `status`, `parent_id`, `user_id`, `rec_id`, `comment_tag`, `buy_time`, `good_num`, `hide_username`, `order_id`) VALUES
-	(1, 0, '', 8, '', 'b***4', '这双鞋非常漂亮，但是尖头的，我买的时候没考虑到，买小了一码，孩子穿着脚尖有点挤，换了另一双鞋，小金蛋的鞋质量都不错不错，服务也好，客服瑶瑶和欢畅特别有耐心', 5, 1437531937, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(2, 0, '', 8, '', '陈***影', '鞋子很漂亮，质量很好，尺码标准，女儿超喜欢<br/>\n', 5, 1437531105, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(3, 0, '', 8, '', '杨***8', '鞋子质量很好，穿着舒服软，一次买了三双，小金蛋鞋子是我一直关注的', 5, 1437529441, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(4, 0, '', 8, '', 'a***g', '鞋子很漂亮，但是尺码是不是有点儿偏小，姑娘说有点儿夹脚踏实地', 5, 1437526945, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(5, 0, '', 8, '', '灰***阁', '买给侄女穿的，她穿上后很漂亮，喜欢得不得了，鞋子的做工很精致，比实体店里100块的要好，很值！', 5, 1437523617, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(6, 0, '', 8, '', '赴***约', '宝宝爱的不得了，穿上都不愿意脱了，卖家服务态度好', 5, 1437519457, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(7, 0, '', 8, '', 'z***雨', '这个是女儿自己选择的看图片不怎么样。实物非常 漂亮', 5, 1437514465, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(8, 0, '', 8, '', 'a***m', '鞋子气味比较大&hellip;&hellip;孩子比较喜欢这种闪亮的质感，听走路的声音感觉鞋底较硬', 5, 1437508641, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(9, 0, '', 8, '', 'a***m', '鞋子气味比较大&hellip;&hellip;孩子比较喜欢这种闪亮的质感，听走路的声音感觉鞋底较硬', 5, 1437501985, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(10, 0, '', 8, '', '黄***7', '挺漂亮的鞋子，女儿自己选的，大小刚好！', 5, 1437494497, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(11, 0, '', 8, '', 'p***1', '鞋子很漂亮哦，孩子很喜欢，如果是真皮的就更好了。服务很有耐心', 5, 1437486177, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(12, 0, '', 8, '', 'b***i', '鞋子很漂亮，孩子很喜欢，物流很给力，总体评价好。', 5, 1437477025, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(13, 0, '', 8, '', 'l***4', '这鞋太漂亮了，拿回来比我想象中的还有好，女儿也很喜欢，服务也蛮好', 5, 1437467041, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(14, 0, '', 8, '', 'a***3', '大家自己看，试穿还不到10分钟，把我女儿脚磨破。', 5, 1437456225, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(15, 0, '', 8, '', '冰***恋', '宝贝挺好。就是不知道质量怎么样，穿过再来评价', 5, 1437444577, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(16, 0, '', 8, '', 'w***1', '非常满意的一次网购.鞋子很漂亮', 5, 1437432097, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(17, 0, '', 8, '', 't***8', '女儿很喜欢，尺码合适', 5, 1437418785, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(18, 0, '', 8, '', '默***金', '码数买小了，孩子穿刚刚好，想换大一码', 5, 1437404641, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(19, 0, '', 8, '', '心***5', '满意。现在宝贝的鞋子都在这买了。', 5, 1437389665, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(20, 0, '', 8, '', 'd***6', '女儿是爱不释手啊，到了马上换，今天穿起上学，自信', 5, 1437373857, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(21, 0, '', 9, '', 'b***4', '这双鞋非常漂亮，但是尖头的，我买的时候没考虑到，买小了一码，孩子穿着脚尖有点挤，换了另一双鞋，小金蛋的鞋质量都不错不错，服务也好，客服瑶瑶和欢畅特别有耐心', 5, 1437532242, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(22, 0, '', 9, '', '陈***影', '鞋子很漂亮，质量很好，尺码标准，女儿超喜欢<br/>\n', 5, 1437531410, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(23, 0, '', 9, '', '杨***8', '鞋子质量很好，穿着舒服软，一次买了三双，小金蛋鞋子是我一直关注的', 5, 1437529746, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(24, 0, '', 9, '', 'a***g', '鞋子很漂亮，但是尺码是不是有点儿偏小，姑娘说有点儿夹脚踏实地', 5, 1437527250, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(25, 0, '', 9, '', '灰***阁', '买给侄女穿的，她穿上后很漂亮，喜欢得不得了，鞋子的做工很精致，比实体店里100块的要好，很值！', 5, 1437523922, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(26, 0, '', 9, '', '赴***约', '宝宝爱的不得了，穿上都不愿意脱了，卖家服务态度好', 5, 1437519762, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(27, 0, '', 9, '', 'z***雨', '这个是女儿自己选择的看图片不怎么样。实物非常 漂亮', 5, 1437514770, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(28, 0, '', 9, '', 'a***m', '鞋子气味比较大&hellip;&hellip;孩子比较喜欢这种闪亮的质感，听走路的声音感觉鞋底较硬', 5, 1437508946, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(29, 0, '', 9, '', 'a***m', '鞋子气味比较大&hellip;&hellip;孩子比较喜欢这种闪亮的质感，听走路的声音感觉鞋底较硬', 5, 1437502290, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(30, 0, '', 9, '', '黄***7', '挺漂亮的鞋子，女儿自己选的，大小刚好！', 5, 1437494802, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(31, 0, '', 9, '', 'p***1', '鞋子很漂亮哦，孩子很喜欢，如果是真皮的就更好了。服务很有耐心', 5, 1437486482, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(32, 0, '', 9, '', 'b***i', '鞋子很漂亮，孩子很喜欢，物流很给力，总体评价好。', 5, 1437477330, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(33, 0, '', 9, '', 'l***4', '这鞋太漂亮了，拿回来比我想象中的还有好，女儿也很喜欢，服务也蛮好', 5, 1437467346, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(34, 0, '', 9, '', 'a***3', '大家自己看，试穿还不到10分钟，把我女儿脚磨破。', 5, 1437456530, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(35, 0, '', 9, '', '冰***恋', '宝贝挺好。就是不知道质量怎么样，穿过再来评价', 5, 1437444882, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(36, 0, '', 9, '', 'w***1', '非常满意的一次网购.鞋子很漂亮', 5, 1437432402, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(37, 0, '', 9, '', 't***8', '女儿很喜欢，尺码合适', 5, 1437419090, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(38, 0, '', 9, '', '默***金', '码数买小了，孩子穿刚刚好，想换大一码', 5, 1437404946, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(39, 0, '', 9, '', '心***5', '满意。现在宝贝的鞋子都在这买了。', 5, 1437389970, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(40, 0, '', 9, '', 'd***6', '女儿是爱不释手啊，到了马上换，今天穿起上学，自信', 5, 1437374162, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(41, 0, '', 12, '', '张***5', '衣衣面料不错，手感不错，挺漂亮，颜色无色差 下回还来全五星卖家服务态度好，发货快，物流很快', 5, 1437532374, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(42, 0, '', 12, '', '舒***8', '衣服面料不错，手感很好。挺漂亮，颜色无色差 。下回还来全五星卖家服务态度好，发货快，物流很快', 5, 1437531542, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(43, 0, '', 12, '', '阳***蕾', '衣衣面料不错，手感不错，挺漂亮，颜色无色差。好评卖家服务态度好，发货快，物流有点不给力', 5, 1437529878, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(44, 0, '', 12, '', '勇***f', '这个款式的衣服漂亮，大小合适，孩子很喜欢，穿着很漂亮！', 5, 1437527382, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(45, 0, '', 12, '', '一***z', '店家发货快 包装好，衣服质量挺好的 喜欢，面料纯棉的 跟店家描述的一样 无色差 做工很好，好评 值得购买服务很好 有问必答', 5, 1437524054, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(46, 0, '', 12, '', '谢***8', '衣服款式不错，面料手感很好，是纯棉的，和卖家描述一致，发货快，物流很给力。全5分好评。服务态度很好。', 5, 1437519894, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(47, 0, '', 12, '', '梁***珉', '无色差，偏小了点，女儿说喜欢，因为都是她自己选的。质量还可以，快递也还算挺快的啦！', 5, 1437514902, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(48, 0, '', 12, '', 'a***间', '质量好，尺码标准，款式好看，价格便宜，值得购买。好', 5, 1437509078, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(49, 0, '', 12, '', '岁***5', '衣衣面料不错务态度好，发货快，，手感不错，挺漂亮，颜色无色差 下回还来全五星服务：卖家服物流很快<br/>\n', 5, 1437502422, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(50, 0, '', 12, '', 's***9', '很满意的一次购物，款式跟图片一样，也没色差很漂亮，值得大家动手购买。非常 不错', 5, 1437494934, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(51, 0, '', 12, '', '易***联', '衣服很好，很漂亮，女儿很喜欢客服服务态度很好，推荐的尺码穿上正合适', 5, 1437486614, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(52, 0, '', 12, '', '雨***1', '宝贝收到了，质量不错，挺时尚的，没有色差，大小合适，很满意的一次购物，大赞，。祝生意兴隆。服务态度满意。', 5, 1437477462, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(53, 0, '', 12, '', '陈***1', '衣衣面料不错，手感不错，挺漂亮，颜色无色差 下回还来全五星服务：卖家服务态度好，发货快，物流很快<br/>\n', 5, 1437467478, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(54, 0, '', 12, '', 't***3', '很满意的一次购物，款式跟图片一样，也没色差很漂亮、很满意下次光临', 5, 1437456662, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(55, 0, '', 12, '', 't***3', '很满意的一次购物，款式跟图片一样，也没色差很漂亮、质量很好做工细，很满意很好很满意', 5, 1437445014, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(56, 0, '', 12, '', 'y***6', '宝贝与图片一致，物有所值1服务态度好，物流也挺给力', 5, 1437432534, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(57, 0, '', 12, '', 't***1', '质量不错，孩子很喜欢，穿着很精神！！物流很给力，宝贝性价比高。', 5, 1437419222, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(58, 0, '', 12, '', 'l***6', '上身效果好看又合穿，面料摸起来比较舒服，都以女儿图片上传，值得全五分服务态度好好', 5, 1437405078, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(59, 0, '', 12, '', '一***2', '款式漂亮，面料也不错，大小合适，孩子很喜欢，非常满意的一次购物。满意。', 5, 1437390102, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(60, 0, '', 12, '', '巴***你', '衣服早就收到了，由于一直忙没来得及评论，孩子穿着非常合适，她特别喜欢，洗了很多次也没有变形褪色之类的，物流也特别快，非常喜欢这家店！大赞', 5, 1437374294, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(61, 0, '', 15, '', '杨***0', '还是比较喜欢的，<br/>\n总体感觉还是不错的，<br/>\n和店家描述的基本差不了多少<br/>\n卖家客服服务还可以，<br/>\n回复的很快，发货速度还是可以的，<br/>\n快递也非常的给力第二天就到了，<br/>\n码数和市面的一样！！！<br/>\n穿着很舒服.遗憾的就是卖家没送小礼物，。', 5, 1437532475, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(62, 0, '', 15, '', '豆***央', '上衣裤子质量都很好 衣服收到有点潮 貌似卖家烫过 收到很展 很值得再来 物美价廉啊 一下子在这家买了四件 太惊喜了', 5, 1437531643, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(63, 0, '', 15, '', 'l***9', '衣服很漂亮，款式很喜欢，做工材质都很满意，快递也很给力，全5分', 5, 1437529979, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
@@ -4395,26 +4354,6 @@ INSERT INTO `ecs_comment` (`comment_id`, `comment_type`, `title`, `id_value`, `e
 	(78, 0, '', 15, '', '潘***你', '商品质量非常好，穿上很合适，非常好看，下次还来照顾服务非常满意，值得信赖，非常非常非常满意', 5, 1437405179, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(79, 0, '', 15, '', '刘***2', '衣服不值这个价，质量一般。<br/>\n衣服明明今天上午才签收，却显示昨天已签收。', 5, 1437390203, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(80, 0, '', 15, '', 'e***6', '衣服不错，很合身，质量很好，态度也不错', 5, 1437374395, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(81, 0, '', 18, '', 'y***8', '这款奥特曼布料柔软，洗了三次都不掉色，质量没的说，物有所值；孩子穿着就脱不了，我只能晚上洗了第二天早上又让他穿着去学校，值得推荐的一款宝贝！一流的卖家服务，物流很给力！', 5, 1437532661, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(82, 0, '', 18, '', '微***0', '宝宝很喜欢奥特曼，质量不错，面料很柔软，物有所值！', 5, 1437531829, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(83, 0, '', 18, '', 'l***s', '儿子自己选的，喜欢的不得了，等不及让洗就穿上了，睡觉都不肯脱。总体不错，面料比较柔软，没洗所以不知道是否褪色，希望不会。儿子身高105，体重35斤，110码比较合身，上衣稍大。', 5, 1437530165, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(84, 0, '', 18, '', '闫***2', '差，差，差&hellip;！强烈要求退货，质量太差了，价值只在30～40元之间的东西，买70多块钱，根本都不是不是纯棉的，感觉上当受骗了&hellip;！', 5, 1437527669, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(85, 0, '', 18, '', 'q***柒', '这套衣服是我逛淘宝时，儿子一眼相中的！棉料柔软！做工图案精细！下水洗了，一点都没掉色！很满意！服务态度非常不错！', 5, 1437524341, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(86, 0, '', 18, '', '蚂***o', '洗3次了才来评价，一点都不褪色。面料柔软，衣服比裤子的质地更好。服务还好，再接再厉！', 5, 1437520181, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(87, 0, '', 18, '', 'c***0', '颜色正，材质应该是纯棉，就是裤子感觉手感有些滑，可能与颜色花纹有关系。尺码标准。儿子还要奥特曼袜子，呵呵，掌柜的考虑进点吧?', 5, 1437515189, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(88, 0, '', 18, '', 'w***6', '宝贝很好！宝宝很喜欢奥特曼，质量不错，面料很柔软，图案印刷清晰，无异味，值得购买！服务态度很好，买大了退换货，客服很耐心讲解退货流程，赞一个！', 5, 1437509365, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(89, 0, '', 18, '', '江***8', '还不错，做工，用料都还可以<br/>\n而且孩子喜欢，我们家长也就更满意了~发货速度挺快的，服务态度也可以', 5, 1437502709, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(90, 0, '', 18, '', '彩***大', '不好意思，确认晚了，因为发货很快，快递也太给力了，呵呵，卖家态度很好，衣服也很合身，图案很漂亮，孩子很喜欢！谢谢！', 5, 1437495221, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(91, 0, '', 18, '', '薇***5', '质量还行，洗了不掉色，物有所值', 5, 1437486901, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(92, 0, '', 18, '', 'x***服', '第二次买了，质量一样的好，弟弟很喜欢，大小刚好合适', 5, 1437477749, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(93, 0, '', 18, '', '玉***峻', '儿子自己选的，超级喜欢，没洗就要穿，面料很好，柔软舒服，上面的图案也不掉色，值得购买。', 5, 1437467765, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(94, 0, '', 18, '', '星***2', '性价比中间。衣服质量一般，不过不褪色已经很满意。主要是图案儿子满意。', 5, 1437456949, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(95, 0, '', 18, '', 'i***8', '款式挺可爱，喜欢奥特曼的宝宝肯定会爱不释手的，二宝穿着一样的衣服去幼儿园接哥哥，其他小朋友都好羡慕呢。就是质量一般，几天穿下来正面的奥特曼颜色淡了下层，做工要是再精细点就更好了。以后再试试其他款。', 5, 1437445301, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(96, 0, '', 18, '', 'i***8', '款式挺可爱，喜欢奥特曼的宝宝肯定会爱不释手的，二宝穿着一样的衣服去幼儿园接哥哥，其他小朋友都好羡慕呢。就是质量一般，几天穿下来正面的奥特曼颜色淡了下层，做工要是再精细点就更好了。以后再试试其他款。', 5, 1437432821, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(97, 0, '', 18, '', 'y***1', '儿子一直想要一套奥特曼衣服,特意送给他的儿童节惊喜。衣服质量真的很不错,儿子很喜欢. 但短裤质量不怎么好，洗了两水原来的蓝色都起白了，这价格不值啊！', 5, 1437419509, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(98, 0, '', 18, '', 'b***y', '买给儿子的儿童节礼物，快递很给力，儿童节头一天到的，晚上洗第二天干了，正好儿童节穿上带儿子出去玩，儿子非常兴奋，变了一天身，动不动就：变身--奥特曼！自称小奥特曼，呵呵。衣服质量不错，面料很柔软，不褪色。', 5, 1437405365, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(99, 0, '', 18, '', '雅***雯', '儿子好喜欢奥特曼衣服  很开心穿起来很帅   服务态度好  大小合适  质量好  价格优惠 ，下次再来', 5, 1437390389, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
-	(100, 0, '', 18, '', 'h***c', '儿子很喜欢！洗过了不掉色。图案很清晰，袖子有刺绣，比想象中的质量要好！物有所值！值得推荐！', 5, 1437374581, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(101, 0, '', 19, '', '任***1', '东西质量很好孩子很喜欢打开包装没味卖家态度好物流快', 5, 1437532892, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(102, 0, '', 19, '', 'j***6', '正好打算买水杯就碰上了这次抢购，很值！质量很好，没有异味，很厚实，做工精细，还有米奇防伪标志。很好用，女儿很喜欢！物超所值啦！！！', 5, 1437532060, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
 	(103, 0, '', 19, '', '李***2', '东西收到了非常喜欢漂亮，大爱宝贝，价格还便宜，质量一看就非常棒，服务态度非常好，很耐心的回答我的每一个问题，喜欢的朋友们赶紧下手拍吧。真的特喜欢。等白天给你们附图追评。', 5, 1437530396, '', 1, 0, 0, 0, '', 0, 0, 0, 0),
@@ -5217,28 +5156,74 @@ CREATE TABLE IF NOT EXISTS `ecs_goods` (
   KEY `is_catindex` (`is_catindex`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4239 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_goods 的数据：18 rows
+-- 正在导出表  cnpicks.ecs_goods 的数据：64 rows
 DELETE FROM `ecs_goods`;
 /*!40000 ALTER TABLE `ecs_goods` DISABLE KEYS */;
 INSERT INTO `ecs_goods` (`goods_id`, `cat_id`, `goods_sn`, `goods_name`, `goods_name_style`, `click_count`, `brand_id`, `provider_name`, `goods_number`, `goods_weight`, `market_price`, `shop_price`, `promote_price`, `promote_start_date`, `promote_end_date`, `is_buy`, `buymax`, `buymax_start_date`, `buymax_end_date`, `warn_number`, `keywords`, `goods_brief`, `goods_desc`, `goods_thumb`, `goods_img`, `original_img`, `is_real`, `extension_code`, `is_on_sale`, `is_alone_sale`, `is_shipping`, `integral`, `add_time`, `sort_order`, `is_delete`, `is_best`, `is_new`, `is_hot`, `is_promote`, `zhekou`, `bonus_type_id`, `last_update`, `goods_type`, `seller_note`, `give_integral`, `rank_integral`, `suppliers_id`, `supplier_id`, `supplier_status`, `supplier_status_txt`, `is_check`, `is_catindex`, `cost_price`, `valid_date`, `is_virtual`) VALUES
-	(1, 530, '1002000000002', '金亿源 新款韩版夏装女式简约花色显瘦小脚七分裤', '+', 2075, 0, '', 295, 0.000, 34.00, 29.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '金亿源 新款 韩版 夏装 女式简约 花色 七分裤 服装配饰 裤子', '', '<p>\r\n	<img width="780" height="auto" alt="" src="/images/upload/Image/01(1).jpg" /><img width="780" height="auto" alt="" src="/images/upload/Image/02(2).jpg" /><img width="780" height="auto" alt="" src="/images/upload/Image/03.jpg" /><img width="780" height="auto" alt="" src="/images/upload/Image/04.jpg" /> \r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/1_G_1441382001545.jpg', 'images/201507/source_img/1_G_1437420140927.jpg', 1, '', 1, 1, 0, 0, 1398328555, 100, 0, 1, 0, 0, 0, 10.0, 2, 1438625502, 23, '', -1, -1, 0, 1, 0, '', 0, 0, 0.00, NULL, 0),
-	(7, 530, '0403000000001', '美体八轮按摩器8009', '#000000+', 754, 0, '', 498, 0.000, 10.00, 5.90, 0.00, 0, 0, 0, 0, 0, 0, 1, '美体八轮 按摩器 医疗器械 保健', '', '<p>\r\n	<img src="/images/upload/Image/tu_01.gif" width="780" height="auto" alt="" /><img src="/images/upload/Image/tu_02.gif" width="780" height="auto" alt="" /><img src="/images/upload/Image/tu_03.gif" width="780" height="auto" alt="" /><img src="/images/upload/Image/tu_04.gif" width="780" height="auto" alt="" /> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/7_G_1441382002971.jpg', 'images/201405/source_img/7_G_1399617208673.jpg', 1, '', 1, 1, 0, 0, 1399616650, 100, 0, 1, 1, 1, 0, 10.0, 0, 1437160838, 22, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(8, 530, '6936499410386', '惠普生牌多种维生素钙铁片（女士型）100片 补充钙、铁及多种维生素', '#000000+', 282, 0, '', 7, 0.100, 128.00, 128.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '惠普生 多种维生素 钙铁片 女士型 营养保健 保健品 营养品', '', '<p>\r\n	<img alt="" width="780" height="auto" src="/images/upload/Image/6(5).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/7(3).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/8(5).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/9(3).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/10(3).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/11(1).jpg" /> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/8_G_1441382002544.jpg', 'images/201406/source_img/8_G_1401780149752.jpg', 1, '', 1, 1, 0, 1, 1400725941, 100, 0, 1, 1, 0, 0, 10.0, 0, 1439338483, 14, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(10, 530, '6930698109119', '纤伊坊女式加档连裤袜（夏薄）丝袜J-0911', '+', 738, 0, '', 25, 0.000, 6.60, 5.00, 3.50, 1438761600, 1439107200, 0, 0, 0, 0, 1, '纤伊坊 连裤袜 袜子 长筒袜 服装配饰 打底裤', '', '<p>\r\n	<img width="780" height="auto" alt="" src="/images/upload/Image/qwf_01.jpg" /><img width="780" height="auto" alt="" src="/images/upload/Image/qwf_02.jpg" /> \r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/10_G_1441382003810.jpg', 'images/201406/source_img/10_G_1403853852714.jpg', 1, '', 1, 1, 0, 0, 1400840192, 100, 0, 0, 0, 0, 1, 10.0, 0, 1438795930, 23, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(11, 530, '1003000000001', '纤伊坊女式包芯丝连裤袜（夏薄）蝴蝶档丝袜J-0913', '+', 522, 0, '', 50, 0.000, 10.00, 6.00, 4.00, 1438795860, 1439107200, 0, 0, 0, 0, 0, '纤伊坊 连裤袜 蝴蝶档 袜子 长筒袜 VIP专区', '', '<p><img alt="" width="780" height="auto" src="/images/upload/Image/1_01(8).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/1_02(8).jpg" /></p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/11_G_1441382003516.jpg', 'images/201405/source_img/11_G_1400890133739.jpg', 1, '', 1, 1, 0, 0, 1400890133, 100, 0, 1, 0, 0, 1, 10.0, 0, 1438795885, 23, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(12, 530, '1103010000001', 'TX379人字圆珠按摩鞋底拖鞋（实色）', '+', 423, 0, '', 156, 0.000, 20.00, 10.00, 7.00, 1438761600, 1439107200, 0, 0, 0, 0, 1, '人字拖 按摩鞋 拖鞋 家纺居家', '', '<p><img alt="" width="850" height="1600" src="/images/upload/Image/缃戦〉浜哄瓧.jpg" /></p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/12_G_1441382004044.jpg', 'images/201407/source_img/12_G_1404459184807.jpg', 1, '', 1, 1, 0, 0, 1400890464, 100, 0, 0, 0, 0, 1, 10.0, 0, 1438796478, 20, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(13, 530, '1103010000020', '夏季水晶防滑漏水按摩塑料男女洗澡冲凉浴室拖鞋 圆珠透明色按摩拖鞋', '#000000+', 498, 0, '', 252, 0.000, 20.00, 12.00, 0.00, 0, 0, 0, 0, 0, 0, 0, '韩版 防滑 漏水 按摩 塑料 男女 浴室 拖鞋 圆珠 透明色', '镂空漏水不积 浴室按摩防滑 时尚多色可选\r\n', '<p>\r\n	<img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012516_14963.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012517_57537.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012517_11156.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012519_39163.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012519_27127.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012519_57037.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012521_13633.jpg" /><img alt="" src="/includes/kindeditor/php/../../../images/upload/image/20150710/20150710012521_59888.jpg" />\r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/13_G_1441382004995.jpg', 'images/201507/source_img/13_G_1436657542715.jpg', 1, '', 1, 1, 0, 0, 1400913743, 100, 0, 1, 0, 0, 0, 10.0, 0, 1439317877, 20, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(9, 530, '6936821606111', '惠普生牌钙镁锌咀嚼片60片 补充钙镁锌', '#000000+', 183, 0, '', 1, 0.120, 138.00, 138.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '惠普生牌 钙镁锌 咀嚼片 补充钙镁锌 营养保健 保健品', '', '<p>\r\n	<img alt="" width="780" height="auto" src="/images/upload/Image/5(9).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/6(6).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/7(4).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/9(4).jpg" /><img alt="" width="780" height="auto" src="/images/upload/Image/10(4).jpg" />\r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/9_G_1441382005918.jpg', 'images/201406/source_img/9_G_1401781551235.jpg', 1, '', 1, 1, 0, 1, 1400747818, 100, 0, 0, 0, 0, 0, 10.0, 0, 1439338230, 14, '', -1, -1, 0, 1, 0, '', NULL, 0, 0.00, NULL, 0),
-	(14, 530, '1103010000028', 'TX739透明色人字按摩拖鞋', '+', 304, 0, '', 52, 0.000, 20.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '透明拖鞋 人字拖 按摩拖鞋 按摩鞋 保健 家纺居家', '', '<p>\r\n	<img width="780" height="auto" alt="" src="/images/upload/Image/缃戠珯鍥剧墖.jpg" /> \r\n</p>\r\n<p>\r\n	<img width="780" height="auto" alt="" src="/images/upload/Image/0604缃戦〉.jpg" /> \r\n</p>\r\n<p>\r\n	<img width="780" height="auto" alt="" src="/images/upload/Image/DSC_0554.jpg" /> \r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/14_G_1441382005461.jpg', 'images/201405/source_img/14_G_1400915275903.jpg', 1, '', 1, 1, 0, 0, 1400915275, 100, 0, 1, 0, 1, 0, 10.0, 0, 1437160494, 20, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(3088, 530, '6901845043594', '格力高 百奇蓝莓树莓味 装饰饼干55g', '+', 40, 0, '', 3, 0.055, 6.60, 5.50, 0.00, 0, 0, 0, 0, 0, 0, 1, '格力高 蓝莓味 树莓味 饼干', '', '<img src="/includes/kindeditor/php/../../../images/upload/image/20150901/20150901010901_22499.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150901/20150901010901_61885.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150901/20150901010901_92727.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150901/20150901010902_69026.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150901/20150901010903_80279.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150901/20150901010904_26251.jpg" alt="" />', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/3088_G_1441382006873.jpg', 'images/201509/source_img/3088_G_1441040843232.jpg', 1, '', 1, 1, 0, 0, 1438995874, 100, 0, 0, 0, 0, 0, 10.0, 0, 1441040981, 0, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(3089, 530, '6939518400016', '舒姣 红糖姜茶 速溶茶180g(12g*15包)女人补血止痛经暖胃', '+', 26, 0, '', 70, 0.180, 46.00, 39.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '舒姣 红糖姜茶 姜汤 养生茶 保健茶 营养保健', '生姜茶除温驱寒的功效非常好，所以从古到今，在医学的相关书籍和保健书籍上都有极力推荐生姜茶的保健功效。生活中很多人都利用喝红糖姜茶来养生。', '<div style="text-align:center;">\r\n	<img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063456_49048.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063456_58414.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063500_51813.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063500_98140.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063501_62009.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063501_22878.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063503_40031.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063503_68861.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063503_26270.gif" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810063535_42632.gif" alt="" />\r\n</div>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/3089_G_1441382006276.jpg', 'images/201508/source_img/3089_G_1439159633337.jpg', 1, '', 1, 1, 0, 0, 1439158319, 100, 0, 0, 0, 0, 0, 10.0, 0, 1439166610, 0, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(16, 530, '6948960100108', '百威啤酒330ml/罐', '#333333+', 145, 0, '', 57, 0.000, 5.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '啤酒 Budweiser 百威啤酒 百威听装 百威拉罐 烟酒茶饮 茶饮 饮料 茶', '', '<p>\r\n	<span style="font-family:simhei;"><span style="font-size:18px;"><img width="780" height="auto" align="middle" alt="" src="/images/upload/Image/鍟嗗搧璇勬儏970鍓湰.jpg" /></span></span> \r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/16_G_1441382007763.jpg', 'images/201405/source_img/16_G_1401159765039.jpg', 1, '', 1, 1, 0, 0, 1401159159, 100, 0, 0, 0, 0, 0, 10.0, 0, 1432683703, 0, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(18, 530, '0201257', '桃花茶60g', '#000000+', 101, 0, '', 500, 0.060, 31.00, 26.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '桃花茶 花茶 美容养颜 烟酒茶饮 茶叶', '', '<p>\r\n	<img alt="" width="780" height="auto" src="/images/upload/Image/11.jpg" /> \r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/18_G_1441382008514.jpg', 'images/201405/source_img/18_G_1401183528034.jpg', 1, '', 1, 1, 0, 0, 1401183528, 100, 0, 0, 0, 0, 0, 10.0, 0, 1438359122, 12, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(4238, 531, 'YSHD004238', 'black antler deer horn temporary tatoo', '+', 7, 3, '', 0, 0.001, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 0, '黄色 白色', '', '<P><A name=start7377736></A></P>\r\n<P style="TEXT-ALIGN: center"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-1.jpg" align=absMiddle size="750x270"></P>\r\n<P style="TEXT-ALIGN: center"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-2.jpg" align=absMiddle size="750x560"></P>\r\n<P style="TEXT-ALIGN: center"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-3.jpg" align=absMiddle size="741x2424"></P>\r\n<P style="TEXT-ALIGN: center"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-4.jpg" align=absMiddle size="750x685"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-5.jpg" align=absMiddle size="750x485"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-6.jpg" align=absMiddle size="750x640"></P>\r\n<P style="TEXT-ALIGN: center"><IMG src="/cnpicks/file:///C:/甩手掌柜数据包/淘宝助理4201512191124/contentPic/经典黑白鹿角麋鹿之森39/392241b6-7.jpg" align=absMiddle size="741x492"></P>', 'images/201512/thumb_img/4238_thumb_G_14504404853670.jpg', 'images/201512/goods_img/4238_G_14504423837242.jpg', 'images/201512/source_img/4238_G_14504464715024.jpg', 1, 'False', 1, 1, 0, 0, 1450553184, 0, 0, 0, 0, 0, 0, 10.0, 0, 1450475411, 27, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
-	(20, 530, '6948960102478', '哈尔滨啤酒精酿小麦王330ml/罐', '+', 137, 0, '', 500, 0.000, 3.00, 3.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '哈尔滨 啤酒 精酿 小麦王 烟酒茶饮 茶饮 饮料 茶', '', '<p style="text-align:center;">\r\n	<img width="780" height="auto" align="middle" alt="" src="/images/upload/Image/璇︽儏970鍓湰.jpg" /> \r\n</p>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/20_G_1441382009180.jpg', 'images/201407/source_img/20_G_1405641247534.jpg', 1, '', 1, 1, 0, 0, 1401249633, 100, 0, 0, 0, 0, 0, 10.0, 0, 1432683870, 12, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(3090, 530, '6939518400030', '舒姣 红枣姜茶 速溶茶180g(12g*15包)女人补血止痛经暖胃', '+', 32, 0, '', 70, 0.180, 46.00, 39.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '舒姣 红枣茶 姜汤 养生茶 保健茶 营养保健', '红枣姜茶温经散寒 活血止痛,红枣专入脾胃经，补血;但如果只吃甜，不吃辛辣，容易淤滞，化不开，姜起到推动作用,整体对于脾胃比较寒的人，以及平时喜吃生冷的人很有好处。', '<div style="text-align:center;">\r\n	<img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073447_24966.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073447_98807.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073448_21211.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073449_48152.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073450_47089.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073451_36699.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073452_50248.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073453_91296.jpg" alt="" /><img src="/includes/kindeditor/php/../../../images/upload/image/20150810/20150810073455_75335.jpg" alt="" /><br />\r\n</div>', 'images/201509/thumb_img/1_220x220.jpg', 'images/201509/goods_img/3090_G_1441382009929.jpg', 'images/201508/source_img/3090_G_1439163188607.jpg', 1, '', 1, 1, 0, 0, 1439160321, 100, 0, 0, 1, 0, 0, 10.0, 0, 1441302741, 0, '', -1, -1, 0, 5, 0, '', NULL, 0, 0.00, NULL, 0),
-	(196, 530, '1401000000087', '浴天下洗澡巾 搓澡巾', '#000000+', 192, 0, '', 500, 0.000, 4.50, 3.80, 3.80, 1405065600, 1419926400, 0, 0, 0, 0, 1, '浴天下 洗澡巾 搓澡巾 日用百货', '', '<p>\r\n	 <img src="/images/upload/Image/22_01(3).jpg" width="780" height="auto" alt="" /><img src="/images/upload/Image/22_02(2).jpg" width="780" height="auto" alt="" /><img src="/images/upload/Image/22_03(2).jpg" width="780" height="auto" alt="" />\r\n</p>', 'images/201509/thumb_img/196_thumb_G_1441382141931.jpg', 'images/201509/goods_img/196_G_1441382141578.jpg', 'images/201407/source_img/196_G_1405131523522.jpg', 1, '', 1, 1, 0, 0, 1404521279, 100, 0, 1, 1, 0, 1, 10.0, 0, 1442100547, 0, '', -1, -1, 0, 9, 1, '', NULL, 0, 0.00, NULL, 0),
-	(4232, 530, 'YSHD003251', '供应商商品', '+', 3, 0, '', 1, 0.000, 120.00, 100.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '', '', '', '', 1, '', 1, 1, 0, 0, 1442099589, 100, 0, 0, 0, 0, 0, 10.0, 0, 1442104044, 0, '', -1, -1, NULL, 9, 1, '', NULL, 0, 0.00, NULL, 0);
+	(2, 531, 'YSHD000002', 'Waterproof temporary tatoo deer horn antler', '+', 12, 3, '', 0, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 'Yellow White', 'Size: 39 mm x 40 mm', '<p><img src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"/></p><p><img src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"/></p><p><img src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"/></p>', 'images/201512/thumb_img/2_thumb_G_14507093813348.jpg', 'images/201512/goods_img/2_G_14507115103302.jpg', 'images/201512/source_img/2_G_14507059418179.jpg', 1, '', 0, 1, 0, 0, 1450819434, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450739227, 27, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(4, 531, 'YSHD000004', 'Waterproof temporary tatoo double swallow', '+', 0, 3, '', 177, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/4_thumb_G_14507144838818.jpg', 'images/201512/goods_img/4_G_14507085145188.jpg', 'images/201512/source_img/4_G_14507119402922.jpg', 1, '', 1, 1, 0, 0, 1450821644, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450821810, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(5, 531, 'YSHD000005', 'Waterproof temporary tatoo friendship friends blue red knot', '+', 0, 3, '', 190, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/5_thumb_G_14507139104064.jpg', 'images/201512/goods_img/5_G_14507099524716.jpg', 'images/201512/source_img/5_G_14507161004333.jpg', 1, '', 1, 1, 0, 0, 1450821644, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823767, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(6, 531, 'YSHD000006', 'Waterproof temporary tatoo friendship friend', '+', 0, 3, '', 199, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/6_thumb_G_14507099711671.jpg', 'images/201512/goods_img/6_G_14507095065198.jpg', 'images/201512/source_img/6_G_14507111969741.jpg', 1, '', 1, 1, 0, 0, 1450821644, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823802, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(7, 531, 'YSHD000007', 'Waterproof temporary tatoo heart pixel', '+', 0, 3, '', 191, 1.000, 4.80, 4.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/7_thumb_G_14507126061627.jpg', 'images/201512/goods_img/7_G_14507119148538.jpg', 'images/201512/source_img/7_G_14507068076180.jpg', 1, '', 1, 1, 0, 0, 1450821645, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823824, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(8, 531, 'YSHD000008', 'Waterproof temporary tatoo fish taiji', '+', 0, 3, '', 124, 1.000, 7.20, 6.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/8_thumb_G_14507087866951.jpg', 'images/201512/goods_img/8_G_14507133845050.jpg', 'images/201512/source_img/8_G_14507137366005.jpg', 1, '', 1, 1, 0, 0, 1450821645, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823839, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(9, 531, 'YSHD000009', 'Waterproof temporary tatoo ball', '+', 0, 3, '', 134, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/9_thumb_G_14507075500692.jpg', 'images/201512/goods_img/9_G_14507099097028.jpg', 'images/201512/source_img/9_G_14507158270262.jpg', 1, '', 1, 1, 0, 0, 1450821646, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823858, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(10, 531, 'YSHD000010', 'Waterproof temporary tatoo anchor lovers friends', '+', 0, 3, '', 96, 1.000, 19.20, 16.00, 0.00, 0, 0, 0, 0, 0, 0, 1, 'lovers friends', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/10_thumb_G_14507103863614.jpg', 'images/201512/goods_img/10_G_14507151355386.jpg', 'images/201512/source_img/10_G_14507116388804.jpg', 1, '', 1, 1, 0, 0, 1450821646, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823975, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(11, 531, 'YSHD000011', 'Waterproof temporary tatoo blue dog', '+', 0, 3, '', 86, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/11_thumb_G_14507126781127.jpg', 'images/201512/goods_img/11_G_14507130074729.jpg', 'images/201512/source_img/11_G_14507146979272.jpg', 1, '', 1, 1, 0, 0, 1450821646, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823886, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(12, 531, 'YSHD000012', 'Waterproof temporary tatoo mermaid', '+', 0, 3, '', 155, 1.000, 7.20, 6.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/12_thumb_G_14507094496044.jpg', 'images/201512/goods_img/12_G_14507138810920.jpg', 'images/201512/source_img/12_G_14507099874732.jpg', 1, '', 1, 1, 0, 0, 1450821647, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823896, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(13, 531, 'YSHD000013', 'Waterproof temporary tatoo apple juice lovers friends', '+', 0, 3, '', 117, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, 'lovers friends', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/13_thumb_G_14507151028217.jpg', 'images/201512/goods_img/13_G_14507137839140.jpg', 'images/201512/source_img/13_G_14507089943678.jpg', 1, '', 1, 1, 0, 0, 1450821647, 0, 0, 1, 1, 1, 0, 10.0, 0, 1450823981, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(14, 531, 'YSHD000014', 'NEUF弗 创意防水纹身贴 膳食组合 香蕉 冰淇淋 日本印象', '', 0, 3, '', 148, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/14_thumb_G_14507159334880.jpg', 'images/201512/goods_img/14_G_14507148185930.jpg', 'images/201512/source_img/14_G_14507132235762.jpg', 1, '', 1, 1, 0, 0, 1450821647, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(15, 531, 'YSHD000015', 'NEUF弗 创意防水纹身贴 东方梦境 小清新最爱 文艺美女 古典纹身', '', 0, 3, '', 113, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/15_thumb_G_14507094918031.jpg', 'images/201512/goods_img/15_G_14507150725918.jpg', 'images/201512/source_img/15_G_14507138368452.jpg', 1, '', 1, 1, 0, 0, 1450821648, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(16, 531, 'YSHD000016', 'NEUF弗 创意纹身贴 经典纹样 具象的蛇 美女推荐 进口环保材料', '', 0, 3, '', 128, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/16_thumb_G_14507092400682.jpg', 'images/201512/goods_img/16_G_14507095733186.jpg', 'images/201512/source_img/16_G_14507097629820.jpg', 1, '', 1, 1, 0, 0, 1450821648, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(17, 531, 'YSHD000017', 'NEUF弗 创意防水纹身贴 秋冬星座图 英文字母 星空组合 美女必贴', '', 0, 3, '', 170, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/17_thumb_G_14507128172200.jpg', 'images/201512/goods_img/17_G_14507110747261.jpg', 'images/201512/source_img/17_G_14507090827489.jpg', 1, '', 1, 1, 0, 0, 1450821648, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(18, 531, 'YSHD000018', 'NEUF弗  原创防水纹身贴 茶壶人 日式小清新 和服控', '', 0, 3, '', 63, 1.000, 4.80, 4.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/18_thumb_G_14507157281923.jpg', 'images/201512/goods_img/18_G_14507118118381.jpg', 'images/201512/source_img/18_G_14507103870339.jpg', 1, '', 1, 1, 0, 0, 1450821649, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(19, 531, 'YSHD000019', 'NEUF弗 原创防水纹身贴 钥匙的手 古典艺术羽毛 性感复古 美女贴', '', 0, 3, '', 160, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/19_thumb_G_14507078152389.jpg', 'images/201512/goods_img/19_G_14507066399181.jpg', 'images/201512/source_img/19_G_14507161337765.jpg', 1, '', 1, 1, 0, 0, 1450821649, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(20, 531, 'YSHD000020', 'NEUF弗 新潮趣味 防水纹身贴 民族风 卢旺达手链 夏天配饰', '', 0, 3, '', 118, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/20_thumb_G_14507064611981.jpg', 'images/201512/goods_img/20_G_14507160382177.jpg', 'images/201512/source_img/20_G_14507141937175.jpg', 1, '', 1, 1, 0, 0, 1450821649, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(21, 531, 'YSHD000021', 'NEUF弗 防水纹身贴 黑白 经典图案 花蛇 骷髅 男生可贴', '', 0, 3, '', 84, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/21_thumb_G_14507083973224.jpg', 'images/201512/goods_img/21_G_14507111350714.jpg', 'images/201512/source_img/21_G_14507124513005.jpg', 1, '', 1, 1, 0, 0, 1450821650, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(22, 531, 'YSHD000022', 'NEUF弗 创意防水纹身贴 维多利亚 女王的行装 复古 钻石', '', 0, 3, '', 114, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/22_thumb_G_14507084732251.jpg', 'images/201512/goods_img/22_G_14507148290897.jpg', 'images/201512/source_img/22_G_14507084250758.jpg', 1, '', 1, 1, 0, 0, 1450821650, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(23, 531, 'YSHD000023', '顺丰快递 邮费补拍链接', '', 0, 3, '', 793, 1.000, 27.60, 23.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/23_thumb_G_14507099796396.jpg', 'images/201512/goods_img/23_G_14507143468113.jpg', 'images/201512/source_img/23_G_14507131714905.jpg', 1, '', 1, 1, 0, 0, 1450821650, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(24, 531, 'YSHD000024', 'NEUF弗 创意纹身贴 漏网之灵  夏日新款 兔子 羽毛 捕梦网', '', 0, 3, '', 155, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/24_thumb_G_14507133188638.jpg', 'images/201512/goods_img/24_G_14507071227527.jpg', 'images/201512/source_img/24_G_14507106583129.jpg', 1, '', 1, 1, 0, 0, 1450821651, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(25, 531, 'YSHD000025', 'NEUF弗  独家创意纹身贴 舞虎木偶 女孩与老虎本是一家', '', 0, 3, '', 121, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/25_thumb_G_14507088255601.jpg', 'images/201512/goods_img/25_G_14507150755281.jpg', 'images/201512/source_img/25_G_14507124143715.jpg', 1, '', 1, 1, 0, 0, 1450821651, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(26, 531, 'YSHD000026', 'NEUF弗 独家防水纹身贴 天使爱美丽 性感红唇可爱女人味 女生必贴', '', 1, 3, '', 162, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/26_thumb_G_14507093384995.jpg', 'images/201512/goods_img/26_G_14507130364918.jpg', 'images/201512/source_img/26_G_14507087647576.jpg', 1, '', 1, 1, 0, 0, 1450821651, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(27, 531, 'YSHD000027', 'NEUF弗 创意纹身贴 恒等变幻 黑白三角 简洁白搭 男生女生', '', 0, 3, '', 157, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/27_thumb_G_14507142258883.jpg', 'images/201512/goods_img/27_G_14507111034552.jpg', 'images/201512/source_img/27_G_14507147182864.jpg', 1, '', 1, 1, 0, 0, 1450821652, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(28, 531, 'YSHD000028', 'NEUF弗 独家设计纹身贴 御宅族百奇节 pocky 零食控美少女 可爱', '', 0, 3, '', 128, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/28_thumb_G_14507112984579.jpg', 'images/201512/goods_img/28_G_14507127394287.jpg', 'images/201512/source_img/28_G_14507123164484.jpg', 1, '', 1, 1, 0, 0, 1450821652, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(29, 531, 'YSHD000029', 'NEUF弗 创意防水纹身贴 量形宇宙 简洁理性线条 气场 神秘魅力', '', 0, 3, '', 136, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/29_thumb_G_14507159685358.jpg', 'images/201512/goods_img/29_G_14507075530936.jpg', 'images/201512/source_img/29_G_14507134061011.jpg', 1, '', 1, 1, 0, 0, 1450821652, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(30, 531, 'YSHD000030', 'NEUF弗 创意纹身贴 桃祭雏人形 增恋爱运桃花运 幸福情侣贴', '', 0, 3, '', 131, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/30_thumb_G_14507099181613.jpg', 'images/201512/goods_img/30_G_14507075708040.jpg', 'images/201512/source_img/30_G_14507081119572.jpg', 1, '', 1, 1, 0, 0, 1450821653, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(31, 531, 'YSHD000031', 'NEUF弗 独家防水纹身贴 刺客 玫瑰蔷薇 美女必贴 杀死你的温柔', '', 0, 3, '', 162, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/31_thumb_G_14507154780054.jpg', 'images/201512/goods_img/31_G_14507100985508.jpg', 'images/201512/source_img/31_G_14507125225004.jpg', 1, '', 1, 1, 0, 0, 1450821653, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(32, 531, 'YSHD000032', 'NEUF弗 独家防水纹身贴 不败装饰 KITTY 哆啦A梦 蝴蝶结叮当 戒指', '', 0, 3, '', 168, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/32_thumb_G_14507082681264.jpg', 'images/201512/goods_img/32_G_14507148734743.jpg', 'images/201512/source_img/32_G_14507101631991.jpg', 1, '', 1, 1, 0, 0, 1450821654, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(33, 531, 'YSHD000033', 'NEUF弗 创意纹身贴 月中兔 星星月亮与兔子 浪漫美丽 经典梦幻', '', 0, 3, '', 137, 1.000, 7.20, 6.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/33_thumb_G_14507129969733.jpg', 'images/201512/goods_img/33_G_14507151675493.jpg', 'images/201512/source_img/33_G_14507085328971.jpg', 1, '', 1, 1, 0, 0, 1450821654, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(34, 531, 'YSHD000034', 'NEUF弗 独家创意纹身贴 祈愿达摩 求福许愿 卖萌可爱 店主超爱', '', 0, 3, '', 174, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/34_thumb_G_14507129608268.jpg', 'images/201512/goods_img/34_G_14507081862356.jpg', 'images/201512/source_img/34_G_14507118238021.jpg', 1, '', 1, 1, 0, 0, 1450821654, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(35, 531, 'YSHD000035', 'NEUF弗 创意防水纹身贴 正妹三连跳 一大波美少女正在靠近', '', 0, 3, '', 80, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/35_thumb_G_14507112692294.jpg', 'images/201512/goods_img/35_G_14507122261883.jpg', 'images/201512/source_img/35_G_14507148164602.jpg', 1, '', 1, 1, 0, 0, 1450821655, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(36, 531, 'YSHD000036', 'NEUF弗 独家纹身贴 人生诡计 童年思考 成功人生指南 骰子五角星', '', 0, 3, '', 99, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/36_thumb_G_14507150379936.jpg', 'images/201512/goods_img/36_G_14507077114267.jpg', 'images/201512/source_img/36_G_14507136099049.jpg', 1, '', 1, 1, 0, 0, 1450821655, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(37, 531, 'YSHD000037', 'NEUF弗 创意防水纹身贴 古法计时器 十二地支 良辰美爆 装逼推荐', '', 0, 3, '', 111, 1.000, 14.40, 12.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/37_thumb_G_14507121078761.jpg', 'images/201512/goods_img/37_G_14507102633759.jpg', 'images/201512/source_img/37_G_14507108461097.jpg', 1, '', 1, 1, 0, 0, 1450821655, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(38, 531, 'YSHD000038', 'NEUF弗 创意防水纹身贴 鸟离行 鸟笼大树猫头鹰 唯美分离之爱', '', 0, 3, '', 47, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/38_thumb_G_14507116651713.jpg', 'images/201512/goods_img/38_G_14507145276620.jpg', 'images/201512/source_img/38_G_14507147134353.jpg', 1, '', 1, 1, 0, 0, 1450821656, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(39, 531, 'YSHD000039', 'NEUF弗 创意防水纹身贴 轻翼之爱 羽毛船锚 我们在一起吧 永恒贴', '', 0, 3, '', 173, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/39_thumb_G_14507100514436.jpg', 'images/201512/goods_img/39_G_14507161350893.jpg', 'images/201512/source_img/39_G_14507067594038.jpg', 1, '', 1, 1, 0, 0, 1450821656, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(40, 531, 'YSHD000040', 'NEUF弗 独家创意纹身贴 日记本 小故事连环画 丰富超逗大版图', '', 0, 3, '', 48, 1.000, 14.40, 12.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/40_thumb_G_14507068936878.jpg', 'images/201512/goods_img/40_G_14507146522270.jpg', 'images/201512/source_img/40_G_14507076206143.jpg', 1, '', 1, 1, 0, 0, 1450821657, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(41, 531, 'YSHD000041', 'NEUF弗 独家防水纹身贴 送子鹤 云中飞鹤 正能量充满爱', '', 0, 3, '', 122, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/41_thumb_G_14507078749260.jpg', 'images/201512/goods_img/41_G_14507151494533.jpg', 'images/201512/source_img/41_G_14507144958348.jpg', 1, '', 1, 1, 0, 0, 1450821657, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(42, 531, 'YSHD000042', 'NEUF弗 创意纹身贴 最炫民族风 超绚彩色手链脚链 贴上赞强烈推荐', '', 0, 3, '', 162, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/42_thumb_G_14507147814287.jpg', 'images/201512/goods_img/42_G_14507096514575.jpg', 'images/201512/source_img/42_G_14507110508478.jpg', 1, '', 1, 1, 0, 0, 1450821657, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(43, 531, 'YSHD000043', 'NEUF弗 新款防水纹身贴 落入我心 树枝植物 清新自然 爱情箴言', '', 0, 3, '', 164, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/43_thumb_G_14507164453257.jpg', 'images/201512/goods_img/43_G_14507120261145.jpg', 'images/201512/source_img/43_G_14507087789397.jpg', 1, '', 1, 1, 0, 0, 1450821658, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(44, 531, 'YSHD000044', 'NEUF弗 新款纹身贴 不解之缘 东方禅意 莲花图腾 提升气场', '', 0, 3, '', 173, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/44_thumb_G_14507142674624.jpg', 'images/201512/goods_img/44_G_14507124872781.jpg', 'images/201512/source_img/44_G_14507065218053.jpg', 1, '', 1, 1, 0, 0, 1450821658, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(45, 531, 'YSHD000045', 'NEUF弗 独家新款纹身贴 新娘不是我 钻石玫瑰高跟鞋 爱的就是你', '', 0, 3, '', 159, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/45_thumb_G_14507102066420.jpg', 'images/201512/goods_img/45_G_14507093867011.jpg', 'images/201512/source_img/45_G_14507067898604.jpg', 1, '', 1, 1, 0, 0, 1450821658, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(46, 531, 'YSHD000046', 'NEUF弗 独家原创纹身贴 角度之外 性感美醉 人气必败 出街必备', '', 0, 3, '', 136, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/46_thumb_G_14507128211847.jpg', 'images/201512/goods_img/46_G_14507086326117.jpg', 'images/201512/source_img/46_G_14507134610598.jpg', 1, '', 1, 1, 0, 0, 1450821659, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(47, 531, 'YSHD000047', 'NEUF弗 新款防水纹身贴 森林诗歌 树与自然 超美黑白植物', '', 0, 3, '', 37, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/47_thumb_G_14507091236853.jpg', 'images/201512/goods_img/47_G_14507077216164.jpg', 'images/201512/source_img/47_G_14507144744415.jpg', 1, '', 1, 1, 0, 0, 1450821659, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(48, 531, 'YSHD000048', 'NEUF弗 新款创意纹身贴 净化真言 藏文六字真言 奥妙智慧幸福圆满', '', 0, 3, '', 158, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/48_thumb_G_14507083134764.jpg', 'images/201512/goods_img/48_G_14507163630796.jpg', 'images/201512/source_img/48_G_14507133465430.jpg', 1, '', 1, 1, 0, 0, 1450821660, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(49, 531, 'YSHD000049', 'NEUF弗 新款防水纹身贴 星际小不点 一闪一闪亮晶晶', '', 0, 3, '', 100, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/49_thumb_G_14507122852888.jpg', 'images/201512/goods_img/49_G_14507072800593.jpg', 'images/201512/source_img/49_G_14507114809087.jpg', 1, '', 1, 1, 0, 0, 1450821660, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(50, 531, 'YSHD000050', 'NEUF弗 新款创意防水纹身贴 一世界 贴着地图走遍世界 简单最好', '', 0, 3, '', 183, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/50_thumb_G_14507134009323.jpg', 'images/201512/goods_img/50_G_14507155715082.jpg', 'images/201512/source_img/50_G_14507093753971.jpg', 1, '', 1, 1, 0, 0, 1450821660, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(51, 531, 'YSHD000051', 'NEUF弗 新款创意防水纹身贴 想念星星的你 可爱星星月亮小女孩', '', 0, 3, '', 124, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/51_thumb_G_14507109510971.jpg', 'images/201512/goods_img/51_G_14507147738312.jpg', 'images/201512/source_img/51_G_14507154397261.jpg', 1, '', 1, 1, 0, 0, 1450821661, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(52, 531, 'YSHD000052', 'NEUF弗 新款防水纹身贴 雪狐传说 狐狸雪花 浪漫迷人美丽女生必备', '', 0, 3, '', 134, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/52_thumb_G_14507071080528.jpg', 'images/201512/goods_img/52_G_14507088816682.jpg', 'images/201512/source_img/52_G_14507105305419.jpg', 1, '', 1, 1, 0, 0, 1450821661, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(53, 531, 'YSHD000053', 'NEUF弗 新款防水纹身贴《仲夏音乐会》 音符月亮星星 清新美丽', '', 0, 3, '', 112, 1.000, 14.40, 12.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/53_thumb_G_14507126486151.jpg', 'images/201512/goods_img/53_G_14507097568202.jpg', 'images/201512/source_img/53_G_14507113641134.jpg', 1, '', 1, 1, 0, 0, 1450821662, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(54, 531, 'YSHD000054', 'NEUF弗 独家新款防水纹身贴《左右手》 双人情侣贴 友谊贴', '', 0, 3, '', 90, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/54_thumb_G_14507161514655.jpg', 'images/201512/goods_img/54_G_14507098910384.jpg', 'images/201512/source_img/54_G_14507099293346.jpg', 1, '', 1, 1, 0, 0, 1450821662, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(55, 531, 'YSHD000055', 'NEUF弗 新款纹身贴《天使的侧脸》 翅膀十字架五芒星 黑白经典', '', 0, 3, '', 85, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/55_thumb_G_14507152274274.jpg', 'images/201512/goods_img/55_G_14507124831096.jpg', 'images/201512/source_img/55_G_14507086310714.jpg', 1, '', 1, 1, 0, 0, 1450821663, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(56, 531, 'YSHD000056', 'NEUF弗 独家新款纹身贴《断忘无痕》 剪刀羽毛箭头线头 美贴首选', '', 0, 3, '', 151, 1.000, 14.40, 12.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/56_thumb_G_14507155987578.jpg', 'images/201512/goods_img/56_G_14507088145557.jpg', 'images/201512/source_img/56_G_14507131628822.jpg', 1, '', 1, 1, 0, 0, 1450821663, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(57, 531, 'YSHD000057', 'NEUF弗 独家防水纹身贴《正能量三字经》新款英文字母潮人必备', '', 0, 3, '', 221, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/57_thumb_G_14507067661481.jpg', 'images/201512/goods_img/57_G_14507098365417.jpg', 'images/201512/source_img/57_G_14507088502785.jpg', 1, '', 1, 1, 0, 0, 1450821663, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(58, 531, 'YSHD000058', 'NEUF弗 新款防水纹身贴《寻找感官》眼睛鼻子嘴 激发灵感品味之选', '', 0, 3, '', 153, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/58_thumb_G_14507157337819.jpg', 'images/201512/goods_img/58_G_14507116906131.jpg', 'images/201512/source_img/58_G_14507150975414.jpg', 1, '', 1, 1, 0, 0, 1450821664, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(59, 531, 'YSHD000059', 'NEUF弗 独家新款防水纹身贴《狐狸的森林》树林叶子变身的小狐狸', '', 0, 3, '', 186, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/59_thumb_G_14507131134872.jpg', 'images/201512/goods_img/59_G_14507158057654.jpg', 'images/201512/source_img/59_G_14507153412045.jpg', 1, '', 1, 1, 0, 0, 1450821664, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(60, 531, 'YSHD000060', 'NEUF弗 独家创意防水纹身贴《一口不过瘾》冰淇淋棒冰女生最爱', '', 0, 3, '', 149, 1.000, 6.00, 5.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/60_thumb_G_14507102455180.jpg', 'images/201512/goods_img/60_G_14507070665493.jpg', 'images/201512/source_img/60_G_14507147607726.jpg', 1, '', 1, 1, 0, 0, 1450821665, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(61, 531, 'YSHD000061', 'NEUF弗 创意防水纹身贴《真爱一生》情定一生 皇冠情侣贴 女王控', '', 0, 3, '', 196, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/61_thumb_G_14507096177980.jpg', 'images/201512/goods_img/61_G_14507069982219.jpg', 'images/201512/source_img/61_G_14507142350588.jpg', 1, '', 1, 1, 0, 0, 1450821665, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(62, 531, 'YSHD000062', 'NEUF弗 独家新款防水纹身贴《心之所向》花朵飞鸟美人鱼 做自己', '', 4, 3, '', 131, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/62_thumb_G_14507095492809.jpg', 'images/201512/goods_img/62_G_14507154229509.jpg', 'images/201512/source_img/62_G_14507125538914.jpg', 1, '', 1, 1, 0, 0, 1450821665, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(63, 531, 'YSHD000063', 'NEUF弗 独家新款防水纹身贴 《手势独白》魔法双手美丽枝条 大张', '', 1, 3, '', 73, 1.000, 14.40, 12.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/63_thumb_G_14507124775366.jpg', 'images/201512/goods_img/63_G_14507088145560.jpg', 'images/201512/source_img/63_G_14507131628825.jpg', 1, '', 1, 1, 0, 0, 1450821666, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(64, 531, 'YSHD000064', 'NEUF弗 夜光防水纹身贴《簇拥悬秘》荧光花朵 夜晚神秘魅力', '', 0, 3, '', 88, 1.000, 12.00, 10.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/64_thumb_G_14507134779902.jpg', 'images/201512/goods_img/64_G_14507096926995.jpg', 'images/201512/source_img/64_G_14507091072871.jpg', 1, '', 1, 1, 0, 0, 1450821666, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(65, 531, 'YSHD000065', 'NEUF弗 独家创意纹身贴《和风家纹》日本符号 简单好看 人手一个', '', 0, 3, '', 200, 1.000, 9.60, 8.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/65_thumb_G_14507065942443.jpg', 'images/201512/goods_img/65_G_14507101713851.jpg', 'images/201512/source_img/65_G_14507150453040.jpg', 1, '', 1, 1, 0, 0, 1450821667, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0),
+	(66, 531, 'YSHD000066', 'NEUF弗 独家防水纹身贴《花香调》唯美花鸟复古美貌 小花臂', '', 6, 3, '', 198, 1.000, 10.80, 9.00, 0.00, 0, 0, 0, 0, 0, 0, 1, '', '', '<P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735916_47209023.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735933_61306568.jpg"></P><P><IMG src="http://127.0.0.1/includes/ueditor/php/../../../images/upload/image//20151221151735936_16602672.jpg"></P>', 'images/201512/thumb_img/66_thumb_G_14507080739094.jpg', 'images/201512/goods_img/66_G_14507113501330.jpg', 'images/201512/source_img/66_G_14507138799791.jpg', 1, '', 1, 1, 0, 0, 1450821667, 0, 0, 1, 1, 1, 0, 10.0, 0, 0, 0, '', -1, -1, 0, 0, 0, '', 0, 0, 0.00, NULL, 0);
 /*!40000 ALTER TABLE `ecs_goods` ENABLE KEYS */;
 
 
@@ -5261,7 +5246,7 @@ CREATE TABLE IF NOT EXISTS `ecs_goods_activity` (
   KEY `act_name` (`act_name`,`act_type`,`goods_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_goods_activity 的数据：24 rows
+-- 正在导出表  cnpicks.ecs_goods_activity 的数据：22 rows
 DELETE FROM `ecs_goods_activity`;
 /*!40000 ALTER TABLE `ecs_goods_activity` DISABLE KEYS */;
 INSERT INTO `ecs_goods_activity` (`act_id`, `act_name`, `act_desc`, `act_type`, `goods_id`, `product_id`, `goods_name`, `start_time`, `end_time`, `is_finished`, `ext_info`, `supplier_id`, `act_count`) VALUES
@@ -5272,12 +5257,10 @@ INSERT INTO `ecs_goods_activity` (`act_id`, `act_name`, `act_desc`, `act_type`, 
 	(8, '家用电器超值礼包', '家用电器超值礼包，疯抢进行时', 4, 0, 0, '', 1437589800, 1598149800, 0, 'a:1:{s:13:"package_price";s:5:"10009";}', 0, 0),
 	(13, '厨房电器优惠套餐', '厨房电器优惠套餐', 4, 0, 0, '', 1437590760, 1598150760, 0, 'a:1:{s:13:"package_price";s:3:"699";}', 0, 0),
 	(14, '家庭精美厨具套餐', '家庭精美厨具套餐', 4, 0, 0, '', 1437591600, 1441767600, 0, 'a:1:{s:13:"package_price";s:3:"200";}', 0, 0),
-	(33, '惠普生牌钙镁锌咀嚼片60片 补充钙镁锌', '', 5, 9, 0, '惠普生牌钙镁锌咀嚼片60片 补充钙镁锌', 1441699200, 1441958400, 4, 'a:8:{s:10:"sale_price";d:0;s:15:"retainage_start";s:0:"";s:13:"retainage_end";s:0:"";s:12:"price_ladder";a:1:{i:0;a:2:{s:6:"amount";i:1;s:5:"price";d:100;}}s:15:"restrict_amount";i:0;s:13:"gift_integral";i:0;s:7:"deposit";d:0;s:13:"deliver_goods";s:67:"1.预计 yyyy-MM-dd HH 时前发货。2.付款后 N 天内发货。";}', 0, 0),
 	(16, '除湿机家用抽湿机20B 地下室别墅吸湿器除湿器', '', 5, 97, 0, '除湿机家用抽湿机20B 地下室别墅吸湿器除湿器', 1437638400, 1469520000, 0, 'a:8:{s:10:"sale_price";d:0;s:15:"retainage_start";i:1469819880;s:13:"retainage_end";i:1470165480;s:12:"price_ladder";a:3:{i:0;a:2:{s:6:"amount";i:6;s:5:"price";d:999;}i:1;a:2:{s:6:"amount";i:10;s:5:"price";d:996;}i:2;a:2:{s:6:"amount";i:15;s:5:"price";d:992;}}s:15:"restrict_amount";i:100;s:13:"gift_integral";i:66;s:7:"deposit";d:999;s:13:"deliver_goods";s:63:"1.预计2016-08-03 24时前发货。2.付款后5天内发货。";}', 0, 0),
 	(17, '昆仑玉红枣 和田香枣二级500g 新疆特产 免洗零食 和田大枣子', '', 5, 52, 0, '昆仑玉红枣 和田香枣二级500g 新疆特产 免洗零食 和田大枣子', 1437638400, 1469520000, 0, 'a:8:{s:10:"sale_price";d:0;s:15:"retainage_start";s:0:"";s:13:"retainage_end";s:0:"";s:12:"price_ladder";a:1:{i:0;a:2:{s:6:"amount";i:5;s:5:"price";d:77;}}s:15:"restrict_amount";i:0;s:13:"gift_integral";i:66;s:7:"deposit";d:0;s:13:"deliver_goods";s:63:"1.预计2016-08-10 24时前发货。2.付款后5天内发货。";}', 0, 0),
 	(18, '墨西哥牛油果9个 牛油果 鳄梨 牛油果水果 21-24号发', '', 5, 54, 0, '墨西哥牛油果9个 牛油果 鳄梨 牛油果水果 21-24号发', 1437638400, 1468828800, 0, 'a:8:{s:10:"sale_price";d:0;s:15:"retainage_start";i:1468870080;s:13:"retainage_end";i:1469215680;s:12:"price_ladder";a:1:{i:0;a:2:{s:6:"amount";i:5;s:5:"price";d:66;}}s:15:"restrict_amount";i:0;s:13:"gift_integral";i:12;s:7:"deposit";d:99;s:13:"deliver_goods";s:63:"1.预计2016-07-30 24时前发货。2.付款后5天内发货。";}', 0, 0),
 	(20, '进口 新鲜水果 车厘子1000g', '夺宝岛编号：10639440\r\n\r\n包装外观：商品外观良好，外包装良好\r\n\r\n商品所在地：上海\r\n\r\n附件清单：主机 × 1 ', 2, 23, 0, '进口 新鲜水果 车厘子1000g', 1437552000, 1501401600, 0, 'a:5:{s:7:"deposit";d:0;s:11:"start_price";d:1;s:9:"end_price";d:168;s:9:"amplitude";d:1;s:6:"no_top";i:0;}', 1, 0),
-	(21, '佳沛新西兰绿奇异果36个（原装）进口Zespri猕猴桃 新鲜水果准妈妈爱吃', '', 2, 1, 0, '佳沛新西兰绿奇异果36个（原装）进口Zespri猕猴桃 新鲜水果准妈妈爱吃', 1437552000, 1501401600, 0, 'a:5:{s:7:"deposit";d:0;s:11:"start_price";d:14.800000000000000710542735760100185871124267578125;s:9:"end_price";d:130;s:9:"amplitude";d:2;s:6:"no_top";i:0;}', 1, 0),
 	(22, '迪奥真我香水50ml', '', 2, 135, 0, '迪奥真我香水50ml', 1437552000, 1469865600, 0, 'a:5:{s:7:"deposit";d:0;s:11:"start_price";d:100;s:9:"end_price";d:853;s:9:"amplitude";d:1;s:6:"no_top";i:0;}', 6, 0),
 	(23, '100%桑蚕丝两件套夏季短袖真丝睡衣女套装', '', 5, 78, 0, '100%桑蚕丝两件套夏季短袖真丝睡衣女套装', 1437638400, 1469520000, 0, 'a:8:{s:10:"sale_price";d:0;s:15:"retainage_start";i:1469648520;s:13:"retainage_end";i:1469907720;s:12:"price_ladder";a:3:{i:0;a:2:{s:6:"amount";i:5;s:5:"price";d:88;}i:1;a:2:{s:6:"amount";i:10;s:5:"price";d:83;}i:2;a:2:{s:6:"amount";i:15;s:5:"price";d:80;}}s:15:"restrict_amount";i:0;s:13:"gift_integral";i:55;s:7:"deposit";d:88;s:13:"deliver_goods";s:62:"1.预计2016-08-5 24时前发货。2.付款后5天内发货。";}', 0, 0),
 	(24, 'Dior迪奥 限量版彩妆盘 眼影 粉饼 睫毛膏 腮红 唇彩', '', 2, 152, 0, 'Dior迪奥 限量版彩妆盘 眼影 粉饼 睫毛膏 腮红 唇彩', 1437552000, 1469865600, 0, 'a:5:{s:7:"deposit";d:0;s:11:"start_price";d:50;s:9:"end_price";d:469;s:9:"amplitude";d:10;s:6:"no_top";i:0;}', 6, 0),
@@ -5316,27 +5299,16 @@ CREATE TABLE IF NOT EXISTS `ecs_goods_attr` (
   PRIMARY KEY (`goods_attr_id`),
   KEY `goods_id` (`goods_id`),
   KEY `attr_id` (`attr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1706 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1710 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_goods_attr 的数据：15 rows
+-- 正在导出表  cnpicks.ecs_goods_attr 的数据：4 rows
 DELETE FROM `ecs_goods_attr`;
 /*!40000 ALTER TABLE `ecs_goods_attr` DISABLE KEYS */;
 INSERT INTO `ecs_goods_attr` (`goods_attr_id`, `goods_id`, `attr_id`, `attr_value`, `attr_price`) VALUES
-	(1671, 1, 2, '白色001', ''),
-	(1672, 1, 2, '红色002', ''),
-	(1673, 1, 2, '黄色003', ''),
-	(1674, 1, 2, '黑色004', ''),
-	(1675, 1, 2, '绿色005', ''),
-	(1676, 1, 2, '天蓝006', ''),
-	(1677, 1, 2, '蓝色007', ''),
-	(1704, 4238, 233, 'Gold', '13'),
-	(1705, 4238, 233, 'Silver', '14'),
-	(1703, 4238, 232, '白色', '12'),
-	(138, 10, 2, '肤色009', ''),
-	(73, 10, 2, '灰色008', ''),
-	(1702, 4238, 232, '黄色', '11'),
-	(75, 11, 2, '灰色008', ''),
-	(139, 11, 2, '肤色009', '');
+	(2, 2, 232, 'White', '2'),
+	(6, 2, 232, 'Yellow', '1'),
+	(3, 2, 233, 'Gold', '3'),
+	(4, 2, 233, 'Silver', '4');
 /*!40000 ALTER TABLE `ecs_goods_attr` ENABLE KEYS */;
 
 
@@ -5372,100 +5344,326 @@ CREATE TABLE IF NOT EXISTS `ecs_goods_gallery` (
   `img_sort` tinyint(3) NOT NULL DEFAULT '0' COMMENT '商品图片显示顺序',
   PRIMARY KEY (`img_id`),
   KEY `goods_id` (`goods_id`,`goods_attr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12312 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12626 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_goods_gallery 的数据：88 rows
+-- 正在导出表  cnpicks.ecs_goods_gallery 的数据：314 rows
 DELETE FROM `ecs_goods_gallery`;
 /*!40000 ALTER TABLE `ecs_goods_gallery` DISABLE KEYS */;
 INSERT INTO `ecs_goods_gallery` (`img_id`, `goods_id`, `img_url`, `img_desc`, `thumb_url`, `img_original`, `goods_attr_id`, `is_attr_image`, `img_sort`) VALUES
-	(18, 1, 'images/201404/goods_img/1_P_1398841811170.jpg', '黑色', 'images/201404/thumb_img/1_thumb_P_1398841811271.jpg', 'images/201404/source_img/1_P_1398841811037.jpg', 0, 0, 0),
-	(17, 1, 'images/201404/goods_img/1_P_1398841418726.jpg', '红色', 'images/201404/thumb_img/1_thumb_P_1398841418623.jpg', 'images/201404/source_img/1_P_1398841418259.jpg', 0, 0, 0),
-	(16, 1, 'images/201404/goods_img/1_P_1398841226156.jpg', '黄色', 'images/201404/thumb_img/1_thumb_P_1398841226467.jpg', 'images/201404/source_img/1_P_1398841226016.jpg', 0, 0, 0),
-	(13, 1, 'images/201404/goods_img/1_P_1398840795065.jpg', '红色', 'images/201404/thumb_img/1_thumb_P_1398840795741.jpg', 'images/201404/source_img/1_P_1398840795176.jpg', 0, 0, 0),
-	(14, 1, 'images/201404/goods_img/1_P_1398840958086.jpg', '白色', 'images/201404/thumb_img/1_thumb_P_1398840958320.jpg', 'images/201404/source_img/1_P_1398840958357.jpg', 0, 0, 0),
-	(27, 7, 'images/201405/goods_img/7_P_1399617208069.jpg', '紫色', 'images/201405/thumb_img/7_thumb_P_1399617208892.jpg', 'images/201405/source_img/7_P_1399617208097.jpg', 0, 0, 0),
-	(28, 7, 'images/201405/goods_img/7_P_1399617473583.jpg', '红色', 'images/201405/thumb_img/7_thumb_P_1399617473808.jpg', 'images/201405/source_img/7_P_1399617473043.jpg', 0, 0, 0),
-	(29, 7, 'images/201405/goods_img/7_P_1399618628985.jpg', '紫色', 'images/201405/thumb_img/7_thumb_P_1399618628601.jpg', 'images/201405/source_img/7_P_1399618628401.jpg', 0, 0, 0),
-	(31, 7, 'images/201405/goods_img/7_P_1399779135407.jpg', '绿色', 'images/201405/thumb_img/7_thumb_P_1399779135443.jpg', 'images/201405/source_img/7_P_1399779135350.jpg', 0, 0, 0),
-	(32, 7, 'images/201405/goods_img/7_P_1399779430646.jpg', '蓝色', 'images/201405/thumb_img/7_thumb_P_1399779430363.jpg', 'images/201405/source_img/7_P_1399779430919.jpg', 0, 0, 0),
-	(223, 8, 'images/201406/goods_img/8_P_1401780149512.jpg', '', 'images/201406/thumb_img/8_thumb_P_1401780149808.jpg', 'images/201406/source_img/8_P_1401780149134.jpg', 0, 0, 0),
-	(228, 9, 'images/201406/goods_img/9_P_1401781551139.jpg', '', 'images/201406/thumb_img/9_thumb_P_1401781551596.jpg', 'images/201406/source_img/9_P_1401781551750.jpg', 0, 0, 0),
-	(733, 10, 'images/201406/goods_img/10_P_1403853852356.jpg', '', 'images/201406/thumb_img/10_thumb_P_1403853852039.jpg', 'images/201406/source_img/10_P_1403853852230.jpg', 0, 0, 0),
-	(38, 11, 'images/201405/goods_img/11_P_1400890133790.jpg', '', 'images/201405/thumb_img/11_thumb_P_1400890133272.jpg', 'images/201405/source_img/11_P_1400890133213.jpg', 0, 0, 0),
-	(818, 12, 'images/201407/goods_img/12_P_1404459217474.jpg', '', 'images/201407/thumb_img/12_thumb_P_1404459217591.jpg', 'images/201407/source_img/12_P_1404459217083.jpg', 0, 0, 0),
-	(815, 12, 'images/201407/goods_img/12_P_1404459216901.jpg', '', 'images/201407/thumb_img/12_thumb_P_1404459216048.jpg', 'images/201407/source_img/12_P_1404459216522.jpg', 0, 0, 0),
-	(816, 12, 'images/201407/goods_img/12_P_1404459216691.jpg', '', 'images/201407/thumb_img/12_thumb_P_1404459216159.jpg', 'images/201407/source_img/12_P_1404459216013.jpg', 0, 0, 0),
-	(817, 12, 'images/201407/goods_img/12_P_1404459217206.jpg', '', 'images/201407/thumb_img/12_thumb_P_1404459217232.jpg', 'images/201407/source_img/12_P_1404459217008.jpg', 0, 0, 0),
-	(48, 14, 'images/201405/goods_img/14_P_1400915275437.jpg', '', 'images/201405/thumb_img/14_thumb_P_1400915275430.jpg', 'images/201405/source_img/14_P_1400915275283.jpg', 0, 0, 0),
-	(54, 14, 'images/201405/goods_img/14_P_1400915842144.jpg', '', 'images/201405/thumb_img/14_thumb_P_1400915842582.jpg', 'images/201405/source_img/14_P_1400915842174.jpg', 0, 0, 0),
-	(53, 14, 'images/201405/goods_img/14_P_1400915841456.jpg', '', 'images/201405/thumb_img/14_thumb_P_1400915841773.jpg', 'images/201405/source_img/14_P_1400915841691.jpg', 0, 0, 0),
-	(51, 14, 'images/201405/goods_img/14_P_1400915754063.jpg', '', 'images/201405/thumb_img/14_thumb_P_1400915754909.jpg', 'images/201405/source_img/14_P_1400915754804.jpg', 0, 0, 0),
-	(55, 14, 'images/201405/goods_img/14_P_1400915842648.jpg', '', 'images/201405/thumb_img/14_thumb_P_1400915842317.jpg', 'images/201405/source_img/14_P_1400915842825.jpg', 0, 0, 0),
-	(11457, 3090, 'images/201508/goods_img/3090_P_1439163188778.jpg', '', 'images/201508/thumb_img/3090_thumb_P_1439163188613.jpg', 'images/201508/source_img/3090_P_1439163188785.jpg', 0, 0, 0),
-	(11458, 3090, 'images/201508/goods_img/3090_P_1439163257009.jpg', '', 'images/201508/thumb_img/3090_thumb_P_1439163257573.jpg', 'images/201508/source_img/3090_P_1439163257954.jpg', 0, 0, 0),
-	(60, 16, 'images/201405/goods_img/16_P_1401159159274.jpg', '', 'images/201405/thumb_img/16_thumb_P_1401159159505.jpg', 'images/201405/source_img/16_P_1401159159536.jpg', 0, 0, 0),
-	(61, 16, 'images/201405/goods_img/16_P_1401159617538.jpg', '', 'images/201405/thumb_img/16_thumb_P_1401159617838.jpg', 'images/201405/source_img/16_P_1401159617808.jpg', 0, 0, 0),
-	(62, 16, 'images/201405/goods_img/16_P_1401159765510.jpg', '', 'images/201405/thumb_img/16_thumb_P_1401159765130.jpg', 'images/201405/source_img/16_P_1401159765921.jpg', 0, 0, 0),
-	(74, 18, 'images/201405/goods_img/18_P_1401183528916.jpg', '', 'images/201405/thumb_img/18_thumb_P_1401183528367.jpg', 'images/201405/source_img/18_P_1401183528375.jpg', 0, 0, 0),
-	(75, 18, 'images/201405/goods_img/18_P_1401183554345.jpg', '', 'images/201405/thumb_img/18_thumb_P_1401183554640.jpg', 'images/201405/source_img/18_P_1401183554063.jpg', 0, 0, 0),
-	(76, 18, 'images/201405/goods_img/18_P_1401183702640.jpg', '', 'images/201405/thumb_img/18_thumb_P_1401183702072.jpg', 'images/201405/source_img/18_P_1401183702914.jpg', 0, 0, 0),
-	(77, 18, 'images/201405/goods_img/18_P_1401183720948.jpg', '', 'images/201405/thumb_img/18_thumb_P_1401183720856.jpg', 'images/201405/source_img/18_P_1401183720360.jpg', 0, 0, 0),
-	(78, 18, 'images/201405/goods_img/18_P_1401183825435.jpg', '', 'images/201405/thumb_img/18_thumb_P_1401183825533.jpg', 'images/201405/source_img/18_P_1401183825092.jpg', 0, 0, 0),
-	(79, 19, 'images/201405/goods_img/19_P_1401242683618.jpg', '', 'images/201405/thumb_img/19_thumb_P_1401242683278.jpg', 'images/201405/source_img/19_P_1401242683300.jpg', 0, 0, 0),
-	(80, 19, 'images/201405/goods_img/19_P_1401245285669.jpg', '', 'images/201405/thumb_img/19_thumb_P_1401245285775.jpg', 'images/201405/source_img/19_P_1401245285058.jpg', 0, 0, 0),
-	(85, 20, 'images/201405/goods_img/20_P_1401258010715.JPG', '', 'images/201405/thumb_img/20_thumb_P_1401258010840.jpg', 'images/201405/source_img/20_P_1401258010426.JPG', 0, 0, 0),
-	(86, 20, 'images/201405/goods_img/20_P_1401258031744.JPG', '', 'images/201405/thumb_img/20_thumb_P_1401258031017.jpg', 'images/201405/source_img/20_P_1401258031259.JPG', 0, 0, 0),
-	(87, 20, 'images/201405/goods_img/20_P_1401258051400.jpg', '', 'images/201405/thumb_img/20_thumb_P_1401258051648.jpg', 'images/201405/source_img/20_P_1401258051312.jpg', 0, 0, 0),
-	(11460, 3090, 'images/201508/goods_img/3090_P_1439163258279.jpg', '', 'images/201508/thumb_img/3090_thumb_P_1439163258747.jpg', 'images/201508/source_img/3090_P_1439163258922.jpg', 0, 0, 0),
-	(11459, 3090, 'images/201508/goods_img/3090_P_1439163258121.jpg', '', 'images/201508/thumb_img/3090_thumb_P_1439163258852.jpg', 'images/201508/source_img/3090_P_1439163258782.jpg', 0, 0, 0),
-	(11451, 3089, 'images/201508/goods_img/3089_P_1439159633659.jpg', '', 'images/201508/thumb_img/3089_thumb_P_1439159633463.jpg', 'images/201508/source_img/3089_P_1439159633702.jpg', 0, 0, 0),
-	(11452, 3089, 'images/201508/goods_img/3089_P_1439159682261.jpg', '', 'images/201508/thumb_img/3089_thumb_P_1439159682322.jpg', 'images/201508/source_img/3089_P_1439159682015.jpg', 0, 0, 0),
-	(11453, 3089, 'images/201508/goods_img/3089_P_1439159683963.jpg', '', 'images/201508/thumb_img/3089_thumb_P_1439159683502.jpg', 'images/201508/source_img/3089_P_1439159683199.jpg', 0, 0, 0),
-	(11454, 3089, 'images/201508/goods_img/3089_P_1439159683151.jpg', '', 'images/201508/thumb_img/3089_thumb_P_1439159683210.jpg', 'images/201508/source_img/3089_P_1439159683315.jpg', 0, 0, 0),
-	(11455, 3089, 'images/201508/goods_img/3089_P_1439159683550.jpg', '', 'images/201508/thumb_img/3089_thumb_P_1439159683081.jpg', 'images/201508/source_img/3089_P_1439159683687.jpg', 0, 0, 0),
-	(11456, 3089, 'images/201508/goods_img/3089_P_1439159683918.jpg', '', 'images/201508/thumb_img/3089_thumb_P_1439159683975.jpg', 'images/201508/source_img/3089_P_1439159683962.jpg', 0, 0, 0),
-	(11462, 3090, 'images/201508/goods_img/3090_P_1439163258512.jpg', '', 'images/201508/thumb_img/3090_thumb_P_1439163258450.jpg', 'images/201508/source_img/3090_P_1439163258213.jpg', 0, 0, 0),
-	(11461, 3090, 'images/201508/goods_img/3090_P_1439163258957.jpg', '', 'images/201508/thumb_img/3090_thumb_P_1439163258808.jpg', 'images/201508/source_img/3090_P_1439163258907.jpg', 0, 0, 0),
-	(224, 8, 'images/201406/goods_img/8_P_1401780181099.jpg', '', 'images/201406/thumb_img/8_thumb_P_1401780181924.jpg', 'images/201406/source_img/8_P_1401780181019.jpg', 0, 0, 0),
-	(225, 8, 'images/201406/goods_img/8_P_1401780181825.jpg', '', 'images/201406/thumb_img/8_thumb_P_1401780181911.jpg', 'images/201406/source_img/8_P_1401780181852.jpg', 0, 0, 0),
-	(226, 8, 'images/201406/goods_img/8_P_1401780181926.jpg', '', 'images/201406/thumb_img/8_thumb_P_1401780181641.jpg', 'images/201406/source_img/8_P_1401780181943.jpg', 0, 0, 0),
-	(227, 8, 'images/201406/goods_img/8_P_1401780181552.jpg', '', 'images/201406/thumb_img/8_thumb_P_1401780181827.jpg', 'images/201406/source_img/8_P_1401780181808.jpg', 0, 0, 0),
-	(229, 9, 'images/201406/goods_img/9_P_1401781579150.jpg', '', 'images/201406/thumb_img/9_thumb_P_1401781579976.jpg', 'images/201406/source_img/9_P_1401781579661.jpg', 0, 0, 0),
-	(230, 9, 'images/201406/goods_img/9_P_1401781579240.jpg', '', 'images/201406/thumb_img/9_thumb_P_1401781579073.jpg', 'images/201406/source_img/9_P_1401781579936.jpg', 0, 0, 0),
-	(231, 9, 'images/201406/goods_img/9_P_1401781580635.jpg', '', 'images/201406/thumb_img/9_thumb_P_1401781580969.jpg', 'images/201406/source_img/9_P_1401781580467.jpg', 0, 0, 0),
-	(12307, 4238, 'images/201512/goods_img/4238_P_14504405988543.jpg', '', 'images/201512/thumb_img/4238_thumb_P_14504435133846.jpg', 'images/201512/source_img/4238_P_14504391285793.jpg', 0, 0, 0),
-	(12308, 4238, 'images/201512/goods_img/4238_P_14504381836986.jpg', '', 'images/201512/thumb_img/4238_thumb_P_14504401756759.jpg', 'images/201512/source_img/4238_P_14504404601711.jpg', 0, 0, 0),
-	(12309, 4238, 'images/201512/goods_img/4238_P_14504421629676.jpg', '', 'images/201512/thumb_img/4238_thumb_P_14504476028479.jpg', 'images/201512/source_img/4238_P_14504401976159.jpg', 0, 0, 0),
-	(12310, 4238, 'images/201512/goods_img/4238_P_14504427410157.jpg', '', 'images/201512/thumb_img/4238_thumb_P_14504415306831.jpg', 'images/201512/source_img/4238_P_14504418190685.jpg', 0, 0, 0),
-	(12311, 4238, 'images/201512/goods_img/4238_P_14504422652868.jpg', '', 'images/201512/thumb_img/4238_thumb_P_14504415993918.jpg', 'images/201512/source_img/4238_P_14504425530664.jpg', 0, 0, 0),
-	(445, 10, 'images/201406/goods_img/10_P_1402653431556.jpg', '', 'images/201406/thumb_img/10_thumb_P_1402653431458.jpg', 'images/201406/source_img/10_P_1402653431892.jpg', 0, 0, 0),
-	(813, 12, 'images/201407/goods_img/12_P_1404459184387.jpg', '', 'images/201407/thumb_img/12_thumb_P_1404459184788.jpg', 'images/201407/source_img/12_P_1404459184270.jpg', 0, 0, 0),
-	(814, 12, 'images/201407/goods_img/12_P_1404459216674.jpg', '', 'images/201407/thumb_img/12_thumb_P_1404459216691.jpg', 'images/201407/source_img/12_P_1404459216889.jpg', 0, 0, 0),
-	(830, 196, 'images/201407/goods_img/196_P_1404521393280.jpg', '', 'images/201407/thumb_img/196_thumb_P_1404521393240.jpg', 'images/201407/source_img/196_P_1404521393954.jpg', 0, 0, 0),
-	(831, 196, 'images/201407/goods_img/196_P_1404521393434.jpg', '', 'images/201407/thumb_img/196_thumb_P_1404521393513.jpg', 'images/201407/source_img/196_P_1404521393974.jpg', 0, 0, 0),
-	(832, 196, 'images/201407/goods_img/196_P_1404521393437.jpg', '', 'images/201407/thumb_img/196_thumb_P_1404521393929.jpg', 'images/201407/source_img/196_P_1404521393025.jpg', 0, 0, 0),
-	(1214, 196, 'images/201407/goods_img/196_P_1405131523961.jpg', '', 'images/201407/thumb_img/196_thumb_P_1405131523212.jpg', 'images/201407/source_img/196_P_1405131523161.jpg', 0, 0, 0),
-	(10790, 13, 'images/201507/goods_img/13_P_1436464292169.jpg', '', 'images/201507/thumb_img/13_thumb_P_1436464292400.jpg', 'images/201507/source_img/13_P_1436464292597.jpg', 0, 0, 0),
-	(10788, 13, 'images/201507/goods_img/13_P_1436464239356.jpg', '', 'images/201507/thumb_img/13_thumb_P_1436464239104.jpg', 'images/201507/source_img/13_P_1436464239774.jpg', 0, 0, 0),
-	(1341, 1, 'images/201407/goods_img/1_P_1405247522035.jpg', '', 'images/201407/thumb_img/1_thumb_P_1405247522616.jpg', 'images/201407/source_img/1_P_1405247522760.jpg', 0, 0, 0),
-	(1342, 1, 'images/201407/goods_img/1_P_1405247626431.jpg', '', 'images/201407/thumb_img/1_thumb_P_1405247626828.jpg', 'images/201407/source_img/1_P_1405247626919.jpg', 0, 0, 0),
-	(1408, 20, 'images/201407/goods_img/20_P_1405641247229.jpg', '', 'images/201407/thumb_img/20_thumb_P_1405641247272.jpg', 'images/201407/source_img/20_P_1405641247490.jpg', 0, 0, 0),
-	(5247, 19, 'images/201410/goods_img/19_P_1413095046921.jpg', '', 'images/201410/thumb_img/19_thumb_P_1413095046466.jpg', 'images/201410/source_img/19_P_1413095046088.jpg', 0, 0, 0),
-	(5262, 19, 'images/201410/goods_img/19_P_1413100862616.jpg', '', 'images/201410/thumb_img/19_thumb_P_1413100862782.jpg', 'images/201410/source_img/19_P_1413100862984.jpg', 0, 0, 0),
-	(5263, 19, 'images/201410/goods_img/19_P_1413100862596.jpg', '', 'images/201410/thumb_img/19_thumb_P_1413100862783.jpg', 'images/201410/source_img/19_P_1413100862711.jpg', 0, 0, 0),
-	(5264, 19, 'images/201410/goods_img/19_P_1413100862659.jpg', '', 'images/201410/thumb_img/19_thumb_P_1413100862981.jpg', 'images/201410/source_img/19_P_1413100862895.jpg', 0, 0, 0),
+	(12622, 66, 'images/201512/goods_img/66_P_14507115458827.jpg', '', 'images/201512/thumb_img/66_thumb_P_14507089517207.jpg', 'images/201512/source_img/66_P_14507074859416.jpg', 0, 0, 0),
+	(12623, 66, 'images/201512/goods_img/66_P_14507081088463.jpg', '', 'images/201512/thumb_img/66_thumb_P_14507148039243.jpg', 'images/201512/source_img/66_P_14507077163818.jpg', 0, 0, 0),
+	(12624, 66, 'images/201512/goods_img/66_P_14507158886249.jpg', '', 'images/201512/thumb_img/66_thumb_P_14507090448583.jpg', 'images/201512/source_img/66_P_14507155111153.jpg', 0, 0, 0),
+	(12625, 66, 'images/201512/goods_img/66_P_14507067679323.jpg', '', 'images/201512/thumb_img/66_thumb_P_14507113534658.jpg', 'images/201512/source_img/66_P_14507067230673.jpg', 0, 0, 0),
+	(12591, 60, 'images/201512/goods_img/60_P_14507118442353.jpg', '', 'images/201512/thumb_img/60_thumb_P_14507145053919.jpg', 'images/201512/source_img/60_P_14507118409509.jpg', 0, 0, 0),
+	(12590, 59, 'images/201512/goods_img/59_P_14507118557542.jpg', '', 'images/201512/thumb_img/59_thumb_P_14507129024431.jpg', 'images/201512/source_img/59_P_14507073740444.jpg', 0, 0, 0),
+	(12589, 59, 'images/201512/goods_img/59_P_14507114712681.jpg', '', 'images/201512/thumb_img/59_thumb_P_14507093799632.jpg', 'images/201512/source_img/59_P_14507163490773.jpg', 0, 0, 0),
+	(12588, 59, 'images/201512/goods_img/59_P_14507107518007.jpg', '', 'images/201512/thumb_img/59_thumb_P_14507128873649.jpg', 'images/201512/source_img/59_P_14507077203091.jpg', 0, 0, 0),
+	(12587, 59, 'images/201512/goods_img/59_P_14507070683557.jpg', '', 'images/201512/thumb_img/59_thumb_P_14507141753492.jpg', 'images/201512/source_img/59_P_14507091785059.jpg', 0, 0, 0),
+	(12382, 17, 'images/201512/goods_img/17_P_14507080801295.jpg', '', 'images/201512/thumb_img/17_thumb_P_14507121212254.jpg', 'images/201512/source_img/17_P_14507156496110.jpg', 0, 0, 0),
+	(12372, 14, 'images/201512/goods_img/14_P_14507106098968.jpg', '', 'images/201512/thumb_img/14_thumb_P_14507154449138.jpg', 'images/201512/source_img/14_P_14507140811411.jpg', 0, 0, 0),
+	(12373, 15, 'images/201512/goods_img/15_P_14507073066884.jpg', '', 'images/201512/thumb_img/15_thumb_P_14507099905804.jpg', 'images/201512/source_img/15_P_14507131596958.jpg', 0, 0, 0),
+	(12374, 15, 'images/201512/goods_img/15_P_14507119659375.jpg', '', 'images/201512/thumb_img/15_thumb_P_14507111941461.jpg', 'images/201512/source_img/15_P_14507157094006.jpg', 0, 0, 0),
+	(12375, 15, 'images/201512/goods_img/15_P_14507073742513.jpg', '', 'images/201512/thumb_img/15_thumb_P_14507151166239.jpg', 'images/201512/source_img/15_P_14507115562555.jpg', 0, 0, 0),
+	(12376, 15, 'images/201512/goods_img/15_P_14507068470886.jpg', '', 'images/201512/thumb_img/15_thumb_P_14507095082452.jpg', 'images/201512/source_img/15_P_14507084543817.jpg', 0, 0, 0),
+	(12377, 15, 'images/201512/goods_img/15_P_14507117875569.jpg', '', 'images/201512/thumb_img/15_thumb_P_14507077757652.jpg', 'images/201512/source_img/15_P_14507068466434.jpg', 0, 0, 0),
+	(12378, 16, 'images/201512/goods_img/16_P_14507139474752.jpg', '', 'images/201512/thumb_img/16_thumb_P_14507086389054.jpg', 'images/201512/source_img/16_P_14507133997531.jpg', 0, 0, 0),
+	(12379, 16, 'images/201512/goods_img/16_P_14507136391853.jpg', '', 'images/201512/thumb_img/16_thumb_P_14507125347492.jpg', 'images/201512/source_img/16_P_14507065848372.jpg', 0, 0, 0),
+	(12380, 16, 'images/201512/goods_img/16_P_14507079158316.jpg', '', 'images/201512/thumb_img/16_thumb_P_14507065996025.jpg', 'images/201512/source_img/16_P_14507110732765.jpg', 0, 0, 0),
+	(12381, 16, 'images/201512/goods_img/16_P_14507104377941.jpg', '', 'images/201512/thumb_img/16_thumb_P_14507109627808.jpg', 'images/201512/source_img/16_P_14507127370019.jpg', 0, 0, 0),
+	(12429, 27, 'images/201512/goods_img/27_P_14507142594614.jpg', '', 'images/201512/thumb_img/27_thumb_P_14507129243871.jpg', 'images/201512/source_img/27_P_14507136285782.jpg', 0, 0, 0),
+	(12421, 25, 'images/201512/goods_img/25_P_14507136919451.jpg', '', 'images/201512/thumb_img/25_thumb_P_14507157859287.jpg', 'images/201512/source_img/25_P_14507132501196.jpg', 0, 0, 0),
+	(12422, 26, 'images/201512/goods_img/26_P_14507087307678.jpg', '', 'images/201512/thumb_img/26_thumb_P_14507123521678.jpg', 'images/201512/source_img/26_P_14507071169059.jpg', 0, 0, 0),
+	(12423, 26, 'images/201512/goods_img/26_P_14507132814418.jpg', '', 'images/201512/thumb_img/26_thumb_P_14507123810184.jpg', 'images/201512/source_img/26_P_14507098490995.jpg', 0, 0, 0),
+	(12424, 26, 'images/201512/goods_img/26_P_14507120723866.jpg', '', 'images/201512/thumb_img/26_thumb_P_14507121133614.jpg', 'images/201512/source_img/26_P_14507110723801.jpg', 0, 0, 0),
+	(12425, 26, 'images/201512/goods_img/26_P_14507138819409.jpg', '', 'images/201512/thumb_img/26_thumb_P_14507072539439.jpg', 'images/201512/source_img/26_P_14507162227293.jpg', 0, 0, 0),
+	(12426, 26, 'images/201512/goods_img/26_P_14507118679862.jpg', '', 'images/201512/thumb_img/26_thumb_P_14507145064075.jpg', 'images/201512/source_img/26_P_14507071843366.jpg', 0, 0, 0),
+	(12427, 27, 'images/201512/goods_img/27_P_14507087514123.jpg', '', 'images/201512/thumb_img/27_thumb_P_14507098851526.jpg', 'images/201512/source_img/27_P_14507093945719.jpg', 0, 0, 0),
+	(12428, 27, 'images/201512/goods_img/27_P_14507095403839.jpg', '', 'images/201512/thumb_img/27_thumb_P_14507094189265.jpg', 'images/201512/source_img/27_P_14507103537559.jpg', 0, 0, 0),
+	(12371, 14, 'images/201512/goods_img/14_P_14507151157433.jpg', '', 'images/201512/thumb_img/14_thumb_P_14507076294229.jpg', 'images/201512/source_img/14_P_14507146739177.jpg', 0, 0, 0),
+	(12348, 9, 'images/201512/goods_img/9_P_14507127334722.jpg', '', 'images/201512/thumb_img/9_thumb_P_14507068993099.jpg', 'images/201512/source_img/9_P_14507141744430.jpg', 0, 0, 0),
+	(12349, 9, 'images/201512/goods_img/9_P_14507072805200.jpg', '', 'images/201512/thumb_img/9_thumb_P_14507112573000.jpg', 'images/201512/source_img/9_P_14507093906702.jpg', 0, 0, 0),
+	(12350, 10, 'images/201512/goods_img/10_P_14507094959435.jpg', '', 'images/201512/thumb_img/10_thumb_P_14507079679213.jpg', 'images/201512/source_img/10_P_14507161922330.jpg', 0, 0, 0),
+	(12351, 10, 'images/201512/goods_img/10_P_14507147401684.jpg', '', 'images/201512/thumb_img/10_thumb_P_14507100364619.jpg', 'images/201512/source_img/10_P_14507133569447.jpg', 0, 0, 0),
+	(12352, 10, 'images/201512/goods_img/10_P_14507145608607.jpg', '', 'images/201512/thumb_img/10_thumb_P_14507128060905.jpg', 'images/201512/source_img/10_P_14507091398255.jpg', 0, 0, 0),
+	(12353, 10, 'images/201512/goods_img/10_P_14507090202514.jpg', '', 'images/201512/thumb_img/10_thumb_P_14507075377000.jpg', 'images/201512/source_img/10_P_14507114026204.jpg', 0, 0, 0),
+	(12354, 10, 'images/201512/goods_img/10_P_14507140229544.jpg', '', 'images/201512/thumb_img/10_thumb_P_14507093796738.jpg', 'images/201512/source_img/10_P_14507138533477.jpg', 0, 0, 0),
+	(12355, 11, 'images/201512/goods_img/11_P_14507099368897.jpg', '', 'images/201512/thumb_img/11_thumb_P_14507085602349.jpg', 'images/201512/source_img/11_P_14507081755507.jpg', 0, 0, 0),
+	(12356, 11, 'images/201512/goods_img/11_P_14507095044639.jpg', '', 'images/201512/thumb_img/11_thumb_P_14507124566845.jpg', 'images/201512/source_img/11_P_14507098792948.jpg', 0, 0, 0),
+	(12357, 11, 'images/201512/goods_img/11_P_14507163369760.jpg', '', 'images/201512/thumb_img/11_thumb_P_14507144951545.jpg', 'images/201512/source_img/11_P_14507141221409.jpg', 0, 0, 0),
+	(12358, 11, 'images/201512/goods_img/11_P_14507099573252.jpg', '', 'images/201512/thumb_img/11_thumb_P_14507150229804.jpg', 'images/201512/source_img/11_P_14507080712445.jpg', 0, 0, 0),
+	(12359, 11, 'images/201512/goods_img/11_P_14507086805006.jpg', '', 'images/201512/thumb_img/11_thumb_P_14507160902286.jpg', 'images/201512/source_img/11_P_14507114598301.jpg', 0, 0, 0),
+	(12360, 12, 'images/201512/goods_img/12_P_14507144749565.jpg', '', 'images/201512/thumb_img/12_thumb_P_14507115897304.jpg', 'images/201512/source_img/12_P_14507154546508.jpg', 0, 0, 0),
+	(12361, 12, 'images/201512/goods_img/12_P_14507120642968.jpg', '', 'images/201512/thumb_img/12_thumb_P_14507158331739.jpg', 'images/201512/source_img/12_P_14507088398573.jpg', 0, 0, 0),
+	(12362, 12, 'images/201512/goods_img/12_P_14507152053854.jpg', '', 'images/201512/thumb_img/12_thumb_P_14507145960261.jpg', 'images/201512/source_img/12_P_14507127183315.jpg', 0, 0, 0),
+	(12363, 12, 'images/201512/goods_img/12_P_14507075809961.jpg', '', 'images/201512/thumb_img/12_thumb_P_14507106579584.jpg', 'images/201512/source_img/12_P_14507108631826.jpg', 0, 0, 0),
+	(12364, 12, 'images/201512/goods_img/12_P_14507076081242.jpg', '', 'images/201512/thumb_img/12_thumb_P_14507071501321.jpg', 'images/201512/source_img/12_P_14507133591253.jpg', 0, 0, 0),
+	(12365, 13, 'images/201512/goods_img/13_P_14507093749721.jpg', '', 'images/201512/thumb_img/13_thumb_P_14507090871925.jpg', 'images/201512/source_img/13_P_14507093073717.jpg', 0, 0, 0),
+	(12366, 13, 'images/201512/goods_img/13_P_14507129121516.jpg', '', 'images/201512/thumb_img/13_thumb_P_14507163029133.jpg', 'images/201512/source_img/13_P_14507098351892.jpg', 0, 0, 0),
+	(12367, 13, 'images/201512/goods_img/13_P_14507088759678.jpg', '', 'images/201512/thumb_img/13_thumb_P_14507096127475.jpg', 'images/201512/source_img/13_P_14507092696439.jpg', 0, 0, 0),
+	(12368, 13, 'images/201512/goods_img/13_P_14507163920085.jpg', '', 'images/201512/thumb_img/13_thumb_P_14507097223446.jpg', 'images/201512/source_img/13_P_14507156363836.jpg', 0, 0, 0),
+	(12369, 14, 'images/201512/goods_img/14_P_14507157538385.jpg', '', 'images/201512/thumb_img/14_thumb_P_14507085624723.jpg', 'images/201512/source_img/14_P_14507118790649.jpg', 0, 0, 0),
+	(12370, 14, 'images/201512/goods_img/14_P_14507070189552.jpg', '', 'images/201512/thumb_img/14_thumb_P_14507095326347.jpg', 'images/201512/source_img/14_P_14507128115369.jpg', 0, 0, 0),
+	(12347, 9, 'images/201512/goods_img/9_P_14507108033219.jpg', '', 'images/201512/thumb_img/9_thumb_P_14507145494636.jpg', 'images/201512/source_img/9_P_14507085014354.jpg', 0, 0, 0),
+	(12338, 7, 'images/201512/goods_img/7_P_14507075903130.jpg', '', 'images/201512/thumb_img/7_thumb_P_14507149129897.jpg', 'images/201512/source_img/7_P_14507145965117.jpg', 0, 0, 0),
+	(12339, 7, 'images/201512/goods_img/7_P_14507108296042.jpg', '', 'images/201512/thumb_img/7_thumb_P_14507070445606.jpg', 'images/201512/source_img/7_P_14507074011521.jpg', 0, 0, 0),
+	(12340, 8, 'images/201512/goods_img/8_P_14507119388485.jpg', '', 'images/201512/thumb_img/8_thumb_P_14507077379992.jpg', 'images/201512/source_img/8_P_14507079620686.jpg', 0, 0, 0),
+	(12341, 8, 'images/201512/goods_img/8_P_14507112036881.jpg', '', 'images/201512/thumb_img/8_thumb_P_14507092182796.jpg', 'images/201512/source_img/8_P_14507069131088.jpg', 0, 0, 0),
+	(12342, 8, 'images/201512/goods_img/8_P_14507080298870.jpg', '', 'images/201512/thumb_img/8_thumb_P_14507084717125.jpg', 'images/201512/source_img/8_P_14507091154779.jpg', 0, 0, 0),
+	(12343, 8, 'images/201512/goods_img/8_P_14507087841971.jpg', '', 'images/201512/thumb_img/8_thumb_P_14507155851716.jpg', 'images/201512/source_img/8_P_14507066752585.jpg', 0, 0, 0),
+	(12344, 8, 'images/201512/goods_img/8_P_14507129154391.jpg', '', 'images/201512/thumb_img/8_thumb_P_14507094857754.jpg', 'images/201512/source_img/8_P_14507127269872.jpg', 0, 0, 0),
+	(12345, 9, 'images/201512/goods_img/9_P_14507111058384.jpg', '', 'images/201512/thumb_img/9_thumb_P_14507100429829.jpg', 'images/201512/source_img/9_P_14507159986025.jpg', 0, 0, 0),
+	(12346, 9, 'images/201512/goods_img/9_P_14507145104094.jpg', '', 'images/201512/thumb_img/9_thumb_P_14507122112016.jpg', 'images/201512/source_img/9_P_14507116829305.jpg', 0, 0, 0),
+	(12337, 7, 'images/201512/goods_img/7_P_14507101194875.jpg', '', 'images/201512/thumb_img/7_thumb_P_14507152078781.jpg', 'images/201512/source_img/7_P_14507139233763.jpg', 0, 0, 0),
+	(12336, 7, 'images/201512/goods_img/7_P_14507163938476.jpg', '', 'images/201512/thumb_img/7_thumb_P_14507130700804.jpg', 'images/201512/source_img/7_P_14507140049098.jpg', 0, 0, 0),
+	(12335, 7, 'images/201512/goods_img/7_P_14507151540586.jpg', '', 'images/201512/thumb_img/7_thumb_P_14507103256104.jpg', 'images/201512/source_img/7_P_14507137480995.jpg', 0, 0, 0),
+	(12334, 6, 'images/201512/goods_img/6_P_14507150068460.jpg', '', 'images/201512/thumb_img/6_thumb_P_14507140875774.jpg', 'images/201512/source_img/6_P_14507161340174.jpg', 0, 0, 0),
+	(12317, 2, 'images/201512/goods_img/2_P_14507130127402.jpg', '', 'images/201512/thumb_img/2_thumb_P_14507106719518.jpg', 'images/201512/source_img/2_P_14507141626471.jpg', 0, 0, 0),
+	(12318, 2, 'images/201512/goods_img/2_P_14507140622600.jpg', '', 'images/201512/thumb_img/2_thumb_P_14507092526570.jpg', 'images/201512/source_img/2_P_14507126374557.jpg', 0, 0, 0),
+	(12319, 2, 'images/201512/goods_img/2_P_14507100852904.jpg', '', 'images/201512/thumb_img/2_thumb_P_14507094798212.jpg', 'images/201512/source_img/2_P_14507110877201.jpg', 0, 0, 0),
+	(12320, 2, 'images/201512/goods_img/2_P_14507064616279.jpg', '', 'images/201512/thumb_img/2_thumb_P_14507129072224.jpg', 'images/201512/source_img/2_P_14507115434497.jpg', 0, 0, 0),
+	(12321, 2, 'images/201512/goods_img/2_P_14507107643804.jpg', '', 'images/201512/thumb_img/2_thumb_P_14507049035925.jpg', 'images/201512/source_img/2_P_14507136911870.jpg', 0, 0, 0),
+	(12322, 4, 'images/201512/goods_img/4_P_14507094070585.jpg', '', 'images/201512/thumb_img/4_thumb_P_14507065673032.jpg', 'images/201512/source_img/4_P_14507147572089.jpg', 0, 0, 0),
+	(12323, 4, 'images/201512/goods_img/4_P_14507064907767.jpg', '', 'images/201512/thumb_img/4_thumb_P_14507115336965.jpg', 'images/201512/source_img/4_P_14507136632977.jpg', 0, 0, 0),
+	(12324, 4, 'images/201512/goods_img/4_P_14507128321888.jpg', '', 'images/201512/thumb_img/4_thumb_P_14507130017955.jpg', 'images/201512/source_img/4_P_14507084584483.jpg', 0, 0, 0),
+	(12325, 4, 'images/201512/goods_img/4_P_14507070717506.jpg', '', 'images/201512/thumb_img/4_thumb_P_14507125759469.jpg', 'images/201512/source_img/4_P_14507155637851.jpg', 0, 0, 0),
+	(12326, 4, 'images/201512/goods_img/4_P_14507123002540.jpg', '', 'images/201512/thumb_img/4_thumb_P_14507101485233.jpg', 'images/201512/source_img/4_P_14507085313769.jpg', 0, 0, 0),
+	(12327, 5, 'images/201512/goods_img/5_P_14507127322173.jpg', '', 'images/201512/thumb_img/5_thumb_P_14507156617025.jpg', 'images/201512/source_img/5_P_14507106154983.jpg', 0, 0, 0),
+	(12328, 5, 'images/201512/goods_img/5_P_14507163232537.jpg', '', 'images/201512/thumb_img/5_thumb_P_14507163681187.jpg', 'images/201512/source_img/5_P_14507070534647.jpg', 0, 0, 0),
+	(12329, 5, 'images/201512/goods_img/5_P_14507078465904.jpg', '', 'images/201512/thumb_img/5_thumb_P_14507104434310.jpg', 'images/201512/source_img/5_P_14507108149776.jpg', 0, 0, 0),
+	(12330, 5, 'images/201512/goods_img/5_P_14507085773038.jpg', '', 'images/201512/thumb_img/5_thumb_P_14507112988862.jpg', 'images/201512/source_img/5_P_14507154171802.jpg', 0, 0, 0),
+	(12331, 6, 'images/201512/goods_img/6_P_14507073974780.jpg', '', 'images/201512/thumb_img/6_thumb_P_14507078393035.jpg', 'images/201512/source_img/6_P_14507108044063.jpg', 0, 0, 0),
+	(12332, 6, 'images/201512/goods_img/6_P_14507093024697.jpg', '', 'images/201512/thumb_img/6_thumb_P_14507163983984.jpg', 'images/201512/source_img/6_P_14507154920120.jpg', 0, 0, 0),
+	(12333, 6, 'images/201512/goods_img/6_P_14507151877071.jpg', '', 'images/201512/thumb_img/6_thumb_P_14507162571314.jpg', 'images/201512/source_img/6_P_14507156268540.jpg', 0, 0, 0),
+	(12621, 66, 'images/201512/goods_img/66_P_14507107714416.jpg', '', 'images/201512/thumb_img/66_thumb_P_14507143096805.jpg', 'images/201512/source_img/66_P_14507118342971.jpg', 0, 0, 0),
+	(12610, 63, 'images/201512/goods_img/63_P_14507095344511.jpg', '', 'images/201512/thumb_img/63_thumb_P_14507089478271.jpg', 'images/201512/source_img/63_P_14507134610088.jpg', 0, 0, 0),
+	(12611, 64, 'images/201512/goods_img/64_P_14507071837340.jpg', '', 'images/201512/thumb_img/64_thumb_P_14507110130369.jpg', 'images/201512/source_img/64_P_14507101748566.jpg', 0, 0, 0),
+	(12612, 64, 'images/201512/goods_img/64_P_14507158748317.jpg', '', 'images/201512/thumb_img/64_thumb_P_14507142863837.jpg', 'images/201512/source_img/64_P_14507156220638.jpg', 0, 0, 0),
+	(12613, 64, 'images/201512/goods_img/64_P_14507162628661.jpg', '', 'images/201512/thumb_img/64_thumb_P_14507147952697.jpg', 'images/201512/source_img/64_P_14507112094872.jpg', 0, 0, 0),
+	(12614, 64, 'images/201512/goods_img/64_P_14507143481443.jpg', '', 'images/201512/thumb_img/64_thumb_P_14507106345912.jpg', 'images/201512/source_img/64_P_14507085528840.jpg', 0, 0, 0),
+	(12615, 64, 'images/201512/goods_img/64_P_14507093821381.jpg', '', 'images/201512/thumb_img/64_thumb_P_14507097974245.jpg', 'images/201512/source_img/64_P_14507097985496.jpg', 0, 0, 0),
+	(12616, 65, 'images/201512/goods_img/65_P_14507133555214.jpg', '', 'images/201512/thumb_img/65_thumb_P_14507163265872.jpg', 'images/201512/source_img/65_P_14507106794098.jpg', 0, 0, 0),
+	(12617, 65, 'images/201512/goods_img/65_P_14507146652475.jpg', '', 'images/201512/thumb_img/65_thumb_P_14507114623319.jpg', 'images/201512/source_img/65_P_14507066279207.jpg', 0, 0, 0),
+	(12618, 65, 'images/201512/goods_img/65_P_14507086508214.jpg', '', 'images/201512/thumb_img/65_thumb_P_14507135462642.jpg', 'images/201512/source_img/65_P_14507082128861.jpg', 0, 0, 0),
+	(12619, 65, 'images/201512/goods_img/65_P_14507109121408.jpg', '', 'images/201512/thumb_img/65_thumb_P_14507082536628.jpg', 'images/201512/source_img/65_P_14507078390687.jpg', 0, 0, 0),
+	(12620, 65, 'images/201512/goods_img/65_P_14507155356861.jpg', '', 'images/201512/thumb_img/65_thumb_P_14507141778764.jpg', 'images/201512/source_img/65_P_14507148722143.jpg', 0, 0, 0),
+	(12575, 56, 'images/201512/goods_img/56_P_14507094257809.jpg', '', 'images/201512/thumb_img/56_thumb_P_14507137163602.jpg', 'images/201512/source_img/56_P_14507112864476.jpg', 0, 0, 0),
+	(12574, 56, 'images/201512/goods_img/56_P_14507080107724.jpg', '', 'images/201512/thumb_img/56_thumb_P_14507119609268.jpg', 'images/201512/source_img/56_P_14507065710132.jpg', 0, 0, 0),
+	(12562, 54, 'images/201512/goods_img/54_P_14507163347782.jpg', '', 'images/201512/thumb_img/54_thumb_P_14507140583057.jpg', 'images/201512/source_img/54_P_14507107662659.jpg', 0, 0, 0),
+	(12563, 54, 'images/201512/goods_img/54_P_14507085634226.jpg', '', 'images/201512/thumb_img/54_thumb_P_14507094853698.jpg', 'images/201512/source_img/54_P_14507150251837.jpg', 0, 0, 0),
+	(12564, 54, 'images/201512/goods_img/54_P_14507138188935.jpg', '', 'images/201512/thumb_img/54_thumb_P_14507124422387.jpg', 'images/201512/source_img/54_P_14507135433903.jpg', 0, 0, 0),
+	(12565, 54, 'images/201512/goods_img/54_P_14507066808444.jpg', '', 'images/201512/thumb_img/54_thumb_P_14507130016971.jpg', 'images/201512/source_img/54_P_14507086662528.jpg', 0, 0, 0),
+	(12566, 55, 'images/201512/goods_img/55_P_14507083766384.jpg', '', 'images/201512/thumb_img/55_thumb_P_14507082967617.jpg', 'images/201512/source_img/55_P_14507158629588.jpg', 0, 0, 0),
+	(12567, 55, 'images/201512/goods_img/55_P_14507157445014.jpg', '', 'images/201512/thumb_img/55_thumb_P_14507129424365.jpg', 'images/201512/source_img/55_P_14507077299100.jpg', 0, 0, 0),
+	(12568, 55, 'images/201512/goods_img/55_P_14507066449823.jpg', '', 'images/201512/thumb_img/55_thumb_P_14507087350757.jpg', 'images/201512/source_img/55_P_14507093223055.jpg', 0, 0, 0),
+	(12569, 55, 'images/201512/goods_img/55_P_14507113502216.jpg', '', 'images/201512/thumb_img/55_thumb_P_14507116861506.jpg', 'images/201512/source_img/55_P_14507093017088.jpg', 0, 0, 0),
+	(12570, 55, 'images/201512/goods_img/55_P_14507066669797.jpg', '', 'images/201512/thumb_img/55_thumb_P_14507096075297.jpg', 'images/201512/source_img/55_P_14507144877620.jpg', 0, 0, 0),
+	(12571, 56, 'images/201512/goods_img/56_P_14507157371397.jpg', '', 'images/201512/thumb_img/56_thumb_P_14507136081444.jpg', 'images/201512/source_img/56_P_14507134728572.jpg', 0, 0, 0),
+	(12572, 56, 'images/201512/goods_img/56_P_14507153312531.jpg', '', 'images/201512/thumb_img/56_thumb_P_14507088922274.jpg', 'images/201512/source_img/56_P_14507082353244.jpg', 0, 0, 0),
+	(12573, 56, 'images/201512/goods_img/56_P_14507132149418.jpg', '', 'images/201512/thumb_img/56_thumb_P_14507150516616.jpg', 'images/201512/source_img/56_P_14507118900710.jpg', 0, 0, 0),
+	(12527, 47, 'images/201512/goods_img/47_P_14507120688546.jpg', '', 'images/201512/thumb_img/47_thumb_P_14507138074582.jpg', 'images/201512/source_img/47_P_14507148481841.jpg', 0, 0, 0),
+	(12528, 47, 'images/201512/goods_img/47_P_14507160963593.jpg', '', 'images/201512/thumb_img/47_thumb_P_14507104096741.jpg', 'images/201512/source_img/47_P_14507120968439.jpg', 0, 0, 0),
+	(12529, 47, 'images/201512/goods_img/47_P_14507089564927.jpg', '', 'images/201512/thumb_img/47_thumb_P_14507132470721.jpg', 'images/201512/source_img/47_P_14507144164299.jpg', 0, 0, 0),
+	(12530, 47, 'images/201512/goods_img/47_P_14507129277173.jpg', '', 'images/201512/thumb_img/47_thumb_P_14507100424913.jpg', 'images/201512/source_img/47_P_14507133857094.jpg', 0, 0, 0),
+	(12531, 48, 'images/201512/goods_img/48_P_14507133959698.jpg', '', 'images/201512/thumb_img/48_thumb_P_14507141743301.jpg', 'images/201512/source_img/48_P_14507152339011.jpg', 0, 0, 0),
+	(12532, 48, 'images/201512/goods_img/48_P_14507113685272.jpg', '', 'images/201512/thumb_img/48_thumb_P_14507064757631.jpg', 'images/201512/source_img/48_P_14507118680999.jpg', 0, 0, 0),
+	(12533, 48, 'images/201512/goods_img/48_P_14507164324309.jpg', '', 'images/201512/thumb_img/48_thumb_P_14507076265970.jpg', 'images/201512/source_img/48_P_14507076239184.jpg', 0, 0, 0),
+	(12534, 48, 'images/201512/goods_img/48_P_14507100763683.jpg', '', 'images/201512/thumb_img/48_thumb_P_14507113725406.jpg', 'images/201512/source_img/48_P_14507118122933.jpg', 0, 0, 0),
+	(12535, 48, 'images/201512/goods_img/48_P_14507113203030.jpg', '', 'images/201512/thumb_img/48_thumb_P_14507083103352.jpg', 'images/201512/source_img/48_P_14507142471096.jpg', 0, 0, 0),
+	(12536, 49, 'images/201512/goods_img/49_P_14507119021375.jpg', '', 'images/201512/thumb_img/49_thumb_P_14507139356953.jpg', 'images/201512/source_img/49_P_14507066097342.jpg', 0, 0, 0),
+	(12537, 49, 'images/201512/goods_img/49_P_14507090445505.jpg', '', 'images/201512/thumb_img/49_thumb_P_14507119967712.jpg', 'images/201512/source_img/49_P_14507104855213.jpg', 0, 0, 0),
+	(12538, 49, 'images/201512/goods_img/49_P_14507151952566.jpg', '', 'images/201512/thumb_img/49_thumb_P_14507157845593.jpg', 'images/201512/source_img/49_P_14507088744039.jpg', 0, 0, 0),
+	(12539, 49, 'images/201512/goods_img/49_P_14507121166292.jpg', '', 'images/201512/thumb_img/49_thumb_P_14507135186980.jpg', 'images/201512/source_img/49_P_14507156106088.jpg', 0, 0, 0),
+	(12540, 49, 'images/201512/goods_img/49_P_14507101126968.jpg', '', 'images/201512/thumb_img/49_thumb_P_14507153862549.jpg', 'images/201512/source_img/49_P_14507118258865.jpg', 0, 0, 0),
+	(12541, 50, 'images/201512/goods_img/50_P_14507106163977.jpg', '', 'images/201512/thumb_img/50_thumb_P_14507136329343.jpg', 'images/201512/source_img/50_P_14507085412593.jpg', 0, 0, 0),
+	(12542, 50, 'images/201512/goods_img/50_P_14507075538504.jpg', '', 'images/201512/thumb_img/50_thumb_P_14507069711166.jpg', 'images/201512/source_img/50_P_14507087226024.jpg', 0, 0, 0),
+	(12543, 50, 'images/201512/goods_img/50_P_14507066425145.jpg', '', 'images/201512/thumb_img/50_thumb_P_14507160558904.jpg', 'images/201512/source_img/50_P_14507103671324.jpg', 0, 0, 0),
+	(12544, 50, 'images/201512/goods_img/50_P_14507152311691.jpg', '', 'images/201512/thumb_img/50_thumb_P_14507140396817.jpg', 'images/201512/source_img/50_P_14507109405897.jpg', 0, 0, 0),
+	(12545, 50, 'images/201512/goods_img/50_P_14507148878674.jpg', '', 'images/201512/thumb_img/50_thumb_P_14507098892067.jpg', 'images/201512/source_img/50_P_14507105368623.jpg', 0, 0, 0),
+	(12546, 51, 'images/201512/goods_img/51_P_14507135992683.jpg', '', 'images/201512/thumb_img/51_thumb_P_14507090579940.jpg', 'images/201512/source_img/51_P_14507110666572.jpg', 0, 0, 0),
+	(12547, 51, 'images/201512/goods_img/51_P_14507144162461.jpg', '', 'images/201512/thumb_img/51_thumb_P_14507156747281.jpg', 'images/201512/source_img/51_P_14507115887672.jpg', 0, 0, 0),
+	(12548, 51, 'images/201512/goods_img/51_P_14507144648032.jpg', '', 'images/201512/thumb_img/51_thumb_P_14507110767201.jpg', 'images/201512/source_img/51_P_14507102801204.jpg', 0, 0, 0),
+	(12549, 51, 'images/201512/goods_img/51_P_14507102337594.jpg', '', 'images/201512/thumb_img/51_thumb_P_14507077454939.jpg', 'images/201512/source_img/51_P_14507091643351.jpg', 0, 0, 0),
+	(12550, 51, 'images/201512/goods_img/51_P_14507103984165.jpg', '', 'images/201512/thumb_img/51_thumb_P_14507161520963.jpg', 'images/201512/source_img/51_P_14507110682017.jpg', 0, 0, 0),
+	(12551, 52, 'images/201512/goods_img/52_P_14507160782020.jpg', '', 'images/201512/thumb_img/52_thumb_P_14507156845259.jpg', 'images/201512/source_img/52_P_14507086268934.jpg', 0, 0, 0),
+	(12552, 52, 'images/201512/goods_img/52_P_14507122998794.jpg', '', 'images/201512/thumb_img/52_thumb_P_14507155847446.jpg', 'images/201512/source_img/52_P_14507109582363.jpg', 0, 0, 0),
+	(12553, 52, 'images/201512/goods_img/52_P_14507098924177.jpg', '', 'images/201512/thumb_img/52_thumb_P_14507150412341.jpg', 'images/201512/source_img/52_P_14507072124159.jpg', 0, 0, 0),
+	(12554, 52, 'images/201512/goods_img/52_P_14507128417616.jpg', '', 'images/201512/thumb_img/52_thumb_P_14507124253501.jpg', 'images/201512/source_img/52_P_14507105171398.jpg', 0, 0, 0),
+	(12555, 52, 'images/201512/goods_img/52_P_14507077321685.jpg', '', 'images/201512/thumb_img/52_thumb_P_14507095123528.jpg', 'images/201512/source_img/52_P_14507122922881.jpg', 0, 0, 0),
+	(12556, 53, 'images/201512/goods_img/53_P_14507110438974.jpg', '', 'images/201512/thumb_img/53_thumb_P_14507069262091.jpg', 'images/201512/source_img/53_P_14507098269960.jpg', 0, 0, 0),
+	(12557, 53, 'images/201512/goods_img/53_P_14507138423934.jpg', '', 'images/201512/thumb_img/53_thumb_P_14507129874408.jpg', 'images/201512/source_img/53_P_14507136766769.jpg', 0, 0, 0),
+	(12558, 53, 'images/201512/goods_img/53_P_14507130207874.jpg', '', 'images/201512/thumb_img/53_thumb_P_14507125627953.jpg', 'images/201512/source_img/53_P_14507085411504.jpg', 0, 0, 0),
+	(12559, 53, 'images/201512/goods_img/53_P_14507111460928.jpg', '', 'images/201512/thumb_img/53_thumb_P_14507087637238.jpg', 'images/201512/source_img/53_P_14507115209237.jpg', 0, 0, 0),
+	(12560, 53, 'images/201512/goods_img/53_P_14507079714220.jpg', '', 'images/201512/thumb_img/53_thumb_P_14507098347674.jpg', 'images/201512/source_img/53_P_14507108566481.jpg', 0, 0, 0),
+	(12561, 54, 'images/201512/goods_img/54_P_14507152430720.jpg', '', 'images/201512/thumb_img/54_thumb_P_14507143881194.jpg', 'images/201512/source_img/54_P_14507080828274.jpg', 0, 0, 0),
+	(12576, 57, 'images/201512/goods_img/57_P_14507094188153.jpg', '', 'images/201512/thumb_img/57_thumb_P_14507083975404.jpg', 'images/201512/source_img/57_P_14507092946794.jpg', 0, 0, 0),
+	(12577, 57, 'images/201512/goods_img/57_P_14507096560882.jpg', '', 'images/201512/thumb_img/57_thumb_P_14507081014405.jpg', 'images/201512/source_img/57_P_14507134866026.jpg', 0, 0, 0),
+	(12578, 57, 'images/201512/goods_img/57_P_14507113188576.jpg', '', 'images/201512/thumb_img/57_thumb_P_14507138513823.jpg', 'images/201512/source_img/57_P_14507133913173.jpg', 0, 0, 0),
+	(12579, 57, 'images/201512/goods_img/57_P_14507081043372.jpg', '', 'images/201512/thumb_img/57_thumb_P_14507131284118.jpg', 'images/201512/source_img/57_P_14507078931499.jpg', 0, 0, 0),
+	(12580, 57, 'images/201512/goods_img/57_P_14507152297222.jpg', '', 'images/201512/thumb_img/57_thumb_P_14507157962895.jpg', 'images/201512/source_img/57_P_14507145052189.jpg', 0, 0, 0),
+	(12581, 58, 'images/201512/goods_img/58_P_14507083732251.jpg', '', 'images/201512/thumb_img/58_thumb_P_14507120589411.jpg', 'images/201512/source_img/58_P_14507097914606.jpg', 0, 0, 0),
+	(12582, 58, 'images/201512/goods_img/58_P_14507069287718.jpg', '', 'images/201512/thumb_img/58_thumb_P_14507137524817.jpg', 'images/201512/source_img/58_P_14507128876758.jpg', 0, 0, 0),
+	(12583, 58, 'images/201512/goods_img/58_P_14507093850255.jpg', '', 'images/201512/thumb_img/58_thumb_P_14507089647238.jpg', 'images/201512/source_img/58_P_14507085324961.jpg', 0, 0, 0),
+	(12584, 58, 'images/201512/goods_img/58_P_14507155163671.jpg', '', 'images/201512/thumb_img/58_thumb_P_14507122946063.jpg', 'images/201512/source_img/58_P_14507162465780.jpg', 0, 0, 0),
+	(12585, 58, 'images/201512/goods_img/58_P_14507087558275.jpg', '', 'images/201512/thumb_img/58_thumb_P_14507066872579.jpg', 'images/201512/source_img/58_P_14507099661600.jpg', 0, 0, 0),
+	(12586, 59, 'images/201512/goods_img/59_P_14507069980109.jpg', '', 'images/201512/thumb_img/59_thumb_P_14507077685908.jpg', 'images/201512/source_img/59_P_14507115620206.jpg', 0, 0, 0),
+	(12411, 23, 'images/201512/goods_img/23_P_14507094290493.jpg', '', 'images/201512/thumb_img/23_thumb_P_14507064833975.jpg', 'images/201512/source_img/23_P_14507078151874.jpg', 0, 0, 0),
+	(12412, 24, 'images/201512/goods_img/24_P_14507103607459.jpg', '', 'images/201512/thumb_img/24_thumb_P_14507158460971.jpg', 'images/201512/source_img/24_P_14507101684038.jpg', 0, 0, 0),
+	(12413, 24, 'images/201512/goods_img/24_P_14507113842459.jpg', '', 'images/201512/thumb_img/24_thumb_P_14507065934881.jpg', 'images/201512/source_img/24_P_14507099178611.jpg', 0, 0, 0),
+	(12414, 24, 'images/201512/goods_img/24_P_14507136090949.jpg', '', 'images/201512/thumb_img/24_thumb_P_14507077749326.jpg', 'images/201512/source_img/24_P_14507096323150.jpg', 0, 0, 0),
+	(12415, 24, 'images/201512/goods_img/24_P_14507148438770.jpg', '', 'images/201512/thumb_img/24_thumb_P_14507123783468.jpg', 'images/201512/source_img/24_P_14507123301974.jpg', 0, 0, 0),
+	(12416, 24, 'images/201512/goods_img/24_P_14507119922615.jpg', '', 'images/201512/thumb_img/24_thumb_P_14507152582815.jpg', 'images/201512/source_img/24_P_14507144577916.jpg', 0, 0, 0),
+	(12417, 25, 'images/201512/goods_img/25_P_14507078888102.jpg', '', 'images/201512/thumb_img/25_thumb_P_14507083683261.jpg', 'images/201512/source_img/25_P_14507122826074.jpg', 0, 0, 0),
+	(12418, 25, 'images/201512/goods_img/25_P_14507121991618.jpg', '', 'images/201512/thumb_img/25_thumb_P_14507105502881.jpg', 'images/201512/source_img/25_P_14507160030506.jpg', 0, 0, 0),
+	(12419, 25, 'images/201512/goods_img/25_P_14507091346280.jpg', '', 'images/201512/thumb_img/25_thumb_P_14507066690979.jpg', 'images/201512/source_img/25_P_14507158270273.jpg', 0, 0, 0),
+	(12420, 25, 'images/201512/goods_img/25_P_14507121769948.jpg', '', 'images/201512/thumb_img/25_thumb_P_14507108835011.jpg', 'images/201512/source_img/25_P_14507151869625.jpg', 0, 0, 0),
+	(12410, 22, 'images/201512/goods_img/22_P_14507074786616.jpg', '', 'images/201512/thumb_img/22_thumb_P_14507162455936.jpg', 'images/201512/source_img/22_P_14507116190852.jpg', 0, 0, 0),
+	(12409, 22, 'images/201512/goods_img/22_P_14507100523508.jpg', '', 'images/201512/thumb_img/22_thumb_P_14507066038419.jpg', 'images/201512/source_img/22_P_14507118902821.jpg', 0, 0, 0),
+	(12392, 19, 'images/201512/goods_img/19_P_14507128607341.jpg', '', 'images/201512/thumb_img/19_thumb_P_14507107317387.jpg', 'images/201512/source_img/19_P_14507155341671.jpg', 0, 0, 0),
+	(12393, 19, 'images/201512/goods_img/19_P_14507152434244.jpg', '', 'images/201512/thumb_img/19_thumb_P_14507087738830.jpg', 'images/201512/source_img/19_P_14507144728445.jpg', 0, 0, 0),
+	(12394, 19, 'images/201512/goods_img/19_P_14507123669922.jpg', '', 'images/201512/thumb_img/19_thumb_P_14507111150791.jpg', 'images/201512/source_img/19_P_14507070291182.jpg', 0, 0, 0),
+	(12395, 19, 'images/201512/goods_img/19_P_14507151449205.jpg', '', 'images/201512/thumb_img/19_thumb_P_14507069478402.jpg', 'images/201512/source_img/19_P_14507135310586.jpg', 0, 0, 0),
+	(12396, 19, 'images/201512/goods_img/19_P_14507079920028.jpg', '', 'images/201512/thumb_img/19_thumb_P_14507093336459.jpg', 'images/201512/source_img/19_P_14507113157699.jpg', 0, 0, 0),
+	(12397, 20, 'images/201512/goods_img/20_P_14507151265399.jpg', '', 'images/201512/thumb_img/20_thumb_P_14507087290948.jpg', 'images/201512/source_img/20_P_14507103519487.jpg', 0, 0, 0),
+	(12398, 20, 'images/201512/goods_img/20_P_14507076262780.jpg', '', 'images/201512/thumb_img/20_thumb_P_14507077276786.jpg', 'images/201512/source_img/20_P_14507089009265.jpg', 0, 0, 0),
+	(12399, 20, 'images/201512/goods_img/20_P_14507126677966.jpg', '', 'images/201512/thumb_img/20_thumb_P_14507162891966.jpg', 'images/201512/source_img/20_P_14507124150288.jpg', 0, 0, 0),
+	(12400, 20, 'images/201512/goods_img/20_P_14507162774228.jpg', '', 'images/201512/thumb_img/20_thumb_P_14507136832607.jpg', 'images/201512/source_img/20_P_14507129925576.jpg', 0, 0, 0),
+	(12401, 20, 'images/201512/goods_img/20_P_14507072724883.jpg', '', 'images/201512/thumb_img/20_thumb_P_14507073361985.jpg', 'images/201512/source_img/20_P_14507147626989.jpg', 0, 0, 0),
+	(12402, 21, 'images/201512/goods_img/21_P_14507112057665.jpg', '', 'images/201512/thumb_img/21_thumb_P_14507100974403.jpg', 'images/201512/source_img/21_P_14507133574973.jpg', 0, 0, 0),
+	(12403, 21, 'images/201512/goods_img/21_P_14507123794222.jpg', '', 'images/201512/thumb_img/21_thumb_P_14507132597888.jpg', 'images/201512/source_img/21_P_14507111436756.jpg', 0, 0, 0),
+	(12404, 21, 'images/201512/goods_img/21_P_14507159420242.jpg', '', 'images/201512/thumb_img/21_thumb_P_14507091209929.jpg', 'images/201512/source_img/21_P_14507140954511.jpg', 0, 0, 0),
+	(12405, 21, 'images/201512/goods_img/21_P_14507126917171.jpg', '', 'images/201512/thumb_img/21_thumb_P_14507142412631.jpg', 'images/201512/source_img/21_P_14507090703172.jpg', 0, 0, 0),
+	(12406, 22, 'images/201512/goods_img/22_P_14507089869574.jpg', '', 'images/201512/thumb_img/22_thumb_P_14507116896946.jpg', 'images/201512/source_img/22_P_14507146736425.jpg', 0, 0, 0),
+	(12407, 22, 'images/201512/goods_img/22_P_14507112462039.jpg', '', 'images/201512/thumb_img/22_thumb_P_14507154120415.jpg', 'images/201512/source_img/22_P_14507133147735.jpg', 0, 0, 0),
+	(12408, 22, 'images/201512/goods_img/22_P_14507131677125.jpg', '', 'images/201512/thumb_img/22_thumb_P_14507098855260.jpg', 'images/201512/source_img/22_P_14507131455830.jpg', 0, 0, 0),
 	(8902, 2547, 'images/201504/goods_img/2547_P_1429549703097.jpg', '', 'images/201504/thumb_img/2547_thumb_P_1429549703107.jpg', 'images/201504/source_img/2547_P_1429549703536.jpg', 0, 0, 0),
 	(8903, 2547, 'images/201504/goods_img/2547_P_1429549704788.jpg', '', 'images/201504/thumb_img/2547_thumb_P_1429549704899.jpg', 'images/201504/source_img/2547_P_1429549704728.jpg', 0, 0, 0),
 	(8904, 2547, 'images/201504/goods_img/2547_P_1429549704381.jpg', '', 'images/201504/thumb_img/2547_thumb_P_1429549704210.jpg', 'images/201504/source_img/2547_P_1429549704393.jpg', 0, 0, 0),
 	(8906, 2547, 'images/201504/goods_img/2547_P_1429550918687.jpg', '', 'images/201504/thumb_img/2547_thumb_P_1429550918064.jpg', 'images/201504/source_img/2547_P_1429550918103.jpg', 0, 0, 0),
 	(8907, 2547, 'images/201504/goods_img/2547_P_1429551362847.jpg', '', 'images/201504/thumb_img/2547_thumb_P_1429551362815.jpg', 'images/201504/source_img/2547_P_1429551362616.jpg', 0, 0, 0),
-	(10786, 13, 'images/201507/goods_img/13_P_1436462595784.jpg', '', 'images/201507/thumb_img/13_thumb_P_1436462595913.jpg', 'images/201507/source_img/13_P_1436462595971.jpg', 0, 0, 0),
-	(11003, 1, 'images/201507/goods_img/1_P_1437420140446.jpg', '', 'images/201507/thumb_img/1_thumb_P_1437420140905.jpg', 'images/201507/source_img/1_P_1437420140433.jpg', 0, 0, 0),
-	(12095, 3088, 'images/201509/goods_img/3088_P_1441040843542.jpg', '', 'images/201509/thumb_img/3088_thumb_P_1441040843711.jpg', 'images/201509/source_img/3088_P_1441040843691.jpg', 0, 0, 0),
-	(12096, 3088, 'images/201509/goods_img/3088_P_1441040866763.jpg', '', 'images/201509/thumb_img/3088_thumb_P_1441040866123.jpg', 'images/201509/source_img/3088_P_1441040866492.jpg', 0, 0, 0),
-	(12097, 3088, 'images/201509/goods_img/3088_P_1441040866797.jpg', '', 'images/201509/thumb_img/3088_thumb_P_1441040866127.jpg', 'images/201509/source_img/3088_P_1441040866987.jpg', 0, 0, 0),
-	(12098, 3088, 'images/201509/goods_img/3088_P_1441040866403.jpg', '', 'images/201509/thumb_img/3088_thumb_P_1441040866804.jpg', 'images/201509/source_img/3088_P_1441040866895.jpg', 0, 0, 0),
-	(12099, 3088, 'images/201509/goods_img/3088_P_1441040866710.jpg', '', 'images/201509/thumb_img/3088_thumb_P_1441040866613.jpg', 'images/201509/source_img/3088_P_1441040866079.jpg', 0, 0, 0);
+	(12592, 60, 'images/201512/goods_img/60_P_14507083979515.jpg', '', 'images/201512/thumb_img/60_thumb_P_14507162839110.jpg', 'images/201512/source_img/60_P_14507100318702.jpg', 0, 0, 0),
+	(12593, 60, 'images/201512/goods_img/60_P_14507128878494.jpg', '', 'images/201512/thumb_img/60_thumb_P_14507143276087.jpg', 'images/201512/source_img/60_P_14507153650502.jpg', 0, 0, 0),
+	(12594, 60, 'images/201512/goods_img/60_P_14507110651944.jpg', '', 'images/201512/thumb_img/60_thumb_P_14507097600301.jpg', 'images/201512/source_img/60_P_14507126347971.jpg', 0, 0, 0),
+	(12595, 60, 'images/201512/goods_img/60_P_14507161318631.jpg', '', 'images/201512/thumb_img/60_thumb_P_14507064677922.jpg', 'images/201512/source_img/60_P_14507069679706.jpg', 0, 0, 0),
+	(12596, 61, 'images/201512/goods_img/61_P_14507109080731.jpg', '', 'images/201512/thumb_img/61_thumb_P_14507129150054.jpg', 'images/201512/source_img/61_P_14507150335417.jpg', 0, 0, 0),
+	(12597, 61, 'images/201512/goods_img/61_P_14507118861023.jpg', '', 'images/201512/thumb_img/61_thumb_P_14507161123657.jpg', 'images/201512/source_img/61_P_14507164650670.jpg', 0, 0, 0),
+	(12598, 61, 'images/201512/goods_img/61_P_14507078510353.jpg', '', 'images/201512/thumb_img/61_thumb_P_14507159487879.jpg', 'images/201512/source_img/61_P_14507078289057.jpg', 0, 0, 0),
+	(12599, 61, 'images/201512/goods_img/61_P_14507122434229.jpg', '', 'images/201512/thumb_img/61_thumb_P_14507141860392.jpg', 'images/201512/source_img/61_P_14507134992262.jpg', 0, 0, 0),
+	(12600, 61, 'images/201512/goods_img/61_P_14507088442460.jpg', '', 'images/201512/thumb_img/61_thumb_P_14507145563451.jpg', 'images/201512/source_img/61_P_14507076994409.jpg', 0, 0, 0),
+	(12601, 62, 'images/201512/goods_img/62_P_14507079489727.jpg', '', 'images/201512/thumb_img/62_thumb_P_14507139144456.jpg', 'images/201512/source_img/62_P_14507086376031.jpg', 0, 0, 0),
+	(12602, 62, 'images/201512/goods_img/62_P_14507114042975.jpg', '', 'images/201512/thumb_img/62_thumb_P_14507118688584.jpg', 'images/201512/source_img/62_P_14507068187639.jpg', 0, 0, 0),
+	(12603, 62, 'images/201512/goods_img/62_P_14507108308770.jpg', '', 'images/201512/thumb_img/62_thumb_P_14507125694806.jpg', 'images/201512/source_img/62_P_14507116194408.jpg', 0, 0, 0),
+	(12604, 62, 'images/201512/goods_img/62_P_14507138846504.jpg', '', 'images/201512/thumb_img/62_thumb_P_14507080615529.jpg', 'images/201512/source_img/62_P_14507118322473.jpg', 0, 0, 0),
+	(12605, 62, 'images/201512/goods_img/62_P_14507143605974.jpg', '', 'images/201512/thumb_img/62_thumb_P_14507111388366.jpg', 'images/201512/source_img/62_P_14507138583461.jpg', 0, 0, 0),
+	(12606, 63, 'images/201512/goods_img/63_P_14507123652234.jpg', '', 'images/201512/thumb_img/63_thumb_P_14507102134927.jpg', 'images/201512/source_img/63_P_14507158630933.jpg', 0, 0, 0),
+	(12607, 63, 'images/201512/goods_img/63_P_14507104178267.jpg', '', 'images/201512/thumb_img/63_thumb_P_14507161260357.jpg', 'images/201512/source_img/63_P_14507090346030.jpg', 0, 0, 0),
+	(12608, 63, 'images/201512/goods_img/63_P_14507128317249.jpg', '', 'images/201512/thumb_img/63_thumb_P_14507145703286.jpg', 'images/201512/source_img/63_P_14507157169510.jpg', 0, 0, 0),
+	(12609, 63, 'images/201512/goods_img/63_P_14507068046806.jpg', '', 'images/201512/thumb_img/63_thumb_P_14507068911262.jpg', 'images/201512/source_img/63_P_14507161322168.jpg', 0, 0, 0),
+	(12526, 47, 'images/201512/goods_img/47_P_14507087585095.jpg', '', 'images/201512/thumb_img/47_thumb_P_14507161266570.jpg', 'images/201512/source_img/47_P_14507125623983.jpg', 0, 0, 0),
+	(12525, 46, 'images/201512/goods_img/46_P_14507074188908.jpg', '', 'images/201512/thumb_img/46_thumb_P_14507127528747.jpg', 'images/201512/source_img/46_P_14507116652110.jpg', 0, 0, 0),
+	(12524, 46, 'images/201512/goods_img/46_P_14507132550601.jpg', '', 'images/201512/thumb_img/46_thumb_P_14507071070984.jpg', 'images/201512/source_img/46_P_14507121440552.jpg', 0, 0, 0),
+	(12523, 46, 'images/201512/goods_img/46_P_14507067360055.jpg', '', 'images/201512/thumb_img/46_thumb_P_14507079113263.jpg', 'images/201512/source_img/46_P_14507144529641.jpg', 0, 0, 0),
+	(12383, 17, 'images/201512/goods_img/17_P_14507129906794.jpg', '', 'images/201512/thumb_img/17_thumb_P_14507118219274.jpg', 'images/201512/source_img/17_P_14507147038691.jpg', 0, 0, 0),
+	(12384, 17, 'images/201512/goods_img/17_P_14507075239839.jpg', '', 'images/201512/thumb_img/17_thumb_P_14507140943201.jpg', 'images/201512/source_img/17_P_14507140084803.jpg', 0, 0, 0),
+	(12385, 17, 'images/201512/goods_img/17_P_14507137875056.jpg', '', 'images/201512/thumb_img/17_thumb_P_14507164447721.jpg', 'images/201512/source_img/17_P_14507130773515.jpg', 0, 0, 0),
+	(12386, 17, 'images/201512/goods_img/17_P_14507146761552.jpg', '', 'images/201512/thumb_img/17_thumb_P_14507127739079.jpg', 'images/201512/source_img/17_P_14507069337825.jpg', 0, 0, 0),
+	(12387, 18, 'images/201512/goods_img/18_P_14507079018631.jpg', '', 'images/201512/thumb_img/18_thumb_P_14507116291596.jpg', 'images/201512/source_img/18_P_14507073541411.jpg', 0, 0, 0),
+	(12388, 18, 'images/201512/goods_img/18_P_14507146673723.jpg', '', 'images/201512/thumb_img/18_thumb_P_14507070524200.jpg', 'images/201512/source_img/18_P_14507122218989.jpg', 0, 0, 0),
+	(12389, 18, 'images/201512/goods_img/18_P_14507084231776.jpg', '', 'images/201512/thumb_img/18_thumb_P_14507152429973.jpg', 'images/201512/source_img/18_P_14507076071270.jpg', 0, 0, 0),
+	(12390, 18, 'images/201512/goods_img/18_P_14507145342070.jpg', '', 'images/201512/thumb_img/18_thumb_P_14507141593760.jpg', 'images/201512/source_img/18_P_14507105990076.jpg', 0, 0, 0),
+	(12391, 18, 'images/201512/goods_img/18_P_14507073908005.jpg', '', 'images/201512/thumb_img/18_thumb_P_14507082295866.jpg', 'images/201512/source_img/18_P_14507160907379.jpg', 0, 0, 0),
+	(12430, 27, 'images/201512/goods_img/27_P_14507123845977.jpg', '', 'images/201512/thumb_img/27_thumb_P_14507147241745.jpg', 'images/201512/source_img/27_P_14507145856894.jpg', 0, 0, 0),
+	(12431, 27, 'images/201512/goods_img/27_P_14507136212714.jpg', '', 'images/201512/thumb_img/27_thumb_P_14507074089938.jpg', 'images/201512/source_img/27_P_14507121776219.jpg', 0, 0, 0),
+	(12432, 28, 'images/201512/goods_img/28_P_14507136418217.jpg', '', 'images/201512/thumb_img/28_thumb_P_14507085827353.jpg', 'images/201512/source_img/28_P_14507160053455.jpg', 0, 0, 0),
+	(12433, 28, 'images/201512/goods_img/28_P_14507100031094.jpg', '', 'images/201512/thumb_img/28_thumb_P_14507141689470.jpg', 'images/201512/source_img/28_P_14507123438978.jpg', 0, 0, 0),
+	(12434, 28, 'images/201512/goods_img/28_P_14507113149947.jpg', '', 'images/201512/thumb_img/28_thumb_P_14507157075804.jpg', 'images/201512/source_img/28_P_14507128845975.jpg', 0, 0, 0),
+	(12435, 28, 'images/201512/goods_img/28_P_14507133321964.jpg', '', 'images/201512/thumb_img/28_thumb_P_14507076643564.jpg', 'images/201512/source_img/28_P_14507072004013.jpg', 0, 0, 0),
+	(12436, 29, 'images/201512/goods_img/29_P_14507089024138.jpg', '', 'images/201512/thumb_img/29_thumb_P_14507117526281.jpg', 'images/201512/source_img/29_P_14507090654517.jpg', 0, 0, 0),
+	(12437, 29, 'images/201512/goods_img/29_P_14507111818862.jpg', '', 'images/201512/thumb_img/29_thumb_P_14507136955658.jpg', 'images/201512/source_img/29_P_14507120784194.jpg', 0, 0, 0),
+	(12438, 29, 'images/201512/goods_img/29_P_14507094811252.jpg', '', 'images/201512/thumb_img/29_thumb_P_14507099456861.jpg', 'images/201512/source_img/29_P_14507090808803.jpg', 0, 0, 0),
+	(12439, 29, 'images/201512/goods_img/29_P_14507117250749.jpg', '', 'images/201512/thumb_img/29_thumb_P_14507164353501.jpg', 'images/201512/source_img/29_P_14507091282342.jpg', 0, 0, 0),
+	(12440, 29, 'images/201512/goods_img/29_P_14507160447688.jpg', '', 'images/201512/thumb_img/29_thumb_P_14507080140108.jpg', 'images/201512/source_img/29_P_14507152475633.jpg', 0, 0, 0),
+	(12441, 30, 'images/201512/goods_img/30_P_14507086954491.jpg', '', 'images/201512/thumb_img/30_thumb_P_14507151221984.jpg', 'images/201512/source_img/30_P_14507117885780.jpg', 0, 0, 0),
+	(12442, 30, 'images/201512/goods_img/30_P_14507140881071.jpg', '', 'images/201512/thumb_img/30_thumb_P_14507073918176.jpg', 'images/201512/source_img/30_P_14507119980137.jpg', 0, 0, 0),
+	(12443, 30, 'images/201512/goods_img/30_P_14507160568955.jpg', '', 'images/201512/thumb_img/30_thumb_P_14507143437058.jpg', 'images/201512/source_img/30_P_14507085451611.jpg', 0, 0, 0),
+	(12444, 30, 'images/201512/goods_img/30_P_14507114480866.jpg', '', 'images/201512/thumb_img/30_thumb_P_14507121166602.jpg', 'images/201512/source_img/30_P_14507119931300.jpg', 0, 0, 0),
+	(12445, 30, 'images/201512/goods_img/30_P_14507073344408.jpg', '', 'images/201512/thumb_img/30_thumb_P_14507111182729.jpg', 'images/201512/source_img/30_P_14507119400311.jpg', 0, 0, 0),
+	(12446, 31, 'images/201512/goods_img/31_P_14507153381191.jpg', '', 'images/201512/thumb_img/31_thumb_P_14507114094885.jpg', 'images/201512/source_img/31_P_14507149151388.jpg', 0, 0, 0),
+	(12447, 31, 'images/201512/goods_img/31_P_14507110985200.jpg', '', 'images/201512/thumb_img/31_thumb_P_14507108900113.jpg', 'images/201512/source_img/31_P_14507077077582.jpg', 0, 0, 0),
+	(12448, 31, 'images/201512/goods_img/31_P_14507089746922.jpg', '', 'images/201512/thumb_img/31_thumb_P_14507151064873.jpg', 'images/201512/source_img/31_P_14507107294624.jpg', 0, 0, 0),
+	(12449, 31, 'images/201512/goods_img/31_P_14507133814374.jpg', '', 'images/201512/thumb_img/31_thumb_P_14507130482735.jpg', 'images/201512/source_img/31_P_14507135672107.jpg', 0, 0, 0),
+	(12450, 31, 'images/201512/goods_img/31_P_14507137322182.jpg', '', 'images/201512/thumb_img/31_thumb_P_14507155124024.jpg', 'images/201512/source_img/31_P_14507087308789.jpg', 0, 0, 0),
+	(12451, 32, 'images/201512/goods_img/32_P_14507100487267.jpg', '', 'images/201512/thumb_img/32_thumb_P_14507121238651.jpg', 'images/201512/source_img/32_P_14507085596065.jpg', 0, 0, 0),
+	(12452, 32, 'images/201512/goods_img/32_P_14507074678545.jpg', '', 'images/201512/thumb_img/32_thumb_P_14507152518077.jpg', 'images/201512/source_img/32_P_14507114003753.jpg', 0, 0, 0),
+	(12453, 32, 'images/201512/goods_img/32_P_14507104713193.jpg', '', 'images/201512/thumb_img/32_thumb_P_14507089244520.jpg', 'images/201512/source_img/32_P_14507150314389.jpg', 0, 0, 0),
+	(12454, 32, 'images/201512/goods_img/32_P_14507096509249.jpg', '', 'images/201512/thumb_img/32_thumb_P_14507068261246.jpg', 'images/201512/source_img/32_P_14507150692815.jpg', 0, 0, 0),
+	(12455, 32, 'images/201512/goods_img/32_P_14507115071615.jpg', '', 'images/201512/thumb_img/32_thumb_P_14507124700835.jpg', 'images/201512/source_img/32_P_14507148931718.jpg', 0, 0, 0),
+	(12456, 33, 'images/201512/goods_img/33_P_14507125986980.jpg', '', 'images/201512/thumb_img/33_thumb_P_14507110745660.jpg', 'images/201512/source_img/33_P_14507105462949.jpg', 0, 0, 0),
+	(12457, 33, 'images/201512/goods_img/33_P_14507152060635.jpg', '', 'images/201512/thumb_img/33_thumb_P_14507137650927.jpg', 'images/201512/source_img/33_P_14507077774902.jpg', 0, 0, 0),
+	(12458, 33, 'images/201512/goods_img/33_P_14507072897404.jpg', '', 'images/201512/thumb_img/33_thumb_P_14507115387392.jpg', 'images/201512/source_img/33_P_14507141335070.jpg', 0, 0, 0),
+	(12459, 33, 'images/201512/goods_img/33_P_14507131299315.jpg', '', 'images/201512/thumb_img/33_thumb_P_14507109554654.jpg', 'images/201512/source_img/33_P_14507086730299.jpg', 0, 0, 0),
+	(12460, 33, 'images/201512/goods_img/33_P_14507155237815.jpg', '', 'images/201512/thumb_img/33_thumb_P_14507073455464.jpg', 'images/201512/source_img/33_P_14507148513177.jpg', 0, 0, 0),
+	(12461, 34, 'images/201512/goods_img/34_P_14507138793863.jpg', '', 'images/201512/thumb_img/34_thumb_P_14507080224887.jpg', 'images/201512/source_img/34_P_14507105074698.jpg', 0, 0, 0),
+	(12462, 34, 'images/201512/goods_img/34_P_14507132916166.jpg', '', 'images/201512/thumb_img/34_thumb_P_14507117220139.jpg', 'images/201512/source_img/34_P_14507152354445.jpg', 0, 0, 0),
+	(12463, 34, 'images/201512/goods_img/34_P_14507106644124.jpg', '', 'images/201512/thumb_img/34_thumb_P_14507066903111.jpg', 'images/201512/source_img/34_P_14507152056867.jpg', 0, 0, 0),
+	(12464, 34, 'images/201512/goods_img/34_P_14507143929863.jpg', '', 'images/201512/thumb_img/34_thumb_P_14507075908003.jpg', 'images/201512/source_img/34_P_14507068812519.jpg', 0, 0, 0),
+	(12465, 34, 'images/201512/goods_img/34_P_14507148089443.jpg', '', 'images/201512/thumb_img/34_thumb_P_14507103963018.jpg', 'images/201512/source_img/34_P_14507116715561.jpg', 0, 0, 0),
+	(12466, 35, 'images/201512/goods_img/35_P_14507104933580.jpg', '', 'images/201512/thumb_img/35_thumb_P_14507130486181.jpg', 'images/201512/source_img/35_P_14507118739031.jpg', 0, 0, 0),
+	(12467, 35, 'images/201512/goods_img/35_P_14507088245798.jpg', '', 'images/201512/thumb_img/35_thumb_P_14507141208733.jpg', 'images/201512/source_img/35_P_14507109347300.jpg', 0, 0, 0),
+	(12468, 35, 'images/201512/goods_img/35_P_14507150414193.jpg', '', 'images/201512/thumb_img/35_thumb_P_14507069690807.jpg', 'images/201512/source_img/35_P_14507070268278.jpg', 0, 0, 0),
+	(12469, 35, 'images/201512/goods_img/35_P_14507095008100.jpg', '', 'images/201512/thumb_img/35_thumb_P_14507136439122.jpg', 'images/201512/source_img/35_P_14507149646373.jpg', 0, 0, 0),
+	(12470, 35, 'images/201512/goods_img/35_P_14507075134809.jpg', '', 'images/201512/thumb_img/35_thumb_P_14507134562183.jpg', 'images/201512/source_img/35_P_14507065083726.jpg', 0, 0, 0),
+	(12471, 36, 'images/201512/goods_img/36_P_14507143513329.jpg', '', 'images/201512/thumb_img/36_thumb_P_14507073678696.jpg', 'images/201512/source_img/36_P_14507069000242.jpg', 0, 0, 0),
+	(12472, 36, 'images/201512/goods_img/36_P_14507100832044.jpg', '', 'images/201512/thumb_img/36_thumb_P_14507133037537.jpg', 'images/201512/source_img/36_P_14507151461810.jpg', 0, 0, 0),
+	(12473, 36, 'images/201512/goods_img/36_P_14507081595855.jpg', '', 'images/201512/thumb_img/36_thumb_P_14507137242076.jpg', 'images/201512/source_img/36_P_14507074494314.jpg', 0, 0, 0),
+	(12474, 36, 'images/201512/goods_img/36_P_14507132857323.jpg', '', 'images/201512/thumb_img/36_thumb_P_14507065517525.jpg', 'images/201512/source_img/36_P_14507103335117.jpg', 0, 0, 0),
+	(12475, 36, 'images/201512/goods_img/36_P_14507126627818.jpg', '', 'images/201512/thumb_img/36_thumb_P_14507151537259.jpg', 'images/201512/source_img/36_P_14507141303782.jpg', 0, 0, 0),
+	(12476, 37, 'images/201512/goods_img/37_P_14507148753454.jpg', '', 'images/201512/thumb_img/37_thumb_P_14507077444050.jpg', 'images/201512/source_img/37_P_14507143730941.jpg', 0, 0, 0),
+	(12477, 37, 'images/201512/goods_img/37_P_14507094448647.jpg', '', 'images/201512/thumb_img/37_thumb_P_14507106390307.jpg', 'images/201512/source_img/37_P_14507102166562.jpg', 0, 0, 0),
+	(12478, 37, 'images/201512/goods_img/37_P_14507112386027.jpg', '', 'images/201512/thumb_img/37_thumb_P_14507158014009.jpg', 'images/201512/source_img/37_P_14507096097858.jpg', 0, 0, 0),
+	(12479, 37, 'images/201512/goods_img/37_P_14507128298815.jpg', '', 'images/201512/thumb_img/37_thumb_P_14507161147467.jpg', 'images/201512/source_img/37_P_14507070117994.jpg', 0, 0, 0),
+	(12480, 37, 'images/201512/goods_img/37_P_14507148192460.jpg', '', 'images/201512/thumb_img/37_thumb_P_14507071815583.jpg', 'images/201512/source_img/37_P_14507113492133.jpg', 0, 0, 0),
+	(12481, 38, 'images/201512/goods_img/38_P_14507126629154.jpg', '', 'images/201512/thumb_img/38_thumb_P_14507148627955.jpg', 'images/201512/source_img/38_P_14507079753755.jpg', 0, 0, 0),
+	(12482, 38, 'images/201512/goods_img/38_P_14507129373593.jpg', '', 'images/201512/thumb_img/38_thumb_P_14507093147477.jpg', 'images/201512/source_img/38_P_14507130665970.jpg', 0, 0, 0),
+	(12483, 38, 'images/201512/goods_img/38_P_14507141289125.jpg', '', 'images/201512/thumb_img/38_thumb_P_14507133571210.jpg', 'images/201512/source_img/38_P_14507154035610.jpg', 0, 0, 0),
+	(12484, 38, 'images/201512/goods_img/38_P_14507086604860.jpg', '', 'images/201512/thumb_img/38_thumb_P_14507088223123.jpg', 'images/201512/source_img/38_P_14507081354993.jpg', 0, 0, 0),
+	(12485, 38, 'images/201512/goods_img/38_P_14507132205765.jpg', '', 'images/201512/thumb_img/38_thumb_P_14507131179644.jpg', 'images/201512/source_img/38_P_14507092665319.jpg', 0, 0, 0),
+	(12486, 39, 'images/201512/goods_img/39_P_14507086234208.jpg', '', 'images/201512/thumb_img/39_thumb_P_14507133941218.jpg', 'images/201512/source_img/39_P_14507139963066.jpg', 0, 0, 0),
+	(12487, 39, 'images/201512/goods_img/39_P_14507136880166.jpg', '', 'images/201512/thumb_img/39_thumb_P_14507090258908.jpg', 'images/201512/source_img/39_P_14507068038810.jpg', 0, 0, 0),
+	(12488, 39, 'images/201512/goods_img/39_P_14507079167691.jpg', '', 'images/201512/thumb_img/39_thumb_P_14507134625460.jpg', 'images/201512/source_img/39_P_14507133123903.jpg', 0, 0, 0),
+	(12489, 39, 'images/201512/goods_img/39_P_14507123722695.jpg', '', 'images/201512/thumb_img/39_thumb_P_14507086704734.jpg', 'images/201512/source_img/39_P_14507083123284.jpg', 0, 0, 0),
+	(12490, 39, 'images/201512/goods_img/39_P_14507129240340.jpg', '', 'images/201512/thumb_img/39_thumb_P_14507147042182.jpg', 'images/201512/source_img/39_P_14507082780747.jpg', 0, 0, 0),
+	(12491, 40, 'images/201512/goods_img/40_P_14507072009842.jpg', '', 'images/201512/thumb_img/40_thumb_P_14507163044509.jpg', 'images/201512/source_img/40_P_14507123887025.jpg', 0, 0, 0),
+	(12492, 40, 'images/201512/goods_img/40_P_14507153054579.jpg', '', 'images/201512/thumb_img/40_thumb_P_14507088436968.jpg', 'images/201512/source_img/40_P_14507076878269.jpg', 0, 0, 0),
+	(12493, 40, 'images/201512/goods_img/40_P_14507092431463.jpg', '', 'images/201512/thumb_img/40_thumb_P_14507084713548.jpg', 'images/201512/source_img/40_P_14507093041779.jpg', 0, 0, 0),
+	(12494, 40, 'images/201512/goods_img/40_P_14507163332642.jpg', '', 'images/201512/thumb_img/40_thumb_P_14507161474909.jpg', 'images/201512/source_img/40_P_14507129009218.jpg', 0, 0, 0),
+	(12495, 40, 'images/201512/goods_img/40_P_14507129048779.jpg', '', 'images/201512/thumb_img/40_thumb_P_14507101028130.jpg', 'images/201512/source_img/40_P_14507129243288.jpg', 0, 0, 0),
+	(12496, 41, 'images/201512/goods_img/41_P_14507110121245.jpg', '', 'images/201512/thumb_img/41_thumb_P_14507141345576.jpg', 'images/201512/source_img/41_P_14507066344938.jpg', 0, 0, 0),
+	(12497, 41, 'images/201512/goods_img/41_P_14507103074798.jpg', '', 'images/201512/thumb_img/41_thumb_P_14507101860225.jpg', 'images/201512/source_img/41_P_14507075215815.jpg', 0, 0, 0),
+	(12498, 41, 'images/201512/goods_img/41_P_14507108474873.jpg', '', 'images/201512/thumb_img/41_thumb_P_14507083819572.jpg', 'images/201512/source_img/41_P_14507118914976.jpg', 0, 0, 0),
+	(12499, 41, 'images/201512/goods_img/41_P_14507137289754.jpg', '', 'images/201512/thumb_img/41_thumb_P_14507154259985.jpg', 'images/201512/source_img/41_P_14507067616786.jpg', 0, 0, 0),
+	(12500, 41, 'images/201512/goods_img/41_P_14507072140290.jpg', '', 'images/201512/thumb_img/41_thumb_P_14507103325719.jpg', 'images/201512/source_img/41_P_14507079442399.jpg', 0, 0, 0),
+	(12501, 42, 'images/201512/goods_img/42_P_14507074023686.jpg', '', 'images/201512/thumb_img/42_thumb_P_14507162524617.jpg', 'images/201512/source_img/42_P_14507132137955.jpg', 0, 0, 0),
+	(12502, 42, 'images/201512/goods_img/42_P_14507093743550.jpg', '', 'images/201512/thumb_img/42_thumb_P_14507094608005.jpg', 'images/201512/source_img/42_P_14507096017088.jpg', 0, 0, 0),
+	(12503, 42, 'images/201512/goods_img/42_P_14507147590636.jpg', '', 'images/201512/thumb_img/42_thumb_P_14507145921355.jpg', 'images/201512/source_img/42_P_14507096329826.jpg', 0, 0, 0),
+	(12504, 42, 'images/201512/goods_img/42_P_14507098149315.jpg', '', 'images/201512/thumb_img/42_thumb_P_14507138748726.jpg', 'images/201512/source_img/42_P_14507147304310.jpg', 0, 0, 0),
+	(12505, 42, 'images/201512/goods_img/42_P_14507127466418.jpg', '', 'images/201512/thumb_img/42_thumb_P_14507138349113.jpg', 'images/201512/source_img/42_P_14507105694971.jpg', 0, 0, 0),
+	(12506, 43, 'images/201512/goods_img/43_P_14507151264838.jpg', '', 'images/201512/thumb_img/43_thumb_P_14507088537805.jpg', 'images/201512/source_img/43_P_14507117129867.jpg', 0, 0, 0),
+	(12507, 43, 'images/201512/goods_img/43_P_14507075975236.jpg', '', 'images/201512/thumb_img/43_thumb_P_14507129315074.jpg', 'images/201512/source_img/43_P_14507143730840.jpg', 0, 0, 0),
+	(12508, 43, 'images/201512/goods_img/43_P_14507102761241.jpg', '', 'images/201512/thumb_img/43_thumb_P_14507096933903.jpg', 'images/201512/source_img/43_P_14507115507727.jpg', 0, 0, 0),
+	(12509, 43, 'images/201512/goods_img/43_P_14507140867340.jpg', '', 'images/201512/thumb_img/43_thumb_P_14507104036967.jpg', 'images/201512/source_img/43_P_14507091685559.jpg', 0, 0, 0),
+	(12510, 43, 'images/201512/goods_img/43_P_14507103486940.jpg', '', 'images/201512/thumb_img/43_thumb_P_14507090928907.jpg', 'images/201512/source_img/43_P_14507101375068.jpg', 0, 0, 0),
+	(12511, 44, 'images/201512/goods_img/44_P_14507145494312.jpg', '', 'images/201512/thumb_img/44_thumb_P_14507073580650.jpg', 'images/201512/source_img/44_P_14507131850527.jpg', 0, 0, 0),
+	(12512, 44, 'images/201512/goods_img/44_P_14507069408580.jpg', '', 'images/201512/thumb_img/44_thumb_P_14507120065133.jpg', 'images/201512/source_img/44_P_14507118752027.jpg', 0, 0, 0),
+	(12513, 44, 'images/201512/goods_img/44_P_14507069304649.jpg', '', 'images/201512/thumb_img/44_thumb_P_14507091076096.jpg', 'images/201512/source_img/44_P_14507085604933.jpg', 0, 0, 0),
+	(12514, 44, 'images/201512/goods_img/44_P_14507143011877.jpg', '', 'images/201512/thumb_img/44_thumb_P_14507158734691.jpg', 'images/201512/source_img/44_P_14507150313986.jpg', 0, 0, 0),
+	(12515, 44, 'images/201512/goods_img/44_P_14507114067800.jpg', '', 'images/201512/thumb_img/44_thumb_P_14507091075722.jpg', 'images/201512/source_img/44_P_14507125339515.jpg', 0, 0, 0),
+	(12516, 45, 'images/201512/goods_img/45_P_14507145901324.jpg', '', 'images/201512/thumb_img/45_thumb_P_14507100904387.jpg', 'images/201512/source_img/45_P_14507121407689.jpg', 0, 0, 0),
+	(12517, 45, 'images/201512/goods_img/45_P_14507113998145.jpg', '', 'images/201512/thumb_img/45_thumb_P_14507113387829.jpg', 'images/201512/source_img/45_P_14507154154964.jpg', 0, 0, 0),
+	(12518, 45, 'images/201512/goods_img/45_P_14507067614375.jpg', '', 'images/201512/thumb_img/45_thumb_P_14507104166377.jpg', 'images/201512/source_img/45_P_14507135447783.jpg', 0, 0, 0),
+	(12519, 45, 'images/201512/goods_img/45_P_14507145583387.jpg', '', 'images/201512/thumb_img/45_thumb_P_14507124066079.jpg', 'images/201512/source_img/45_P_14507085967561.jpg', 0, 0, 0),
+	(12520, 45, 'images/201512/goods_img/45_P_14507078894328.jpg', '', 'images/201512/thumb_img/45_thumb_P_14507118057870.jpg', 'images/201512/source_img/45_P_14507070090662.jpg', 0, 0, 0),
+	(12521, 46, 'images/201512/goods_img/46_P_14507119259289.jpg', '', 'images/201512/thumb_img/46_thumb_P_14507147118272.jpg', 'images/201512/source_img/46_P_14507090984500.jpg', 0, 0, 0),
+	(12522, 46, 'images/201512/goods_img/46_P_14507140242104.jpg', '', 'images/201512/thumb_img/46_thumb_P_14507109310815.jpg', 'images/201512/source_img/46_P_14507099415339.jpg', 0, 0, 0);
 /*!40000 ALTER TABLE `ecs_goods_gallery` ENABLE KEYS */;
 
 
@@ -5545,14 +5743,14 @@ CREATE TABLE IF NOT EXISTS `ecs_keyword` (
   KEY `word` (`word`),
   KEY `letter` (`letter`),
   KEY `keyword` (`keyword`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_keyword 的数据：24 rows
+-- 正在导出表  cnpicks.ecs_keyword 的数据：26 rows
 DELETE FROM `ecs_keyword`;
 /*!40000 ALTER TABLE `ecs_keyword` DISABLE KEYS */;
 INSERT INTO `ecs_keyword` (`w_id`, `searchengine`, `word`, `keyword`, `letter`, `items`, `updatetime`, `total_search`, `month_search`, `week_search`, `today_search`, `status`, `keyword_cat`, `keyword_cat_url`, `keyword_cat_count`) VALUES
 	(1, 'ecshop', '三星', '三星', 'sanxing', 3, 1437586690, 1, 1, 1, 1, 1, '酒茶饮料', 'search.php?category=95&keywords=烟酒茶饮', 220),
-	(2, 'ecshop', '女', '女', 'nv', 23, 1437688209, 3, 3, 3, 3, 1, '休闲食品', 'search.php?category=93&keywords=薯片', 12),
+	(2, 'ecshop', '女', '女', 'nv', 23, 1437688209, 3, 3, 3, 3, 1, 'Accessory', 'search.php?category=94&keywords=temporary', 10),
 	(3, 'ecshop', '小米', '小米', 'xiaomi', 2, 1440115188, 1, 1, 1, 1, 1, '手机数码', 'search.php?category=4&keywords=小米', 2),
 	(4, 'ecshop', '宾格', '宾格', 'binge', 1, 1440115201, 1, 1, 1, 1, 1, '食品生鲜', 'search.php?category=1&keywords=宾格', 1),
 	(5, 'ecshop', '食品零食', '食品零食', 'shipinlingshi', 348, 1442188039, 6, 6, 3, 3, 1, '休闲食品', 'search.php?category=93&keywords=食品零食', 317),
@@ -5574,7 +5772,9 @@ INSERT INTO `ecs_keyword` (`w_id`, `searchengine`, `word`, `keyword`, `letter`, 
 	(21, 'ecshop', '1125', '1125', '1125', 1, 1442074182, 1, 1, 1, 1, 1, '', '', 0),
 	(22, 'ecshop', '3249', '3249', '3249', 1, 1442074207, 1, 1, 1, 1, 1, '', '', 0),
 	(23, 'ecshop', '供应商商品', '供应商商品', 'gongyingshangshangpin', 1, 1442104870, 1, 1, 1, 1, 1, '', '', 0),
-	(24, 'ecshop', '薯片', '薯片', 'shupian', 12, 1447894740, 1, 1, 1, 1, 1, '', '', 0);
+	(24, 'ecshop', '薯片', '薯片', 'shupian', 12, 1447894740, 1, 1, 1, 1, 1, '', '', 0),
+	(25, 'ecshop', 'neuf', 'neuf', 'neuf', 52, 1450743378, 9, 9, 9, 9, 1, '', '', 0),
+	(26, 'ecshop', 'temporary', 'temporary', 'temporary', 10, 1450747341, 4, 4, 4, 4, 1, '', '', 0);
 /*!40000 ALTER TABLE `ecs_keyword` ENABLE KEYS */;
 
 
@@ -5610,7 +5810,7 @@ CREATE TABLE IF NOT EXISTS `ecs_keyword_area` (
   KEY `w_id` (`w_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_keyword_area 的数据：33 rows
+-- 正在导出表  cnpicks.ecs_keyword_area 的数据：46 rows
 DELETE FROM `ecs_keyword_area`;
 /*!40000 ALTER TABLE `ecs_keyword_area` DISABLE KEYS */;
 INSERT INTO `ecs_keyword_area` (`access_time`, `w_id`, `ip_address`, `area`) VALUES
@@ -5646,7 +5846,20 @@ INSERT INTO `ecs_keyword_area` (`access_time`, `w_id`, `ip_address`, `area`) VAL
 	(1442187973, 5, '123.160.237.29', ''),
 	(1442187974, 5, '123.160.237.29', ''),
 	(1442188039, 5, '123.160.237.29', ''),
-	(1447894740, 24, '127.0.0.1', 'LAN');
+	(1447894740, 24, '127.0.0.1', 'LAN'),
+	(1450741527, 25, '127.0.0.1', 'LAN'),
+	(1450741826, 25, '127.0.0.1', 'LAN'),
+	(1450742292, 25, '127.0.0.1', 'LAN'),
+	(1450742502, 25, '127.0.0.1', 'LAN'),
+	(1450742531, 25, '127.0.0.1', 'LAN'),
+	(1450742634, 25, '127.0.0.1', 'LAN'),
+	(1450742948, 25, '127.0.0.1', 'LAN'),
+	(1450743227, 25, '127.0.0.1', 'LAN'),
+	(1450743378, 25, '127.0.0.1', 'LAN'),
+	(1450743416, 26, '127.0.0.1', 'LAN'),
+	(1450747168, 26, '127.0.0.1', 'LAN'),
+	(1450747278, 26, '127.0.0.1', 'LAN'),
+	(1450747341, 26, '127.0.0.1', 'LAN');
 /*!40000 ALTER TABLE `ecs_keyword_area` ENABLE KEYS */;
 
 
@@ -5722,26 +5935,9 @@ CREATE TABLE IF NOT EXISTS `ecs_link_goods` (
   PRIMARY KEY (`goods_id`,`link_goods_id`,`admin_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_link_goods 的数据：16 rows
+-- 正在导出表  cnpicks.ecs_link_goods 的数据：0 rows
 DELETE FROM `ecs_link_goods`;
 /*!40000 ALTER TABLE `ecs_link_goods` DISABLE KEYS */;
-INSERT INTO `ecs_link_goods` (`goods_id`, `link_goods_id`, `is_double`, `admin_id`) VALUES
-	(12, 13, 1, 22),
-	(11, 10, 1, 22),
-	(13, 12, 1, 22),
-	(10, 11, 1, 22),
-	(12, 14, 1, 22),
-	(14, 12, 1, 22),
-	(13, 14, 1, 22),
-	(14, 13, 1, 22),
-	(18, 3090, 1, 23),
-	(3090, 18, 1, 23),
-	(9, 8, 1, 23),
-	(8, 9, 0, 23),
-	(3090, 3089, 1, 23),
-	(3089, 3090, 1, 23),
-	(3089, 18, 1, 23),
-	(18, 3089, 1, 23);
 /*!40000 ALTER TABLE `ecs_link_goods` ENABLE KEYS */;
 
 
@@ -5796,28 +5992,11 @@ CREATE TABLE IF NOT EXISTS `ecs_member_price` (
   KEY `goods_id` (`goods_id`,`user_rank`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2456 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_member_price 的数据：18 rows
+-- 正在导出表  cnpicks.ecs_member_price 的数据：1 rows
 DELETE FROM `ecs_member_price`;
 /*!40000 ALTER TABLE `ecs_member_price` DISABLE KEYS */;
 INSERT INTO `ecs_member_price` (`price_id`, `goods_id`, `user_rank`, `user_price`) VALUES
-	(7, 1, 2, 19.00),
-	(10, 7, 2, 4.90),
-	(11, 8, 2, 112.60),
-	(12, 9, 2, 121.40),
-	(13, 10, 2, 4.50),
-	(14, 11, 2, 5.00),
-	(15, 12, 2, 9.00),
-	(16, 13, 2, 10.00),
-	(17, 14, 2, 9.00),
-	(22, 19, 2, 50.00),
-	(23, 18, 2, 22.88),
-	(25, 16, 2, 5.00),
-	(26, 20, 2, 3.00),
-	(54, 1, 3, 0.00),
-	(193, 196, 2, 3.80),
-	(2270, 2547, 4, 24.80),
-	(2354, 9, 4, 121.40),
-	(2362, 8, 4, 112.60);
+	(2270, 2547, 4, 24.80);
 /*!40000 ALTER TABLE `ecs_member_price` ENABLE KEYS */;
 
 
@@ -6328,9 +6507,9 @@ CREATE TABLE IF NOT EXISTS `ecs_products` (
   `product_sn` varchar(60) DEFAULT NULL,
   `product_number` smallint(5) unsigned DEFAULT '0',
   PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_products 的数据：37 rows
+-- 正在导出表  cnpicks.ecs_products 的数据：43 rows
 DELETE FROM `ecs_products`;
 /*!40000 ALTER TABLE `ecs_products` DISABLE KEYS */;
 INSERT INTO `ecs_products` (`product_id`, `goods_id`, `goods_attr`, `product_sn`, `product_number`) VALUES
@@ -6368,6 +6547,12 @@ INSERT INTO `ecs_products` (`product_id`, `goods_id`, `goods_attr`, `product_sn`
 	(55, 13, '1627|1631', '1103010000020g_p55', 55),
 	(70, 13, '1680|1631', '1103010000020g_p70', 113),
 	(58, 13, '158|1629', '1103010000020g_p58', 32),
+	(102, 2, '6|3', 'YSHD000002g_p102', 1),
+	(101, 2, '2|4', 'YSHD000002g_p101', 1),
+	(100, 2, '2|3', 'YSHD000002g_p100', 1),
+	(99, 4238, '1706|1708', 'YSHD004238g_p99', 122),
+	(98, 4238, '1709|1707', 'YSHD004238g_p98', 12),
+	(97, 4238, '1706|1707', 'YSHD004238g_p97', 11),
 	(96, 4238, '1703|1704', 'G1', 11),
 	(95, 4238, '1702|1705', 'G2', 11),
 	(72, 13, '1680|1629', '1103010000020g_p72', 21);
@@ -6506,8 +6691,8 @@ CREATE TABLE IF NOT EXISTS `ecs_sessions` (
 DELETE FROM `ecs_sessions`;
 /*!40000 ALTER TABLE `ecs_sessions` DISABLE KEYS */;
 INSERT INTO `ecs_sessions` (`sesskey`, `expiry`, `userid`, `adminid`, `ip`, `user_name`, `user_rank`, `discount`, `email`, `data`) VALUES
-	('e35862320ef0200ca2510135a5f0591a', 1450505145, 0, 0, '127.0.0.1', '0', 0, 1.00, '0', 'a:3:{s:7:"from_ad";i:0;s:7:"referer";s:4:"Home";s:10:"login_fail";i:0;}'),
-	('4639d3190e09112688581a8e85384be8', 1450505109, 0, 1, '127.0.0.1', '0', 0, 0.00, '0', 'a:3:{s:10:"admin_name";s:5:"admin";s:11:"action_list";s:3:"all";s:10:"last_check";i:1450476309;}');
+	('e2df48dae5bd1f176f958c655ab28edb', 1450776477, 0, 1, '127.0.0.1', 'admin', 0, 0.00, '0', 'a:5:{s:12:"captcha_word";s:16:"YTFlNjhlYzQ3NQ==";s:10:"admin_name";s:5:"admin";s:11:"action_list";s:3:"all";s:10:"last_check";i:1450747677;s:12:"suppliers_id";s:1:"0";}'),
+	('ba6a8241c0f6b81ee7b8aa90c757432c', 1450776306, 0, 0, '127.0.0.1', '0', 0, 1.00, '0', 'a:5:{s:7:"from_ad";i:0;s:7:"referer";s:4:"Home";s:10:"login_fail";i:0;s:9:"flow_type";i:0;s:14:"display_search";s:4:"grid";}');
 /*!40000 ALTER TABLE `ecs_sessions` ENABLE KEYS */;
 
 
@@ -6520,7 +6705,7 @@ CREATE TABLE IF NOT EXISTS `ecs_sessions_data` (
   KEY `expiry` (`expiry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 正在导出表  cnpicks.ecs_sessions_data 的数据：49 rows
+-- 正在导出表  cnpicks.ecs_sessions_data 的数据：50 rows
 DELETE FROM `ecs_sessions_data`;
 /*!40000 ALTER TABLE `ecs_sessions_data` DISABLE KEYS */;
 INSERT INTO `ecs_sessions_data` (`sesskey`, `expiry`, `data`) VALUES
@@ -6572,6 +6757,7 @@ INSERT INTO `ecs_sessions_data` (`sesskey`, `expiry`, `data`) VALUES
 	('e4a499bf31f2419dbfe1a5f5dfdf71e4', 4294967295, 'a:7:{s:9:"last_time";s:10:"1442097390";s:7:"last_ip";s:13:"115.60.24.195";s:10:"login_fail";i:0;s:9:"flow_type";i:0;s:10:"flow_order";a:8:{s:14:"extension_code";s:0:"";s:11:"shipping_id";s:1:"5";s:6:"pay_id";s:1:"5";s:7:"pack_id";i:0;s:7:"card_id";i:0;s:5:"bonus";i:0;s:8:"integral";i:0;s:7:"surplus";i:0;}s:13:"sel_cartgoods";s:11:"201,200,199";s:14:"flow_consignee";a:14:{s:10:"address_id";s:2:"32";s:9:"consignee";s:9:"黄明宏";s:7:"country";s:1:"1";s:8:"province";s:1:"2";s:4:"city";s:1:"5";s:8:"district";s:2:"40";s:5:"email";s:15:"hmh2014@126.com";s:7:"address";s:21:"新密市职教中心";s:7:"zipcode";s:0:"";s:3:"tel";s:0:"";s:6:"mobile";s:11:"13938504244";s:13:"sign_building";s:0:"";s:9:"best_time";s:0:"";s:7:"user_id";s:2:"12";}}'),
 	('4d0d2fa9ccf5f6690dd8b732bb4f3189', 4294967295, 'a:11:{s:10:"last_check";i:1447794052;s:10:"admin_name";s:5:"admin";s:11:"action_list";s:3:"all";s:12:"suppliers_id";s:1:"0";s:11:"supplier_id";s:2:"10";s:16:"supplier_user_id";s:2:"10";s:13:"supplier_name";s:8:"cy2000cy";s:20:"supplier_action_list";s:3:"all";s:19:"supplier_last_check";s:10:"1447706369";s:17:"supplier_admin_id";s:2:"10";s:19:"supplier_shop_guide";b:1;}'),
 	('cf572b531d4d0c3111d78b40424cc3ff', 2895499272, 'a:12:{s:7:"from_ad";i:0;s:7:"referer";s:6:"本站";s:10:"login_fail";i:0;s:9:"flow_type";i:0;s:13:"captcha_login";s:16:"MjYwOTAzNDI4NA==";s:9:"last_time";s:10:"1447718766";s:7:"last_ip";s:9:"127.0.0.1";s:7:"headimg";s:0:"";s:14:"extension_code";s:0:"";s:13:"sel_cartgoods";s:3:"203";s:14:"flow_consignee";a:1:{s:7:"country";s:1:"1";}s:10:"flow_order";a:7:{s:11:"shipping_id";i:0;s:6:"pay_id";i:0;s:7:"pack_id";i:0;s:7:"card_id";i:0;s:5:"bonus";i:0;s:8:"integral";i:0;s:7:"surplus";i:0;}}'),
+	('9cca77191d7d1caa313b7a92506aee58', 4294967295, 'a:8:{s:7:"from_ad";i:0;s:7:"referer";s:4:"Home";s:10:"login_fail";i:0;s:12:"captcha_word";s:16:"ZGJhNGEwYmU5Yw==";s:13:"find_password";a:4:{s:7:"user_id";s:2:"15";s:9:"user_name";s:8:"cy2000cy";s:5:"email";s:17:"cy2000cy@21cn.com";s:12:"mobile_phone";s:0:"";}s:15:"mobile_validate";s:0:"";s:14:"email_validate";s:17:"cy2000cy@21cn.com";s:13:"captcha_login";s:16:"YmM0MDdmNjA4OQ==";}'),
 	('2edcfe74caff1ec8153fa1f52082df0a', 2898993894, 'a:8:{s:7:"from_ad";i:0;s:7:"referer";s:4:"Home";s:10:"login_fail";i:0;s:13:"captcha_login";s:16:"ZTIzZjQzNmZkNA==";s:9:"last_time";s:10:"1449452494";s:7:"last_ip";s:9:"127.0.0.1";s:7:"headimg";s:0:"";s:12:"captcha_word";s:16:"NjU4YWQzZDBkOQ==";}');
 /*!40000 ALTER TABLE `ecs_sessions_data` ENABLE KEYS */;
 
