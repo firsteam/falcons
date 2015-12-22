@@ -1264,7 +1264,7 @@ margin-top:expression(28-this.height/2);
 	white-space: nowrap;
 	display: block;
 	height: 20px;
-	padding: 5px 10px 10px;
+	padding: 5px 13px 13px;
 	overflow: hidden;
 }
 .squares .goods-price em.sale-price {
@@ -1303,13 +1303,13 @@ margin-top:expression(28-this.height/2);
 	margin: 2px 0;
 }
 .squares .goods-name {
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 16px;
 	color: #999;
 	background-color: #FFF;
 	height: 34px;
 	display: block;
-	padding: 0 10px;
+	padding: 0 13px;
 	overflow: hidden;
 }
 .squares .goods-name em {

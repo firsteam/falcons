@@ -195,9 +195,9 @@
               <!-- {if $goods.goods_id} -->
               <li id="li_{$goods.goods_id}" class="item" {if $smarty.foreach.name.iteration % 4 eq 1}style="margin-left:0px;"{/if}>
                 <div class="goods-content" style="position:relative">
-                <!-- {if $goods.is_hot eq 1} --><span class="little_pic">爆款</span><!--{/if}--> 
-		<!-- {if $goods.is_best eq 1} --><span class="little_pic">精品</span><!--{/if}-->
-		<!-- {if $goods.is_new eq 1} --><span class="little_pic">新品</span><!--{/if}--> 
+                <!-- {if $goods.is_hot eq 1} --><span class="little_pic">Hot</span><!--{/if}--> 
+		<!-- {if $goods.is_best eq 1} --><span class="little_pic">Rcmd</span><!--{/if}-->
+		<!-- {if $goods.is_new eq 1} --><span class="little_pic">New</span><!--{/if}--> 
                   <div class="goods-pic">
                   	<a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">
                     	<img data-original="{$goods.goods_thumb}" src="themes/cnpicks/images/loading.gif" title="{$goods.name|escape:html}" class="pic_img_{$goods.goods_id}">
@@ -276,7 +276,7 @@
       <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
       <!-- {/if} --> 
     </div>
-    <div class="left"> <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    <div class="left" style="display: none;"> <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
       <div style="height:10px; line-height:10px; clear:both;"></div>
       <!-- #BeginLibraryItem "/library/top10.lbi" --><!-- #EndLibraryItem --> </div>
     <!--left end--> 

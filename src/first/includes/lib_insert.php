@@ -103,6 +103,7 @@ function insert_history()
 }
 function get_cainixihuan()
 {
+    return false;
 if(!empty($_COOKIE['ECS']['history']))
 {
 $where = db_create_in($_COOKIE['ECS']['history'], 'goods_id');
