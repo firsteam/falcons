@@ -1,7 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- {if $category_related_brand_goods} -->
 <div class="clearfix"></div> 
-<div class="left brands_goods_list">
+<div class="brands_goods_list">
 	<div class="brands_goods_title">
 		<a href="{$goods.goods_brand_url}" >
 			<span style="font-size: 16px;font-weight: 500;padding:10px 0;">{$goods.goods_brand}</span>

@@ -351,7 +351,7 @@ BUTTON {
 }
 .goods_brief {
 	color: #999;
-	margin-left: 5px;
+	margin: 15px 5px;
 }
 #summary {
 	PADDING-RIGHT: 0px;
@@ -1608,7 +1608,7 @@ span.scrright {
 }
 .goods_img {
 	padding: 10px;
-	width: 560px;
+	width: 562px;
 	border: 1px solid #DDD;
 }
 .shop_self {
@@ -2322,7 +2322,7 @@ _top:       expression(eval(document.compatMode &&
 	width:160px;
 	float:left;
 	position: relative;
-	padding: 8px
+	padding: 16px
 }
 .brands_goods_list .brands_goods_title span{
 	display: block;
@@ -2330,8 +2330,8 @@ _top:       expression(eval(document.compatMode &&
 	text-align: center;
 }
 .goods_desc{
-	margin-top:20px;
-	width: 582px;
+	margin:20px 0px;
+	/*width: 582px;*/
 	float: left;
 	overflow: hidden;
 }

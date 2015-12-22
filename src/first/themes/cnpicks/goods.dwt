@@ -59,81 +59,7 @@
           </div>
         </div>
 
-        <div class="goods_desc"> <!-- #BeginLibraryItem "/library/goods_package_ecshop68.lbi" --><!-- #EndLibraryItem -->
-        <div id="wrapper" class="m m1">
-          <div class="dt">
-            <ul class="tab" id="nav">
-              <li class="boldtit_list h_list" onclick="change_widget(1, this);"><a href="{$url}#os_canshu">Description</a></li>
-              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_jieshao" >商品介绍</a></li>
-              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_pinglun" >商品评价({$review_count})</a></li>
-              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_shouhou" >售后保障</a></li>
-            </ul>
-            <div style="display:none;width:170px;float:right; position:relative;left:0;top:0"> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart"  class="right_add" >Add to Cart</a>
-              <div class="ce_right">
-                <ul class="abs_ul">
-                  <li class="abs_active"><i></i><span>规格参数</span></li>
-                  <li><i></i><span>产品介绍</span></li>
-                  <li><i></i><span>商品评价</span></li>
-                  <li><i></i><span>包装清单</span></li>
-                  <li><i></i><span>售后服务</span></li>
-                  <li><i></i><span>常见问题</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div id="main_widget_1">
-            <div class="dc" id="os_canshu">
-              <ul class="detail-list" style="display:none">
-                <li>商品名称：{$goods.goods_style_name}</li>
-                <li>商品编号：{$goods.goods_sn}</li>
-                <li>品牌：<a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></li>
-                <li>上架时间：{$goods.add_time}</li>
-                <li>商品毛重：{$goods.goods_weight}</li>
-                <li>库存： 
-                  <!-- {if $goods.goods_number eq 0} --> 
-                  {$lang.stock_up} 
-                  <!-- {else} --> 
-                  {$goods.goods_number} {$goods.measure_unit} 
-                  <!-- {/if} --> 
-                </li>
-                <!-- {if $properties} --> 
-                <!-- {foreach from=$properties item=property_group key=key} --> 
-                <!-- {foreach from=$property_group item=property} -->
-                <li >{$property.name|escape:html}：{$property.value}</li>
-                <!-- {/foreach}--> 
-                <!-- {/foreach}--> 
-                <!-- {/if} -->
-              </ul>
-            </div>
-            <div class="dc" id="os_jieshao">
-              <div class="blank20"></div>
-              <div class="detail-content"> {$goods.goods_desc} </div>
-            </div>
-            <div class="dc" id="os_pinglun" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/my_comments.lbi" --><!-- #EndLibraryItem --> </div>
-            <div class="dc" id="os_advantage" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/packing_list.lbi" --><!-- #EndLibraryItem --> </div>
-            <div class="dc" id="os_shouhou" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/baozhang.lbi" --><!-- #EndLibraryItem --> </div>
-            <div class="dc" id="os_changjian" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/common_problem.lbi" --><!-- #EndLibraryItem --> </div>
-          </div>
-        </div>
-        <script type="text/javascript">
-            var obj11 = document.getElementById("main-nav-holder");
-            var top11 = getTop(obj11);
-            var isIE6 = /msie 6/i.test(navigator.userAgent);
-            function getTop(e){
-              var offset = e.offsetTop;
-              if(e.offsetParent != null) offset += getTop(e.offsetParent);
-              return offset;
-            }
-        </script>
-      </div>
+        
     </div>
       <div class="goods_right">
       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
@@ -142,9 +68,7 @@
             <div id="name" style="display:none">
               <h1>{$goods.goods_style_name}</h1>
             </div>
-            <!-- {if $goods.goods_brief} -->
-            <div class="goods_brief"><span>{$goods.goods_brief}</span></div>
-            <!-- {/if} -->
+            
             <div id="summary-price" class="clearfix">
               <div class="mar_l">
                 <p> 
@@ -172,21 +96,26 @@
                     <!--{/foreach}--> 
                   </div>
                   <script type="text/javascript">
-          function hidevip1()
-          { 
-          document.getElementById('vip1').style.display="none";
-          document.getElementById('vip2').style.display="block";
-          }
-          function showvip1()
-          { 
-          document.getElementById('vip1').style.display="block";
-          document.getElementById('vip2').style.display="none";
-          }
-          </script> 
+                      function hidevip1()
+                      { 
+                      document.getElementById('vip1').style.display="none";
+                      document.getElementById('vip2').style.display="block";
+                      }
+                      function showvip1()
+                      { 
+                      document.getElementById('vip1').style.display="block";
+                      document.getElementById('vip2').style.display="none";
+                      }
+                  </script> 
                 </div>
                 <!-- {/if} --> 
               </div>
             </div>
+            
+            <!-- {if $goods.goods_brief} -->
+            <div class="goods_brief"><span>{$goods.goods_brief}</span></div>
+            <!-- {/if} -->
+            
             <ul id="summary1">
               <!-- {if $cfg.show_goodssn} 显示商品货号 -->
               <li class="padd1">
@@ -194,7 +123,7 @@
               </li>
               <!-- {/if} --> 
               <!-- {if $goods.goods_brand neq "" and $cfg.show_brand} 显示商品品牌-->
-              <li class="padd1" style="display:none;">
+              <li class="padd1">
                 <div class="dt">Product Brand: <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></div>
               </li>
               <!--{/if}--> 
@@ -339,8 +268,8 @@
               <!-- {/if} -->
             </ul>
             <ul id="choose" class="choose_bor">
-              <li style="padding:0 0 7px 0px; overflow:visible;z-index:2; position:relative">
-                <div class="pickup_point_wrap" style="display:none">
+              <li style="display:none; padding:0 0 7px 0px; overflow:visible;z-index:2; position:relative">
+                <div class="pickup_point_wrap" >
                   <div class="dt" style="padding: 5px 0;">自提：</div>
                   <div id="pickup_point" onmouseenter="show_list()" onmouseleave="hide_list()">自提点列表</div>
                   <div id="area_label" onmouseenter="show_area()" onmouseleave="hide_area()">所在区域</div>
@@ -487,7 +416,7 @@
         <!-- #BeginLibraryItem "/library/ziying_info.lbi" --><!-- #EndLibraryItem --> 
         <!-- {/if} --> 
       </div>
-      <!-- #BeginLibraryItem "/library/goods_brands.lbi" --><!-- #EndLibraryItem -->
+      
       <!--preview end--> 
     </div>
   </div>
@@ -631,10 +560,88 @@
       <script type="text/javascript">
 	$(".ce_right").height($("#main_widget_1").height());
 </script> 
+
+    <div class="goods_desc"> <!-- #BeginLibraryItem "/library/goods_package_ecshop68.lbi" --><!-- #EndLibraryItem -->
+        <div id="wrapper" class="m m1">
+          <div class="dt">
+            <ul class="tab" id="nav">
+              <li class="boldtit_list h_list" onclick="change_widget(1, this);"><a href="{$url}#os_canshu">Description</a></li>
+              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_jieshao" >商品介绍</a></li>
+              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_pinglun" >商品评价({$review_count})</a></li>
+              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_shouhou" >售后保障</a></li>
+            </ul>
+            <div style="display:none;width:170px;float:right; position:relative;left:0;top:0"> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart"  class="right_add" >Add to Cart</a>
+              <div class="ce_right">
+                <ul class="abs_ul">
+                  <li class="abs_active"><i></i><span>规格参数</span></li>
+                  <li><i></i><span>产品介绍</span></li>
+                  <li><i></i><span>商品评价</span></li>
+                  <li><i></i><span>包装清单</span></li>
+                  <li><i></i><span>售后服务</span></li>
+                  <li><i></i><span>常见问题</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="main_widget_1" style="border: 1px solid #DDD;">
+            <div class="dc" id="os_canshu">
+              <ul class="detail-list" style="display:none">
+                <li>商品名称：{$goods.goods_style_name}</li>
+                <li>商品编号：{$goods.goods_sn}</li>
+                <li>品牌：<a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></li>
+                <li>上架时间：{$goods.add_time}</li>
+                <li>商品毛重：{$goods.goods_weight}</li>
+                <li>库存： 
+                  <!-- {if $goods.goods_number eq 0} --> 
+                  {$lang.stock_up} 
+                  <!-- {else} --> 
+                  {$goods.goods_number} {$goods.measure_unit} 
+                  <!-- {/if} --> 
+                </li>
+                <!-- {if $properties} --> 
+                <!-- {foreach from=$properties item=property_group key=key} --> 
+                <!-- {foreach from=$property_group item=property} -->
+                <li >{$property.name|escape:html}：{$property.value}</li>
+                <!-- {/foreach}--> 
+                <!-- {/foreach}--> 
+                <!-- {/if} -->
+              </ul>
+            </div>
+            <div class="dc" id="os_jieshao">
+              <div class="blank20"></div>
+              <div class="detail-content"> {$goods.goods_desc} </div>
+            </div>
+            <div class="dc" id="os_pinglun" style="display:none;">
+              <div class="blank20"></div>
+              <!-- #BeginLibraryItem "/library/my_comments.lbi" --><!-- #EndLibraryItem --> </div>
+            <div class="dc" id="os_advantage" style="display:none;">
+              <div class="blank20"></div>
+              <!-- #BeginLibraryItem "/library/packing_list.lbi" --><!-- #EndLibraryItem --> </div>
+            <div class="dc" id="os_shouhou" style="display:none;">
+              <div class="blank20"></div>
+              <!-- #BeginLibraryItem "/library/baozhang.lbi" --><!-- #EndLibraryItem --> </div>
+            <div class="dc" id="os_changjian" style="display:none;">
+              <div class="blank20"></div>
+              <!-- #BeginLibraryItem "/library/common_problem.lbi" --><!-- #EndLibraryItem --> </div>
+          </div>
+        </div>
+        <script type="text/javascript">
+            var obj11 = document.getElementById("main-nav-holder");
+            var top11 = getTop(obj11);
+            var isIE6 = /msie 6/i.test(navigator.userAgent);
+            function getTop(e){
+              var offset = e.offsetTop;
+              if(e.offsetParent != null) offset += getTop(e.offsetParent);
+              return offset;
+            }
+        </script>
+      </div>
+    <!-- #BeginLibraryItem "/library/goods_brands.lbi" --><!-- #EndLibraryItem -->  
     </div>
     <!--right end--> 
   </div>
-  <div style="height:20px; line-height:20px; clear:both"></div>
+  
+  <div style="height:40px; line-height:20px; clear:both"></div>
   <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> </div>
 </body>
 <script type="text/javascript">

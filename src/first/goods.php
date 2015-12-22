@@ -1352,7 +1352,7 @@ function category_related_brand_goods($category_id,$brand_id)
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
             'LEFT JOIN ' . $GLOBALS['ecs']->table('member_price') . ' AS mp ' .
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
-            "WHERE $where ORDER BY g.goods_id limit 12";
+            "WHERE $where ORDER BY g.goods_id limit 15";
     $res = $GLOBALS['db']->query($sql);
     $arr = array();
     while ($row = $GLOBALS['db']->fetchRow($res))
