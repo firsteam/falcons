@@ -615,6 +615,10 @@ a:hover, a:active {
 	text-align: center;
 	color: #fff
 }
+#filter .order dt {	
+	margin-right: 5px;
+}
+
 #filter .order dd {
 	height: 24px;
 	border: 1px solid #CECBCE;
@@ -644,7 +648,7 @@ a:hover, a:active {
 #filter .order dd b {
 	position: absolute;
 	top: 5px;
-	left: 35px;
+	right: 4px;
 	width: 14px;
 	height: 14px;
 	overflow: hidden;

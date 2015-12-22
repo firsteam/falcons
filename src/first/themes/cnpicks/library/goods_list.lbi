@@ -4,12 +4,12 @@
     <form method="GET" name="listform" action="{$actname}">
       <div class='fore1' style="border:none;">
         <dl class='order'>
-          <dt>排序：</dt>
-          <dd  class=<!-- {if $pager.sort == 'goods_id'} -->curr<!-- {/if} -->><a href="{$shangjian}">上架</a><b class="icon-order-{if $pager.sort == 'goods_id'}{$pager.order}{else}DESC{/if}ending"></b></dd>
-          <dd  class=<!-- {if $pager.sort == 'salenum'} -->curr<!-- {/if} -->><a href="{$xiaoliang}">销量</a><b class="icon-order-{if $pager.sort == 'salenum'}{$pager.order}{else}DESC{/if}ending"></b></dd>
-          <dd  class=<!-- {if $pager.sort == 'shop_price'} -->curr<!--{/if}-->><a href="{$jiage}">价格</a><b class="icon-order-{if $pager.sort == 'shop_price'}{$pager.order}{else}DESC{/if}ending"></b></dd>
-          <dd  class=<!-- {if $pager.sort == 'last_update'} -->curr<!-- {/if} -->><a href="{$gengxin}">更新</a><b class="icon-order-{if $pager.sort == 'last_update'}{$pager.order}{else}DESC{/if}ending"></b></dd>
-          <dd class=<!-- {if $pager.sort == 'click_count'} -->curr<!-- {/if} -->><a href="{$renqi}" rel='nofollow'>人气</a><b class="icon-order-{if $pager.sort == 'click_count'}{$pager.order}{else}DESC{/if}ending"></b></dd>
+          <dt>Sort: </dt>
+          <dd  class=<!-- {if $pager.sort == 'goods_id'} -->curr<!-- {/if} -->><a href="{$shangjian}">Default</a><b class="icon-order-{if $pager.sort == 'goods_id'}{$pager.order}{else}DESC{/if}ending"></b></dd>
+          <dd  class=<!-- {if $pager.sort == 'salenum'} -->curr<!-- {/if} -->><a href="{$xiaoliang}">Volume</a><b class="icon-order-{if $pager.sort == 'salenum'}{$pager.order}{else}DESC{/if}ending"></b></dd>
+          <dd  class=<!-- {if $pager.sort == 'shop_price'} -->curr<!--{/if}-->><a href="{$jiage}">Price</a><b class="icon-order-{if $pager.sort == 'shop_price'}{$pager.order}{else}DESC{/if}ending"></b></dd>
+          <dd  class=<!-- {if $pager.sort == 'last_update'} -->curr<!-- {/if} -->><a href="{$gengxin}">New</a><b class="icon-order-{if $pager.sort == 'last_update'}{$pager.order}{else}DESC{/if}ending"></b></dd>
+          <dd class=<!-- {if $pager.sort == 'click_count'} -->curr<!-- {/if} -->><a href="{$renqi}" rel='nofollow'>Hot</a><b class="icon-order-{if $pager.sort == 'click_count'}{$pager.order}{else}DESC{/if}ending"></b></dd>
 	       </dl>
     	
         <div class='pagin pagin-m'><span class='text'><font>{$pager.page}</font>/{$pager.page_count}</span><!-- {if $pager.page_prev} --> 
@@ -22,7 +22,7 @@
           <!-- {else} --> 
           <span class="next-disabled">&gt;</span> 
           <!-- {/if} --></div>
-        <div class='total'><span>共<strong>{$pager.record_count}</strong>个商品</span></div>
+        <div class='total'><span>All <strong>{$pager.record_count}</strong> items</span></div>
         <div style="height:0px; line-height:0px; clear:both;"></div>
       </div>
       <div class='fore1 fore3'>
@@ -35,9 +35,9 @@
 	 	 </dd>
         </dl>
         <div class="display_mod">
-        	 <a href="javascript:;" onClick="javascript:display_mode('list')" title="列表显示"><img src="images/display_mode_list<!-- {if $pager.display == 'list'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.list}"></a>
-  <a href="javascript:;" onClick="javascript:display_mode('grid')" title="表格显示"><img src="images/display_mode_grid<!-- {if $pager.display == 'grid'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.grid}"></a>
-  <a href="javascript:;" onClick="javascript:display_mode('text')" title="文本显示"><img src="images/display_mode_text<!-- {if $pager.display == 'text'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.text}"></a>
+        	 <a href="javascript:;" onClick="javascript:display_mode('list')" title="List"><img src="images/display_mode_list<!-- {if $pager.display == 'list'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.list}"></a>
+  <a href="javascript:;" onClick="javascript:display_mode('grid')" title="Picture"><img src="images/display_mode_grid<!-- {if $pager.display == 'grid'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.grid}"></a>
+  <a href="javascript:;" onClick="javascript:display_mode('text')" title="Text"><img src="images/display_mode_text<!-- {if $pager.display == 'text'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.text}"></a>
         </div>
       </div>
       <input type="hidden" name="category" value="{$category}" />
@@ -85,8 +85,8 @@
     	<!--{/if}-->
     	</li>
     	<li class="action">
-         	<!--{if $goods.goods_number eq 0}--><div class="shop_over" style="float:left">已售罄</div><!-- {/if} -->
-    		<a href="javascript:collect({$goods.goods_id});" class="abg">收藏</a>
+         	<!--{if $goods.goods_number eq 0}--><div class="shop_over" style="float:left">Sold</div><!-- {/if} -->
+    		<a href="javascript:collect({$goods.goods_id});" class="abg">Favorite</a>
     		<a href="javascript:addToCart({$goods.goods_id});" nctype="add_cart" class="adc" {if $goods.goods_number eq 0}style="background-color:#CCC; color:#EEE"{/if}>加入购物车</a>
     	</li>
     </ul>
@@ -99,19 +99,19 @@
         <!-- {if $goods.goods_id} -->
         <li class="item" {if $smarty.foreach.name.iteration % 4 eq 1}style="margin-left:0px;"{/if} id="li_{$goods.goods_id}">
           <div class="goods-content" style="position:relative">
-		<!-- {if $goods.is_hot eq 1} --><span class="little_pic">爆款</span><!--{/if}--> 
-		<!-- {if $goods.is_best eq 1} --><span class="little_pic">精品</span><!--{/if}-->
-		<!-- {if $goods.is_new eq 1} --><span class="little_pic">新品</span><!--{/if}--> 
+		<!-- {if $goods.is_hot eq 1} --><span class="little_pic">Hot</span><!--{/if}--> 
+		<!-- {if $goods.is_best eq 1} --><span class="little_pic">Rcmd</span><!--{/if}-->
+		<!-- {if $goods.is_new eq 1} --><span class="little_pic">New</span><!--{/if}--> 
             </span>
             <div class="goods-pic" ><a href="{$goods.url}" target="_blank"  title="{$goods.name|escape:html}"><img data-original="{$goods.goods_thumb}" src="themes/cnpicks/images/loading.gif" title="{$goods.name|escape:html}" class="pic_img_{$goods.goods_id}"></a> </div>
 		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1"></a><!-- {/if} -->
             <div class="goods-info"> 
               <div class="goods-name"><a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.name|escape:html}<em></em></a></div>
-              <div class="goods-price"> <em class="sale-price" title="本店价：<!--{if $goods.promote_price neq "" } -->${$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->#{$goods.promote_price}<!--{else}-->${$goods.shop_price}<!--{/if}--></em> <em class="market-price" title="">${$goods.market_price}</em>
+              <div class="goods-price"> <em class="sale-price" title="Price: <!--{if $goods.promote_price neq "" } -->${$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->#{$goods.promote_price}<!--{else}-->${$goods.shop_price}<!--{/if}--></em> <em class="market-price" title="">${$goods.market_price}</em>
               <a id="collect_{$goods.goods_id}" href="javascript:collect({$goods.goods_id}); re_collect({$goods.goods_id})" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
               </div>
               <div class="store"> 
-              <div class="add-cart"> <a href="javascript:addToCart({$goods.goods_id});"><i class="icon-shopping-cart"></i>加入购物车</a> </div>
+              <div class="add-cart"> <a href="javascript:addToCart({$goods.goods_id});"><i class="icon-shopping-cart"></i>Add to cart</a> </div>
             </div>
           </div>
         </li>
@@ -146,8 +146,8 @@
     <!--{/if}-->
     </li>
     <li class="action">
-		<!--{if $goods.goods_number eq 0}--><div class="shop_over" style="float:left">已售罄</div><!-- {/if} -->
-		<a href="javascript:collect({$goods.goods_id});" class="abg">收藏</a>
+		<!--{if $goods.goods_number eq 0}--><div class="shop_over" style="float:left">Sold</div><!-- {/if} -->
+		<a href="javascript:collect({$goods.goods_id});" class="abg">Favorite</a>
 		<a href="javascript:addToCart({$goods.goods_id});" nctype="add_cart" class="adc" {if $goods.goods_number eq 0}style="background-color:#CCC; color:#EEE"{/if}>加入购物车</a>   
        </li>
     </ul>
@@ -158,7 +158,7 @@
   </form>
   <!-- {/if} -->
   <!-- {else} --> 
-  <div style="padding:20px 0px; text-align:center" class="f5" >抱歉！没有搜索到您想要的结果……</div>
+  <div style="padding:20px 0px; text-align:center" class="f5" >Sorry! Could not find any record ……</div>
   <!-- {/if} --> 
 </div>
 <div class="blank5"></div>

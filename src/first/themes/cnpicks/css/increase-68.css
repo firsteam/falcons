@@ -415,6 +415,7 @@ Template Type: type_0
 	text-align: center;
 }
 .compareHolder {
+    display:none;
 	height: 66px;
 	line-height: 14px;
 	margin: 5px 0;
