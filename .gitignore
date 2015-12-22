@@ -8,3 +8,7 @@ src/first/themes/.DS_Store
 src/first/themes/.DS_Store
 
 src/first/themes/cnpicks/.DS_Store
+
+src/first/temp/*
+src/first/qrcode.png
+src/first/supplier.png
