@@ -155,10 +155,8 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
     $json   = new JSON;
     $res    = array('err_msg' => '', 'result' => '', 'qty' => 1);
 
-    //$attr_id    = isset($_REQUEST['attr']) ? explode(',', $_REQUEST['attr']) : array();
-    $attr_id    = isset($_REQUEST['attr']) ? $_REQUEST['attr'] : array();
+    $attr_id    = isset($_REQUEST['attr']) ? explode(',', $_REQUEST['attr']) : array();
     $number     = (isset($_REQUEST['number'])) ? intval($_REQUEST['number']) : 1;
-    //$number		= 1;
 
     if ($goods_id == 0)
     {
@@ -175,32 +173,9 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
         {
             $res['qty'] = $number;
         }
-        if(empty($attr_id)){
-        	$attr_id = 0;
-        }
-        $res['attr_num'] = get_product_attr_num($goods_id,$attr_id);
-        //$res['attr_num'] = $ret[$attr_id];
-        
-// 		$number = 1;
+
         $shop_price  = get_final_price($goods_id, $number, true, $attr_id);
-        $mark_price = get_mark_price($goods_id);
-
-		$shop_price = ($shop_price>=0) ? $shop_price : 0;
-
         $res['result'] = price_format($shop_price * $number);
-        $res['result1'] = price_format($mark_price);
-		$res['result_jf'] = floor($shop_price * $number);
-		
-		//预售，检查库存是否足够
-		$current_number = $res['attr_num'];
-		if($number > $current_number)
-		{
-			$res['err_msg'] = sprintf($_LANG['err_shortage_little'], $current_number);
-			$res['qty'] = $current_number;
-			$res['err_no']  = 1;
-		}
-		
-		
     }
 
     die($json->encode($res));

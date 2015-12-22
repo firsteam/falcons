@@ -757,7 +757,6 @@ function changePrice()
 {
   var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
   var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
-
   Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
 }
 
@@ -768,26 +767,25 @@ function changePriceResponse(res)
 {
   if (res.err_msg.length > 0 && res.qty ==0)
   {
-	document.getElementById('choose-btns').style.display = 'none';
+	  document.getElementById('choose-btns').style.display = 'none';
     document.getElementById('choose-btns1').style.display = 'block';
     alert(res.err_msg);
-	document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
- }
+	  document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
+  }
   else
   {
 	  document.getElementById('choose-btns').style.display = 'block';
      document.getElementById('choose-btns1').style.display = 'none';
     document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
-
     if (document.getElementById('ECS_GOODS_AMOUNT')){
       document.getElementById('ECS_GOODS_AMOUNT').innerHTML = '$'+res.result;
 	  if (res.result_jf){
 		document.getElementById('ECS_GOODS_AMOUNT_jf').innerHTML = '$'+res.result_jf;
 	  }
     }
-    if(document.getElementById('shows_number')){
-	document.getElementById('shows_number').innerHTML = res.attr_num;
-    }
+    // if(document.getElementById('shows_number')){
+	   // document.getElementById('shows_number').innerHTML = res.attr_num;
+    // }
     if(document.getElementById('mark_price')){
 	document.getElementById('mark_price').innerHTML = res.result1;
     }
