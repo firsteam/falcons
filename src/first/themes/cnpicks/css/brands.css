@@ -735,7 +735,7 @@ html {
 	z-index: 2;
 	width: 785px;
 	height: 160px;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 .picMarquee-left {
 	overflow: hidden;
@@ -762,7 +762,7 @@ html {
 }
 .picMarquee-left .bda {
 	padding: 0px 0px 0px 0px;
-	height: 165px;
+	height: 180px;
 }
 .picMarquee-left .bda .picListta{
 	/*width:528px;
@@ -780,7 +780,7 @@ html {
 
 .picMarquee-left .bda ul li {
 	width: 140px;
-	height: 160px;
+	/*height: 160px;*/
 	margin: 5px 5px 0px 9px;
 	float: left;
 	display: block;
@@ -813,7 +813,8 @@ html {
 	line-height: 20px;
 	width: 100%;
 	text-align: center;
-	display: inline-block
+	display: inline-block;
+	margin-top:8px;
 }
 .picMarquee-left ul li a:hover {
 	color: #E31939;

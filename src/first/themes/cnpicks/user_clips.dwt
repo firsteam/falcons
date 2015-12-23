@@ -480,11 +480,7 @@ menu.className=i==cursel?"line1":"line2";
                                   <!--{/if}--> 
                                   </strong> </span> </dd>
                                 <dd class="hover_tan"> 
-                                  <!-- {if $goods.is_attention} --> 
-                                  <i class="guanzhu1"></i><a href="javascript:if (confirm('{$lang.del_attention}')) location.href='user.php?act=del_attention&rec_id={$goods.rec_id}'" class="ncm-btn-mini">{$lang.no_attention}</a> 
-                                  <!-- {else} --> 
-                                  <i class="guanzhu2"></i><a href="javascript:if (confirm('{$lang.add_to_attention}')) location.href='user.php?act=add_to_attention&rec_id={$goods.rec_id}'" class="ncm-btn-mini">{$lang.attention}</a> 
-                                  <!-- {/if} --> 
+                                 
                                   <!-- {if $goods.is_pre_sale == 1} -->
                                   <i class="cart"></i><a href="pre_sale.php?id={$goods.pre_sale_id}" target="_blank" class="ncm-btn-mini">{$lang.button_buy}</a> <i class="del"></i><a href="javascript:if (confirm('{$lang.remove_collection_confirm}')) location.href='user.php?act=delete_collection&collection_id={$goods.rec_id}'" class="ncm-btn-mini ncm-btn-mini1">{$lang.drop}</a> </dd>
                                   <!-- {else} -->
