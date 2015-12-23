@@ -119,15 +119,15 @@ function addToCartResponse(result)
 /* *
  * 添加商品到收藏夹
  */
-function collect(goodsId)
+function collect_goods(goodsId)
 {
-  Ajax.call('user.php?act=collect', 'id=' + goodsId, collectResponse, 'GET', 'JSON');
+  Ajax.call('user.php?act=collect', 'id=' + goodsId, collectGoodsResponse, 'GET', 'JSON');
 }
 
 /* *
  * 处理收藏商品的反馈信息
  */
-function collectResponse(result)
+function collectGoodsResponse(result)
 {
   alert(result.message);
 }
