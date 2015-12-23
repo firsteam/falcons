@@ -67,6 +67,16 @@ $_LANG['password_js']['show_div_exit'] = '关闭';
 $_LANG['goods_fittings'] = '商品相关配件';
 $_LANG['parent_name'] = '相关商品：';
 $_LANG['remark_package'] = '礼包';
+$_LANG['continue_shopping'] = '继续购物';
+$_LANG['check_out'] = '结算';
+$_LANG['select_at_least_one'] = '请至少选择一个商品';
+$_LANG['add_item'] = '请先添加商品！';
+
+$_LANG['check_cart'] = '检查购物车';
+$_LANG['place_order'] = '拍下商品';
+$_LANG['pay_order_flow'] = '付款';
+$_LANG['received_order'] = '确认收货';
+$_LANG['review_order'] = '评价';
 
 /* 优惠活动 */
 $_LANG['favourable_name'] = '活动名称：';

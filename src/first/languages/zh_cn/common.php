@@ -16,6 +16,9 @@
 /* 用户登录语言项 */
 $_LANG['empty_username_password'] = '对不起，您必须完整填写用户名和密码。';
 $_LANG['shot_message'] = "短消息";
+$_LANG['button_submit'] = '确定';
+$_LANG['button_cancel'] = '取消';
+$_LANG['check_all'] = '全选';
 
 /* 公共语言项 */
 $_LANG['sys_msg'] = '系统提示';
@@ -140,7 +143,8 @@ $_LANG['compare'] = '比较';
 $_LANG['volume_price'] = '购买商品达到以下数量区间时可享受的优惠价格';
 $_LANG['number_to'] = '数量';
 $_LANG['article_list'] = '文章列表';
-
+$_LANG['self_support'] = '网店自营';
+$_LANG['total'] = '合计';
 
 /* 商品比较JS语言项 */
 $_LANG['compare_js']['button_compare'] = '比较选定商品';

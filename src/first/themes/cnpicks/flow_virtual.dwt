@@ -24,8 +24,8 @@
 <div id="popup_window" style="width:250px;height:auto;margin-left:-150px;margin-top:-75px;left:50%;top:50%;position:fixed;background-color:lightgrey;display:none;z-index:9999;">
   <label style="width:80%;float:left;font-size:1.3em;margin:5px 10px;height:20px;">请输入余额支付密码:</label>
   <input id="surplus_password_input" class='inputBg' type="password" style='float:left;margin:5px 10px;width:230px;background-color:white;height:30px;border:none'/>
-  <input type="button" onclick="end_input_surplus()" value="确定" style="float:left;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF"/>
-  <input type="button" onclick="cancel_input_surplus()" value="取消" style="float:right;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF""/>
+  <input type="button" onclick="end_input_surplus()" value="{$lang.button_submit}" style="float:left;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF"/>
+  <input type="button" onclick="cancel_input_surplus()" value="{$lang.button_cancel}" style="float:right;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF""/>
 </div>
 <!--余额额支付密码_添加_END_www.68ecshop.com-->
 <div id="site-nav" style="position:relative;"> <!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
@@ -42,24 +42,24 @@
       <ol class="flowstep-5">
         <li class="step-first">
           <div class="step-done">
-            <div class="step-name">查看购物车</div>
+            <div class="step-name">{$lang.check_cart}</div>
             <div class="step-no"></div>
           </div>
         </li>
         <li>
-          <div class="step-name">拍下商品</div>
+          <div class="step-name">{$lang.place_order}</div>
           <div class="step-no">2</div>
         </li>
         <li>
-          <div class="step-name">付款</div>
+          <div class="step-name">{$lang.pay_order_flow}</div>
           <div class="step-no">3</div>
         </li>
         <li>
-          <div class="step-name">确认收货</div>
+          <div class="step-name">{$lang.received_order}</div>
           <div class="step-no">4</div>
         </li>
         <li class="step-last">
-          <div class="step-name">评价</div>
+          <div class="step-name">{$lang.review_order}</div>
           <div class="step-no">5</div>
         </li>
       </ol>
@@ -77,14 +77,14 @@
       <div class="title_jm" >
         <table cellpadding=0 cellspacing=0 width="100%" border=0>
           <tr> {* 代码增加_start  By  www.68ecshop.com *}
-            <td width="8%" align=center><input type="checkbox" autocomplete="off" id="chkAll" name="chkAll" checked=true  onclick="return chkAll_onclick()" style="height:28px;vertical-align:middle;" >
-              全选</td>
+            <td width="10%" align=center><input type="checkbox" autocomplete="off" id="chkAll" name="chkAll" checked=true  onclick="return chkAll_onclick()" style="height:28px;vertical-align:middle;" >
+              {$lang.check_all}</td>
             {* 代码增加_end  By  www.68ecshop.com *}
-            <td width="37%" align=center>产品</td>
-            <td width="15%" align=center>数量</td>
-            <td width="15%" align=center>本店价</td>
-            <td width="15%" align=center>小计</td>
-            <td width="10%" align=center>操作</td>
+            <td width="37%" align=center>{$lang.goods_name}</td>
+            <td width="15%" align=center>{$lang.number}</td>
+            <td width="15%" align=center>{$lang.shop_prices}</td>
+            <td width="15%" align=center>{$lang.subtotal}</td>
+            <td width="10%" align=center>{$lang.handle}</td>
           </tr>
         </table>
       </div>
@@ -92,12 +92,12 @@
         <!-- #BeginLibraryItem "/library/cart_supplier_goods.lbi" --><!-- #EndLibraryItem -->
         <input type="hidden" name="step" id="actname" value="update_cart" />
       </form>
-      <table width="100%" align="center" border="0" cellpadding="5" cellspacing="6"  style="border-top:1px solid #ddd;">
+      <table width="100%" align="center" border="0" cellpadding="5" cellspacing="6"  style="border-top:1px solid #efefef;">
         <tr>
-          <td width="150"><a href="./" class="continue_buy">继续购物</a></td>
-          <td align="right" width="80"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>清空购物车 </font></a></td>
-          <td align="right" id='cart_money_info'> 应付总额： <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
-          <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">去结算</a></td>
+          <td width="200"><a href="./" class="continue_buy">{$lang.continue_shopping}</a></td>
+          <td align="right" width="120"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>{$lang.clear_cart} </font></a></td>
+          <td align="right" id='cart_money_info'> {$lang.total} <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
+          <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">{$lang.check_out}</a></td>
         </tr>
       </table>
       {* 代码增加_start   By  www.68ecshop.com *} 
@@ -331,10 +331,10 @@ else
     <div class="flowBox_jm">
       <div class="title_jm">
         <ul id="HotBoxTit">
-          <li class="curr">购买的还买了</li>
-          <li >今日最受欢迎</li>
+          <li class="curr">{$lang.best_goods}</li>
+          <li >{$lang.hot_goods}</li>
           <!-- {if $collection_goods} -->
-          <li >我的收藏</li>
+          <li >{$lang.label_collection}</li>
           <!-- {/if} --> 
           <!-- {if $fittings_list} 商品配件 -->
           <li>商品配件</li>
@@ -488,26 +488,26 @@ else
       <ol class="flowstep-5">
         <li class="step-first">
           <div class="step-done">
-            <div class="step-name">查看购物车</div>
+            <div class="step-name">{$lang.check_cart}</div>
             <div class="step-no"></div>
           </div>
         </li>
         <li>
           <div class="step-done">
-            <div class="step-name">拍下商品</div>
+            <div class="step-name">{$lang.place_order}</div>
             <div class="step-no"></div>
           </div>
         </li>
         <li>
-          <div class="step-name">付款</div>
+          <div class="step-name">{$lang.pay_order_flow}</div>
           <div class="step-no">3</div>
         </li>
         <li>
-          <div class="step-name">确认收货</div>
+          <div class="step-name">{$lang.received_order}</div>
           <div class="step-no">4</div>
         </li>
         <li class="step-last">
-          <div class="step-name">评价</div>
+          <div class="step-name">{$lang.review_order}</div>
           <div class="step-no">5</div>
         </li>
       </ol>
@@ -815,28 +815,28 @@ else
       <ol class="flowstep-5">
         <li class="step-first">
           <div class="step-done">
-            <div class="step-name">查看购物车</div>
+            <div class="step-name">{$lang.check_cart}</div>
             <div class="step-no"></div>
           </div>
         </li>
         <li>
           <div class="step-done">
-            <div class="step-name">拍下商品</div>
+            <div class="step-name">{$lang.place_order}</div>
             <div class="step-no"></div>
           </div>
         </li>
         <li>
           <div class="step-done">
-            <div class="step-name">付款</div>
+            <div class="step-name">{$lang.pay_order_flow}</div>
             <div class="step-no"></div>
           </div>
         </li>
         <li>
-          <div class="step-name">确认收货</div>
+          <div class="step-name">{$lang.received_order}</div>
           <div class="step-no">4</div>
         </li>
         <li class="step-last">
-          <div class="step-name">评价</div>
+          <div class="step-name">{$lang.review_order}</div>
           <div class="step-no">5</div>
         </li>
       </ol>

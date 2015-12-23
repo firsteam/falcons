@@ -31,8 +31,8 @@
 		<b class="mui-page-skip">
 			<form method="get">
 			<input type="hidden" name="id" value="{$smarty.request.id|default:0}">
-			Total {$page_count} Page
-			<input type="text" value="{$smarty.request.page|default:1}" size="3" class="mui-page-skipTo j_PageChangeInput" name="page">			
+			 
+			<input type="text" value="{$smarty.request.page|default:1}" size="3" class="mui-page-skipTo j_PageChangeInput" name="page">	 / {$page_count}		
 			<button class="mui-btn-s mui-page-skipBtn j_PageChangeBtn" type="submit">Go</button>
 			</form>
 		</b> 

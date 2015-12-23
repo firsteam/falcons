@@ -69,6 +69,16 @@ $_LANG['password_js']['show_div_exit'] = 'Close';
 $_LANG['goods_fittings'] = 'Goods Fittings';
 $_LANG['parent_name'] = 'Goods Releate：';
 $_LANG['remark_package'] = 'Preferential Packeage';
+$_LANG['continue_shopping'] = 'Continue Shopping';
+$_LANG['check_out'] = 'Check Out';
+$_LANG['select_at_least_one'] = 'Please select at least one item.';
+$_LANG['add_item'] = 'Please add some items.';
+
+$_LANG['check_cart'] = 'Check Cart';
+$_LANG['place_order'] = 'Place Order';
+$_LANG['pay_order_flow'] = 'Pay Order';
+$_LANG['received_order'] = 'Receive Order';
+$_LANG['review_order'] = 'Review';
 
 /* 优惠活动 */
 $_LANG['favourable_name'] = 'Favourable name:';

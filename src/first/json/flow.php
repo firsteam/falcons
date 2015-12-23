@@ -35,7 +35,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'selcart')
     $cart_goods = get_cart_goods();
 	if(count($cart_goods['goods_list'])<=0){
 		$res['error'] = 1;
-		$res['message'] = '请先添加商品！';
+		$res['message'] = $_LANG['add_item'];
 		die($json->encode($res));
 	}
 
@@ -73,7 +73,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'selcart')
 		}
 		else
 		{
-			$res['result'] = '您一个商品都没选，这怎么行捏！！真的不行哦！';
+			$res['result'] = $_LANG['select_at_least_one'];
 		}	
 		die($json->encode($res));
 	}

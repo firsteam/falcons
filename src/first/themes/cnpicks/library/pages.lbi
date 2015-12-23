@@ -38,8 +38,8 @@
 <!-- {if $pager.styleid eq 0 } -->
 <div id="pager">
 <div class="xm-pagenavi">
-	<a class="numbers first iconfont"  href="{$pager.page_prev}">上一页</a> 
-    <a class="numbers last iconfont" href="{$pager.page_next}">下一页</a> 
+	<a class="numbers first iconfont"  href="{$pager.page_prev}">Previous</a> 
+    <a class="numbers last iconfont" href="{$pager.page_next}">Next</a> 
     <!--{foreach from=$pager.search key=key item=item}-->
       {if $key eq 'keywords'}
           <input type="hidden" name="{$key}" value="{$item|escape:decode_url}" />

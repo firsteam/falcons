@@ -16,6 +16,9 @@
 /* 用户登录语言项 */
 $_LANG['empty_username_password'] = 'Please enter username and password.';
 $_LANG['shot_message'] = "Short message";
+$_LANG['button_submit'] = 'Yes';
+$_LANG['button_cancel'] = 'Cancel';
+$_LANG['check_all'] = 'Check All';
 
 /* 公共语言项 */
 $_LANG['sys_msg'] = 'System Message';
@@ -140,6 +143,8 @@ $_LANG['compare'] = 'Compare';
 $_LANG['volume_price'] = 'Following the purchase of goods to reach the number that they can enjoy a range of preferential prices';
 $_LANG['number_to'] = 'number';
 $_LANG['article_list'] = 'Article list';
+$_LANG['self_support'] = 'Self Support';
+$_LANG['total'] = 'Total';
 
 /* 商品比较JS语言项 */
 $_LANG['compare_js']['button_compare'] = 'Compare chosen products';

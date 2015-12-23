@@ -7,17 +7,17 @@
 <tr><td>{$consignee.address_short_name}</td></tr>
 </table>
 </div>
-<div  class="edit_addr" id="address_edit_{$sn}"><a  href="javascript:AddressEdit({$consignee.address_id});">修改</a> <a  href="javascript:del_Address({$consignee.address_id});" onclick="return confirm('您确认要删除吗？');">删除</a></div>
+<div  class="edit_addr" id="address_edit_{$sn}"><a  href="javascript:AddressEdit({$consignee.address_id});">{$lang.edit}</a> <a  href="javascript:del_Address({$consignee.address_id});" onclick="return confirm('{$lang.drop_consignee_confirm}');">{$lang.drop}</a></div>
 </li>
 <!-- {/foreach} -->
 </ul>
 <div class="blank10"></div>
-<div class="address_jm_add" onclick="AddressEdit(0);">使用新地址</div>
+<div class="address_jm_add" onclick="AddressEdit(0);">{$lang.new_consignee_address}</div>
 {else}
 <div class="blank10"></div><div class="blank10"></div>
 <table cellpadding=4 cellspacing=4 width="100%">
-<tr><td align=right><font color=#ff3300>*</font>收件人</td><td><input type="text" name="consignee" class="input_addr2"></td></tr>
-<tr><td align=right><font color=#ff3300>*</font>所在地区</td>
+<tr><td align=right><font color=#ff3300>*</font>{$lang.consignee_name}</td><td><input type="text" name="consignee" class="input_addr2"></td></tr>
+<tr><td align=right><font color=#ff3300>*</font>{$lang.city_district}</td>
 <td>
 <input type="hidden" name="country" value="1">
 <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities');"  style="width:155px;height:25px;border:1px solid #ccc;">
@@ -39,16 +39,16 @@
         <!-- {/foreach} -->
       </select>
 </td></tr>
-<tr><td align=right><font color=#ff3300>*</font>街道地址</td><td><input type="text" name="address" class="input_addr1"></td></tr>
-<tr><td style="text-align:right;"><!-- <font color=#ff3300>*</font> -->电子邮箱</td><td><input type="text" name="email" class="input_addr1" value="{$address.email}"></td></tr>
-<tr><td align=right>邮编</td><td><input type="text" name="zipcode" class="input_addr3"></td></tr>
-<tr><td align=right><font color=#ff3300>*</font>手机号码</td><td><input type="text" name="mobile" class="input_addr2">&nbsp;&nbsp;&nbsp;&nbsp;或固定电话 <input type="text" name="tel_01" class="input_addr4"> - <input type="text" name="tel_02" class="input_addr3"> - <input type="text" name="tel_03" class="input_addr4"></td></tr>
-<tr><td></td><td><font color=#cccccc>两者至少填写一项</font></td></tr>
+<tr><td align=right><font color=#ff3300>*</font>{$lang.detailed_address}</td><td><input type="text" name="address" class="input_addr1"></td></tr>
+<tr><td style="text-align:right;"><!-- <font color=#ff3300>*</font> -->{$lang.email_address}</td><td><input type="text" name="email" class="input_addr1" value="{$address.email}"></td></tr>
+<tr><td align=right>{$lang.postalcode}</td><td><input type="text" name="zipcode" class="input_addr3"></td></tr>
+<tr><td align=right><font color=#ff3300>*</font>{$lang.mobile}</td><td><input type="text" name="mobile" class="input_addr2">&nbsp;&nbsp;&nbsp;&nbsp;or {$lang.phone} <input type="text" name="tel_01" class="input_addr4"> - <input type="text" name="tel_02" class="input_addr3"> - <input type="text" name="tel_03" class="input_addr4"></td></tr>
+<tr><td></td><td><font color=#cccccc>At least one</font></td></tr>
 <tr><td></td><td style="padding-top:10px;">
 <input type="hidden" name="address_id" value="0" >
 <input type="hidden" name="shipping_bian" value="1" >
 <input type="hidden" name="closediv" value="0" >
-<input type="button" class="BonusButton" value=" 确定 " onclick="submitAddress()"></td></tr>
+<input type="button" class="BonusButton" value=" {$lang.button_submit} " onclick="submitAddress()"></td></tr>
 </table>
 
 {/if}
