@@ -46,17 +46,20 @@
             <!-- {else} -->
             <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid;width:560px; height:560px;" />
             <!-- {/if}-->
-          
+			
+            <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">
+			  <div id="view-bigimg" class="fr"> 
+			    <b></b>zoom                
+              </div>
+			</a>
+			
           </div>
-          <div style="width: 460px;"> 
+          <div style="width: 600px;"> 
             <!--相册 START-->
             <!-- #BeginLibraryItem "/library/goods_gallery.lbi" --><!-- #EndLibraryItem -->
             <!--相册 END-->			
           </div>
 		  
-		  <div id="view-bigimg" class="fr" style="margin:15px 0px 0px 0px;"><b></b>
-              <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">zoom</a>
-          </div>
         </div>
 
         

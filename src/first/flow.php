@@ -2956,11 +2956,11 @@ elseif ($_REQUEST['step'] == 'select_shipping')
 
         $result['error'] = $_LANG['no_goods_in_cart'];
 
-    }else if(!check_consignee_info($consignee, $flow_type)){
+    }/*else if(!check_consignee_info($consignee, $flow_type)){
 
 		$result['error'] = '请先设置收货地址哟，亲！';
 
-	}
+	}*/
 
     else
 

@@ -841,7 +841,7 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
     width: 660x;
 	position:absolute;
 	top:40px;
-	right:245px;
+	right:190px;
 }
 .flowstep ol {
     overflow: hidden;

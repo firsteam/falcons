@@ -95,8 +95,8 @@
     <table width="100%" align="center" border="0" cellpadding="5" cellspacing="6"  style="border-top:1px solid #ddd;">
       <tr>
         <td><a href="./" class="continue_buy">{$lang.continue_shopping}</a></td>
-        <td align="right" width="80"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>清空购物车 </font></a></td>
-        <td align="right" id='cart_money_info'> 应付总额： <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
+        <td align="right" width="80"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>{$lang.clear_cart} </font></a></td>
+        <td align="right" id='cart_money_info'> {$lang.amount} <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
         <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">{$lang.check_out}</a></td>
       </tr>
     </table>
@@ -172,7 +172,7 @@
 	     }
 	     else
 	     {		
-			alert('您还没有选择商品哦！');
+			alert('{$lang.select_at_least_one}!');
 			return false;
 	     }
 	}
@@ -226,7 +226,7 @@ function change_price(rec_id,goods_id,is_package)
 	var number = document.getElementById("goods_number_"+rec_id+"").value;
 	if (!r.test(number))
 	{
-		alert("您输入的格式不正确！");
+		alert("{$lang.input_error}");
 		document.getElementById("goods_number_"+rec_id+"").value=document.getElementById("hidden_"+rec_id+"").value;
 	}
 	else
@@ -275,7 +275,7 @@ else
 	document.getElementById('subtotal_'+result.rec_id).innerHTML = result.subtotal;//商品总价
 	document.getElementById('cart_money_info').innerHTML = result.market_amount_desc;//购物车商品总价说明
 	document.getElementById('zk_'+result.suppid).innerHTML = result.your_discount;//折扣活动说明
-	show_div_text = "恭喜您！ 商品数量修改成功！ ";
+	show_div_text = "{$lang.save_success}";
 	showdiv(document.getElementById("goods_number_"+result.rec_id));
 }
 
@@ -331,13 +331,13 @@ else
   <div class="flowBox_jm">
     <div class="title_jm">
       <ul id="HotBoxTit">
-        <li class="curr">购买的还买了</li>
-        <li >今日最受欢迎</li>
+        <li class="curr">{$lang.best_goods}</li>
+        <li >{$lang.most_popular}</li>
         <!-- {if $collection_goods} -->
-        <li >我的收藏</li>
+        <li >{$lang.label_collection}</li>
         <!-- {/if} --> 
         <!-- {if $fittings_list} 商品配件 -->
-        <li>商品配件</li>
+        <li>{$lang.accessories}</li>
         <!-- {/if} -->
       </ul>
     </div>
@@ -638,14 +638,14 @@ else
 
   if (cmt.consignee.length == 0)
    {
-	alert('收件人不能为空！');
+	alert('{$lang.flow_js.consignee_not_null}');
 	return false;
    }
    if(cmt.optionlength > 1)
    {
 	   if (cmt.province == '0' ||  cmt.city == '0'  || cmt.district == '0' )
 	   {
-		alert('所在地区不完整！');
+		alert('{$lang.flow_js.district_not_null}');
 		return false;
 	   }
    }
@@ -653,7 +653,7 @@ else
    {
 	   if (cmt.province == '0' ||  cmt.city == '0' )
 	   {
-		alert('所在地区不完整！');
+		alert('{$lang.flow_js.city_not_null}');
 		return false;
 	   }
 
@@ -667,25 +667,25 @@ else
    */
    if (cmt.email.length > 0 && (!Utils.isEmail(cmt.email)))
    {
-		alert('邮箱地址不正确');
+		alert('{$lang.flow_js.invalid_email}');
 		return false;
    }
    if (cmt.address.length == 0)
    {
-	alert('街道地址不能为空！');
+	alert('{$lang.flow_js.address_not_null}');
 	return false;
    }
    if (cmt.mobile.length == 0)
    {
-	alert('手机号码不能为空！');
+	alert('{$lang.flow_js.mobile_not_null}');
 	return false;
    }
-   if (cmt.mobile.length>0)
+   /*if (cmt.mobile.length>0)
   {
     var reg = /^1[34578][0-9]\d{8}$/;
     if (!reg.test(cmt.mobile))
     {
-	alert('手机号码格式不正确！');
+	alert('1{$lang.flow_js.mobile_invaild}');
 	return false;
     }
   }
@@ -697,7 +697,7 @@ else
         alert('固定电话格式不正确！');
 	return false;
     }
-  }
+  }*/
 
    Ajax.call('flow.php?act=saveAddress', 'address=' + $.toJSON(cmt), addressResponse, 'POST', 'JSON');
    
@@ -787,20 +787,20 @@ else
     </div>
     {* 商品清单 *}
     <div class="checkBox_jm">
-      <div class="title">3 商品清单</div>
-      <div class="free_freight">{$lang.can_use_integral}:{$your_integral|default:0} {$points_name}. </div>
-      <div class="free_freight1">您当前的可用余额为:{$your_surplus|default:0} <span id="ECS_SURPLUS_NOTICE_{$key}" class="notice"></span></div>
+      <div class="title">2 Items</div>
+      <div class="free_freight disable-by-cy">{$lang.can_use_integral}:{$your_integral|default:0} {$points_name}. </div>
+      <div class="free_freight1 disable-by-cy">您当前的可用余额为:{$your_surplus|default:0} <span id="ECS_SURPLUS_NOTICE_{$key}" class="notice"></span></div>
       <table border=0 cellpadding=0 cellspacing=0 width="100%" class="checkgoods">
         <tr>
-          <th width='50%' align=left class="tdone">商品</th>
-          <th>数量</th>
-          <th>单价</th>
-          <th>小计</th>
+          <th width='50%' align=left class="tdone">{$lang.goods_name}</th>
+          <th>{$lang.number}</th>
+          <th>{$lang.shop_prices}</th>
+          <th>{$lang.amount}</th>
         </tr>
         <!-- {foreach from=$goods_list item=goodsinfo name=glist key=key} -->
-        <tr>
+        <!-- <tr>
             <td colspan=4 style="background:#FAFAFA; border-top:2px solid #d9d9d9; font-weight:bold; padding:5px 10px;" > {$goodsinfo.goodlist[0].seller}</td>
-        </tr>
+        </tr> -->
         <!-- {foreach from=$goodsinfo.goodlist item=goods name=name} -->
         <tr>
           <td width='50%' {if $smarty.foreach.name.first}style="border-top:none;"{/if}><!-- {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'} 商品 -->
@@ -856,7 +856,7 @@ else
 	{if $goodsinfo.shipping_html}
         <tr>
 		<td colspan=4 bgcolor="#ffffff" align="left" class="shipping_type">
-		<span>配送方式：</span>{$goodsinfo.shipping_html}
+		<span>{$lang.shipping_method}: </span>{$goodsinfo.shipping_html}
 		<!--如果有自提点 star-->
 		<span id='picktxt{$key}'>
 		<script>selectShipping(document.getElementById('pay_ship_{$goodsinfo.goodlist[0].supplier_id}').value,{$key});</script>
@@ -923,10 +923,10 @@ else
         <!-- {/foreach} -->
         
 
-        <tr>
+        <tr class="disable-by-cy">
           <td colspan=4 class="tdother" id="supplier_shipping"></td>
         </tr>
-          <tr>
+          <tr class="disable-by-cy">
             <td colspan=4 class="tdother2"><div class="checkout_other" > <a class="jmbag" href="javascript:void(0);" onclick="showCheckoutOther(this);"><span>+</span>使用包装和贺卡</a>
                 <table class="subbox_other" width="100%">
                   <tr>
@@ -988,8 +988,8 @@ else
 		{/foreach}
 		{/literal}
 		</script>
-    <div class="blank10"></div>
-          <tr>
+    <div class="blank10 disable-by-cy"></div>
+          <tr class="disable-by-cy">
     
     {* 发票，少货 *} 
             <td colspan=4 class="tdother2"><!-- {if $inv_content_list || $how_oos_list} -->
@@ -1117,11 +1117,11 @@ else
               <!-- {/if} --></td>
           </tr>
           <tr>
-            <td colspan=4 class="tdother2"><div class="checkout_other" > <a class="jmbag" href="javascript:void(0);" onclick="showCheckoutOther(this);"><span>+</span>订单附言</a>
+            <td colspan=4 class="tdother2"><div class="checkout_other" > <a class="jmbag" href="javascript:void(0);" onclick="showCheckoutOther(this);"><span>+</span>{$lang.note}</a>
                 <table class="subbox_other" width="100%">
                   <tbody width="100%" cellpadding="5" cellspacing="0">
                     <tr>
-                      <td align=right width="100" valign=top>订单附言：</td>
+                      <td align=right width="100" valign=top>{$lang.note}</td>
                       <td colspan='4'><textarea name="postscript" cols="80" rows="3" id="postscript" style="border:1px solid #ccc;">{$order.postscript|escape}</textarea></td>
                     </tr>
                   </tbody>
@@ -1160,7 +1160,7 @@ else
       </script> 
     {* 支付方式 *}
     <div class="checkBox_jm">
-      <div class="title">4 支付方式</div>
+      <div class="title">3 {$lang.payment_method}</div>
       <ul class="payment_tab_jm" id="payment_tab">
         <!-- {foreach from=$payment_list name="payment_list" item=payment} --> 
         <!-- 预售订单不支持货到付款 -->
@@ -1212,7 +1212,7 @@ else
 		var con_country = document.forms['theForm'].elements['have_consignee'].value;
 		if ( con_country=='0' )
 		{
-			alert('请先选择配送地址！');
+			alert('{$lang.flow_js.select_address}');
 			obj.checked= false;
 			return ;
 		}
@@ -1239,7 +1239,7 @@ else
 	{/literal}
 	</script>
     <div class="flowBox_jm clearfix" style="border:none;padding-bottom:20px;">
-      <div  style="float:left;width:40%;padding:8px 0; padding-left:5px;"> <a href="flow.php" class="continue_buy" style="padding:0;">返回修改购物车</a> </div>
+      <div  style="float:left;width:40%;padding:8px 0; padding-left:5px;"> <a href="flow.php" class="continue_buy" style="padding:0;">{$lang.back_to_cart}</a> </div>
       <div style="float:right;width:55%;text-align:right;padding:8px 20px;"> 
         <!--余额额支付密码_更改_START_www.68ecshop.com-->
         <input onclick="return check_before_submit()" type="image" src="images/jmpic/btn_done.gif" align="absmiddle" />
@@ -1396,7 +1396,7 @@ else
   <div class="flowBox">
     <table width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
       <tr>
-        <td width="50%" valign="top" bgcolor="#ffffff"><h6><span>用户登录：</span></h6>
+        <td width="50%" valign="top" bgcolor="#ffffff"><h6><span>{$lang.forthwith_login}</span></h6>
           <form action="flow.php?step=login" method="post" name="loginForm" id="loginForm" onsubmit="return checkLoginForm(this)">
             <table width="90%" border="0" cellpadding="8" cellspacing="1" bgcolor="#B0D8FF" class="table">
               <tr>
@@ -1432,7 +1432,7 @@ else
               </tr>
             </table>
           </form></td>
-        <td valign="top" bgcolor="#ffffff"><h6><span>用户注册：</span></h6>
+        <td valign="top" bgcolor="#ffffff"><h6><span>{$lang.forthwith_register}</span></h6>
           <form action="flow.php?step=login" method="post" name="formUser" id="registerForm" onsubmit="return checkSignupForm(this)">
             <table width="98%" border="0" cellpadding="8" cellspacing="1" bgcolor="#B0D8FF" class="table">
               <tr>

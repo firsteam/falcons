@@ -109,6 +109,8 @@ $_LANG['old_price'] = 'Old Price：';
 $_LANG['package_price'] = 'Packeage Price：';
 $_LANG['then_old_price'] = 'Then old Price：';
 $_LANG['free_goods'] = 'Free shipping goods';
+$_LANG['most_popular'] = 'Most popular';
+$_LANG['note'] = 'Note';
 
 $_LANG['searchkeywords_notice'] = 'Search by more keywords, can be linked by keywords or "AND". Eg. win32 AND unix<br /> Search by part of "+", can be linked by rank or "OR". Eg. win32 OR unix';
 $_LANG['hidden_outstock'] = 'Hide outstock products';
@@ -181,6 +183,7 @@ $_LANG['tag_anonymous'] = 'Sorry, you can\'t submit the tag until register and l
 $_LANG['tag_cloud_desc'] = 'A tag cloud or word cloud is a visual depiction of user-generated tags , or simply the word content of a site, used typically to describe the content of web sites.';
 
 /* AJAX 相关 */
+$_LANG['input_error'] = 'Please double check the input.';
 $_LANG['invalid_captcha'] = 'Please enter a valid verification code.';
 $_LANG['goods_exists'] = 'Sorry, the same product has existed in your cart.';
 $_LANG['fitting_goods_exists'] = 'Sorry，The accessories in your shopping cart already exists。';

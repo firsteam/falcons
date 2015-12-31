@@ -1583,7 +1583,7 @@ margin-top:
 	overflow: hidden;
 }
 .navList .func {
-	margin-left: 20px;
+	margin-left: 10px;
 	clear: both;
 	height: auto
 }
@@ -1628,10 +1628,10 @@ margin-top:
 	background-position: -96px 0;
 }
 .func .item {
-	width: 125px;
-	height: 30px;
+	width: 150px;
+	height: 40px;
 	display: block;
-	padding: 0 28px 0 31px;
+	padding: 5px 28px 0 31px;
 	line-height: 30px;
 	cursor: pointer;
 }

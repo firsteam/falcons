@@ -1359,7 +1359,10 @@ BUTTON {
 	OVERFLOW: hidden;
 	WIDTH: 74px;
 	LINE-HEIGHT: 25px;
-	HEIGHT: 25px
+	HEIGHT: 25px;
+    position: relative;
+    bottom:40px;
+    right:20px;
 }
 #view-bigimg B {
 	BACKGROUND-POSITION: -264px -240px;
@@ -1440,7 +1443,7 @@ BUTTON {
 .gallery {
 	/*width: 352px;*/
 	float: left;
-	margin:15px 0px 15px 0px;
+	/*margin:15px 0px 15px 0px;*/
 	/*margin-left: 8px;
 	_margin-left: 5px;*/
 	overflow: hidden;
@@ -1453,11 +1456,11 @@ BUTTON {
 }
 .gallery li {
 	float: left;
-	margin-right: 15px;
+	margin-right: 20px;
 }
 .gallery li img {
-	width: 60px;
-	height: 60px;
+	width: 100px;
+	height: 100px;
 	display: block;
 	cursor:pointer;
 	/*border: 1px #ccc solid;*/
