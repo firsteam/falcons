@@ -54,16 +54,16 @@ function get_collection_goods($user_id, $num = 10, $start = 0)
         }
 
 		/* 判断是否为正在预售的商品 */
-		$pre_sale_id = is_pre_sale_goods($row['goods_id']);
-		if($pre_sale_id != null)
-		{
-			$goods_list[$row['goods_id']]['is_pre_sale']        = 1;
-			$goods_list[$row['goods_id']]['pre_sale_id']        = $pre_sale_id;
-		}
-		else 
-		{
-			$goods_list[$row['goods_id']]['is_pre_sale']        = 0;
-		}
+		// $pre_sale_id = is_pre_sale_goods($row['goods_id']);
+		// if($pre_sale_id != null)
+		// {
+		// 	$goods_list[$row['goods_id']]['is_pre_sale']        = 1;
+		// 	$goods_list[$row['goods_id']]['pre_sale_id']        = $pre_sale_id;
+		// }
+		// else 
+		// {
+		// 	$goods_list[$row['goods_id']]['is_pre_sale']        = 0;
+		// }
         
         $goods_list[$row['goods_id']]['rec_id']        = $row['rec_id'];
         $goods_list[$row['goods_id']]['is_attention']  = $row['is_attention'];

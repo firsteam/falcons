@@ -65,7 +65,7 @@
     <div class="f-color-black ulev-9 ub ubb border-hui uinn-a1">支付方式</div>
     <div class="p-t-b5 f-color-6">
     	{foreach from=$payment_list name="payment_list" item=payment}
-          {if $payment.pay_code eq 'alipay' || ($payment.pay_code eq 'cod' && $is_pre_sale != 1) || $payment.pay_code eq 'pup' || $payment.pay_code eq 'unionpay' || $payment.pay_code eq 'balance'}
+          {if $payment.pay_code eq 'alipay' || ($payment.pay_code eq 'cod' && ) || $payment.pay_code eq 'pup' || $payment.pay_code eq 'unionpay' || $payment.pay_code eq 'balance'}
           <div class="ub ulev-1 ub-ac lis-checkout payment" isCod="{$payment.is_cod}" isPickup="{$payment.is_pickup}" pay_code="{$payment.pay_code}" pay_id="{$payment.pay_id}">
             {$payment.pay_name}
           </div>

@@ -312,15 +312,15 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 /*------------------------------------------------------ */
 
 /* 判断是否为正在预售的商品 */
-$pre_sale_id = is_pre_sale_goods($goods_id);
-if($pre_sale_id != null)
-{
-	/* 进入收货人页面 */
-	$uri = build_uri("pre_sale", array("pre_sale_id" => $pre_sale_id));
-// 	echo $uri;
-	ecs_header("Location: ../$uri\n");
-	exit();
-}
+// $pre_sale_id = is_pre_sale_goods($goods_id);
+// if($pre_sale_id != null)
+// {
+// 	/* 进入收货人页面 */
+// 	$uri = build_uri("pre_sale", array("pre_sale_id" => $pre_sale_id));
+// // 	echo $uri;
+// 	ecs_header("Location: ../$uri\n");
+// 	exit();
+// }
 /* 判断是否为虚拟商品 */
 $is_virtual = $GLOBALS['db']->getOne("select is_virtual from ".$GLOBALS['ecs']->table('goods')." where goods_id=$goods_id");
 if($is_virtual){
@@ -1121,17 +1121,17 @@ function get_product_attr_num($goodid,$attrids=0){
 	$ret = array();
 	
 	/* 判断商品是否参与预售活动，如果参与则获取商品的（预售库存-已售出的数量） */
-	if(!empty($_REQUEST['pre_sale_id']))
-	{
-		$pre_sale = pre_sale_info($_REQUEST['pre_sale_id'], $goods_num);
-		//如果预售为空或者预售库存小于等于0则认为不限购
-		if(!empty($pre_sale) && $pre_sale['restrict_amount'] > 0){
+	// if(!empty($_REQUEST['pre_sale_id']))
+	// {
+	// 	$pre_sale = pre_sale_info($_REQUEST['pre_sale_id'], $goods_num);
+	// 	//如果预售为空或者预售库存小于等于0则认为不限购
+	// 	if(!empty($pre_sale) && $pre_sale['restrict_amount'] > 0){
 			
-			$product_num = $pre_sale['restrict_amount'] - $pre_sale['valid_goods'];
+	// 		$product_num = $pre_sale['restrict_amount'] - $pre_sale['valid_goods'];
 			
-			return $product_num;
-		}
-	}
+	// 		return $product_num;
+	// 	}
+	// }
 	
 	if(empty($attrids)){
 		$ginfo = get_goods_attr_value($goodid,'goods_number');
