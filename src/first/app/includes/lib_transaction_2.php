@@ -109,17 +109,17 @@ function get_user_orders_2($user_id, $num = 10, $start = 0,$where='')
 		$extension_code = $row['extension_code'];
 		
 		/* 预售活动 */
-		if($extension_code == PRE_SALE_CODE)
-		{
-			include_once '/includes/lib_goods.php';
-			$pre_sale = pre_sale_info($row['extension_id']);
-			$pre_sale_status = $pre_sale['status'];
-			if($pre_sale['deposit'] > 0)
-			{
-				$pre_sale_deposit = $pre_sale['deposit'];
-				$pre_sale_deposit_format = $pre_sale['formated_deposit'];
-			}
-		}
+		// if($extension_code == PRE_SALE_CODE)
+		// {
+		// 	include_once '/includes/lib_goods.php';
+		// 	$pre_sale = pre_sale_info($row['extension_id']);
+		// 	$pre_sale_status = $pre_sale['status'];
+		// 	if($pre_sale['deposit'] > 0)
+		// 	{
+		// 		$pre_sale_deposit = $pre_sale['deposit'];
+		// 		$pre_sale_deposit_format = $pre_sale['formated_deposit'];
+		// 	}
+		// }
 		
 		$arr[$row['order_id']] = array('order_id'       => $row['order_id'],
 						'order_sn'       => $row['order_sn'],
@@ -148,9 +148,9 @@ function get_user_orders_2($user_id, $num = 10, $start = 0,$where='')
 						'pay_id'         => ($cod_code == 'cod' ? '' : $row['pay_id']),
 						'invoice_no'     => $row['invoice_no'],
 						'extension_code'     => $row['extension_code'], // 用于前台辨识预售活动
-						'pre_sale_status'     => $pre_sale_status, // 用于前台辨识预售活动状态
-						'pre_sale_deposit'     => $pre_sale_deposit, // 定金
-						'pre_sale_deposit_format'     => $pre_sale_deposit_format, // 格式化定金
+						// 'pre_sale_status'     => $pre_sale_status, // 用于前台辨识预售活动状态
+						// 'pre_sale_deposit'     => $pre_sale_deposit, // 定金
+						// 'pre_sale_deposit_format'     => $pre_sale_deposit_format, // 格式化定金
 						'weixiu_time'    => $row['weixiu_time']);
     }
 

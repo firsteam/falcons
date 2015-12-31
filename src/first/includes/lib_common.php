@@ -2530,24 +2530,24 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             }
 
             break;
-		case 'pre_sale':
-            	if (empty($pre_sale_id))
-            	{
-            		return false;
-            	}
-            	else
-            	{
-            		if ($rewrite)
-            		{
-            			$uri = 'pre_sale-'.$pre_sale_id;
-            		}
-            		else
-            		{
-            			$uri = 'pre_sale.php?id=' . $pre_sale_id;
-            		}
-            	}
+		// case 'pre_sale':
+  //           	if (empty($pre_sale_id))
+  //           	{
+  //           		return false;
+  //           	}
+  //           	else
+  //           	{
+  //           		if ($rewrite)
+  //           		{
+  //           			$uri = 'pre_sale-'.$pre_sale_id;
+  //           		}
+  //           		else
+  //           		{
+  //           			$uri = 'pre_sale.php?id=' . $pre_sale_id;
+  //           		}
+  //           	}
             
-            	break;
+  //           	break;
         case 'brand':
             if (empty($bid))
             {
@@ -3299,25 +3299,25 @@ function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $s
     $user_price    = '0'; //商品会员价格
 
     /* 判断商品是否参与预售活动，如果参与则获取商品 */
-    if(!empty($_REQUEST['pre_sale_id']))
-    {
-    	$pre_sale = pre_sale_info($_REQUEST['pre_sale_id'], $goods_num);
-    	if(!empty($pre_sale)){
-    		$final_price = $pre_sale['cur_price'];
+    // if(!empty($_REQUEST['pre_sale_id']))
+    // {
+    // 	$pre_sale = pre_sale_info($_REQUEST['pre_sale_id'], $goods_num);
+    // 	if(!empty($pre_sale)){
+    // 		$final_price = $pre_sale['cur_price'];
     		
-    		//如果需要加入规格价格
-    		if ($is_spec_price)
-    		{
-    			if (!empty($spec))
-    			{
-    				$spec_price   = spec_price($spec);
-    				$final_price += $spec_price;
-    			}
-    		}
+    // 		//如果需要加入规格价格
+    // 		if ($is_spec_price)
+    // 		{
+    // 			if (!empty($spec))
+    // 			{
+    // 				$spec_price   = spec_price($spec);
+    // 				$final_price += $spec_price;
+    // 			}
+    // 		}
     		
-    		return $final_price;
-    	}
-    }
+    // 		return $final_price;
+    // 	}
+    // }
     
     //取得商品优惠价格列表
     $price_list   = get_volume_price_list($goods_id, '1');

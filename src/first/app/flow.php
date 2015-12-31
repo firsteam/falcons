@@ -877,16 +877,16 @@ elseif ($_REQUEST['step'] == 'checkout')
     {
         $smarty->assign('is_exchange_goods', 1);
     }
-    /* 预售标识 */
-    else if($flow_type == CART_PRE_SALE_GOODS)
-    {
-    	$smarty->assign('is_pre_sale', 1);
-    }
-    else
-    {
+    // /* 预售标识 */
+    // else if($flow_type == CART_PRE_SALE_GOODS)
+    // {
+    // 	$smarty->assign('is_pre_sale', 1);
+    // }
+    // else
+    // {
         //正常购物流程  清空其他购物流程情况
         $_SESSION['flow_order']['extension_code'] = '';
-    }
+    // }
     
     if($flow_type != CART_EXCHANGE_GOODS){
     	//非积分兑换形式的商品
@@ -1038,7 +1038,7 @@ elseif ($_REQUEST['step'] == 'checkout')
     }
 
     
-    if ($flow_type != CART_EXCHANGE_GOODS && $flow_type != CART_GROUP_BUY_GOODS && $flow_type != CART_PRE_SALE_GOODS)
+    if ($flow_type != CART_EXCHANGE_GOODS && $flow_type != CART_GROUP_BUY_GOODS )
     {
 	    foreach($cart_goods_new as $k => $v){
 			$discount = compute_discount($k);
@@ -1447,10 +1447,10 @@ elseif ($_REQUEST['step'] == 'select_shipping')
             $smarty->assign('is_group_buy', 1);
         }
         /* 预售标志 */
-        if ($flow_type == CART_PRE_SALE_GOODS)
-        {
-            $smarty->assign('is_pre_sale', 1);
-        }
+        // if ($flow_type == CART_PRE_SALE_GOODS)
+        // {
+        //     $smarty->assign('is_pre_sale', 1);
+        // }
 
         $result['cod_fee']     = $shipping_info['pay_fee'];
         if (strpos($result['cod_fee'], '%') === false)

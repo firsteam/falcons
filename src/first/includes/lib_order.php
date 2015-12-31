@@ -557,10 +557,10 @@ function order_fee($order, $goods, $consignee)
     }
     
     /* 预售活动 */
-    if ($order['extension_code'] == PRE_SALE_CODE)
-    {
-    	$pre_sale = pre_sale_info($order['extension_id']);
-    }
+    // if ($order['extension_code'] == PRE_SALE_CODE)
+    // {
+    // 	$pre_sale = pre_sale_info($order['extension_id']);
+    // }
 
     $total  = array('real_goods_count' => 0,
                     'gift_amount'      => 0,
@@ -600,7 +600,7 @@ function order_fee($order, $goods, $consignee)
     $total['saving_formated']       = price_format($total['saving'], false);
 
     /* 折扣 */
-    if ($order['extension_code'] != GROUP_BUY_CODE && $order['extension_code'] != PRE_SALE_CODE)
+    if ($order['extension_code'] != GROUP_BUY_CODE )
     {
         $discount = compute_discount(isset($order['supplier_id']) ? $order['supplier_id'] : -1);
         $total['discount'] = $discount['discount'];
@@ -785,10 +785,6 @@ function order_fee($order, $goods, $consignee)
     {
         $total['amount'] = $total['goods_price'];
     }
-    else if($order['extension_code'] == PRE_SALE_CODE && $pre_sale['deposit'] > 0)
-    {
-        $total['amount'] = $total['goods_price'];
-    }
     else
     {
         $total['amount'] = $total['goods_price'] - $total['discount'] + $total['tax'] + $total['pack_fee'] + $total['card_fee'] +
@@ -872,10 +868,6 @@ function order_fee($order, $goods, $consignee)
     if ($order['extension_code'] == GROUP_BUY_CODE)
     {
     	$total['will_get_integral'] = $group_buy['gift_integral'];
-    }
-    else if($order['extension_code'] == PRE_SALE_CODE)
-    {
-    	$total['will_get_integral'] = $pre_sale['gift_integral'];
     }
     elseif ($order['extension_code'] == 'exchange_goods')
     {
@@ -1391,43 +1383,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         {
          
         	// 判断是否为预售商品
-            $pre_sale_id = is_pre_sale_goods($goods_id);
-            if(!empty($pre_sale_id))
-            {
-            	
-            	/* 更新：记录购物流程类型：预售 */
-            	$_SESSION['flow_type'] = CART_PRE_SALE_GOODS;
-            	$_SESSION['extension_code'] = PRE_SALE_CODE;
-            	$_SESSION['extension_id'] = $pre_sale_id;
-            	
-            	$parent['extension_code'] = PRE_SALE_CODE;
-            	$parent['rec_type']    = CART_PRE_SALE_GOODS;
-            	
-            	//获取预售信息
-            	$pre_sale = pre_sale_info($pre_sale_id, $num);
-            	if($pre_sale['deposit'] > 0)
-            	{
-            		//定金大于0则使用定金金额
-            		$goods_price = $pre_sale['deposit'];
-            	}
-            	else
-            	{
-            		//计算当前价格
-            		$goods_price = $pre_sale['cur_price'];
-            		
-            		//加入规格价格
-            		if (!empty($spec))
-            		{
-            			$spec_price   = spec_price($spec);
-            			$goods_price += $spec_price;
-            		}
-            	}
-            	
-            }           
-            else
-            {
-            	$goods_price = get_final_price($goods_id, $num, true, $spec);
-            }
+            $goods_price = get_final_price($goods_id, $num, true, $spec);
             $parent['goods_price']  = max($goods_price, 0);
             $parent['goods_number'] = $num;
             $parent['parent_id']    = 0;
@@ -2902,13 +2858,13 @@ function integral_to_give($order)
         return array('custom_points' => $group_buy['gift_integral'], 'rank_points' => $order['goods_amount']);
     }
     /* 判断是否预售 */
-    else if ($order['extension_code'] == PRE_SALE_CODE)
-    {
-    	include_once(ROOT_PATH . 'includes/lib_goods.php');
-    	$pre_sale = pre_sale_info(intval($order['extension_id']));
+    // else if ($order['extension_code'] == PRE_SALE_CODE)
+    // {
+    // 	include_once(ROOT_PATH . 'includes/lib_goods.php');
+    // 	$pre_sale = pre_sale_info(intval($order['extension_id']));
     
-    	return array('custom_points' => $group_buy['gift_integral'], 'rank_points' => $order['goods_amount']);
-    }
+    // 	return array('custom_points' => $group_buy['gift_integral'], 'rank_points' => $order['goods_amount']);
+    // }
     else
     {
         $sql = "SELECT SUM(og.goods_number * IF(g.give_integral > -1, g.give_integral, og.goods_price)) AS custom_points, SUM(og.goods_number * IF(g.rank_integral > -1, g.rank_integral, og.goods_price)) AS rank_points " .

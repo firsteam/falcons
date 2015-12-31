@@ -1,29 +1,26 @@
 <?php
-
-
-
 /**
-
+ *
  * ECSHOP 购物流程
-
+ *
  * ============================================================================
-
+ *
  * 版权所有 2005-2010 上海商派网络科技有限公司，并保留所有权利。
-
+ *
  * 网站地址: http://www.ecshop.com；
-
+ *
  * ----------------------------------------------------------------------------
-
+ *
  * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
-
+ *
  * 使用；不允许对程序代码以任何形式任何目的的再发布。
-
+ *
  * ============================================================================
-
+ *
  * $Author: douqinghua $
-
+ *
  * $Id: flow.php 17218 2011-01-24 04:10:41Z douqinghua $
-
+ *
  */
 
 
@@ -1764,13 +1761,13 @@ elseif ($_REQUEST['step'] == 'checkout')
 
     /* 预售标识 */
 
-    else if($flow_type == CART_PRE_SALE_GOODS)
+    // else if($flow_type == CART_PRE_SALE_GOODS)
 
-    {
+    // {
 
-    	$smarty->assign('is_pre_sale', 1);
+    // 	$smarty->assign('is_pre_sale', 1);
 
-    }
+    // }
 
     /* 虚拟团购 */
 
@@ -2114,7 +2111,7 @@ elseif ($_REQUEST['step'] == 'checkout')
 
     
 
-    if ($flow_type != CART_EXCHANGE_GOODS && $flow_type != CART_GROUP_BUY_GOODS && $flow_type != CART_PRE_SALE_GOODS)
+    if ($flow_type != CART_EXCHANGE_GOODS && $flow_type != CART_GROUP_BUY_GOODS )
 
     {
 
@@ -3028,13 +3025,13 @@ elseif ($_REQUEST['step'] == 'select_shipping')
 
         /* 预售标志 */
 
-        if ($flow_type == CART_PRE_SALE_GOODS)
+        // if ($flow_type == CART_PRE_SALE_GOODS)
 
-        {
+        // {
 
-            $smarty->assign('is_pre_sale', 1);
+        //     $smarty->assign('is_pre_sale', 1);
 
-        }
+        // }
 
 
 
