@@ -125,4 +125,4 @@ RewriteRule ^exchange-([0-9]+)(.*)\.html$                                       
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
 ##预售活动-商品向列表页如果是预售商品则跳转到预售商品详情页：用户访问的URL	--->>重写后的URL
-RewriteRule ^pre_sale-([0-9]+)\.html$	pre_sale\.php?id=$1  [QSA,L]
+# RewriteRule ^pre_sale-([0-9]+)\.html$	pre_sale\.php?id=$1  [QSA,L]
