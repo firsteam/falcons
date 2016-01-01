@@ -22,6 +22,7 @@
 	width: 100%;
 	background: #F9F9F9;
 	height: auto;
+	padding: 20px 0px 0px 0px;
 }
 .flowBox_jm {
 	width: 990px;
@@ -836,18 +837,21 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
     width: 990px;
 }
 .flowstep {
-    margin: 0 auto;
-    /*padding: 10px 0 20px;*/
-    width: 660x;
-	position:absolute;
+    margin: 0px auto 0px auto;
+    padding: 10px 0px 0px 0px;
+    width: 990px;
+	height:80px;
+	background-color:white;
+	/*position:absolute;
 	top:40px;
-	right:190px;
+	right:190px;*/
 }
 .flowstep ol {
     overflow: hidden;
 }
 .flowstep-5 {
-    margin-left: 0;
+    margin: auto;
+	width:700px;
     /*margin-right: -40px;*/
 }
 ul, ol {
