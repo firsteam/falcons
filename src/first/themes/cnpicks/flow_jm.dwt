@@ -28,13 +28,7 @@
 <input type="button" onclick="cancel_input_surplus()" value="{$lang.button_cancel}" class='bnt_blue_1 btn_pay2' />
 </div>
 <!--余额额支付密码_添加_END_www.68ecshop.com-->
-<div id="site-nav" style="position:relative;"> <!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
-  <div class="headerLayout" style="padding-top:15px; padding-bottom:5px;">
-    <div class="headerCon ">
-      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
-      <div class="header-extra"> </div>
-    </div>
-  </div>
+<div id="site-nav" style="position:relative;"> <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="blank"></div>
   <div class="block_jm">
   <!-- {if $step eq "cart"} -->
