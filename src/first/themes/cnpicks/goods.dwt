@@ -42,14 +42,14 @@
         <div id="preview" class="w570">
           <div  class="goods_img" id="li_{$goods.goods_id}">
             <!-- {if $pictures}-->
-            <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid; width:560px; height:560px;" name="goods_img" />
+            <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid; width:560px; height:560px;" name="goods_img" onclick="next_img()" />
             <!-- {else} -->
             <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid;width:560px; height:560px;" />
             <!-- {/if}-->
 			
             <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">
 			  <div id="view-bigimg" class="fr"> 
-			    <b></b>zoom                
+			    <b></b>zoom
               </div>
 			</a>
 			
@@ -986,7 +986,21 @@ function hide_area()
 	document.getElementById('area_label').style.borderBottom = "1px solid #ccc";
 	document.getElementById('area_list_wrap').style.display = "none";
 }
-function change_img(img_src){  document.getElementsByName("goods_img")[0].src=img_src;}
+function change_img(img_src)
+{
+  document.getElementsByName("goods_img")[0].src=img_src;
+}
+var i = 1;
+function next_img()
+{
+  var imgs = document.getElementById('goods_gallery').getElementsByTagName('img');
+  document.getElementsByName("goods_img")[0].src=imgs[i].src;
+  i++;
+  if(i==imgs.length)
+  {
+    i=0;
+  }
+}
 </script>
 <script>
 header_login();
