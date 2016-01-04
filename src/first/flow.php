@@ -2416,7 +2416,6 @@ elseif ($_REQUEST['step'] == 'checkout')
         }
 
     }
-
     $smarty->assign('payment_list', $payment_list);
 
 	/* 代码增加_start   By www.ecshop68.com */

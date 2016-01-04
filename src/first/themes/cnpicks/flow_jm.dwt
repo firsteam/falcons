@@ -1199,24 +1199,9 @@ else
       <div class="title">3 {$lang.payment_method}</div>
       <ul class="payment_tab_jm" id="payment_tab">
         <!-- {foreach from=$payment_list name="payment_list" item=payment} --> 
-        <!-- 预售订单不支持货到付款 -->
-        {if $payment.pay_code eq 'alipay_bank' || ($payment.pay_code eq 'cod' && $is_pre_sale != 1) || $payment.pay_code eq 'pup'}
-        <li  onclick="selPayment(this)" >
-          <input type="radio" isCod="{$payment.is_cod}" isPickup="{$payment.is_pickup}" onclick="selectPayment(this)" {if $cod_disabled and $payment.is_cod eq "1"}disabled="true"{/if} {if $payment.pay_code eq 'alipay_bank'}id="alipay_bank_input"{/if} name="payment" value="{$payment.pay_id}" >
-          <strong>{if $payment.pay_code eq $pickup_code and $has_pickup_point eq 0}({$lang.empty_pickup_point}){/if}</strong> {if $payment.pay_code eq 'alipay_bank'}支付宝网银直连{else}{$payment.pay_name}{/if}
-          {if $payment.pay_code eq 'alipay_bank'}
-          <div class="payment_subbox"> <!-- #BeginLibraryItem "/Library/alipay_bank.lbi" --><!-- #EndLibraryItem --> </div>
-          {/if} </li>
-        {/if} 
-        <!-- {/foreach} -->
-        <!-- <li  onclick="selPayment(this)">
-          <input type="radio" onclick="selectPayment(this)" isCod="0" name="payment"  id="payment_other_input" value="0"  >
-          &nbsp;支付宝/快钱/财付通/其他支付
-        </li> -->
-        <!-- {foreach from=$payment_list name="payment_list" item=payment} --> 
         {if $payment.pay_code neq 'alipay_bank' && $payment.pay_code neq 'cod' && $payment.pay_code neq 'pup'}
         <li>
-          <input type="radio" name="payment_other" onclick="selectPayment(this);document.getElementById('payment_other_input').value=this.value;" value="{$payment.pay_id}" >
+          <input type="radio" name="payment" onclick="selectPayment(this);document.getElementById('payment_other_input').value=this.value;" value="{$payment.pay_id}" >
           <img align="absmiddle" src="images/jmpic/pay_{$payment.pay_code}.gif" alt="{$payment.pay_name}" /></li>
         {/if} 
         <!-- {/foreach} -->
@@ -1286,7 +1271,7 @@ else
   <script>
   <!-- 初始化配送方式 -->
     if(document.getElementById('shipping_{$order.shipping_id}')){
-	document.getElementById('shipping_{$order.shipping_id}').click();
+	     document.getElementById('shipping_{$order.shipping_id}').click();
     }
     </script> 
   <!-- {/if} --> 
