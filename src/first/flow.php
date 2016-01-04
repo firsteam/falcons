@@ -1737,8 +1737,6 @@ elseif ($_REQUEST['step'] == 'checkout')
 
     $flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
 
-
-
     /* 团购标志 */
 
     if ($flow_type == CART_GROUP_BUY_GOODS)
@@ -1979,8 +1977,6 @@ elseif ($_REQUEST['step'] == 'checkout')
 
     $consignee = get_consignee($_SESSION['user_id']);
 
-
-
 	/* 代码增加_start  By www.68ecshop.com */
 
 	if (empty($consignee))
@@ -1992,7 +1988,6 @@ elseif ($_REQUEST['step'] == 'checkout')
 	}
 
 	/* 代码增加_end  By  www.68ecshop.com */
-
 
 
     /* 检查收货人信息是否完整 */
@@ -2016,7 +2011,6 @@ elseif ($_REQUEST['step'] == 'checkout')
 
 
     $_SESSION['flow_consignee'] = $consignee;
-
     $smarty->assign('consignee', $consignee);
 
 
@@ -2070,46 +2064,24 @@ elseif ($_REQUEST['step'] == 'checkout')
    }
 
    $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
-
    $smarty->assign('consignee_list', $consignee_list_ecshop68);
-
    $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
 
 	/* 代码增加_end  By  www.68ecshop.com */
-
-
-
-
-
-
-
     /* 对商品信息赋值 */
-
     $cart_goods = cart_goods($flow_type); // 取得商品列表，计算合计
 
     /*
-
      * 分供货商显示商品
-
      */
-
     $cart_goods_new = array();
-
     if(count($cart_goods)>0){
-
     	foreach($cart_goods as $key => $val){
-
     		$cart_goods_new[$val['supplier_id']]['goodlist'][] = $val;
-
 			$cart_goods_new[$val['supplier_id']]['shipping_html'] = insert_get_shop_shipping(array('suppid'=>$val['supplier_id'],'consignee'=>$consignee,'flow_type'=>$flow_type));
 
     	}
-
     }
-
-
-
-    
 
     if ($flow_type != CART_EXCHANGE_GOODS && $flow_type != CART_GROUP_BUY_GOODS )
 
@@ -7156,25 +7128,15 @@ assign_dynamic('shopping_flow');
 /* 代码修改_start  By  www.68ecshop.com */
 
 if ($_REQUEST['step']=='cart' || $_REQUEST['step']=='checkout')
-
 {
-
 	$smarty->assign('template_dir', $GLOBALS['_CFG']['template']);
-
-        if($total['real_goods_count'] == 0){
-
-            $smarty->display('flow_virtual.dwt');
-
-        }else{
-
-            $smarty->display('flow_jm.dwt');
-
-        }
-
+    if($total['real_goods_count'] == 0){
+        $smarty->display('flow_virtual.dwt');
+    }else{
+        $smarty->display('flow_jm.dwt');
+    }
 }
-
 else
-
 {
 
 	$smarty->display('flow.dwt');

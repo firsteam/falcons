@@ -592,7 +592,7 @@ data-widget="tab-item">
     <script type="text/javascript">
         var flow_no_payment = "{$lang.flow_no_payment}";
         var flow_no_shipping = "{$lang.flow_no_shipping}";
-        </script>
+    </script>
     <div class="pre_box w">
       <div class="title" style="background:#fff;" name="address_box" id="address_box">
         <div class="text">{$lang.goods_list} 
