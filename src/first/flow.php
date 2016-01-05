@@ -1876,21 +1876,13 @@ elseif ($_REQUEST['step'] == 'checkout')
         "AND parent_id = 0 AND is_gift = 0 AND rec_type = '$flow_type'";
 
 	/* 代码增加_end  By www.68ecshop.com */
-
     if ($db->getOne($sql) == 0)
-
     {
-
         show_message($_LANG['no_goods_in_cart'], '', '', 'warning');
-
     }
-
 	else
-
 	{
-
 		if($flow_type != CART_EXCHANGE_GOODS)
-
 		{
 
 		$time_xg_now=gmtime();
@@ -1936,15 +1928,10 @@ elseif ($_REQUEST['step'] == 'checkout')
 		}
 
 		if($message != '')
-
 		{
-
 			show_message($message, $_LANG['back_to_cart'], 'flow.php',  'info',  false);
-
 			exit; 
-
 		}
-
 		}
 
 	}
@@ -2919,11 +2906,8 @@ elseif ($_REQUEST['step'] == 'select_shipping')
 
 
     if (empty($cart_goods))
-
     {
-
         $result['error'] = $_LANG['no_goods_in_cart'];
-
     }/*else if(!check_consignee_info($consignee, $flow_type)){
 
 		$result['error'] = '请先设置收货地址哟，亲！';
@@ -3107,11 +3091,8 @@ elseif ($_REQUEST['step'] == 'select_insure')
 
 
     if (empty($cart_goods) || !check_consignee_info($consignee, $flow_type))
-
     {
-
         $result['error'] = $_LANG['no_goods_in_cart'];
-
     }
 
     else
@@ -3216,18 +3197,12 @@ elseif ($_REQUEST['step'] == 'select_payment')
 
     $cart_goods = cart_goods($flow_type); // 取得商品列表，计算合计
 
-
-
-    if (empty($cart_goods) || (!check_consignee_info($consignee, $flow_type)))
-
+    // if (empty($cart_goods) || (!check_consignee_info($consignee, $flow_type)))
+    if( empty($cart_goods) )
     {
-
         $result['error'] = $_LANG['no_goods_in_cart'];
-
     }
-
     else
-
     {
 
         /* 取得购物流程设置 */
