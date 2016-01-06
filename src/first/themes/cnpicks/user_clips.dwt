@@ -292,13 +292,14 @@ menu.className=i==cursel?"line1":"line2";
               </div>
               <div class="mar_top">
                 <div class="box">
-					<div style="padding:15px 20px;">
+					<div style="padding:15px 10px 0px 0px;">
                         <!--{foreach from=$message_list item=message key=key} -->
                         <div class="f_l"> <b>{$message.msg_type}:</b>&nbsp;&nbsp;<font class="">{$message.msg_title}</font> ({$message.msg_time}) </div>
 						<div class="f_r"> <a href="user.php?act=del_msg&amp;id={$key}&amp;order_id={$message.order_id}" title="{$lang.drop}" onclick="if (!confirm('{$lang.confirm_remove_msg}')) return false;" class="f6">{$lang.drop}</a> </div>
-							<div class="msgBottomBorder"> {$message.msg_content} 
+							<div class="msgBottomBorder"> {$message.msg_content} <br><br>
 								<!-- {if $message.message_img} 如果上传了图片-->
-								<div align="right"> <a href="data/feedbackimg/{$message.message_img}" target="_bank" class="f6">{$lang.view_upload_file}</a> </div>
+								
+								<a href ="data/feedbackimg/{$message.message_img}" target="_blank"><img src="data/feedbackimg/{$message.message_img}" style="max-height:300px; max-width:300px;"/> </a>
 								<!-- {/if} --> 
 								<br />                    
 							</div>

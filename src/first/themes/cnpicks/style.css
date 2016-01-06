@@ -252,7 +252,6 @@ A:focus {
 }
 /*模块容器*/
 .box {
-	padding-bottom: 2px;
 	overflow: hidden;
 }
 .box_1 {
@@ -534,11 +533,11 @@ h6 span {
 }
 /*布局*/
 .AreaL {
-	width: 210px;
+	width: 160px;
 	float: left;
 }
 .AreaR {
-	width: 770px;
+	width: 800px;
 	float: right;
 	overflow: hidden
 }
@@ -709,7 +708,8 @@ h6 span {
 }
 .box_1 .userCenterBox {
 	background-color: #fff;
-	width: 755px;
+	/*width:820px;
+	padding: 0px 20px 0px 0px;*/
 	float: right
 }
 .box_1 .userCenterBox .userMenu {
@@ -1577,8 +1577,8 @@ margin-top:
 }
 /*侧导航列表*/
 .navList {
-	width: 210px;
-	height: 850px;
+	width: 160px;
+	height: 800px;
 	background-color: #fbfbfb;
 	overflow: hidden;
 }
@@ -1628,10 +1628,10 @@ margin-top:
 	background-position: -96px 0;
 }
 .func .item {
-	width: 150px;
+	width: 110px;
 	height: 40px;
 	display: block;
-	padding: 5px 28px 0 31px;
+	padding: 5px 30px 0px 30px;
 	line-height: 30px;
 	cursor: pointer;
 }
@@ -1691,10 +1691,10 @@ margin-top:
 }
 /*中部购买信息begin*/
 .usBox_y .account {
-	width: 770px;
+	width: 800px;
 	height: auto;
 	border-top: 1px solid #e4e4e4;
-	border-right: 1px solid #e4e4e4;
+	/*border-right: 1px solid #e4e4e4;*/
 	overflow: hidden;
 	float: left;
 	display: inline-block;
@@ -2503,7 +2503,7 @@ margin-top:
 	border-right: 1px solid #e4e4e4;*/
 }
 .collect .line1 {
-	width:770px;
+	/*width:770px;*/
 	float: left;
 	cursor: pointer
 }
@@ -2758,7 +2758,7 @@ margin-top:
 /*用户信息*/
 .boxCenterList .tabmenu {
 	background-color: #FFF;
-	width: 755px;
+	width: 800px;
 	height: 40px;
 	margin-left: 0px;
 	display: block;
@@ -2824,12 +2824,12 @@ margin-top:
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.10);
 }
 .ncm-user-profile {
-	width: 755px;
+	width: 800px;
 	height: auto;
 	margin: 0 auto;
 }
 .ncm-default-form {
-	width: 755px;
+	width: 800px;
 	margin: 30px auto;
 }
 .ncm-default-form dl {
@@ -3110,7 +3110,7 @@ margin-top:expression(32-this.height/2);
 }
 /*我的红包*/
 .mar_top ul.bonus_con {
-	width: 755px;
+	width: 800px;
 }
 .mar_top ul.bonus_con li {
 	width: 218px;
@@ -3214,7 +3214,7 @@ margin-top:expression(32-this.height/2);
 *display: inline/*IE7*/;
 	/*width: 170px;*/
 	height: 290px;
-	margin: 10px 11px 0px 0px;
+	margin: 10px 26px 0px 0px;
 	/*border-color: #E6E6E6;
 	border-style: solid;
 	border-width: 0 1px 1px 0;*/

@@ -3,7 +3,7 @@
 
   <div class="gallery">
     <div id="demo">
-      <div id="demo1" style="float:left;">
+      <div id="demo1" style="float:left; margin:20px 0px;">
         <ul id="goods_gallery">
           <!-- {foreach from=$pictures item=picture}-->
           <li>

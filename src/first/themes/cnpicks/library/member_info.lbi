@@ -2,7 +2,7 @@
 {if $user_info}
 <a class="sn-login" href="user.php" target="_top">{$user_info.username} </a>
 <a class="sn-login" href="user.php?act=collection_list" target="_top" rel="nofollow">Favorites</a> 
-<a class="sn-login" href="user.php?act=order_list" target="_top" rel="nofollow">Purchases</a>
+<a class="sn-login" href="user.php?act=order_list" target="_top" rel="nofollow">Orders</a>
 <a class="sn-register" href="user.php?act=logout" target="_top">{$lang.user_logout}</a> 
 {else} 
 <a class="sn-login" href="user.php" target="_top">Sign in</a>
