@@ -557,7 +557,7 @@ else
         </script>
     <div class="blank10"></div>
     <div class="checkBox_jm clearfix" >
-      <div class="title">1 {$lang.consignee_address}</div>
+      <div class="title">{$lang.consignee_address}</div>
       <div class="address_jm" id="AddressList" > <!-- #BeginLibraryItem "/library/address_list.lbi" --><!-- #EndLibraryItem --> </div>
       <div id="popDiv" class="mydiv" style="display:none;">
         <div class="mydiv-l" id="PopAddressTitle">{$lang.new_consignee_address}</div>
@@ -773,7 +773,7 @@ else
 	</script> 
     {* 送货时间 *}
     <div class="checkBox_jm" style="display:none;">
-      <div class="title">2 送货时间 <span class="songhuo">送货时间仅作参考，快递公司会尽量满足您的要求</span></div>
+      <div class="title">送货时间 <span class="songhuo">送货时间仅作参考，快递公司会尽量满足您的要求</span></div>
       <div class="timebox">
         <ul>
           <li class="curr" id="time_id_1" onClick="javascript:setTimeSh('1');">
@@ -1196,7 +1196,7 @@ else
       </script> 
     {* 支付方式 *}
     <div class="checkBox_jm">
-      <div class="title">3 {$lang.payment_method}</div>
+      <div class="title">{$lang.payment_method}</div>
       <ul class="payment_tab_jm" id="payment_tab">
         <!-- {foreach from=$payment_list name="payment_list" item=payment} --> 
         {if $payment.pay_code neq 'alipay_bank' && $payment.pay_code neq 'cod' && $payment.pay_code neq 'pup'}

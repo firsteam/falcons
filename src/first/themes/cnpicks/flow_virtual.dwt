@@ -74,7 +74,7 @@
 
   <div class="block_jm"> 
     <!-- {if $step eq "cart"} -->
-    <div id="A_Stepbar" class="flowstep">
+    <div id="A_Stepbar" class="flowstep disable-by-cy">
       <ol class="flowstep-5">
         <li class="step-first">
           <div class="step-done">
@@ -109,7 +109,7 @@
   {/foreach}
   </script>
     <div class="blank5"></div>
-    <div class="flowBox_jm" style="margin-top:10px;">
+    <div class="flowBox_jm" style="margin:0px auto 20px auto;">
       <div class="title_jm" >
         <table cellpadding=0 cellspacing=0 width="100%" border=0>
           <tr> {* 代码增加_start  By  www.68ecshop.com *}
@@ -130,7 +130,6 @@
       </form>
       <table width="100%" align="center" border="0" cellpadding="5" cellspacing="6"  style="border-top:1px solid #efefef;">
         <tr>
-          <td width="200"><a href="./" class="continue_buy">{$lang.continue_shopping}</a></td>
           <td align="right" width="120"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>{$lang.clear_cart} </font></a></td>
           <td align="right" id='cart_money_info'> {$lang.total} <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
           <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">{$lang.check_out}</a></td>
@@ -368,9 +367,9 @@ else
       <div class="title_jm">
         <ul id="HotBoxTit">
           <li class="curr">{$lang.best_goods}</li>
-          <li >{$lang.hot_goods}</li>
+          <!-- <li>{$lang.hot_goods}</li> -->
           <!-- {if $collection_goods} -->
-          <li >{$lang.label_collection}</li>
+          <li>{$lang.favorite}</li>
           <!-- {/if} --> 
           <!-- {if $fittings_list} 商品配件 -->
           <li>商品配件</li>
@@ -390,7 +389,8 @@ else
           {/foreach}
           {/if}
         </ul>
-        <ul class="clearfix">
+        <!--
+		<ul class="clearfix">
           {if $hotgoods_list}
           {foreach from=$hotgoods_list item=hotgoods}
           <li>
@@ -402,6 +402,7 @@ else
           {/foreach}
           {/if}
         </ul>
+		-->
         <!-- {if $collection_goods} -->
         <ul class="clearfix">
           {foreach from=$collection_goods item=goods}

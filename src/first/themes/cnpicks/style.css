@@ -1583,7 +1583,7 @@ margin-top:
 	overflow: hidden;
 }
 .navList .func {
-	margin-left: 10px;
+	/*margin-left: 10px;*/
 	clear: both;
 	height: auto
 }
@@ -2503,6 +2503,7 @@ margin-top:
 	border-right: 1px solid #e4e4e4;*/
 }
 .collect .line1 {
+	width:770px;
 	float: left;
 	cursor: pointer
 }
@@ -2569,7 +2570,7 @@ margin-top:
 	margin-top: 20px
 }
 .colList .colFrame {
-	width: 930px;
+	/*width: 930px;*/
 	height: 150px;
 	float: left;
 	display: inline-block;
@@ -2577,14 +2578,14 @@ margin-top:
 *zoom:1;
 	overflow: hidden;
 	position: relative;
-	margin: 0px 35px
+	margin: 0px 20px
 }
 .colList ul {
 	width: 930px;
 	position: relative;
 }
 .colList ul li {
-	width: 155px;
+	width: 150px;
 	height: 150px;
 	float: left;
 	display: inline-block;
@@ -3198,10 +3199,10 @@ margin-top:expression(32-this.height/2);
 .pic-model ul {
 	font-size: 0;
 *word-spacing:-1px/*IE6、7*/;
-	width: 984px;
+	/*width: 984px;*/
 	text-align: left;
-	border: solid #EEE;
-	border-width: 1px 0 0 1px
+	/*border: solid #EEE;
+	border-width: 1px 0 0 1px*/
 }
 .pic-model ul li {
 	font-size: 12px;
@@ -3211,12 +3212,12 @@ margin-top:expression(32-this.height/2);
 	word-spacing: normal;
 	display: inline-block;
 *display: inline/*IE7*/;
-	width: 245px;
-	height: 295px;
-	margin: 0;
-	border-color: #E6E6E6;
+	/*width: 170px;*/
+	height: 290px;
+	margin: 10px 11px 0px 0px;
+	/*border-color: #E6E6E6;
 	border-style: solid;
-	border-width: 0 1px 1px 0;
+	border-width: 0 1px 1px 0;*/
 	position: relative;
 	z-index: 1;
 *zoom: 1;
@@ -3227,38 +3228,38 @@ margin-top:expression(32-this.height/2);
 }
 .pic-model div.favorite-goods-thumb {
 	background-color: #FFF;
-	width: 220px;
-	height: 220px;
-	position: absolute;
+	width: 180px;
+	height: 180px;
+	/*position: absolute;
 	z-index: 1;
 	top: 12px;
-	left: 12px;
+	left: 12px;*/
 }
 .pic-model div.favorite-goods-thumb a {
-	line-height: 0;
+	/*line-height: 0;
 	background-color: #FFF;
 	text-align: center;
 	vertical-align: middle;
 	display: table-cell;
 *display: block;
-	width: 220px;
-	height: 220px;
-	overflow: hidden;
+	width: 180px;
+	height: 180px;
+	overflow: hidden;*/
 }
 .pic-model div.favorite-goods-thumb a img {
-	max-width: 220px;
-	max-height: 220px;
-margin-top:expression(220-this.height/2);
-*margin-top:expression(110-this.height/2)/*IE6,7*/;
+	max-width: 180px;
+	max-height: 180px;
+margin-top:expression(180-this.height/2);
+*margin-top:expression(90-this.height/2)/*IE6,7*/;
 }
 .pic-model div.favorite-goods-info {
-	width: 220px;
+	width: 180px;
 	height: 60px;
-	padding: 220px 12px 10px 12px;
+	/*padding: 180px 12px 10px 12px;
 	position: absolute;
 	z-index: 2;
 	top: 0;
-	left: 0;
+	left: 0;*/
 }
 .pic-model div.favorite-goods-info a:hover {
 	color: #E31939
@@ -3271,7 +3272,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 .pic-model div.favorite-goods-info dt {
 	line-height: 18px;
 	height: 36px;
-	margin: 4px 0 0;
+	margin: 0 0;
 	padding-top: 10px;
 	overflow: hidden;
 }

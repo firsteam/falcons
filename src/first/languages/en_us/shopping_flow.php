@@ -101,7 +101,6 @@ $_LANG['pls_select_gift'] = 'Please select gift';
 $_LANG['gift_count_exceed'] = 'Gift quantity selected is maximizing';
 $_LANG['gift_in_cart'] = 'Gift in the cart: %s';
 $_LANG['label_favourable'] = 'Favourable';
-$_LANG['label_collection'] = 'Collection';
 $_LANG['collect_to_flow'] = 'Buy';
 
 /* 登录注册 */

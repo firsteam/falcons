@@ -753,7 +753,7 @@ menu.className=i==cursel?"active":"";
 </script>
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active" id="tab1" onClick="setTabCatGoods('tab',1,3)">My Information</li>
+              <li class="active" id="tab1" onClick="setTabCatGoods('tab',1,3)">{$lang.label_profile}</li>
               <li class="normal" id="tab2" onClick="setTabCatGoods('tab',2,3)" style="display:none">更换头像</li>
               <li class="normal" id="tab3" onClick="setTabCatGoods('tab',3,3)" style="display:none">实名认证</li>
             </ul>
@@ -1785,7 +1785,7 @@ menu.className=i==cursel?"active":"";
           <!-- {if $action eq back_order_detail} -->
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active">Refund/Return</li>
+              <li class="active">{$lang.label_return}</li>
             </ul>
           </div>
           <div class="blank"></div>
@@ -1993,14 +1993,13 @@ menu.className=i==cursel?"active":"";
           <!-- {if $action eq back_list} -->
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active">Refund/Return</li>
+              <li class="active">{$lang.label_return}</li>
             </ul>
           </div>
           <div class="blank"></div>
           <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
             <tr align="center">
-              <td bgcolor="#ffffff">Refund/Return<br>
-                Request Number</td>
+              <td bgcolor="#ffffff">Request Number</td>
               <td bgcolor="#ffffff">Order Number</td>
               <td bgcolor="#ffffff" width="20%">Product Name</td>
               <td bgcolor="#ffffff">Request Time</td>
@@ -3223,7 +3222,7 @@ function updateEndTime(){
             </script>
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="first active">Consignee Address</li>
+              <li class="first active">{$lang.label_address}</li>
             </ul>
           </div>
           <div class="alert alert-success" style="display:none">

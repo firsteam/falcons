@@ -99,7 +99,6 @@ $_LANG['pls_select_gift'] = '请选择赠品（特惠品）';
 $_LANG['gift_count_exceed'] = '您选择的赠品（特惠品）数量超过上限了';
 $_LANG['gift_in_cart'] = '您选择的赠品（特惠品）已经在购物车中了：%s';
 $_LANG['label_favourable'] = '优惠活动';
-$_LANG['label_collection'] = '我的收藏';
 $_LANG['collect_to_flow'] = '立即购买';
 
 /* 登录注册 */

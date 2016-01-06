@@ -22,12 +22,14 @@ $_LANG['shot_message'] = "Short message";
 
 /* 用户菜单 */
 $_LANG['label_welcome'] = 'Welcome';
-$_LANG['label_profile'] = 'My Information';
-$_LANG['label_order'] = 'My Order';
-$_LANG['label_address'] = 'Consignee Address';
-$_LANG['label_message'] = 'My Feedback';
+$_LANG['label_profile'] = 'My Account';
+$_LANG['label_order'] = 'My Orders';
+$_LANG['label_return'] = 'My Returns';
+$_LANG['label_review'] = 'My Reviews';
+$_LANG['label_address'] = 'Shipping Info';
+$_LANG['label_message'] = 'My Messages';
 $_LANG['label_tag'] = 'My Tag';
-$_LANG['label_collection'] = 'My Favorite';
+$_LANG['label_collection'] = 'My Favorites';
 $_LANG['label_bonus'] = 'My Bonus';
 $_LANG['label_comment'] = 'My comment';
 $_LANG['label_affiliate'] = 'My recommendation';

@@ -222,7 +222,7 @@ $(document).ready(function(e) {
             <!-- {if $action eq 'my_comment'} -->
             <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active"> <a href="#">Reviews</a> </li>
+              <li class="active"> {$lang.label_review}</li>
             </ul>
           </div>
             <div class="blank"></div>

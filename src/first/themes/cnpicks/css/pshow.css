@@ -1613,6 +1613,7 @@ span.scrright {
 	padding: 10px;
 	width: 562px;
 	border: 1px solid #DDD;
+    cursor: pointer;
 }
 .shop_self {
 	color: #666;
