@@ -33,7 +33,7 @@ label .error{
 	<div class="Logo-r">
 		<div class="Logo-info-r">
 			<a href="./" class="logo"></a>
-            <span class="register">Register</span>
+            <span class="register disable-by-cy">Register</span>
 			<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
 		</div>
 	</div>

@@ -28,7 +28,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 	<div class="Logo-r">
 		<div class="Logo-info-r">
 			<a href="./" class="logo"></a>
-			<span class="findpw">Find Password</span>
+			<span class="findpw disable-by-cy">Find Password</span>
 			<!-- #BeginLibraryItem "/library/user_right.lbi" --><!-- #EndLibraryItem -->
 		</div>
 	</div>
