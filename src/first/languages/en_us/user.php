@@ -382,7 +382,7 @@ $_LANG['back_retry_answer'] = 'back and retry';
 
 /* 登录 注册 */
 $_LANG['label_username'] = 'Username';
-$_LANG['label_email'] = 'email';
+$_LANG['label_email'] = 'Email';
 $_LANG['label_password'] = 'Password';
 $_LANG['label_confirm_password'] = 'Re-enter password';
 $_LANG['label_password_intensity'] = 'Password intensity';

@@ -46,11 +46,13 @@
           
             <div class="item" style="margin:30px 0px 30px 0px;">       
                 <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="UserName or Email"/>  
-            </div>
+				<i class="i-name"></i>
+		   </div>
 			
             <div class="item" style="margin:0px 0px 5px 0px;">           
                 <input type="password" id="password" name="password" class="text" tabindex="2" placeholder="Password"/>         
-            </div>
+				<i class="i-pass"></i>
+			</div>
 			
 			<div class="item" style="margin:0px 0px 15px 0px;"> 
 			<!-- 
@@ -62,7 +64,7 @@
             <!-- 判断是否启用验证码{if $enabled_captcha} -->
             <div class="item " id="o-authcode"> <span class="label" style="display:none;">Verification Code</span>
               <div>
-                <input type="text" id="authcode" name="captcha" class="text text-1" tabindex="3" placeholder="Verification Code"/>
+                <input type="text" id="authcode" name="captcha" class="text-1" tabindex="3" placeholder="Verification Code"/>
                 <label class="img"> <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /> </label>
               </div>
             </div>

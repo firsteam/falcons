@@ -5,6 +5,16 @@ body, button, input, select, textarea {
 *line-height:1.5;
 	-ms-overflow-style: scrollbar;
 }
+*::-webkit-input-placeholder {
+    color: #ccc;
+} 
+*:-moz-placeholder {
+    color: #ccc;
+} 
+*:-ms-input-placeholder {
+    /* IE10+ */
+    color: #ccc;
+}
 input:focus, textarea:focus {
 	outline: none;
 }
