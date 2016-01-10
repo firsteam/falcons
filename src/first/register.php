@@ -241,6 +241,32 @@ function action_send_mobile_code ()
 	}
 }
 
+
+/**
+ * 验证邮箱是否可以注册，true-已存在，不能注册 false-不存在可以注册
+ */
+function action_check_username_exist ()
+{
+	$_LANG = $GLOBALS['_LANG'];
+	$_CFG = $GLOBALS['_CFG'];
+	$smarty = $GLOBALS['smarty'];
+	$db = $GLOBALS['db'];
+	$ecs = $GLOBALS['ecs'];
+	
+	$username = empty($_POST['username']) ? '' : $_POST['username'];
+	
+	$user = $GLOBALS['user'];
+	
+	if($user->check_username($username))
+	{
+		echo 'true';
+	}
+	else
+	{
+		echo 'false';
+	}
+}
+
 /**
  * 验证邮箱是否可以注册，true-已存在，不能注册 false-不存在可以注册
  */
@@ -329,10 +355,10 @@ function action_default ()
 	/* 增加是否关闭注册 */
 	$smarty->assign('shop_reg_closed', $_CFG['shop_reg_closed']);
 	// 登陆注册-注册类型
-	$register_type = empty($_REQUEST['register_type']) ? 'mobile' : $_REQUEST['register_type'];
+	$register_type = empty($_REQUEST['register_type']) ? 'email' : $_REQUEST['register_type'];
 	if($register_type != 'email' && $register_type != 'mobile')
 	{
-		$register_type = 'mobile';
+		$register_type = 'email';
 	}
 	$smarty->assign('register_type', $register_type);
 	// $smarty->assign('back_act', $back_act);
@@ -379,7 +405,7 @@ function action_register ()
 		$register_type = isset($_POST['register_type']) ? trim($_POST['register_type']) : '';
 		
 		$back_act = isset($_POST['back_act']) ? trim($_POST['back_act']) : '';
-		
+
 		if(empty($_POST['agreement']))
 		{
 			show_message($_LANG['passport_js']['agreement']);
@@ -456,7 +482,7 @@ function action_register ()
 			}*/
 			
 			/* 邮箱注册时 */
-			$username = generate_username();
+			// $username = generate_username();
 			
 			/* 邮箱注册 */
 			$result = register_by_email($username, $password, $email, $other);

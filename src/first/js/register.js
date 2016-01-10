@@ -105,7 +105,7 @@ function checkEmail(email, callback) {
 		emailObj = $(email);
 		email = emailObj.val();
 	}
-
+	console.log(Utils);
 	if (email == '') {
 		document.getElementById('email_notice').innerHTML = msg_email_blank;
 		document.getElementById('email_notice').style.color = '#900';
@@ -173,6 +173,102 @@ function checkEmailExist(email, callback) {
 			
 			if (emailObj != null) {
 				emailObj.focus();
+			}
+			
+			if ($.isFunction(callback)) {
+				callback(false);
+			}
+
+		}
+	}, 'text');
+}
+
+
+/**
+ * 验证用户名,第一步合法性验证， 第二步是否存在验证
+ * 
+ * @param username
+ *            验证用户名
+ * @param callback
+ *            回调函数：true-可以注册 false-不可以注册
+ */
+function checkUsername(username, callback) {
+	var submit_disabled = false;
+
+	var usernameObj = null;
+
+	if (typeof (username) == 'object') {
+		usernameObj = $(username);
+		username = usernameObj.val();
+	}
+
+	if (username == '') {
+		document.getElementById('username_notice').innerHTML = msg_un_blank;
+		document.getElementById('username_notice').style.color = '#900';
+		submit_disabled = true;
+
+		if (usernameObj != null) {
+			usernameObj.focus();
+		}
+
+	} else if (!Utils.trim(username)) {
+		document.getElementById('username_notice').innerHTML = msg_un_format;
+		document.getElementById('username_notice').style.color = '#900';
+		submit_disabled = true;
+
+		if (usernameObj != null) {
+			usernameObj.focus();
+		}
+
+	}
+
+	if (submit_disabled) {
+		document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+		return false;
+	}
+
+	if (usernameObj == null) {
+		checkUsernameExist(username, callback);
+	} else {
+		checkUsernameExist(usernameObj, callback);
+	}
+}
+
+/**
+ * 检查邮箱是否已经绑定过用户
+ * 
+ * @param username
+ *            验证邮件:支持邮箱和邮箱对象
+ * @param callback
+ *            回调函数：true-可以注册 false-不可以注册
+ */
+function checkUsernameExist(username, callback) {
+
+	var usernameObj = null;
+
+	if (typeof (username) == 'object') {
+		usernameObj = $(username);
+		username = usernameObj.val();
+	}
+
+	$.post('register.php?act=check_username_exist', {
+		username: username
+	}, function(result) {
+		if (result == 'false') {
+			document.getElementById('username_notice').innerHTML = msg_can_rg;
+			document.getElementById('username_notice').style.color = '#093';
+			document.forms['formUser'].elements['Submit'].disabled = '';
+
+			if ($.isFunction(callback)) {
+				callback(true);
+			}
+		} else {
+			document.getElementById('username_notice').innerHTML = msg_un_registered;
+			document.getElementById('username_notice').style.color = '#900';
+			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+			
+			if (usernameObj != null) {
+				usernameObj.focus();
 			}
 			
 			if ($.isFunction(callback)) {

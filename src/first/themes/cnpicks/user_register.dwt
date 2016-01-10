@@ -59,6 +59,14 @@ label .error{
 						<input type="hidden" name="register_type" value="{$register_type}" />
 							
 							<div class="item">
+								<input name="username" type="text" id="username" placeholder="{$lang.label_username}" onblur="checkUsername(this)" class="text username" />
+								<i class="i-name"></i>
+								<div style="display:none;">
+									<span class="label" id="username_notice"></span>
+								</div>
+							</div>
+
+							<div class="item" style="margin:30px 0px 0px 0px;">
 								<input name="email" type="text" id="email" placeholder="{$lang.label_email}" onblur="checkEmail(this)" class="text email" />
 								<i class="i-email"></i>
 								<div style="display:none;">

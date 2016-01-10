@@ -731,6 +731,30 @@ class integrate
 	 *        	
 	 * @return boolean
 	 */
+	function check_username ($username)
+	{
+		if(! empty($username))
+		{
+			/* 检查email是否重复 */
+			$sql = "SELECT " . $this->field_id . " FROM " . $this->table($this->user_table) . " WHERE " . $this->field_name . " = '$username' ";
+			if($this->db->getOne($sql, true) > 0)
+			{
+				$this->error = ERR_EMAIL_EXISTS;
+				return true;
+			}
+			return false;
+		}
+	}
+
+	/**
+	 * 检查指定邮箱是否存在
+	 *
+	 * @access public
+	 * @param string $email
+	 *        	用户邮箱
+	 *        	
+	 * @return boolean
+	 */
 	function check_email ($email)
 	{
 		if(! empty($email))
