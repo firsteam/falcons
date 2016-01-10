@@ -1395,11 +1395,7 @@ margin-top:expression(28-this.height/2);
 	text-decoration: none;
 }
 .squares li:hover .goods-content {
-	height: 328px;
-	margin: 0;
-	border: solid 4px #E4393C;
-	border-radius: 0;
-	box-shadow: 0px 4px 4px rgba(102,102,102,0.65);
+	
 }
 .squares .list_pic dl dd.promotion-price {
 	width: 65px;

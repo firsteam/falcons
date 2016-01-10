@@ -129,7 +129,8 @@ function collect_goods(goodsId)
  */
 function collectGoodsResponse(result)
 {
-  alert(result.message);
+  document.getElementById('collect_goods').setAttribute("class", "btn-coll btn-coll-t"); 
+  // alert(result.message);
 }
 
 /* *
