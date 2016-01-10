@@ -6,7 +6,7 @@
 <meta name="Description" content="{$description}" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 {if $auto_redirect}
-<meta http-equiv="refresh" content="3;URL={$message.back_url}" />
+<meta http-equiv="refresh" content="0;URL={$message.back_url}" />
 {/if}
 <!-- TemplateBeginEditable name="doctitle" -->
 <title>{$page_title}</title>

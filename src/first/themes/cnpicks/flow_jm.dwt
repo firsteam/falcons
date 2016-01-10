@@ -1201,7 +1201,7 @@ else
         <!-- {foreach from=$payment_list name="payment_list" item=payment} --> 
         {if $payment.pay_code neq 'alipay_bank' && $payment.pay_code neq 'cod' && $payment.pay_code neq 'pup'}
         <li>
-          <input type="radio" name="payment" onclick="selectPayment(this);document.getElementById('payment_other_input').value=this.value;" value="{$payment.pay_id}" >
+          <input type="radio" name="payment" onclick="selectPayment(this);document.getElementById('payment_other_input').value=this.value;" value="{$payment.pay_id}" {if $key=1}checked{/if}>
           <img align="absmiddle" src="images/jmpic/pay_{$payment.pay_code}.gif" alt="{$payment.pay_name}" /></li>
         {/if} 
         <!-- {/foreach} -->
