@@ -61,24 +61,24 @@ label .error{
 							<div class="item">
 								<input name="username" type="text" id="username" placeholder="{$lang.label_username}" onblur="checkUsername(this)" class="text username" />
 								<i class="i-name"></i>
-								<div style="display:none;">
+								<div style="">
 									<span class="label" id="username_notice"></span>
 								</div>
 							</div>
 
-							<div class="item" style="margin:30px 0px 0px 0px;">
+							<div class="item" style="">
 								<input name="email" type="text" id="email" placeholder="{$lang.label_email}" onblur="checkEmail(this)" class="text email" />
 								<i class="i-email"></i>
-								<div style="display:none;">
+								<div style="">
 									<span class="label" id="email_notice"></span>
 								</div>
 							</div>
 							
 							<div id="o-password">
-								<div class="item" style="margin:30px 0px 0px 0px;">
+								<div class="item" style="">
 									<input name="password" type="password" id="password" placeholder="{$lang.label_password}" onblur="check_password(this.value);" onkeyup="checkIntensity(this.value)" class="text" />
 									<i class="i-pass"></i>
-									<div id="pwd_notice" style="display: none;">
+									<div id="pwd_notice" style="">
 										<span class="label" id="password_notice"></span>
 									</div>
 									<div id="pwd_intensity" >
@@ -96,7 +96,7 @@ label .error{
 								<div class="item" style="margin:0px 0px 30px 0px;">
 									<input type="password" id="conform_password" name="confirm_password" class="text" placeholder="{$lang.label_confirm_password}" onblur="check_conform_password(this.value);" autocomplete="off" />
 									<i class="i-pass"></i>
-									<div style="display:none;">
+									<div style="">
 										<span class="label" id="conform_password_notice"></span>
 									</div>
 								</div>
