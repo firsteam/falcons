@@ -107,9 +107,7 @@ function _register ($username, $password, $email_or_mobile, $other = array(), $r
 	}
 	else
 	{
-		
 		$email = $email_or_mobile;
-		
 		/* 检查email */
 		if(empty($email))
 		{

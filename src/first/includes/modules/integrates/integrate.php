@@ -723,10 +723,10 @@ class integrate
 	}
 
 	/**
-	 * 检查指定邮箱是否存在
+	 * 检查指定用户名是否存在
 	 *
 	 * @access public
-	 * @param string $email
+	 * @param string $username
 	 *        	用户邮箱
 	 *        	
 	 * @return boolean
@@ -735,9 +735,10 @@ class integrate
 	{
 		if(! empty($username))
 		{
-			/* 检查email是否重复 */
+			/* 检查用户名是否重复 */
 			$sql = "SELECT " . $this->field_id . " FROM " . $this->table($this->user_table) . " WHERE " . $this->field_name . " = '$username' ";
-			if($this->db->getOne($sql, true) > 0)
+			$res = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('admin_user') . " WHERE user_name = '$username'");
+			if($this->db->getOne($sql, true) > 0 || $res > 0)
 			{
 				$this->error = ERR_EMAIL_EXISTS;
 				return true;

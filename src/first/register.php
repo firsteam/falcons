@@ -243,7 +243,7 @@ function action_send_mobile_code ()
 
 
 /**
- * 验证邮箱是否可以注册，true-已存在，不能注册 false-不存在可以注册
+ * 验证用户是否可以注册，true-已存在，不能注册 false-不存在可以注册
  */
 function action_check_username_exist ()
 {
@@ -256,7 +256,7 @@ function action_check_username_exist ()
 	$username = empty($_POST['username']) ? '' : $_POST['username'];
 	
 	$user = $GLOBALS['user'];
-	
+
 	if($user->check_username($username))
 	{
 		echo 'true';
@@ -486,7 +486,7 @@ function action_register ()
 			
 			/* 邮箱注册 */
 			$result = register_by_email($username, $password, $email, $other);
-			
+
 			if($result)
 			{
 				/* 删除注册的验证记录 */
