@@ -84,7 +84,7 @@
               </div>
               <div class="show_price" style="display:none; z-index:101"> 
                 <!-- {if $cfg.show_marketprice} 市场价格-->
-                <div class="market_prices_t"> <span class="price"></span><font class="market_price">${$goods.market_price}</font> </div>
+                <div class="market_prices_t"> <span class="price"></span><font class="market_price">{$goods.market_price}</font> </div>
                 <!-- {/if} --> 
                 <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
                 <div class="market_prices_t">{insert_scripts files='lefttime.js'} <i></i><font class="f4" id="leftTime">{$lang.please_waiting}</font> </div>
@@ -95,7 +95,7 @@
                   <div class="hover" style="display:none;" id="vip2" onmouseover="hidevip1()" onmouseout="showvip1()"> <span class="rmbPrice">会员等级价格<i></i></span> 
                     <!-- {foreach from=$rank_prices item=rank_price key=key}--> 
                     </br>
-                    <span class="rmbPrice"> {$rank_price.rank_name}：${$rank_price.price}</span> 
+                    <span class="rmbPrice"> {$rank_price.rank_name}：{$rank_price.price}</span> 
                     <!--{/foreach}--> 
                   </div>
                   <script type="text/javascript">
@@ -254,7 +254,7 @@
                   <!-- {foreach from=$volume_price_list item=price_list key=price_key} -->
                   <tr>
                     <td align="center" bgcolor="#FFFFFF" class="shop">{$price_list.number}</td>
-                    <td align="center" bgcolor="#FFFFFF" class="shop">${$price_list.format_price}</td>
+                    <td align="center" bgcolor="#FFFFFF" class="shop">{$price_list.format_price}</td>
                   </tr>
                   <!-- {/foreach} -->
                 </table>
@@ -503,9 +503,9 @@
               <div class="p-name"><a href='{$goods_item.url}' title='{$goods_item.name|escape:html}'>{$goods_item.short_style_name}</a></div>
               <div class="p-price"><strong> 
                 <!-- {if $goods_item.promote_price neq ""} --> 
-                ${$goods_item.promote_price} 
+                {$goods_item.promote_price} 
                 <!-- {else}--> 
-                ${$goods_item.shop_price} 
+                {$goods_item.shop_price} 
                 <!--{/if}--> 
                 </strong></div>
             </li>
@@ -523,9 +523,9 @@
               <div class="p-name"><a href='{$goods_item.url}' title='{$goods_item.name|escape:html}'>{$goods_item.short_style_name}</a></div>
               <div class="p-price"><strong> 
                 <!-- {if $goods_item.promote_price neq ""} --> 
-                ${$goods_item.promote_price} 
+                {$goods_item.promote_price} 
                 <!-- {else}--> 
-                ${$goods_item.shop_price} 
+                {$goods_item.shop_price} 
                 <!--{/if}--> 
                 </strong></div>
             </li>
@@ -548,9 +548,9 @@
               <div class="p-name"><a href='{$goods_item.url}' title='{$goods_item.name|escape:html}'>{$goods_item.short_style_name}</a></div>
               <div class="p-price"><strong> 
                 <!-- {if $goods_item.promote_price neq ""} --> 
-                ${$goods_item.promote_price} 
+                {$goods_item.promote_price} 
                 <!-- {else}--> 
-                ${$goods_item.shop_price} 
+                {$goods_item.shop_price} 
                 <!--{/if}--> 
                 </strong></div>
             </li>
@@ -792,9 +792,9 @@ function changePriceResponse(res)
      document.getElementById('choose-btns1').style.display = 'none';
     document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
     if (document.getElementById('ECS_GOODS_AMOUNT')){
-      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = '$'+res.result;
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
 	  if (res.result_jf){
-		document.getElementById('ECS_GOODS_AMOUNT_jf').innerHTML = '$'+res.result_jf;
+		document.getElementById('ECS_GOODS_AMOUNT_jf').innerHTML = res.result_jf;
 	  }
     }
     // if(document.getElementById('shows_number')){

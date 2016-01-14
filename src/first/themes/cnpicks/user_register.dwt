@@ -78,7 +78,7 @@ label .error{
 								<div class="item" style="">
 									<input name="password" type="password" id="password" placeholder="{$lang.label_password}" onblur="check_password(this.value);" onkeyup="checkIntensity(this.value)" class="text" />
 									<i class="i-pass"></i>
-									<div id="pwd_notice" style="">
+									<div id="pwd_notice" style="display:none;">
 										<span class="label" id="password_notice"></span>
 									</div>
 									<div id="pwd_intensity" >
@@ -93,7 +93,7 @@ label .error{
 										</span>
 									</div>
 								</div>
-								<div class="item" style="margin:0px 0px 30px 0px;">
+								<div class="item" style="">
 									<input type="password" id="conform_password" name="confirm_password" class="text" placeholder="{$lang.label_confirm_password}" onblur="check_conform_password(this.value);" autocomplete="off" />
 									<i class="i-pass"></i>
 									<div style="">

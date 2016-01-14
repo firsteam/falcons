@@ -112,7 +112,7 @@ function checkEmail(email, callback) {
 		submit_disabled = true;
 
 		if (emailObj != null) {
-			emailObj.focus();
+			//emailObj.focus();
 		}
 
 	} else if (!Utils.isEmail(email)) {
@@ -121,7 +121,7 @@ function checkEmail(email, callback) {
 		submit_disabled = true;
 
 		if (emailObj != null) {
-			emailObj.focus();
+			//emailObj.focus();
 		}
 
 	}
@@ -172,7 +172,7 @@ function checkEmailExist(email, callback) {
 			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 			
 			if (emailObj != null) {
-				emailObj.focus();
+				//emailObj.focus();
 			}
 			
 			if ($.isFunction(callback)) {
@@ -208,7 +208,7 @@ function checkUsername(username, callback) {
 		submit_disabled = true;
 
 		if (usernameObj != null) {
-			usernameObj.focus();
+			//usernameObj.focus();
 		}
 
 	} else if (!Utils.trim(username)) {
@@ -217,7 +217,7 @@ function checkUsername(username, callback) {
 		submit_disabled = true;
 
 		if (usernameObj != null) {
-			usernameObj.focus();
+			//usernameObj.focus();
 		}
 
 	}
@@ -268,7 +268,7 @@ function checkUsernameExist(username, callback) {
 			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 			
 			if (usernameObj != null) {
-				usernameObj.focus();
+				//usernameObj.focus();
 			}
 			
 			if ($.isFunction(callback)) {
