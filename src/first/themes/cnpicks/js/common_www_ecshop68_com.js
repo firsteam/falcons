@@ -121,6 +121,7 @@ function addToCartResponse(result)
  */
 function collect_goods(goodsId)
 {
+  document.getElementById('collect_'+goodsId).setAttribute("class", "collet-btn collet-btn-t");
   Ajax.call('user.php?act=collect', 'id=' + goodsId, collectGoodsResponse, 'GET', 'JSON');
 }
 
@@ -130,7 +131,7 @@ function collect_goods(goodsId)
 function collectGoodsResponse(result)
 {
   document.getElementById('collect_goods').setAttribute("class", "btn-coll btn-coll-t"); 
-  // alert(result.message);
+  // document.getElementById('collect_38').setAttribute("class", "btn-coll btn-coll-t");
 }
 
 /* *

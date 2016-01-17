@@ -91,8 +91,8 @@ function insert_history()
             $goods['url'] = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
 
 		  
-            $str.='<li>
-              <div class="p-img"><a target="_blank" href="'.$goods['url'].'"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" width="50" height="50" /></a></div>
+            $str.='<li class="first">
+              <div class="p-img"><a target="_blank" href="'.$goods['url'].'"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" /></a></div>
               <div class="p-name"><a target="_blank" href="'.$goods['url'].'">'.$goods['goods_name'].'</a> </div>
               <div class="p-price"> <strong class="J-p-${list.wid}">'.$goods['shop_price'].'</strong> </div>
             </li>';
