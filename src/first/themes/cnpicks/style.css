@@ -2412,11 +2412,11 @@ margin-top:
 	height: 150px;
 	float: left;
 	display: inline-block;
-*display:inline;
-*zoom:1;
-	margin-left: 20px;
+	*display:inline;
+	*zoom:1;
 	overflow: hidden;
 	position: relative;
+	margin: 0px 20px;
 }
 .proListUc_history ul {
 	width: 930px;
@@ -2427,12 +2427,10 @@ margin-top:
 	height: 150px;
 	float: left;
 	display: inline-block;
-*display:inline;
-*zoom:1;
+	*display:inline;
+	*zoom:1;
 	overflow: hidden;
-	position: relative;
-	top: 0;
-	left: 0;
+	text-align: center;
 }
 .proListUc_history ul li a {
 	width: 120px;
