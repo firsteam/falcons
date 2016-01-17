@@ -13,6 +13,11 @@
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link rel="stylesheet" type="text/css" href="themes/cnpicks/css/commin.css" />
 <link rel="stylesheet" type="text/css" href="themes/cnpicks/css/style_jm.css" />
+<style type="text/css">
+  .cart_login:link,.cart_login:visited,.cart_login:hover,{
+    text-decoration: none;
+  }
+</style>
 {insert_scripts files='jquery-1.6.2.min.js '}
 {insert_scripts files='jquery.json.js,transport.js'}
 {* 包含脚本文件 *}
@@ -25,7 +30,7 @@
   <label style="width:80%;float:left;font-size:1.3em;margin:5px 10px;height:20px;">请输入余额支付密码:</label>
   <input id="surplus_password_input" class='inputBg' type="password" style='float:left;margin:5px 10px;width:230px;background-color:white;height:30px;border:none'/>
   <input type="button" onclick="end_input_surplus()" value="{$lang.button_submit}" style="float:left;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF"/>
-  <input type="button" onclick="cancel_input_surplus()" value="{$lang.button_cancel}" style="float:right;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF""/>
+  <input type="button" onclick="cancel_input_surplus()" value="{$lang.button_cancel}" style="float:right;margin:5px 10px;height:30px;width:50px;text-align:center;line-height:30px;border:none;background:#ED5854;color:#FFFFFF"/>
 </div>
 <!--余额额支付密码_添加_END_www.68ecshop.com-->
 <div id="site-nav" style="position:relative;"> <!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
@@ -125,7 +130,12 @@
         </table>
       </div>
       <form id="formCart1" name="formCart" method="post" action="flow.php">
-        <!-- #BeginLibraryItem "/library/cart_supplier_goods.lbi" --><!-- #EndLibraryItem -->
+      <!-- {if $goods_list|@count neq 0} -->
+
+      <!-- #BeginLibraryItem "/library/cart_supplier_goods.lbi" --><!-- #EndLibraryItem -->
+      <!-- {elseif $smarty.session.user_id eq ""} -->
+      <div style="text-align:center;line-height:35px;padding:20px 0;color:#B22C2B;font-size:20px;">Empty? <a style="color:#B22C2B;" class="cart_login" href="user.php">Please login >>></a></div>
+      <!-- {/if} -->
         <input type="hidden" name="step" id="actname" value="update_cart" />
       </form>
       <table width="100%" align="center" border="0" cellpadding="5" cellspacing="6"  style="border-top:1px solid #efefef;">

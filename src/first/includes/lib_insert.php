@@ -80,22 +80,36 @@ function insert_history()
         $sql   = 'SELECT goods_id, goods_name, goods_thumb, shop_price FROM ' . $GLOBALS['ecs']->table('goods') .
                 " WHERE $where AND is_on_sale = 1 AND is_alone_sale = 1 AND is_delete = 0";
         $query = $GLOBALS['db']->query($sql);
-        $res = array();
-        while ($row = $GLOBALS['db']->fetch_array($query))
+        $row = $GLOBALS['db']->fetch_array($query);
+        if( $row )
         {
-            $goods['goods_id'] = $row['goods_id'];
-            $goods['goods_name'] = $row['goods_name'];
-            $goods['short_name'] = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
-            $goods['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
-            $goods['shop_price'] = price_format($row['shop_price']);
-            $goods['url'] = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
+            $str .= '<div class="proListUc_history">'
+                 . '<div class="colFrame">'
+                 . '<ul style="left: 0px;" class="clearfix">';
+            $res = array();
+            while ($row = $GLOBALS['db']->fetch_array($query))
+            {
+                $goods['goods_id'] = $row['goods_id'];
+                $goods['goods_name'] = $row['goods_name'];
+                $goods['short_name'] = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+                $goods['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+                $goods['shop_price'] = price_format($row['shop_price']);
+                $goods['url'] = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
 
-		  
-            $str.='<li>
-              <div class="p-img"><a target="_blank" href="'.$goods['url'].'"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" width="50" height="50" /></a></div>
-              <div class="p-name"><a target="_blank" href="'.$goods['url'].'">'.$goods['goods_name'].'</a> </div>
-              <div class="p-price"> <strong class="J-p-${list.wid}">'.$goods['shop_price'].'</strong> </div>
-            </li>';
+    		  
+                $str.='<li class="first">
+                  <div class="p-img"><a target="_blank" href="'.$goods['url'].'"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" /></a></div>
+                  <div class="p-name"><a target="_blank" href="'.$goods['url'].'">'.$goods['goods_name'].'</a> </div>
+                  <div class="p-price"> <strong class="J-p-${list.wid}">'.$goods['shop_price'].'</strong> </div>
+                </li>';
+            }
+            $str .= '</ul>'
+                 . '</div>'
+                 . '</div>';
+        }
+        else
+        {
+            $str .= '<div class="emptyFrame_history" ><i class="user_bg"></i><span>Could not find any record</span> </div>';
         }
       
     }

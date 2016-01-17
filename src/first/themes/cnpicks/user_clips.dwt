@@ -183,44 +183,27 @@
             </div>
             <!-- *积分兑换商品不为0时 end--> 
             {/if} </div>
-          <div class="middle history">
+            <div class="middle history">
             <div class="line1 clearfix">
               <div class="title"><i></i><span>Browsing History</span></div>
+               <a href="" title="All" class="more">Go on &gt;</a>
             </div>
-            {if $mai eq array()} 
-            <!-- *浏览历史为0时 start-->
-            <div class="emptyFrame_history" > <i class="user_bg"></i><span>Could not find any record</span> </div>
-            <!-- *浏览历史为0时 end--> 
-            <!-- *浏览历史不为0时 start--> 
-            {else}
-            <div class="proListUc_history">
-              <div class="colFrame">
-                <ul style="left: 0px;" class="clearfix">
-                  {foreach from=$mai item=li}
-                  <li class="first"> <a href="#" title="{$li.goods_name}" target="_blank" class="img">
-                    <div class="mask"></div>
-                    <img src="{$li.goods_thumb}" alt="{$li.goods_name}"> </a> <a href="#" title="{$li.goods_name}" target="_blank" class="name">{$li.goods_name}</a>
-                    <p class="pri">${$li.goods_price}</p>
-                  </li>
-                  {/foreach}
-                </ul>
-              </div>
-              <p class="more"> <a href="index.php" target="_blank" title="Go on">Go on &gt;</a> </p>
-            </div>
-            {/if} 
-            <!-- *浏览历史不为0时 end--> 
+
+            <!-- *浏览历史 start-->
+            {insert name='history'}
+            <!-- *浏览历史 end--> 
           </div>
           <script>
-/*第一种形式 第二种形式 更换显示样式*/
-function setTabCatGoods(name,cursel,n){
-for(i=1;i<=n;i++){
-var menu=document.getElementById(name+i);
-var con=document.getElementById("con_"+name+"_"+i);
-con.style.display=i==cursel?"block":"none";
-menu.className=i==cursel?"line1":"line2";
-}
-}
-</script>
+            /*第一种形式 第二种形式 更换显示样式*/
+            function setTabCatGoods(name,cursel,n){
+            for(i=1;i<=n;i++){
+            var menu=document.getElementById(name+i);
+            var con=document.getElementById("con_"+name+"_"+i);
+            con.style.display=i==cursel?"block":"none";
+            menu.className=i==cursel?"line1":"line2";
+            }
+            }
+          </script>
           <div class="middle collect">
             <div class="line1" id="tab1" onmouseover="setTabCatGoods('tab',1,2)">
               <div class="title"><i></i><span>{$lang.label_collection}</span></div>

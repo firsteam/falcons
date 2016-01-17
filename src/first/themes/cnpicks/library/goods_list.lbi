@@ -110,7 +110,12 @@
                 <a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.goods_name|escape:html}<em></em></a></div>
               <div class="goods-price"> <em class="sale-price" title="Price: <!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->#{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></em> <em class="market-price disable-by-cy" title="">{$goods.market_price}</em>
               <a href="javascript:addToCart({$goods.goods_id});"><i class="icon-shopping-cart"></i>Add to cart</a>
-			  <a id="collect_{$goods.goods_id}" href="javascript:collect({$goods.goods_id}); re_collect({$goods.goods_id})" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
+			  
+              {if $smarty.session.user_id gt 0}
+                <a id="collect_{$goods.goods_id}" href="javascript:collect_goods({$goods.goods_id});" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
+              {else}
+                <a href="user.php" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
+              {/if}
               
 			  </div>
 
