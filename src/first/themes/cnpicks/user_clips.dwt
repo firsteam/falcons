@@ -186,6 +186,7 @@
             <div class="middle history">
             <div class="line1 clearfix">
               <div class="title"><i></i><span>Browsing History</span></div>
+               <a href="" title="All" class="more">Go on &gt;</a>
             </div>
 
             <!-- *浏览历史 start-->

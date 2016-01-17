@@ -2057,7 +2057,7 @@ margin-top:
 *zoom:1;
 	margin-left: 100px
 }
-.order .more, .collect .more, .shop_store .more, .exchange .more {
+.order .more, .collect .more, .shop_store .more, .exchange .more, .history .more {
 	margin-right: 20px;
 	float: right;
 	display: inline-block;
@@ -2407,7 +2407,7 @@ margin-top:
 	margin-top: 20px;
 }
 .proListUc_history .colFrame {
-	width: 930px;
+	width: 95%;
 	height: 150px;
 	float: left;
 	display: inline-block;
@@ -2571,7 +2571,7 @@ margin-top:
 	margin-top: 20px
 }
 .colList .colFrame {
-	/*width: 930px;*/
+	width: 95%;
 	height: 150px;
 	float: left;
 	display: inline-block;
