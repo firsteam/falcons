@@ -7100,7 +7100,6 @@ assign_dynamic('shopping_flow');
 
 
 /* 代码修改_start  By  www.68ecshop.com */
-
 if ($_REQUEST['step']=='cart' || $_REQUEST['step']=='checkout')
 {
 	$smarty->assign('template_dir', $GLOBALS['_CFG']['template']);

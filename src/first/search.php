@@ -14,9 +14,11 @@
 */
 
 define('IN_ECS', true);
+
 /* 代码添加_START  By   www.68ecshop.com */
 define('_SP_', chr(0xFF).chr(0xFE)); 
 define('UCS2', 'ucs-2be');
+
 /* 代码添加_END  By   www.68ecshop.com */
 if (!function_exists("htmlspecialchars_decode"))
 {

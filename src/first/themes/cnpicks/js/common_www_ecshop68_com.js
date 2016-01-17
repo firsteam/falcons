@@ -121,8 +121,8 @@ function addToCartResponse(result)
  */
 function collect_goods(goodsId)
 {
-  document.getElementById('collect_'+goodsId).setAttribute("class", "collet-btn collet-btn-t");
   Ajax.call('user.php?act=collect', 'id=' + goodsId, collectGoodsResponse, 'GET', 'JSON');
+  document.getElementById('collect_'+goodsId).setAttribute("class", "collet-btn collet-btn-t");
 }
 
 /* *

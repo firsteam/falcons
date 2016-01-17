@@ -2407,8 +2407,8 @@ margin-top:
 	margin-top: 20px;
 }
 .proListUc_history .colFrame {
-	width: 275px;
-	height: 135px;
+	width: 930px;
+	height: 150px;
 	float: left;
 	display: inline-block;
 *display:inline;
@@ -2418,12 +2418,12 @@ margin-top:
 	position: relative;
 }
 .proListUc_history ul {
-	width: 275px;
+	width: 930px;
 	position: relative;
 }
 .proListUc_history ul li {
-	width: 89px;
-	height: 135px;
+	width: 150px;
+	height: 150px;
 	float: left;
 	display: inline-block;
 *display:inline;
@@ -2434,7 +2434,8 @@ margin-top:
 	left: 0;
 }
 .proListUc_history ul li a {
-	width: 80px;
+	width: 120px;
+	height: 120px;
 	display: inline-block;
 	text-align: center
 }
@@ -2462,8 +2463,8 @@ margin-top:
 	color: #E31939;
 }
 .proListUc_history ul li a img {
-	width: 80px;
-	height: 80px
+	width: 120px;
+	height: 120px
 }
 .proListUc_history ul li a .mask {
 	width: 80px;
