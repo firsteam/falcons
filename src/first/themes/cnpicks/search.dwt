@@ -17,6 +17,7 @@
 <script type="text/javascript" src="themes/cnpicks/js/search_goods.js"></script> 
 <script type="text/javascript" src="themes/cnpicks/js/base-2011.js"></script>
 <script type="text/javascript" src="themes/cnpicks/js/jquery-lazyload.js" ></script>
+<script type="text/javascript" src="themes/cnpicks/js/common_www_ecshop68_com.js" ></script>
 {insert_scripts files='jquery.json.js,transport.js'}
 {* 包含脚本文件 *}
 {insert_scripts files='utils.js,common.js,global.js'}
