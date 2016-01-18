@@ -781,8 +781,6 @@ $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
 
 $smarty->assign('data_dir',    DATA_DIR);       // 数据目录
 
-
-
 /*------------------------------------------------------ */
 
 //-- 添加商品到购物车

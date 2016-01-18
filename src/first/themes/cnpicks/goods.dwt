@@ -1005,6 +1005,23 @@ function next_img()
     i=0;
   }
 }
+
+
+function del_collect(id)
+{
+  goods_id = (typeof(id) == "undefined" ? 0 : id);
+  Ajax.call('user.php?act=del_collect', 'id=' + goods_id, del_collectResponse, 'GET', 'JSON');
+}
+
+function del_collectResponse(result)
+{
+  if (result.goods_id > 0)
+  {
+    var collect_btn = document.getElementById("collect_goods");
+    collect_btn.className = "btn-coll ";
+    collect_btn.href = "javascript:collect_goods("+result.goods_id+")";
+  }
+}
 </script>
 <script>
 header_login();

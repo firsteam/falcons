@@ -30,7 +30,7 @@ $back_act = '';
 $not_login_arr = array(
 	'login', 'act_login', 'act_edit_password', 'get_password', 'send_pwd_email', 'password', 'signin', 'add_tag', 'collect', 're_collect', 'return_to_cart', 'book_goods', 'logout', 'user_bonus', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email', 'check_mobile_phone', 'clear_history', 'qpassword_name', 'get_passwd_question', 'check_answer', 'check_register', 'oath', 'oath_login', 'other_login', 'ch_email', 'ck_email', 'check_username', 'forget_password', 'getverifycode', 'step_1',
 /*余额额支付密码_更改_START_www.68ecshop.com*/
-'act_forget_pass', 're_pass', 'open_surplus_password', 'close_surplus_password'
+'act_forget_pass', 're_pass', 'open_surplus_password', 'close_surplus_password','del_collect'
 );
 /* 余额额支付密码_更改_END_www.68ecshop.com */
 
@@ -39,7 +39,7 @@ $ui_arr = array(
 	'login', 'profile', 'order_list', 'order_detail', 'address_list', 'collection_list', 'follow_shop', 'message_list', 'tag_list', 'get_password', 'reset_password', 'booking_list', 'add_booking', 'account_raply', 'account_deposit', 'account_log', 'account_detail', 'act_account', 'pay', 'default', 'bonus', 'group_buy', 'group_buy_detail', 'affiliate', 'comment_list', 'validate_email', 'track_packages', 'transform_points', 'qpassword_name', 'get_passwd_question', 'check_answer', 'check_register', 'back_order', 'back_list', 'back_order_detail', 'back_order_act', 'back_replay', 'my_comment', 'my_comment_send', 'shaidan_send', 'shaidan_sale', 'account_security', 'act_identity', 'check_phone', 'update_password', 're_binding', 'update_phone', 'update_email', 'act_update_email', 
 	're_binding_email', 'ch_email', 'ck_email', 'step_1', 'forget_password', 'back_order_detail', 'del_back_order', 'back_order_detail_edit', 'add_huan_goods',
 /*余额额支付密码_更改_START_www.68ecshop.com*/
-'act_forget_pass', 're_pass', 'auction_list', 'forget_surplus_password', 'act_forget_surplus_password', 'update_surplus_password', 'act_update_surplus_password', 'verify_reset_surplus_email', 'get_verify_code'
+	'act_forget_pass', 're_pass', 'auction_list', 'forget_surplus_password', 'act_forget_surplus_password', 'update_surplus_password', 'act_update_surplus_password', 'verify_reset_surplus_email', 'get_verify_code', 'del_collect'
 ); // 代码修改
    // By
    // www.68ecshop.com
@@ -3855,6 +3855,54 @@ function action_collect ()
 				$result['message'] = $GLOBALS['_LANG']['collect_success'];
 				die($json->encode($result));
 			}
+		}
+	}
+}
+
+
+/* 删除收藏商品(ajax) */
+function action_del_collect ()
+{
+	$user = $GLOBALS['user'];
+	$_CFG = $GLOBALS['_CFG'];
+	$_LANG = $GLOBALS['_LANG'];
+	$smarty = $GLOBALS['smarty'];
+	$db = $GLOBALS['db'];
+	$ecs = $GLOBALS['ecs'];
+	$user_id = $_SESSION['user_id'];
+	
+	include_once (ROOT_PATH . 'includes/cls_json.php');
+	$json = new JSON();
+	$result = array(
+		'error' => 0, 'message' => ''
+	);
+	$goods_id = $_GET['id'];
+	$result['goods_id'] = $goods_id;
+	
+	if(! isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0)
+	{
+		$result['error'] = 1;
+		$result['message'] = $_LANG['login_please'];
+		die($json->encode($result));
+	}
+	else
+	{
+		/* 检查是否已经存在于用户的收藏夹 */
+		$sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('collect_goods') . " WHERE user_id='$_SESSION[user_id]' AND goods_id = '$goods_id'";
+		if($GLOBALS['db']->GetOne($sql) > 0)
+		{
+			$sql = "DELETE FROM " . $GLOBALS['ecs']->table('collect_goods') . " WHERE user_id='$_SESSION[user_id]' AND goods_id = '$goods_id'";
+			$db->query($sql);
+			
+			$result['error'] = 0;
+			$result['message'] = $GLOBALS['_LANG']['collect_existed'];
+			die($json->encode($result));
+		}
+		else
+		{
+			$result['error'] = 1;
+			$result['message'] = $GLOBALS['db']->errorMsg();
+			die($json->encode($result));
 		}
 	}
 }

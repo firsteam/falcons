@@ -35,9 +35,9 @@
 	 	 </dd>
         </dl>
         <div class="display_mod">
-        	 <a href="javascript:;" onClick="javascript:display_mode('list')" title="List"><img src="images/display_mode_list<!-- {if $pager.display == 'list'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.list}"></a>
-  <a href="javascript:;" onClick="javascript:display_mode('grid')" title="Picture"><img src="images/display_mode_grid<!-- {if $pager.display == 'grid'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.grid}"></a>
-  <a href="javascript:;" onClick="javascript:display_mode('text')" title="Text"><img src="images/display_mode_text<!-- {if $pager.display == 'text'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.text}"></a>
+        	  <a href="javascript:;" onClick="javascript:display_mode('list')" title="List"><img src="images/display_mode_list<!-- {if $pager.display == 'list'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.list}"></a>
+            <a href="javascript:;" onClick="javascript:display_mode('grid')" title="Picture"><img src="images/display_mode_grid<!-- {if $pager.display == 'grid'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.grid}"></a>
+            <a href="javascript:;" onClick="javascript:display_mode('text')" title="Text"><img src="images/display_mode_text<!-- {if $pager.display == 'text'} -->_act<!-- {/if} -->.gif" alt="{$lang.display.text}"></a>
         </div>
       </div>
       <input type="hidden" name="category" value="{$category}" />
@@ -112,7 +112,11 @@
               <a href="javascript:addToCart({$goods.goods_id});"><i class="icon-shopping-cart"></i>Add to cart</a>
 			  
               {if $smarty.session.user_id gt 0}
-                <a id="collect_{$goods.goods_id}" href="javascript:collect_goods({$goods.goods_id});" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
+                {if $goods.is_collet eq 1}
+                <a id="collect_{$goods.goods_id}" href="javascript:del_collect({$goods.goods_id});" class="collet-btn collet-btn-t"></a>
+                {else}
+                <a id="collect_{$goods.goods_id}" href="javascript:collect_goods_list({$goods.goods_id});" class="collet-btn"></a>
+                {/if}
               {else}
                 <a href="user.php" class="collet-btn{if $goods.is_collet eq 1} collet-btn-t{/if}"></a>
               {/if}
@@ -179,6 +183,31 @@ function returnTop() {
  if(document.body.scrollTop>0) { 
   sdelay= setTimeout('returnTop()',50);
  }
+}
+
+function del_collect(id)
+{
+  goods_id = (typeof(id) == "undefined" ? 0 : id);
+  Ajax.call('user.php?act=del_collect', 'id=' + goods_id, del_collectResponse, 'GET', 'JSON');
+}
+
+function del_collectResponse(result)
+{
+  console.log(result);
+  if (result.goods_id > 0)
+  {
+    var collect_btn = document.getElementById("collect_" + result.goods_id);
+    collect_btn.className = (result.is_collect == 1 ? "collet-btn collet-btn-t" : "collet-btn");
+    collect_btn.href = "javascript:collect_goods_list("+result.goods_id+")";
+  }
+  else
+  {
+    $("a[id^='collect_']").className = "collet-btn";
+    for(i = 0; i < result.is_collect.length; i++)
+    {
+      document.getElementById("collect_" + result.is_collect[i]).className = "collet-btn collet-btn-t";
+    }
+  }
 }
 
 function re_collect(id)

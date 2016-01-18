@@ -122,7 +122,6 @@ function addToCartResponse(result)
 function collect_goods(goodsId)
 {
   Ajax.call('user.php?act=collect', 'id=' + goodsId, collectGoodsResponse, 'GET', 'JSON');
-  document.getElementById('collect_'+goodsId).setAttribute("class", "collet-btn collet-btn-t");
 }
 
 /* *
@@ -130,9 +129,31 @@ function collect_goods(goodsId)
  */
 function collectGoodsResponse(result)
 {
-  document.getElementById('collect_goods').setAttribute("class", "btn-coll btn-coll-t"); 
-  // document.getElementById('collect_38').setAttribute("class", "btn-coll btn-coll-t");
+  var collect_btn = document.getElementById('collect_goods');
+  collect_btn.className = "btn-coll btn-coll-t";
+  collect_btn.href = "javascript:del_collect("+result.goods_id+")";
+  // collect_btn.setAttribute("class", "btn-coll btn-coll-t");
 }
+
+/* *
+ * 添加商品到收藏夹
+ */
+function collect_goods_list(goodsId)
+{
+  Ajax.call('user.php?act=collect', 'id=' + goodsId, collectGoodsListResponse, 'GET', 'JSON');
+}
+
+/* *
+ * 处理收藏商品的反馈信息
+ */
+function collectGoodsListResponse(result)
+{
+  var collect_btn = document.getElementById("collect_" + result.goods_id);
+  collect_btn.className = (result.is_collect == 1 ? "collet-btn collet-btn-t" : "collet-btn");
+  collect_btn.href = "javascript:del_collect("+result.goods_id+")";
+  // collect_btn.setAttribute("class", "collet-btn collet-btn-t");
+}
+
 
 /* *
  * 处理会员登录的反馈信息
