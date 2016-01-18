@@ -131,6 +131,7 @@ $_LANG['consignee_address'] = 'Address';
 $_LANG['consignee_name'] = 'Name';
 $_LANG['country_province'] = 'Country/Province';
 $_LANG['please_select'] = 'Please select...';
+$_LANG['state_province'] = 'State/Province';
 $_LANG['city_district'] = 'City/District';
 $_LANG['email_address'] = 'Email';
 $_LANG['detailed_address'] = 'Address';

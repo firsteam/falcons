@@ -1199,3 +1199,13 @@ text-align: center;
 text-decoration: none;
 padding:0px 15px;
 }
+
+
+input.addtotable_m {
+    width: 17px;
+    height: 17px;
+    border: none;
+    float: none;
+    font-size: 16px;
+    line-height: 35px;
+}

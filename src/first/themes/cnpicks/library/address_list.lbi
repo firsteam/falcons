@@ -16,39 +16,99 @@
 {else}
 <div class="blank10"></div><div class="blank10"></div>
 <table cellpadding=4 cellspacing=4 width="100%">
-<tr><td align=right><font color=#ff3300>*</font>{$lang.consignee_name}</td><td><input type="text" name="consignee" class="input_addr2"></td></tr>
-<tr><td align=right><font color=#ff3300>*</font>{$lang.city_district}</td>
-<td>
-<input type="hidden" name="country" value="1">
-<select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities');"  style="width:155px;height:25px;border:1px solid #ccc;">
-<option value="0">{$lang.please_select}{$name_of_region[1]}</option>
- <!-- {foreach from=$shop_province_list item=province} -->
+  <tr>
+    <td width="150" align="left">{$lang.consignee_name}<font color="#ff3300">*</font></td>
+    <td><input type="text" name="consignee" class="input_addr2"></td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td align="left">Gender<font color="#ff3300">*</font></td>
+    <td>
+      <input type="radio" name="sex" value="Ms." checked="checked" class="addtotable_m">Ms.&nbsp;&nbsp; 
+      <input type="radio" name="sex" value="Mr." class="addtotable_m">Mr.
+    </td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td align="left">Country<font color="#ff3300">*</font></td>
+    <td>
+      <select name="country" id="selcountry" onchange="region.changed(this, 2, 'selCountry');"  style="width:155px;height:25px;border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$shop_country_list item=country} -->
+        <option value="{$country.region_id}" {if $country.province eq $country.region_id}selected{/if}>{$country.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+    </td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td align="left">{$lang.state_province}<font color="#ff3300">*</font></td>
+    <td>
+      <input type="text" name="state" class="input_addr2">
+    </td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr style="display:none;">
+    <td align="left">{$lang.city_district}<font color="#ff3300">*</font></td>
+    <td>
+      <input type="hidden" name="country" value="1">
+      <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities');"  style="width:155px;height:25px;border:1px solid #ccc;">
+        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$shop_province_list item=province} -->
         <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
         <!-- {/foreach} -->
       </select>
       <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts');" style="width:155px;height:25px;border:1px solid #ccc;">
-        <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
-        <!-- {foreach from=$city_list.$sn item=city} -->
-        <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
-        <!-- {/foreach} -->
+          <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+          <!-- {foreach from=$city_list.$sn item=city} -->
+          <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+          <!-- {/foreach} -->
       </select>
       <select name="district" id="selDistricts" style="display:none; width:155px; height:25px; border:1px solid #ccc;" >
-        <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
-        <!-- {foreach from=$district_list.$sn item=district} -->
-        <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
-        <!-- {/foreach} -->
+          <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+          <!-- {foreach from=$district_list.$sn item=district} -->
+          <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+          <!-- {/foreach} -->
       </select>
-</td></tr>
-<tr><td align=right><font color=#ff3300>*</font>{$lang.detailed_address}</td><td><input type="text" name="address" class="input_addr1"></td></tr>
-<tr><td style="text-align:right;"><!-- <font color=#ff3300>*</font> -->{$lang.email_address}</td><td><input type="text" name="email" class="input_addr1" value="{$address.email}"></td></tr>
-<tr><td align=right>{$lang.postalcode}</td><td><input type="text" name="zipcode" class="input_addr3"></td></tr>
-<tr><td align=right><font color=#ff3300>*</font>{$lang.mobile}</td><td><input type="text" name="mobile" class="input_addr2">&nbsp;&nbsp;&nbsp;&nbsp;or {$lang.phone} <input type="text" name="tel_01" class="input_addr4"> - <input type="text" name="tel_02" class="input_addr3"> - <input type="text" name="tel_03" class="input_addr4"></td></tr>
-<tr><td></td><td><font color=#cccccc>At least one</font></td></tr>
-<tr><td></td><td style="padding-top:10px;">
-<input type="hidden" name="address_id" value="0" >
-<input type="hidden" name="shipping_bian" value="1" >
-<input type="hidden" name="closediv" value="0" >
-<input type="button" class="BonusButton" value=" {$lang.button_submit} " onclick="submitAddress()"></td></tr>
+    </td>
+  </tr>
+  <tr>
+    <td align="left">{$lang.city_district}<font color="#ff3300">*</font></td>
+    <td>
+      <input type="text" name="city" class="input_addr2">
+    </td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td align="left">{$lang.detailed_address}<font color=#ff3300>*</font></td>
+    <td><input type="text" name="address" class="input_addr1"></td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td style="text-align:left;"><!-- <font color=#ff3300>*</font> -->{$lang.email_address}</td>
+    <td><input type="text" name="email" class="input_addr1" value="{$address.email}"></td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td align="left">{$lang.postalcode}</td>
+    <td><input type="text" name="zipcode" class="input_addr3"></td>
+  </tr>
+  <tr><td style="height:3px;"></td></tr>
+  <tr>
+    <td align="left">{$lang.mobile}<font color=#ff3300>*</font></td>
+    <td><input type="text" name="mobile" class="input_addr2">&nbsp;&nbsp;&nbsp;&nbsp;or {$lang.phone} <input type="text" name="tel_01" class="input_addr4"> - <input type="text" name="tel_02" class="input_addr3"> - <input type="text" name="tel_03" class="input_addr4"></td>
+  </tr>
+  <tr><td style="height:10px;"></td></tr>
+  <tr>
+    <td></td><td><font color=#cccccc>At least one</font></td>
+  </tr>
+  <tr>
+    <td></td><td style="padding-top:10px;">
+    <input type="hidden" name="address_id" value="0" >
+    <input type="hidden" name="shipping_bian" value="1" >
+    <input type="hidden" name="closediv" value="0" >
+    <input type="button" class="BonusButton" value=" {$lang.button_submit} " onclick="submitAddress()"></td>
+  </tr>
 </table>
 
 {/if}

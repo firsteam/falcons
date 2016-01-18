@@ -393,6 +393,8 @@ elseif ($_REQUEST['act']=='delAddress')
 
 	$smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
 
+	$smarty->assign('shop_country_list', get_regions(0, 0));
+
 	$result['content'] =  $smarty->fetch("library/address_list.lbi");	
 
 
@@ -1487,7 +1489,7 @@ elseif ($_REQUEST['step'] == 'consignee')
 
         $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
 
-
+        $smarty->assign('shop_country_list', get_regions(0, 0));
 
         /* 获得用户所有的收货人信息 */
 
@@ -2048,9 +2050,10 @@ elseif ($_REQUEST['step'] == 'checkout')
 
    }
 
-   $smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
-   $smarty->assign('consignee_list', $consignee_list_ecshop68);
-   $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
+   	$smarty->assign('name_of_region',   array($_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']));
+   	$smarty->assign('consignee_list', $consignee_list_ecshop68);
+   	$smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
+	$smarty->assign('shop_country_list', get_regions(0, 0));
 
 	/* 代码增加_end  By  www.68ecshop.com */
     /* 对商品信息赋值 */
