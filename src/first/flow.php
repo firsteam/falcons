@@ -522,6 +522,7 @@ elseif ($_REQUEST['act']=='saveAddress')
             'zipcode'       => empty($address_ecshop68->zipcode)    ? '' :   compile_str(make_semiangle(trim($address_ecshop68->zipcode))),
             'tel'           => empty($address_ecshop68->tel)        ? '' :   compile_str(make_semiangle(trim($address_ecshop68->tel))),
             'mobile'        => empty($address_ecshop68->mobile)     ? '' :   compile_str(make_semiangle(trim($address_ecshop68->mobile))),
+
      );
 
     if ($_SESSION['user_id'] > 0)
@@ -2366,19 +2367,19 @@ elseif ($_REQUEST['step'] == 'checkout')
 
 	//$pickup_point_list = $db->getAll($sql);
 
-	if($consignee['city']){
+	// if($consignee['city']){
 
-		$sql = 'select r.region_name, r.region_id from ' . $ecs->table('pickup_point') . ' p left join ' . $ecs->table('region') .
+	// 	$sql = 'select r.region_name, r.region_id from ' . $ecs->table('pickup_point') . ' p left join ' . $ecs->table('region') .
 
-				' r on p.city_id=r.region_id where p.city_id=' . $consignee['city'];
+	// 			' r on p.city_id=r.region_id where p.city_id=' . $consignee['city'];
 
-		$district_list = $db->getAll($sql);
+	// 	$district_list = $db->getAll($sql);
 
 		
 
-		$smarty->assign('district_list',          $district_list);
+	// 	$smarty->assign('district_list',          $district_list);
 
-	}
+	// }
 
 	//$smarty->assign('pickup_point_list',      $pickup_point_list);
 
