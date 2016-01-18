@@ -35,7 +35,7 @@
       <select name="country" id="selcountry" onchange="region.changed(this, 2, 'selCountry');"  style="width:155px;height:25px;border:1px solid #ccc;">
         <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
         <!-- {foreach from=$shop_country_list item=country} -->
-        <option value="{$country.region_id}" {if $country.province eq $country.region_id}selected{/if}>{$country.region_name}</option>
+        <option value="{$country.region_name}" {if $country.province eq $country.region_id}selected{/if}>{$country.region_name}</option>
         <!-- {/foreach} -->
       </select>
     </td>
@@ -48,30 +48,6 @@
     </td>
   </tr>
   <tr><td style="height:3px;"></td></tr>
-  <tr style="display:none;">
-    <td align="left">{$lang.city_district}<font color="#ff3300">*</font></td>
-    <td>
-      <input type="hidden" name="country" value="1">
-      <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities');"  style="width:155px;height:25px;border:1px solid #ccc;">
-        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
-        <!-- {foreach from=$shop_province_list item=province} -->
-        <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
-        <!-- {/foreach} -->
-      </select>
-      <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts');" style="width:155px;height:25px;border:1px solid #ccc;">
-          <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
-          <!-- {foreach from=$city_list.$sn item=city} -->
-          <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
-          <!-- {/foreach} -->
-      </select>
-      <select name="district" id="selDistricts" style="display:none; width:155px; height:25px; border:1px solid #ccc;" >
-          <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
-          <!-- {foreach from=$district_list.$sn item=district} -->
-          <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
-          <!-- {/foreach} -->
-      </select>
-    </td>
-  </tr>
   <tr>
     <td align="left">{$lang.city_district}<font color="#ff3300">*</font></td>
     <td>

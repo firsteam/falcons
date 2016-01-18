@@ -65,8 +65,6 @@ if($_REQUEST['act'] == 'edit_user_mobile'){
 
 }
 
-// var_dump($_REQUEST);
-
 /* 代码增加_start  BY  www.68ecshop.com */
 
 if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'selcart')
@@ -502,65 +500,37 @@ elseif ($_REQUEST['act']=='delAddress')
 
 
 elseif ($_REQUEST['act']=='saveAddress')
-
 {
-
 	include_once('includes/cls_json.php');
-
 	include_once('includes/lib_transaction.php');
-
+    
     $json  = new JSON;
 
 	/* 保存收货地址信息_start */
-
 	$_POST['address']=strip_tags(urldecode($_POST['address']));
-
     $_POST['address'] = json_str_iconv($_POST['address']);
-
 	$address_ecshop68 = $json->decode($_POST['address']);
-
 	$consignee = array(
-
             'address_id'    => empty($address_ecshop68->address_id) ?  '0'  :   intval($address_ecshop68->address_id),
-
             'consignee'     => empty($address_ecshop68->consignee)  ? '' :   compile_str(trim($address_ecshop68->consignee)),
-
-            'country'       => empty($address_ecshop68->country)    ? '1' :   intval($address_ecshop68->country),
-
-            'province'      => empty($address_ecshop68->province)   ? '' :   intval($address_ecshop68->province),
-
-            'city'          => empty($address_ecshop68->city)       ? '' :   intval($address_ecshop68->city),
-
-            'district'      => empty($address_ecshop68->district)   ? '' :   intval($address_ecshop68->district),
-
+            'country'       => empty($address_ecshop68->country)    ? '' :   compile_str($address_ecshop68->country),
+            'province'      => empty($address_ecshop68->province)   ? '' :   compile_str($address_ecshop68->province),
+            'city'          => empty($address_ecshop68->city)       ? '' :   compile_str($address_ecshop68->city),
+            'district'      => empty($address_ecshop68->district)   ? '' :   compile_str($address_ecshop68->district),
             'email'         => empty($address_ecshop68->email)      ? '' :   compile_str($address_ecshop68->email),
-
             'address'       => empty($address_ecshop68->address)    ? '' :   compile_str($address_ecshop68->address),
-
             'zipcode'       => empty($address_ecshop68->zipcode)    ? '' :   compile_str(make_semiangle(trim($address_ecshop68->zipcode))),
-
             'tel'           => empty($address_ecshop68->tel)        ? '' :   compile_str(make_semiangle(trim($address_ecshop68->tel))),
-
             'mobile'        => empty($address_ecshop68->mobile)     ? '' :   compile_str(make_semiangle(trim($address_ecshop68->mobile))),
-
      );
 
-     if ($_SESSION['user_id'] > 0)
-
-     {
-
-            /* 如果用户已经登录，则保存收货人信息 */
-
-            $consignee['user_id'] = $_SESSION['user_id'];
-
-            save_consignee($consignee, true);
-
+    if ($_SESSION['user_id'] > 0)
+    {
+        /* 如果用户已经登录，则保存收货人信息 */
+        $consignee['user_id'] = $_SESSION['user_id'];
+        save_consignee($consignee, true);
     }
-
 	/* 保存收货地址信息_end */
-
-
-
 	$result = array('error' => 0, 'message' => '', 'content' => '', 'closediv'=>$address_ecshop68->closediv);    
 
 	$consignee_list = get_consignee_list_ecshop68();
@@ -569,36 +539,22 @@ elseif ($_REQUEST['act']=='saveAddress')
 
 	$result['content'] =  $smarty->fetch("library/address_list.lbi");
 
-
-
     if($consignee_list && count($consignee_list)==1)
-
 	{	
-
 		$_SESSION['flow_consignee'] = $consignee_list[0];
-
 	}
 
 	if ($address_ecshop68->shipping_bian=='0' && $address_ecshop68->address_id>0 && $address_ecshop68->address_id==$_SESSION['flow_consignee']['address_id'])
-
 	{
-
 		$sql = "SELECT * ".
-
                     " FROM " . $GLOBALS['ecs']->table('user_address') . 
-
                     " WHERE  address_id = '".$address_ecshop68->address_id."' ";
-
 		$consignee = $GLOBALS['db']->getRow($sql);
-
 		$_SESSION['flow_consignee'] = $consignee;
-
 	}
 
 	if ($address_ecshop68->shipping_bian=='1' || ($address_ecshop68->shipping_bian=='0' && $address_ecshop68->address_id>0 && $address_ecshop68->address_id==$_SESSION['flow_consignee']['address_id']))
-
 	{
-
 	$order = flow_order_info();
 
 	$flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
@@ -661,21 +617,11 @@ elseif ($_REQUEST['act']=='saveAddress')
 
     }
 
-
-
     $smarty->assign('shipping_list',   $shipping_list);
-
-	
-
     $smarty->assign('insure_disabled', $insure_disabled);
-
     $smarty->assign('cod_disabled',    $cod_disabled);
-
 	$result['content2']     = $smarty->fetch('library/shipping_box.lbi');	
-
 	}
-
-
 
 	die($json->encode($result));
 

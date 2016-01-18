@@ -670,9 +670,8 @@ else
 	  cmt.mobile          = frm.elements['mobile'].value;
 	  cmt.closediv	      = frm.elements['closediv'].value;
 	  cmt.shipping_bian	  = frm.elements['shipping_bian'].value;
-  	cmt.optionlength    = frm.elements['district'].length;
+  	// cmt.optionlength    = frm.elements['district'].length;
 
-    console.log(cmt.province);
     if (cmt.consignee.length == 0)
     {
       alert('{$lang.flow_js.consignee_not_null}');
@@ -702,41 +701,41 @@ else
 		  return false;
     }
    */
-   if (cmt.email.length > 0 && (!Utils.isEmail(cmt.email)))
-   {
-		alert('{$lang.flow_js.invalid_email}');
-		return false;
-   }
-   if (cmt.address.length == 0)
-   {
-	alert('{$lang.flow_js.address_not_null}');
-	return false;
-   }
-   if (cmt.mobile.length == 0)
-   {
-	alert('{$lang.flow_js.mobile_not_null}');
-	return false;
-   }
-   /*if (cmt.mobile.length>0)
-  {
+    if (cmt.email.length > 0 && (!Utils.isEmail(cmt.email)))
+    {
+      alert('{$lang.flow_js.invalid_email}');
+      return false;
+    }
+    if (cmt.address.length == 0)
+    {
+      alert('{$lang.flow_js.address_not_null}');
+      return false;
+    }
+    if (cmt.mobile.length == 0)
+    {
+      alert('{$lang.flow_js.mobile_not_null}');
+      return false;
+    }
+    /*if (cmt.mobile.length>0)
+    {
     var reg = /^1[34578][0-9]\d{8}$/;
     if (!reg.test(cmt.mobile))
     {
-	alert('1{$lang.flow_js.mobile_invaild}');
-	return false;
+    alert('1{$lang.flow_js.mobile_invaild}');
+    return false;
     }
-  }
-  if (cmt.tel.length>0)
-  {
+    }
+    if (cmt.tel.length>0)
+    {
     var reg = /^[\d|\-|\s]+$/;
     if (!reg.test(cmt.tel))
     {
-        alert('固定电话格式不正确！');
-	return false;
+    alert('固定电话格式不正确！');
+    return false;
     }
-  }*/
+    }*/
 
-   Ajax.call('flow.php?act=saveAddress', 'address=' + $.toJSON(cmt), addressResponse, 'POST', 'JSON');
+    Ajax.call('flow.php?act=saveAddress', 'address=' + $.toJSON(cmt), addressResponse, 'POST', 'JSON');
    
 }
 
