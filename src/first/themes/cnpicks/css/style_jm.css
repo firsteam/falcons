@@ -912,7 +912,7 @@ body {
 	font-weight: bold;
 	z-index: 99999;
 	width: 650px;
-	height: 400px;
+	height: 520px;
 	left: 50%;/*FF IE7*/
 	top: 50%;/*FF IE7*/
 	margin-left: -325px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
