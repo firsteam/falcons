@@ -65,7 +65,7 @@ if($_REQUEST['act'] == 'edit_user_mobile'){
 
 }
 
-
+// var_dump($_REQUEST);
 
 /* 代码增加_start  BY  www.68ecshop.com */
 

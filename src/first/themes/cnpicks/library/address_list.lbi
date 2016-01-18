@@ -44,7 +44,7 @@
   <tr>
     <td align="left">{$lang.state_province}<font color="#ff3300">*</font></td>
     <td>
-      <input type="text" name="state" class="input_addr2">
+      <input type="text" name="province" class="input_addr2">
     </td>
   </tr>
   <tr><td style="height:3px;"></td></tr>
