@@ -3241,7 +3241,7 @@ function updateEndTime(){
                     <select name="country" id="selCountries_{$sn}" onchange="region.changed(this, 1, 'selProvinces_{$sn}')">
                       <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
                       <!-- {foreach from=$country_list item=country} -->
-                      <option value="{$country.region_id}" {if $consignee.country eq $country.region_name}selected{/if}>{$country.region_name}</option>
+                      <option value="{$country.region_name}" {if $consignee.country eq $country.region_name}selected{/if}>{$country.region_name}</option>
                       <!-- {/foreach} -->
                     </select>
                     {$lang.require_field}
@@ -3291,8 +3291,8 @@ function updateEndTime(){
                 <tr>
                   <td align="right" bgcolor="#fff">Gender：</td>
                   <td colspan="3" align="left" bgcolor="#fff">
-                    <input type="radio" name="sex" value="Ms." checked="checked" class="addtotable_m"> Ms.&nbsp;&nbsp; 
-                    <input type="radio" name="sex" value="Mr." class="addtotable_m"> Mr.
+                    <input type="radio" name="sex" value="1" {if $consignee.sex eq 1}checked="checked"{/if} class="addtotable_m"> Ms.&nbsp;&nbsp; 
+                    <input type="radio" name="sex" value="0" {if $consignee.sex eq 0}checked="checked"{/if} class="addtotable_m"> Mr.
                   </td>
                 </tr>
                 <tr>

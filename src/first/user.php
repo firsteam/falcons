@@ -2878,9 +2878,23 @@ function action_act_edit_address ()
 	$smarty->assign('lang', $_LANG);
 	
 	$address = array(
-		'user_id' => $user_id, 'address_id' => intval($_POST['address_id']), 'country' => isset($_POST['country']) ? intval($_POST['country']) : 0, 'province' => isset($_POST['province']) ? intval($_POST['province']) : 0, 'city' => isset($_POST['city']) ? intval($_POST['city']) : 0, 'district' => isset($_POST['district']) ? intval($_POST['district']) : 0, 'address' => isset($_POST['address']) ? compile_str(trim($_POST['address'])) : '', 'consignee' => isset($_POST['consignee']) ? compile_str(trim($_POST['consignee'])) : '', 'email' => isset($_POST['email']) ? compile_str(trim($_POST['email'])) : '', 'tel' => isset($_POST['tel']) ? compile_str(make_semiangle(trim($_POST['tel']))) : '', 'mobile' => isset($_POST['mobile']) ? compile_str(make_semiangle(trim($_POST['mobile']))) : '', 
-		'best_time' => isset($_POST['best_time']) ? compile_str(trim($_POST['best_time'])) : '', 'sign_building' => isset($_POST['sign_building']) ? compile_str(trim($_POST['sign_building'])) : '', 'zipcode' => isset($_POST['zipcode']) ? compile_str(make_semiangle(trim($_POST['zipcode']))) : ''
+		'user_id' => $user_id, 
+		'address_id' => intval($_POST['address_id']),
+		'country' => isset($_POST['country']) ? compile_str(trim($_POST['country'])) : '', 
+		'province' => isset($_POST['province']) ? compile_str(trim($_POST['province'])) : '', 
+		'city' => isset($_POST['city']) ? compile_str(trim($_POST['city'])) : '', 
+		'district' => isset($_POST['district']) ? compile_str(trim($_POST['district'])) : 0, 
+		'address' => isset($_POST['address']) ? compile_str(trim($_POST['address'])) : '', 
+		'consignee' => isset($_POST['consignee']) ? compile_str(trim($_POST['consignee'])) : '', 
+		'email' => isset($_POST['email']) ? compile_str(trim($_POST['email'])) : '', 
+		'tel' => isset($_POST['tel']) ? compile_str(make_semiangle(trim($_POST['tel']))) : '', 
+		'sex' => isset($_POST['sex']) ? $_POST['sex'] : 0,
+		'mobile' => isset($_POST['mobile']) ? compile_str(make_semiangle(trim($_POST['mobile']))) : '', 
+		'best_time' => isset($_POST['best_time']) ? compile_str(trim($_POST['best_time'])) : '', 
+		'sign_building' => isset($_POST['sign_building']) ? compile_str(trim($_POST['sign_building'])) : '', 'zipcode' => isset($_POST['zipcode']) ? compile_str(make_semiangle(trim($_POST['zipcode']))) : ''
 	);
+
+	// var_dump($address);exit;
 	
 	if(update_address($address))
 	{
