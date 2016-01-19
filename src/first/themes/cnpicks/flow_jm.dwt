@@ -670,6 +670,7 @@ else
 	  cmt.mobile          = frm.elements['mobile'].value;
 	  cmt.closediv	      = frm.elements['closediv'].value;
 	  cmt.shipping_bian	  = frm.elements['shipping_bian'].value;
+    cmt.sex             = frm.elements['sex'].value;
   	// cmt.optionlength    = frm.elements['district'].length;
 
     if (cmt.consignee.length == 0)
@@ -677,22 +678,12 @@ else
       alert('{$lang.flow_js.consignee_not_null}');
       return false;
     }
-    // if(cmt.optionlength > 1)
-    // {
-    //   if (cmt.province == '0' ||  cmt.city == '0'  || cmt.district == '0' )
-    //   {
-    //     alert('{$lang.flow_js.district_not_null}');
-    //     return false;
-    //   }
-    // }
-    // else
-    // {
+    
     if (cmt.province == '0' ||  cmt.city == '0' )
     {
       alert('{$lang.flow_js.city_not_null}');
       return false;
     }
-    // }
 
     /* 邮箱不是必填项
     if (cmt.email.length == 0)
@@ -716,24 +707,6 @@ else
       alert('{$lang.flow_js.mobile_not_null}');
       return false;
     }
-    /*if (cmt.mobile.length>0)
-    {
-    var reg = /^1[34578][0-9]\d{8}$/;
-    if (!reg.test(cmt.mobile))
-    {
-    alert('1{$lang.flow_js.mobile_invaild}');
-    return false;
-    }
-    }
-    if (cmt.tel.length>0)
-    {
-    var reg = /^[\d|\-|\s]+$/;
-    if (!reg.test(cmt.tel))
-    {
-    alert('固定电话格式不正确！');
-    return false;
-    }
-    }*/
 
     Ajax.call('flow.php?act=saveAddress', 'address=' + $.toJSON(cmt), addressResponse, 'POST', 'JSON');
    

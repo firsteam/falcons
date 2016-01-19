@@ -509,21 +509,21 @@ elseif ($_REQUEST['act']=='saveAddress')
 	/* 保存收货地址信息_start */
 	$_POST['address']=strip_tags(urldecode($_POST['address']));
     $_POST['address'] = json_str_iconv($_POST['address']);
-	$address_ecshop68 = $json->decode($_POST['address']);
+	$address_arr = $json->decode($_POST['address']);
 	$consignee = array(
-            'address_id'    => empty($address_ecshop68->address_id) ?  '0'  :   intval($address_ecshop68->address_id),
-            'consignee'     => empty($address_ecshop68->consignee)  ? '' :   compile_str(trim($address_ecshop68->consignee)),
-            'country'       => empty($address_ecshop68->country)    ? '' :   compile_str($address_ecshop68->country),
-            'province'      => empty($address_ecshop68->province)   ? '' :   compile_str($address_ecshop68->province),
-            'city'          => empty($address_ecshop68->city)       ? '' :   compile_str($address_ecshop68->city),
-            'district'      => empty($address_ecshop68->district)   ? '' :   compile_str($address_ecshop68->district),
-            'email'         => empty($address_ecshop68->email)      ? '' :   compile_str($address_ecshop68->email),
-            'address'       => empty($address_ecshop68->address)    ? '' :   compile_str($address_ecshop68->address),
-            'zipcode'       => empty($address_ecshop68->zipcode)    ? '' :   compile_str(make_semiangle(trim($address_ecshop68->zipcode))),
-            'tel'           => empty($address_ecshop68->tel)        ? '' :   compile_str(make_semiangle(trim($address_ecshop68->tel))),
-            'mobile'        => empty($address_ecshop68->mobile)     ? '' :   compile_str(make_semiangle(trim($address_ecshop68->mobile))),
-
-     );
+        'address_id' => empty($address_arr->address_id) ?  '0'  :   intval($address_arr->address_id),
+        'consignee' => empty($address_arr->consignee)  ? '' :   compile_str(trim($address_arr->consignee)),
+        'country' => empty($address_arr->country)    ? '' :   compile_str($address_arr->country),
+        'province'=> empty($address_arr->province)   ? '' :   compile_str($address_arr->province),
+        'city'    => empty($address_arr->city)       ? '' :   compile_str($address_arr->city),
+        'district'=> empty($address_arr->district)   ? '' :   compile_str($address_arr->district),
+        'email'   => empty($address_arr->email)      ? '' :   compile_str($address_arr->email),
+        'address' => empty($address_arr->address)    ? '' :   compile_str($address_arr->address),
+        'zipcode' => empty($address_arr->zipcode)    ? '' :   compile_str(make_semiangle(trim($address_arr->zipcode))),
+        'tel'     => empty($address_arr->tel) ? '' : compile_str(make_semiangle(trim($address_arr->tel))),
+        'mobile'  => empty($address_arr->mobile) ? '' : compile_str(make_semiangle(trim($address_arr->mobile))),
+        'sex'     => empty($address_arr->sex) ? 0 : intval($address_arr->sex),
+    );
 
     if ($_SESSION['user_id'] > 0)
     {
@@ -545,7 +545,7 @@ elseif ($_REQUEST['act']=='saveAddress')
 		$_SESSION['flow_consignee'] = $consignee_list[0];
 	}
 
-	if ($address_ecshop68->shipping_bian=='0' && $address_ecshop68->address_id>0 && $address_ecshop68->address_id==$_SESSION['flow_consignee']['address_id'])
+	if ($address_arr->shipping_bian=='0' && $address_arr->address_id>0 && $address_arr->address_id==$_SESSION['flow_consignee']['address_id'])
 	{
 		$sql = "SELECT * ".
                     " FROM " . $GLOBALS['ecs']->table('user_address') . 
@@ -554,7 +554,7 @@ elseif ($_REQUEST['act']=='saveAddress')
 		$_SESSION['flow_consignee'] = $consignee;
 	}
 
-	if ($address_ecshop68->shipping_bian=='1' || ($address_ecshop68->shipping_bian=='0' && $address_ecshop68->address_id>0 && $address_ecshop68->address_id==$_SESSION['flow_consignee']['address_id']))
+	if ($address_arr->shipping_bian=='1' || ($address_arr->shipping_bian=='0' && $address_arr->address_id>0 && $address_arr->address_id==$_SESSION['flow_consignee']['address_id']))
 	{
 	$order = flow_order_info();
 

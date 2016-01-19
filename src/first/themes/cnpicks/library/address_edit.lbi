@@ -10,8 +10,8 @@
   <tr>
     <td style="text-align:left;width:10%">Gender<font color="#ff3300">*</font></td>
     <td>
-      <input type="radio" name="sex" value="Ms." {if $address.sex eq 0}checked="checked"{/if} class="addtotable_m">Ms.&nbsp;&nbsp; 
-      <input type="radio" name="sex" value="Mr." {if $address.sex eq 1}checked="checked"{/if} class="addtotable_m">Mr.
+      <input type="radio" name="sex" value="0" {if $address.sex eq 0}checked="checked"{/if} class="addtotable_m">Ms.&nbsp;&nbsp; 
+      <input type="radio" name="sex" value="1" {if $address.sex eq 1}checked="checked"{/if} class="addtotable_m">Mr.
     </td>
   </tr>
   <tr>
