@@ -2,7 +2,7 @@ function checkConsigneeName(t,id)
 {
 	var submit_disabled = false;
 	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = '{$lang.flow_js.consignee_not_null}';
+		document.getElementById(id).innerHTML = '2 characters at least for your last name.';
 		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
@@ -15,8 +15,8 @@ function checkConsigneeName(t,id)
 }
 function checkCountry(t,id)
 {
-	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = 'Country不能为空';
+	if (t.value.length == 0) {
+		document.getElementById(id).innerHTML = 'Please select Country.';
 		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
@@ -30,15 +30,7 @@ function checkCountry(t,id)
 function checkProvince(t,id)
 {
 	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = 'Province不能为空';
-	} else {
-		document.getElementById(id).innerHTML = '';
-	}
-}
-function checkProvince(t,id)
-{
-	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = 'Province不能为空';
+		document.getElementById(id).innerHTML = '2 characters at least for your State/Province.';
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
@@ -46,7 +38,7 @@ function checkProvince(t,id)
 function checkCity(t,id)
 {
 	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = 'City不能为空';
+		document.getElementById(id).innerHTML = '2 characters at least for your City.';
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
@@ -54,7 +46,7 @@ function checkCity(t,id)
 function checkAddress(t,id)
 {
 	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = 'Address不能为空';
+		document.getElementById(id).innerHTML = 'Your Address line must contain at least 5 characters.';
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
@@ -62,7 +54,7 @@ function checkAddress(t,id)
 function checkMobile(t,id)
 {
 	if (t.value.length == 0) { 
-		document.getElementById(id).innerHTML = 'Mobile不能为空';
+		document.getElementById(id).innerHTML = 'Your Telephone Number must contain more than 5 numbers no other characters.';
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
