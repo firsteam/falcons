@@ -17,6 +17,7 @@
 {insert_scripts files='jquery.json.js,transport.js'}
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,shopping_flow.js'}
+<script type="text/javascript" src="themes/cnpicks/js/consignee_form_verify.js"></script>
 </head>
 <body>
 <!--余额额支付密码_添加_START_www.68ecshop.com--> 
@@ -673,15 +674,8 @@ else
     cmt.sex             = frm.elements['sex'].value;
   	// cmt.optionlength    = frm.elements['district'].length;
 
-    if (cmt.consignee.length == 0)
+    if( cmt.consignee.length==0 || cmt.province.length=='0' ||  cmt.city.length== '0')
     {
-      alert('{$lang.flow_js.consignee_not_null}');
-      return false;
-    }
-    
-    if (cmt.province == '0' ||  cmt.city == '0' )
-    {
-      alert('{$lang.flow_js.city_not_null}');
       return false;
     }
 

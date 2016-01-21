@@ -18,7 +18,12 @@
 <table cellpadding=4 cellspacing=4 width="100%">
   <tr>
     <td width="150" align="left">{$lang.consignee_name}<font color="#ff3300">*</font></td>
-    <td><input type="text" name="consignee" class="input_addr2"></td>
+    <td>
+      <input type="text" name="consignee" onblur="checkConsigneeName(this,'consignee_name_notice')" class="input_addr2">
+      <div style="">
+        <span class="label" id="consignee_name_notice"></span>
+      </div>
+    </td>
   </tr>
   <tr><td style="height:3px;"></td></tr>
   <tr>
@@ -72,9 +77,8 @@
   <tr><td style="height:3px;"></td></tr>
   <tr>
     <td align="left">{$lang.mobile}<font color=#ff3300>*</font></td>
-    <td><input type="text" name="mobile" class="input_addr2">&nbsp;&nbsp;&nbsp;&nbsp;or {$lang.phone} <input type="text" name="tel_01" class="input_addr4"> - <input type="text" name="tel_02" class="input_addr3"> - <input type="text" name="tel_03" class="input_addr4"></td>
+    <td><input type="text" name="mobile" class="input_addr2"></td>
   </tr>
-  <tr><td style="height:10px;"></td></tr>
   <tr>
     <td></td><td><font color=#cccccc>At least one</font></td>
   </tr>

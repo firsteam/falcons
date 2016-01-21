@@ -4,7 +4,12 @@
       {$lang.consignee_name}<font color=#ff3300>*</font>
     </td>
     <td>
-      <input type="text" name="consignee" value="{$address.consignee}" class="input_addr2">
+      <input type="text" name="consignee" value="{$address.consignee}" onblur="checkConsigneeName(this,'consignee_name_notice')" class="input_addr2">
+    </td>
+    <td>
+      <div style="height:15px;">
+        <span class="label" id="consignee_name_notice"></span>
+      </div>
     </td>
   </tr>
   <tr>
@@ -17,30 +22,52 @@
   <tr>
     <td style="text-align:left;">Country<font color=#ff3300>*</font></td>
     <td>
-      <input type="text" name="country" value="{$address.country}" class="input_addr2">
+      <input type="text" name="country" value="{$address.country}" onblur="checkCountry(this,'country_notice')" class="input_addr2">
+    </td>
+    <td>
+      <div style="height:15px;">
+        <span class="label" id="country_notice"></span>
+      </div>
     </td>
   </tr>
   <tr>
     <td style="text-align:left;">{$lang.state_province}<font color=#ff3300>*</font></td>
     <td>
-      <input type="text" name="province" value="{$address.province}" class="input_addr2">
+      <input type="text" name="province" value="{$address.province}" onblur="checkProvince(this,'province_notice')" class="input_addr2">
+    </td>
+    <td>
+      <div style="height:15px;">
+        <span class="label" id="province_notice"></span>
+      </div>
     </td>
   </tr>
   <tr>
     <td style="text-align:left;">{$lang.city_district}<font color=#ff3300>*</font></td>
     <td>
-      <input type="text" name="city" value="{$address.city}" class="input_addr2">
+      <input type="text" name="city" value="{$address.city}" onblur="checkCity(this,'city_notice')" class="input_addr2">
+    </td>
+    <td>
+      <div style="height:15px;">
+        <span class="label" id="city_notice"></span>
+      </div>
     </td>
   </tr>
   <tr>
     <td style="text-align:left;">{$lang.detailed_address}<font color=#ff3300>*</font></td>
-    <td><input type="text" name="address" class="input_addr1" value="{$address.address}"></td>
+    <td>
+      <textarea name="address" style="width:208px;" rows="3" onblur="checkAddress(this,'address_notice')">{$address.address}</textarea>
+    </td>
+    <td>
+      <div style="height:15px;">
+        <span class="label" id="address_notice"></span>
+      </div>
+    </td>
   </tr>
   <tr>
     <td style="text-align:left;">
       <!-- <font color=#ff3300>*</font> -->{$lang.email_address}
     </td>
-    <td><input type="text" name="email" class="input_addr1" value="{$address.email}"></td>
+    <td><input type="text" name="email" class="input_addr2" value="{$address.email}"></td>
   </tr>
   <tr>
     <td style="text-align:left;">{$lang.postalcode}</td>
@@ -49,8 +76,12 @@
   <tr>
     <td style="text-align:left;">{$lang.mobile}<font color=#ff3300>*</font></td>
     <td>
-      <input type="text" name="mobile" class="input_addr2 input_addr2_t" value="{$address.mobile}">&nbsp;&nbsp;&nbsp;&nbsp;or {$lang.phone}
-      <input type="text" name="tel_01" class="input_addr4" value="{$address.tel_array.0}"> - <input type="text" name="tel_02" class="input_addr3" value="{$address.tel_array.1}"> - <input type="text" name="tel_03" class="input_addr4" value="{$address.tel_array.2}">
+      <input type="text" name="mobile" class="input_addr2 input_addr2_t" onblur="checkMobile(this,'mobile_notice')" value="{$address.mobile}">
+    </td>
+    <td>
+      <div style="height:15px;">
+        <span class="label" id="mobile_notice"></span>
+      </div>
     </td>
   </tr>
   <tr><td></td><td><font color=#cccccc>At least one</font></td></tr>

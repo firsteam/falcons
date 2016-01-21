@@ -912,11 +912,11 @@ body {
 	font-weight: bold;
 	z-index: 99999;
 	width: 650px;
-	height: 520px;
+	height: 600px;
 	left: 50%;/*FF IE7*/
 	top: 50%;/*FF IE7*/
 	margin-left: -325px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
-	margin-top: -200px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
+	margin-top: -300px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
 	margin-top: 0px;
 	-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
