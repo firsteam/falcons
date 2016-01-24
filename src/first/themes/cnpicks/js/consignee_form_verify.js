@@ -15,6 +15,7 @@ function checkConsigneeName(t,id)
 }
 function checkCountry(t,id)
 {
+	var submit_disabled = false;
 	if (t.value.length<1) {
 		document.getElementById(id).innerHTML = 'Please select Country.';
 		submit_disabled = true;

@@ -661,13 +661,13 @@ else
     cmt.address_id      = frm.elements['address_id'].value;
     cmt.consignee       = frm.elements['consignee'].value;
     cmt.address         = frm.elements['address'].value;
-    cmt.email           = frm.elements['email'].value;
+    // cmt.email           = frm.elements['email'].value;
     cmt.zipcode         = frm.elements['zipcode'].value;
     cmt.country         = frm.elements['country'].value;
     cmt.province        = frm.elements['province'].value;
     cmt.city            = frm.elements['city'].value;
     // cmt.district        = frm.elements['district'].value;
-    cmt.tel             = frm.elements['tel_01'].value + "-" + frm.elements['tel_02'].value  + "-" + frm.elements['tel_03'].value ;
+    // cmt.tel             = frm.elements['tel_01'].value + "-" + frm.elements['tel_02'].value  + "-" + frm.elements['tel_03'].value ;
 	  cmt.mobile          = frm.elements['mobile'].value;
 	  cmt.closediv	      = frm.elements['closediv'].value;
 	  cmt.shipping_bian	  = frm.elements['shipping_bian'].value;
@@ -686,11 +686,6 @@ else
 		  return false;
     }
    */
-    if (cmt.email.length > 0 && (!Utils.isEmail(cmt.email)))
-    {
-      alert('{$lang.flow_js.invalid_email}');
-      return false;
-    }
     if (cmt.address.length == 0)
     {
       alert('{$lang.flow_js.address_not_null}');
