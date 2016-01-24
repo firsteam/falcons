@@ -3866,6 +3866,7 @@ function action_collect ()
 			else
 			{
 				$result['error'] = 0;
+				$result['is_collect'] = 1;
 				$result['message'] = $GLOBALS['_LANG']['collect_success'];
 				die($json->encode($result));
 			}
