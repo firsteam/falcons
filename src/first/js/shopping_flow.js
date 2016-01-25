@@ -18,9 +18,10 @@ var selected_pay_code = null;
 
 function selectShipping(recid, suppid) {
 	Ajax.call('flow.php?step=select_shipping', 'recid=' + recid + '&suppid=' + suppid, orderShipping, 'GET', 'JSON');
-
 }
+
 function orderShipping(result) {
+	console.log(result);
 	if (result.error) {
 		alert(result.error);
 	} else {

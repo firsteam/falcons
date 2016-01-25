@@ -2875,7 +2875,7 @@ elseif ($_REQUEST['step'] == 'select_shipping')
         /* 取得订单信息 */
 
         $order = flow_order_info();
-
+        $result['order'] = $order;
 
 
 		$recid = (isset($_REQUEST['recid'])) ? intval($_REQUEST['recid']) : 0;
@@ -2892,21 +2892,18 @@ elseif ($_REQUEST['step'] == 'select_shipping')
 
 
 
-        //$order['shipping_id'] = intval($_REQUEST['shipping']);
+        $order['shipping_id'] = $recid;
 
-        //$regions = array($consignee['country'], $consignee['province'], $consignee['city'], $consignee['district']);
+        // $regions = array($consignee['country'], $consignee['province'], $consignee['city'], $consignee['district']);
+        $country_id = get_region_id_by_name($consignee['country']);
+        $consignee['country_id'] = $country_id;
+        $regions = array($country_id);
 
-        //$shipping_info = shipping_area_info($order['shipping_id'], $regions);
-
-
+        $shipping_info = shipping_area_info($order['shipping_id'], $regions);
 
         /* 计算订单的费用 */
-
         $total = order_fee($order, $cart_goods, $consignee);
-
         $smarty->assign('total', $total);
-
-
 
         /* 取得可以得到的积分和红包 */
 

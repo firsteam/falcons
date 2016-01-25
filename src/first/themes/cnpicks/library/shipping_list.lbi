@@ -4,7 +4,7 @@
       <li>
 	      <select name='pay_ship[{$suppid}]' id='pay_ship_{$suppid}' onchange='selectShipping(this.value,{$suppid});' class='shipping'>
 	      <!-- {foreach from=$shipping_list item=shipping} 循环配送方式 -->
-	      <option {$shipping.selected} value="{$shipping.shipping_id}" title="{$shipping.shipping_desc}">{$shipping.shipping_name} （{$shipping.format_shipping_fee} 免费额度：{$shipping.free_money}  {$shipping.shipping_desc|truncate:25}）</option>
+	      <option {$shipping.selected} value="{$shipping.shipping_id}" title="{$shipping.shipping_desc}">{$shipping.shipping_name} （{$shipping.format_shipping_fee} Free credit:{$shipping.free_money}  {$shipping.shipping_desc|truncate:25}）</option>
 	      <!-- {/foreach} -->
 	      </select>
       </li>

@@ -857,7 +857,9 @@ else
 		<span>{$lang.shipping_method}: </span>{$goodsinfo.shipping_html}
 		<!--如果有自提点 star-->
 		<span id='picktxt{$key}'>
-		<script>selectShipping(document.getElementById('pay_ship_{$goodsinfo.goodlist[0].supplier_id}').value,{$key});</script>
+		<script>
+      selectShipping(document.getElementById('pay_ship_{$goodsinfo.goodlist[0].supplier_id}').value,{$key});
+    </script>
 		</span>   
 		<!--如果有自提点 end-->
 		</td>
@@ -1127,16 +1129,16 @@ else
               </div></td>
           </tr>
           <script type="text/javascript">
-		var fapiao_con = document.getElementById('ECS_INVCONTENT');
-		if (fapiao_con.value=='0')
-		{
-			document.getElementById('ECS_INVPAYEE').disabled=true;
-		}
-		else
-		{
-			document.getElementById('ECS_INVPAYEE').disabled=false;
-		}
-		</script>
+      		// var fapiao_con = document.getElementById('ECS_INVCONTENT');
+      		// if (fapiao_con.value=='0')
+      		// {
+      		// 	document.getElementById('ECS_INVPAYEE').disabled=true;
+      		// }
+      		// else
+      		// {
+      		// 	document.getElementById('ECS_INVPAYEE').disabled=false;
+      		// }
+      		</script>
         </table>
         <div class="blank10"></div>
         <table cellpadding=0 cellspacing=0 width="100%" >

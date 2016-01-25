@@ -115,6 +115,7 @@ function shipping_area_info($shipping_id, $region_id_list)
             "WHERE s.shipping_id = '$shipping_id' " .
             'AND r.region_id ' . db_create_in($region_id_list) .
             ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1';
+
     $row = $GLOBALS['db']->getRow($sql);
 
     if (!empty($row))
@@ -741,10 +742,10 @@ function order_fee($order, $goods, $consignee)
 			$row_supp = $GLOBALS['db']->getRow($sql_supp);
 			$row_supp['supplier_id'] = $row_supp['supplier_id'] ? intval($row_supp['supplier_id']) :0;
 
-			$region['country']  = $consignee['country'];
-			$region['province'] = $consignee['province'];
-			$region['city']     = $consignee['city'];
-			$region['district'] = $consignee['district'];
+			$region['country']  = $consignee['country_id'];
+			// $region['province'] = $consignee['province'];
+			// $region['city']     = $consignee['city'];
+			// $region['district'] = $consignee['district'];
 			$shipping_info = shipping_area_info($order['shipping_pay'][$row_supp['supplier_id']], $region);
 
 			$total['supplier_shipping'][$row_supp['supplier_id']]['supplier_name'] =$row_supp['supplier_name2'];
@@ -3687,13 +3688,21 @@ function get_region_info($region_id)
 
     return $GLOBALS['db']->getOne($sql);
 }
+
+function get_region_id_by_name($region_name)
+{
+    $sql = 'SELECT region_id FROM ' . $GLOBALS['ecs']->table('region') .
+            " WHERE region_name like '%$region_name%' ";
+
+    return $GLOBALS['db']->getOne($sql);
+}
 /* 代码增加_end  By  www.68ecshop.com */
 
 /**
-判断是否是门店自提配送方式
-@param int $id 配送方式id
-@return bool
-*/
+ *判断是否是门店自提配送方式
+ *@param int $id 配送方式id
+ *@return bool
+ **/
 function is_pups($id){
 	global $db,$ecs;
 	$sql = "select shipping_code,support_pickup from ".$ecs->table('shipping')." where shipping_id=".$id;
