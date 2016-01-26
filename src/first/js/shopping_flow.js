@@ -806,7 +806,7 @@ function checkConsignee(frm) {
 		message = msg.join("\n");
 		alert(message);
 	}
-	return !err;
+	return err;
 }
 // 增值税发票_添加_START_www.68ecshop.com
 function check_taxpayer_id(t, id) {

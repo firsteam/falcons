@@ -173,6 +173,18 @@ function submit_surplus_form(){
 </script>
 {/if}
 <!--余额额支付密码_添加_END_www.68ecshop.com-->
+<style type="text/css">
+  p.verify_tips {
+    display: inline-block;
+    padding-left: 10px;
+  }
+  .verify_tips span,.require-field {
+    color: #ff3300;
+  }
+  .require-field {
+    padding-left: 5px;
+  }
+</style>
 </head>
 <body>
 <!--余额额支付密码_添加_START_www.68ecshop.com--> 
@@ -3236,89 +3248,168 @@ function updateEndTime(){
           </div>
           <div class="mar_top"> 
             <!-- {foreach from=$consignee_list item=consignee key=sn} -->
-            <form action="user.php" method="post" name="theForm" onsubmit="return checkConsignee(this)">
+            <form action="user.php" method="post" name="theForm{$sn}" onsubmit="return submit_address({$sn})">
             <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
                 <tr>
-                  <td align="right" bgcolor="#fff">Country：</td>
-                  <td colspan="3" align="left" bgcolor="#fff">
-                    <select name="country" id="selCountries_{$sn}" onchange="region.changed(this, 1, 'selProvinces_{$sn}')">
-                      <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+                  <td align="right" width="23%" bgcolor="#fff">Country：</td>
+                  <td align="left" width="77%" bgcolor="#fff">
+                    <select name="country" id="selCountries_{$sn}" onchange="checkCountry(this,'country_notice_{$sn}')" style="width: 210px;">
+                      <option value="">{$lang.please_select}{$name_of_region[0]}</option>
                       <!-- {foreach from=$country_list item=country} -->
                       <option value="{$country.region_name}" {if $consignee.country eq $country.region_name}selected{/if}>{$country.region_name}</option>
                       <!-- {/foreach} -->
                     </select>
                     {$lang.require_field}
+                    <p class="verify_tips">
+                      <span class="label" id="country_notice_{$sn}"></span>
+                    </p>
                   </td>
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.state_province}：</td>
                   <td align="left" bgcolor="#ffffff">
                     <input name="province" type="text" class="inputBg" id="province_{$sn}" value="{$consignee.province|escape}" />
-                    {$lang.require_field} 
                   </td>
+                </tr>
+                <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.city_district}</td>
                   <td align="left" bgcolor="#ffffff">
-                    <input name="city" type="text" class="inputBg" id="city_{$sn}" value="{$consignee.city|escape}" />
-                    {$lang.require_field} </td>
+                    <input name="city" type="text" class="inputBg" id="city_{$sn}" value="{$consignee.city|escape}" onblur="checkCity(this,'city_notice_{$sn}')" />
+                    {$lang.require_field}
+                    <p class="verify_tips">
+                      <span class="label" id="city_notice_{$sn}"></span>
+                    </p>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.consignee_name}：</td>
                   <td align="left" bgcolor="#ffffff">
-                    <input name="consignee" type="text" class="inputBg" id="consignee_{$sn}" value="{$consignee.consignee|escape}" />
+                    <input name="consignee" type="text" class="inputBg" id="consignee_{$sn}" value="{$consignee.consignee|escape}" onblur="checkConsigneeName(this,'consignee_notice_{$sn}')" />
                     {$lang.require_field}
+                    <p class="verify_tips">
+                      <span class="label" id="consignee_notice_{$sn}"></span>
+                    </p>
                   </td>
-                  <td align="right" bgcolor="#ffffff">{$lang.email_address}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="email" type="text" class="inputBg" id="email_{$sn}" value="{$consignee.email|escape}" />
+                </tr>
+                <tr>
+                  <td align="right" bgcolor="#ffffff">{$lang.backup_phone}：</td>
+                  <td align="left" bgcolor="#ffffff">
+                    <input name="mobile" type="text" class="inputBg" id="mobile_{$sn}" value="{$consignee.mobile|escape}" onblur="checkMobile(this,'mobile_notice_{$sn}')"/>
+                    {$lang.require_field}
+                    <p class="verify_tips">
+                      <span class="label" id="mobile_notice_{$sn}"></span>
+                    </p>                    
                   </td>
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.detailed_address}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="address" type="text" class="inputBg" id="address_{$sn}" value="{$consignee.address|escape}" />
-                    {$lang.require_field}</td>
-                  <td align="right" bgcolor="#ffffff">{$lang.postalcode}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg" id="zipcode_{$sn}" value="{$consignee.zipcode|escape}" /></td>
+                  <td align="left" bgcolor="#ffffff">
+                    <input name="address" type="text" class="inputBg" id="address_{$sn}" value="{$consignee.address|escape}" onblur="checkAddress(this,'address_notice_{$sn}')" />
+                    {$lang.require_field}
+                    <p class="verify_tips">
+                      <span class="label" id="address_notice_{$sn}"></span>
+                    </p>
+                  </td>
                 </tr>
                 <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.phone}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="tel" type="text" class="inputBg" id="tel_{$sn}" value="{$consignee.tel|escape}" /></td>
-                  <td align="right" bgcolor="#ffffff">{$lang.backup_phone}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg" id="mobile_{$sn}" value="{$consignee.mobile|escape}" />
-                    {$lang.require_field}</td>
+                  <td align="right" bgcolor="#ffffff">{$lang.postalcode}：</td>
+                  <td align="left" bgcolor="#ffffff">
+                    <input name="zipcode" type="text" class="inputBg" id="zipcode_{$sn}" value="{$consignee.zipcode|escape}" onblur="checkZipcode(this,'zipcode_notice_{$sn}')" />
+                    {$lang.require_field}
+                    <p class="verify_tips">
+                      <span class="label" id="zipcode_notice_{$sn}"></span>
+                    </p>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.sign_building}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="sign_building" type="text" class="inputBg" id="sign_building_{$sn}" value="{$consignee.sign_building|escape}" /></td>
+                  <td align="left" bgcolor="#ffffff">
+                    <input name="sign_building" type="text" class="inputBg" id="sign_building_{$sn}" value="{$consignee.sign_building|escape}" />
+                  </td>
+                </tr>
+                <tr>
                   <td align="right" bgcolor="#ffffff">{$lang.deliver_goods_time}：</td>
-                  <td align="left" bgcolor="#ffffff"><input name="best_time" type="text"  class="inputBg" id="best_time_{$sn}" value="{$consignee.best_time|escape}" /></td>
+                  <td align="left" bgcolor="#ffffff">
+                    <input name="best_time" type="text"  class="inputBg" id="best_time_{$sn}" value="{$consignee.best_time|escape}" />
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" bgcolor="#fff">Gender：</td>
-                  <td colspan="3" align="left" bgcolor="#fff">
+                  <td align="left" bgcolor="#fff">
                     <input type="radio" name="sex" value="1" {if $consignee.sex eq 1}checked="checked"{/if} class="addtotable_m"> Ms.&nbsp;&nbsp; 
                     <input type="radio" name="sex" value="0" {if $consignee.sex eq 0}checked="checked"{/if} class="addtotable_m"> Mr.
                   </td>
                 </tr>
                 <tr>
-                <td align="right" bgcolor="#ffffff">&nbsp;</td>
-                <td colspan="3" align="center" bgcolor="#ffffff"><!-- {if $consignee.consignee && $consignee.email} -->
-                    
+                  <td align="right" bgcolor="#ffffff">&nbsp;</td>
+                  <td align="left" bgcolor="#ffffff">
+                    <!-- {if $consignee.consignee} -->
                     <input type="submit" name="submit" class="bnt_blue_1" value="{$lang.confirm_edit}" />
                     <input name="button" type="button" class="bnt_blue"  onclick="if (confirm('{$lang.confirm_drop_address}'))location.href='user.php?act=drop_consignee&id={$consignee.address_id}'" value="{$lang.drop}" />
-                    
                     <!-- {else} -->
-                    
-                    <input type="submit" name="submit" class="bnt_blue_2"  value="{$lang.add_address}"/>
-                    
+                    <input type="submit" name="submit" class="bnt_blue_2"  value="{$lang.add_address}" />
                     <!-- {/if} -->
-                    
                     <input type="hidden" name="act" value="act_edit_address" />
-                    <input name="address_id" type="hidden" value="{$consignee.address_id}" /></td>
+                    <input name="address_id" type="hidden" value="{$consignee.address_id}" />
+                  </td>
                 </tr>
               </table>
             </form>
 			<div style="height:30px;"></div>
             <!-- {/foreach} --> 
           </div>
+          <script type="text/javascript">  
+            function submit_address(sn)
+            {
+              var frm = document.forms['theForm'+sn];
+              var cmt = new Object;
+              cmt.consignee       = frm.elements['consignee'].value;
+              cmt.address         = frm.elements['address'].value;
+              cmt.zipcode         = frm.elements['zipcode'].value;
+              cmt.country         = frm.elements['country'].value;
+              cmt.province        = frm.elements['province'].value;
+              cmt.city            = frm.elements['city'].value;
+              cmt.mobile          = frm.elements['mobile'].value;
+              cmt.sex             = frm.elements['sex'].value;
+
+              var err;
+              if( cmt.country.length<1 )
+              {                
+                document.getElementById('country_notice_'+sn).innerHTML = 'Please select Country.';
+                err = true;
+              }
+              if( cmt.consignee.length<2 )
+              {
+                document.getElementById('consignee_notice_'+sn).innerHTML = '2 characters at least for your name.';
+                err = true;
+              }
+              if( cmt.city.length<2 )
+              {
+                document.getElementById('city_notice_'+sn).innerHTML = '2 characters at least for your City.';
+                err = true;
+              }
+              if( cmt.address.length<5 )
+              {
+                document.getElementById('address_notice_'+sn).innerHTML = 'Your Address line must contain at least 5 characters.';
+                err = true;
+              }
+              if( cmt.mobile.length<5 )
+              {
+                document.getElementById('mobile_notice_'+sn).innerHTML = 'Your Telephone Number must contain more than 5 numbers no other characters.';
+                err = true;
+              }
+              if( cmt.zipcode.length<4 )
+              {
+                document.getElementById('zipcode_notice_'+sn).innerHTML = 'Your Post/ZIP Code must contain at least 4 characters.';
+                err = true;
+              }
+
+              if( err )
+              {
+                return false;
+              }
+            }
+          </script>
           <!--{/if} --> 
           <!--#收货地址添加页面 --> 
           <!--* 积分兑换--> 

@@ -30,40 +30,50 @@ function checkCountry(t,id)
 }
 function checkProvince(t,id)
 {
+	var submit_disabled = false;
 	if (t.value.length < 0) { 
 		document.getElementById(id).innerHTML = '2 characters at least for your State/Province.';
+		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
 }
 function checkCity(t,id)
 {
+	var submit_disabled = false;
 	if (t.value.length < 2) { 
 		document.getElementById(id).innerHTML = '2 characters at least for your City.';
+		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
 }
 function checkAddress(t,id)
 {
+	var submit_disabled = false;
 	if (t.value.length < 5) { 
 		document.getElementById(id).innerHTML = 'Your Address line must contain at least 5 characters.';
+		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
 }
 function checkMobile(t,id)
 {
+	var submit_disabled = false;
 	if (t.value.length < 5) { 
 		document.getElementById(id).innerHTML = 'Your Telephone Number must contain more than 5 numbers no other characters.';
+		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
 }
 function checkZipcode(t,id)
 {
+	var submit_disabled = false;
 	if (t.value.length < 4) { 
 		document.getElementById(id).innerHTML = 'Your Post/ZIP Code must contain at least 4 characters.';
+		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
 	}
