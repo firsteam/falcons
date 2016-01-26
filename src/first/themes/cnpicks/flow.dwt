@@ -993,8 +993,8 @@ data-widget="tab-item">
             </li>
           </ol>
         </div>
-         <div class="flowBox checkBox_jm" style="margin:30px auto 70px auto;">
-      <h6 style="text-align:center; height:30px; line-height:30px;color:#c40000">订单提交成功！</h6>
+         <div class="flowBox" style="margin:30px auto 70px auto;">
+      <h6 style="text-align:center; height:30px; line-height:30px;color:#c40000">{$lang.ws_order_submitted_success}</h6>
   <table width="99%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" class="split_order" style="border:1px solid #ddd; margin:20px auto;">
     <tr>
       <td style="padding-bottom:10px;"> {if $split_order.sub_order_count gt 1}
@@ -1003,9 +1003,9 @@ data-widget="tab-item">
         <table width="100%" align=left cellpadding=0 cellspacing=0 bgcolor="#fff"  style="border:1px solid #ddd;border-bottom:none">
           {foreach from=$split_order.suborder_list item=suborder}
           <tr >
-            <td style="border-bottom:1px solid #ddd;padding-left:15px;background:#FAFAFA" height=30>订单号：{$suborder.order_sn}</td>
-            <td style="border-bottom:1px solid #ddd;background:#FAFAFA">{$order.pay_name}：{$suborder.order_amount_formated}</td>
-            <td style="border-bottom:1px solid #ddd;background:#FAFAFA">{$order.shipping_name}&nbsp;&nbsp;&nbsp;{$order.best_time}</td>
+            <td style="border-bottom:1px solid #ddd;padding-left:15px;background:#FAFAFA" height=30>{$lang.order_number} {$suborder.order_sn}</td>
+            <td style="border-bottom:1px solid #ddd;background:#FAFAFA">{$order.pay_name}: {$suborder.order_amount_formated}</td>
+            <td style="border-bottom:1px solid #ddd;background:#FAFAFA">{$order.shipping_name}</td>
           </tr>
           {/foreach}
         </table></td>

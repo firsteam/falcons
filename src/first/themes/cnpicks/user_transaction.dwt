@@ -961,9 +961,8 @@ menu.className=i==cursel?"active":"";
             </div>
           </div>
           <!--{/if}--> 
-          <!--{if $action eq 'update_password_'}-->
-          <!-- 老的修改密码方式 -->
-          <h5 class="user-title user-title-t"><span>修改登录密码</span></h5>
+		  <!--{if $action eq 'profile'}--> 
+          <h5 class="user-title user-title-t"><span>{$lang.change_password}</span></h5>
           <div class="blank"></div>
           <form name="formPassword" action="user.php" method="post" onSubmit="return editPassword()" >
             <table width="100%" border="0" cellpadding="10" cellspacing="1" bgcolor="#E6E6E6">
@@ -986,7 +985,7 @@ menu.className=i==cursel?"active":"";
               </tr>
             </table>
           </form>
-          <!--{/if}-->
+          <!--{/if}--> 
 
           <!--{if $action eq 'update_password'}-->
             <h5 class="user-title user-title-t"><span> Security
@@ -1531,9 +1530,9 @@ menu.className=i==cursel?"active":"";
           </div>
           <div class="blank"></div>
           <div id="J_Remide" class="remide-box">
-            <h3 style=" width:100px;line-height:35px;background:none">Summary</h3>
             <ul>
-              <li{if $smarty.get.composite_status eq '0'} style="background:#CCC; color:#FFF"
+			  <li><a href="user.php?act=order_list">All</a></li>
+              <li{if $smarty.get.composite_status eq '0'} style="background:#FFFFAA; color:#FFF"
 {/if}><a href="user.php?act=order_list&composite_status={$status.unconfirmed}">Unconfirmed<span class="num">({$order_count.unconfirmed})</span></a></li>
               <li{if $smarty.get.composite_status eq '100'} style="background:#CCC; color:#FFF"
 {/if}><a href="user.php?act=order_list&composite_status={$status.await_pay}">Unpaid<span class="num">({$order_count.await_pay})</span></a></li>
@@ -1571,16 +1570,16 @@ menu.className=i==cursel?"active":"";
               </tr>
               <tr class="order-hd">
                 <td colspan="8"><span class="no">
-                  <label> 订单编号：<span class="order-num"><a href="user.php?act=order_detail&order_id={$item.order_id}" class="f6">{$item.order_sn}</a>{* 代码增加_start   By  www.68ecshop.com *}
+                  <label> {$lang.order_number}<span class="order-num"><a href="user.php?act=order_detail&order_id={$item.order_id}" class="f6">{$item.order_sn}</a>{* 代码增加_start   By  www.68ecshop.com *}
                     {if $item.is_suborder}{$item.is_suborder}{/if}{* 代码增加_end   By  www.68ecshop.com *}</span> </label>
-                  </span> <span class="deal-time">&nbsp;&nbsp;成交时间：{$item.order_time}</span> <span class="deal-time">&nbsp;&nbsp;商家店铺：{$item.shopname}</span>
+                  </span> <span class="deal-time f3 fr">&nbsp;&nbsp;{$lang.order_addtime}: {$item.order_time}</span> <span class="deal-time disable-by-cy">&nbsp;&nbsp;商家店铺：{$item.shopname}</span>
                   <!-- 在线客服聊天
                   <a href="javascript:chat_online({chat_order_id: '{$item.order_id}'});" title="联系客服"><img src="images/chat/web_logo.png" width="16" height="16" style="vertical-align:top;"/></a>
                    -->
                   </td>
               </tr>
               <tr class="order-bd last">
-                <td align="center" class="baobei no-border-right" style="padding:0px;">
+                <td align="center" class="baobei no-border-right" style="padding:15px;">
                 <!--{foreach from=$item.goods_list item=goods name=goods}-->
                   
 
@@ -1634,7 +1633,7 @@ menu.className=i==cursel?"active":"";
                     {/if} 
                     <!-- {/if} --> 
                     <!-- {/if} -->
-                    <a href="user.php?act=message_list">Message/Complaint</a> </div>
+                    <a href="user.php?act=message_list">Contact Seller</a> </div>
                   
                   <!--{/foreach}--></td>
                 <td rowspan="1" align="center" class="amount no-border-right"><p class="post-type"><strong>
@@ -2877,10 +2876,12 @@ function updateEndTime(){
             <!--{/if}-->
           </table>
           <!-- {/if} -->
+		  <div class="disable-by-cy">
+		  
           <div class="blank"></div>
           <div class="tabmenu">
               <ul class="tab pngFix">
-                <li class="first active">{$lang.payment}</li>
+                <li class="first active">{$lang.payment_method}</li>
               </ul>
           </div>
           <div class="blank"></div>
@@ -2924,6 +2925,7 @@ function updateEndTime(){
                 <!--{/if}--></td>
             </tr>
           </table>
+		  </div>
           <div class="blank"></div>
            <div class="tabmenu">
               <ul class="tab pngFix">
@@ -2934,20 +2936,20 @@ function updateEndTime(){
           <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
             <!-- {if $order.shipping_id > 0} -->
             <tr>
-              <td width="15%" align="right" bgcolor="#ffffff">{$lang.shipping}：</td>
-              <td colspan="3" width="85%" align="left" bgcolor="#ffffff" id="shipping_name">{$order.shipping_name}</td>
+              <td width="25%" align="right" bgcolor="#ffffff">{$lang.shipping}：</td>
+              <td colspan="3" width="75%" align="left" bgcolor="#ffffff" id="shipping_name">{$order.shipping_name}</td>
             </tr>
             <!-- {/if} -->
             
             <tr>
-              <td width="15%" align="right" bgcolor="#ffffff">{$lang.payment}：</td>
+              <td width="25%" align="right" bgcolor="#ffffff">{$lang.payment}：</td>
               <td colspan="3" align="left" bgcolor="#ffffff">{$order.pay_name}</td>
             </tr>
             <!--{if $order.insure_fee > 0}--> 
             <!--{/if}--> 
             <!-- {if $order.pack_name} 是否使用包装 -->
             <tr>
-              <td width="15%" align="right" bgcolor="#ffffff">{$lang.use_pack}：</td>
+              <td width="25%" align="right" bgcolor="#ffffff">{$lang.use_pack}：</td>
               <td colspan="3" align="left" bgcolor="#ffffff">{$order.pack_name}</td>
             </tr>
             <!-- {/if} 是否使用包装 --> 
@@ -3314,6 +3316,7 @@ function updateEndTime(){
                 </tr>
               </table>
             </form>
+			<div style="height:30px;"></div>
             <!-- {/foreach} --> 
           </div>
           <!--{/if} --> 

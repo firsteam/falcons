@@ -565,6 +565,7 @@ $_LANG['ws_attr_not_matching'] = '您选择的商品属性不存在，请参照�
 $_LANG['ws_goods_number_not_enough'] = '您购买的数量没有达到批发的最小数量，请参照批发价格单';
 $_LANG['ws_goods_attr_exists'] = "该商品已经在购物车中，不能再次加入";
 $_LANG['ws_remark'] = '请输入您的联系方式、付款方式和配送方式等信息';
+$_LANG['ws_order_submitted_success'] = '您的订单已提交成功!';
 $_LANG['ws_order_submitted'] = '您的订单已提交成功，请记住您的订单号: %s。';
 $_LANG['ws_price_list'] = '价格单';
 
@@ -581,6 +582,7 @@ $_LANG['eg_error_number'] = '对不起，该商品库存不足，现在不能兑
 /* 会员登录注册 */
 $_LANG['member_name'] = '会员';
 $_LANG['password'] = '密码';
+$_LANG['change_password'] = '修改密码';
 $_LANG['confirm_password'] = '确认密码';
 $_LANG['sign_up'] = '注册新会员';
 $_LANG['forgot_password'] = '您忘记密码了吗？';

@@ -764,11 +764,11 @@ h6 span {
      购物流程
 ==================== */
 .flowBox {
-	padding: 10px;
+	/*padding: 10px;
 	background: none;
 	margin-bottom: 8px;
 	border: #DDDDDD 1px solid;
-	border-top: #999 2px solid;
+	border-top: #999 2px solid;*/
 }
 .flowBox h6 {
 	background: none;
@@ -3761,17 +3761,18 @@ h5.user-title-t span {
 	clear: both
 }
 .message .message_all {
-	width: 900px;
+	width: 980px;
 	height: auto;
 	margin: 0 auto;
-	padding: 15px 30px;
+	/*padding: 15px 30px;*/
 	background: #ffffff;
 }
 .message .message_all .message_tit {
 	height: 40px;
 	line-height: 40px;
 	font-size: 18px;
-	border-bottom: 1px #eaeaea solid
+	border-bottom: 1px #eaeaea solid;
+	padding: 10px 20px;
 }
 .message .message_all .message_con {
 	min-height: 80px;

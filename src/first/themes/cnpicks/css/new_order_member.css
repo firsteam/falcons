@@ -15,7 +15,7 @@
 }
 .bought-table .order-hd td {
 	overflow: hidden;
-	padding: 8px 5px;
+	padding: 18px 15px 8px 15px;
 	border: #E6E6E6 solid 1px;
 	background: #F5F5F5;
 	border-top: none;
@@ -70,12 +70,12 @@
 }
 .bought-table .baobei .goods_desc {
 	clear: both;
-	padding-left: 5px;
+	/*padding-left: 5px;
 	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-bottom: 5px;*/
 	text-align: center;
-	height: 60px;
-	border-bottom: #F3F3F3 solid 1px;
+	/*height: 60px;
+	border-bottom: #F3F3F3 solid 1px;*/
 }
 .bought-table .baobei .last {
 	border: 0px
@@ -107,6 +107,7 @@
 	padding: 0px 0;
 }
 .remide-box li {
+	padding: 0px 10px;
 	margin: 0 30px 0 10px;
 	float: left;
 	line-height: 35px;

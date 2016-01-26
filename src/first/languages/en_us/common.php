@@ -482,6 +482,7 @@ $_LANG['ws_attr_not_matching'] = 'The attrubute is not matched, please select by
 $_LANG['ws_goods_number_not_enough'] = 'Goods quantity is not enough, please refer to the wholesale price list';
 $_LANG['ws_goods_attr_exists'] = 'Good is in shopping cart';
 $_LANG['ws_remark'] = 'Please enter your contact information, payment method and shipping etc.';
+$_LANG['ws_order_submitted_success'] = 'Your order has been submited.';
 $_LANG['ws_order_submitted'] = 'Your order has been submited, please remember your order No.: %s。';
 $_LANG['ws_price_list'] = 'Price list';
 
@@ -498,6 +499,7 @@ $_LANG['eg_error_number'] = 'Sorry, stock merchandise, and now can not be exchan
 /* 会员登录注册 */
 $_LANG['member_name'] = 'User Name';
 $_LANG['password'] = 'Password';
+$_LANG['change_password'] = 'Change Password';
 $_LANG['confirm_password'] = 'Re-enter password.';
 $_LANG['sign_up'] = 'Register';
 $_LANG['forgot_password'] = 'Forgot your password?';

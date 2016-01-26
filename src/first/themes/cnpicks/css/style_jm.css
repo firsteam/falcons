@@ -290,7 +290,7 @@ a.jm_buy {
 	font: bold;
 }
 .checkBox_jm {
-	width: 950px;
+	width: 940px;
 	border-top: 1px solid #ccc;
 	background: #fff;
 	padding: 15px 20px 20px 20px;
@@ -839,7 +839,7 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
 .flowstep {
     margin: 0px auto 0px auto;
     padding: 10px 0px 0px 0px;
-    width: 990px;
+    width: 980px;
 	height:80px;
 	background-color:white;
 	/*position:absolute;
@@ -1185,7 +1185,7 @@ background-position: 0 0;
 	cursor:pointer	
 }
 /*支付按钮*/
-.checkBox_jm .split_order td input{
+.split_order td input{
 	border:none;
 width: auto;
 height: 36px;
