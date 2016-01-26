@@ -22,7 +22,12 @@
   <tr>
     <td style="text-align:left;">Country<font color=#ff3300>*</font></td>
     <td>
-      <input type="text" name="country" value="{$address.country}" onblur="checkCountry(this,'country_notice')" class="input_addr2">
+      <select name="country" style="width:155px;height:25px;border:1px solid #ccc;" onchange="checkCountry(this,'country_notice')">
+        <option value="">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$shop_country_list item=country} -->
+        <option value="{$country.region_name}" {if $country.region_name eq $address.country}selected{/if}>{$country.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
     </td>
     <td>
       <div class="verify_tips">

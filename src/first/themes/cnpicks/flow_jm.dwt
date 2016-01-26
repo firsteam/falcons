@@ -851,20 +851,20 @@ else
         </tr>
         <!-- {/foreach} --> 
 
-	{if $goodsinfo.shipping_html}
-        <tr>
-		<td colspan=4 bgcolor="#ffffff" align="left" class="shipping_type">
-		<span>{$lang.shipping_method}: </span>{$goodsinfo.shipping_html}
-		<!--如果有自提点 star-->
-		<span id='picktxt{$key}'>
-		<script>
-      selectShipping(document.getElementById('pay_ship_{$goodsinfo.goodlist[0].supplier_id}').value,{$key});
-    </script>
-		</span>   
-		<!--如果有自提点 end-->
-		</td>
-	</tr>
-	{/if}
+      	{if $goodsinfo.shipping_html}
+              <tr>
+      		<td colspan=4 bgcolor="#ffffff" align="left" class="shipping_type">
+      		<span>{$lang.shipping_method}: </span>{$goodsinfo.shipping_html}
+      		<!--如果有自提点 star-->
+      		<span id='picktxt{$key}'>
+      		<script>
+            selectShipping(document.getElementById('pay_ship_{$goodsinfo.goodlist[0].supplier_id}').value,{$key});
+          </script>
+      		</span>   
+      		<!--如果有自提点 end-->
+      		</td>
+      	</tr>
+      	{/if}
 
         <!-- {if $goodsinfo.zhekou} 优惠活动 -->
         <tr>

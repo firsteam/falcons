@@ -21,7 +21,6 @@ function selectShipping(recid, suppid) {
 }
 
 function orderShipping(result) {
-	console.log(result);
 	if (result.error) {
 		alert(result.error);
 	} else {

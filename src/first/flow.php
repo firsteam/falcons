@@ -182,11 +182,10 @@ if ($_REQUEST['act']=='EditAddress')
 		$smarty->assign('address', $address_info);
 
 		$province_list = get_regions(1, $address_info['country']);
-
         $city_list     = get_regions(2, $address_info['province']);
-
         $district_list = get_regions(3, $address_info['city']);        
 
+        $smarty->assign('shop_country_list', get_regions(0, 0));
         $smarty->assign('province_list', $province_list);
 
         $smarty->assign('city_list',     $city_list);
