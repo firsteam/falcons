@@ -1852,7 +1852,7 @@ function action_act_edit_password ()
 	$old_password = isset($_POST['old_password']) ? trim($_POST['old_password']) : null;
 	$new_password = isset($_POST['new_password']) ? trim($_POST['new_password']) : '';
 	/* 代码添加_68ECSHOP_20150729_STAR */
-	$confirm_password = isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : '';
+	$confirm_password = isset($_POST['comfirm_password']) ? trim($_POST['comfirm_password']) : '';
 	/* 代码添加_68ECSHOP_20150729_END */
 	$user_id = isset($_POST['uid']) ? intval($_POST['uid']) : $user_id;
 	$code = isset($_POST['code']) ? trim($_POST['code']) : '';
@@ -1861,6 +1861,7 @@ function action_act_edit_password ()
 	{
 		show_message($_LANG['passport_js']['password_shorter']);
 	}
+
 	/* 代码添加_68ECSHOP_20150729_STAR */
 	if($new_password != $confirm_password)
 	{

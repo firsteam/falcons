@@ -80,8 +80,8 @@ function insert_history()
         $sql   = 'SELECT goods_id, goods_name, goods_thumb, shop_price FROM ' . $GLOBALS['ecs']->table('goods') .
                 " WHERE $where AND is_on_sale = 1 AND is_alone_sale = 1 AND is_delete = 0";
         $query = $GLOBALS['db']->query($sql);
-        $row = $GLOBALS['db']->fetch_array($query);
-        if( $row )
+        
+        if( mysql_num_rows($query)>0 )
         {
             $str .= '<div class="proListUc_history">'
                  . '<div class="colFrame">'
@@ -100,7 +100,7 @@ function insert_history()
                 $str.='<li class="first">
                   <div class="p-img"><a target="_blank" href="'.$goods['url'].'"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" /></a></div>
                   <div class="p-name"><a target="_blank" href="'.$goods['url'].'">'.$goods['goods_name'].'</a> </div>
-                  <div class="p-price"> <strong class="J-p-${list.wid}">'.$goods['shop_price'].'</strong> </div>
+                  <div class="p-price"><strong class="J-p-${list.wid}">'.$goods['shop_price'].'</strong> </div>
                 </li>';
             }
             $str .= '</ul>'
