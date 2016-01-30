@@ -661,23 +661,14 @@ else
     cmt.address_id      = frm.elements['address_id'].value;
     cmt.consignee       = frm.elements['consignee'].value;
     cmt.address         = frm.elements['address'].value;
-    // cmt.email           = frm.elements['email'].value;
     cmt.zipcode         = frm.elements['zipcode'].value;
     cmt.country         = frm.elements['country'].value;
     cmt.province        = frm.elements['province'].value;
     cmt.city            = frm.elements['city'].value;
-    // cmt.district        = frm.elements['district'].value;
-    // cmt.tel             = frm.elements['tel_01'].value + "-" + frm.elements['tel_02'].value  + "-" + frm.elements['tel_03'].value ;
 	  cmt.mobile          = frm.elements['mobile'].value;
 	  cmt.closediv	      = frm.elements['closediv'].value;
 	  cmt.shipping_bian	  = frm.elements['shipping_bian'].value;
     cmt.sex             = frm.elements['sex'].value;
-  	// cmt.optionlength    = frm.elements['district'].length;
-
-    if( cmt.consignee.length==0 || cmt.province.length=='0' ||  cmt.city.length== '0')
-    {
-      return false;
-    }
 
     /* 邮箱不是必填项
     if (cmt.email.length == 0)
@@ -686,14 +677,40 @@ else
 		  return false;
     }
    */
-    if (cmt.address.length == 0)
-    {
-      alert('{$lang.flow_js.address_not_null}');
-      return false;
+    var err;
+    if( cmt.country.length<1 )
+    {                
+      document.getElementById('country_notice').innerHTML = 'Please select Country.';
+      err = true;
     }
-    if (cmt.mobile.length == 0)
+    if( cmt.consignee.length<2 )
     {
-      alert('{$lang.flow_js.mobile_not_null}');
+      document.getElementById('consignee_name_notice').innerHTML = '2 characters at least for your name.';
+      err = true;
+    }
+    if( cmt.city.length<2 )
+    {
+      document.getElementById('city_notice').innerHTML = '2 characters at least for your City.';
+      err = true;
+    }
+    if( cmt.address.length<5 )
+    {
+      document.getElementById('address_notice').innerHTML = 'Your Address line must contain at least 5 characters.';
+      err = true;
+    }
+    if( cmt.mobile.length<5 )
+    {
+      document.getElementById('mobile_notice').innerHTML = 'Your Telephone Number must contain more than 5 numbers no other characters.';
+      err = true;
+    }
+    if( cmt.zipcode.length<4 )
+    {
+      document.getElementById('zipcode_notice').innerHTML = 'Your Post/ZIP Code must contain at least 4 characters.';
+      err = true;
+    }
+
+    if( err )
+    {
       return false;
     }
 

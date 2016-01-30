@@ -90,7 +90,7 @@
       </div>
     </td>
   </tr>
-  <tr><td></td><td><font color=#cccccc>At least one</font></td></tr>
+  <!-- <tr><td></td><td><font color=#cccccc>At least one</font></td></tr> -->
   <tr><td></td><td style="padding-top:10px;">
   <input type="hidden" name="address_id" value="{$address.address_id}" >
   <input type="hidden" name="shipping_bian" value="0" >

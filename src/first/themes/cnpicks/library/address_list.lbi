@@ -91,7 +91,7 @@
   </tr>
   <tr><td style="height:3px;"></td></tr>
   <tr>
-    <td align="left">{$lang.postalcode}</td>
+    <td align="left">{$lang.postalcode}<font color=#ff3300>*</font></td>
     <td><input type="text" name="zipcode" class="input_addr3" onblur="checkZipcode(this,'zipcode_notice')"></td>
     <td align="left">
       <div class="verify_tips">
