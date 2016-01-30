@@ -14,7 +14,7 @@
 <div class="blank10"></div>
 <div class="address_jm_add" onclick="AddressEdit(0);">{$lang.new_consignee_address}</div>
 {else}
-<div class="blank10"></div><div class="blank10"></div>
+<div class="blank10"></div>
 <table cellpadding=4 cellspacing=4 width="100%">
   <tr>
     <td width="150" align="left">{$lang.consignee_name}<font color="#ff3300">*</font></td>

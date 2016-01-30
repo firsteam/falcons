@@ -25,7 +25,7 @@
 	padding: 20px 0px 0px 0px;
 }
 .flowBox_jm {
-	width: 990px;
+	width: 980px;
 	border: 1px solid #ddd;
 	background: #fff;
 	margin:0 auto
@@ -911,12 +911,12 @@ body {
 	font-size: 12px;
 	font-weight: bold;
 	z-index: 99999;
-	width: 380px;
-	height: 500px;
+	width: 500px;
+	height: 480px;
 	left: 50%;/*FF IE7*/
 	top: 50%;/*FF IE7*/
-	margin-left: -190px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
-	margin-top: -250px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
+	margin-left: -250px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
+	margin-top: -240px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
 
 	-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
@@ -970,7 +970,7 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
 	top: 0;/*FF IE7*/
 	filter: alpha(opacity=50);/*IE*/
 	opacity: 0.5;/*FF*/
-	z-index: 1;
+	z-index: 99999;
 	position: fixed!important;/*FF IE7*/
 	position: absolute;/*IE6*/
 _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Compat') ?  documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/

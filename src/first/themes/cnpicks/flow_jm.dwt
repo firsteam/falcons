@@ -685,27 +685,27 @@ else
     }
     if( cmt.consignee.length<2 )
     {
-      document.getElementById('consignee_name_notice').innerHTML = '2 characters at least for your name.';
+      document.getElementById('consignee_name_notice').innerHTML = 'At least 2 characters.';
       err = true;
     }
     if( cmt.city.length<2 )
     {
-      document.getElementById('city_notice').innerHTML = '2 characters at least for your City.';
+      document.getElementById('city_notice').innerHTML = 'At least 2 characters.';
       err = true;
     }
     if( cmt.address.length<5 )
     {
-      document.getElementById('address_notice').innerHTML = 'Your Address line must contain at least 5 characters.';
+      document.getElementById('address_notice').innerHTML = 'At least 5 characters.';
       err = true;
     }
     if( cmt.mobile.length<5 )
     {
-      document.getElementById('mobile_notice').innerHTML = 'Your Telephone Number must contain more than 5 numbers no other characters.';
+      document.getElementById('mobile_notice').innerHTML = 'At least 5 numbers.';
       err = true;
     }
     if( cmt.zipcode.length<4 )
     {
-      document.getElementById('zipcode_notice').innerHTML = 'Your Post/ZIP Code must contain at least 4 characters.';
+      document.getElementById('zipcode_notice').innerHTML = 'At least 4 characters.';
       err = true;
     }
 
