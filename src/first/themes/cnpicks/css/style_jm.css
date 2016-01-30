@@ -911,13 +911,13 @@ body {
 	font-size: 12px;
 	font-weight: bold;
 	z-index: 99999;
-	width: 650px;
-	height: 600px;
+	width: 380px;
+	height: 500px;
 	left: 50%;/*FF IE7*/
 	top: 50%;/*FF IE7*/
-	margin-left: -325px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
-	margin-top: -300px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
-	margin-top: 0px;
+	margin-left: -190px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
+	margin-top: -250px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
+
 	-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
 	box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
@@ -935,8 +935,8 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
 	font-family: "微软雅黑";
 	font-size: 16px;
 	font-weight: normal;
-	height: 60px;
-	line-height: 70px;
+	/*height: 60px;
+	line-height: 70px;*/
 	text-align: left;
 	color: #ff3300;
 }
@@ -951,7 +951,7 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
 	cursor: pointer;
 }
 .mydiv table {
-	padding: 10px;
+	padding: 20px;
 	margin: 0;
 }
 .mydiv table td {

@@ -110,10 +110,7 @@
     </td>
   </tr>
   <tr>
-    <td></td><td><font color=#cccccc>At least one</font></td>
-  </tr>
-  <tr>
-    <td></td><td style="padding-top:10px;">
+    <td></td><td style="padding-top:20px;">
     <input type="hidden" name="address_id" value="0" >
     <input type="hidden" name="shipping_bian" value="1" >
     <input type="hidden" name="closediv" value="0" >

@@ -82,7 +82,7 @@
               <input type="submit" name="submit" class="btn-img btn-entry" id="loginsubmit" value="Sign in" />
             </div>
             <div class="blank"></div>
-            <div class="item">
+            <div class="item disable-by-cy">
               <table width="300" border="0" cellpadding="5" cellspacing="0">
                 <tr>
 		          <td><a style="text-decoration:none" href="user.php?act=oath&type=weixin"><i class="weixin"></i>&nbsp;&nbsp;微信</a></td>
