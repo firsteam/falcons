@@ -104,6 +104,9 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     /* 获取商品类型存在规格的类型 */
     $specifications = get_goods_type_specifications();
     $smarty->assign('specifications', $specifications);
+	
+	$sql = "update " .$GLOBALS['ecs']->table('goods'). " AS g set goods_name_zh=goods_name where goods_name_zh=''";
+	$GLOBALS['db']->query($sql);
 
     /* 显示商品列表页面 */
     assign_query_info();
@@ -1582,6 +1585,33 @@ elseif ($_REQUEST['act'] == 'edit_goods_name')
     }
 }
 
+elseif ($_REQUEST['act'] == 'edit_goods_name_zh')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $goods_name_zh = json_str_iconv(trim($_POST['val']));
+
+    if ($exc->edit("goods_name_zh = '$goods_name_zh', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result(stripslashes($goods_name_zh));
+    }
+}
+
+elseif ($_REQUEST['act'] == 'edit_product_url')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $product_url = json_str_iconv(trim($_POST['val']));
+
+    if ($exc->edit("product_url = '$product_url', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result(stripslashes($product_url));
+    }
+}
 /*------------------------------------------------------ */
 //-- 修改商品货号
 /*------------------------------------------------------ */
