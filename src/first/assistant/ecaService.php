@@ -52,25 +52,26 @@ function checkLogin($username, $password)
 {
 	$username = base64_decode($username);
 	$password = base64_decode($password);
-	
+
 	//$username = str_iconv(ECS_CHARSET, EC_CHARSET, $username);
 	//$password = str_iconv(ECS_CHARSET, EC_CHARSET, $password);
-	
+
 	//return true;
+	$sql="SELECT `ec_salt` FROM ". $GLOBALS['ecs']->table('admin_user') ." WHERE user_name = '" . $username ."'";
+	$ec_salt =$GLOBALS['db']->getOne($sql);
 
-    $sql = "SELECT user_id, user_name, password, last_login, action_list, last_login".
-            " FROM " . $GLOBALS['ecs']->table('admin_user') .
-            " WHERE user_name = '" . $username. "' AND password = '" . md5($password) . "'";
-    
-    $row = $GLOBALS['db']->getRow($sql);
-    if ($row)
-    { 
-    	return true;
-    }else{
-      return false; 		
-    }	
+	$sql = "SELECT user_id, user_name, password, last_login, action_list, last_login".
+			" FROM " . $GLOBALS['ecs']->table('admin_user') .
+			" WHERE user_name = '" . $username. "' AND password = '" . md5(md5($password).$ec_salt). "'";
+
+	$row = $GLOBALS['db']->getRow($sql);
+	if ($row)
+	{
+		return true;
+	}else{
+		return false;
+	}
 }
-
 
 
 

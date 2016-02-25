@@ -38,13 +38,13 @@
       <!--name end--> 
       <script type='text/javascript'>var warestatus = 1; </script>
 
-      <div class="goods_left" class="w570">
-        <div id="preview" class="w570">
+      <div class="goods_left" class="w600">
+        <div id="preview" class="w600">
           <div  class="goods_img" id="li_{$goods.goods_id}">
             <!-- {if $pictures}-->
-            <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid; width:560px; height:560px;" name="goods_img" onclick="next_img()" />
+            <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="600" height="600" name="goods_img" onclick="next_img()" />
             <!-- {else} -->
-            <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="560" height="560" style="border:#DDDDDD 1px solid;width:560px; height:560px;" />
+            <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="600" height="600" />
             <!-- {/if}-->
 			
             <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">

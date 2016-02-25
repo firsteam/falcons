@@ -190,7 +190,7 @@ Template Type: type_0
 	width: 140px;
 	text-align: left;
 }
-.compare-btn,.collet-btn{
+.compare-btn,.collet-btn,.buy-btn{
 	background:url(../images/upgrade_ad/common.png) no-repeat;
 }
 .compare-btn {
@@ -207,6 +207,13 @@ Template Type: type_0
 	overflow: hidden;
 	width: 58px;
 	background-position: 0px -200px;
+}
+.buy-btn {
+	float: right;
+	height: 21px;
+	overflow: hidden;
+	width: 58px;
+	background-position: 0px -179px;
 }
 .collet-btn-t {
 	background-position: 0px -224px;

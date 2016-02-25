@@ -1443,7 +1443,7 @@ BUTTON {
 .gallery {
 	/*width: 352px;*/
 	float: left;
-	/*margin:15px 0px 15px 0px;*/
+	margin:20px 0px 0px 0px;
 	/*margin-left: 8px;
 	_margin-left: 5px;*/
 	overflow: hidden;
@@ -1610,9 +1610,9 @@ span.scrright {
 	position: relative;
 }
 .goods_img {
-	padding: 10px;
+	/*padding: 10px;
 	width: 562px;
-	border: 1px solid #DDD;
+	border: 1px solid #DDD;*/
     cursor: pointer;
 }
 .shop_self {
@@ -2334,8 +2334,8 @@ _top:       expression(eval(document.compatMode &&
 	text-align: center;
 }
 .goods_desc{
-	margin:20px 0px;
-	/*width: 582px;*/
+	margin:0px 0px 20px 0px;
+	min-width: 750px;
 	float: left;
 	overflow: hidden;
 }
@@ -2398,20 +2398,21 @@ _top:       expression(eval(document.compatMode &&
 
 }
 #wrapper .dc{
-	/*width: 570px;*/
+	min-width: 750px;
 	overflow: hidden;
 }
 #wrapper .dt{
-	/*width: 570px;*/
+	min-width: 750px;
 	overflow: hidden;
 }
 
 .goods_left {
 	float: left;
+	margin: 0px 0px 20px 0px;
 }
 .goods_right {
 	float: right;
-	width: 368px;
+	width: 350px;
 }
 
 
