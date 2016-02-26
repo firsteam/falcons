@@ -5,14 +5,14 @@
   border: 1px solid #d8ebe9;
   display: block;
   float: right;
-  height: 30px;
+  height: 50px;
   margin-right: 0;
   position: relative;
-  width: 30px;
+  width: 50px;
 }
-.pic a {position:relative; display:block; width:30px; height:30px; background:transparent;}
-.pic a .img1 {width:30px; height:30px; border:0;}
-.pic a .img2 {width:150px; height:150px; border:0; position:absolute;left:30px; top:0px; display:none; z-index:99999}
+.pic a {position:relative; display:block; width:50px; height:50px; background:transparent;}
+.pic a .img1 {width:50px; height:50px; border:0;}
+.pic a .img2 {width:220px; height:220px; border:0; position:absolute;left:50px; top:-110px; display:none; z-index:99999}
 .pic a:hover .img2{display:block}
 </style>
 <!--wzys ecshop商品列表可以显示商品缩略图功能end-->
@@ -34,11 +34,12 @@
       <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
       <a href="javascript:listTable.sort('goods_id'); ">{$lang.record_id}</a>{$sort_goods_id}
     </th>
+	<th>图片</th>
 	{if $suppliers_exists eq 1}
 	<th><a href="javascript:listTable.sort('supplier_name'); ">供货商家</a>{$sort_supplier_name}</th>
 	{/if}
-    <th><a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}</th>
     <th><a href="javascript:listTable.sort('goods_name_zh'); ">中文标题</a>{$sort_goods_name_zh}</th>
+    <th><a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}</th>
     <th><a href="javascript:listTable.sort('product_url'); ">采购网址</a>{$sort_product_url}</th>
     <th><a href="javascript:listTable.sort('goods_sn'); ">{$lang.goods_sn}</a>{$sort_goods_sn}</th>
     <th><a href="javascript:listTable.sort('shop_price'); ">{$lang.shop_price}</a>{$sort_shop_price}</th>
@@ -63,21 +64,24 @@
  <!--wzys ecshop商品列表可以显示商品缩略图功能-->
     <td>
     <input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />{$goods.goods_id}
-    
+    </td>
+	<td>
     <div class="pic"> 
                   <a href="../goods.php?id={$goods.goods_id}" target="_blank"> 
-                  <img src="../{$goods.goods_thumb}" border="0" title="{$goods.goods_name|escape:html}" class="img1"/> 
-                  <img src="../{$goods.goods_thumb}" border="0" title="{$goods.goods_name|escape:html}" class="img2"/>
+                  <img src="../{$goods.goods_thumb}" border="0" title="" class="img1"/> 
+                  <img src="../{$goods.goods_thumb}" border="0" title="" class="img2"/>
                   </a>
-                   </div>
+    </div>
     
     </td>
 	<!--wzys ecshop商品列表可以显示商品缩略图功能end-->
 	{if $suppliers_exists eq 1}
 	<td align="center">{$goods.supplier_name|escape:html}</td>
 	{/if}
-    <td class="first-cell" style="{if $goods.is_promote}color:red;{/if}"><span onclick="listTable.edit(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span></td>
-  <td><span onclick="listTable.edit(this, 'edit_goods_name_zh', {$goods.goods_id})">{$goods.goods_name_zh|default:N/A}</span></td>
+    <td>
+		<span onclick="listTable.edit(this, 'edit_goods_name_zh', {$goods.goods_id})">{$goods.goods_name_zh|default:N/A}</span>
+	</td>
+	<td class="first-cell" style="{if $goods.is_promote}color:red;{/if}"><span onclick="listTable.edit(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span></td>
     <td><span onclick="listTable.edit(this, 'edit_product_url', {$goods.goods_id})">{$goods.product_url|default:N/A}</span></td>
   
     <td><span onclick="listTable.edit(this, 'edit_goods_sn', {$goods.goods_id})">{$goods.goods_sn}</span></td>
