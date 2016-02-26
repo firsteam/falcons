@@ -6,7 +6,7 @@ $db_host   = "127.0.0.1:3306";
 $db_name   = "cnpicks";
 
 // database username
-$db_user   = "root";
+$db_user   = "cnpicks";
 
 // database password
 $db_pass   = "wangyabener";
@@ -33,6 +33,6 @@ define('AUTH_KEY', 'this is a key');
 
 define('OLD_AUTH_KEY', '');
 
-define('API_TIME', '2016-01-26 13:58:44');
+define('API_TIME', '2016-02-26 12:55:49');
 
 ?>
