@@ -1,8 +1,7 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <form id="formCart" name="formCart" method="post" action="flow.php" >
   <a id="mc-menu-hd" class="sn-cart-link mui-global-iconfont" href="flow.php" target="_top" rel="nofollow"></a>
-  <a href="flow.php" class="btn" style="height:135px;color:#E31939;padding-top:5px;" id="collectBox">
+  <a href="flow.php" class="btn" style="color:#E31939; " id="collectBox">
     <span style="margin-top:7px;" >Cart ({$str})</span>
   </a>
   <div class="dropdown" id="J-flow-drop" style="opacity: 1; margin-right: 0px; display:none;"> 

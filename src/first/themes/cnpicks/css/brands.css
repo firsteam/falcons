@@ -653,10 +653,11 @@ html {
 	margin: auto;
 }
 .flow-item .flow-content {
-	/*width: 200px;*/
+	width: 190px;
 	float: left;
 	margin-left: 5px;
 	margin-top: 20px;
+	overflow:hidden;
 }
 .flow-title {
 	float:left;

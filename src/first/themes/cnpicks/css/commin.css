@@ -83,6 +83,9 @@ button, input, select, textarea {
 .w570 {
 	width: 570px;
 }
+.w600 {
+	width: 600px;
+}
 .w950 {
 	width: 950px;
 	margin: 0 auto;
@@ -709,7 +712,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	display: none
 }
 #sn-bd {
-	/*width: 1210px;*/
+	width: 980px;
 	margin: auto;
 	position: relative;
  *zoom:1
@@ -788,7 +791,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 }
 #site-nav .sn-quick-menu li {
 	float: left;
-	position: relative
+	/*position: relative*/
 }
 #site-nav .menu-item {
 	position: relative;
@@ -1046,9 +1049,9 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 }
 #site-nav .sn-quick-menu .sn-cart {
 	padding: 0px 10px;
-	position: relative;
+	/*position: relative;
 	text-align: center;
-	text-decoration: none
+	text-decoration: none*/
 }
 #site-nav .sn-quick-menu .sn-cart a {
 	position: static
@@ -2299,14 +2302,14 @@ dt#qqdt {
 .globa-nav ul.allMenu li a {
 	color: #3C3C3C;
 	height: 36px;
-	padding: 0 0px 0 40px;
+	padding: 0 20px 0 20px;
 	line-height: 36px;
 	display: inline-block;
 	text-decoration: none;
 	font-size: 15px
 }
 .globa-nav ul.allMenu li a.index {
-	padding: 0;
+	padding: 0px 20px 0px 0px;
 	/*width: 88px;
 	margin-left: 20px;*/
 	font-size: 15px
