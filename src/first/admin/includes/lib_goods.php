@@ -29,6 +29,7 @@ function get_intro_list()
         'is_new'     => $GLOBALS['_LANG']['is_new'],
         'is_hot'     => $GLOBALS['_LANG']['is_hot'],
         'is_promote' => $GLOBALS['_LANG']['is_promote'],
+		'is_wish' => 'wish',
         'all_type' => $GLOBALS['_LANG']['all_type'],
     );
 }
@@ -857,6 +858,11 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         $filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'goods_id' : trim($_REQUEST['sort_by']);
         $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'DESC' : trim($_REQUEST['sort_order']);
         $filter['extension_code']   = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
+		$filter['collect_link']   = empty($_REQUEST['collect_link']) ? '' : trim($_REQUEST['collect_link']);
+		$filter['favorite_num']   = empty($_REQUEST['favorite_num']) ? 0 : intval($_REQUEST['favorite_num']);
+		$filter['review_num']   = empty($_REQUEST['review_num']) ? 0 : intval($_REQUEST['review_num']);
+		
+		
         $filter['is_delete']        = $is_delete;
         $filter['real_goods']       = $real_goods;
         
@@ -876,6 +882,9 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
             case 'is_new':
                 $where .= ' AND is_new=1';
                 break;
+			case 'is_wish':
+                $where .= ' AND is_wish=1';
+                break;	
             case 'is_promote':
                 $where .= " AND is_promote = 1 AND promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today'";
                 break;
@@ -894,6 +903,16 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         {
             $where .= " AND brand_id='$filter[brand_id]'";
         }
+		
+		if ($filter['favorite_num'])
+        {
+            $where .= " AND favorite_num>='$filter[favorite_num]'";
+        }
+		if ($filter['review_num'])
+        {
+            $where .= " AND review_num>='$filter[review_num]'";
+        }
+		
 
         /* 扩展 */
         if ($filter['extension_code'])
@@ -906,6 +925,11 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         {
             $where .= " AND (goods_sn LIKE '%" . mysql_like_quote($filter['keyword']) . "%' OR goods_name LIKE '%" . mysql_like_quote($filter['keyword']) . "%')";
         }
+if (!empty($filter['collect_link']))
+        {
+            $where .= " AND collect_link LIKE '%" . mysql_like_quote($filter['collect_link']) . "%'";
+        }
+
 
        if ($real_goods > -1)
         {
@@ -953,7 +977,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         if(intval($_REQUEST['supp'])>0){
         	$sql = "SELECT goods_id, goods_name, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
-					", supplier_status, g.supplier_id,supplier_name ".
+					", supplier_status, g.supplier_id,supplier_name,favorite_num,review_num,collect_link,is_wish ".
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g ".
         			" LEFT JOIN " . $GLOBALS['ecs']->table('supplier') . " AS s ON s.supplier_id = g.supplier_id ".
                     " WHERE is_delete='$is_delete' $where" .
@@ -962,7 +986,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         }else{
         	$sql = "SELECT goods_id, goods_name, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
-					", supplier_status, supplier_id ".	//代码增加   By  www.68ecshop.com
+					", supplier_status, supplier_id,favorite_num,review_num,collect_link,is_wish ".	//代码增加   By  www.68ecshop.com
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete='$is_delete' $where" .
                     " ORDER BY $filter[sort_by] $filter[sort_order] ".
                     " LIMIT " . $filter['start'] . ",$filter[page_size]";
@@ -1569,4 +1593,128 @@ function move_image_file($source, $dest)
     return false;
 }
 
+function get_goods_properties($goods_id)
+{
+    /* 对属性进行重新排序和分组 */
+    $sql = "SELECT attr_group ".
+            "FROM " . $GLOBALS['ecs']->table('goods_type') . " AS gt, " . $GLOBALS['ecs']->table('goods') . " AS g ".
+            "WHERE g.goods_id='$goods_id' AND gt.cat_id=g.goods_type";
+    $grp = $GLOBALS['db']->getOne($sql);
+
+    if (!empty($grp))
+    {
+        $groups = explode("\n", strtr($grp, "\r", ''));
+    }
+
+    /* 获得商品的规格 */
+    $sql = "SELECT a.attr_id, a.attr_name, a.attr_group, a.is_linked, a.attr_type, ".
+                "g.goods_attr_id, g.attr_value, g.attr_price " .
+            'FROM ' . $GLOBALS['ecs']->table('goods_attr') . ' AS g ' .
+            'LEFT JOIN ' . $GLOBALS['ecs']->table('attribute') . ' AS a ON a.attr_id = g.attr_id ' .
+            "WHERE g.goods_id = '$goods_id' " .
+            'ORDER BY a.sort_order, g.attr_price, g.goods_attr_id';
+    $res = $GLOBALS['db']->getAll($sql);
+
+    $arr['pro'] = array();     // 属性
+    $arr['spe'] = array();     // 规格
+    $arr['lnk'] = array();     // 关联的属性
+
+    foreach ($res AS $row)
+    {
+
+        if ($row['attr_type'] == 0)
+        {
+            $arr['pro'][$row['attr_id']]['name']  = $row['attr_name'];
+            $arr['pro'][$row['attr_id']]['value'] = $row['attr_value'];
+        }
+        else
+        {
+        	
+        	
+            $arr['spe'][$row['attr_id']]['attr_id'] = $row['attr_id'];
+            $arr['spe'][$row['attr_id']]['attr_type'] = $row['attr_type'];
+            $arr['spe'][$row['attr_id']]['name']     = $row['attr_name'];
+            $arr['spe'][$row['attr_id']]['values'][] = array(
+                                                        'label'        => $row['attr_value'],
+                                                        'price'        => $row['attr_price'],
+                                                        'format_price' => price_format(abs($row['attr_price']), false),
+                                                        'id'           => $row['goods_attr_id']);
+        }
+
+        if ($row['is_linked'] == 1)
+        {
+            /* 如果该属性需要关联，先保存下来 */
+            $arr['lnk'][$row['attr_id']]['name']  = $row['attr_name'];
+            $arr['lnk'][$row['attr_id']]['value'] = $row['attr_value'];
+        }
+    }
+
+    return $arr;
+}
+
+
+
+function get_array_combination($array = array())
+{
+    $count_total = count($array);
+    $t           = 1;
+    if ($count_total >= 2)
+    {
+        $result = array();
+        for ($i = 0; $i <= $count_total - 1; $i++)
+        {
+            $count[$i] = count($array[$i]);
+        }
+        foreach ($count as $c)
+        {
+            $t = $t * $c;
+        }
+        for ($j = 1; $j <= $t; $j++)
+        {
+            for ($i = 0; $i <= $count_total - 1; $i++)
+            {
+                $pos      = rand(0, $count[$i] - 1);
+                $item[$i] = $array[$i][$pos];
+            }
+            $tmp = '';
+            for ($i = 0; $i <= $count_total - 1; $i++)
+            {
+                if ($i != $count_total - 1)
+                {
+                    $tmp .= $item[$i] . '|';
+                }
+                else
+                {
+                    $tmp .= $item[$i];
+                }
+            }
+            while (in_array($tmp, $result))
+            {
+                for ($i = 0; $i <= $count_total - 1; $i++)
+                {
+                    $pos      = rand(0, $count[$i] - 1);
+                    $item[$i] = $array[$i][$pos];
+                }
+                $tmp = '';
+                for ($i = 0; $i <= $count_total - 1; $i++)
+                {
+                    if ($i != $count_total - 1)
+                    {
+                        $tmp .= $item[$i] . '|';
+                    }
+                    else
+                    {
+                        $tmp .= $item[$i];
+                    }
+                }
+            }
+            array_push($result, $tmp);
+        }
+        return $result;
+    }
+    else
+    {
+        return $array[0];
+    }
+}
 ?>

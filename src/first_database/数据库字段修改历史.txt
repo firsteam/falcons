@@ -1,2 +1,9 @@
 alter table ecs_goods add column product_url varchar(255) not null default '';
 alter table ecs_goods add column goods_name_zh varchar(255) not null default '';
+
+2016-3-7
+
+alter table ecs_goods add column favorite_num int(11) not null default 0;
+alter table ecs_goods add column review_num int(11) not null default 0;
+alter table ecs_goods add column collect_link varchar(255) not null default '';
+alter table ecs_goods add column is_wish tinyint(1) not null default 0;

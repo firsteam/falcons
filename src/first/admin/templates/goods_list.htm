@@ -40,21 +40,27 @@
 	{/if}
     <th><a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}</th>
     <th><a href="javascript:listTable.sort('product_url'); ">采购网址</a>{$sort_product_url}</th>
+    <th><a href="javascript:listTable.sort('collect_link'); ">采集网址</a>{$sort_collect_link}</th>
     <th><a href="javascript:listTable.sort('goods_sn'); ">{$lang.goods_sn}</a>{$sort_goods_sn}</th>
     <th><a href="javascript:listTable.sort('shop_price'); ">{$lang.shop_price}</a>{$sort_shop_price}</th>
     <th><a href="javascript:listTable.sort('is_on_sale'); ">{$lang.is_on_sale}</a>{$sort_is_on_sale}</th>
     <th class="disable-by-cy"><a href="javascript:listTable.sort('is_best'); ">{$lang.is_best}</a>{$sort_is_best}</th>
     <th class="disable-by-cy"><a href="javascript:listTable.sort('is_new'); ">{$lang.is_new}</a>{$sort_is_new}</th>
     <th class="disable-by-cy"><a href="javascript:listTable.sort('is_hot'); ">{$lang.is_hot}</a>{$sort_is_hot}</th>
+    <th><a href="javascript:listTable.sort('is_wish'); ">wish</a>{$sort_is_wish}</th>
+    
 	{if $suppliers_exists eq 1}
 	{* 代码增加_start  By  www.68ecshop.com *}
 	<th>审核状态</th>
 	{* 代码增加_end  By  www.68ecshop.com *}
 	{/if}
-    <th><a href="javascript:listTable.sort('sort_order'); ">{$lang.sort_order}</a>{$sort_sort_order}</th>
+    <th><a href="javascript:listTable.sort('sort_order'); ">排序</a>{$sort_sort_order}</th>
     {if $use_storage}
     <th><a href="javascript:listTable.sort('goods_number'); ">{$lang.goods_number}</a>{$sort_goods_number}</th>
     {/if}
+
+ <th>喜欢数</th>
+         <th>评价数</th>
     <th>标签</th> <!-- 晒单插件 增加 by www.68ecshop.com -->
     <th>{$lang.handler}</th>
   <tr>
@@ -86,7 +92,7 @@
 		<span>{$goods.goods_name_zh|default:N/A}</span>
 	</td>
     <td><span onclick="listTable.edit(this, 'edit_product_url', {$goods.goods_id})">{$goods.product_url|default:N/A}</span></td>
-  
+  <td><span onclick="listTable.edit(this, 'edit_collect_link', {$goods.goods_id})">{$goods.collect_link|default:N/A}</span></td>
     <td><span onclick="listTable.edit(this, 'edit_goods_sn', {$goods.goods_id})">{$goods.goods_sn}</span></td>
   
       
@@ -100,6 +106,9 @@
     <td align="center" class="disable-by-cy"><img src="images/{if $goods.is_best}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_best', {$goods.goods_id})" /></td>
     <td align="center" class="disable-by-cy"><img src="images/{if $goods.is_new}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_new', {$goods.goods_id})" /></td>
     <td align="center" class="disable-by-cy"><img src="images/{if $goods.is_hot}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_hot', {$goods.goods_id})" /></td>
+    <td align="center"><img src="images/{if $goods.is_wish}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_wish', {$goods.goods_id})" /></td>
+    
+    
 	{if $suppliers_exists eq 1}
 	{* 代码增加_start  By  www.68ecshop.com *}
     <td align="center">
@@ -116,6 +125,8 @@
     {if $use_storage}
     <td align="right"><span onclick="listTable.edit(this, 'edit_goods_number', {$goods.goods_id})">{$goods.goods_number}</span></td>
     {/if}
+        <td align="center"><span onclick="listTable.edit(this, 'edit_favorite_num', {$goods.goods_id})">{$goods.favorite_num}</span></td>
+         <td align="center"><span onclick="listTable.edit(this, 'edit_review_num', {$goods.goods_id})">{$goods.review_num}</span></td>
     <td align="center"><a href="goods_tag.php?act=list&goods_id={$goods.goods_id}" target="_blank">标签</a></td> <!-- 晒单插件 增加 by www.68ecshop.com -->
     <td align="center">
       <a href="../goods.php?id={$goods.goods_id}" target="_blank" title="{$lang.view}"><img src="images/icon_view.gif" width="16" height="16" border="0" /></a>
@@ -166,6 +177,10 @@
     <option value="not_best">{$lang.not_best}</option>
     <option value="new">{$lang.new}</option>
     <option value="not_new">{$lang.not_new}</option>
+    
+     <option value="wish">wish</option>
+    <option value="not_wish">取消wish</option>
+    
     <option value="hot">{$lang.hot}</option>
     <option value="not_hot">{$lang.not_hot}</option>
     <option value="move_to">{$lang.move_to}</option>

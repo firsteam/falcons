@@ -71,8 +71,14 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     	// 入驻商商品列表不显示添加新商品
     	$action_link = ($_REQUEST['act'] == 'list') ? add_link($code) : array('href' => 'goods.php?act=list', 'text' => $_LANG['01_goods_list']);
     	$smarty->assign('action_link',  $action_link);
+		
+		
     }
 
+    $action_link2 = array('href' => 'goods.php?act=download', 'text' => "导出商品");
+    $smarty->assign('action_link2',  $action_link2);
+		
+		
     /* 模板赋值 */
     $goods_ur = array('' => $_LANG['01_goods_list'], 'virtual_card'=>$_LANG['50_virtual_card_list']);
     $ur_here = ($_REQUEST['act'] == 'list') ? $goods_ur[$code] : $_LANG['11_goods_trash'];
@@ -113,6 +119,222 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     $htm_file = ($_REQUEST['act'] == 'list') ?
         'goods_list.htm' : (($_REQUEST['act'] == 'trash') ? 'goods_trash.htm' : 'group_list.htm');
     $smarty->display($htm_file);
+}
+
+
+if ($_REQUEST['act'] == 'download')
+{
+	
+	
+	set_time_limit(0);
+	require_once '../includes/Classes/PHPExcel.php';
+	require_once '../includes/Classes/PHPExcel/Writer/Excel5.php';
+	require_once '../includes/Classes/PHPExcel/Writer/Excel2007.php';
+	require_once '../includes/Classes/PHPExcel/IOFactory.php';
+
+	$objPHPExcel = new PHPExcel ();
+	$objPHPExcel->getProperties ()->setCreator ( "Maarten Balliauw" )->setLastModifiedBy ( "Maarten Balliauw" )->setTitle ( "Office 2007 XLSX Test Document" )->setSubject ( "Office 2007 XLSX Test Document" )->setDescription ( "Test document for Office 2007 XLSX, generated using PHP classes." )->setKeywords ( "office 2007 openxml php" )->setCategory ( "Test result file" );
+	//$objPHPExcel->getActiveSheet(0)->getStyle('B')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT); 
+	
+	$_LANG['finish_list'] = '已经导出第%s文件,请稍后~';
+    $_LANG['finishing'] = '正在导出请稍后';
+    $max_number=5000;
+	
+	$letters = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","S","Z");
+
+
+
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'A1', "Parent Unique" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'B1', "Unique ID" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'C1', "Product Name" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'D1', "Property1" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'E1', "Property2" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'F1', "Quantity" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G1', "Tags" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H1', "Description" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I1', "Price" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J1', "Main Image URL" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K1', "Extra Image URL1" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L1', "Extra Image URL2" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M1', "Extra Image URL3" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'N1', "Extra Image URL4" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'O1', "Extra Image URL5" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'P1', "Extra Image URL6" );
+	
+	$i=1;
+
+	$sql = "SELECT goods_sn,goods_id,goods_name,goods_number,goods_brief,shop_price,goods_thumb".
+				" FROM " . $GLOBALS['ecs']->table('goods')  . " where is_wish=1 ".
+				" ORDER by goods_id desc";
+	$res = $GLOBALS['db']->query($sql);
+	while ($row = $GLOBALS['db']->fetchRow($res))
+	{
+        
+		$goods_id = $row['goods_id'];
+		
+		
+		$sql = 'SELECT img_url ' .
+            ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
+            " where goods_id=$goods_id limit 6";
+        $img_list = $GLOBALS['db']->getCol($sql);
+		
+		foreach($img_list as $k=>$v)
+		{
+			if ( strpos ( $v, 'http://' ) === false && strpos ( $v, 'https://' ) === false) {
+				$img_list[$k] = $ecs->url().$v;
+			}
+		}
+		
+		$sql = 'SELECT tag_words' .
+            ' FROM ' . $GLOBALS['ecs']->table('tag') .
+            " where goods_id=$goods_id GROUP BY tag_words";
+        $tag_words = $GLOBALS['db']->getCol($sql);
+		$tag_words = join(',',$tag_words);
+		
+		
+	
+		
+		//属性组合
+		$properties = get_goods_properties($goods_id);
+		$goods_attrs = $properties['spe'];
+		$properties = $properties['pro'];
+		
+		
+		
+		$properties_str = '';
+		foreach($properties as $key=>$val)
+		{
+			$properties_str .= $val['name'].':'.$val['value']."\n";
+		}
+		
+		
+		foreach($goods_attrs as $key=>$val)
+		{
+			$properties_str .= $val['name'].':';
+			$values = array();
+			foreach($val['values'] as $v)
+			{
+				$values[] = $v['label'];
+			}
+			$properties_str .= join(',',$values)."\n";
+		}
+		
+		
+		
+		if(!empty($goods_attrs))
+		{
+			//对其他属性进行组合
+			$goods_attr_list = array();//将goods_attr_id进行分组
+			if (!empty($goods_attrs))
+			{
+				foreach ($goods_attrs as $key => $item)
+				{
+					$tmp = array();
+					if (!empty($item['values']))
+					{
+						foreach ($item['values'] as $k => $j)
+						{
+							$tmp[] = $j['id'];
+						}
+					}
+					$goods_attr_list[] = $tmp;
+				}
+			}
+			
+			$goods_attr_list = get_array_combination($goods_attr_list);
+			foreach($goods_attr_list as $key=>$val)
+			{
+				$property_1 = '';
+				$property_2 = '';
+				$val_a = explode('|',$val);
+				$sql = "SELECT attr_value FROM " . $GLOBALS['ecs']->table('goods_attr')  . " where goods_attr_id " . db_create_in($val_a)."";
+				$attr_value = $GLOBALS['db']->getCol($sql);
+				if(!empty($attr_value))
+				{
+				    $attr_values = $row['goods_sn'].'-'.join('-',$attr_value);
+					
+					if(isset($attr_value[0]))
+					{
+						$property_1 = $attr_value[0];
+					}
+					if(isset($attr_value[1]))
+					{
+						$property_2 = $attr_value[1];
+					}
+				}
+				else
+				{
+					$attr_values = $row['goods_sn'];
+				}
+				
+				
+				
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'A' . ($i + 1), $row['goods_sn']);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'B' . ($i + 1), $attr_values);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'C' . ($i + 1), $row['goods_name']);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'D' . ($i + 1), $property_1);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'E' . ($i + 1), $property_2);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'F' . ($i + 1), $row['goods_number']);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G' . ($i + 1), $tag_words);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $row['goods_thumb']);
+				
+				$j=10;
+				foreach($img_list as $v)
+				{
+					  $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( $letters[$j] . ($i + 1),$v);
+					  $j++;
+				}
+				$i++;
+			}
+		}
+		else
+		{
+			    $attr_values = $row['goods_sn'];
+			    $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'A' . ($i + 1), $row['goods_sn']);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'B' . ($i + 1), $attr_values);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'C' . ($i + 1), $row['goods_name']);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'D' . ($i + 1), '');//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'E' . ($i + 1), '');//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'F' . ($i + 1), $row['goods_number']);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G' . ($i + 1), $tag_words);//
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $row['goods_thumb']);
+				
+				$j=10;
+				foreach($img_list as $v)
+				{
+					  $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ($letters[$j] . ($i + 1), $v);
+					  $j++;
+				}
+				$i++;
+		}
+		
+		
+		
+		
+		
+	}
+		
+		
+	$filename = "导出商品".date ( "Y-m-d" ) . ".xls";
+	$filename = iconv('utf-8', "gb2312", $filename);
+	header ( "Pragma: public" );
+	header ( "Expires: 0" );
+	header ( "Cache-Control: must-revalidate, post-check=0, pre-check=0" );
+	//header ( "Content-Type: application/force-download" );
+	//header ( "Content-Type: application/octet-stream" );
+	//header ( "Content-Type: application/download" );
+	header('Content-Type: application/vnd.ms-excel');
+	header ( "Content-Disposition: attachment;filename=$filename " );
+	header ( "Content-Transfer-Encoding: binary " );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->getPageSetup ()->setOrientation ( PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->getPageSetup ()->setPaperSize ( PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4 );
+	$objWriter = PHPExcel_IOFactory::createWriter ( $objPHPExcel, 'Excel5' );
+	$objWriter->save ( 'php://output' );
+	exit;
 }
 
 /*------------------------------------------------------ */
@@ -1437,6 +1659,24 @@ elseif ($_REQUEST['act'] == 'batch')
             admin_priv('goods_manage');
             update_goods($goods_id, 'is_new', '0');
         }
+		
+		 /* 设为新品 */
+        elseif ($_POST['type'] == 'wish')
+        {
+            /* 检查权限 */
+            admin_priv('goods_manage');
+            update_goods($goods_id, 'is_wish', '1');
+        }
+
+        /* 取消新品 */
+        elseif ($_POST['type'] == 'not_wish')
+        {
+            /* 检查权限 */
+            admin_priv('goods_manage');
+            update_goods($goods_id, 'is_wish', '0');
+        }
+		
+		
 
         /* 设为热销 */
         elseif ($_POST['type'] == 'hot')
@@ -1610,6 +1850,20 @@ elseif ($_REQUEST['act'] == 'edit_product_url')
     {
         clear_cache_files();
         make_json_result(stripslashes($product_url));
+    }
+}
+
+elseif ($_REQUEST['act'] == 'edit_collect_link')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $collect_link = json_str_iconv(trim($_POST['val']));
+
+    if ($exc->edit("collect_link = '$collect_link', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result(stripslashes($collect_link));
     }
 }
 /*------------------------------------------------------ */
@@ -1822,8 +2076,36 @@ elseif ($_REQUEST['act'] == 'edit_goods_number')
         clear_cache_files();
         make_json_result($goods_num);
     }
-	
 }
+ /*--wzys虚拟销量修改过代码--*/
+elseif ($_REQUEST['act'] == 'edit_favorite_num')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $favorite_num  = intval($_POST['val']);
+
+    if ($exc->edit("favorite_num = '$favorite_num', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result($favorite_num);
+    }
+}
+elseif ($_REQUEST['act'] == 'edit_review_num')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $review_num  = intval($_POST['val']);
+
+    if ($exc->edit("review_num = '$review_num', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result($review_num);
+    }
+}
+
+ /*--wzys虚拟销量修改过代码--*/
 
 /*------------------------------------------------------ */
 //-- 修改上架状态
@@ -1901,6 +2183,20 @@ elseif ($_REQUEST['act'] == 'toggle_hot')
         make_json_result($is_hot);
     }
 }
+elseif ($_REQUEST['act'] == 'toggle_wish')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id       = intval($_POST['id']);
+    $wish         = intval($_POST['val']);
+
+    if ($exc->edit("is_wish = '$wish', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result($wish);
+    }
+}
+
 /*------------------------------------------------------ */
 //-- 修改商品审核状态
 /*------------------------------------------------------ */
