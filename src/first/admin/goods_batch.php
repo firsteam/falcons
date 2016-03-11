@@ -78,287 +78,78 @@ elseif ($_REQUEST['act'] == 'upload')
     $line_number = 0;
     $arr = array();
     $goods_list = array();
-    $field_list = array_keys($_LANG['upload_goods']); // 字段列表
-    $data = file($_FILES['file']['tmp_name']);
-    if($_POST['data_cat'] == 'ecshop')
-    {
-        foreach ($data AS $line)
-        {
-            // 跳过第一行
-            if ($line_number == 0)
-            {
-                $line_number++;
-                continue;
-            }
+    $data = file($_FILES['file_goods']['tmp_name']);
+	$data_attr = file($_FILES['file_attr']['tmp_name']);
+	$data_gallery = file($_FILES['file_gallery']['tmp_name']);
+  
+	$goods_list = get_file_data_arr($data,'upload_goods');
+    $goods_attr_temp = get_file_data_arr($data_attr,'upload_goods_attr');
+	$goods_gallery_temp = get_file_data_arr($data_gallery,'upload_goods_gallery');
+	
+	$goods_attr = array();
+    foreach($goods_attr_temp as $key=>$val)
+	{
+		$goods_attr[$val['upload_goods_id']]['goods_attr'][] = $val;
+	}
+	
+	$goods_gallery = array();
+    foreach($goods_gallery_temp as $key=>$val)
+	{
+		$goods_gallery[$val['upload_goods_id']]['goods_gallery'][] = $val;
+	}
+	
+	
+	foreach($goods_list as $key=>$val)
+	{
+		//判断是否存货号
+		$val['add_time'] = gmtime();
+		$sql = " select goods_id from ecs_goods where goods_sn='".$val['goods_sn']."'";
+	    $goods_id = $db->getOne($sql);
+		if(!empty($goods_id))
+		{
+			continue;
+		}
+		else
+		{
+			
+			 //$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods'), $val, 'update'," goods_id=$goods_id");
+		}
+		
+		$db->autoExecute($ecs->table('goods'), $val, 'INSERT');
+		$goods_id = $db->insert_id();
+		
+		//处理相册
+		$sql="delete from ".$ecs->table('goods_gallery')." where goods_id='".$goods_id."'";
+	    $db->query($sql);
+		if(isset($goods_gallery[$val['upload_goods_id']]))
+		{
+			$goods_gallery_list = $goods_gallery[$val['upload_goods_id']]['goods_gallery'];
+			
+			foreach($goods_gallery_list as $k=>$gallery)
+			{
+				$gallery['goods_id'] = $goods_id;
+				unset($gallery['img_id']);
+				
+				$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods_gallery'), $gallery, 'INSERT');
+			}
+		}
 
-            // 转换编码
-            if (($_POST['charset'] != 'UTF8') && (strpos(strtolower(EC_CHARSET), 'utf') === 0))
-            {
-                $line = ecs_iconv($_POST['charset'], 'UTF8', $line);
-            }
-
-            // 初始化
-            $arr    = array();
-            $buff   = '';
-            $quote  = 0;
-            $len    = strlen($line);
-            for ($i = 0; $i < $len; $i++)
-            {
-                $char = $line[$i];
-
-                if ('\\' == $char)
-                {
-                    $i++;
-                    $char = $line[$i];
-
-                    switch ($char)
-                    {
-                        case '"':
-                            $buff .= '"';
-                            break;
-                        case '\'':
-                            $buff .= '\'';
-                            break;
-                        case ',';
-                            $buff .= ',';
-                            break;
-                        default:
-                            $buff .= '\\' . $char;
-                            break;
-                    }
-                }
-                elseif ('"' == $char)
-                {
-                    if (0 == $quote)
-                    {
-                        $quote++;
-                    }
-                    else
-                    {
-                        $quote = 0;
-                    }
-                }
-                elseif (',' == $char)
-                {
-                    if (0 == $quote)
-                    {
-                        if (!isset($field_list[count($arr)]))
-                        {
-                            continue;
-                        }
-                        $field_name = $field_list[count($arr)];
-                        $arr[$field_name] = trim($buff);
-                        $buff = '';
-                        $quote = 0;
-                    }
-                    else
-                    {
-                        $buff .= $char;
-                    }
-                }
-                else
-                {
-                    $buff .= $char;
-                }
-
-                if ($i == $len - 1)
-                {
-                    if (!isset($field_list[count($arr)]))
-                    {
-                        continue;
-                    }
-                    $field_name = $field_list[count($arr)];
-                    $arr[$field_name] = trim($buff);
-                }
-            }
-            $goods_list[] = $arr;
-        }
-    }
-    elseif($_POST['data_cat'] == 'taobao')
-    {
-        $id_is = 0;
-        foreach ($data AS $line)
-        {
-            // 跳过第一行
-            if ($line_number == 0)
-            {
-                $line_number++;
-                continue;
-            }
-
-            // 初始化
-            $arr    = array();
-            $line_list = explode("\t",$line);
-            $arr['goods_name'] = trim($line_list[0],'"');
-
-            $max_id     = $db->getOne("SELECT MAX(goods_id) + $id_is FROM ".$ecs->table('goods'));
-            $id_is++;
-            $goods_sn   = generate_goods_sn($max_id);
-            $arr['goods_sn'] = $goods_sn;
-            $arr['brand_name'] = '';
-            $arr['market_price'] = $line_list[7];
-            $arr['shop_price'] = $line_list[7];
-            $arr['integral'] = 0;
-            $arr['original_img'] = $line_list[25];
-            $arr['keywords'] = '';
-            $arr['goods_brief'] = '';
-            $arr['goods_desc'] = strip_tags($line_list[24]);
-            $arr['goods_desc'] = substr($arr['goods_desc'], 1, -1);
-            $arr['goods_number'] = $line_list[10];
-            $arr['warn_number'] =1;
-            $arr['is_best'] = 0;
-            $arr['is_new'] = 0;
-            $arr['is_hot'] = 0;
-            $arr['is_on_sale'] = 1;
-            $arr['is_alone_sale'] = 0;
-            $arr['is_real'] = 1;
-
-            $goods_list[] = $arr;
-        }
-    }
-    elseif($_POST['data_cat'] == 'paipai')
-    {
-        $id_is = 0;
-        foreach ($data AS $line)
-        {
-            // 跳过第一行
-            if ($line_number == 0)
-            {
-                $line_number++;
-                continue;
-            }
-
-            // 初始化
-            $arr    = array();
-            $line_list = explode(",",$line);
-            $arr['goods_name'] = trim($line_list[3],'"');
-
-            $max_id     = $db->getOne("SELECT MAX(goods_id) + $id_is FROM ".$ecs->table('goods'));
-            $id_is++;
-            $goods_sn   = generate_goods_sn($max_id);
-            $arr['goods_sn'] = $goods_sn;
-            $arr['brand_name'] = '';
-            $arr['market_price'] = $line_list[13];
-            $arr['shop_price'] = $line_list[13];
-            $arr['integral'] = 0;
-            $arr['original_img'] = $line_list[28];
-            $arr['keywords'] = '';
-            $arr['goods_brief'] = '';
-            $arr['goods_desc'] = strip_tags($line_list[30]);
-            $arr['goods_number'] = 100;
-            $arr['warn_number'] =1;
-            $arr['is_best'] = 0;
-            $arr['is_new'] = 0;
-            $arr['is_hot'] = 0;
-            $arr['is_on_sale'] = 1;
-            $arr['is_alone_sale'] = 0;
-            $arr['is_real'] = 1;
-
-            $goods_list[] = $arr;
-        }
-    }
-    elseif($_POST['data_cat'] == 'paipai3')
-    {
-        $id_is = 0;
-        foreach ($data AS $line)
-        {
-            // 跳过第一行
-            if ($line_number == 0)
-            {
-                $line_number++;
-                continue;
-            }
-
-            // 初始化
-            $arr    = array();
-            $line_list = explode(",",$line);
-            $arr['goods_name'] = trim($line_list[1],'"');
-
-            $max_id     = $db->getOne("SELECT MAX(goods_id) + $id_is FROM ".$ecs->table('goods'));
-            $id_is++;
-            $goods_sn   = generate_goods_sn($max_id);
-            $arr['goods_sn'] = $goods_sn;
-            $arr['brand_name'] = '';
-            $arr['market_price'] = $line_list[9];
-            $arr['shop_price'] = $line_list[9];
-            $arr['integral'] = 0;
-            $arr['original_img'] = $line_list[23];
-            $arr['keywords'] = '';
-            $arr['goods_brief'] = '';
-            $arr['goods_desc'] = strip_tags($line_list[24]);
-            $arr['goods_number'] = $line_list[5];
-            $arr['warn_number'] =1;
-            $arr['is_best'] = 0;
-            $arr['is_new'] = 0;
-            $arr['is_hot'] = 0;
-            $arr['is_on_sale'] = 1;
-            $arr['is_alone_sale'] = 0;
-            $arr['is_real'] = 1;
-
-            $goods_list[] = $arr;
-        }
-    }
-    elseif($_POST['data_cat'] == 'taobao46')
-    {
-        $id_is = 0;
-        foreach ($data AS $line)
-        {
-            // 跳过第一行
-            if ($line_number == 0)
-            {
-                $line_number++;
-                continue;
-            }
-            if (($_POST['charset'] == 'UTF8') && (strpos(strtolower(EC_CHARSET), 'utf') == 0))
-            {
-                $line = ecs_iconv($_POST['charset'], 'GBK', $line);
-            }
-            // 初始化
-            $arr    = array();
-            $line_list = explode("\t",$line);
-            $arr['goods_name'] = trim($line_list[0],'"');
-
-            $max_id     = $db->getOne("SELECT MAX(goods_id) + $id_is FROM ".$ecs->table('goods'));
-            $id_is++;
-            $goods_sn   = generate_goods_sn($max_id);
-            $arr['goods_sn'] = $goods_sn;
-            $arr['brand_name'] = '';
-            $arr['market_price'] = $line_list[7];
-            $arr['shop_price'] = $line_list[7];
-            $arr['integral'] = 0;
-            $arr['original_img'] = str_replace('"','',$line_list[35]);
-            $arr['keywords'] = '';
-            $arr['goods_brief'] = '';
-            $arr['goods_desc'] = strip_tags($line_list[24]);
-            $arr['goods_desc'] = substr($arr['goods_desc'], 1, -1);
-            $arr['goods_number'] = $line_list[10];
-            $arr['warn_number'] =1;
-            $arr['is_best'] = 0;
-            $arr['is_new'] = 0;
-            $arr['is_hot'] = 0;
-            $arr['is_on_sale'] = 1;
-            $arr['is_alone_sale'] = 0;
-            $arr['is_real'] = 1;
-
-            $goods_list[] = $arr;
-        }
-    }
-
-    $smarty->assign('goods_class', $_LANG['g_class']);
-    $smarty->assign('goods_list', $goods_list);
-
-    // 字段名称列表
-    $smarty->assign('title_list', $_LANG['upload_goods']);
-
-    // 显示的字段列表
-    $smarty->assign('field_show', array('goods_name' => true, 'goods_sn' => true, 'brand_name' => true, 'market_price' => true, 'shop_price' => true));
-
-    /* 参数赋值 */
-    $smarty->assign('ur_here', $_LANG['goods_upload_confirm']);
-
-    /* 显示模板 */
-    assign_query_info();
-    $smarty->display('goods_batch_confirm.htm');
+        //处理属性
+		$sql="delete from ".$ecs->table('goods_attr')." where goods_id='".$goods_id."'";
+	    $db->query($sql);
+		if(isset($goods_attr[$val['upload_goods_id']]))
+		{
+			$goods_attr_list = $goods_attr[$val['upload_goods_id']]['goods_attr'];
+			foreach($goods_attr_list as $k=>$attr)
+			{
+				$attr['goods_id'] = $goods_id;
+				unset($attr['goods_attr_id']);
+				$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods_attr'), $attr, 'INSERT');
+			}
+		}
+	}
+	$link[] = array('href' => 'goods.php?act=list', 'text' => $_LANG['01_goods_list']);
+    sys_msg($_LANG['batch_upload_ok'], 0, $link);
 }
 
 /*------------------------------------------------------ */

@@ -30,6 +30,7 @@ function get_intro_list()
         'is_hot'     => $GLOBALS['_LANG']['is_hot'],
         'is_promote' => $GLOBALS['_LANG']['is_promote'],
 		'is_wish' => 'wish',
+		'not_is_wish' => 'no wish',
         'all_type' => $GLOBALS['_LANG']['all_type'],
     );
 }
@@ -861,7 +862,9 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
 		$filter['collect_link']   = empty($_REQUEST['collect_link']) ? '' : trim($_REQUEST['collect_link']);
 		$filter['favorite_num']   = empty($_REQUEST['favorite_num']) ? 0 : intval($_REQUEST['favorite_num']);
 		$filter['review_num']   = empty($_REQUEST['review_num']) ? 0 : intval($_REQUEST['review_num']);
-		
+		$filter['start_time'] = empty($_REQUEST['start_time']) ? '' : (strpos($_REQUEST['start_time'], '-') > 0 ?  local_strtotime($_REQUEST['start_time']) : $_REQUEST['start_time']);
+        $filter['end_time'] = empty($_REQUEST['end_time']) ? '' : (strpos($_REQUEST['end_time'], '-') > 0 ?  local_strtotime($_REQUEST['end_time']) : $_REQUEST['end_time']);
+
 		
         $filter['is_delete']        = $is_delete;
         $filter['real_goods']       = $real_goods;
@@ -885,6 +888,10 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
 			case 'is_wish':
                 $where .= ' AND is_wish=1';
                 break;	
+			case 'not_is_wish':
+                $where .= ' AND is_wish=0';
+                break;		
+				
             case 'is_promote':
                 $where .= " AND is_promote = 1 AND promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today'";
                 break;
@@ -913,7 +920,14 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
             $where .= " AND review_num>='$filter[review_num]'";
         }
 		
-
+        if ($filter['start_time'])
+        {
+            $where .= " AND g.add_time >= '$filter[start_time]'";
+        }
+        if ($filter['end_time'])
+        {
+            $where .= " AND g.add_time <= '$filter[end_time]'";
+        }
         /* 扩展 */
         if ($filter['extension_code'])
         {
@@ -975,7 +989,7 @@ if (!empty($filter['collect_link']))
         $filter = page_and_size($filter);
         
         if(intval($_REQUEST['supp'])>0){
-        	$sql = "SELECT goods_id, goods_name, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
+        	$sql = "SELECT goods_id, goods_name, add_time, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
 					", supplier_status, g.supplier_id,supplier_name,favorite_num,review_num,collect_link,is_wish ".
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g ".
@@ -984,7 +998,7 @@ if (!empty($filter['collect_link']))
                     " ORDER BY $filter[sort_by] $filter[sort_order] ".
                     " LIMIT " . $filter['start'] . ",$filter[page_size]";
         }else{
-        	$sql = "SELECT goods_id, goods_name, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
+        	$sql = "SELECT goods_id, add_time, goods_name, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
 					", supplier_status, supplier_id,favorite_num,review_num,collect_link,is_wish ".	//代码增加   By  www.68ecshop.com
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete='$is_delete' $where" .
@@ -1000,6 +1014,23 @@ if (!empty($filter['collect_link']))
         $filter = $result['filter'];
     }
     $row = $GLOBALS['db']->getAll($sql);
+	foreach($row as $key=>$val)
+	{
+		 $goods_url = array();
+		 $row[$key]['add_time'] = local_date('Y-m-d H:i:s', $val['add_time']);
+		 $all = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$val['goods_id']."'");
+		 foreach($all as $k=>$v)
+		 {
+			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
+			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
+			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
+			 $goods_url[$v['url_id']]['goods_id'] = $v['goods_id'];
+		 }
+		
+		 $row[$key]['goods_url'] = $goods_url;
+		 
+		 
+	}
 
     return array('goods' => $row, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 }

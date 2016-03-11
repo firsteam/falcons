@@ -853,4 +853,102 @@ function suppliers_list_name()
 
     return $suppliers_name;
 }
+
+function get_file_data_arr($data,$type='upload_goods')
+{
+	
+	$field_list = array_keys($GLOBALS['_LANG'][$type]); // 字段列表
+	foreach ($data AS $line)
+	{
+		// 跳过第一行
+		if ($line_number == 0)
+		{
+			$line_number++;
+			continue;
+		}
+
+		// 转换编码
+		if (($_POST['charset'] != 'UTF8') && (strpos(strtolower(EC_CHARSET), 'utf') === 0))
+		{
+			$line = ecs_iconv($_POST['charset'], 'UTF8', $line);
+		}
+
+		// 初始化
+		$arr    = array();
+		$buff   = '';
+		$quote  = 0;
+		$len    = strlen($line);
+		for ($i = 0; $i < $len; $i++)
+		{
+			$char = $line[$i];
+
+			if ('\\' == $char)
+			{
+				$i++;
+				$char = $line[$i];
+
+				switch ($char)
+				{
+					case '"':
+						$buff .= '"';
+						break;
+					case '\'':
+						$buff .= '\'';
+						break;
+					case ',';
+						$buff .= ',';
+						break;
+					default:
+						$buff .= '\\' . $char;
+						break;
+				}
+			}
+			elseif ('"' == $char)
+			{
+				if (0 == $quote)
+				{
+					$quote++;
+				}
+				else
+				{
+					$quote = 0;
+				}
+			}
+			elseif (',' == $char)
+			{
+				if (0 == $quote)
+				{
+					if (!isset($field_list[count($arr)]))
+					{
+						continue;
+					}
+					$field_name = $field_list[count($arr)];
+					$arr[$field_name] = trim($buff);
+					$buff = '';
+					$quote = 0;
+				}
+				else
+				{
+					$buff .= $char;
+				}
+			}
+			else
+			{
+				$buff .= $char;
+			}
+
+			if ($i == $len - 1)
+			{
+				if (!isset($field_list[count($arr)]))
+				{
+					continue;
+				}
+				$field_name = $field_list[count($arr)];
+				$arr[$field_name] = trim($buff);
+			}
+		}
+		$goods_list[] = $arr;
+	}
+	return $goods_list;
+}
 ?>

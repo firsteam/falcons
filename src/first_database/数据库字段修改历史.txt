@@ -7,3 +7,17 @@ alter table ecs_goods add column favorite_num int(11) not null default 0;
 alter table ecs_goods add column review_num int(11) not null default 0;
 alter table ecs_goods add column collect_link varchar(255) not null default '';
 alter table ecs_goods add column is_wish tinyint(1) not null default 0;
+
+2016-3-9
+
+alter table ecs_goods_attr add column goods_sn varchar(30) not null default '';
+alter table ecs_goods_gallery add column goods_sn varchar(30) not null default '';
+
+
+CREATE TABLE IF NOT EXISTS `ecs_goods_url` (
+  `goods_id` int(11) NOT NULL,
+  `url_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_url` varchar(255) NOT NULL,
+  `is_best` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`url_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

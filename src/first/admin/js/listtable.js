@@ -107,6 +107,23 @@ listTable.toggle = function(obj, act, id)
   }
 }
 
+listTable.toggle1 = function(obj, act, id)
+{
+  var val = (obj.src.match(/op_memo_1.png/i)) ? 0 : 1;
+
+  var res = Ajax.call(this.url, "act="+act+"&val=" + val + "&id=" +id, null, "POST", "JSON", false);
+
+  if (res.message)
+  {
+    alert(res.message);
+  }
+
+  if (res.error == 0)
+  {
+    obj.src = (res.content > 0) ? 'images/op_memo_1.png' : 'images/op_memo_0.png';
+  }
+}
+
 /**
  * 切换排序方式
  */

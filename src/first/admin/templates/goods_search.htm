@@ -1,8 +1,10 @@
 <!-- $Id: goods_search.htm 16790 2009-11-10 08:56:15Z wangleisvn $ -->
 <link href="styles/zTree/zTreeStyle.css" rel="stylesheet" type="text/css" />
 {insert_scripts files='jquery-1.6.2.min.js,jquery.ztree.all-3.5.min.js,category_selecter.js'}
+<script type="text/javascript" src="../js/calendar.php"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
 <div class="form-div">
-  <form action="javascript:searchGoods()" name="searchForm">
+  <form action="javascript:;" name="searchForm">
     <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
     {if $smarty.get.act neq "trash"}
     <!-- 分类 -->
@@ -34,11 +36,19 @@
     
      喜欢数：<input type="text" name="favorite_num" style="min-width:50px; width:50px;"/>
      评价数：<input type="text" name="review_num" style="min-width:50px; width:50px;"/>
-     
+    
     采集网址 <input type="text" name="collect_link" size="15" style="min-width:100px;" />
     <!-- 关键字 -->
+     <br />上传时间：
+     <input type="text" name="start_time" maxlength="60" size="20" readonly="readonly" id="start_time_id" style="min-width:150px; width:150px;"/>
+      <input name="start_time_btn" type="button" id="start_time_btn" onclick="return showCalendar('start_time_id', '%Y-%m-%d %H:%M', '24', false, 'start_time_btn');" value="{$lang.btn_select}" class="button"/>
+      ~      
+      <input type="text" name="end_time" maxlength="60" size="20" readonly="readonly" id="end_time_id"  style="min-width:150px; width:150px;"/>
+      <input name="end_time_btn" type="button" id="end_time_btn" onclick="return showCalendar('end_time_id', '%Y-%m-%d %H:%M', '24', false, 'end_time_btn');" value="{$lang.btn_select}" class="button"/>  
     {$lang.keyword} <input type="text" name="keyword" size="15" style="min-width:100px;"/>
-    <input type="submit" value="{$lang.button_search}" class="button" />
+    <input type="button" value="{$lang.button_search}" class="button" onclick="searchGoods()" />
+    <input type="button" value="导出商品" class="button" onclick="download()" />
+    <input type="hidden" value="query" name="act"/>
   </form>
 </div>
 
@@ -46,6 +56,9 @@
 <script language="JavaScript">
     function searchGoods()
     {
+		 
+		 document.searchForm.act.value='query';
+		 
 {/literal}
         {if $smarty.get.act neq "trash"}
         listTable.filter['cat_id'] = document.forms['searchForm'].elements['cat_id'].value;
@@ -69,11 +82,26 @@
 		listTable.filter['favorite_num'] = Utils.trim(document.forms['searchForm'].elements['favorite_num'].value);
 		listTable.filter['review_num'] = Utils.trim(document.forms['searchForm'].elements['review_num'].value);
 		
+		listTable.filter['start_time'] = Utils.trim(document.forms['searchForm'].elements['start_time'].value);
+		listTable.filter['end_time'] = Utils.trim(document.forms['searchForm'].elements['end_time'].value);
+		
+		
         listTable.filter['page'] = 1;
 
         listTable.loadList();
     }
 </script>
+
+<script language="JavaScript">
+    function download()
+    {
+	   document.searchForm.action='goods.php';
+	   document.searchForm.act.value='download';
+	   document.searchForm.submit();
+    }
+</script>
+
+
 {/literal}
       <script type="text/javascript">
 	$().ready(function(){

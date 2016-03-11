@@ -1,0 +1,9 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+ {foreach from=$goods_url item=item}
+   <div style="margin-bottom:10px;">
+    <img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
+      {$item.product_url}
+      <a href="javascript:deleteUrl({$item.url_id},{$goods_id})" class="special">删除</a>
+      </div>
+{/foreach}

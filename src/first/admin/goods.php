@@ -21,7 +21,7 @@ require_once(ROOT_PATH . '/' . ADMIN_PATH. "/nusoap/nusoap.php");   //代码增�
 include_once(ROOT_PATH . '/includes/cls_image.php');
 $image = new cls_image($_CFG['bgcolor']);
 $exc = new exchange($ecs->table('goods'), $db, 'goods_id', 'goods_name');
-
+$exc1 = new exchange($ecs->table('goods_url'), $db, 'url_id', 'product_url');
 /*------------------------------------------------------ */
 //-- 商品列表，商品回收站
 /*------------------------------------------------------ */
@@ -75,8 +75,8 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 		
     }
 
-    $action_link2 = array('href' => 'goods.php?act=download', 'text' => "导出商品");
-    $smarty->assign('action_link2',  $action_link2);
+    //$action_link2 = array('href' => 'goods.php?act=download', 'text' => "导出商品");
+   // $smarty->assign('action_link2',  $action_link2);
 		
 		
     /* 模板赋值 */
@@ -162,9 +162,145 @@ if ($_REQUEST['act'] == 'download')
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'P1', "Extra Image URL6" );
 	
 	$i=1;
+	
+	
+	    $filter['cat_id']           = empty($_REQUEST['cat_id']) ? 0 : intval($_REQUEST['cat_id']);
+        $filter['intro_type']       = empty($_REQUEST['intro_type']) ? '' : trim($_REQUEST['intro_type']);
+        $filter['is_promote']       = empty($_REQUEST['is_promote']) ? 0 : intval($_REQUEST['is_promote']);
+        $filter['stock_warning']    = empty($_REQUEST['stock_warning']) ? 0 : intval($_REQUEST['stock_warning']);
+        $filter['brand_id']         = empty($_REQUEST['brand_id']) ? 0 : intval($_REQUEST['brand_id']);
+        $filter['keyword']          = empty($_REQUEST['keyword']) ? '' : trim($_REQUEST['keyword']);
+        $filter['suppliers_id'] = isset($_REQUEST['suppliers_id']) ? (empty($_REQUEST['suppliers_id']) ? '' : trim($_REQUEST['suppliers_id'])) : '';
+        $filter['is_on_sale'] = isset($_REQUEST['is_on_sale']) ? ((empty($_REQUEST['is_on_sale']) && $_REQUEST['is_on_sale'] === 0) ? '' : trim($_REQUEST['is_on_sale'])) : '';
+        if (isset($_REQUEST['is_ajax']) && $_REQUEST['is_ajax'] == 1)
+        {
+            $filter['keyword'] = json_str_iconv($filter['keyword']);
+        }
+        $filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'goods_id' : trim($_REQUEST['sort_by']);
+        $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'DESC' : trim($_REQUEST['sort_order']);
+        $filter['extension_code']   = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
+		$filter['collect_link']   = empty($_REQUEST['collect_link']) ? '' : trim($_REQUEST['collect_link']);
+		$filter['favorite_num']   = empty($_REQUEST['favorite_num']) ? 0 : intval($_REQUEST['favorite_num']);
+		$filter['review_num']   = empty($_REQUEST['review_num']) ? 0 : intval($_REQUEST['review_num']);
+		$filter['start_time'] = empty($_REQUEST['start_time']) ? '' : (strpos($_REQUEST['start_time'], '-') > 0 ?  local_strtotime($_REQUEST['start_time']) : $_REQUEST['start_time']);
+        $filter['end_time'] = empty($_REQUEST['end_time']) ? '' : (strpos($_REQUEST['end_time'], '-') > 0 ?  local_strtotime($_REQUEST['end_time']) : $_REQUEST['end_time']);
+
+		
+        $filter['is_delete']        = $is_delete;
+        $filter['real_goods']       = $real_goods;
+        
+        $filter['supp'] = (isset($_REQUEST['supp']) && !empty($_REQUEST['supp']) && intval($_REQUEST['supp'])>0) ? intval($_REQUEST['supp']) : 0;
+
+        $where  = " 1 ";
+        $where .= $filter['cat_id'] > 0 ? " AND " . get_children($filter['cat_id']) : '';
+
+        /* 推荐类型 */
+        switch ($filter['intro_type'])
+        {
+            case 'is_best':
+                $where .= " AND is_best=1";
+                break;
+            case 'is_hot':
+                $where .= ' AND is_hot=1';
+                break;
+            case 'is_new':
+                $where .= ' AND is_new=1';
+                break;
+			case 'is_wish':
+                $where .= ' AND is_wish=1';
+                break;	
+			case 'not_is_wish':
+                $where .= ' AND is_wish=0';
+                break;		
+				
+            case 'is_promote':
+                $where .= " AND is_promote = 1 AND promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today'";
+                break;
+            case 'all_type';
+                $where .= " AND (is_best=1 OR is_hot=1 OR is_new=1 OR (is_promote = 1 AND promote_price > 0 AND promote_start_date <= '" . $today . "' AND promote_end_date >= '" . $today . "'))";
+        }
+
+        /* 库存警告 */
+        if ($filter['stock_warning'])
+        {
+            $where .= ' AND goods_number <= warn_number ';
+        }
+
+        /* 品牌 */
+        if ($filter['brand_id'])
+        {
+            $where .= " AND brand_id='$filter[brand_id]'";
+        }
+		
+		if ($filter['favorite_num'])
+        {
+            $where .= " AND favorite_num>='$filter[favorite_num]'";
+        }
+		if ($filter['review_num'])
+        {
+            $where .= " AND review_num>='$filter[review_num]'";
+        }
+		
+        if ($filter['start_time'])
+        {
+            $where .= " AND g.add_time >= '$filter[start_time]'";
+        }
+        if ($filter['end_time'])
+        {
+            $where .= " AND g.add_time <= '$filter[end_time]'";
+        }
+        /* 扩展 */
+        if ($filter['extension_code'])
+        {
+            $where .= " AND extension_code='$filter[extension_code]'";
+        }
+
+        /* 关键字 */
+        if (!empty($filter['keyword']))
+        {
+            $where .= " AND (goods_sn LIKE '%" . mysql_like_quote($filter['keyword']) . "%' OR goods_name LIKE '%" . mysql_like_quote($filter['keyword']) . "%')";
+        }
+        if (!empty($filter['collect_link']))
+        {
+            $where .= " AND collect_link LIKE '%" . mysql_like_quote($filter['collect_link']) . "%'";
+        }
+
+
+       if ($real_goods > -1)
+        {
+            $where .= " AND is_real='$real_goods'";
+        }
+
+        /* 上架 */
+        if ($filter['is_on_sale'] !== '')
+        {
+            $where .= " AND (is_on_sale = '" . $filter['is_on_sale'] . "')";
+        }
+        
+        $where_supp = ($filter['supp']>0) ? ' AND g.supplier_id > 0' : ' AND g.supplier_id = 0';
+        
+        /* 供货商 */
+        if(intval($_REQUEST['supp'])>0){
+        	
+			/* 代码修改_start  By  www.68ecshop.com */
+	        if (!empty($filter['suppliers_id']))
+	        {
+	            //$where .= " AND (supplier_id = '" . $filter['suppliers_id'] . "')";
+	            $where_supp = " AND (g.supplier_id = '" . $filter['suppliers_id'] . "')";
+	        }
+			$filter['supplier_status'] = $_REQUEST['supplier_status']!='' ? trim($_REQUEST['supplier_status']) : '';
+			if (isset($filter['supplier_status']) && $filter['supplier_status']!='')
+	        {
+	            //$where .= " AND (supplier_status = '" . $filter['supplier_status'] . "')";
+	            $where_supp .= " AND (supplier_status = '" . $filter['supplier_status'] . "')";
+	        }
+			/* 代码修改_end  By  www.68ecshop.com */
+        }
+        
+        $where .= $where_supp;
 
 	$sql = "SELECT goods_sn,goods_id,goods_name,goods_number,goods_brief,shop_price,goods_thumb".
-				" FROM " . $GLOBALS['ecs']->table('goods')  . " where is_wish=1 ".
+				" FROM " . $GLOBALS['ecs']->table('goods')  . "  as g where $where".
 				" ORDER by goods_id desc";
 	$res = $GLOBALS['db']->query($sql);
 	while ($row = $GLOBALS['db']->fetchRow($res))
@@ -2228,6 +2364,88 @@ elseif ($_REQUEST['act'] == 'edit_sort_order')
     {
         clear_cache_files();
         make_json_result($sort_order);
+    }
+}
+
+elseif ($_REQUEST['act'] == 'toggle_url_best')
+{
+    check_authz_json('goods_manage');
+
+    $url_id       = intval($_POST['id']);
+    $is_best = intval($_POST['val']);
+    if ($exc1->edit("is_best = '$is_best'", $url_id))
+    {
+        clear_cache_files();
+        make_json_result($is_best);
+    }
+}
+
+elseif ($_REQUEST['act'] == 'deleteUrl')
+{
+    $url_id = empty($_REQUEST['url_id']) ? 0 : intval($_REQUEST['url_id']);
+    $goods_id = empty($_REQUEST['goods_id']) ? 0 : intval($_REQUEST['goods_id']);
+
+
+	$sql="delete from " . $ecs->table('goods_url') . " where url_id=".$url_id."";
+    if($db->query($sql))
+    {
+		 $all = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."'");
+		 foreach($all as $k=>$v)
+		 {
+			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
+			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
+			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
+			 $goods_url[$v['url_id']]['goods_id'] = $v['goods_id'];
+		 }
+		$smarty->assign('goods_url', $goods_url);
+		$smarty->assign('goods_id', $goods_id);
+        $str = $smarty->fetch('url_list.htm');
+		$arr = array("goods_id"=>$goods_id, "url_list"=>$str);
+		clear_cache_files();    // 清除缓存
+		make_json_result($arr);
+    }
+    else
+    {
+		make_json_error("修改失败");
+    }
+}
+
+elseif ($_REQUEST['act'] == 'edit_url')
+{
+    $product_url = empty($_REQUEST['product_url']) ? 0 : trim($_REQUEST['product_url']);
+    $goods_id = empty($_REQUEST['goods_id']) ? 0 : intval($_REQUEST['goods_id']);
+
+
+    $exists = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."' and product_url='$product_url'");
+    if(empty($exists))
+	{
+	   $sql='insert INTO ' . $ecs->table('goods_url') . " (goods_id,product_url) values($goods_id,'".$product_url."')";
+	}
+	else
+	{
+		$sql='update ' . $ecs->table('goods_url') . " set product_url='".$product_url."'  where goods_id='".$goods_id."'";
+	}
+	
+    if($db->query($sql))
+    {
+		 $all = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."'");
+		 foreach($all as $k=>$v)
+		 {
+			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
+			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
+			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
+			 $goods_url[$v['url_id']]['goods_id'] = $v['goods_id'];
+		 }
+		$smarty->assign('goods_url', $goods_url);
+		$smarty->assign('goods_id', $goods_id);
+        $str = $smarty->fetch('url_list.htm');
+		$arr = array("goods_id"=>$goods_id, "url_list"=>$str);
+		clear_cache_files();    // 清除缓存
+		make_json_result($arr);
+    }
+    else
+    {
+		make_json_error("修改失败");
     }
 }
 
