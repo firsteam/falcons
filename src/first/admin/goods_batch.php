@@ -102,7 +102,7 @@ elseif ($_REQUEST['act'] == 'upload')
 	foreach($goods_list as $key=>$val)
 	{
 		//判断是否存货号
-		$val['goods_name'] = addslashes($val['goods_name']);
+		/*$val['goods_name'] = addslashes($val['goods_name']);
 		$val['goods_name_zh'] = addslashes($val['goods_name_zh']);
 		$val['goods_brief'] = addslashes($val['goods_brief']);
 		$val['goods_desc'] = addslashes($val['goods_desc']);
@@ -110,9 +110,11 @@ elseif ($_REQUEST['act'] == 'upload')
 		$val['zhekou'] = addslashes($val['zhekou']);
 		$val['seller_note'] = addslashes($val['seller_note']);
 		$val['supplier_status_txt'] = addslashes($val['supplier_status_txt']);
-		$val['provider_name'] = addslashes($val['provider_name']);
-		
-		
+		$val['provider_name'] = addslashes($val['provider_name']);*/
+		foreach($val as $k=>$v)
+		{
+		   $val[$k] = addslashes($v);
+		}
 		
 		$val['add_time'] = gmtime();
 		$sql = " select goods_id from ecs_goods where goods_sn='".$val['goods_sn']."'";
