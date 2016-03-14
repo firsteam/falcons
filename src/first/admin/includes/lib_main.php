@@ -951,4 +951,20 @@ function get_file_data_arr($data,$type='upload_goods')
 	}
 	return $goods_list;
 }
+function get_dom($str)
+{
+	$matches = array();
+	$result = $str;
+	if (preg_match('#(https?\://[^/]+)(/.*)?#', $str, $matches)) {
+		$result = $matches[1];
+	}
+	if(!empty($result))
+	{
+	    $result = str_replace('http://','',$result);
+		$result = str_replace('https://','',$result);
+		$result = str_replace('www.','',$result);
+		$result = str_replace('.com','',$result);
+	}
+	return $result;
+}
 ?>

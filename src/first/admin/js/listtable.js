@@ -87,6 +87,75 @@ listTable.edit = function(obj, act, id)
   }
 }
 
+listTable.edit1 = function(obj, act, id)
+{
+  var tag = obj.firstChild.tagName;
+
+  if (typeof(tag) != "undefined" && tag.toLowerCase() == "textarea")
+  {
+    return;
+  }
+
+  /* 保存原始的内容 */
+  var org = obj.innerHTML;
+  var val = Browser.isIE ? obj.innerText : obj.textContent;
+
+  /* 创建一个输入框 */
+  var txt = document.createElement("textarea");
+  txt.innerHTML = (val == 'N/A') ? '' : val;
+  txt.style.width = "250px" ;
+  txt.style.height = "100px" ;
+
+  /* 隐藏对象中的内容，并将输入框加入到对象中 */
+  obj.innerHTML = "";
+  obj.appendChild(txt);
+  txt.focus();
+
+  /* 编辑区输入事件处理函数 */
+  txt.onkeypress = function(e)
+  {
+    var evt = Utils.fixEvent(e);
+    var obj = Utils.srcElement(e);
+
+    if (evt.keyCode == 13)
+    {
+      obj.blur();
+
+      return false;
+    }
+
+    if (evt.keyCode == 27)
+    {
+      obj.parentNode.innerHTML = org;
+    }
+  }
+
+  /* 编辑区失去焦点的处理函数 */
+  txt.onblur = function(e)
+  {
+    if (Utils.trim(txt.value).length > 0)
+    {
+      res = Ajax.call(listTable.url, "act="+act+"&val=" + encodeURIComponent(Utils.trim(txt.value)) + "&id=" +id, null, "POST", "JSON", false);
+
+      if (res.message)
+      {
+        alert(res.message);
+      }
+
+      if(res.id && (res.act == 'goods_auto' || res.act == 'article_auto'))
+      {
+          document.getElementById('del'+res.id).innerHTML = "<a href=\""+ thisfile +"?goods_id="+ res.id +"&act=del\" onclick=\"return confirm('"+deleteck+"');\">"+deleteid+"</a>";
+      }
+
+      obj.innerHTML = (res.error == 0) ? res.content : org;
+    }
+    else
+    {
+      obj.innerHTML = org;
+    }
+  }
+}
+
 /**
  * 切换状态
  */

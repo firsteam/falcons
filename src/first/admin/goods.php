@@ -1961,6 +1961,20 @@ elseif ($_REQUEST['act'] == 'edit_goods_name')
     }
 }
 
+elseif ($_REQUEST['act'] == 'edit_keywords')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $keywords = json_str_iconv(trim($_POST['val']));
+
+    if ($exc->edit("keywords = '$keywords', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result(stripslashes($keywords));
+    }
+}
+
 elseif ($_REQUEST['act'] == 'edit_goods_name_zh')
 {
     check_authz_json('goods_manage');
@@ -2392,6 +2406,7 @@ elseif ($_REQUEST['act'] == 'deleteUrl')
 		 $all = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."'");
 		 foreach($all as $k=>$v)
 		 {
+			 $goods_url[$v['url_id']]['product_url_formated'] = get_dom($v['product_url']);
 			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
 			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
 			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
@@ -2414,7 +2429,7 @@ elseif ($_REQUEST['act'] == 'edit_url')
 {
     $product_url = empty($_REQUEST['product_url']) ? 0 : trim($_REQUEST['product_url']);
     $goods_id = empty($_REQUEST['goods_id']) ? 0 : intval($_REQUEST['goods_id']);
-
+    $product_url = json_str_iconv($product_url);
 
     $exists = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."' and product_url='$product_url'");
     if(empty($exists))
@@ -2431,6 +2446,7 @@ elseif ($_REQUEST['act'] == 'edit_url')
 		 $all = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."'");
 		 foreach($all as $k=>$v)
 		 {
+			 $goods_url[$v['url_id']]['product_url_formated'] = get_dom($v['product_url']);
 			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
 			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
 			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
