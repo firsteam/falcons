@@ -857,7 +857,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
             $filter['keyword'] = json_str_iconv($filter['keyword']);
         }
         $filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'goods_id' : trim($_REQUEST['sort_by']);
-        $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'DESC' : trim($_REQUEST['sort_order']);
+        $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
         $filter['extension_code']   = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
 		$filter['collect_link']   = empty($_REQUEST['collect_link']) ? '' : trim($_REQUEST['collect_link']);
 		$filter['favorite_num']   = empty($_REQUEST['favorite_num']) ? 0 : intval($_REQUEST['favorite_num']);
@@ -1073,7 +1073,7 @@ function virtual_goods_list($is_delete, $real_goods=1, $conditions = '')
             $filter['keyword'] = json_str_iconv($filter['keyword']);
         }
         $filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'goods_id' : trim($_REQUEST['sort_by']);
-        $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'DESC' : trim($_REQUEST['sort_order']);
+        $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
         $filter['extension_code']   = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
         $filter['is_delete']        = $is_delete;
         $filter['real_goods']       = $real_goods;

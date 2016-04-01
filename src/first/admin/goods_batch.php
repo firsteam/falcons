@@ -78,6 +78,7 @@ elseif ($_REQUEST['act'] == 'upload')
     $line_number = 0;
     $arr = array();
     $goods_list = array();
+	$is_update = isset($_POST['is_update']) ? intval($_POST['is_update']) : 0; 
     $data = file($_FILES['file_goods']['tmp_name']);
 	$data_attr = file($_FILES['file_attr']['tmp_name']);
 	$data_gallery = file($_FILES['file_gallery']['tmp_name']);
@@ -121,16 +122,23 @@ elseif ($_REQUEST['act'] == 'upload')
 	    $goods_id = $db->getOne($sql);
 		if(!empty($goods_id))
 		{
-			continue;
+			if($is_update==1)
+			{
+			   $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods'), $val, 'update'," goods_id=$goods_id");
+			}
+			else
+			{
+			   continue;
+			}
 		}
 		else
 		{
-			
-			 //$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods'), $val, 'update'," goods_id=$goods_id");
+			$db->autoExecute($ecs->table('goods'), $val, 'INSERT');
+		    $goods_id = $db->insert_id();
+			 //
 		}
 		
-		$db->autoExecute($ecs->table('goods'), $val, 'INSERT');
-		$goods_id = $db->insert_id();
+		
 		
 		//处理相册
 		$sql="delete from ".$ecs->table('goods_gallery')." where goods_id='".$goods_id."'";
