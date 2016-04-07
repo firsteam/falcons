@@ -139,6 +139,25 @@ elseif ($_REQUEST['act'] == 'upload')
 		}
 		
 		
+		//处理属性
+		$gallery_goods_attr_id = array();
+		$sql="delete from ".$ecs->table('goods_attr')." where goods_id='".$goods_id."'";
+	    $db->query($sql);
+		if(isset($goods_attr[$val['upload_goods_id']]))
+		{
+			$goods_attr_list = $goods_attr[$val['upload_goods_id']]['goods_attr'];
+			foreach($goods_attr_list as $k=>$attr)
+			{
+				$attr['goods_id'] = $goods_id;
+				
+				$attr['org_goods_attr_id'] = $attr['goods_attr_id'];
+				unset($attr['goods_attr_id']);
+				$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods_attr'), $attr, 'INSERT');
+				$gallery_goods_attr_id[$attr['org_goods_attr_id']] = $db->insert_id();
+			}
+		}
+		
+	
 		
 		//处理相册
 		$sql="delete from ".$ecs->table('goods_gallery')." where goods_id='".$goods_id."'";
@@ -150,25 +169,14 @@ elseif ($_REQUEST['act'] == 'upload')
 			foreach($goods_gallery_list as $k=>$gallery)
 			{
 				$gallery['goods_id'] = $goods_id;
+				$gallery['goods_attr_id'] = $gallery_goods_attr_id[$gallery['goods_attr_id']];
 				unset($gallery['img_id']);
-				
 				$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods_gallery'), $gallery, 'INSERT');
 			}
 		}
-
-        //处理属性
-		$sql="delete from ".$ecs->table('goods_attr')." where goods_id='".$goods_id."'";
-	    $db->query($sql);
-		if(isset($goods_attr[$val['upload_goods_id']]))
-		{
-			$goods_attr_list = $goods_attr[$val['upload_goods_id']]['goods_attr'];
-			foreach($goods_attr_list as $k=>$attr)
-			{
-				$attr['goods_id'] = $goods_id;
-				unset($attr['goods_attr_id']);
-				$GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('goods_attr'), $attr, 'INSERT');
-			}
-		}
+		
+		
+		
 	}
 	$link[] = array('href' => 'goods.php?act=list', 'text' => $_LANG['01_goods_list']);
     sys_msg($_LANG['batch_upload_ok'], 0, $link);

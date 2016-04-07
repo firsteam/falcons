@@ -302,7 +302,7 @@ if ($_REQUEST['act'] == 'download')
 			/* 代码修改_end  By  www.68ecshop.com */
         }
         
-        $where .= $where_supp;
+    $where .= $where_supp;
 
 	$sql = "SELECT goods_sn,goods_id,goods_name,goods_number,keywords,goods_brief,shop_price,goods_img".
 				" FROM " . $GLOBALS['ecs']->table('goods')  . "  as g where $where".
@@ -312,14 +312,22 @@ if ($_REQUEST['act'] == 'download')
 	{
         
 		$goods_id = $row['goods_id'];
+		$goods_img = '';
 		
+		
+		
+		$sql = 'SELECT img_url ' .
+            ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
+            " where goods_id=$goods_id and is_attr_image=0 ORDER by img_sort limit 1 ";
+        $row['goods_img'] = $GLOBALS['db']->getOne($sql);
 		if ( strpos ( $row['goods_img'], 'http://' ) === false && strpos ( $row['goods_img'], 'https://' ) === false) {
 			$goods_img = $ecs->url().$row['goods_img'];
 		}
 		
+		
 		$sql = 'SELECT img_url ' .
             ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
-            " where goods_id=$goods_id ORDER by img_sort limit 12 ";
+            " where goods_id=$goods_id and is_attr_image=0 ORDER by img_sort limit 11 ";
         $img_list = $GLOBALS['db']->getCol($sql);
 		
 		foreach($img_list as $k=>$v)
@@ -386,8 +394,10 @@ if ($_REQUEST['act'] == 'download')
 			}
 			
 			$goods_attr_list = get_array_combination($goods_attr_list);
+		
 			foreach($goods_attr_list as $key=>$val)
 			{
+				
 				$property_1 = '';
 				$property_2 = '';
 				$val_a = explode('|',$val);
@@ -404,13 +414,15 @@ if ($_REQUEST['act'] == 'download')
 						$attr_values = $row['goods_sn'].'-'.join('-',str_replace(' ', '', $attr_value));
 					else
 						$attr_values = $row['goods_sn'];
+						
+						
 					if(isset($attr_value[0]))
 					{
-						$property_1 = $attr_value[0];
+						$property_1 = $attr_value[0].$val_a[0];
 					}
 					if(isset($attr_value[1]))
 					{
-						$property_2 = $attr_value[1];
+						$property_2 = $attr_value[1].$val_a[1];
 					}
 				}
 				else
@@ -418,6 +430,26 @@ if ($_REQUEST['act'] == 'download')
 					$attr_values = $row['goods_sn'];
 				}
 				
+				
+				if(isset($val_a[0]))
+				{
+					$sql = "SELECT img_url FROM " . $GLOBALS['ecs']->table('goods_gallery') ." as a where goods_attr_id='$val_a[0]'";
+					$goods_img1 = $db->getOne($sql);
+					if(empty($goods_img1))
+					{
+						if(isset($val_a[1]))
+						{
+							$sql = "SELECT img_url FROM " . $GLOBALS['ecs']->table('goods_gallery') ." as a where goods_attr_id='$val_a[1]'";
+							$goods_img1 = $db->getOne($sql);
+						}
+					}
+					if(!empty($goods_img1))
+					{
+						if ( strpos ( $row['goods_img'], 'http://' ) === false && strpos ( $row['goods_img'], 'https://' ) === false) {
+							$goods_img = $ecs->url().$goods_img1;
+						}
+					}
+				}
 				
 				
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'A' . ($i + 1), $row['goods_sn']);//
@@ -429,9 +461,9 @@ if ($_REQUEST['act'] == 'download')
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G' . ($i + 1), $row['keywords']);//
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
-				//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $goods_img);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $goods_img);
 				
-				$j=9;
+				$j=10;
 				foreach($img_list as $v)
 				{
 					  $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( $letters[$j] . ($i + 1),$v);
@@ -452,9 +484,9 @@ if ($_REQUEST['act'] == 'download')
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G' . ($i + 1), $row['keywords']);//
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
-				//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $goods_img);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $goods_img);
 				
-				$j=9;
+				$j=10;
 				foreach($img_list as $v)
 				{
 					  $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ($letters[$j] . ($i + 1), $v);

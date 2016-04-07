@@ -133,7 +133,7 @@ function deleteCatResponse(result)
 	
 	<td>
 		<div style="font-weight:bold;{if $goods.is_promote}color:red;{/if}">
-			<span onclick="listTable.edit(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span>
+			<span onclick="listTable.edit1(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span>
 		</div>
 		{$goods.goods_id}
 		<span style="display:none">{$goods.goods_name_zh|default:N/A}</span>
