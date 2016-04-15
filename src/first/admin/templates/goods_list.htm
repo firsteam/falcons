@@ -74,26 +74,26 @@ function deleteCatResponse(result)
       <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
       
     </th>
-	<th><a href="javascript:listTable.sort('goods_sn'); ">{$lang.goods_sn}</a>{$sort_goods_sn}</th>
+	<th><a href="javascript:listTable.sort('goods_id'); ">{$lang.record_id}</a>{$sort_goods_id}</th>
 	{if $suppliers_exists eq 1}
 	<th><a href="javascript:listTable.sort('supplier_name'); ">供货商家</a>{$sort_supplier_name}</th>
 	{/if}
     <th>
-		<a href="javascript:listTable.sort('goods_id'); ">{$lang.record_id}</a>{$sort_goods_id}
+		
 		<a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}
 	</th>
     {if $filter.is_show_keywords eq 1}
-    <th><a href="javascript:listTable.sort('keywords'); ">关键词</a>{$sort_keywords}</th>
+    <th>关键词</th>
     {/if}
     
     {if $filter.is_show_brief eq 1}
-    <th><a href="javascript:listTable.sort('goods_brief'); ">简单描述</a>{$sort_keywords}</th>
+    <th>简单描述</th>
     {/if}
     
     <th><a href="javascript:listTable.sort('product_url'); ">采购网址</a>{$sort_product_url}</th>
     <th>
 		<a href="javascript:listTable.sort('collect_link'); ">采集网址</a>{$sort_collect_link} 
-		<a href="javascript:listTable.sort('add_time'); ">上传时间</a>{$sort_add_time}
+		<a href="javascript:listTable.sort('add_time'); ">上传时间</a>{$sort_add_time} {$lang.goods_sn}
 	</th>
 
     <th><a href="javascript:listTable.sort('shop_price'); ">{$lang.shop_price}</a>{$sort_shop_price}</th>
@@ -125,7 +125,7 @@ function deleteCatResponse(result)
     <input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />
     </td>
 	<td>
-		<span onclick="listTable.edit(this, 'edit_goods_sn', {$goods.goods_id})">{$goods.goods_sn}</span>
+		{$goods.goods_id}
 		<div class="pic"> 
 			
 			  <a href="../goods.php?id={$goods.goods_id}" target="_blank"> 
@@ -144,7 +144,7 @@ function deleteCatResponse(result)
 		<div style="font-weight:bold;{if $goods.is_promote}color:red;{/if}">
 			<span onclick="listTable.edit1(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span>
 		</div>
-		{$goods.goods_id}
+		
 		<span style="display:none">{$goods.goods_name_zh|default:N/A}</span>
 	</td>
      
@@ -173,7 +173,7 @@ function deleteCatResponse(result)
     </td>
     <td>
 	    <a href="{$goods.collect_link}" target="_blank">{$goods.collect_link_formated|default:N/A}
-		{$goods.add_time|default:N/A}</a>
+		{$goods.add_time|default:N/A} {$goods.goods_sn}</a>
     </td>  
       
     <td align="right"><span onclick="listTable.edit(this, 'edit_goods_price', {$goods.goods_id})">{$goods.shop_price}
