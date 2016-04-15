@@ -49,6 +49,9 @@
     <input type="button" value="{$lang.button_search}" class="button" onclick="searchGoods()" />
     <input type="button" value="导出商品" class="button" onclick="download()" />
     <input type="hidden" value="query" name="act"/>
+    
+    <input name="is_show_keywords" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_keywords eq 1} checked="checked"{/if} /> 显示关键词
+    <input name="is_show_brief" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_brief eq 1} checked="checked"{/if}/> 显示简单描述
   </form>
 </div>
 
@@ -84,6 +87,9 @@
 		
 		listTable.filter['start_time'] = Utils.trim(document.forms['searchForm'].elements['start_time'].value);
 		listTable.filter['end_time'] = Utils.trim(document.forms['searchForm'].elements['end_time'].value);
+		
+		listTable.filter['is_show_keywords'] = (document.searchForm.is_show_keywords.checked==true) ? 1 : 0;
+		listTable.filter['is_show_brief'] = (document.searchForm.is_show_brief.checked==true) ? 1 : 0;
 		
 		
         listTable.filter['page'] = 1;

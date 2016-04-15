@@ -103,8 +103,8 @@ listTable.edit1 = function(obj, act, id)
   /* 创建一个输入框 */
   var txt = document.createElement("textarea");
   txt.innerHTML = (val == 'N/A') ? '' : val;
-  txt.style.width = "250px" ;
-  txt.style.height = "100px" ;
+  txt.style.width = "450px" ;
+  txt.style.height = "250px" ;
 
   /* 隐藏对象中的内容，并将输入框加入到对象中 */
   obj.innerHTML = "";
@@ -117,12 +117,12 @@ listTable.edit1 = function(obj, act, id)
     var evt = Utils.fixEvent(e);
     var obj = Utils.srcElement(e);
 
-    if (evt.keyCode == 13)
+    /*if (evt.keyCode == 13)
     {
       obj.blur();
 
       return false;
-    }
+    }*/
 
     if (evt.keyCode == 27)
     {

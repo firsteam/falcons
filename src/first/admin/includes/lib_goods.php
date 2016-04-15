@@ -852,6 +852,9 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         $filter['keyword']          = empty($_REQUEST['keyword']) ? '' : trim($_REQUEST['keyword']);
         $filter['suppliers_id'] = isset($_REQUEST['suppliers_id']) ? (empty($_REQUEST['suppliers_id']) ? '' : trim($_REQUEST['suppliers_id'])) : '';
         $filter['is_on_sale'] = isset($_REQUEST['is_on_sale']) ? ((empty($_REQUEST['is_on_sale']) && $_REQUEST['is_on_sale'] === 0) ? '' : trim($_REQUEST['is_on_sale'])) : '';
+		
+		
+		
         if (isset($_REQUEST['is_ajax']) && $_REQUEST['is_ajax'] == 1)
         {
             $filter['keyword'] = json_str_iconv($filter['keyword']);
@@ -865,8 +868,19 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
 		$filter['start_time'] = empty($_REQUEST['start_time']) ? '' : (strpos($_REQUEST['start_time'], '-') > 0 ?  local_strtotime($_REQUEST['start_time']) : $_REQUEST['start_time']);
         $filter['end_time'] = empty($_REQUEST['end_time']) ? '' : (strpos($_REQUEST['end_time'], '-') > 0 ?  local_strtotime($_REQUEST['end_time']) : $_REQUEST['end_time']);
 
+
+        $filter['is_show_keywords']   = isset($_REQUEST['is_show_keywords']) ? trim($_REQUEST['is_show_keywords'])  : (isset($_COOKIE['ECS']['is_show_keywords']) ? $_COOKIE['ECS']['is_show_keywords'] : 0);
 		
-        $filter['is_delete']        = $is_delete;
+		$filter['is_show_brief']   = isset($_REQUEST['is_show_brief']) ? trim($_REQUEST['is_show_brief'])  : (isset($_COOKIE['ECS']['is_show_brief']) ? $_COOKIE['ECS']['is_show_brief'] : 0);
+		
+		
+		
+		
+		setcookie('ECS[is_show_keywords]', $filter['is_show_keywords'], gmtime() + 86400 * 7);
+		setcookie('ECS[is_show_brief]', $filter['is_show_brief'], gmtime() + 86400 * 7);
+		
+        
+		$filter['is_delete']        = $is_delete;
         $filter['real_goods']       = $real_goods;
         
         $filter['supp'] = (isset($_REQUEST['supp']) && !empty($_REQUEST['supp']) && intval($_REQUEST['supp'])>0) ? intval($_REQUEST['supp']) : 0;
@@ -939,7 +953,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         {
             $where .= " AND (goods_sn LIKE '%" . mysql_like_quote($filter['keyword']) . "%' OR goods_name LIKE '%" . mysql_like_quote($filter['keyword']) . "%')";
         }
-if (!empty($filter['collect_link']))
+        if (!empty($filter['collect_link']))
         {
             $where .= " AND collect_link LIKE '%" . mysql_like_quote($filter['collect_link']) . "%'";
         }
@@ -991,7 +1005,7 @@ if (!empty($filter['collect_link']))
         if(intval($_REQUEST['supp'])>0){
         	$sql = "SELECT goods_id, goods_name, keywords, add_time, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
-					", supplier_status, g.supplier_id,supplier_name,favorite_num,review_num,collect_link,is_wish ".
+					", supplier_status, g.supplier_id,supplier_name,favorite_num,review_num,collect_link,goods_brief,is_wish ".
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g ".
         			" LEFT JOIN " . $GLOBALS['ecs']->table('supplier') . " AS s ON s.supplier_id = g.supplier_id ".
                     " WHERE is_delete='$is_delete' $where" .
@@ -1000,7 +1014,7 @@ if (!empty($filter['collect_link']))
         }else{
         	$sql = "SELECT goods_id, add_time, goods_name, keywords, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
-					", supplier_status, supplier_id,favorite_num,review_num,collect_link,is_wish ".	//代码增加   By  www.68ecshop.com
+					", supplier_status, supplier_id,favorite_num,review_num,collect_link,goods_brief,is_wish ".	//代码增加   By  www.68ecshop.com
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete='$is_delete' $where" .
                     " ORDER BY $filter[sort_by] $filter[sort_order] ".
                     " LIMIT " . $filter['start'] . ",$filter[page_size]";
@@ -1030,6 +1044,7 @@ if (!empty($filter['collect_link']))
 			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
 			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
 			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
+			 $goods_url[$v['url_id']]['price'] = $v['price'];
 			 $goods_url[$v['url_id']]['goods_id'] = $v['goods_id'];
 		 }
 		

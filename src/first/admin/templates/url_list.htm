@@ -1,9 +1,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
  {foreach from=$goods_url item=item}
-   <div style="margin-bottom:10px;">
-    <img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png" width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
-     <a href="{$item.product_url}" target="_blank">{$item.product_url_formated}</a>
-      <a href="javascript:deleteUrl({$item.url_id},{$goods_id})" class="special">-</a>
-      </div>
+<div style="margin-bottom:10px;">
+<img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png" width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
+  <a href="{$item.product_url}" target="_blank">{$item.product_url_formated}</a>
+  <span onclick="listTable.edit(this, 'edit_collect_price', {$item.url_id})">{$item.price}</span>      <a href="javascript:deleteUrl({$item.url_id},{$goods_id})" class="special">-</a>
+</div>
 {/foreach}

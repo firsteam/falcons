@@ -2030,6 +2030,20 @@ elseif ($_REQUEST['act'] == 'edit_keywords')
     }
 }
 
+elseif ($_REQUEST['act'] == 'edit_goods_brief')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id   = intval($_POST['id']);
+    $goods_brief = json_str_iconv(trim($_POST['val']));
+
+    if ($exc->edit("goods_brief = '$goods_brief', last_update=" .gmtime(), $goods_id))
+    {
+        clear_cache_files();
+        make_json_result(stripslashes($goods_brief));
+    }
+}
+
 elseif ($_REQUEST['act'] == 'edit_goods_name_zh')
 {
     check_authz_json('goods_manage');
@@ -2449,6 +2463,19 @@ elseif ($_REQUEST['act'] == 'toggle_url_best')
     }
 }
 
+elseif ($_REQUEST['act'] == 'edit_collect_price')
+{
+    check_authz_json('goods_manage');
+
+    $url_id       = intval($_POST['id']);
+    $price = $_POST['val'];
+    if ($exc1->edit("price = '$price'", $url_id))
+    {
+        clear_cache_files();
+        make_json_result($price);
+    }
+}
+
 elseif ($_REQUEST['act'] == 'deleteUrl')
 {
     $url_id = empty($_REQUEST['url_id']) ? 0 : intval($_REQUEST['url_id']);
@@ -2465,6 +2492,7 @@ elseif ($_REQUEST['act'] == 'deleteUrl')
 			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
 			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
 			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
+			 $goods_url[$v['url_id']]['price'] = $v['price'];
 			 $goods_url[$v['url_id']]['goods_id'] = $v['goods_id'];
 		 }
 		$smarty->assign('goods_url', $goods_url);
@@ -2483,17 +2511,20 @@ elseif ($_REQUEST['act'] == 'deleteUrl')
 elseif ($_REQUEST['act'] == 'edit_url')
 {
     $product_url = empty($_REQUEST['product_url']) ? 0 : trim($_REQUEST['product_url']);
+	$price = empty($_REQUEST['price']) ? 0 : trim($_REQUEST['price']);
     $goods_id = empty($_REQUEST['goods_id']) ? 0 : intval($_REQUEST['goods_id']);
     $product_url = json_str_iconv($product_url);
+	
+	
 
     $exists = $GLOBALS['db']->getAll("select * from " . $GLOBALS['ecs']->table('goods_url') . " as g where goods_id='".$goods_id."' and product_url='$product_url'");
     if(empty($exists))
 	{
-	   $sql='insert INTO ' . $ecs->table('goods_url') . " (goods_id,product_url) values($goods_id,'".$product_url."')";
+	   $sql='insert INTO ' . $ecs->table('goods_url') . " (goods_id,product_url,price) values($goods_id,'".$product_url."','".$price."')";
 	}
 	else
 	{
-		$sql='update ' . $ecs->table('goods_url') . " set product_url='".$product_url."'  where goods_id='".$goods_id."'";
+		$sql='update ' . $ecs->table('goods_url') . " set product_url='".$product_url."',price='".$price."'  where goods_id='".$goods_id."'";
 	}
 	
     if($db->query($sql))
@@ -2505,6 +2536,7 @@ elseif ($_REQUEST['act'] == 'edit_url')
 			 $goods_url[$v['url_id']]['product_url'] = $v['product_url'];
 			 $goods_url[$v['url_id']]['is_best'] = $v['is_best'];
 			 $goods_url[$v['url_id']]['url_id'] = $v['url_id'];
+			 $goods_url[$v['url_id']]['price'] = $v['price'];
 			 $goods_url[$v['url_id']]['goods_id'] = $v['goods_id'];
 		 }
 		$smarty->assign('goods_url', $goods_url);
@@ -2526,6 +2558,8 @@ elseif ($_REQUEST['act'] == 'edit_url')
 elseif ($_REQUEST['act'] == 'query')
 {
     $is_delete = empty($_REQUEST['is_delete']) ? 0 : intval($_REQUEST['is_delete']);
+	
+	
     $code = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
     
     
@@ -2558,9 +2592,12 @@ elseif ($_REQUEST['act'] == 'query')
     {
         $smarty->assign('add_handler',      $handler_list[$code]);
     }
+	//$filter = $goods_list['filter'];
     $smarty->assign('code',         $code);
     $smarty->assign('goods_list',   $goods_list['goods']);
     $smarty->assign('filter',       $goods_list['filter']);
+	
+	
     $smarty->assign('record_count', $goods_list['record_count']);
     $smarty->assign('page_count',   $goods_list['page_count']);
     $smarty->assign('list_type',    $is_delete ? 'trash' : 'goods');
@@ -2573,6 +2610,8 @@ elseif ($_REQUEST['act'] == 'query')
     /* 获取商品类型存在规格的类型 */
     $specifications = get_goods_type_specifications();
     $smarty->assign('specifications', $specifications);
+
+
 
     $tpl = $is_delete ? 'goods_trash.htm' : 'goods_list.htm';
 

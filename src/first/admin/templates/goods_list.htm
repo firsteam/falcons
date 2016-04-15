@@ -24,15 +24,17 @@
 <!--
 function addUrl(goods_id)
 {
-	document.getElementById('url_field_'+goods_id).innerHTML='<input  id="product_url_'+goods_id+'"><input class="button" style="border: 1px solid #ddd;height: 28px;line-height: 28px;" type="button" onclick="editUrl(\''+goods_id+'\')" value="确定"/>'
+	document.getElementById('url_field_'+goods_id).innerHTML='<input  id="product_url_'+goods_id+'" placeholder="网址"><input  id="price_'+goods_id+'" placeholder="价格"><input class="button" style="border: 1px solid #ddd;height: 28px;line-height: 28px;" type="button" onclick="editUrl(\''+goods_id+'\')" value="确定"/>'
 	document.getElementById('url_field_'+goods_id).style.display='block'
 	document.getElementById('product_add_'+goods_id).style.display='none'
 }
 function editUrl(goods_id)
 {
 	var product_url = document.getElementById('product_url_'+goods_id).value;
+	var price = document.getElementById('price_'+goods_id).value;
+	
 	var params = 'product_url=' + encodeURIComponent(product_url);
-    params += '&goods_id=' + goods_id;
+    params += '&goods_id=' + goods_id+'&price=' + price;
     Ajax.call('goods.php?is_ajax=1&act=edit_url', params, addCatResponse, 'POST', 'JSON');
 }
 
@@ -80,7 +82,14 @@ function deleteCatResponse(result)
 		<a href="javascript:listTable.sort('goods_id'); ">{$lang.record_id}</a>{$sort_goods_id}
 		<a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}
 	</th>
+    {if $filter.is_show_keywords eq 1}
     <th><a href="javascript:listTable.sort('keywords'); ">关键词</a>{$sort_keywords}</th>
+    {/if}
+    
+    {if $filter.is_show_brief eq 1}
+    <th><a href="javascript:listTable.sort('goods_brief'); ">简单描述</a>{$sort_keywords}</th>
+    {/if}
+    
     <th><a href="javascript:listTable.sort('product_url'); ">采购网址</a>{$sort_product_url}</th>
     <th>
 		<a href="javascript:listTable.sort('collect_link'); ">采集网址</a>{$sort_collect_link} 
@@ -138,8 +147,11 @@ function deleteCatResponse(result)
 		{$goods.goods_id}
 		<span style="display:none">{$goods.goods_name_zh|default:N/A}</span>
 	</td>
-    <td><span onclick="listTable.edit1(this, 'edit_keywords', {$goods.goods_id})">{$goods.keywords}</span></td>
+     
     
+    
+    {if $filter.is_show_keywords eq 1}<td><span onclick="listTable.edit1(this, 'edit_keywords', {$goods.goods_id})">{$goods.keywords|default:N/A}</span></td>{/if}
+    {if $filter.is_show_brief eq 1}<td><span onclick="listTable.edit1(this, 'edit_goods_brief', {$goods.goods_id})">{$goods.goods_brief|default:N/A}</span></td>{/if}
     <td style="width:120px;">
     <div id="url_list_{$goods.goods_id}">
        {foreach from=$goods.goods_url item=item}
@@ -148,6 +160,7 @@ function deleteCatResponse(result)
    <img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png"  width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
    
       <a href="{$item.product_url}" target="_blank">{$item.product_url_formated}</a>
+      <span onclick="listTable.edit(this, 'edit_collect_price', {$item.url_id})">{$item.price}</span>
       <a href="javascript:deleteUrl({$item.url_id},{$goods.goods_id})" class="special">-</a>
       </div>
 {/foreach}
