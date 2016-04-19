@@ -439,8 +439,8 @@ if ($_REQUEST['act'] == 'download')
 				if(!empty($attr_value))
 				{
 				    
-					$attr_values = $row['goods_id'].'-'.join('-',str_replace(' ', '', $attr_value));											
-						
+					$attr_values = $row['goods_id'].'-'.join('-',preg_replace("/\W/", "", $attr_value));											
+
 					if(isset($attr_value[0]))
 					{
 						$property_1 = $attr_value[0];
