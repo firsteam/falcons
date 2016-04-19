@@ -389,7 +389,7 @@ if ($_REQUEST['act'] == 'download')
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $row['shop_price']*3);
-		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), '1');
+		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), ceil($row['shop_price']/5));
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), '3-7');
 		//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M' . ($i + 1), $goods_img);
 		
@@ -487,7 +487,7 @@ if ($_REQUEST['act'] == 'download')
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $row['shop_price']*3);
-				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), '1');
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), ceil($row['shop_price']/5));
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), '3-7');
 				//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M' . ($i + 1), $goods_img);
 				
