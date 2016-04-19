@@ -78,10 +78,7 @@ function deleteCatResponse(result)
 	{if $suppliers_exists eq 1}
 	<th><a href="javascript:listTable.sort('supplier_name'); ">供货商家</a>{$sort_supplier_name}</th>
 	{/if}
-    <th>
-		
-		<a href="javascript:listTable.sort('goods_name'); ">{$lang.goods_name}</a>{$sort_goods_name}
-	</th>
+    <th>{$lang.goods_name}</th>
     {if $filter.is_show_keywords eq 1}
     <th>关键词</th>
     {/if}
@@ -90,10 +87,9 @@ function deleteCatResponse(result)
     <th>简单描述</th>
     {/if}
     
-    <th><a href="javascript:listTable.sort('product_url'); ">采购网址</a>{$sort_product_url}</th>
+    <th>采购网址</th>
     <th>
-		<a href="javascript:listTable.sort('collect_link'); ">采集网址</a>{$sort_collect_link} 
-		<a href="javascript:listTable.sort('add_time'); ">上传时间</a>{$sort_add_time} {$lang.goods_sn}
+		采集网址 上传时间 {$lang.goods_sn}
 	</th>
 
     <th><a href="javascript:listTable.sort('shop_price'); ">{$lang.shop_price}</a>{$sort_shop_price}</th>

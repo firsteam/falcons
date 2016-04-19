@@ -144,8 +144,8 @@ if ($_REQUEST['act'] == 'download')
 
 
 
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'A1', "Parent Unique" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'B1', "Unique ID" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'A1', "Parent Unique Id" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'B1', "Unique Id" );
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'C1', "Product Name" );
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'D1', "Color" );
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'E1', "Size" );
@@ -153,20 +153,21 @@ if ($_REQUEST['act'] == 'download')
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G1', "Tags" );
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H1', "Description" );
 	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I1', "Price" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J1', "Shipping" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K1', "Shipping Time" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L1', "Main Image URL" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M1', "Extra Image URL" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'N1', "Extra Image URL1" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'O1', "Extra Image URL2" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'P1', "Extra Image URL3" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'Q1', "Extra Image URL4" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'R1', "Extra Image URL5" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'S1', "Extra Image URL6" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'T1', "Extra Image URL7" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'U1', "Extra Image URL8" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'V1', "Extra Image URL9" );
-	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'W1', "Extra Image URL10" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J1', "MSRP" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K1', "Shipping" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L1', "Shipping Time" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M1', "Main Image URL" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'N1', "Extra Image URL" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'O1', "Extra Image URL 1" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'P1', "Extra Image URL 2" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'Q1', "Extra Image URL 3" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'R1', "Extra Image URL 4" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'S1', "Extra Image URL 5" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'T1', "Extra Image URL 6" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'U1', "Extra Image URL 7" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'V1', "Extra Image URL 8" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'W1', "Extra Image URL 9" );
+	$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'X1', "Extra Image URL 10" );
 	
 	$i=1;
 	
@@ -387,11 +388,12 @@ if ($_REQUEST['act'] == 'download')
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G' . ($i + 1), $row['keywords']);//
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
 		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
-		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), '1');
-		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), '"3-7"');
-		//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), $goods_img);
+		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $row['shop_price']*3);
+		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), '1');
+		$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), '3-7');
+		//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M' . ($i + 1), $goods_img);
 		
-		$j=11;
+		$j=12;
 		foreach($img_list as $v)
 		{
 			  $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ($letters[$j] . ($i + 1), $v);
@@ -484,18 +486,19 @@ if ($_REQUEST['act'] == 'download')
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'G' . ($i + 1), $row['keywords']);//
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'H' . ($i + 1), $row['goods_brief']);
 				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'I' . ($i + 1), $row['shop_price']);
-				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), '1');
-				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), '"3-7"');
-				//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), $goods_img);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'J' . ($i + 1), $row['shop_price']*3);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'K' . ($i + 1), '1');
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), '3-7');
+				//$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M' . ($i + 1), $goods_img);
 				
-				$j=11;
+				$j=12;
 				foreach($img_list as $v)
 				{
 					  $objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( $letters[$j] . ($i + 1),$v);
 					  $j++;
 				}
 				
-				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'L' . ($i + 1), $goods_img);
+				$objPHPExcel->setActiveSheetIndex ( 0 )->setCellValue ( 'M' . ($i + 1), $goods_img);
 				
 				$i++;
 

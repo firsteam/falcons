@@ -21,3 +21,6 @@ CREATE TABLE IF NOT EXISTS `ecs_goods_url` (
   `is_best` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`url_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `ecs_goods_url` add column price decimal(10,2) not null default 0.00; //采购网址增加价格字段
