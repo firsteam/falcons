@@ -140,7 +140,7 @@ if ($_REQUEST['act'] == 'download')
     $_LANG['finishing'] = '正在导出请稍后';
     $max_number=5000;
 	
-	$letters = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","S","Z");
+	$letters = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AA","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ");
 
 
 
@@ -334,7 +334,7 @@ if ($_REQUEST['act'] == 'download')
 		
 		$sql = 'SELECT img_url ' .
             ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
-            " where goods_id=$goods_id ORDER by `is_attr_image` ASC, `img_sort` ASC limit 12 ";
+            " where goods_id=$goods_id ORDER by `is_attr_image` ASC, `img_sort` ASC limit 30 ";
         $img_list = $GLOBALS['db']->getCol($sql);
 		
 		foreach($img_list as $k=>$v)
