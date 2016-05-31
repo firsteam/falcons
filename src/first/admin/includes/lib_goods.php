@@ -1663,7 +1663,7 @@ function get_goods_properties($goods_id)
                 "g.goods_attr_id, g.attr_value, g.attr_price " .
             'FROM ' . $GLOBALS['ecs']->table('goods_attr') . ' AS g ' .
             'LEFT JOIN ' . $GLOBALS['ecs']->table('attribute') . ' AS a ON a.attr_id = g.attr_id ' .
-            "WHERE g.goods_id = '$goods_id' " .
+            "WHERE g.goods_id = '$goods_id' and (a.attr_type=1 or a.attr_type=2)  " .
             'ORDER BY a.sort_order, g.attr_price, g.goods_attr_id';
     $res = $GLOBALS['db']->getAll($sql);
 
@@ -1676,8 +1676,8 @@ function get_goods_properties($goods_id)
 
         if ($row['attr_type'] == 0)
         {
-            $arr['pro'][$row['attr_id']]['name']  = $row['attr_name'];
-            $arr['pro'][$row['attr_id']]['value'] = $row['attr_value'];
+           /* $arr['pro'][$row['attr_id']]['name']  = $row['attr_name'];
+            $arr['pro'][$row['attr_id']]['value'] = $row['attr_value'];*/
         }
         else
         {
@@ -1696,8 +1696,8 @@ function get_goods_properties($goods_id)
         if ($row['is_linked'] == 1)
         {
             /* 如果该属性需要关联，先保存下来 */
-            $arr['lnk'][$row['attr_id']]['name']  = $row['attr_name'];
-            $arr['lnk'][$row['attr_id']]['value'] = $row['attr_value'];
+           /* $arr['lnk'][$row['attr_id']]['name']  = $row['attr_name'];
+            $arr['lnk'][$row['attr_id']]['value'] = $row['attr_value'];*/
         }
     }
 
