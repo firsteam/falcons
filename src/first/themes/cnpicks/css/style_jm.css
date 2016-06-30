@@ -93,7 +93,7 @@ cursor: pointer;
 	font-size: 17px;
 }
 .flowHot ul li p.name {
-	/*height: 36px;*/
+	height: 26px;
 	overflow:hidden;
 	padding-bottom:0px;
 	margin-bottom:5px

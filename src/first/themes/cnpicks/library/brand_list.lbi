@@ -12,11 +12,6 @@
         	<a href="brand.php?id={$shop.brand_id}" title="All items"><strong>{$shop.goods_number}</strong> items>></a>
         </p>
 		
-        <p class="flow-logo">
-			<a href="brand.php?id={$shop.brand_id}" class="flow-datu" title="{$shop.shop_name}"> 
-				<img title="{$shop.supplier_name}" alt="" data-original="data/brandlogo/{$shop.brand_logo}" src="themes/cnpicks/images/loading.gif" >
-			</a>
-		</p>
         
       </div>
 

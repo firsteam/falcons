@@ -103,11 +103,11 @@
 		<!-- {if $goods.is_best eq 1} --><span class="little_pic disable-by-cy">Rcmd</span><!--{/if}-->
 		<!-- {if $goods.is_new eq 1} --><span class="little_pic disable-by-cy">New</span><!--{/if}--> 
             </span>
-            <div class="goods-pic" ><a href="{$goods.url}" target="_blank"  title="{$goods.name|escape:html}"><img width="220" height="220" data-original="{$goods.goods_thumb}" src="themes/cnpicks/images/loading.gif" title="{$goods.name|escape:html}" class="pic_img_{$goods.goods_id}"></a> </div>
+            <div class="goods-pic" ><a href="{$goods.url}" target="_blank"  title="{$goods.name|escape:html}"><img width="220" data-original="{$goods.goods_thumb}" src="themes/cnpicks/images/loading.gif" title="{$goods.name|escape:html}" class="pic_img_{$goods.goods_id}"></a> </div>
 		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1"></a><!-- {/if} -->
             <div class="goods-info"> 
               <div class="goods-name">
-                <a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.goods_name|escape:html}<em></em></a></div>
+                <a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.goods_name|escape:html}</a></div>
               <div class="goods-price"> <em class="sale-price" title="Price: <!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->#{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></em> <em class="market-price disable-by-cy" title="">{$goods.market_price}</em>
               <a href="javascript:addToCart({$goods.goods_id});" class="buy-btn"></a>
 			  

@@ -4,8 +4,8 @@
 <div class="brands_goods_list">
 	<div class="brands_goods_title">
 		<a href="{$goods.goods_brand_url}" >
-			<span style="font-size: 16px;font-weight: 500;padding:10px 0;">{$goods.goods_brand}</span>
-			<span><img title="{$goods.goods_brand}" alt="" data-original="data/brandlogo/{$goods.brand_logo}" src="data/brandlogo/{$goods.brand_logo}" width="120" ></span>
+			<span style="font-size: 20px;font-weight: 500;padding:20px 0px 10px 0px;">{$goods.goods_brand}</span>
+			<span style="display:none"><img title="{$goods.goods_brand}" alt="" data-original="data/brandlogo/{$goods.brand_logo}" src="data/brandlogo/{$goods.brand_logo}" width="120" ></span>
 		</a>
     </div>
     <div class="colList">    
@@ -29,7 +29,13 @@
       	<!--{/foreach}-->
     	</ul>
       </div>
+
     </div>
-    
+	
+	<div class="brands_goods_title">
+		<a href="{$goods.goods_brand_url}" >
+			<span style="font-size: 20px;font-weight: 500;padding:10px 0px 30px 0px;">More {$goods.goods_brand} Products</span>
+		</a>
+	</div>
 </div>
 <!--{/if}--> 

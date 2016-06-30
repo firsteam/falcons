@@ -2001,7 +2001,7 @@ function action_order_list ()
 	
 	$pager = get_pager('user.php', array(
 		'act' => $action, 'composite_status' => $composite_status
-	), $record_count, $page, 5);
+	), $record_count, $page, 20);
 	
 	$orders = get_user_orders_1($user_id, $pager['size'], $pager['start'], $where);
 	
@@ -2181,7 +2181,7 @@ function action_order_detail ()
 		}
 		else
 		{
-			$result_content = '抱歉，暂时还没有该运单的物流信息哦！';
+			$result_content = 'Sorry, could not find the tracking information of this order.';
 		}
 	}
 	$smarty->assign('result_content', $result_content);
@@ -2208,28 +2208,28 @@ function action_order_detail ()
 			switch($back_info['status_back'])
 			{
 				case '3':
-					$sb = "已完成";
+					$sb = "Finished";
 					break;
 				case '5':
-					$sb = "已申请";
+					$sb = "Submited";
 					break;
 				// case '6' : $sb = ""; break;
 				// case '7' : $sb = ""; break;
 				default:
-					$sb = "正在";
+					$sb = "Processing";
 					break;
 			}
 			
 			switch($back_info['back_type'])
 			{
 				case '1':
-					$bt = "退货";
+					$bt = "Return";
 					break;
 				case '3':
-					$bt = "申请维修";
+					$bt = "Repair";
 					break;
 				case '4':
-					$bt = "退款";
+					$bt = "Refund";
 					break;
 				default:
 					break;
@@ -2239,7 +2239,7 @@ function action_order_detail ()
 		}
 		else
 		{
-			$shouhou = "正常";
+			$shouhou = "Normal";
 		}
 		
 		$goods_list[$key]['shouhou'] = $shouhou;
@@ -2571,7 +2571,7 @@ function action_back_order ()
 	
 	if(! $row_goods || $row_goods['user_id'] != $_SESSION['user_id'])
 	{
-		show_message('对不起！您没权限针对该商品发起退款/退货及维修', '返回订单列表页', 'user.php?act=order_list', 'info');
+		show_message('Sorry! Something wrong, please contact the customer service.', 'Back to order list', 'user.php?act=order_list', 'info');
 	}
 	else
 	{

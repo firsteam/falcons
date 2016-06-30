@@ -559,7 +559,7 @@ BUTTON {
 }
 #choose .dd {
 	OVERFLOW: hidden;
-	width: 490px;
+	/*width: 490px;*/
 }
 #choose .item {
 	FLOAT: left;
@@ -2326,7 +2326,7 @@ _top:       expression(eval(document.compatMode &&
 	width:160px;
 	float:left;
 	position: relative;
-	padding: 16px
+	padding: 6px 16px 6px 16px;
 }
 .brands_goods_list .brands_goods_title span{
 	display: block;

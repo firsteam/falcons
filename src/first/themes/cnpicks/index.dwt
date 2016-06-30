@@ -16,13 +16,10 @@
 <link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
 <link rel="stylesheet" href="themes/cnpicks/css/index.css">
 <link rel="stylesheet" type="text/css" href="themes/cnpicks/css/commin.css" />
-
-
-
-
 <script type="text/javascript" src="themes/cnpicks/js/jquery-lazyload.js" ></script>
 <script type="text/javascript" src="themes/cnpicks/js/jqueryAll.index.min.js"></script>
 <script type="text/javascript" src="themes/cnpicks/js/jump.js"></script>
+
 <script type="text/javascript">
 $(function(){
 	 $(".brand-wall-content img").each(function(k,img){
@@ -295,7 +292,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 ?>
 <div class="w floor">
 <div class="floor02 clearfix">
-  <div id="f0" class="style-one home-standard-layout tm-chaoshi-floorlayout ">
+
+  
+    <div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-one">
+  
+  
     <?php
 	 $GLOBALS['smarty']->assign('index_image3',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'通栏广告', 1));
 	 ?>

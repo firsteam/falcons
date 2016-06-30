@@ -3,9 +3,9 @@
 <!--{foreach from=$comments.item_list item=value}-->
 <dl class="clearfix">
   <dt>
-    <div><img src="{if $value.headimg eq ''}themes/cnpicks/images/upgrade_ad/peopleicon_01.gif{else}{$value.headimg}{/if}" height="80" width="80" /></div>
-    <p>{if $value.hide_username eq 1}匿名{else}{$value.user_name}{/if}</p>
-    <p>{$value.user_rank.rank_name}</p>
+    <div><img src="{if $value.headimg eq ''}themes/68ecshopcom_360buy/images/upgrade_ad/peopleicon_01.gif{else}{$value.headimg}{/if}" height="80" width="80" /></div>
+    <p>{if $value.hide_username eq 1}Anonymous{else}{$value.user_name}{/if}</p>
+    <p class="disable-by-cy">{$value.user_rank.rank_name}</p>
   </dt>
   <dd>
     <div class="rank68 clearfix"> {if $value.comment_rank}<img src="images/stars{$value.comment_rank}.gif" style="float:left"/>{/if} <span class="add-time" style="float:right">{$value.add_time_str}</span> </div>
@@ -13,7 +13,7 @@
     <table width="100%" border="0" cellspacing="1" cellpadding="0">
       {if $value.tags}
       <tr>
-        <th width="64">标　　签：</th>
+        <th width="64">Tags:</th>
         <td class="tag">
           <!--{foreach from=$value.tags item=name}--> 
           <!-- {if !empty($name)} -->
@@ -24,21 +24,21 @@
       </tr>
       {/if}
       <tr>
-        <th width="64">心　　得：</th>
+        <th width="0"></th>
         <td>{$value.content}</td>
       </tr>
       <!--{if $value.shaidan_imgs}-->
       <tr>
-        <th>用户晒单：</th>
+        <th></th>
         <td class="shaidan"><!--{foreach from=$value.shaidan_imgs key=key item=img}--> 
           {if $key < 3}<a href="goods_shaidan.php?act=view&id={$value.shaidan_id}" target="_blank"><img src="{$img.thumb}"></a>{/if} 
           <!--{/foreach}--> 
-          共{$value.shaidan_imgs_num}张图片 <a href="goods_shaidan.php?act=view&id={$value.shaidan_id}" target="_blank">查看晒单></a></td>
+          Totel {$value.shaidan_imgs_num} picture </td>
       </tr>
       <!--{/if}-->
       {if $value.comment_reps}
       <tr>
-        <th>客服回复：</th>
+        <th>Reply: </th>
         <td> {foreach from=$value.comment_reps item=val}
           <div style="color:#F00; padding:10px 0 10px 0">{$val.content}</div>
           {/foreach} </td>
@@ -47,8 +47,8 @@
     </table>
     {if $value.hide_gnum neq 1}
     <ul class="yong clearfix">
-      <li style="display:none"><a href="javascript:;" onClick="show_good()">回复(0)</a></li>
-      <li><a href="javascript:;" onClick="show_good({$value.comment_id})">有用(<span id="good_num_{$value.comment_id}">{$value.good_num}</span>)</a></li>
+      <li style="display:none"><a href="javascript:;" onClick="show_good()">Voted(0)</a></li>
+      <li><a href="javascript:;" onClick="show_good({$value.comment_id})">Vote(<span id="good_num_{$value.comment_id}">{$value.good_num}</span>)</a></li>
     </ul>
     {/if} </dd>
 </dl>
@@ -65,6 +65,6 @@
   <!--{/foreach}--> 
   <!-- {/if} --> 
 </div>
+<div class="blank20"></div>
 <!--{else}-->
-<div class="no_comment">暂时还没有任何评论！</div>
 <!--{/if}-->

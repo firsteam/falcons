@@ -1,5 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<div class="my_comment_pre">
+<div class="my_comment_pre none">
     <div class="tab_title"> 
     	<span>商品评价</span>
     </div>
@@ -29,10 +29,10 @@
     </ul>
     </div>
 </div>
-<div class="blank"></div>
-<div class="my_comment_tab">
+<div class="blank none"></div>
+<div class="my_comment_tab none">
 	<ul class="clearfix">
-    	<li id="mct_0" onClick="ShowMyComments({$goods.goods_id},0,1)" class="cur">全部评价<span>({$rank_num.rank_total})</span></li>
+    	<li id="mct_0" onClick="ShowMyComments({$goods.goods_id},0,1)" class="cur">All<span>({$rank_num.rank_total})</span></li>
     	<li id="mct_1" onClick="ShowMyComments({$goods.goods_id},1,1)">好评<span>({$rank_num.rank_a})</span></li>
     	<li id="mct_2" onClick="ShowMyComments({$goods.goods_id},2,1)">中评<span>({$rank_num.rank_b})</span></li>
     	<li id="mct_3" onClick="ShowMyComments({$goods.goods_id},3,1)">差评<span>({$rank_num.rank_c})</span></li>

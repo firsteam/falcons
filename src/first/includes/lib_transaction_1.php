@@ -57,8 +57,9 @@ function get_user_orders_1($user_id, $num = 10, $start = 0,$where='')
 				}
 				@$okgoods_time = $GLOBALS['db']->getOne("select value from " . $GLOBALS['ecs']->table('shop_config') . " where code='okgoods_time'");
 				@$row_time = $okgoods_time - (local_date('d',gmtime()) - local_date('d',$row['shipping_time']));
-                @$row['handler'] = "<img src='themes/" . $GLOBALS['_CFG']['template']. "/images/endtime.jpg' height='18px' style='vertical-align:middle;margin-right:3px;'/>还剩" . $row_time . "天自动收货<br><a href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\" style='display:inline-block;background:#F60;color:#fff;padding:3px 5px ;margin:3px 0px;'>".$GLOBALS['_LANG']['received']."</a>";
-            }
+                //@$row['handler'] = "<img src='themes/" . $GLOBALS['_CFG']['template']. "/images/endtime.jpg' height='18px' style='vertical-align:middle;margin-right:3px;'/>Expect delivered time " . $row_time . " Days <br> <a href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\" style='display:inline-block;background:#F60;color:#fff;padding:3px 5px ;margin:3px 0px;'>".$GLOBALS['_LANG']['received']."</a>";
+				@$row['handler'] = "Shipped <br> <a href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\" style='display:inline-block;background:#F60;color:#fff;padding:3px 5px ;margin:3px 0px;'>".$GLOBALS['_LANG']['received']."</a>";
+			}
             elseif ($row['shipping_status'] == SS_RECEIVED)
             {
                 @$row['handler'] = '<span style="color:red">'.$GLOBALS['_LANG']['ss_received'] .'</span>';

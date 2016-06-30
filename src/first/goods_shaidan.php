@@ -53,8 +53,8 @@ if ($_REQUEST['act'] == 'view')
         $smarty->assign('keywords',           htmlspecialchars($goods['keywords']));
         $smarty->assign('description',        htmlspecialchars($goods['goods_brief']));
 		
-        $position = assign_ur_here($goods['cat_id'], $goods['goods_name']);
-		$position['ur_here'] .= ' <code>&gt;</code> 晒单';
+        $position = assign_ur_here($goods['cat_id'], substr($goods['goods_name'],0,30)."...");
+		$position['ur_here'] .= ' <code>&gt;</code> Show';
 		
         /* current position */
         $smarty->assign('page_title',          $position['title']);                    // 页面标题

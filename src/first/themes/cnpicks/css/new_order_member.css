@@ -43,8 +43,8 @@
 	width: 50px;
 }
 .bought-table .baobei .goods_name{
-	float:left;
-	width:240px;
+	float:right;
+	width:600px;
 	height:auto;
 	text-align:left	
 }
@@ -70,9 +70,9 @@
 }
 .bought-table .baobei .goods_desc {
 	clear: both;
-	/*padding-left: 5px;
-	padding-top: 5px;
-	padding-bottom: 5px;*/
+	/*padding-left: 5px;*/
+	padding-top: 10px;
+	padding-bottom: 5px;
 	text-align: center;
 	/*height: 60px;
 	border-bottom: #F3F3F3 solid 1px;*/

@@ -19,7 +19,7 @@
   <tr>
     <td width="150" align="left">{$lang.consignee_name}<font color="#ff3300">*</font></td>
     <td>
-      <input type="text" name="consignee" onblur="checkConsigneeName(this,'consignee_name_notice')" class="input_addr2">
+      <input type="text" name="consignee" onchange="checkConsigneeName(this,'consignee_name_notice')" class="input_addr2">
     </td>
     <td align="left">
       <div class="verify_tips">
@@ -40,8 +40,8 @@
   <tr>
     <td align="left">Country<font color="#ff3300">*</font></td>
     <td>
-      <select name="country" style="width:155px;height:25px;border:1px solid #ccc;" onchange="checkCountry(this,'country_notice')">
-        <option value="">{$lang.please_select}{$name_of_region[1]}</option>
+      <select name="country" style="width:155px;height:30px;border:1px solid #ccc;" onchange="checkCountry(this,'country_notice')">
+        <option value="">{$lang.please_select}</option>
         <!-- {foreach from=$shop_country_list item=country} -->
         <option value="{$country.region_name}" {if $country.province eq $country.region_id}selected{/if}>{$country.region_name}</option>
         <!-- {/foreach} -->
@@ -69,7 +69,7 @@
   <tr>
     <td align="left">{$lang.city_district}<font color="#ff3300">*</font></td>
     <td>
-      <input type="text" name="city" class="input_addr2" onblur="checkCity(this,'city_notice')">
+      <input type="text" name="city" class="input_addr2" onchange="checkCity(this,'city_notice')">
     </td>
     <td align="left">
       <div class="verify_tips">
@@ -81,7 +81,7 @@
   <tr>
     <td align="left">{$lang.detailed_address}<font color=#ff3300>*</font></td>
     <td>
-      <textarea name="address" style="width:208px;" rows="3" onblur="checkAddress(this,'address_notice')"></textarea>
+      <textarea name="address" style="width:208px;" rows="3" onchange="checkAddress(this,'address_notice')"></textarea>
     </td>
     <td align="left">
       <div class="verify_tips">
@@ -92,7 +92,7 @@
   <tr><td style="height:3px;"></td></tr>
   <tr>
     <td align="left">{$lang.postalcode}<font color=#ff3300>*</font></td>
-    <td><input type="text" name="zipcode" class="input_addr3" onblur="checkZipcode(this,'zipcode_notice')"></td>
+    <td><input type="text" name="zipcode" class="input_addr3" onchange="checkZipcode(this,'zipcode_notice')"></td>
     <td align="left">
       <div class="verify_tips">
         <span class="label" id="zipcode_notice"></span>
@@ -102,7 +102,7 @@
   <tr><td style="height:3px;"></td></tr>
   <tr>
     <td align="left">{$lang.mobile}<font color=#ff3300>*</font></td>
-    <td><input type="text" name="mobile" class="input_addr2" onblur="checkMobile(this,'mobile_notice')"></td>
+    <td><input type="text" name="mobile" class="input_addr2" onchange="checkMobile(this,'mobile_notice')"></td>
     <td align="left">
       <div class="verify_tips">
         <span class="label" id="mobile_notice"></span>

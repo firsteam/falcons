@@ -23,9 +23,11 @@
       <div class="func func2 clearfix">
         <!-- <p class="title"><i></i><span>Transaction</span></p> -->
         <a href="user.php?act=order_list" class="item {if $action eq 'order_list'|| $action eq 'order_detail'}curs{/if}" ><span>{$lang.label_order}</span><i></i></a> 
-        <a href="user.php?act=back_list" class="item {if $action eq 'back_list' || $action eq 'back_order_detail'}curs{/if}"><span>{$lang.label_return}</span><i></i></a> 
+        <!--
+		<a href="user.php?act=back_list" class="item {if $action eq 'back_list' || $action eq 'back_order_detail'}curs{/if}"><span>{$lang.label_return}</span><i></i></a> 
         <a href="user.php?act=my_comment" class="item {if $action eq 'my_comment'}curs{/if}"><span>{$lang.label_review}</span><i></i></a> 
-        <a href="user.php?act=collection_list" class="item {if $action eq 'collection_list'}curs{/if}"><span>{$lang.label_collection}</span><i></i></a> 
+        -->
+		<a href="user.php?act=collection_list" class="item {if $action eq 'collection_list'}curs{/if}"><span>{$lang.label_collection}</span><i></i></a> 
         <!-- 
         <a href="user.php?act=follow_shop" class="item {if $action eq 'follow_shop'}curs{/if}" title="关注的店铺"><span>店铺关注</span><i></i></a> 
         <a href="user.php?act=auction_list" class="item {if $action eq 'auction_list'}curs{/if}"><span>我的竞拍</span><i></i></a> 

@@ -109,20 +109,20 @@ function show_commtr(rec_id)
 
 function check_shaidan_send()
 {
-	if (document.getElementById("title").value == '')
+	/*if (document.getElementById("title").value == '')
 	{
 		alert("请输入标题！");
 		document.getElementById("title").focus();
 		return false;	
-	}
+	}*/
 
 	editor.sync();
-	if (document.getElementById("message").value == '')
+	/*if (document.getElementById("message").value == '')
 	{
 		alert("请输入内容！");
 		document.getElementById("message").focus();
 		return false;	
-	}
+	}*/
 
 	var pic = document.getElementById("J_imageView").innerHTML;
 	if (pic == '')
@@ -332,7 +332,7 @@ $(document).ready(function(e) {
                             </td>
                         </tr>
                         <tr>
-                        	<th>物流：</th>
+                        	<th>Quality:</th>
                             <td class="stars_box">
                             	<div id="star4{$value.goods_id}" class="star_t"></div>
                                 <div id="result4{$value.goods_id}" class="result"></div>
@@ -379,15 +379,15 @@ $(document).ready(function(e) {
 									//第一种方式：直接取值
 									$(result).show();
 									if((score*m)==5){
-										$(result).html('<span>'+score*m+'</span>, Dissatisfied++');
+										$(result).html('<span>'+score*m+'</span>, Satisfaction++');
 									}else if((score*m)==4){
-										$(result).html('<span>'+score*m+'</span>, Dissatisfied');	
+										$(result).html('<span>'+score*m+'</span>, Satisfaction');	
 									}else if((score*m)==3){
 										$(result).html('<span>'+score*m+'</span>, Normal');	
 									}else if((score*m)==2){
-										$(result).html('<span>'+score*m+'</span>4, Satisfaction');	
+										$(result).html('<span>'+score*m+'</span>4, Dissatisfied');	
 									}else if((score*m)==1){
-										$(result).html('<span>'+score*m+'</span>5, Satisfaction++');	
+										$(result).html('<span>'+score*m+'</span>5, Dissatisfied++');	
 									}
 									
 									
@@ -398,7 +398,7 @@ $(document).ready(function(e) {
 					  	</script> 
                       	<!--评分 end-->
                         <tr>
-                          <th>标签：</th>
+                          <th>Tag:</th>
                           <td><input type="hidden" id="tag_select_{$value.rec_id}" name="comment_tag" value="" />
                             <dl class="tags clearfix">
                               <!--{if $value.goods_tags}--> 
@@ -406,26 +406,26 @@ $(document).ready(function(e) {
                               <dt id="tag_dt_{$value.rec_id}_{$tag.tag_id}" onclick="select_tag({$value.rec_id},{$tag.tag_id})">{$tag.tag_name}</dt>
                               <!--{/foreach}--> 
                               <!--{/if}-->
-                              <dd class="zdy" onclick="show_add_tags({$value.rec_id})">自定义</dd>
+                              <dd class="zdy" onclick="show_add_tags({$value.rec_id})">Edit</dd>
                             </dl>
                             <ul class="tags_zi clearfix" id="tags_zi_{$value.rec_id}">
                             </ul>
-                            <div class="add_tags clearfix" id="add_tags_{$value.rec_id}" style="display:none"> <span onclick="hide_add_tags({$value.rec_id})">关闭</span>
+                            <div class="add_tags clearfix" id="add_tags_{$value.rec_id}" style="display:none"> <span onclick="hide_add_tags({$value.rec_id})">Close</span>
                               <input type="text" id="add_tag_text_{$value.rec_id}" value="" />
-                              <input type="button" value="添加" onclick="add_tag_one({$value.rec_id})" />
+                              <input type="button" value="Add" onclick="add_tag_one({$value.rec_id})" />
                             </div></td>
                         </tr>
                         <tr>
-                          <th>心得：</th>
-                          <td><textarea name="content" class="inputBorder" name="content" id="content_{$value.rec_id}" style="height:80px; width:580px;">
-                            </textarea></td>
+                          <th>Review:</th>
+                          <td><textarea name="content" class="inputBorder" name="content" id="content_{$value.rec_id}" style="height:80px; width:580px;"></textarea>
+						  </td>
                         </tr>
                         <tr>
                           <th>&nbsp;</th>
                           <td><input type="image" src="images/send_comment.gif" style="float:left" />
                             <div  style="float:left; padding:5px 0px 0 20px;">
                               <input type="checkbox" name="hide_username" value="1" />
-                              匿名评价 </div></td>
+                              Anonymous </div></td>
                         </tr>
                       </table>
                     </form>
@@ -452,47 +452,44 @@ $(document).ready(function(e) {
             
             
             <!--{if $action eq 'shaidan_send'}-->
+			
             <!-- {if $pan_1 == 0 } --> 
-            此单已超期 
+			<div class="tc f7">
+            This order has exceeded the time limit.
+			</div>
             <!-- {elseif $pan_2 == 1 } --> 
-            此单已晒单 
-	    <!-- {elseif $pan_3 == 1 } --> 
-            这不是您的订单，请不要非法晒单。 
+			<div class="tc f7">
+            This order has been reviewed.
+			</div>
+			<!-- {elseif $pan_3 == 1 } --> 
+			<div class="tc f7">
+            This is not your order. 
+			</div>
             <!-- {else} -->
+			
             <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="active"> <a href="#">发表晒单</a> </li>
+              <li class="active"> <a href="#">Submit</a> </li>
             </ul>
           </div>
-          <div class="blank"></div>
-                <div style="padding:15px; border:dashed #ddd 1px;">
-                	<strong>关于晒单帖：</strong><br />
-　　您可以将自己的使用感受、选购建议、实物照片、使用场景、拆包过程等与网友们分享；<br />
-　　每个商品前10位成功晒单者且图片数在3张及以上的客户可获得100个京豆奖励；其他用户不再奖励京豆；图书音像商品、赠品晒单帖不奖励京豆；<br />
-　　请保证所上传的图片是原创的及合法的，否则京东商城有权删除图片及冻结帐号，且保留追究其法律责任的权利；<br />
-　　<a target="_blank" href="article.php?id=36" style="color:#049">更多晒单说明</a>
-                </div>
-			
-			
-			
             	<div class="shaidan_form">
                     <form action="user.php?act=shaidan_save" method="post" onsubmit="return check_shaidan_send()">
                     <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
                     <input type="hidden" name="rec_id" value="{$goods.rec_id}" />
                     <table width="100%" border="0" cellspacing="1" cellpadding="0">
                         <tr>
-                            <th width="90">晒单商品：</th>
+                            <th width="90">Product:</th>
                             <td>{$goods.goods_name}</td>
                         </tr>
-                        <tr>
-                            <th><span style="color:#F00">*</span> 标题：</th>
+                        <tr class="disable-by-cy">
+                            <th><span style="color:#F00"></span>Title:</th>
                             <td><input type="text" name="title" id="title" style="width:550px;" /></td>
                         </tr>
                         <tr>
-                            <th><span style="color:#F00">*</span> 内容：</th>
+                            <th><span style="color:#F00"></span>Content:</th>
                             <td>
 							<script charset="utf-8" src="includes/kindeditor/kindeditor-min.js"></script>
-                            <script charset="utf-8" src="includes/kindeditor/lang/zh_CN.js"></script>
+                            <script charset="utf-8" src="includes/kindeditor/lang/en.js"></script>
                             <script>
                             	var editor;
                             	KindEditor.ready(function(K) {
@@ -527,7 +524,7 @@ $(document).ready(function(e) {
                             </td>
                         </tr>
                         <tr>
-                            <th><span style="color:#F00">*</span> 上传图片：</th>
+                            <th><span style="color:#F00">*</span> Picture: </th>
                             <td>
 								<div><img style="cursor:pointer" id="J_selectImage" src="images/send_shaidan_img.gif" /></div>
 								<div id="J_imageView" class="simgs"></div>
@@ -536,14 +533,14 @@ $(document).ready(function(e) {
                         </tr>
                         <tr>
                             <th>&nbsp;</th>
-                            <td>请上传3-20张照片，每张照片不超过4M，支持的照片格式为jpg，jpeg，png，gif； 可一次选择多张；</td>
+                            <td>File format: jpg, jpeg, png, gif. <br>File size < 4M </td>
                         </tr>
                         <tr>
                             <th>&nbsp;</th>
                             <td>
                                 <input type="image" src="images/send_shaidan.gif" style="float:left" />
                                 
-                                <div  style="float:left; padding:5px 0px 0 20px;"><input type="checkbox" name="hide_username" value="1" /> 匿名评价 </div>
+                                <div  style="float:left; padding:5px 0px 0 20px;"><input type="checkbox" name="hide_username" value="1" /> Anonymous </div>
                                 
 
 

@@ -1147,8 +1147,8 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 	word-spacing: normal;
 	display: inline-block;
 *display: inline/*IE6,7*/;
-	/*width: 232px;*/
-	height: 310px;
+	/*width: 232px;
+	height: 310px;*/
 	margin: 33px 0 0 33px;
 *zoom:1;
 }
@@ -1311,7 +1311,7 @@ margin-top:expression(28-this.height/2);
 	line-height: 16px;
 	color: #999;
 	background-color: #FFF;
-	height: 34px;
+	/*height: 34px;*/
 	display: block;
 	padding: 10px 0px;
 	overflow: hidden;

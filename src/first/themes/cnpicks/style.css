@@ -709,9 +709,11 @@ h6 span {
 }
 .box_1 .userCenterBox {
 	background-color: #fff;
-	/*width:820px;
-	padding: 0px 20px 0px 0px;*/
-	float: right
+	/*text-align:center;
+
+	width:820px;
+	padding: 0px 20px 0px 0px;
+	float: right*/
 }
 .box_1 .userCenterBox .userMenu {
 	padding: 0px 10px 5px 10px;
@@ -1579,9 +1581,10 @@ margin-top:
 /*侧导航列表*/
 .navList {
 	width: 160px;
-	height: 800px;
+	/*height: 800px;*/
 	background-color: #fbfbfb;
 	overflow: hidden;
+	padding-bottom:100px;
 }
 .navList .func {
 	/*margin-left: 10px;*/
@@ -3247,8 +3250,8 @@ margin-top:expression(32-this.height/2);
 	overflow: hidden;*/
 }
 .pic-model div.favorite-goods-thumb a img {
-	max-width: 180px;
-	max-height: 180px;
+	width: 180px;
+	/*max-height: 180px;*/
 margin-top:expression(180-this.height/2);
 *margin-top:expression(90-this.height/2)/*IE6,7*/;
 }
@@ -3777,7 +3780,7 @@ h5.user-title-t span {
 .message .message_all .message_con {
 	min-height: 80px;
 	height: auto;
-	width: 900px;
+	/*width: 900px;*/
 	padding: 60px 0px;
 	text-align: center;
 }

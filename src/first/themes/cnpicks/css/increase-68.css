@@ -856,14 +856,14 @@ Template Type: type_0
 }
 .my_comment_list dt {
 	float: left;
-	width: 120px;
+	/*width: 120px;*/
 	text-align: center;
 	padding-top: 10px;
 }
 .my_comment_list dd {
 	border: solid #d0e4c2 1px;
 	border-left: none;
-	width: 669px;
+	width: 829px;
 	float: right;
 	padding: 0 15px 15px 15px;
 }
@@ -915,6 +915,7 @@ Template Type: type_0
 	cursor: pointer
 }
 .my_comment_list .add-time {
+	color:#ddd;
 	float: right;
 	margin-right: 10px;
 }

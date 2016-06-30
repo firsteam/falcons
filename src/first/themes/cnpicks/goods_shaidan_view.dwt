@@ -33,21 +33,33 @@
             </div>
 			<p><a href="goods.php?id={$goods_id}">{$goods.goods_name}</a></p>
 			<p><strong>{$lang.shop_price}</strong><font class="shop">{$goods.shop_price_formated}</font><br /></p>
-			<p><a href="goods.php?id={$goods_id}" class="shaidan_buy">再次购买</a></p>
+			<p><a href="goods.php?id={$goods_id}" class="shaidan_buy">Buy</a></p>
 		</div></div>
 	</div>
 	<!--left end-->
     <!--right start-->
     <div class="AreaR">
         <div class="shaidan_box">
-        	<div class="title">晒单详情</div>
+        	<div class="title">Detail</div>
 			<div class="shaidan_desc">
             	<div class="message">{$shaidan.message}</div>
                 <!--{foreach from=$shaidan_imgs key=key item=img}-->
                 <dl><dt><img src="{$img.image}"></dt><dd>{$img.desc}</dd></dl>
                 <!--{/foreach}-->
             </div>
-			<div class="bshare-custom" style="padding:15px;"><div class="bsPromo bsPromo2"></div><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="分享到开心网" class="bshare-kaixin001" href="javascript:void(0);"></a><a title="分享到凤凰微博" class="bshare-ifengmb" href="javascript:void(0);"></a><a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count" style="float: none;">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+			<div class="collect_btn">
+                  <span class='st_googleplus' displayText='Google +'></span>
+                  <span class='st_facebook' displayText='Facebook'></span>
+                  <span class='st_twitter' displayText='Tweet'></span>
+                  <!-- <span class='st_linkedin' displayText='LinkedIn'></span> -->
+                  <span class='st_pinterest' displayText='Pinterest'></span>
+                  <!-- <span class='st_email' displayText='Email'></span> -->
+            </div>
+
+            <script type="text/javascript">var switchTo5x=true;</script>
+            <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+            <script type="text/javascript">stLight.options({publisher: "d8804f04-9a1c-4e86-9086-9c2c73ea79b8", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+			<div class="bshare-custom disable-by-cy" style="padding:15px;"><div class="bsPromo bsPromo2"></div><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="分享到开心网" class="bshare-kaixin001" href="javascript:void(0);"></a><a title="分享到凤凰微博" class="bshare-ifengmb" href="javascript:void(0);"></a><a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count" style="float: none;">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
         </div>
     </div>
     <!--right end-->

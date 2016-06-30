@@ -1564,24 +1564,18 @@ menu.className=i==cursel?"active":"";
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bought-table">
             <thead>
               <tr class="col-name">
-                <th width="32%" style="border-left: 1px solid #E6E6E6;">Name</th>
-                <th width="10%">Attribute</th>
-                <th width="9%">Unit cost</th>
-                <th width="5%">Quantity</th>
-                <th width="13%">Service</th>
-                <th width="8%">{$lang.order_money}</th>
-                <th width="10%">State</th>
-                <th width="13%" style="border-right: 1px solid #E6E6E6;">Operation</th>
+                <th width="" style="border-left: 1px solid #E6E6E6;">Transaction</th>
+                <th width="" style="border-right: 1px solid #E6E6E6; width:100px">Operation</th>
               </tr>
             </thead>
             
             <!--{foreach from=$orders item=item}-->
             <tbody class="close-order">
               <tr class="sep-row">
-                <td colspan="7"></td>
+                <td colspan="3"></td>
               </tr>
               <tr class="order-hd">
-                <td colspan="8"><span class="no">
+                <td colspan="4"><span class="no">
                   <label> {$lang.order_number}<span class="order-num"><a href="user.php?act=order_detail&order_id={$item.order_id}" class="f6">{$item.order_sn}</a>{* 代码增加_start   By  www.68ecshop.com *}
                     {if $item.is_suborder}{$item.is_suborder}{/if}{* 代码增加_end   By  www.68ecshop.com *}</span> </label>
                   </span> <span class="deal-time f3 fr">&nbsp;&nbsp;{$lang.order_addtime}: {$item.order_time}</span> <span class="deal-time disable-by-cy">&nbsp;&nbsp;商家店铺：{$item.shopname}</span>
@@ -1595,38 +1589,42 @@ menu.className=i==cursel?"active":"";
                 <!--{foreach from=$item.goods_list item=goods name=goods}-->
                   
 
-                  <div class="goods_desc {if $smarty.foreach.goods.last}last{/if}"> <a class="pic" {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}href="{if $goods.extension_code eq 'virtual_good'}virtual_group_goods.php?id={$goods.goods_id}{else}{$goods.url}{/if}"{else}{/if} title="查看宝贝详情" target="_blank"> 
+                  <div class="goods_desc {if $smarty.foreach.goods.last}last{/if}"> 
+				  <a {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}href="{if $goods.extension_code eq 'virtual_good'}virtual_group_goods.php?id={$goods.goods_id}{else}{$goods.url}{/if}"{else}{/if} title="查看宝贝详情" target="_blank"> 
                     <!-- {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'} 商品 --> 
-                    <img src="{$goods.thumb}" alt="查看宝贝详情" width="50" height="50"> 
+                    <img class="pic" src="{$goods.thumb}" alt="Goods detail" width="50" height="50"> 
                     <!-- {elseif $goods.goods_id gt 0 && $goods.extension_code eq 'package_buy'} --> 
-                    <img src="themes/cnpicks/images/jmpic/ico_cart_package.gif" alt="查看宝贝详情" width="50" height="50"/> 
-                    <!-- {/if} --> 
-                    </a>
-                    <div class="goods_name">{if $goods.extension_code eq 'virtual_good'}【虚拟团购】{/if} {$goods.goods_name}</div>
+                    <img class="pic" src="themes/cnpicks/images/jmpic/ico_cart_package.gif" alt="Goods detail" width="50" height="50"/> 
+                    <!-- {/if} -->  
+					
+                    <div class="goods_name">
+					{if $goods.extension_code eq 'virtual_good'}Virtual good{/if} {$goods.goods_name} <br>
+					{if $goods.goods_attr}{$goods.goods_attr|nl2br}{/if} {$goods.formated_goods_price} X {$goods.goods_number}
+					
+					</div>
+				</a>	
                   </div>
-                  
-                  <!--{/foreach}--></td>
-                  <td align="center" class="baobei no-border-right"><!--{foreach from=$item.goods_list item=goods name=goods}-->
-                  
-                  <div class="goods_desc goods_desc_t"> {if $goods.goods_attr}{$goods.goods_attr|nl2br}{/if} </div>
-                  
-                  <!--{/foreach}--></td>
-                <td align="center" class="baobei no-border-right" style="padding:0px;" ><!--{foreach from=$item.goods_list item=goods name=goods}-->
-                  
-                  <div class="goods_desc price  {if $smarty.foreach.goods.last}last{/if}" style="padding-left:0px; line-height:50px;"> {$goods.formated_goods_price} </div>
-                  
-                  <!--{/foreach}--></td>
-                <td align="center" class="baobei no-border-right"  style="padding:0px;"><!--{foreach from=$item.goods_list item=goods name=goods}-->
-                  
-                  <div class="goods_desc  {if $smarty.foreach.goods.last}last{/if}" style="padding-left:0px;line-height:50px;"> {$goods.goods_number} </div>
-                  
-                  <!--{/foreach}--></td>
-                <td align="center" class="after-service baobei no-border-right" valign="middle"><!--{foreach from=$item.goods_list item=goods name=goods}-->
+                  <!--{/foreach}-->
+				  
+					<div class="goods_desc last"> 
+						<div class="goods_name">
+						{$lang.order_money}:
+						<!-- 预售活动 -->
+						<!-- {if $item.extension_code eq 'pre_sale' && $item.pre_sale_status == 1 && $item.pre_sale_deposit > 0} -->
+						{$item.pre_sale_deposit_format}
+						<!-- {else} -->
+						{$item.total_fee}
+						<!-- {/if} -->
+						</div>
+					</div>
+				</td>
+                 
+                <td align="center" class="after-service baobei no-border-right disable-by-cy" valign="middle"><!--{foreach from=$item.goods_list item=goods name=goods}-->
                 <!-- 预售商品支付定金不能退款 -->
             	<!-- {if $item.extension_code != 'pre_sale' || $item.pre_sale_status > 1} -->
                   <div class="goods_desc {if $smarty.foreach.goods.last}last{/if}"> 
                     <!-- {if ($item.shipping_status eq 0 || $item.shipping_status eq 3) && $item.pay_status eq 2} --> 
-                    {if $goods.back_can == 1} <a href="user.php?act=back_order&order_id={$item.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}&x=1" class="red2" >Refund(Whole order)</a><br />
+                    {if $goods.back_can == 1} <a href="user.php?act=back_order&order_id={$item.order_id}&goods_id={$goods.goods_id}&product_id={$goods.product_id}&x=1" class="red2" >Refund</a><br />
                     {else}
                     <p>[Refunding]</p>
                     {/if} 
@@ -1645,19 +1643,12 @@ menu.className=i==cursel?"active":"";
                     {/if} 
                     <!-- {/if} --> 
                     <!-- {/if} -->
-                    <a href="user.php?act=message_list">Contact Seller</a> </div>
+                    </div>
                   
                   <!--{/foreach}--></td>
-                <td rowspan="1" align="center" class="amount no-border-right"><p class="post-type"><strong>
-                <!-- 预售活动 -->
-                <!-- {if $item.extension_code eq 'pre_sale' && $item.pre_sale_status == 1 && $item.pre_sale_deposit > 0} -->
-				{$item.pre_sale_deposit_format}
-				<!-- {else} -->
-				{$item.total_fee}
-                <!-- {/if} -->
-                </strong></p></td>
-                <td rowspan="1" align="center" class="trade-status no-border-right">{$item.order_status}</br>
-                  <a href="user.php?act=order_detail&order_id={$item.order_id}" class="red2">Detail</a>
+               
+                <td rowspan="1" align="center" class="trade-status no-border-right disable-by-cy">
+                  
                   <!-- {if $item.invoice_no && $item.shipping_name neq '门店自提'} -->
                   
                   <div style="position:relative">
@@ -1686,6 +1677,10 @@ menu.className=i==cursel?"active":"";
                 <!-- {/if} --> 
                 </td>
                 <td rowspan="1" align="center" class="other">
+					<!-- {if $item.invoice_no && $item.shipping_name neq '门店自提'} -->
+					<a href="http://www.17track.net/en/track?nums={$item.invoice_no}" target="_blank">Track No.<br>{$item.invoice_no}</a>
+					<!-- {/if} --> 
+					
                 	<!-- {if $item.order_status1 eq 2 || $item.order_status1 eq 3} -->
                   <!-- {else} --> 
                   <!-- {if $item.pay_status eq 0 && !empty($item.pay_id)} --> 
@@ -1693,25 +1688,26 @@ menu.className=i==cursel?"active":"";
                   
                   <!-- {/if} --> 
                   <!-- {/if} --> 
-                  <font class="red2">{$item.handler}</font></br>
-                  
+                  <a href="user.php?act=order_detail&order_id={$item.order_id}" class="red2">{$item.handler}</a></br>
+
                   <!-- {if $item.shipping_status eq 2} --> 
+                  <div class="disable-by-cy">				  
                   <!-- {if $item.comment_s eq 0} --> 
                   Reviewed
                   <!-- {else} --> 
                   <a href="user.php?act=my_comment&s={$item.comment_s}&order_id={$item.order_id}#commtr_{$item.comment_s}" class="on_comment">Review</a> 
                   <!-- {/if} --><br />
-                  
+                  </div>
+				  
                   <!-- {if $item.shaidan_s eq 0} --> 
-                  Show Photo 
+                  Showed 
                   <!-- {else} --> 
                   <a href="user.php?act=shaidan_send&id={$item.shaidan_s}" class="on_comment">Show</a> 
                   <!-- {/if} --><br />
                   
                   <!-- {/if} --> 
-                  <!-- {if $item.shipping_status eq 2 || $item.order_status1 eq 2 || $item.order_status1 eq 3} --> 
-                  <a href="goods.php?id={$item.goods_list.0.goods_id}" target="_blank">Order again</a> 
-                  <!-- {/if} --></td>
+				  
+                  </td>
               </tr>
             </tbody>
             <script language="javascript" type="text/javascript">
@@ -2229,7 +2225,7 @@ menu.className=i==cursel?"active":"";
                   <div style="color:#999">Photo size must less than 2M, file should be gif,jpg,png,jpeg</div></td>
               </tr>
     <!-- {if $back_goods.shipping_time_end == 0} -->
-    <tr id="thh_1">
+    <tr id="thh_1" style="display:none">
     <!-- {else} -->
     <tr id="thh_1" style="display:none">
     <!-- {/if} -->
@@ -2244,7 +2240,7 @@ menu.className=i==cursel?"active":"";
     <!-- {if $smarty.get.x == 1} -->
 	<tbody id="thh_address" style="display:none">
     <!-- {else} -->
-	<tbody id="thh_address">
+	<tbody id="thh_address" style="display:none">
     <!-- {/if} -->
                 <tr>
                   <td width="15%" align="right" >Consignee Address:</td>
@@ -3240,10 +3236,10 @@ function updateEndTime(){
               <li class="first active">{$lang.label_address}</li>
             </ul>
           </div>
-          <div class="alert alert-success" style="display:none">
+          <div class="alert alert-success" style="disable-by-cy">
             <h4>Tips:</h4>
             <ul>
-              <li>您可对已有的地址进行编辑及删除，亦可新增收货地址</li>
+              <li>Edit delete or add address.</li>
             </ul>
           </div>
           <div class="mar_top"> 

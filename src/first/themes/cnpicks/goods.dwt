@@ -42,9 +42,9 @@
         <div id="preview" class="w600">
           <div  class="goods_img" id="li_{$goods.goods_id}">
             <!-- {if $pictures}-->
-            <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="600" height="600" name="goods_img" onclick="next_img()" />
+            <img  src="{$pictures.0.img_url}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="600" name="goods_img" onclick="next_img()" />
             <!-- {else} -->
-            <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="600" height="600" />
+            <img src="{$goods.goods_img}" class="goodsimg pic_img_{$goods.goods_id}" id="goods_bimg2" width="600" />
             <!-- {/if}-->
 			
             <a href="javascript:;" onclick="window.open('gallery.php?id={$goods.goods_id}'); return false;" target="_blank">
@@ -567,15 +567,19 @@
       <script type="text/javascript">
 	$(".ce_right").height($("#main_widget_1").height());
 </script> 
-
-    <div class="goods_desc"> <!-- #BeginLibraryItem "/library/goods_package_ecshop68.lbi" --><!-- #EndLibraryItem -->
+	{if $goods.goods_desc}
+    <div class="goods_desc"> 
+	{else}
+	<div class="goods_desc none"> 
+	{/if}
+	<!-- #BeginLibraryItem "/library/goods_package_ecshop68.lbi" --><!-- #EndLibraryItem -->
         <div id="wrapper" class="m m1">
           <div class="dt">
             <ul class="tab" id="nav">
               <li class="boldtit_list h_list" onclick="change_widget(1, this);"><a href="{$url}#os_canshu">Description</a></li>
-              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_jieshao" >商品介绍</a></li>
-              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_pinglun" >商品评价({$review_count})</a></li>
-              <li class="boldtit_list" onclick="change_widget(1, this);" style="display:none;"><a href="{$url}#os_shouhou" >售后保障</a></li>
+              <li class="boldtit_list disable-by-cy" onclick="change_widget(1, this);"><a href="{$url}#os_jieshao" >商品介绍</a></li>
+              <li class="boldtit_list disable-by-cy" onclick="change_widget(1, this);"><a href="{$url}#os_pinglun" >Review({$review_count})</a></li>
+              <li class="boldtit_list disable-by-cy" onclick="change_widget(1, this);"><a href="{$url}#os_shouhou" >售后保障</a></li>
             </ul>
             <div style="display:none;width:170px;float:right; position:relative;left:0;top:0"> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart"  class="right_add" >Add to Cart</a>
               <div class="ce_right">
@@ -618,20 +622,10 @@
               <div class="blank20"></div>
               <div class="detail-content"> {$goods.goods_desc} </div>
             </div>
-            <div class="dc" id="os_pinglun" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/my_comments.lbi" --><!-- #EndLibraryItem --> </div>
-            <div class="dc" id="os_advantage" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/packing_list.lbi" --><!-- #EndLibraryItem --> </div>
-            <div class="dc" id="os_shouhou" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/baozhang.lbi" --><!-- #EndLibraryItem --> </div>
-            <div class="dc" id="os_changjian" style="display:none;">
-              <div class="blank20"></div>
-              <!-- #BeginLibraryItem "/library/common_problem.lbi" --><!-- #EndLibraryItem --> </div>
+            
           </div>
         </div>
+		
         <script type="text/javascript">
             var obj11 = document.getElementById("main-nav-holder");
             var top11 = getTop(obj11);
@@ -643,6 +637,22 @@
             }
         </script>
       </div>
+	  
+	<div class="dc">
+		<div class="dc" id="os_pinglun">
+		  <div class="blank20"></div>
+		  <!-- #BeginLibraryItem "/library/my_comments.lbi" --><!-- #EndLibraryItem --> </div>
+		<div class="dc disable-by-cy" id="os_advantage">
+		  <div class="blank20"></div>
+		  <!-- #BeginLibraryItem "/library/packing_list.lbi" --><!-- #EndLibraryItem --> </div>
+		<div class="dc disable-by-cy" id="os_shouhou">
+		  <div class="blank20"></div>
+		  <!-- #BeginLibraryItem "/library/baozhang.lbi" --><!-- #EndLibraryItem --> </div>
+		<div class="dc disable-by-cy" id="os_changjian">
+		  <div class="blank20"></div>
+		  <!-- #BeginLibraryItem "/library/common_problem.lbi" --><!-- #EndLibraryItem --> </div>
+	</div>
+			  
     <!-- #BeginLibraryItem "/library/goods_brands.lbi" --><!-- #EndLibraryItem -->  
     </div>
     <!--right end--> 
@@ -821,7 +831,7 @@ function changePriceAll()
 
 
 </script>
-<div align="center" id="compareBox" style="display:none">
+<div align="center" id="compareBox" class="disable-by-cy">
   <div class="menu">
     <ul>
       <li class="current" data-value='compare'>对比栏</li>
@@ -831,7 +841,7 @@ function changePriceAll()
     <div style="clear:both"></div>
   </div>
   <div id="compareList"></div>
-  <div id="historyList" style="display:none;"><span id="sc-prev" class="sc-prev scroll-btn"></span><span id="sc-next" class="sc-next scroll-btn"></span>
+  <div id="historyList" class="disable-by-cy"><span id="sc-prev" class="sc-prev scroll-btn"></span><span id="sc-next" class="sc-next scroll-btn"></span>
     <div class="scroll_wrap">{insert name='history_list'}</div>
   </div>
 </div>
