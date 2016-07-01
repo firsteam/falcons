@@ -174,52 +174,95 @@ else
     /* 初始化搜索条件 */
     $keywords  = '';
     $tag_where = '';
+   
+   
+   
     if (!empty($_REQUEST['keywords']))
     {
-        /* 代码修改_START   By    www.68ecshop.com   */
-		include_once('includes/lib_splitword_www_68ecshop_com.php');
-		$Recordkw = str_replace(array("\'"), array(''), trim($_REQUEST['keywords']));
-		$cfg_soft_lang_www_68ecshop_com = 'utf-8';
-        $sp_www_68ecshop_com = new SplitWord($cfg_soft_lang_www_68ecshop_com, $cfg_soft_lang_www_68ecshop_com);
-        $sp_www_68ecshop_com->SetSource($Recordkw, $cfg_soft_lang_www_68ecshop_com, $cfg_soft_lang_www_68ecshop_com);
-        $sp_www_68ecshop_com->SetResultType(1);
-        $sp_www_68ecshop_com->StartAnalysis(TRUE);
-        $word_www_68ecshop_com = $sp_www_68ecshop_com->GetFinallyResult(' '); 
-		//echo  $word_www_68ecshop_com;
-        $word_www_68ecshop_com = preg_replace("/[ ]{1,}/", " ", trim($word_www_68ecshop_com));
-        $replacef_www_68ecshop_com = explode(' ', $word_www_68ecshop_com);
+
+        $arr = array();
+
+        if (stristr($_REQUEST['keywords'], ' AND ') !== false)
+
+        {
+
+            /* 检查关键字中是否有AND，如果存在就是并 */
+
+            $arr        = explode('AND', $_REQUEST['keywords']);
+
+            $operator   = " AND ";
+
+        }
+
+        elseif (stristr($_REQUEST['keywords'], ' OR ') !== false)
+
+        {
+
+            /* 检查关键字中是否有OR，如果存在就是或 */
+
+            $arr        = explode('OR', $_REQUEST['keywords']);
+
+            $operator   = " OR ";
+
+        }
+
+        elseif (stristr($_REQUEST['keywords'], ' + ') !== false)
+
+        {
+
+            /* 检查关键字中是否有加号，如果存在就是或 */
+
+            $arr        = explode('+', $_REQUEST['keywords']);
+
+            $operator   = " OR ";
+
+        }
+
+        else
+
+        {
+
+            /* 检查关键字中是否有空格，如果存在就是并 */
+
+            $arr[]        = $_REQUEST['keywords'];
+
+            $operator   = " AND ";
+
+        }
+       
+	   
+	  
 
 
         $keywords = 'AND (';
         $goods_ids = array();
-        foreach ($replacef_www_68ecshop_com AS $key => $val)
+
+        foreach ($arr AS $key => $val)
+
         {
-            if ($key > 0 && $key < count($replacef_www_68ecshop_com) && count($replacef_www_68ecshop_com) > 1)
+
+            if ($key > 0 && $key < count($arr) && count($arr) > 1)
+
             {
-                $keywords .= " OR ";
+
+                $keywords .= $operator;
+
             }
             $val        = mysql_like_quote(trim($val));
             $sc_dsad    = $_REQUEST['sc_ds'] ? " OR goods_desc LIKE '%$val%'" : '';
             $keywords  .= "(goods_name LIKE '%$val%' OR goods_sn LIKE '%$val%' OR keywords LIKE '%$val%' $sc_dsad)";
 
-            $sql = 'SELECT DISTINCT goods_id FROM ' . $ecs->table('tag') . " WHERE tag_words LIKE '%$val%' ";
-            $res = $db->query($sql);
-            while ($row = $db->FetchRow($res))
-            {
-                $goods_ids[] = $row['goods_id'];
-            }
-        }
-		
-		//$db->autoReplace($ecs->table('keywords'), array('date' => local_date('Y-m-d'),
-        //'searchengine' => 'ecshop', 'keyword' => htmlspecialchars_decode(str_replace('%', '', $Recordkw)), 'count' => 1), array('count' => 1));
+            
 
-		/* 代码修改_END   By    www.68ecshop.com   */
+
+
+            $db->autoReplace($ecs->table('keywords'), array('date' => local_date('Y-m-d'),'searchengine' => 'ecshop', 'keyword' => addslashes(str_replace('%', '', $val)), 'count' => 1), array('count' => 1));
+
+        }
+
         $keywords .= ')';
 
-		//echo "<pre>";
-		//print_r($goods_ids);
 
-		//echo $keywords;
 
         $goods_ids = array_unique($goods_ids);
         $tag_where = implode(',', $goods_ids);
@@ -228,6 +271,17 @@ else
             $tag_where = 'OR g.goods_id ' . db_create_in($tag_where);
         }
     }
+	
+    //$keywords  = " and (goods_name LIKE '%".$_REQUEST['keywords']."%' OR goods_sn LIKE '%".$_REQUEST['keywords']."%' OR keywords LIKE ''%".$_REQUEST['keywords']."%'')";
+	/*
+	$sql = 'SELECT DISTINCT goods_id FROM ' . $ecs->table('tag') . " WHERE tag_words LIKE '%".$_REQUEST['keywords']."%' ";
+	$res = $db->query($sql);
+	while ($row = $db->FetchRow($res))
+	{
+		$goods_ids[] = $row['goods_id'];
+	}*/
+			
+	
 
     $category   = !empty($_REQUEST['category']) ? intval($_REQUEST['category'])        : 0;
     $categories = ($category > 0)               ? ' AND ' . get_children($category)    : '';
