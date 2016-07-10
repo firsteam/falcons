@@ -226,8 +226,8 @@ $this->assign('promotion_info1', get_promotion_info1());
 <!-- header end -->
 <div class="globa-nav">
   <div class="w">
-    <div class="allGoodsCat Left" onmouseover="_show_(this)" onmouseout="_hide_(this)"> 
-      <a href="catalog.php" class="menuEvent" title="查看全部商品分类"><strong class="catName">全部商品分类</strong><i></i></a>
+    <div class="allGoodsCat Right disable-by-cy" onmouseover="_show_(this)" onmouseout="_hide_(this)"> 
+      <a href="catalog.php" class="menuEvent" title="Departments"><strong class="catName">Departments</strong><i></i></a>
       <div class="expandMenu all_cat"> {include file='library/header_tan.lbi'} </div>
     </div>
     {include file='library/head_nav.lbi'} </div>

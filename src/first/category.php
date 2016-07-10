@@ -309,8 +309,8 @@ else
 			}
 			else
 			{
-				$brand_zimu['其他']='其它'; 
-				$brands[$bkey]['shouzimu']='其它';
+				$brand_zimu['More']='More'; 
+				$brands[$bkey]['shouzimu']='More';
 			}		
 		}
 		ksort($brand_zimu);
@@ -318,7 +318,7 @@ else
 		if ($brand)
 		{
 				$condition[] = array(
-					'cond_type' => "品牌" ,
+					'cond_type' => "Brand" ,
 					'cond_name' => $brand_name ,
 					'cond_url' => build_uri('category', array('cid' => $cat_id, 'bid' => 0, 'price_min'=>$price_min, 'price_max'=> $price_max, 'filter_attr'=>$filter_attr_str, 'filter'=>$filter), $cat['cat_name']) ,
 				);
@@ -327,7 +327,7 @@ else
 		if ($price_min || $price_max)
 		{
 				$condition[] =array(
-						'cond_type'=> '价格',
+						'cond_type'=> 'Price',
 						'cond_name'=> $price_min."-".$price_max,
 						'cond_url' => build_uri('category', array('cid'=>$cat_id, 'bid'=>$brand, 'price_min'=>0, 'price_max'=> 0, 'filter_attr'=>$filter_attr_str, 'filter'=>$filter), $cat['cat_name'])
 					); 

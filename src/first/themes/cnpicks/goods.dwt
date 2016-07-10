@@ -568,7 +568,7 @@
 	$(".ce_right").height($("#main_widget_1").height());
 </script> 
 	{if $goods.goods_desc}
-    <div class="goods_desc"> 
+    <div class="goods_desc disable-by-cy"> 
 	{else}
 	<div class="goods_desc none"> 
 	{/if}

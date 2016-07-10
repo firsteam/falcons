@@ -5,7 +5,7 @@
   </li>
   <!--{/foreach}-->
 </ul>
-<div class="jfocus-trigeminy">
+<div class="jfocus-trigeminy disable-by-cy ">
   <div class="tm-chaoshi-markets">
     <div class="markets">
       <p class="row2">

@@ -53,10 +53,6 @@
       </div>
       <div class="blank"></div>
     </div>
-    <div class="left-extra"> 
-	<!-- #BeginLibraryItem "/library/article_category_tree.lbi" --><!-- #EndLibraryItem --> 
-	<!-- TemplateBeginEditable name="左边广告区域" --> <!-- TemplateEndEditable --> 
-    </div>
     <div class="blank"></div>
   </div>
   <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> 

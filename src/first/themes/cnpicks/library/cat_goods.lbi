@@ -1,7 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
 $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS['smarty']->_var['goods_cat']['id']));
-
 ?>
 <div class="w floor">
 <div class="floor02 clearfix">
@@ -15,7 +14,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         </a> 
         {/foreach}
     <div class="m-floor">
-      <div class="header left_floor">
+      <div class="header left_floor disable-by-cy">
         <h2>
         	<span>
         		<!-- {if $goods_cat.id eq 1} -->1F
@@ -34,18 +33,11 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
           <div class="words">
             <?php
             $ii = 0;
-			$GLOBALS['smarty']->assign('child_cat',get_hot_cat_tree($GLOBALS['smarty']->_var['goods_cat']['id'], 3));
+			$GLOBALS['smarty']->assign('child_cat',get_child_tree($GLOBALS['smarty']->_var['goods_cat']['id']));
 	    ?>
             <!--{foreach from=$child_cat item=cat name=name1}-->         
-            <!--{foreach from=$cat.child item=cat_child name=name}--> 
-             <?php
-	        $ii = $ii + 1;
-			$GLOBALS['smarty']->assign('ii', $ii);
-	?>   
-    		<!--{if  $ii < 10 }-->
-            	<a href="{$cat_child.url}"><b>{$cat_child.name|escape:html}</b></a> 
-            <!-- {/if} -->
-            <!--{/foreach}--> 
+           
+            	<a href="{$cat.url}"><b>{$cat.name|escape:html}</b></a> 
             <!--{/foreach}--> 
           </div>
           <?php
@@ -57,20 +49,21 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
         </div>
       </div>
       <div class="content mid_floor">
+
         <div class="goods">
           <div class="middle-layout">
             <ul class="tabs-nav">
               <li class="tabs-selected">
-                <h3>精挑细选</h3>
+                <h3><a href="{$goods_cat.url}" target="_blank">{$goods_cat.name|escape:html}</a></h3>
               </li>
               <?php
 	 
-			$GLOBALS['smarty']->assign('child_cat',get_child_cat($GLOBALS['smarty']->_var['goods_cat']['id'], 3));
-	?>
+			    $GLOBALS['smarty']->assign('child_cat',get_child_cat($GLOBALS['smarty']->_var['goods_cat']['id'], 10));
+	          ?>
               <!--{foreach from=$child_cat item=cat_item name=child_cat}-->
 
               <li class="">
-                <h3>{$cat_item.name|escape:html}</h3>
+                <h3><a href="{$cat_item.url}">{$cat_item.name|escape:html}</a></h3>
               </li>
               <!--{/foreach}-->
             </ul>
@@ -80,12 +73,12 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
-              <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" height="160" width="160" class="pic_img_{$goods.id}"> </a>
+              <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 5 == 0}style="border-right:none"{/if}>
+                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" width="220" class="pic_img_{$goods.id}"> </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
-                  <p class="o-price">{$goods.market_price}</p>
+                  <p class="o-price disable-by-cy">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
-                  <a class="j_AddCart" onclick="addToCart({$goods.id})" title="加入购物车"></a> <i class="product-mask"></i> </div>
+                  <a class="j_AddCart" href="javascript:addToCart({$goods.id})"></a> <i class="product-mask"></i> </div>
               </div>
               <!--{/foreach}--> 
             </div>
@@ -102,12 +95,12 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 
 		?>
                 <!--{foreach from=$new_goods item=goods name=goods}-->
-                <div class="j_ItemInfo" {if $smarty.foreach.goods.iteration % 4 == 0}style="border-right:none"{/if}>
-                  <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" height="160" width="160"></a>
+                <div class="j_ItemInfo" {if $smarty.foreach.goods.iteration % 5 == 0}style="border-right:none"{/if}>
+                  <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="220"></a>
                     <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
-                    <p class="o-price">{$goods.market_price}</p>
+                    <p class="o-price disable-by-cy">{$goods.market_price}</p>
                     <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>
-                    <a class="j_AddCart" onclick="addToCart({$goods.id})" title="加入购物车"></a> </div>
+                    <a class="j_AddCart" href="javascript:addToCart({$goods.id})"></a> </div>
                 </div>
                 <!--{/foreach}-->
               </ul>
@@ -116,7 +109,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
           </div>
         </div>
       </div>
-      <div class="promo">
+      <div class="promo disable-by-cy">
         <?php
 		 $GLOBALS['smarty']->assign('index_image1',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告1', 1));
 	 ?>
@@ -125,7 +118,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		 $GLOBALS['smarty']->assign('index_image2',get_advlist('首页-分类ID'.$GLOBALS['smarty']->_var['goods_cat']['id'].'右侧广告2', 1));
 	 ?>
         {foreach from=$index_image2 item=ad name=index_image} <a  href="{$ad.url}" class="j_ItemInfo"> <img data-original="{$ad.image}" src="themes/cnpicks/images/loading2.gif" alt="" height="279" width="150"> </a> {/foreach} </div>
-      <div class="promo_brand">
+      <div class="promo_brand disable-by-cy">
       	<div class="recommend-brand">
         <div class="gw_con">
         	<div class="anli">

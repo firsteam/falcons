@@ -130,7 +130,7 @@ function index_get_group_buyex( )
 
 function get_cat_recommend_type( $cid )
 {
-		$sql = "select rc.recommend_type from ".$GLOBALS['ecs']->table( "category" )." as c left join ".$GLOBALS['ecs']->table( "cat_recommend" ).( " as rc on c.cat_id = rc.cat_id where c.cat_id=".$cid );
+		$sql = "select rc.recommend_type from ".$GLOBALS['ecs']->table( "category" )." as c left join ".$GLOBALS['ecs']->table( "cat_recommend" ).( " as rc on c.cat_id = rc.cat_id where c.cat_id='".$cid."'" );
 		return $GLOBALS['db']->getOne( $sql );
 }
 
@@ -882,7 +882,7 @@ function build_uri_ex( $app, $params, $append = "", $page = 0, $keywords = "", $
 
 function get_top_parent_cat( $nid )
 {
-		$sql = "select parent_id from ".$GLOBALS['ecs']->table( "category" )." where cat_id = ".$nid."";
+		$sql = "select parent_id from ".$GLOBALS['ecs']->table( "category" )." where cat_id = '".$nid."'";
 		$pid = $GLOBALS['db']->getOne( $sql );
 		return $pid;
 }
@@ -1201,13 +1201,13 @@ function get_top_parentid( $id = 0, $type = "" )
 		{
 				if ( $type == "goods" )
 				{
-						$sql = "SELECT cat_id FROM ".$GLOBALS['ecs']->table( "goods" )." WHERE goods_id=".$id;
+						$sql = "SELECT cat_id FROM ".$GLOBALS['ecs']->table( "goods" )." WHERE goods_id='".$id."'";
 						$id = $GLOBALS['db']->getOne( $sql );
 						$res['goods_parentid'] = $id;
 				}
 				while ( $id )
 				{
-						$sql = "SELECT\tcat_id,parent_id FROM ".$GLOBALS['ecs']->table( "category" )." WHERE cat_id=".$id;
+						$sql = "SELECT\tcat_id,parent_id FROM ".$GLOBALS['ecs']->table( "category" )." WHERE cat_id='".$id."'";
 						$cat = $GLOBALS['db']->getRow( $sql );
 						$id = $cat['parent_id'];
 				}
@@ -1291,7 +1291,7 @@ function get_cat_by_type( $num, $rec = 3 )
 
 function get_top_class_cat( $nid )
 {
-		$sql = "select parent_id from ".$GLOBALS['ecs']->table( "category" )." where cat_id = ".$nid."";
+		$sql = "select parent_id from ".$GLOBALS['ecs']->table( "category" )." where cat_id = '".$nid."'";
 		$temp_id = 0;
 		$pid = $GLOBALS['db']->getOne( $sql );
 		if ( 0 < $pid )
@@ -1305,14 +1305,14 @@ function get_top_class_cat( $nid )
 
 function get_parent_cat_id( $nid )
 {
-		$sql = "select parent_id from ".$GLOBALS['ecs']->table( "category" )." where cat_id = ".$nid."";
+		$sql = "select parent_id from ".$GLOBALS['ecs']->table( "category" )." where cat_id = '".$nid."'";
 		return $GLOBALS['db']->getOne( $sql );
 }
 
 function get_hot_cat_tree( $pid = 0, $rec = 3 )
 {
 		$arr = array( );
-		$sql = "select c.*, rc.recommend_type from ".$GLOBALS['ecs']->table( "category" )." as c left join ".$GLOBALS['ecs']->table( "cat_recommend" ).( " as rc on c.cat_id = rc.cat_id where c.parent_id=".$pid." order by c.sort_order asc, c.cat_id asc" );
+		$sql = "select c.*, rc.recommend_type from ".$GLOBALS['ecs']->table( "category" )." as c left join ".$GLOBALS['ecs']->table( "cat_recommend" ).( " as rc on c.cat_id = rc.cat_id where c.parent_id='".$pid."' order by c.sort_order asc, c.cat_id asc" );
 		$res = $GLOBALS['db']->getAll( $sql );
 		foreach ( $res as $row )
 		{
@@ -1339,7 +1339,7 @@ function get_hot_cat_tree( $pid = 0, $rec = 3 )
 function get_hot_cat_tree2( $pid = 0, $rec = 3 )
 {
 		$arr = array( );
-		$sql = "select c.*, rc.recommend_type from ".$GLOBALS['ecs']->table( "category" )." as c left join ".$GLOBALS['ecs']->table( "cat_recommend" ).( " as rc on c.cat_id = rc.cat_id where rc.recommend_type=".$rec." and c.parent_id={$pid} order by c.sort_order asc, c.cat_id asc" );
+		$sql = "select c.*, rc.recommend_type from ".$GLOBALS['ecs']->table( "category" )." as c left join ".$GLOBALS['ecs']->table( "cat_recommend" ).( " as rc on c.cat_id = rc.cat_id where rc.recommend_type='".$rec."' and c.parent_id={$pid} order by c.sort_order asc, c.cat_id asc" );
 		$res = $GLOBALS['db']->getAll( $sql );
 		foreach ( $res as $row )
 		{

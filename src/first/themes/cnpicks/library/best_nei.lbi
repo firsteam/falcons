@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- {if $best_goods} -->
-<div class="m" id="i-right">
+<div class="m disable-by-cy" id="i-right">
   <div id="hotsale" class="hot-sales-main">
     <div class="hd">热卖推荐</div>
     <div class="mc list-h">

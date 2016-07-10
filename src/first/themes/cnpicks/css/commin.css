@@ -677,7 +677,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 }
 /*头部*/
 #mallSearch .button, .sn-qrcode p, .sn-qrcode1 p, #mallLogo .mlogo s, .mui-global-iconfont,.sn-quick-menu .sn-site-link ,.sn-quick-menu .sn-mobile-link,.breadcrumb i,.globa-nav .allGoodsCat .menuEvent i,#site-nav .sn-qrcode .app_xiazai a.app_store,#site-nav .sn-qrcode .app_xiazai1 a.app_android{
-	background: transparent url(../images/header/user_header.png) no-repeat;
+	background: url(../images/header/user_header.png) no-repeat;
 	font-size: 12px;
 	font-style: normal;
 }
@@ -756,7 +756,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	line-height: 32px;
 	display: inline-block;
 *display:inline;
-*zoom:1;
+*zoom:1; float:left;
 	position: relative;
 }
 #site-nav .sn-quick-menu .sn-separator {
@@ -2254,7 +2254,6 @@ dt#qqdt {
 	position: relative;
 	width: 210px;
 	z-index: 103;
-	display: none;
 }
 .globa-nav .allGoodsCat .menuEvent {
 	color: #fff;

@@ -3046,7 +3046,7 @@ elseif ($_REQUEST['act'] == 'operate')
         $delivery_id = $db->insert_id();
 
 		$shipping_order_id = $db->getRow("select shipping_id from ".$ecs->table('delivery_order')."where delivery_id=".$delivery_id);
-		$shipping_order_code = $db->getRow("select shipping_code from ".$ecs->table('shipping')."where shipping_id=".$shipping_order_id['shipping_id']);
+		$shipping_order_code = $db->getRow("select shipping_code from ".$ecs->table('shipping')."where shipping_id='".$shipping_order_id['shipping_id']."'");
 		if ($shipping_order_code['shipping_code'] == "tc_express")
 		{
 			new_kuaidi_order($delivery_id);
@@ -4679,7 +4679,7 @@ elseif ($_REQUEST['act'] == 'operate_post')
         $delivery_id = $db->insert_id();
 		
 		$shipping_order_id = $db->getRow("select shipping_id from ".$ecs->table('delivery_order')."where delivery_id=".$delivery_id);
-		$shipping_order_code = $db->getRow("select shipping_code from ".$ecs->table('shipping')."where shipping_id=".$shipping_order_id['shipping_id']);
+		$shipping_order_code = $db->getRow("select shipping_code from ".$ecs->table('shipping')."where shipping_id='".$shipping_order_id['shipping_id']."'");
 		if ($shipping_order_code['shipping_code'] == "tc_express")
 		{
 			new_kuaidi_order($delivery_id);

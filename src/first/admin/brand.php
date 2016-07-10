@@ -84,7 +84,7 @@ elseif ($_REQUEST['act'] == 'insert')
     $img_name = basename($image->upload_image($_FILES['brand_logo'],'brandlogo'));
 
      /*处理URL*/
-    $site_url = sanitize_url( $_POST['site_url'] );
+    $site_url = sanitize_url( $_POST['site_url'],'' );
 
     /*插入数据*/
 
@@ -148,8 +148,9 @@ elseif ($_REQUEST['act'] == 'updata')
     $is_show = isset($_REQUEST['is_show']) ? intval($_REQUEST['is_show']) : 0;
     $brand_cat = intval($_REQUEST['supplier_type']);
      /*处理URL*/
-    $site_url = sanitize_url( $_POST['site_url'] );
-
+    //$site_url = sanitize_url( $_POST['site_url'] );
+	$site_url = $_POST['site_url'];
+	
     /* 处理图片 */
     $img_name = basename($image->upload_image($_FILES['brand_logo'],'brandlogo'));
     $param = "brand_name = '$_POST[brand_name]',  site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]',brand_cat ='$brand_cat' ";
@@ -349,7 +350,7 @@ function get_brandlist()
         /* 记录总数以及页数 */
         if (isset($_POST['brand_name']))
         {
-            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE brand_name = \''.$_POST['brand_name'].'\'';
+            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE site_url like \'%'.$_POST['brand_name'].'%\' or brand_name = \''.$_POST['brand_name'].'\'';
         }
         else
         {
@@ -371,7 +372,7 @@ function get_brandlist()
             {
                 $keyword = $_POST['brand_name'];
             }
-            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE brand_name like '%{$keyword}%' ORDER BY sort_order ASC";
+            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE site_url like '%{$keyword}%' or brand_name like '%{$keyword}%' ORDER BY sort_order ASC";
         }
         else
         {

@@ -321,11 +321,11 @@
       <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->
       <form action="" method="post" name="theForm" >
         <div class="box_attr_ecshop68" id="attr_list_ul">
-          <h4 id="xxxccczzz"><font color="#E31939">{$cat_name_curr} - </font> 商品筛选</h4>
+          <h4 id="xxxccczzz"><font color="#E31939">{$cat_name_curr} </font> </h4>
           <!--{if $condition}-->
           <dl style="border-bottom:1px dotted #ccc;border-top:none;">
-            <dt>已选条件：</dt>
-            <dd class="moredd" style="text-align:right;">&nbsp;<a href="category.php?id={$category}">全部撤销</dd>
+            <dt>Filter:</dt>
+            <dd class="moredd" style="text-align:right;">&nbsp;<a href="category.php?id={$category}">Disable All</dd>
             <dd >
               <ul class="selected_attr">
                 {foreach from=$condition item=cond}
@@ -341,14 +341,14 @@
             <dt>{$lang.brand}：</dt>
             <dd class="moredd">
               <label id="brand_more"></label>
-              <label> <a href="javascript:void(0)" onclick="showDuoXuan('attr_group_dl_brand', 'brand');" class="duo_68ecshop"><font class="duo_b">+</font>多选</a> </label>
+              <label> <a href="javascript:void(0)" onclick="showDuoXuan('attr_group_dl_brand', 'brand');" class="duo_68ecshop"><font class="duo_b">+</font>Multi</a> </label>
             </dd>
             <dd>
               <div id="brand_sobox" style="display:none;">
                 <input type="text" id="brand_sobox_input" value="可搜索拼音、汉字查找品牌" onfocus="if(this.value=='可搜索拼音、汉字查找品牌') {this.value=''}" 
 	     onblur="if (this.value=='') {this.value='可搜索拼音、汉字查找品牌'}" onkeyup="getBrand_By_Name(this.value);">
               </div>
-              <div id="brand_zimu" style="display:none;"> <span class="span"><a href="javascript:void(0);" onmouseover="getBrand_By_Zimu(this,'')" id="brand_zimu_all">所有品牌</a></span> {foreach from=$brand_zimu_68ecshop item=bzimu} <span><a href="javascript:void(0);"  onmouseover="getBrand_By_Zimu(this,'{$bzimu}')" >{$bzimu}</a></span> {/foreach} </div>
+              <div id="brand_zimu" style="display:none;"> <span class="span"><a href="javascript:void(0);" onmouseover="getBrand_By_Zimu(this,'')" id="brand_zimu_all">All</a></span> {foreach from=$brand_zimu_68ecshop item=bzimu} <span><a href="javascript:void(0);"  onmouseover="getBrand_By_Zimu(this,'{$bzimu}')" >{$bzimu}</a></span> {/foreach} </div>
               <div id="brand_abox_father" > {if $brand_have_logo}
                 <ul id="brand_abox" class="brand_abox_imgul">
                   <!--{foreach from=$brands name="brands_68ecshop" item=brand}--> 
@@ -375,7 +375,7 @@
                   <tr>
 		  <!-- safety_20150625 change_start -->
 		  
-	      <td><a id="button_brand"></a><a class="button_jd" onclick="duoxuan_Submit('brand',0,'{$filter_attr_count_num}','{$category}','{$brand_id}', '{$price_min}', '{$price_max}', '{$filter_attr}','{$filter}');" >确定</a><a href="javascript:void(0);" onclick="hiddenDuoXuan('attr_group_dl_brand', 'brand');" class="button_jd" style="margin-left:10px;white-space:nowrap;">取消</a></td>
+	      <td><a id="button_brand"></a><a class="button_jd" onclick="duoxuan_Submit('brand',0,'{$filter_attr_count_num}','{$category}','{$brand_id}', '{$price_min}', '{$price_max}', '{$filter_attr}','{$filter}');" >{$lang.button_submit}</a><a href="javascript:void(0);" onclick="hiddenDuoXuan('attr_group_dl_brand', 'brand');" class="button_jd" style="margin-left:10px;white-space:nowrap;">{$lang.button_cancel}</a></td>
 		  
 		  <!-- safety_20150625 change_end -->
 		  </tr>
@@ -419,7 +419,7 @@
             <dt>{$filter_attr.filter_attr_name|escape:html}：</dt>
             <dd class="moredd">
               <label id="attr_more_{$smarty.foreach.filter_attr_list.iteration}"></label>
-              <label><a href="javascript:void(0)" onclick="showDuoXuan('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}', '{$smarty.foreach.filter_attr_list.iteration}');" class="duo_68ecshop"><font class="duo_b">+</font>多选</a></label>
+              <label><a href="javascript:void(0)" onclick="showDuoXuan('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}', '{$smarty.foreach.filter_attr_list.iteration}');" class="duo_68ecshop"><font class="duo_b">+</font>Multi</a></label>
             </dd>
             <dd>
               <ul id="attr_abox_{$smarty.foreach.filter_attr_list.iteration}">
@@ -478,10 +478,10 @@
       	<!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem --> 
 	  	<!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
       </div>
-      <div class="left"> 
+      <div class="left disable-by-cy"> 
 	  	<!-- #BeginLibraryItem "/library/category_tree2.lbi" --><!-- #EndLibraryItem --> 
         {if $new_goods}
-      	<div class="m limitbuy " id="limitbuy537">
+      	<div class="m limitbuy disable-by-cy" id="limitbuy537">
         <div class="mt">
           <h2>新品推荐</h2>
         </div>
@@ -517,7 +517,7 @@
       <div id="ad_left" reco_id="6" class="m m0 hide"></div>
       <!--搜索广告推荐--> 
       {if $hot_goods}
-      <div class="m limitbuy " id="limitbuy537">
+      <div class="m limitbuy disable-by-cy" id="limitbuy537">
         <div class="mt">
           <h2>热卖商品</h2>
         </div>

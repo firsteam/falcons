@@ -994,8 +994,8 @@ function openSpeDiv(message, goods_id, parent) {
 	newDiv.style.position = "absolute";
 	newDiv.style.zIndex = "10000";
 	newDiv.style.width = "300px";
-	newDiv.style.height = "260px";
-	newDiv.style.top = (parseInt(scrollPos + 200)) + "px";
+	//newDiv.style.height = "260px";
+	newDiv.style.top = (parseInt(scrollPos + 50)) + "px";
 	newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
 	newDiv.style.overflow = "auto";
 	newDiv.style.background = "#FFF";
@@ -1023,7 +1023,7 @@ function openSpeDiv(message, goods_id, parent) {
 			newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
 		}
 	}
-	newDiv.innerHTML += "<br /><center>[<a href='javascript:submit_div(" + goods_id + "," + parent + ")' class='f6' >" + btn_buy + "</a>]&nbsp;&nbsp;[<a href='javascript:cancel_div()' class='f6' >" + is_cancel + "</a>]</center>";
+	newDiv.innerHTML += "<br /><center>[<a href='javascript:submit_div(" + goods_id + "," + parent + ")' class='f6' >" + btn_buy + "</a>]&nbsp;&nbsp;[<a href='javascript:cancel_div()' class='f6' >" + is_cancel + "</a>]</center><br/>";
 	document.body.appendChild(newDiv);
 
 	// mask图层

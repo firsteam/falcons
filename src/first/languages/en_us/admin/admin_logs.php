@@ -25,7 +25,7 @@ $_LANG['view_ip'] = '按IP地址查看';
 $_LANG['select_ip'] = '选择IP地址...';
 $_LANG['drop_logs'] = '清除日志';
 $_LANG['select_date'] = '选择清除的日期...';
-$_LANG['comfrom'] = '确定';
+$_LANG['confirm'] = '确定';
 
 $_LANG['week_date'] = '一周之前';
 $_LANG['month_date'] = '一个月之前';

@@ -193,7 +193,7 @@ $this->assign('promotion_info1', get_promotion_info1());
               <div class="mallSearch-input clearfix">
                 <div id="s-combobox-135" class="s-combobox">
                   <div class="s-combobox-input-wrap">
-                    <input aria-haspopup="true" role="combobox" class="s-combobox-input" name="keywords" id="keyword" tabindex="9" accesskey="s" onkeyup="STip(this.value, event);" autocomplete="off"  value="{if $search_keywords}{$search_keywords|escape}{else}请输入关键词{/if}" onFocus="if(this.value=='请输入关键词'){this.value='';}else{this.value=this.value;}" onBlur="if(this.value=='')this.value='请输入关键词'" type="text">
+                    <input aria-haspopup="true" role="combobox" class="s-combobox-input" name="keywords" id="keyword" tabindex="9" accesskey="s" onkeyup="STip(this.value, event);" autocomplete="off"  value="{if $search_keywords}{$search_keywords|escape}{else}Search{/if}" onFocus="if(this.value=='Search'){this.value='';}else{this.value=this.value;}" onBlur="if(this.value=='')this.value='Search'" type="text">
                   </div>
                 </div>
                 <input type="submit" value="Search" class="button"  >
@@ -214,15 +214,15 @@ $this->assign('promotion_info1', get_promotion_info1());
 </div>
 <div class="globa-nav" style="visible:hidden">
   <div class="w">
-  	<div class="allGoodsCat Left"> 
-    	<a href="catalog.php" class="menuEvent" title="查看全部商品分类"><strong class="catName">全部商品分类</strong><i></i></a>
+  	<div class="allGoodsCat Left disable-by-cy"> 
+    	<a href="catalog.php" class="menuEvent" title="Departments"><strong class="catName">Departments</strong><i></i></a>
    </div>
    {include file='library/head_nav.lbi'}
   </div>
 </div>
 <script type="text/javascript">function _show_(h,b){if(!h){return;}if(b&&b.source&&b.target){var d=(typeof b.source=="string")?M.$("#"+b.source):b.source;var e=(typeof b.target=="string")?M.$("#"+b.target):b.target;if(d&&e&&!e.isDone){e.innerHTML=d.value;d.parentNode.removeChild(d);if(typeof b.callback=="function"){b.callback();}e.isDone=true;}}M.addClass(h,"hover");if(b&&b.isLazyLoad&&h.isDone){var g=h.find("img");for(var a=0,c=g.length;a<c;a++){var f=g[a].getAttribute("data-src_index_menu");if(f){g[a].setAttribute("src",f);g[a].removeAttribute("data-src_index_menu");}}h.isDone=true;}}function _hide_(a){if(!a){return;}if(a.className.indexOf("hover")>-1){M.removeClass(a,"hover");}}</script>
 <div class="w">
-	<div class="all_cat" style="background: #ffffff;filter: alpha(Opacity=80);background-color: rgba(255,255,255,.8);">
+	<div class="all_cat disable-by-cy" style="background: #ffffff;filter: alpha(Opacity=80);background-color: rgba(255,255,255,.8);">
 		{include file='library/header_tan.lbi'}
 	</div>
 </div>
@@ -240,14 +240,14 @@ function checkSearchForm()
     }
     else
     {
-	alert("请输入关键词！");
+	alert("Please input keyword");
         return false;
     }
 }
 
 function myValue1()
 {
-	document.getElementById('keyword').value = "请输入商品名称或编号...";
+	document.getElementById('keyword').value = "Please input the product name or ID";
 }
 
 function myValue2()

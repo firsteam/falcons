@@ -4,7 +4,7 @@ $(document).ready(function(){
   var a = $("#specialId").children("li");
   var b = $(".bf-content"); 
   if($(a).length > 0){ 
-		b.css({"display":"block"});
+		b.css({"display":"none"});
 
 	} 
 	else{ 
@@ -13,7 +13,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="bf-content" style="display:none"> 
-  <span class="title"></span>
+  <span class="title disable-by-cy"></span>
   <ul id="specialId" class="bf-ul-content clearfix">
     <li class="b"> {insert name='ads' id=1 num=1} </li>
     <li class="b"> {insert name='ads' id=2 num=1} </li>
