@@ -5,7 +5,7 @@
       <div class='fore1' style="border:none;">
         <dl class='order'>
           <dt>Sort: </dt>
-          <dd  class=<!-- {if $pager.sort == 'goods_id'} -->curr<!-- {/if} -->><a href="{$shangjian}">Default</a><b class="icon-order-{if $pager.sort == 'goods_id'}{$pager.order}{else}DESC{/if}ending"></b></dd>
+          <dd  class=<!-- {if $pager.sort == '(sort_order-is_best*100)'} -->curr<!-- {/if} -->><a href="{$shangjian}">Default</a><b class="icon-order-{if $pager.sort == '(sort_order-is_best*100)'}{$pager.order}{else}DESC{/if}ending"></b></dd>
           <dd  class=<!-- {if $pager.sort == 'salenum'} -->curr<!-- {/if} -->><a href="{$xiaoliang}">Volume</a><b class="icon-order-{if $pager.sort == 'salenum'}{$pager.order}{else}DESC{/if}ending"></b></dd>
           <dd  class=<!-- {if $pager.sort == 'shop_price'} -->curr<!--{/if}-->><a href="{$jiage}">Price</a><b class="icon-order-{if $pager.sort == 'shop_price'}{$pager.order}{else}DESC{/if}ending"></b></dd>
           <dd  class=<!-- {if $pager.sort == 'last_update'} -->curr<!-- {/if} -->><a href="{$gengxin}">New</a><b class="icon-order-{if $pager.sort == 'last_update'}{$pager.order}{else}DESC{/if}ending"></b></dd>
@@ -28,7 +28,7 @@
       <div class='fore1 fore3'>
         <dl class='order goods_number'>
           <dt></dt>
-     	  <dd class="leixing disable-by-cy">
+     	  <dd class="leixing">
 	  		<!--{foreach from=$filterinfo item=filter}-->
 	  		<input type='radio' style="display:none" name='fff' onclick='top.location.href="{$filter.url}"' <!-- {if $filter.selected} --> checked <!-- {/if} --> ><a href="{$filter.url}" style="float:left <!-- {if $filter.selected} --> ;color:red <!-- {/if} -->">{$filter.name}</a>
 	  		<!--{/foreach}-->
@@ -87,7 +87,7 @@
     	<li class="action">
          	<!--{if $goods.goods_number eq 0}--><div class="shop_over" style="float:left">Sold</div><!-- {/if} -->
     		<a href="javascript:collect({$goods.goods_id});" class="abg">Favorite</a>
-    		<a href="javascript:addToCart({$goods.goods_id});" nctype="add_cart" class="adc" {if $goods.goods_number eq 0}style="background-color:#CCC; color:#EEE"{/if}>Add to Cart</a>
+    		<a href="javascript:addToCart({$goods.goods_id});" nctype="add_cart" class="adc" {if $goods.goods_number eq 0}style="background-color:#CCC; color:#EEE"{/if}>加入购物车</a>
     	</li>
     </ul>
     <!--{/foreach}-->

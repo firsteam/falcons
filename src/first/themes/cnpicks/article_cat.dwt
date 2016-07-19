@@ -13,6 +13,8 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link href="article.css" rel="stylesheet" type="text/css" />
+
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,transport.js'}
 </head>
@@ -23,35 +25,45 @@
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   <div class="w main">
     <div class="right-extra">
-      <div style="border:#e2e2e2 1px solid;">
-        <h1 class="mod1tit" style="border:none">{$lang.article_list}
-          </p>
-          <div class="more">
-            <form action="{$search_url}" name="search_form" method="post" class="articleSearch">
-              <input name="keywords" type="text" id="requirement" size="40" value="{$search_value}" class="InputBorder" style="_position:relative; _top:3px;"/>
-              <input name="id" type="hidden" value="{$cat_id}" />
-              <input name="cur_url" id="cur_url" type="hidden" value="" />
-              <input type="submit" value="{$lang.button_search}" class="bnt_number4" />
-            </form>
-          </div>
-        </h1>
-        <div class="art_cat_box">
-          <table width="100%" border="0" cellpadding="5" cellspacing="0">
-            <tr>
-              <th >{$lang.article_title}</th>
-              <th >{$lang.article_author}</th>
-              <th >{$lang.article_add_time}</th>
-            </tr>
-            <!-- {foreach from=$artciles_list item=article} -->
-            <tr>
-              <td><a style="text-decoration:none" href="{$article.url}" title="{$article.title|escape:html}" class="f6">{$article.short_title}</a></td>
-              <td align="center">{$article.author}</td>
-              <td align="center">{$article.add_time}</td>
-            </tr>
-            <!-- {/foreach} -->
-          </table>
-        </div>
-      </div>
+      <h2>{$cat_name}</h2>
+      <ul class="article_list">
+        <!-- {foreach from=$artciles_list item=article name=article} -->
+         <li class="clearfix {if $smarty.foreach.article.iteration mod 2 eq 0}even{/if}">
+            <h3><a href="{$article.url}" title="{$article.title|escape:html}" target="_blank">{$article.short_title}</a></h3>
+            <div class="pic"><a href="{$article.url}"  target="_blank" title="{$article.title|escape:html}"><img src="{$article.title_pic|default:images/no_picture.gif}" width="180" height="140" alt="{$article.title|escape:html}"/></a></div>
+            <div class="desc">
+               <p>{$article.description|truncate:90}</p>
+               
+               {if $article.goods_list}
+               <div class="relativ_goods">
+                
+                <!--{foreach from=$article.goods_list item=releated_goods_data name=releated_goods_data}--> 
+				<div class="goods_item" {if $smarty.foreach.releated_goods_data.iteration eq 1}style="border-top:none;"{/if}>
+				<div class="p-img"><a href="{$releated_goods_data.url}"><img width="100" height="100" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_thumb}"/></a></div>
+				<div class="p-price">
+                <strong> 
+				<!-- {if $releated_goods_data.promote_price neq 0} -->
+				  {$releated_goods_data.formated_promote_price}
+				  <!-- {else} -->
+				  {$releated_goods_data.shop_price}
+				  <!-- {/if} -->
+				  </strong>
+                  
+				  </div>
+				</div>
+				<!-- {/foreach} -->
+               
+               </div>
+               {/if}
+               <div style="clear:both"></div>
+               <div class="viewMore"><a href="{$article.url}" title="{$article.title|escape:html}"  target="_blank">详细内容>></a></div>
+            </div>
+         </li>
+         <!-- {/foreach} -->
+
+     
+        
+      </ul>
       <div class="blank5"></div>
       <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
     </div>

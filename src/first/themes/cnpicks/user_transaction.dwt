@@ -1678,7 +1678,21 @@ menu.className=i==cursel?"active":"";
                 </td>
                 <td rowspan="1" align="center" class="other">
 					<!-- {if $item.invoice_no && $item.shipping_name neq '门店自提'} -->
-					<a href="http://www.17track.net/en/track?nums={$item.invoice_no}" target="_blank">Track No.<br>{$item.invoice_no}</a>
+					<a href="javascript:;" id="YQElem{$item.order_id}">
+					Track No.<br>
+					{$item.invoice_no}</a>
+					<script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
+					<script type="text/javascript">
+					YQV5.trackSingleF1({
+						YQ_ElementId:"YQElem{$item.order_id}",      //必须，指定悬浮位置的元素ID。
+						YQ_Width:800,        //可选，指定查询结果宽度，最小宽度为600px，默认撑满容器。
+						YQ_Height:400,       //可选，指定查询结果高度，最大高度为800px，默认撑满容器。
+						YQ_Top:40,
+						YQ_Fc:"0",       //可选，指定运输商，默认为自动识别。
+						//YQ_Lang:"en",        //可选，指定UI语言，默认根据浏览器自动识别。
+						YQ_Num:"{$item.invoice_no}"       //必须，指定要查询的单号。
+					});
+					</script>
 					<!-- {/if} --> 
 					
                 	<!-- {if $item.order_status1 eq 2 || $item.order_status1 eq 3} -->
@@ -1689,16 +1703,14 @@ menu.className=i==cursel?"active":"";
                   <!-- {/if} --> 
                   <!-- {/if} --> 
                   <a href="user.php?act=order_detail&order_id={$item.order_id}" class="red2">{$item.handler}</a></br>
-
+                  <div class="disable-by-cy">
                   <!-- {if $item.shipping_status eq 2} --> 
-                  <div class="disable-by-cy">				  
                   <!-- {if $item.comment_s eq 0} --> 
                   Reviewed
                   <!-- {else} --> 
                   <a href="user.php?act=my_comment&s={$item.comment_s}&order_id={$item.order_id}#commtr_{$item.comment_s}" class="on_comment">Review</a> 
                   <!-- {/if} --><br />
-                  </div>
-				  
+                  
                   <!-- {if $item.shaidan_s eq 0} --> 
                   Showed 
                   <!-- {else} --> 
@@ -1706,7 +1718,7 @@ menu.className=i==cursel?"active":"";
                   <!-- {/if} --><br />
                   
                   <!-- {/if} --> 
-				  
+				  </div>
                   </td>
               </tr>
             </tbody>
@@ -1747,7 +1759,7 @@ menu.className=i==cursel?"active":"";
 			document.getElementById("s_have_hidden").value = 0;
 		}
         </script> 
-            
+
             <!--{/foreach}-->
           </table>
           <input id="s_have_hidden" value="0" type="hidden" />
@@ -3252,7 +3264,7 @@ function updateEndTime(){
                     <select name="country" id="selCountries_{$sn}" onchange="checkCountry(this,'country_notice_{$sn}')" style="width: 210px;">
                       <option value="">{$lang.please_select}{$name_of_region[0]}</option>
                       <!-- {foreach from=$country_list item=country} -->
-                      <option value="{$country.region_name}" {if $consignee.country eq $country.region_name}selected{/if}>{$country.region_name}</option>
+                      <option value="{$country.region_id}" {if $consignee.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
                       <!-- {/foreach} -->
                     </select>
                     {$lang.require_field}
@@ -3638,12 +3650,34 @@ function updateEndTime(){
   <div style="height:15px; line-height:15px; clear:both;"></div>
 </div>
 <!-- #BeginLibraryItem "/library/help.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/site_bar.lbi" --><!-- #EndLibraryItem --> {* start Add By www.68ecshop.com ecshop开发中心 企业QQ800007396 *} 
+
+<script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
+<script type="text/javascript">
+function doTrack(num) {
+    if(num===""){
+        alert("Enter your number."); 
+        return;
+    }
+    YQV5.trackSingle({
+        YQ_ContainerId:"retData",       //必须，指定承载内容的容器ID。
+        //YQ_Height:400,      //可选，指定查询结果高度，最大高度为800px，默认撑满容器。
+        YQ_Fc:"0",       //可选，指定运输商，默认为自动识别。
+        YQ_Lang:"en",       //可选，指定UI语言，默认根据浏览器自动识别。
+        YQ_Num:num     //必须，指定要查询的单号。
+    });
+}
+doTrack('{$order.invoice_no}')
+</script>
+
 <script language="javascript">
-	document.getElementById("retData").innerHTML="<center>正在查询物流信息，请稍后...</center>";
-	var expressid = document.getElementById("shipping_name").innerHTML.replace(/(^\s*)|(\s*$)/g, "");
-	var expressno = '{$order.invoice_no}';
-	Ajax.call('plugins/kuaidi100/kuaidi100_post.php?com='+ expressid+'&nu=' + expressno,'showtest=showtest', function(data){document.getElementById("retData").innerHTML=data;}, 'GET', 'TEXT');
+	//document.getElementById("retData").innerHTML="<center>正在查询物流信息，请稍后...</center>";
+	//var expressid = document.getElementById("shipping_name").innerHTML.replace(/(^\s*)|(\s*$)/g, "");
+	//var expressno = '{$order.invoice_no}';
+	//Ajax.call('plugins/kuaidi100/kuaidi100_post.php?com='+ expressid+'&nu=' + expressno,'showtest=showtest', function(data){document.getElementById("retData").innerHTML=data;}, 'GET', 'TEXT');
 </script> 
+
+
+
 {* end Add By www.68ecshop.com ecshop开发中心 企业QQ800007396 *}
 </body>
 <script type="text/javascript">

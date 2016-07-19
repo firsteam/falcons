@@ -1,0 +1,20 @@
+/* CSS Document */
+
+.right-extra{width:750px;}
+.right-extra h2{font-weight:bold; color:#333; font-size:16px;}
+.related-buy{}
+.related-buy li{float:left; width:152px; margin:10px;}
+.related-buy li img{width:150px; height:150px; border:#ddd solid 1px;}
+
+
+.article_list{}
+.article_list li{padding:10px 10px 10px; margin-top:10px; margin-bottom:10px; clear:both; border-bottom: 1px solid #ddd;}
+.article_list li.even{/*background-color: #F5F5F5;*/}
+.article_list li .pic{float:left; width:180px; height:150px; border:#F6F6F6;}
+.article_list li .desc{ width:540px;float:right;}
+.article_list li h3{color:#333;font-size:14px;font-weight:bold; margin-bottom:20px;}
+.article_list li h3 a{color:#000000;}
+.article_list li .desc p{padding:0px 0px 10px 0px; line-height:25px;}
+.article_list li .desc .viewMore{text-align:right;}
+.article_list li .desc .viewMore a{ color:#09F}
+.relativ_goods .goods_item{float:left; margin:5px;}

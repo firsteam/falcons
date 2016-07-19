@@ -170,51 +170,7 @@ function get_article_info($article_id)
     return $row;
 }
 
-/**
- * 获得文章关联的商品
- *
- * @access  public
- * @param   integer $id
- * @return  array
- */
-function article_related_goods($id)
-{
-    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_thumb, g.goods_img, g.shop_price AS org_price, ' .
-                "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
-                'g.market_price, g.promote_price, g.promote_start_date, g.promote_end_date ' .
-            'FROM ' . $GLOBALS['ecs']->table('goods_article') . ' ga ' .
-            'LEFT JOIN ' . $GLOBALS['ecs']->table('goods') . ' AS g ON g.goods_id = ga.goods_id ' .
-            "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
-                    "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
-            "WHERE ga.article_id = '$id' AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0";
-    $res = $GLOBALS['db']->query($sql);
 
-    $arr = array();
-    while ($row = $GLOBALS['db']->fetchRow($res))
-    {
-        $arr[$row['goods_id']]['goods_id']      = $row['goods_id'];
-        $arr[$row['goods_id']]['goods_name']    = $row['goods_name'];
-        $arr[$row['goods_id']]['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
-            sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
-        $arr[$row['goods_id']]['goods_thumb']   = get_image_path($row['goods_id'], $row['goods_thumb'], true);
-        $arr[$row['goods_id']]['goods_img']     = get_image_path($row['goods_id'], $row['goods_img']);
-        $arr[$row['goods_id']]['market_price']  = price_format($row['market_price']);
-        $arr[$row['goods_id']]['shop_price']    = price_format($row['shop_price']);
-        $arr[$row['goods_id']]['url']           = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
-
-        if ($row['promote_price'] > 0)
-        {
-            $arr[$row['goods_id']]['promote_price'] = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);
-            $arr[$row['goods_id']]['formated_promote_price'] = price_format($arr[$row['goods_id']]['promote_price']);
-        }
-        else
-        {
-            $arr[$row['goods_id']]['promote_price'] = 0;
-        }
-    }
-
-    return $arr;
-}
 /* 代码增加_start  By  www.68ecshop.com */
 make_html();
 /* 代码增加_end   By  www.68ecshop.com */

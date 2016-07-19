@@ -17,43 +17,16 @@
 <link rel="stylesheet" href="themes/cnpicks/css/brandbar.css">
 <script type="text/javascript" src="themes/cnpicks/js/jquery-1.9.1.min.js"></script>
 {insert_scripts files='jquery-1.6.2.min.js'}
-{insert_scripts files='jquery.json.js,jquery.SuperSlide.js,transport.js'}
+{insert_scripts files='jquery.json.js,transport.js'}
 <script type="text/javascript" src="themes/cnpicks/js/jquery-lazyload.js" ></script>
-<style type="text/css">
 
-
-        .slideBox{ width:980px; height:500px; overflow:hidden; position:relative;    } 
-        .slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:10px; bottom:10px; z-index:1; } 
-        .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  } 
-        .slideBox .hd ul li{ float:left; margin-right:5px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; } 
-        .slideBox .hd ul li.on{ background:#f00; color:#fff; } 
-        .slideBox .bd{ position:relative; height:100%; z-index:0;   } 
-        .slideBox .bd img{ width:980px; height:500px; } 
-
-
-</style>
 </head>
 <body>
 <div id="site-nav"> 
   <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div id="content">
     <div class="flow">
-      <div id="slideBox" class="slideBox">
-					<div class="hd">
-						<ul>
-                        <!--{foreach from=$playerdb item=player name=player}-->
-                        <li>{$smarty.foreach.player.iteration}</li>
-                        <!--{/foreach}-->
-                        </ul>
-					</div>
-					<div class="bd">
-						<ul>
-							<!--{foreach from=$playerdb item=player name=player}-->
-							<li><img src="{$player.src}" width="980" height="500" /></li><!--{/foreach}-->
-						</ul>
-					</div>
-				</div>
-				<script type="text/javascript">jQuery(".slideBox").slide( { mainCell:".bd ul",effect:"top",autoPlay:true} );</script>
+
       <!-- #BeginLibraryItem "/library/brand_list.lbi" --><!-- #EndLibraryItem --> 
 	  <!-- #BeginLibraryItem "/library/brand_pager.lbi" --><!-- #EndLibraryItem --> 
     </div>

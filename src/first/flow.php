@@ -197,7 +197,7 @@ if ($_REQUEST['act']=='EditAddress')
 	else
 
 	{
-
+ $smarty->assign('shop_country_list', get_regions(0, 0));
 		$smarty->assign('province_list', get_regions(1, $_CFG['shop_country']));
 
 	}
@@ -1961,25 +1961,24 @@ elseif ($_REQUEST['step'] == 'checkout')
             " WHERE user_id = '". $_SESSION['user_id'] ."' order by address_id ";
 
 			$consignee_list_ecshop68 = $GLOBALS['db']->getAll($sql);
+			
+			
 
 			foreach ($consignee_list_ecshop68  as $cons_key => $cons_val)
 
 			{
 
+
+$cons_val['country']  = $db->getOne("SELECT region_name as country_name from " . $GLOBALS['ecs']->table('region') . " WHERE region_id = '$cons_val[country]'");
+
 				$consignee_list_ecshop68[$cons_key]['address_short_name'] = $cons_val['consignee']."<br>";
-
-				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  get_region_info($cons_val['province'])."-";
-
-				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  get_region_info($cons_val['city'])."-";
-
+				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['country']."-";
+				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['province']."-";
+				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['city']."-";
 				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  get_region_info($cons_val['district'])."&nbsp;";
-
 				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  sub_str($cons_val['address'],16);
-
 				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['zipcode'] ? (",".$cons_val['zipcode']) : "";
-
 				$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  "<br>".$cons_val['mobile'];
-
 				if ($consignee['address_id'] == $cons_val['address_id'])
 
 				{

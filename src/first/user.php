@@ -1165,18 +1165,34 @@ function action_logout ()
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $_SESSION['user_id'];
 	
-	if((! isset($back_act) || empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
-	{
-		$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
-	}
+	$back_act = isset($_GET['back_act']) ? trim($_GET['back_act']) : '';
+    if ((!isset($back_act)||empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
+    {
+        $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+    }
+	
 	
 	$user->logout();
 	$ucdata = empty($user->ucdata) ? "" : $user->ucdata;
-	show_message($_LANG['logout'] . $ucdata, array(
+	
+	if(empty($back_act))
+		{
+			$back_act ='index.php';
+		}
+		ecs_header("Location:$back_act\n");
+		exit;
+	
+	/*show_message($_LANG['logout'] . $ucdata, array(
 		$_LANG['back_up_page'], $_LANG['back_home_lnk']
 	), array(
 		$back_act, 'index.php'
-	), 'info');
+	), 'info');*/
+	
+	
+	
+	
+	
+	
 }
 
 /* 个人资料页面 */

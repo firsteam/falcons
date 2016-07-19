@@ -752,8 +752,9 @@ function insert_get_shop_shipping($arr){
 	$consignee = $arr['consignee'];
 	$flow_type = $arr['flow_type'];
 	// $region            = array($consignee['country'], $consignee['province'], $consignee['city'], $consignee['district']);
-    $region = $consignee['country'];
+   // $region = $consignee['country'];
 	
+	$region            = array($consignee['country']);
 	$shipping_list = available_shipping_list($region,$suppid);
 	$cart_weight_price = cart_weight_price2($flow_type,$suppid);
 

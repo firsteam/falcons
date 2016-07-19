@@ -871,7 +871,8 @@ else
       	{if $goodsinfo.shipping_html}
               <tr>
       		<td colspan=4 bgcolor="#ffffff" align="left" class="shipping_type">
-      		<span>{$lang.shipping_method}: </span>{$goodsinfo.shipping_html}
+      		<span>{$lang.shipping_method}: </span>
+            {$goodsinfo.shipping_html}
       		<!--如果有自提点 star-->
       		<span id='picktxt{$key}'>
       		<script>

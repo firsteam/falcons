@@ -78,15 +78,15 @@ function shipping_info($shipping_id)
  */
 function available_shipping_list($region_id_list,$suppid=0)
 {
-    // $sql = 'SELECT s.shipping_id, s.shipping_code, s.shipping_name, ' .
-    //             's.shipping_desc, s.insure, s.support_cod, a.configure , s.support_pickup ' .
-    //         'FROM ' . $GLOBALS['ecs']->table('shipping') . ' AS s, ' .
-    //             $GLOBALS['ecs']->table('shipping_area') . ' AS a, ' .
-    //             $GLOBALS['ecs']->table('area_region') . ' AS r ' .
-    //         'WHERE s.supplier_id='.$suppid.' and r.region_id ' . db_create_in($region_id_list) .
-    //         ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1 ORDER BY s.shipping_order';
+     $sql = 'SELECT s.shipping_id, s.shipping_code, s.shipping_name, ' .
+                's.shipping_desc, s.insure, s.support_cod, a.configure , s.support_pickup ' .
+             'FROM ' . $GLOBALS['ecs']->table('shipping') . ' AS s, ' .
+                 $GLOBALS['ecs']->table('shipping_area') . ' AS a, ' .
+                 $GLOBALS['ecs']->table('area_region') . ' AS r ' .
+             'WHERE s.supplier_id='.$suppid.' and r.region_id ' . db_create_in($region_id_list) .
+             ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1 ORDER BY s.shipping_order';
 
-    $sql = "SELECT s.shipping_id, s.shipping_code, s.shipping_name, " .
+/*    $sql = "SELECT s.shipping_id, s.shipping_code, s.shipping_name, " .
                 "s.shipping_desc, s.insure, s.support_cod, a.configure , s.support_pickup " .
             "FROM " . $GLOBALS['ecs']->table('shipping') . " AS s, " .
                 $GLOBALS['ecs']->table('shipping_area') . " AS a, " .
@@ -94,7 +94,7 @@ function available_shipping_list($region_id_list,$suppid=0)
                 $GLOBALS['ecs']->table('region') . " AS o " .
             "WHERE s.supplier_id=".$suppid." and o.region_name like '%" . $region_id_list .
             "%' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND r.region_id=o.region_id AND s.enabled = 1 ORDER BY s.shipping_order";
-
+*/
     return $GLOBALS['db']->getAll($sql);
 }
 

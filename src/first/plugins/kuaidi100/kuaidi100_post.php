@@ -37,7 +37,7 @@ if(isset($postcom)&&isset($getNu)){
     echo '<iframe src="'.$get_content.'" width="534" height="340" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"><br/>' . $powered;
 	
 }else{
-	echo '查询失败，请重试';
+	echo '<a href="/user.php?act=message_list" target="_self">Could not get the result, please kindly contact the sellor!</a>';
 }
 exit();
 ?>

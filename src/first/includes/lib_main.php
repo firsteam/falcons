@@ -644,12 +644,21 @@ function assign_pager($app, $cat, $record_count, $size, $sort, $order, $page = 1
     }
     
      
-    $GLOBALS['smarty']->assign('shangjian', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'goods_id','order'=>(($pager['sort'] == 'goods_id' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
+    $GLOBALS['smarty']->assign('shangjian', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'(sort_order-is_best*100)','order'=>(($pager['sort'] == '(sort_order-is_best*100)' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
+	
+	
+   
     $GLOBALS['smarty']->assign('xiaoliang', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'salenum','order'=>(($pager['sort'] == 'salenum' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
-    $GLOBALS['smarty']->assign('jiage', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'shop_price','order'=>(($pager['sort'] == 'shop_price' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
-    $GLOBALS['smarty']->assign('gengxin', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'last_update','order'=>(($pager['sort'] == 'last_update' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
+    
+	$GLOBALS['smarty']->assign('jiage', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'shop_price','order'=>(($pager['sort'] == 'shop_price' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
+    
+	$GLOBALS['smarty']->assign('gengxin', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'last_update','order'=>(($pager['sort'] == 'last_update' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
+   
     $GLOBALS['smarty']->assign('renqi', build_uri($app, array('cid'=>$cat,'display'=>$pager['display'],'bid'=>$brand,'price_min'=>$price_min,'price_max'=>$price_max,'filter'=>$filter,'filter_attr'=>$filter_attr,'page'=>$pager['page'],'sort'=>'click_count','order'=>(($pager['sort'] == 'click_count' && $pager['order'] == 'DESC') ? 'ASC' : 'DESC'))));
     $GLOBALS['smarty']->assign('pager', $pager);
+	
+	
+	
 }
 
 /**

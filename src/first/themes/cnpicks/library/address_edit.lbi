@@ -25,7 +25,7 @@
       <select name="country" style="width:155px;height:25px;border:1px solid #ccc;" onchange="checkCountry(this,'country_notice')">
         <option value="">{$lang.please_select}</option>
         <!-- {foreach from=$shop_country_list item=country} -->
-        <option value="{$country.region_name}" {if $country.region_name eq $address.country}selected{/if}>{$country.region_name}</option>
+        <option value="{$country.region_id}" {if $country.region_id eq $address.country}selected{/if}>{$country.region_name}</option>
         <!-- {/foreach} -->
       </select>
     </td>
