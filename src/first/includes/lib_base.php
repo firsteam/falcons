@@ -18,6 +18,37 @@ if (!defined('IN_ECS'))
     die('Hacking attempt');
 }
 
+/** 
+* @method 多维数组转字符串 
+* @param type $array 
+* @return type $srting 
+* @author yanhuixian 
+*/ 
+function arrayToString($connect,$arr) { 
+	if (is_array($arr)){ 
+		return implode($connect, array_map('arrayToString', $arr)); 
+	} 
+	return $arr; 
+} 
+
+/** 
+* @method 多维数组变成一维数组 
+* @staticvar array $result_array 
+* @param type $array 
+* @return type $array 
+* @author yanhuixian 
+*/ 
+function multiToArray($arr){  //rebuild a array
+  static $tmp=array();
+
+  for($i=0; $i<count($arr); $i++){
+    if(is_array($arr[$i])) multiToArray($arr[$i]);
+    else $tmp[]=$arr[$i];
+  }
+
+  return $tmp;
+}
+
 /**
  * 截取UTF-8编码下字符串的函数
  *

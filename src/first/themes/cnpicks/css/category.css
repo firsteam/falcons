@@ -1706,7 +1706,7 @@ margin-top:expression(28-this.height/2);
 .box_attr_ecshop68 dl dd ul.brand_abox_ul li {
 	float: left;
 	padding: 0 15px 5px 0;
-	width: 75px;
+	/*width: 75px;*/
 	overflow: hidden;
 }
 #brand_sobox {

@@ -545,7 +545,7 @@ else
 		 }
 		 
 		 $filter_info = array(
-			0=>array('id'=>0,'name'=>'全部','selected'=>0,'url'=>build_uri('category', array_merge($attr_url_value,array('filter'=>0)),'全部')),
+			0=>array('id'=>0,'name'=>'All','selected'=>0,'url'=>build_uri('category', array_merge($attr_url_value,array('filter'=>0)),'All')),
 			1=>array('id'=>1,'name'=>'网站自营','selected'=>0,'url'=>build_uri('category', array_merge($attr_url_value,array('filter'=>1)),'网站自营')),
 			2=>array('id'=>2,'name'=>'入驻商店铺','selected'=>0,'url'=>build_uri('category', array_merge($attr_url_value,array('filter'=>2)),'入驻商店铺'))
 		);
