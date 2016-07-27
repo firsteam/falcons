@@ -1794,7 +1794,7 @@ elseif ($_REQUEST['act'] == 'batch')
         if ($_POST['type'] == 'trash')
         {
             /* 检查权限 */
-            admin_priv('remove_back');
+            check_authz_json('remove_back');
 
             update_goods($goods_id, 'is_delete', '1');
 
@@ -1805,7 +1805,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'on_sale')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_on_sale', '1');
         }
 
@@ -1813,7 +1813,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'not_on_sale')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_on_sale', '0');
         }
 
@@ -1821,7 +1821,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'best')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_best', '1');
         }
 
@@ -1829,7 +1829,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'not_best')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_best', '0');
         }
 
@@ -1837,7 +1837,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'new')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_new', '1');
         }
 
@@ -1845,7 +1845,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'not_new')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_new', '0');
         }
 		
@@ -1853,7 +1853,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'wish')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_wish', '1');
         }
 
@@ -1861,7 +1861,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'not_wish')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_wish', '0');
         }
 		
@@ -1871,7 +1871,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'hot')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_hot', '1');
         }
 
@@ -1879,7 +1879,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'not_hot')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'is_hot', '0');
         }
 
@@ -1887,7 +1887,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'move_to')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'cat_id', $_POST['target_cat']);
         }
 
@@ -1895,7 +1895,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'suppliers_move_to')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'suppliers_id', $_POST['suppliers_id']);
         }
 
@@ -1903,7 +1903,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'restore')
         {
             /* 检查权限 */
-            admin_priv('remove_back');
+            check_authz_json('remove_back');
 
             update_goods($goods_id, 'is_delete', '0');
 
@@ -1914,7 +1914,7 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'drop')
         {
             /* 检查权限 */
-            admin_priv('remove_back');
+            check_authz_json('remove_back');
 
             delete_goods($goods_id);
 
@@ -1926,49 +1926,34 @@ elseif ($_REQUEST['act'] == 'batch')
         elseif ($_POST['type'] == 'pass_audit')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'supplier_status', '1');
         }
 		/* 未审核 */
         elseif ($_POST['type'] == 'not_audit')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'supplier_status', '0');
         }
 		/* 审核未通过 */
         elseif ($_POST['type'] == 'not_pass_audit')
         {
             /* 检查权限 */
-            admin_priv('goods_manage');
+            check_authz_json('goods_manage');
             update_goods($goods_id, 'supplier_status', '-1');
         }
-
-
-
-		
     }
-	
-
     /* 清除缓存 */
     clear_cache_files();
 
-    if ($_POST['type'] == 'drop' || $_POST['type'] == 'restore')
-    {
-        $link[] = array('href' => 'goods.php?act=trash', 'text' => $_LANG['11_goods_trash']);
-    }
-    else
-    {
-        if($_REQUEST['supp'])
-		{
-			$link[] = list_link(true, $code, $_REQUEST['supp']);
-		}
-		else
-		{
-			$link[] = list_link(true, $code);
-		}
-    }
-    sys_msg($_LANG['batch_handle_ok'], 0, $link);
+
+    make_json_result(stripslashes($_LANG['batch_handle_ok']));
+   
+	//$url = 'goods.php?act=query&' . str_replace('act=batch', '', $_SERVER['QUERY_STRING']);
+	//ecs_header("Location: $url\n");
+	exit;
+    
 }
 
 /*------------------------------------------------------ */
