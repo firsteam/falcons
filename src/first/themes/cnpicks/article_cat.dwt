@@ -13,7 +13,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
-<link href="article.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/cnpicks/css/article_list.css" />
 
 {* 包含脚本文件 *}
 {insert_scripts files='common.js,transport.js'}
@@ -25,39 +25,54 @@
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   <div class="w main">
     <div class="right-extra">
-      <h2>{$cat_name}</h2>
+      <h2 class="disable-by-cy">{$cat_name}</h2>
       <ul class="article_list">
         <!-- {foreach from=$artciles_list item=article name=article} -->
          <li class="clearfix {if $smarty.foreach.article.iteration mod 2 eq 0}even{/if}">
             <h3><a href="{$article.url}" title="{$article.title|escape:html}" target="_blank">{$article.short_title}</a></h3>
-            <div class="pic"><a href="{$article.url}"  target="_blank" title="{$article.title|escape:html}"><img src="{$article.title_pic|default:images/no_picture.gif}" width="180" height="140" alt="{$article.title|escape:html}"/></a></div>
-            <div class="desc">
-               <p>{$article.description|truncate:90}</p>
+            {if $article.title_pic}
+			<div class="pic disable-by-cy"><a href="{$article.url}"  target="_blank" title="{$article.title|escape:html}"><img src="{$article.title_pic|default:images/no_picture.gif}" width="180" height="140" alt="{$article.title|escape:html}"/></a></div>
+            {/if}
+			<div class="desc">
+               <p><a href="{$article.url}" title="{$article.title|escape:html}"  target="_blank">{$article.description|truncate:290}</a></p>               
                
-               {if $article.goods_list}
-               <div class="relativ_goods">
-                
-                <!--{foreach from=$article.goods_list item=releated_goods_data name=releated_goods_data}--> 
-				<div class="goods_item" {if $smarty.foreach.releated_goods_data.iteration eq 1}style="border-top:none;"{/if}>
-				<div class="p-img"><a href="{$releated_goods_data.url}"><img width="100" height="100" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_thumb}"/></a></div>
-				<div class="p-price">
-                <strong> 
-				<!-- {if $releated_goods_data.promote_price neq 0} -->
-				  {$releated_goods_data.formated_promote_price}
-				  <!-- {else} -->
-				  {$releated_goods_data.shop_price}
-				  <!-- {/if} -->
-				  </strong>
-                  
-				  </div>
-				</div>
-				<!-- {/foreach} -->
-               
-               </div>
-               {/if}
                <div style="clear:both"></div>
-               <div class="viewMore"><a href="{$article.url}" title="{$article.title|escape:html}"  target="_blank">>>>></a></div>
+               
             </div>
+			{if $article.goods_list}
+		   <div class="relativ_goods">
+			
+			<!--{foreach from=$article.goods_list item=releated_goods_data name=releated_goods_data}--> 
+			<div class="goods_item">
+			
+			<div class="goods-img">
+				<a href="{$releated_goods_data.url}">
+					{if count($article.goods_list) eq 1}
+						<img width="600" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+					{elseif count($article.goods_list) eq 2 or count($article.goods_list) eq 4}
+						<img width="350" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+					{else}
+						<img width="250" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+					{/if}
+				</a>
+			</div>
+			
+			<div class="goods-price">
+			<strong> 
+			<!-- {if $releated_goods_data.promote_price neq 0} -->
+			  {$releated_goods_data.formated_promote_price}
+			  <!-- {else} -->
+			  {$releated_goods_data.shop_price}
+			  <!-- {/if} -->
+			  </strong>
+			  
+			  </div>
+			</div>
+			<!-- {/foreach} -->
+		   
+		   </div>
+		   {/if}
+		   
          </li>
          <!-- {/foreach} -->
 

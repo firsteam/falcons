@@ -69,7 +69,7 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
             </ul>
             <div class="tabs-panel">
               <?php
-		 $GLOBALS['smarty']->assign('best_goods', get_cat_recommend_goods('best', get_children($GLOBALS['smarty']->_var['goods_cat']['id']), 8));
+		 $GLOBALS['smarty']->assign('best_goods', get_rand_goods($GLOBALS['smarty']->_var['goods_cat']['id']));
 
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
@@ -83,18 +83,10 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
               <!--{/foreach}--> 
             </div>
          
-            <!--{foreach from=$child_cat item=cat_item name=child_cat}-->
-            <?php
-	
-			$GLOBALS['smarty']->assign('child_cat_index', $child_cat_index);
-	?>
+            <!--{foreach from=$goods_cat.cat_id item=cat name=cat}-->
             <div class="tabs-panel tabs-hide">
               <ul>
-                <?php
-		 $GLOBALS['smarty']->assign('new_goods', get_cat_recommend_goods('new', get_children($GLOBALS['smarty']->_var['cat_item']['id']), 8));
-
-		?>
-                <!--{foreach from=$new_goods item=goods name=goods}-->
+                <!--{foreach from=$cat.goods_list item=goods name=goods}-->
                 <div class="j_ItemInfo" {if $smarty.foreach.goods.iteration % 5 == 0}style="border-right:none"{/if}>
                   <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="220"></a>
                     <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>

@@ -836,9 +836,36 @@ function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '')
     $cat['name'] = $GLOBALS['db']->getOne($sql);
     $cat['url']  = build_uri('category', array('cid' => $cat_id), $cat['name']);
     $cat['id']   = $cat_id;
+    $cat['cat_id']   = get_child_tree1($cat_id);
+
 
     return $cat;
 }
+function get_child_tree1($tree_id = 0)
+{
+    $three_arr = array();
+    $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('category') . " WHERE parent_id = '$tree_id' AND is_show = 1 ";
+    if ($GLOBALS['db']->getOne($sql) || $tree_id == 0)
+    {
+        $child_sql = 'SELECT cat_id, cat_name, parent_id, is_show ' .
+                'FROM ' . $GLOBALS['ecs']->table('category') .
+                "WHERE parent_id = '$tree_id' AND is_show = 1 ORDER BY sort_order ASC, cat_id ASC";
+        $res = $GLOBALS['db']->getAll($child_sql);
+        foreach ($res AS $row)
+        {
+            if ($row['is_show'])
+            {
+               $three_arr[$row['cat_id']]['id']   = $row['cat_id'];
+               $three_arr[$row['cat_id']]['name'] = $row['cat_name'];
+			   $three_arr[$row['cat_id']]['goods_list'] = get_rand_goods($row['cat_id']);
+               $three_arr[$row['cat_id']]['url']  = build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']);
+            }
+        }
+    }
+    return $three_arr;
+}
+
+
 
 /**
  * 获得指定的品牌下的商品

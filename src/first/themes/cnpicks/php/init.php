@@ -968,6 +968,134 @@ function assign_commentex( $id, $type, $page = 1, $flag = 0 )
 		return $cmt;
 }
 
+function get_rand_goods($cat_id=0)
+{
+	
+	global $db,$ecs;
+	//处理当前时间
+	$now = gmtime();
+	$now_time = local_date('Y-m-d H:i:s', $now);//当天日期
+	$now_time1 = local_date('Y-m-d', $now);//当天日期
+	
+
+	$sql = 'SELECT rand_date, rand_ids FROM ' . $GLOBALS['ecs']->table('category') . " WHERE cat_id = '$cat_id'";
+    $cat_info  = $GLOBALS['db']->getRow($sql);
+	$rand_date = $cat_info['rand_date'];
+	$rand_ids  = $cat_info['rand_ids'];
+	
+	
+	$goods_ids = array();
+	if($now_time1==$rand_date && !empty($rand_ids))
+	{
+		$goods_ids = explode(',',$rand_ids);
+	}
+	else
+	{
+		
+		
+		$num = 8;
+	$where = " g.is_on_sale = 1 AND g.is_delete = 0 and is_best=1 ";
+	$children  = get_children($cat_id);
+		$where .=   " AND (" . $children . " OR " . get_extension_goods($children) . ")";
+	$sql = 'SELECT g.goods_id FROM ' . $GLOBALS['ecs']->table('goods') . " AS g  WHERE $where";
+	$goods_ids = $GLOBALS['db']->getCol($sql);
+	$relative_goods_ids = array();
+	$lenght = count($goods_ids);
+	$i=1;
+	if($num>$lenght)
+	{
+		$num = $lenght;
+	}
+	while($i<=$num)
+	{
+		$goods_id = $goods_ids[mt_rand(0, $lenght-1)];
+		if(!in_array($goods_id,$relative_goods_ids))
+		{
+			$relative_goods_ids[] = $goods_id;
+			$i++;
+		}
+	}
+	$goods_ids  = $relative_goods_ids;
+	
+			$sql = "UPDATE " . $GLOBALS['ecs']->table('category') . "
+						SET rand_ids = '" . join(',',$goods_ids) . "',rand_date='".$now_time1."' WHERE cat_id = '" . $cat_id . "'";
+			$GLOBALS['db']->query($sql);
+		/*$sql = "SELECT g.goods_id FROM ".$ecs->table('goods')." AS g WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0  and is_best=1 $where order by g.goods_id desc";
+		$all = $db->getAll($sql);
+		if(!empty($all))
+		{
+			$sql = "SELECT goods_id FROM ecs_goods WHERE goods_id>= ((SELECT MAX(goods_id) FROM ecs_goods as g where g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0  and is_best=1 $where)-(SELECT MIN(goods_id) FROM ecs_goods as g where g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 and is_best=1 $where)) * RAND() + (SELECT MIN(goods_id) FROM ecs_goods as g where g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 and is_best=1 $where)  LIMIT 8	";
+			
+			
+		}*/
+	}
+	
+	
+	
+	
+	$sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.shop_price AS org_price, g.promote_price, ' .
+			"IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
+			"promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img, RAND() AS rnd " .
+			'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
+			"LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
+			"ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ";
+	$sql .= " where g.goods_id " . db_create_in($goods_ids) . " ORDER BY g.sort_order, g.last_update DESC";
+
+
+	$result = $GLOBALS['db']->getAll($sql);
+	foreach ($result AS $idx => $row)
+	{
+		if ($row['promote_price'] > 0)
+		{
+			$promote_price = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);
+			$goods[$idx]['promote_price'] = $promote_price > 0 ? $promote_price : '';
+		}
+		else
+		{
+			$goods[$idx]['promote_price'] = '';
+		}
+		
+		if($row['market_price']>0 && !empty($row['promote_price']))
+		{		
+			$goods[$idx]['sheng_price'] = price_format($row['market_price']-$row['promote_price']);
+			$goods[$idx]['zhekou_price'] = round(($row['promote_price']/$row['market_price'])*100)/10+"";
+		}
+		else
+		{
+			$goods[$idx]['sheng_price'] = price_format($row['market_price']-$row['shop_price']);
+			$goods[$idx]['zhekou_price'] = round(($row['shop_price']/$row['market_price'])*100)/10+"";
+		}
+		
+		
+
+		$goods[$idx]['id']           = $row['goods_id'];
+		$goods[$idx]['name']         = $row['goods_name'];
+		$goods[$idx]['brief']        = $row['goods_brief'];
+		$goods[$idx]['brand_name']   = isset($goods_data['brand'][$row['goods_id']]) ? $goods_data['brand'][$row['goods_id']] : '';
+		$goods[$idx]['goods_style_name']   = add_style($row['goods_name'],$row['goods_name_style']);
+
+		$goods[$idx]['short_name']   = $GLOBALS['_CFG']['goods_name_length'] > 0 ?
+										   sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+		$goods[$idx]['short_style_name']   = add_style($goods[$idx]['short_name'],$row['goods_name_style']);
+		$goods[$idx]['market_price'] = price_format($row['market_price']);
+		$goods[$idx]['shop_price']   = price_format($row['shop_price']);
+		if($goods[$idx]['promote_price']>0)
+		{
+		    $goods[$idx]['promote_price']   = price_format($row['promote_price']);
+		}
+		
+		
+		$goods[$idx]['thumb']        = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+		$goods[$idx]['goods_img']    = get_image_path($row['goods_id'], $row['goods_img']);
+		$goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
+	  
+	}
+   
+    return $goods;
+}
+
+
+
 function get_cat_recommend_goods( $type = "", $cats = "", $cat_num = 0, $brand = 0, $min = 0, $max = 0, $ext = "" )
 {
 		$brand_where = 0 < $brand ? " AND g.brand_id = '".$brand."'" : "";

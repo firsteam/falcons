@@ -99,7 +99,7 @@ listTable.edit1 = function(obj, act, id)
   /* 保存原始的内容 */
   var org = obj.innerHTML;
   var val = Browser.isIE ? obj.innerText : obj.textContent;
-
+  val = val.replace(/编辑/g,"");
   /* 创建一个输入框 */
   var txt = document.createElement("textarea");
   txt.innerHTML = (val == 'N/A') ? '' : val;
@@ -133,7 +133,7 @@ listTable.edit1 = function(obj, act, id)
   /* 编辑区失去焦点的处理函数 */
   txt.onblur = function(e)
   {
-    if (Utils.trim(txt.value).length > 0)
+    if (Utils.trim(txt.value).length >= 0)
     {
       res = Ajax.call(listTable.url, "act="+act+"&val=" + encodeURIComponent(Utils.trim(txt.value)) + "&id=" +id, null, "POST", "JSON", false);
 

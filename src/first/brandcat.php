@@ -46,6 +46,7 @@ if (!$smarty->is_cached($tpl, $cache_id))
 	//品牌列表
 	$shop_list = get_all_supplier();
 	
+	
 	//推荐分类中的品牌
 	$tuijian = get_tuijian_shop($cats['tuijian']);
 	
@@ -158,44 +159,97 @@ function get_all_supplier(){
 	$sql = "SELECT * ".
 	           " FROM " . $GLOBALS['ecs']->table('brand').
 	           " $where" .
-	           " ORDER BY $filter[sort_by] $filter[sort_order] ".
+	           /*" ORDER BY $filter[sort_by] $filter[sort_order] ".*/
+			   " ORDER BY rand() ".
 	           " LIMIT " . $filter['start'] . ",$filter[page_size]";
 	$arr = $GLOBALS['db']->getAll($sql);
 	foreach($arr as $key=>$val){
+		
 		$arr[$key]['address'] = "";//地址
-
-
 		//所在地
-
 		$arr[$key]['brand_name'] = trim($arr[$key]['brand_name'],',');
 		//品牌中有多少商品
-		$goodsInfo = get_street_goods_info($val['brand_id']);
+		$goodsInfo = get_street_goods_info($val['brand_id'],$val['rand_date'],$val['rand_ids']);
 		$arr[$key]['goods_number'] = $goodsInfo['num'];
 		$arr[$key]['goods_info'] = $goodsInfo['info'];
 	}
     return array('shops' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 }
 
-function get_street_goods_info($brand_id){
+function get_street_goods_info($brand_id,$rand_date='',$rand_ids=''){
+	
+	
 	global $db,$ecs;
+	//处理当前时间
+	$now = gmtime();
+	$now_time = local_date('Y-m-d H:i:s', $now);//当天日期
+	$now_time1 = local_date('Y-m-d', $now);//当天日期
+	
+	$goods_ids = array();
+	if($now_time1==$rand_date && !empty($rand_ids))
+	{
+		$goods_ids = explode(',',$rand_ids);
+	}
+	else
+	{
+		/*$sql = "SELECT g.goods_id FROM ".$ecs->table('goods')." AS g WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0  and is_best=1 AND g.brand_id=".$brand_id." order by g.goods_id desc";
+		$all = $db->getAll($sql);
+		
+		if(!empty($all))
+		{
+			$sql = "SELECT goods_id FROM ecs_goods WHERE goods_id>= ((SELECT MAX(goods_id) FROM ecs_goods as g where g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0  and is_best=1 AND g.brand_id=".$brand_id.")-(SELECT MIN(goods_id) FROM ecs_goods as g where g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 and is_best=1 AND g.brand_id=".$brand_id.")) * RAND() + (SELECT MIN(goods_id) FROM ecs_goods as g where g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 and is_best=1 AND g.brand_id=".$brand_id.")  LIMIT 8 ";
+			
+			
+		}*/
+		
+	$num = 8;
+	$where = " g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 and is_best=1 and brand_id=$brand_id ";
+	$sql = 'SELECT g.goods_id FROM ' . $GLOBALS['ecs']->table('goods') . " AS g  WHERE $where";
+	$goods_ids = $GLOBALS['db']->getCol($sql);
+	$relative_goods_ids = array();
+	$lenght = count($goods_ids);
+	$i=1;
+	if($num>$lenght)
+	{
+		$num = $lenght;
+	}
+	while($i<=$num)
+	{
+		$goods_id = $goods_ids[mt_rand(0, $lenght-1)];
+		if(!in_array($goods_id,$relative_goods_ids))
+		{
+			$relative_goods_ids[] = $goods_id;
+			$i++;
+		}
+	}
+		
+		//$sql = "SELECT g.goods_id FROM ".$ecs->table('goods')." AS g WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0  and is_best=1 AND g.brand_id=".$brand_id." limit 100";
+		//$goods_ids = $db->getCol($sql);
+		
+		$goods_ids  = $relative_goods_ids;
+		
+		$sql = "UPDATE " . $GLOBALS['ecs']->table('brand') . "
+						SET rand_ids = '" . join(',',$goods_ids) . "',rand_date='".$now_time1."' WHERE brand_id = '" . $brand_id . "'";
+		$GLOBALS['db']->query($sql);
+		
+		
+		
+	}
+     
 
-	$sql = "SELECT g.goods_id,g.brand_id, g.goods_name, g.goods_name_style, g.click_count, g.goods_number, g.market_price,  g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price,  IFNULL(mp.user_price, g.shop_price * '1') AS shop_price, g.promote_price,  IF(g.promote_price != ''  AND g.promote_start_date < 1439592730 AND g.promote_end_date > 1439592730, g.promote_price, shop_price)  AS shop_p, g.goods_type,  g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img  FROM ".$ecs->table('goods')." AS g  LEFT JOIN ".$ecs->table('member_price')." AS mp  ON mp.goods_id = g.goods_id  AND mp.user_rank = '0' WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 AND g.brand_id=".$brand_id." order by g.goods_id desc";
+
+	 
+	$sql = "SELECT g.goods_id,g.brand_id, g.goods_name, g.goods_name_style, g.click_count, g.goods_number, g.market_price,  g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price,  IFNULL(mp.user_price, g.shop_price * '1') AS shop_price, g.promote_price,  IF(g.promote_price != ''  AND g.promote_start_date < 1439592730 AND g.promote_end_date > 1439592730, g.promote_price, shop_price)  AS shop_p, g.goods_type,  g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img  FROM ".$ecs->table('goods')." AS g  LEFT JOIN ".$ecs->table('member_price')." AS mp  ON mp.goods_id = g.goods_id  AND mp.user_rank = '0' WHERE g.goods_id " . db_create_in($goods_ids) . " order by g.goods_id desc";
 
 
 	$goodsInfo = $db->getAll($sql);
-
-	$allnum = count($goodsInfo);
-	if($allnum > 0){
-		if($allnum > 8){
-			array_splice($goodsInfo, 8);
-		}
-		foreach($goodsInfo as $key=>$row){
-			$goodsInfo[$key]['shop_price']       = price_format($row['shop_price']);
-			$goodsInfo[$key]['promote_price']    = ($promote_price > 0) ? price_format($promote_price) : '';
-			$goodsInfo[$key]['goods_thumb']      = get_image_path($row['goods_id'], $row['goods_thumb'], true);
-			$goodsInfo[$key]['url']              = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
-		}
+	foreach($goodsInfo as $key=>$row){
+		$goodsInfo[$key]['shop_price']       = price_format($row['shop_price']);
+		$goodsInfo[$key]['promote_price']    = ($promote_price > 0) ? price_format($promote_price) : '';
+		$goodsInfo[$key]['goods_thumb']      = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+		$goodsInfo[$key]['url']              = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
 	}
+	
 	return array('num'=>$allnum,'info'=>$goodsInfo);
 }
 

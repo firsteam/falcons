@@ -136,7 +136,7 @@
       </div>
       <div class="blank5"></div>
       <!-- {/if} --> 
-      <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+      <!-- #BeginLibraryItem "/library/goods_list_search.lbi" --><!-- #EndLibraryItem -->
   <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
     </div>
     <div class="left" style="display: none;"> <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->

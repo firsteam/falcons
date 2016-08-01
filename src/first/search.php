@@ -19,67 +19,9 @@ define('IN_ECS', true);
 define('_SP_', chr(0xFF).chr(0xFE)); 
 define('UCS2', 'ucs-2be');
 
-/* 代码添加_END  By   www.68ecshop.com */
-if (!function_exists("htmlspecialchars_decode"))
-{
-    function htmlspecialchars_decode($string, $quote_style = ENT_COMPAT)
-    {
-        return strtr($string, array_flip(get_html_translation_table(HTML_SPECIALCHARS, $quote_style)));
-    }
-}
-
-if (empty($_GET['encode']))
-{
-    $string = array_merge($_GET, $_POST);
-    if (get_magic_quotes_gpc())
-    {
-        require(dirname(__FILE__) . '/includes/lib_base.php');
-        //require(dirname(__FILE__) . '/includes/lib_common.php');
-
-        $string = stripslashes_deep($string);
-    }
-    $string['search_encode_time'] = time();
-    $string = str_replace('+', '%2b', base64_encode(serialize($string)));
-
-    header("Location: search.php?encode=$string\n");
-
-    exit;
-}
-else
-{
-    $string = base64_decode(trim($_GET['encode']));
-    if ($string !== false)
-    {
-        $string = unserialize($string);
-        if ($string !== false)
-        {
-            /* 用户在重定向的情况下当作一次访问 */
-            if (!empty($string['search_encode_time']))
-            {
-                if (time() > $string['search_encode_time'] + 2)
-                {
-                    define('INGORE_VISIT_STATS', true);
-                }
-            }
-            else
-            {
-                define('INGORE_VISIT_STATS', true);
-            }
-        }
-        else
-        {
-            $string = array();
-        }
-    }
-    else
-    {
-        $string = array();
-    }
-}
 
 require(dirname(__FILE__) . '/includes/init.php');
 
-$_REQUEST = array_merge($_REQUEST, addslashes_deep($string));
 
 $_REQUEST['act'] = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : '';
 
@@ -467,6 +409,36 @@ else
                 "AND (( 1 " . $keywords . $brand . $min_price . $max_price . $intro . $outstock . " ) ".$tag_where." ) " .
             "ORDER BY $sort $order";
     
+	
+	if ($sort=='salenum')
+	{
+		
+		  $sql = "SELECT IFNULL(o.num,0) AS salenum,g.goods_id, g.goods_name, g.market_price, g.click_count, g.goods_number, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
+                "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
+                "g.promote_price, g.promote_start_date, g.promote_end_date, g.goods_thumb, g.goods_img, g.goods_brief, g.goods_type ".
+            "FROM " .$ecs->table('goods'). " AS g ".
+            "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
+                    "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
+					" LEFT JOIN " .
+			   " (SELECT " .
+				   " SUM(og.`goods_number`) " .
+				   " AS num,og.goods_id " .
+				   " FROM " .
+				   " ecs_order_goods AS og, " .
+				   " ecs_order_info AS oi " .
+				   " WHERE oi.pay_status = 2 " .
+				   " AND oi.order_status >= 1 " .
+				   " AND oi.order_id = og.order_id " .
+				   " GROUP BY og.goods_id) " .
+			   " AS o " .
+			   " ON o.goods_id = g.goods_id " .
+            "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_virtual=0 $attr_in $categories ".
+                "AND (( 1 " . $keywords . $brand . $min_price . $max_price . $intro . $outstock . " ) ".$tag_where." ) " .
+            "ORDER BY $sort $order";
+		
+	}
+	
+	
     }
     /* fulltext_search_add_START_www.68ecshop.com */
     

@@ -4044,7 +4044,7 @@ function cat_list_to_json($cat_list, $selected = 0)
 	{
 		$id = $cat['cat_id'];
 		$pId = $cat['parent_id'];
-		$name = $cat['cat_name'];
+		$name = $cat['cat_name_cn'].$cat['cat_name'];
 		//$open = true;
 
 		$name_pinyin = Pinyin($name, 1, 1).$name;
@@ -4070,7 +4070,7 @@ function cat_list_to_json_string($cat_list, $selected = 0)
 	{
 		$id = $cat['cat_id'];
 		$pId = $cat['parent_id'];
-		$name = $cat['cat_name'];
+		$name = $cat['cat_name_cn'].' '.$cat['cat_name'];
 		//$open = true;
 
 		$name_pinyin = Pinyin($name, 'utf-8', 1).$name;

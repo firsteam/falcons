@@ -242,8 +242,10 @@ function searchGoods()
     var elements  = document.forms['theForm'].elements;
     var filters   = new Object;
 
+	filters.is_on_sale = 1;
+	filters.is_delete = 0;
     filters.cat_id = elements['cat_id'].value;
-    filters.brand_id = elements['brand_id'].value;
+    filters.brand_id = elements['brand_id'].value;	
     filters.keyword = Utils.trim(elements['keyword'].value);
 
     sz.loadOptions('get_goods_list', filters);

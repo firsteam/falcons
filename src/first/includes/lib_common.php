@@ -268,7 +268,7 @@ function cat_list($cat_id = 0, $selected = 0, $re_type = true, $level = 0, $is_s
         $data = read_static_cache('cat_pid_releate');
         if ($data === false)
         {
-            $sql = "SELECT c.cat_id, c.cat_name, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children ".
+            $sql = "SELECT c.cat_id, c.cat_name, c.cat_name_cn, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children ".
                 'FROM ' . $GLOBALS['ecs']->table('category') . " AS c ".
                 "LEFT JOIN " . $GLOBALS['ecs']->table('category') . " AS s ON s.parent_id=c.cat_id ".
                 "where c.is_virtual= '0' ".
@@ -386,7 +386,7 @@ function cat_list($cat_id = 0, $selected = 0, $re_type = true, $level = 0, $is_s
             {
                 $select .= str_repeat('&nbsp;', $var['level'] * 4);
             }
-            $select .= htmlspecialchars(addslashes($var['cat_name']), ENT_QUOTES) . '</option>';
+            $select .= htmlspecialchars(addslashes($var['cat_name'].' '.$var['cat_name_cn']), ENT_QUOTES) . '</option>';
         }
 
         return $select;
@@ -411,7 +411,7 @@ function cat_list1($cat_id = 0, $selected = 0, $re_type = true, $level = 0, $is_
         $data = read_static_cache('cat_pid_releate_virtual');
         if ($data === false)
         {
-            $sql = "SELECT c.cat_id, c.cat_name, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children,c.is_virtual ".
+            $sql = "SELECT c.cat_id, c.cat_name, c.cat_name_cn, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children,c.is_virtual ".
                 'FROM ' . $GLOBALS['ecs']->table('category') . " AS c ".
                 "LEFT JOIN " . $GLOBALS['ecs']->table('category') . " AS s ON s.parent_id=c.cat_id ".
                  "where c.is_virtual= '1' ".

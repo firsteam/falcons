@@ -2087,6 +2087,7 @@ function get_navigator($ctype = '', $catlist = array())
             'name'      =>  $row['name'],
             'opennew'   =>  $row['opennew'],
             'url'       =>  $row['url'],
+			'url1'       =>  str_replace($GLOBALS['ecs']->url(),'',$row['url']),
             'ctype'     =>  $row['ctype'],
             'cid'       =>  $row['cid'],
             );
@@ -2095,7 +2096,7 @@ function get_navigator($ctype = '', $catlist = array())
     /*遍历自定义是否存在currentPage*/
     foreach($navlist['middle'] as $k=>$v)
     {
-        $condition = empty($ctype) ? (strpos($cur_url, $v['url']) === 0) : (strpos($cur_url, $v['url']) === 0 && strlen($cur_url) == strlen($v['url']));
+        $condition = empty($ctype) ? (strpos($cur_url, $v['url1']) === 0) : (strpos($cur_url, $v['url1']) === 0 && strlen($cur_url) == strlen($v['url1']));
         if ($condition)
         {
             $navlist['middle'][$k]['active'] = 1;
