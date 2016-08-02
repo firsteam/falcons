@@ -228,6 +228,9 @@ if ($_REQUEST['act'] == 'insert')
  
    $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
    $arrCatName = explode("," ,$cat['cat_name']);
+   
+   $cat['cat_name_cn']     = !empty($_POST['cat_name_cn'])     ? trim($_POST['cat_name_cn'])     : '';
+   $arrCatNameCn = explode("," ,$cat['cat_name_cn']);
   /*  代码增加_start By www.ecshop68.com */
    $cat['brand_qq']  = !empty($_POST['brand_wwwecshop68com']) ? $_POST['brand_wwwecshop68com'] : '';
    $cat['attr_wwwecshop68com']  = !empty($_POST['attr_qq']) ? $_POST['attr_qq'] : '';
@@ -246,10 +249,10 @@ if ($_REQUEST['act'] == 'insert')
 	/* 代码增加_end  By   www.68ecshop.com  */
    
  /*  代码增加_end By www.ecshop68.com */
- foreach($arrCatName as $arrCatNameValue)
+ foreach($arrCatName as $key => $arrCatNameValue)
  {
   $cat['cat_name'] = $arrCatNameValue;
-
+  $cat['cat_name_cn'] = $arrCatNameCn[$key];
   if (cat_exists($cat['cat_name'], $cat['parent_id']))
   {
    /* 同级别下不能有重复的分类名称 */
@@ -410,6 +413,7 @@ if ($_REQUEST['act'] == 'update')
     $cat['cat_desc']     = !empty($_POST['cat_desc'])     ? $_POST['cat_desc']           : '';
     $cat['measure_unit'] = !empty($_POST['measure_unit']) ? trim($_POST['measure_unit']) : '';
     $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
+	$cat['cat_name_cn']     = !empty($_POST['cat_name_cn'])     ? trim($_POST['cat_name_cn'])     : '';
     $cat['is_show']      = !empty($_POST['is_show'])      ? intval($_POST['is_show'])    : 0;
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
     $cat['style']        = !empty($_POST['style'])        ? trim($_POST['style'])        : '';
@@ -985,16 +989,16 @@ function search_cat()
 	$res = NULL;
 	
 	// 根据类别名称进行模糊查询
-	$sql = "SELECT c.cat_id, c.cat_name, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children, 1 AS result ".
+	$sql = "SELECT c.cat_id, c.cat_name, c.cat_name_cn, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children, 1 AS result ".
                 'FROM ' . $GLOBALS['ecs']->table('category') . " AS c ".
                 "LEFT JOIN " . $GLOBALS['ecs']->table('category') . " AS s ON s.parent_id=c.cat_id ".
                 "GROUP BY c.cat_id ".
-                "HAVING c.cat_name LIKE '%".$_POST['cat_name']."%' ".
+                "HAVING c.cat_name LIKE '%".$_POST['cat_name']."%' OR c.cat_name_cn LIKE '%".$_POST['cat_name']."%'".
                 'ORDER BY c.parent_id, c.sort_order ASC';
     $res = $GLOBALS['db']->getAll($sql);
     
     // 查询所有类别
-    $sql = "SELECT c.cat_id, c.cat_name, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children ".
+    $sql = "SELECT c.cat_id, c.cat_name, c.cat_name_cn, c.measure_unit, c.parent_id, c.is_show, c.show_in_nav, c.grade, c.sort_order, COUNT(s.cat_id) AS has_children ".
                 'FROM ' . $GLOBALS['ecs']->table('category') . " AS c ".
                 "LEFT JOIN " . $GLOBALS['ecs']->table('category') . " AS s ON s.parent_id=c.cat_id ".
                 "GROUP BY c.cat_id ".
@@ -1085,7 +1089,7 @@ function get_cat_parents(&$parents, $cat_map, $cat_id)
  * @return type
  */
 function get_virtual_cat_select(){
-    $sql = "select cat_id,cat_name from ".$GLOBALS['ecs']->table('category')." where is_virtual = 1 and parent_id = 0";
+    $sql = "select cat_id,cat_name, c.cat_name_cn from ".$GLOBALS['ecs']->table('category')." where is_virtual = 1 and parent_id = 0";
     $res = $GLOBALS['db']->getAll($sql);
     return $res;
 }

@@ -476,6 +476,7 @@ Template Type: type_0
 /* 代码增加_start  By  www.68ecshop.com */
 /*  智能搜索样式 */
 #search_tips {
+	display:none;
 	z-index: 999999;
 	position: absolute;
 	left: 0px;

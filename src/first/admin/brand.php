@@ -88,8 +88,8 @@ elseif ($_REQUEST['act'] == 'insert')
 
     /*插入数据*/
 
-    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, site_url, brand_desc, brand_logo, is_show, sort_order,brand_cat) ".
-           "VALUES ('$_POST[brand_name]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]','$brand_cat')";
+    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, brand_name_cn, site_url, brand_desc, brand_logo, is_show, sort_order,brand_cat) ".
+           "VALUES ('$_POST[brand_name]', '$_POST[brand_name_cn]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]','$brand_cat')";
     $db->query($sql);
 
     admin_log($_POST['brand_name'],'add','brand');
@@ -113,7 +113,7 @@ elseif ($_REQUEST['act'] == 'edit')
 {
     /* 权限判断 */
     admin_priv('brand_manage');
-    $sql = "SELECT brand_id, brand_name, site_url, brand_logo, brand_desc, brand_logo, is_show, sort_order,brand_cat ".
+    $sql = "SELECT brand_id, brand_name, brand_name_cn, site_url, brand_logo, brand_desc, brand_logo, is_show, sort_order,brand_cat ".
             "FROM " .$ecs->table('brand'). " WHERE brand_id='$_REQUEST[id]'";
     $brand = $db->GetRow($sql);
 
@@ -153,7 +153,7 @@ elseif ($_REQUEST['act'] == 'updata')
 	
     /* 处理图片 */
     $img_name = basename($image->upload_image($_FILES['brand_logo'],'brandlogo'));
-    $param = "brand_name = '$_POST[brand_name]',  site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]',brand_cat ='$brand_cat' ";
+    $param = "brand_name = '$_POST[brand_name]', brand_name_cn = '$_POST[brand_name_cn]', site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]',brand_cat ='$brand_cat' ";
     if (!empty($img_name))
     {
         //有图片上传
@@ -196,6 +196,32 @@ elseif ($_REQUEST['act'] == 'edit_brand_name')
     else
     {
         if ($exc->edit("brand_name = '$name'", $id))
+        {
+            admin_log($name,'edit','brand');
+            make_json_result(stripslashes($name));
+        }
+        else
+        {
+            make_json_result(sprintf($_LANG['brandedit_fail'], $name));
+        }
+    }
+}
+
+elseif ($_REQUEST['act'] == 'edit_brand_name_cn')
+{
+    check_authz_json('brand_manage');
+
+    $id     = intval($_POST['id']);
+    $name   = json_str_iconv(trim($_POST['val']));
+
+    /* 检查名称是否重复 */
+    if ($exc->num("brand_name_cn",$name, $id) != 0)
+    {
+        make_json_error(sprintf($_LANG['brandname_exist'], $name));
+    }
+    else
+    {
+        if ($exc->edit("brand_name_cn = '$name'", $id))
         {
             admin_log($name,'edit','brand');
             make_json_result(stripslashes($name));

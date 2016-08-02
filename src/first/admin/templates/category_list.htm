@@ -31,24 +31,24 @@
       <span>
       <!-- 0-默认列表 1-搜索匹配列表 其他-搜索未匹配列表 -->
       {if $cat.is_result eq 0}
-      <a href="goods.php?act=list&cat_id={$cat.cat_id}">{$cat.cat_name}</a>
+      <a href="goods.php?act=list&cat_id={$cat.cat_id}">{$cat.cat_name} {$cat.cat_name_cn}</a>
       {elseif $cat.is_result eq 1}
-      <a href="goods.php?act=list&cat_id={$cat.cat_id}" style="font-size: 14px;">{$cat.cat_name}</a>
+      <a href="goods.php?act=list&cat_id={$cat.cat_id}" style="font-size: 14px;">{$cat.cat_name} {$cat.cat_name_cn}</a>
       {else}
-      <a href="goods.php?act=list&cat_id={$cat.cat_id}" style="color: #CDCDCD;">{$cat.cat_name}</a>
+      <a href="goods.php?act=list&cat_id={$cat.cat_id}" style="color: #CDCDCD;">{$cat.cat_name} {$cat.cat_name_cn}</a>
       {/if}
       </span>
     {if $cat.cat_image}
       <img src="../{$cat.cat_image}" border="0" style="vertical-align:middle;" width="60px" height="21px">
     {/if}
     </td>
-    <td width="10%">{$cat.goods_num}</td>
-    <td width="10%"><span onclick="listTable.edit(this, 'edit_measure_unit', {$cat.cat_id})"><!-- {if $cat.measure_unit} -->{$cat.measure_unit}<!-- {else} -->&nbsp;&nbsp;&nbsp;&nbsp;<!-- {/if} --></span></td>
-    <td width="10%"><img src="images/{if $cat.show_in_nav eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show_in_nav', {$cat.cat_id})" /></td>
-    <td width="10%"><img src="images/{if $cat.is_show eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_is_show', {$cat.cat_id})" /></td>
-    <td><span onclick="listTable.edit(this, 'edit_grade', {$cat.cat_id})">{$cat.grade}</span></td>
-    <td width="10%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td>
-    <td width="24%" align="center">
+    <td width="8%">{$cat.goods_num}</td>
+    <td width="8%"><span onclick="listTable.edit(this, 'edit_measure_unit', {$cat.cat_id})">{$cat.measure_unit|default:N/A}</span></td>
+    <td width="8%"><img src="images/{if $cat.show_in_nav eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show_in_nav', {$cat.cat_id})" /></td>
+    <td width="8%"><img src="images/{if $cat.is_show eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_is_show', {$cat.cat_id})" /></td>
+    <td width="8%" ><span onclick="listTable.edit(this, 'edit_grade', {$cat.cat_id})">{$cat.grade}</span></td>
+    <td width="8%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td>
+    <td width="25%" align="center">
       <a href="category.php?act=move&cat_id={$cat.cat_id}">{$lang.move_goods}</a> |
       <a href="category.php?act=edit&amp;cat_id={$cat.cat_id}">{$lang.edit}</a> |
       <a href="javascript:;" onclick="listTable.remove({$cat.cat_id}, '{$lang.drop_confirm}')" title="{$lang.remove}">{$lang.remove}</a>

@@ -13,6 +13,7 @@
   <table cellpadding="3" cellspacing="1">
     <tr>
       <th>{$lang.brand_name}</th>
+	  <th>{$lang.brand_name}</th>
       <th>{$lang.site_url}</th>
       <th>{$lang.brand_desc}</th>
       <th>{$lang.sort_order}</th>
@@ -24,6 +25,9 @@
       <td class="first-cell">
         <span style="float:right">{$brand.brand_logo}</span>
         <span onclick="javascript:listTable.edit(this, 'edit_brand_name', {$brand.brand_id})">{$brand.brand_name|escape:html}</span>
+      </td>
+	  <td class="first-cell">
+        <span onclick="javascript:listTable.edit(this, 'edit_brand_name_cn', {$brand.brand_id})">{$brand.brand_name_cn|default:N/A}</span>
       </td>
       <td>{$brand.site_url}</td>
       <td align="left">{$brand.brand_desc|truncate:36}</td>

@@ -10,7 +10,11 @@
         <td><textarea name='cat_name' rows="3" cols="48">{$cat_info.cat_name|escape:html}</textarea>
           <font color="red">*</font> <span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeCat_name">{$lang.notice_cat_name}</span></td>
       </tr>
-      
+      <tr>
+        <td class="label">{$lang.cat_name}中文:</td>
+        <td><textarea name='cat_name_cn' rows="3" cols="48">{$cat_info.cat_name_cn|escape:html}</textarea>
+           <span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeCat_name">{$lang.notice_cat_name}</span></td>
+      </tr>
 	 {* 代码增加_start  By  www.68ecshop.com *}
 	  <tr>
         <td class="label">目录名称:</td>

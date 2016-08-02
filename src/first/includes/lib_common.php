@@ -974,7 +974,7 @@ function load_config()
 function get_brand_list($t = false)
 // 代码修改_end_derek20150129admin_goods  www.68ecshop.com
 {
-    $sql = 'SELECT brand_id, brand_name FROM ' . $GLOBALS['ecs']->table('brand') . ' ORDER BY sort_order';
+    $sql = 'SELECT brand_id, brand_name, brand_name_cn FROM ' . $GLOBALS['ecs']->table('brand') . ' ORDER BY sort_order';
     $res = $GLOBALS['db']->getAll($sql);
 
     $brand_list = array();
@@ -984,13 +984,13 @@ function get_brand_list($t = false)
 		
 		if ($t == true)
 		{
-			$brand_list[$row['brand_id']]['name'] = addslashes($row['brand_name']);
+			$brand_list[$row['brand_id']]['name'] = addslashes($row['brand_name'].' '.$row['brand_name_cn']);
 			$brand_list[$row['brand_id']]['name_pinyin'] = Pinyin($brand_list[$row['brand_id']]['name'],1,1);
 			$brand_list[$row['brand_id']]['name_p'] = substr($brand_list[$row['brand_id']]['name_pinyin'],0,1);
 		}
 		else
 		{
-			$brand_list[$row['brand_id']] = addslashes($row['brand_name']);
+			$brand_list[$row['brand_id']] = addslashes($row['brand_name'].' '.$row['brand_name_cn']);
 		}
 		// 代码修改_end_derek20150129admin_goods  www.68ecshop.com
     }

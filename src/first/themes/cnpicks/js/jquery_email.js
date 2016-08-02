@@ -61,7 +61,7 @@
                 }
                 else {
                     autoComplete(keyword);
-                    document.getElementById("search_tip").style.display = "";
+                    document.getElementById("search_tip").style.display = "none";
                     currentSelIndex = -1;
                     oldSelIndex = -1;
                 }

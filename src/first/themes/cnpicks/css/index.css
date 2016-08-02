@@ -2452,6 +2452,7 @@ margin-top:expression(72-this.height/2);
 }
 /*  智能搜索样式 */
 #search_tips {
+	display: none;
 	z-index: 999999;
 	position: absolute;
 	left: 50px;
