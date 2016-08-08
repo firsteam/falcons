@@ -50,8 +50,9 @@
     <input type="button" value="导出商品" class="button" onclick="download()" />
     <input type="hidden" value="query" name="act"/>
     
-    <input name="is_show_keywords" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_keywords eq 1} checked="checked"{/if} /> 显示关键词
-    <input name="is_show_brief" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_brief eq 1} checked="checked"{/if}/> 显示简单描述
+    <input name="is_show_keywords" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_keywords eq 1} checked="checked"{/if} /> 关键词
+    <input name="is_show_brief" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_brief eq 1} checked="checked"{/if}/> 简单描述
+	<input name="is_show_title_cn" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_title_cn eq 1} checked="checked"{/if}/> 原标题
   </form>
 </div>
 
@@ -90,7 +91,7 @@
 		
 		listTable.filter['is_show_keywords'] = (document.searchForm.is_show_keywords.checked==true) ? 1 : 0;
 		listTable.filter['is_show_brief'] = (document.searchForm.is_show_brief.checked==true) ? 1 : 0;
-		
+		listTable.filter['is_show_title_cn'] = (document.searchForm.is_show_title_cn.checked==true) ? 1 : 0;
 		
         listTable.filter['page'] = 1;
 

@@ -31,14 +31,14 @@
 }
 .full-screen-slides li a {
 	display: block;
-	width: 750px;
-	height: 290px;
+	width: 100%;
+	height: 100%;
 	text-indent: -9999px;
-	margin-left: -365px;
+	/*margin-left: -365px;
 	position: absolute;
 	z-index: 2;
 	left: 50%;
-	top: 0px;
+	top: 0px;*/
 }
 .full-screen-slides-pagination {
 	font-size: 0;

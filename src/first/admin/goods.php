@@ -1882,7 +1882,37 @@ elseif ($_REQUEST['act'] == 'batch')
             check_authz_json('goods_manage');
             update_goods($goods_id, 'is_hot', '0');
         }
-
+		
+        /* 编辑标题 */
+        elseif ($_POST['type'] == 'edit_title')
+        {
+            /* 检查权限 */
+            check_authz_json('goods_manage');
+			if($_POST['title_middle'])
+			{
+				update_goods($goods_id, 'goods_name', '"'.$_POST['title_prefix'].$_POST['title_middle'].$_POST['title_postfix'].'"');
+			}
+			else
+			{
+				update_goods($goods_id, 'goods_name', 'concat("'.$_POST['title_prefix'].'",goods_name,"'.$_POST['title_postfix'].'")');
+			}
+        }
+		
+		/* 编辑标题 */
+        elseif ($_POST['type'] == 'edit_brief')
+        {
+            /* 检查权限 */
+            check_authz_json('goods_manage');
+			if($_POST['brief_middle'])
+			{
+				update_goods($goods_id, 'goods_brief', '"'.$_POST['brief_prefix'].$_POST['brief_middle'].$_POST['brief_postfix'].'"');
+			}
+			else
+			{
+				update_goods($goods_id, 'goods_brief', 'concat("'.$_POST['brief_prefix'].'",goods_brief,"'.$_POST['brief_postfix'].'")');
+			}
+        }
+		
         /* 转移到分类 */
         elseif ($_POST['type'] == 'move_to')
         {

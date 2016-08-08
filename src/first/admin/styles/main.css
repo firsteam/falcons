@@ -100,14 +100,14 @@ h1 .action-span1 {
 .form-div select, .form-div input, .form-div img,.main-div select, .main-div input,.main-div img {
 	vertical-align: middle;
 }
-.main-div input[type='text'], .form-div input[type='text'],p input[type='text'] {
+.main-div input[type='text'], .form-div input[type='text'],p input[type='text'], input[type='text']  {
 	margin: 5px;
 	padding: 0px 4px;
 	height: 28px;
 	line-height: 28px;
-	min-width:200px;
+	/*min-width:200px;*/
 	width: auto;
-	border: solid 1px #ddd;
+	border: solid 1px #ccc;
 }
 .main-div input[type='password'] {
 	margin: 5px;

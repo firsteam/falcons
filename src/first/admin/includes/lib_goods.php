@@ -418,7 +418,7 @@ function update_goods($goods_id, $field, $value)
         clear_cache_files();
 
         $sql = "UPDATE " . $GLOBALS['ecs']->table('goods') .
-                " SET $field = '$value' , last_update = '". gmtime() ."' " .
+                " SET $field = $value , last_update = '". gmtime() ."' " .
                 "WHERE goods_id " . db_create_in($goods_id);
         return $GLOBALS['db']->query($sql);
     }
@@ -873,11 +873,13 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
 		
 		$filter['is_show_brief']   = isset($_REQUEST['is_show_brief']) ? trim($_REQUEST['is_show_brief'])  : (isset($_COOKIE['ECS']['is_show_brief']) ? $_COOKIE['ECS']['is_show_brief'] : 0);
 		
+		$filter['is_show_title_cn']   = isset($_REQUEST['is_show_title_cn']) ? trim($_REQUEST['is_show_title_cn'])  : (isset($_COOKIE['ECS']['is_show_title_cn']) ? $_COOKIE['ECS']['is_show_title_cn'] : 0);
 		
 		
 		
 		setcookie('ECS[is_show_keywords]', $filter['is_show_keywords'], gmtime() + 86400 * 7);
 		setcookie('ECS[is_show_brief]', $filter['is_show_brief'], gmtime() + 86400 * 7);
+		setcookie('ECS[is_show_title_cn]', $filter['is_show_title_cn'], gmtime() + 86400 * 7);
 		
         
 		$filter['is_delete']        = $is_delete;
@@ -951,7 +953,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         /* 关键字 */
         if (!empty($filter['keyword']))
         {
-            $where .= " AND (goods_id = '" . mysql_like_quote($filter['keyword']) . "' OR goods_name LIKE '%" . mysql_like_quote($filter['keyword']) . "%')";
+            $where .= " AND (goods_id = '" . mysql_like_quote($filter['keyword']) . "' OR goods_name LIKE '%" . mysql_like_quote($filter['keyword']) . "%' OR goods_name_zh LIKE '%" . mysql_like_quote($filter['keyword']) . "%')";
         }
         if (!empty($filter['collect_link']))
         {
