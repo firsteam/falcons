@@ -74,7 +74,7 @@
   
   <input type="text" name="article_title" style="display:none" size="20"></input>  
 
-  <select name="article_cat" onchange="catChanged()" style="display:none">
+  <select name="article_cat" style="display:none">
 	<option value="0">{$lang.select_plz}</option>
 	{$cat_select}
   </select>
@@ -108,7 +108,7 @@
   {if $code neq 'real_goods'}
   <input type="hidden" name="extension_code" value="{$code}" />
   {/if}
-  <input type="button" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" id="btnSubmit" class="button" disabled="true" />
+  <input type="button" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" id="btnSubmit" class="button"/>
   <span id="handel_success" style="color:#F00"></span>
   <a href="#top" class="special">回到顶部</a>
 </div>
@@ -124,58 +124,43 @@ function titleCase(str) {
 </script>
 
 <script type="text/javascript">
-/**
- * 选取上级分类时判断选定的分类是不是底层分类
- */
-function catChanged()
-{
-  var obj = document.forms['theForm'].elements['article_cat'];
-
-  cat_type = obj.options[obj.selectedIndex].getAttribute('cat_type');
-  if (cat_type == undefined)
-  {
-    cat_type = 1;
-  }
-
-  if ((obj.selectedIndex > 0) && (cat_type == 2 || cat_type == 4))
-  {
-    alert(not_allow_add);
-    obj.selectedIndex = 0;
-    return false;
-  }
-
-  return true;
-}
-</script>
-
-<script type="text/javascript">
-  $("#btnSubmit").click(function()
-  {	
-		    var data = $('#listForm').serialize()
+$("#btnSubmit").click(function()
+{	
+		var data = $('#listForm').serialize();
+		if($("input[name='checkboxes[]']:checked").length > 0)
+		{
 			$.ajax({
-				url:"goods.php?act=batch",
-				dataType:'json',
-				type:"POST",
-				data:data,
-				beforeSend:function() {  
-			       $("#btnSubmit").val("正在提交...").attr('disabled',true);
-				},  
-				complete:function(result) {  
+			url:"goods.php?act=batch",
+			dataType:'json',
+			type:"POST",
+			data:data,
+			beforeSend:function() {  
+			   $("#btnSubmit").val("正在提交...").attr('disabled',true);
+			},  
+			complete:function(result) {  
+			   $("#btnSubmit").val("{$lang.button_submit}").attr('disabled',false);
+			},  
+			success:function(result){
+			   $("#btnSubmit").val("{$lang.button_submit}").attr('disabled',false);
+				//document.getElementById('listDiv').innerHTML = result.content;
+			   $("#handel_success").html(result.content);	
+				
+			},
+			error:function(){
 				$("#btnSubmit").val("{$lang.button_submit}").attr('disabled',false);
-				},  
-				success:function(result){
-				  $("#btnSubmit").val("{$lang.button_submit}").attr('disabled',false);
-					//document.getElementById('listDiv').innerHTML = result.content;
-				  $("#handel_success").html(result.content);	
-					
-				},
-				error:function(){
-					$("#btnSubmit").val("{$lang.button_submit}").attr('disabled',false);
-					alert("出错了,请刷新页面重试:(");
-				}
+				alert("出错了,请刷新页面重试:(");
+			}
 			});
-	  }
-   );
+		}
+		else
+		{			
+			alert("请至少选择一个商品！");
+			return false;
+		}
+
+		
+	}
+);
    
    
    

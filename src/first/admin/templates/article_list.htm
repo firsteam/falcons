@@ -15,7 +15,7 @@
   </form>
 </div>
 
-<form method="POST" action="article.php?act=batch_remove" name="listForm">
+<form method="POST" action="" name="listForm" onsubmit="return confirmSubmit(this)">
 <!-- start cat list -->
 <div class="list-div" id="listDiv">
 {/if}
@@ -73,7 +73,7 @@
     {$cat_select}
   </select>
 
-  <input type="submit" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" class="button" disabled="true" />
+  <input type="submit" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" class="button" />
 </div>
 </form>
 <!-- end cat list -->
@@ -125,7 +125,7 @@
 
       // 切换分类列表的显示
       frm.elements['target_cat'].style.display = frm.elements['type'].value == 'move_to' ? '' : 'none';
-
+	
       if (!document.getElementById('btnSubmit').disabled &&
           confirmSubmit(frm, false))
       {

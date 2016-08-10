@@ -539,7 +539,10 @@ elseif ($_REQUEST['act'] == 'batch')
 
             foreach ($_POST['checkboxes'] AS $key => $id)
             {
-                if ($exc->drop($id))
+                $sql = "DELETE FROM `cnpicks`.`ecs_goods_article` WHERE `article_id`=".$id;
+				$db->query($sql);
+				
+				if ($exc->drop($id))
                 {
                     $name = $exc->get_name($id);
                     admin_log(addslashes($name),'remove','article');
