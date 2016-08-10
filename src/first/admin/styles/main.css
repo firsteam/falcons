@@ -1262,3 +1262,34 @@ a.status {
 .goods_select_area span:hover a{
 	background:url(../images/close.png) no-repeat 6px -12px #e31939;	
 }
+
+.sort_nav{
+	width:100%;
+	height:30px;
+	margin:10px;
+}
+.sort_bar{
+	float:left;
+	margin:8px;
+	font-size:15px;
+}
+.goods_label1{
+	/*color:red;
+	font-weight:bold;*/
+}
+.goods_card {
+}
+
+.goods_card li{
+	float:left;
+	width:250px;
+	height:430px;
+}
+.goods_bar{
+	width:230px;
+	height:auto;
+	padding:4px 0px;
+}
+.clear_both {
+	clear:both;
+}

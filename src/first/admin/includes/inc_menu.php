@@ -35,15 +35,15 @@ $modules['02_cat_and_goods']['0688_goods_brand_cat'] = 'brands_category.php?act=
 $modules['02_cat_and_goods']['08_goods_type']       = 'goods_type.php?act=manage';
 $modules['02_cat_and_goods']['11_goods_trash']      = 'goods.php?act=trash';        // 商品回收站
 $modules['02_cat_and_goods']['12_batch_pic']        = 'picture_batch.php';
-$modules['02_cat_and_goods']['13_batch_add']        = 'goods_batch.php?act=add';    // 商品批量上传
-$modules['02_cat_and_goods']['14_goods_export']     = 'goods_export.php?act=goods_export';
-$modules['02_cat_and_goods']['15_batch_edit']       = 'goods_batch.php?act=select'; // 商品批量修改
-$modules['02_cat_and_goods']['16_goods_script']     = 'gen_goods_script.php?act=setup';
+$modules['02_cat_and_goods']['13_batch_add']        = 'goods_batch.php?act=add';    // 商品批量上传 
+//$modules['02_cat_and_goods']['14_goods_export']     = 'goods_export.php?act=goods_export'; //disable-by-cy
+//$modules['02_cat_and_goods']['15_batch_edit']       = 'goods_batch.php?act=select'; // 商品批量修改 disable-by-cy
+//$modules['02_cat_and_goods']['16_goods_script']     = 'gen_goods_script.php?act=setup'; //disable-by-cy
 $modules['02_cat_and_goods']['17_tag_manage']       = 'tag_manage.php?act=list';
 /*$modules['02_cat_and_goods']['50_virtual_card_list']   = 'goods.php?act=list&extension_code=virtual_card';
 $modules['02_cat_and_goods']['51_virtual_card_add']    = 'goods.php?act=add&extension_code=virtual_card';
 $modules['02_cat_and_goods']['52_virtual_card_change'] = 'virtual_card.php?act=change';*/
-$modules['02_cat_and_goods']['goods_auto']             = 'goods_auto.php?act=list';
+//$modules['02_cat_and_goods']['goods_auto']             = 'goods_auto.php?act=list'; //disable-by-cy
 $modules['02_cat_and_goods']['scan_store']             = 'scan.php?act=insert';
 
 

@@ -19,6 +19,7 @@ require(dirname(__FILE__) . '/includes/init.php');
 require_once(ROOT_PATH . '/' . ADMIN_PATH . '/includes/lib_goods.php');
 require_once(ROOT_PATH . '/' . ADMIN_PATH. "/nusoap/nusoap.php");   //代码增加  By  www.68ecshop.com
 include_once(ROOT_PATH . '/includes/cls_image.php');
+include_once(ROOT_PATH . '/includes/baidu_transapi.php');
 $image = new cls_image($_CFG['bgcolor']);
 $exc = new exchange($ecs->table('goods'), $db, 'goods_id', 'goods_name');
 $exc1 = new exchange($ecs->table('goods_url'), $db, 'url_id', 'product_url');
@@ -98,6 +99,7 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 
     $goods_list = goods_list($_REQUEST['act'] == 'list' ? 0 : 1, ($_REQUEST['act'] == 'list') ? (($code == '') ? 1 : 0) : -1);
     $smarty->assign('goods_list',   $goods_list['goods']);
+	$smarty->assign('cat_select',  article_cat_list(0));
     $smarty->assign('filter',       $goods_list['filter']);
     $smarty->assign('record_count', $goods_list['record_count']);
     $smarty->assign('page_count',   $goods_list['page_count']);
@@ -116,8 +118,22 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 
     /* 显示商品列表页面 */
     assign_query_info();
-    $htm_file = ($_REQUEST['act'] == 'list') ?
-        'goods_list.htm' : (($_REQUEST['act'] == 'trash') ? 'goods_trash.htm' : 'group_list.htm');
+	
+
+	
+	switch ($_REQUEST['act'])
+	{
+		case 'list':
+			$htm_file = 'goods_list.htm';
+			break;
+		case 'trash':
+			$htm_file = 'goods_list.htm';
+			//$htm_file = 'goods_trash.htm';
+			break;
+		default:
+			$htm_file = 'group_list.htm';
+			break;
+	}
     $smarty->display($htm_file);
 }
 
@@ -1381,7 +1397,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "shop_price = '$shop_price', " .
                 "market_price = '$market_price', " .
                 "is_promote = '$is_promote', " .
-		"zhekou = '$zhekou', " .
+		        "zhekou = '$zhekou', " .
                 "promote_price = '$promote_price', " .
                 "promote_start_date = '$promote_start_date', " .
 				"is_buy = '$is_buy', " .
@@ -1786,6 +1802,7 @@ elseif ($_REQUEST['act'] == 'batch')
     $code = empty($_REQUEST['extension_code'])? '' : trim($_REQUEST['extension_code']);
 
     /* 取得要操作的商品编号 */
+	$goods_id_arr = !empty($_POST['checkboxes']) ? $_POST['checkboxes'] : 0;
     $goods_id = !empty($_POST['checkboxes']) ? join(',', $_POST['checkboxes']) : 0;
 
     if (isset($_POST['type']))
@@ -1883,6 +1900,44 @@ elseif ($_REQUEST['act'] == 'batch')
             update_goods($goods_id, 'is_hot', '0');
         }
 		
+        /* 替换标题 */
+        elseif ($_POST['type'] == 'replace_title')
+        {
+            /* 检查权限 */
+            check_authz_json('goods_manage');
+			
+			foreach($goods_id_arr as $key=>$id)
+			{
+				$sql = "SELECT goods_name " .
+						" FROM " . $ecs->table('goods') .
+						" WHERE goods_id = '$id'";
+				$row = $db->getRow($sql);
+				$goods_name = str_replace($_POST['title_find'],$_POST['title_replace'],$row['goods_name']);
+				update_goods($id, 'goods_name', '"'.$goods_name.'"');
+			}
+        }
+		
+		/* 翻译标题 */
+        elseif ($_POST['type'] == 'translate_title')
+        {
+            /* 检查权限 */
+            check_authz_json('goods_manage');
+			
+			foreach($goods_id_arr as $key=>$id)
+			{
+				$sql = "SELECT goods_name " .
+						" FROM " . $ecs->table('goods') .
+						" WHERE goods_id = '$id'";
+				$row = $db->getRow($sql);
+				
+				$tran_result = translate($row['goods_name'],'zh','en');
+				$en_result = $tran_result['trans_result'][0]['dst'];
+				$goods_name = ucwords($en_result);
+
+				update_goods($id, 'goods_name', '"'.$goods_name.'"');
+			}
+        }
+		
         /* 编辑标题 */
         elseif ($_POST['type'] == 'edit_title')
         {
@@ -1898,7 +1953,7 @@ elseif ($_REQUEST['act'] == 'batch')
 			}
         }
 		
-		/* 编辑标题 */
+		/* 编辑简介 */
         elseif ($_POST['type'] == 'edit_brief')
         {
             /* 检查权限 */
@@ -1912,7 +1967,7 @@ elseif ($_REQUEST['act'] == 'batch')
 				update_goods($goods_id, 'goods_brief', 'concat("'.$_POST['brief_prefix'].'",goods_brief,"'.$_POST['brief_postfix'].'")');
 			}
         }
-		
+
         /* 转移到分类 */
         elseif ($_POST['type'] == 'move_to')
         {
@@ -1928,7 +1983,40 @@ elseif ($_REQUEST['act'] == 'batch')
             check_authz_json('goods_manage');
             update_goods($goods_id, 'suppliers_id', $_POST['suppliers_id']);
         }
+		
+		/* 增加文章 */
+        elseif ($_POST['type'] == 'add_article')
+        {
+            /* 检查权限 */
+            check_authz_json('goods_manage');
+			admin_priv('article_manage');
+			
+            /*插入数据*/
+			$add_time = gmtime();
 
+			$sql = "INSERT INTO ".$ecs->table('article')."(title, cat_id, article_type, is_open, author, ".
+						"author_email, keywords, content, add_time, file_url, open_type, link, description) ".
+					"VALUES ('$_POST[article_title]', '$_POST[article_cat]', '0', '1', ".
+						"'', '', '', '', ".
+						"'$add_time', '', '0', '', '')";
+			$db->query($sql);
+
+			/* 处理关联商品 */
+			$article_id = $db->insert_id();
+
+			foreach($goods_id_arr as $key=>$id)
+			{
+				$sql = 'INSERT INTO ' . $ecs->table('goods_article') . ' (goods_id, article_id) '.
+					   "VALUES ('$id', '$article_id')";
+				$db->query($sql, 'SILENT');// or make_json_error(sql);//$db->error()
+			}
+
+			//admin_log($_POST['title'],'add','article');
+
+			clear_cache_files(); // 清除相关的缓存文件
+
+        }
+		
         /* 还原 */
         elseif ($_POST['type'] == 'restore')
         {
@@ -2626,8 +2714,9 @@ elseif ($_REQUEST['act'] == 'query')
 
 
 
-    $tpl = $is_delete ? 'goods_trash.htm' : 'goods_list.htm';
-
+    //$tpl = $is_delete ? 'goods_trash.htm' : 'goods_list.htm';
+	$tpl = 'goods_list.htm';
+	
     make_json_result($smarty->fetch($tpl), '',
         array('filter' => $goods_list['filter'], 'page_count' => $goods_list['page_count']));
 }

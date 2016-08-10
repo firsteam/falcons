@@ -6,7 +6,7 @@
 <div class="form-div">
   <form action="javascript:;" name="searchForm">
     <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
-    {if $smarty.get.act neq "trash"}
+    
     <!-- 分类 -->
     <input type="text" id="cat_name" name="cat_name" nowvalue="{$goods_cat_name}" value="{$goods_cat_name}" >
 	<input type="hidden" id="cat_id" name="cat_id" value="{$goods_cat_id}">
@@ -32,7 +32,6 @@
 	  {/if}
       <!-- 上架 -->
       <select name="is_on_sale"><option value=''>{$lang.intro_type}</option><option value="1">{$lang.on_sale}</option><option value="0">{$lang.not_on_sale}</option></select>
-    {/if}
     
      喜欢数：<input type="text" name="favorite_num" style="min-width:50px; width:50px;"/>
      评价数：<input type="text" name="review_num" style="min-width:50px; width:50px;"/>
@@ -49,11 +48,15 @@
     <input type="button" value="{$lang.button_search}" class="button" onclick="searchGoods()" />
     <input type="button" value="导出商品" class="button" onclick="download()" />
     <input type="hidden" value="query" name="act"/>
-    
+    {if $smarty.get.act neq "trash"}    
+	<input name="is_show_card" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_card eq 1} checked="checked"{/if}/> 大图模式 | 
+	
     <input name="is_show_keywords" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_keywords eq 1} checked="checked"{/if} /> 关键词
-    <input name="is_show_brief" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_brief eq 1} checked="checked"{/if}/> 简单描述
+    <input name="is_show_brief" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_brief eq 1} checked="checked"{/if}/> 简介
 	<input name="is_show_title_cn" type="checkbox" value="1" onclick="searchGoods()" {if $filter.is_show_title_cn eq 1} checked="checked"{/if}/> 原标题
-  </form>
+	{/if}
+
+	</form>
 </div>
 
 {literal}
@@ -89,6 +92,7 @@
 		listTable.filter['start_time'] = Utils.trim(document.forms['searchForm'].elements['start_time'].value);
 		listTable.filter['end_time'] = Utils.trim(document.forms['searchForm'].elements['end_time'].value);
 		
+		listTable.filter['is_show_card'] = (document.searchForm.is_show_card.checked==true) ? 1 : 0;
 		listTable.filter['is_show_keywords'] = (document.searchForm.is_show_keywords.checked==true) ? 1 : 0;
 		listTable.filter['is_show_brief'] = (document.searchForm.is_show_brief.checked==true) ? 1 : 0;
 		listTable.filter['is_show_title_cn'] = (document.searchForm.is_show_title_cn.checked==true) ? 1 : 0;

@@ -1,64 +1,10 @@
 <!-- $Id: goods_list.htm 17126 2010-04-23 10:30:26Z liuhui $ -->
-<!--wzys ecshop商品列表可以显示商品缩略图功能-->
-<style type="text/css">
-.pic {
-  border: 1px solid #d8ebe9;
-  display: block;
-  float: right;
-  height: 80px;
-  margin-right: 0;
-  position: relative;
-  width: 80px;
-}
-.pic a {position:relative; display:block; width:50px; height:50px; background:transparent;}
-.pic a .img1 {width:80px; height:80px; border:0;}
-.pic a .img2 {width:220px; height:220px; border:0; position:absolute;left:80px; top:-110px; display:none; z-index:99999}
-.pic a:hover .img2{display:block}
-</style>
-<!--wzys ecshop商品列表可以显示商品缩略图功能end-->
+
 <a id="top" name="top"></a>
 {if $full_page}
 {include file="pageheader.htm"}
 {insert_scripts files="../js/utils.js,listtable.js"}
-<script language="javascript">
-<!--
-function addUrl(goods_id)
-{
-	document.getElementById('url_field_'+goods_id).innerHTML='<input  id="product_url_'+goods_id+'" placeholder="网址"><input  id="price_'+goods_id+'" placeholder="价格"><input class="button" style="border: 1px solid #ddd;height: 28px;line-height: 28px;" type="button" onclick="editUrl(\''+goods_id+'\')" value="确定"/>'
-	document.getElementById('url_field_'+goods_id).style.display='block'
-	document.getElementById('product_add_'+goods_id).style.display='none'
-}
-function editUrl(goods_id)
-{
-	var product_url = document.getElementById('product_url_'+goods_id).value;
-	var price = document.getElementById('price_'+goods_id).value;
-	
-	var params = 'product_url=' + encodeURIComponent(product_url);
-    params += '&goods_id=' + goods_id+'&price=' + price;
-    Ajax.call('goods.php?is_ajax=1&act=edit_url', params, addCatResponse, 'POST', 'JSON');
-}
 
-function addCatResponse(result)
-{
-    document.getElementById("url_list_"+result.content.goods_id).innerHTML = result.content.url_list;
-	var url_field = document.getElementById("url_field_"+result.content.goods_id);
-	url_field.style.display='none';
-	document.getElementById('product_add_'+result.content.goods_id).style.display='block';
-}
-
-function deleteUrl(url_id,goods_id)
-{
-	var params = 'url_id=' + url_id;
-    params += '&goods_id=' + goods_id;
-    Ajax.call('goods.php?is_ajax=1&act=deleteUrl', params, deleteCatResponse, 'GET', 'JSON');
-}
-
-function deleteCatResponse(result)
-{
-    document.getElementById("url_list_"+result.content.goods_id).innerHTML = result.content.url_list;
-}
--->
-</script>
 <!-- 商品搜索 -->
 {include file="goods_search.htm"}
 <!-- 商品列表 -->
@@ -66,164 +12,11 @@ function deleteCatResponse(result)
   <!-- start goods list -->
   <div class="list-div" id="listDiv">
 {/if}
-
-
-<table cellpadding="3" cellspacing="1">
-  <tr>
-    <th>
-      <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" />
-      
-    </th>
-	<th><a href="javascript:listTable.sort('goods_id'); ">{$lang.record_id}</a>{$sort_goods_id}</th>
-	{if $suppliers_exists eq 1}
-	<th><a href="javascript:listTable.sort('supplier_name'); ">供货商家</a>{$sort_supplier_name}</th>
-	{/if}
-    <th>{$lang.goods_name}</th>
-    {if $filter.is_show_keywords eq 1}
-    <th>关键词</th>
-    {/if}
-    
-    {if $filter.is_show_brief eq 1}
-    <th>简单描述</th>
-    {/if}
-    
-    <th>采购网址</th>
-    <th>
-		采集网址 上传时间 {$lang.goods_sn}
-	</th>
-
-    <th><a href="javascript:listTable.sort('shop_price'); ">{$lang.shop_price}</a>{$sort_shop_price}</th>
-    <th><a href="javascript:listTable.sort('is_on_sale'); ">{$lang.is_on_sale}</a>{$sort_is_on_sale}</th>
-    <th><a href="javascript:listTable.sort('is_best'); ">{$lang.is_best}</a>{$sort_is_best}</th>
-    <th class="disable-by-cy"><a href="javascript:listTable.sort('is_new'); ">{$lang.is_new}</a>{$sort_is_new}</th>
-    <th class="disable-by-cy"><a href="javascript:listTable.sort('is_hot'); ">{$lang.is_hot}</a>{$sort_is_hot}</th>
-    <th><a href="javascript:listTable.sort('is_wish'); ">wish</a>{$sort_is_wish}</th>
-    
-	{if $suppliers_exists eq 1}
-	{* 代码增加_start  By  www.68ecshop.com *}
-	<th>审核状态</th>
-	{* 代码增加_end  By  www.68ecshop.com *}
-	{/if}
-    <th><a href="javascript:listTable.sort('sort_order'); ">排序</a>{$sort_sort_order}</th>
-    {if $use_storage}
-    <th><a href="javascript:listTable.sort('goods_number'); ">{$lang.goods_number}</a>{$sort_goods_number}</th>
-    {/if}
-
-    <th><a href="javascript:listTable.sort('favorite_num'); ">喜欢数</a></th>
-    <th><a href="javascript:listTable.sort('review_num'); ">评价数</a></th>
-    <th class="disable-by-cy">标签</th> <!-- 晒单插件 增加 by www.68ecshop.com -->
-    <th>{$lang.handler}</th>
-  <tr>
-  {foreach from=$goods_list item=goods}
-  <tr>
- <!--wzys ecshop商品列表可以显示商品缩略图功能-->
-    <td>
-    <input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />
-    </td>
-	<td>
-		{$goods.goods_id}
-		<div class="pic"> 
-			
-			  <a href="../goods.php?id={$goods.goods_id}" target="_blank"> 
-			  <img src="../{$goods.goods_thumb}" border="0" title="" class="img1"/> 
-			  <img src="../{$goods.goods_thumb}" border="0" title="" class="img2"/>
-			  </a>	  
-		</div>
-    
-    </td>
-	<!--wzys ecshop商品列表可以显示商品缩略图功能end-->
-	{if $suppliers_exists eq 1}
-	<td align="center">{$goods.supplier_name|escape:html}</td>
-	{/if}
-	
-	<td>
-		<div style="font-weight:bold;{if $goods.is_promote}color:red;{/if}">
-			<span onclick="listTable.edit1(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span>
-		</div>
-		
-		<span {if $filter.is_show_title_cn neq 1}style="display:none"{/if}>{$goods.goods_name_zh|default:N/A}</span>
-	</td>
-     
-    
-    
-    {if $filter.is_show_keywords eq 1}<td><span onclick="listTable.edit1(this, 'edit_keywords', {$goods.goods_id})">{$goods.keywords|default:N/A}</span></td>{/if}
-    {if $filter.is_show_brief eq 1}<td><span onclick="listTable.edit1(this, 'edit_goods_brief', {$goods.goods_id})">{$goods.goods_brief|default:N/A}<span style="color:red;"> 编辑</span></span></td>{/if}
-    <td style="width:120px;">
-    <div id="url_list_{$goods.goods_id}">
-       {foreach from=$goods.goods_url item=item}
-   <div style="margin-bottom:10px;">
-   
-   <img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png"  width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
-   
-      <a href="{$item.product_url}" target="_blank">{$item.product_url_formated}</a>
-      <span onclick="listTable.edit(this, 'edit_collect_price', {$item.url_id})">{$item.price}</span>
-      <a href="javascript:deleteUrl({$item.url_id},{$goods.goods_id})" class="special">-</a>
-      </div>
-{/foreach}
-
-    </div>
-    <div id="url_field_{$goods.goods_id}" style="display:none">
-      
-    </div>
-    <div id="product_add_{$goods.goods_id}" style="text-align:right"><a href="javascript:addUrl({$goods.goods_id})" class="special">+</a></div>
-    </td>
-    <td>
-	    <a href="{$goods.collect_link}" target="_blank">{$goods.collect_link_formated|default:N/A}
-		{$goods.add_time|default:N/A} {$goods.goods_sn}</a>
-    </td>  
-      
-    <td align="right"><span onclick="listTable.edit(this, 'edit_goods_price', {$goods.goods_id})">{$goods.shop_price}
-
-    </span></td>
-    
-    
-   
-    <td align="center"><img src="images/{if $goods.is_on_sale}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_on_sale', {$goods.goods_id})" /></td>
-    <td align="center"><img src="images/{if $goods.is_best}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_best', {$goods.goods_id})" /></td>
-    <td align="center" class="disable-by-cy"><img src="images/{if $goods.is_new}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_new', {$goods.goods_id})" /></td>
-    <td align="center" class="disable-by-cy"><img src="images/{if $goods.is_hot}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_hot', {$goods.goods_id})" /></td>
-    <td align="center"><img src="images/{if $goods.is_wish}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_wish', {$goods.goods_id})" /></td>
-    
-    
-	{if $suppliers_exists eq 1}
-	{* 代码增加_start  By  www.68ecshop.com *}
-    <td align="center">
-    {if $goods.supplier_id}
-    {if $goods.supplier_status eq '-1'}
-    审核未通过
-    {else}
-    <img src="images/{if $goods.supplier_status eq '1'}yes{elseif $goods.supplier_status eq '0'}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_status', {$goods.goods_id})" />
-    {/if}
-    {/if}
-</td>	{* 代码增加_end  By  www.68ecshop.com *}
-	{/if}
-    <td align="center"><span onclick="listTable.edit(this, 'edit_sort_order', {$goods.goods_id})">{$goods.sort_order}</span></td>
-    {if $use_storage}
-    <td align="right"><span onclick="listTable.edit(this, 'edit_goods_number', {$goods.goods_id})">{$goods.goods_number}</span></td>
-    {/if}
-        <td align="center"><span onclick="listTable.edit(this, 'edit_favorite_num', {$goods.goods_id})">{$goods.favorite_num}</span></td>
-         <td align="center"><span onclick="listTable.edit(this, 'edit_review_num', {$goods.goods_id})">{$goods.review_num}</span></td>
-    <td class="disable-by-cy" align="center"><a href="goods_tag.php?act=list&goods_id={$goods.goods_id}" target="_blank">标签</a></td> <!-- 晒单插件 增加 by www.68ecshop.com -->
-    <td align="center">
-      <a href="../goods.php?id={$goods.goods_id}" target="_blank" title="{$lang.view}"><img src="images/icon_view.gif" width="16" height="16" border="0" /></a>
-      <a href="goods.php?act=edit&goods_id={$goods.goods_id}{if $code neq 'real_goods'}&extension_code={$code}{/if}" title="{$lang.edit}"><img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
-      <a href="goods.php?act=copy&goods_id={$goods.goods_id}{if $code neq 'real_goods'}&extension_code={$code}{/if}" title="{$lang.copy}"><img src="images/icon_copy.gif" width="16" height="16" border="0" /></a>
-      <a href="javascript:;" onclick="listTable.remove({$goods.goods_id}, '{$lang.trash_goods_confirm}')" title="{$lang.trash}"><img src="images/icon_trash.gif" width="16" height="16" border="0" /></a>
-      {if $specifications[$goods.goods_type] neq ''}<a href="goods.php?act=product_list&goods_id={$goods.goods_id}" title="{$lang.item_list}"><img src="images/icon_docs.gif" width="16" height="16" border="0" /></a>{else}<img src="images/empty.gif" width="16" height="16" border="0" />{/if}
-      {if $add_handler}
-        |
-        {foreach from=$add_handler item=handler}
-        <a href="{$handler.url}&goods_id={$goods.goods_id}" title="{$handler.title}"><img src="images/{$handler.img}" width="16" height="16" border="0" /></a>
-        {/foreach}
-      {/if}
-      <a href="getTaoBaoGoods.php?gid={$goods.goods_id}"><img src="images/comment_icon.png" border="0" width="21" height="18" /></a>
-    </td>
-  </tr>
-  {foreachelse}
-  <tr><td class="no-records" colspan="12">{$lang.no_records}</td></tr>
-  {/foreach}
-</table>
-<!-- end goods list -->
+{if $filter.is_show_card eq 1 and $smarty.get.act neq "trash"}
+	{include file="goods_list_card.htm"}
+{else}
+	{include file="goods_list_table.htm"}
+{/if}
 
 <!-- 分页 -->
 <table id="page-table" cellspacing="0">
@@ -246,27 +39,48 @@ function deleteCatResponse(result)
     <option value="not_audit">{$lang.not_audit}</option>
     <option value="not_pass_audit">{$lang.not_pass_audit}</option>
     {/if}
+
+    <option value="restore">{$lang.restore}</option>
+    <option value="drop">{$lang.remove}</option>
+	  
     <option value="trash">{$lang.trash}</option>
     <option value="on_sale">{$lang.on_sale}</option>
     <option value="not_on_sale">{$lang.not_on_sale}</option>
+	
+	{if $smarty.get.act neq "trash"}
     <option value="best">{$lang.best}</option>
     <option value="not_best">{$lang.not_best}</option>
-    <option value="new">{$lang.new}</option>
+    <!--
+	<option value="new">{$lang.new}</option>
     <option value="not_new">{$lang.not_new}</option>
-    
-     <option value="wish">wish</option>
-    <option value="not_wish">取消wish</option>
-    
+
     <option value="hot">{$lang.hot}</option>
     <option value="not_hot">{$lang.not_hot}</option>
+	-->
+	<option value="wish">wish</option>
+    <option value="not_wish">取消wish</option>
+	<option value="replace_title">替换标题</option>
+	<option value="translate_title">翻译标题</option>
 	<option value="edit_title">编辑标题</option>
 	<option value="edit_brief">编辑简介</option>
+	
     <option value="move_to">{$lang.move_to}</option>
 	{if $suppliers_list > 0}
     <option value="suppliers_move_to">{$lang.suppliers_move_to}</option>
 	{/if}    
-	
+	<option value="add_article">生成文章</option>
+	{/if}
   </select>
+  
+  <input type="text" name="article_title" style="display:none" size="20"></input>  
+
+  <select name="article_cat" onchange="catChanged()" style="display:none">
+	<option value="0">{$lang.select_plz}</option>
+	{$cat_select}
+  </select>
+		  
+  <input type="text" name="title_find" style="display:none" size="20"></input> 
+  <input type="text" name="title_replace" style="display:none" size="20"></input> 
   
   <input type="text" name="title_prefix" style="display:none" size="10" onblur="javascript:this.value = titleCase(this.value)"></input> 
   <input type="text" name="title_middle" style="display:none" size="20" onblur="javascript:this.value = titleCase(this.value)"></input> 
@@ -310,7 +124,31 @@ function titleCase(str) {
 </script>
 
 <script type="text/javascript">
+/**
+ * 选取上级分类时判断选定的分类是不是底层分类
+ */
+function catChanged()
+{
+  var obj = document.forms['theForm'].elements['article_cat'];
 
+  cat_type = obj.options[obj.selectedIndex].getAttribute('cat_type');
+  if (cat_type == undefined)
+  {
+    cat_type = 1;
+  }
+
+  if ((obj.selectedIndex > 0) && (cat_type == 2 || cat_type == 4))
+  {
+    alert(not_allow_add);
+    obj.selectedIndex = 0;
+    return false;
+  }
+
+  return true;
+}
+</script>
+
+<script type="text/javascript">
   $("#btnSubmit").click(function()
   {	
 		    var data = $('#listForm').serialize()
@@ -367,6 +205,9 @@ function titleCase(str) {
   {	
       var frm = document.forms['listForm'];
 
+	  frm.elements['title_find'].style.display = frm.elements['type'].value == 'replace_title' ? '' : 'none';
+	  frm.elements['title_replace'].style.display = frm.elements['type'].value == 'replace_title' ? '' : 'none';
+	  
 	  frm.elements['title_prefix'].style.display = frm.elements['type'].value == 'edit_title' ? '' : 'none';
 	  frm.elements['title_postfix'].style.display = frm.elements['type'].value == 'edit_title' ? '' : 'none';
 	  frm.elements['title_middle'].style.display = frm.elements['type'].value == 'edit_title' ? '' : 'none';
@@ -383,7 +224,8 @@ function titleCase(str) {
       frm.elements['suppliers_id'].style.display = frm.elements['type'].value == 'suppliers_move_to' ? '' : 'none';
 	  {/if}
 
-      
+      frm.elements['article_title'].style.display = frm.elements['type'].value == 'add_article' ? '' : 'none';
+	  frm.elements['article_cat'].style.display = frm.elements['type'].value == 'add_article' ? '' : 'none';	
   }
 {/literal}
 </script>

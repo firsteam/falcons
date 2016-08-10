@@ -1,0 +1,125 @@
+<!-- $Id: goods_list.htm 17126 2010-04-23 10:30:26Z liuhui $ -->
+<!--wzys ecshop商品列表可以显示商品缩略图功能-->
+<style type="text/css">
+.pic {
+  border: 1px solid #d8ebe9;
+  display: block;
+  height: 220px;
+  margin-right: 0;
+  width: 220px;
+}
+.pic a {position:relative;}
+.pic a .img1 {width:220px; height:220px; border:0;}
+.pic a .img2 {width:300px; height:300px; border:0; position:absolute;left:230px; top:-220px; display:none; z-index:99999}
+.pic a:hover .img2{display:none;}
+</style>
+<!--wzys ecshop商品列表可以显示商品缩略图功能end-->
+
+	<div class="sort_nav">
+		<div class="sort_bar"><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" /> </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('goods_id'); ">{$lang.record_id}</a>{$sort_goods_id} </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('shop_price'); ">{$lang.shop_price}</a>{$sort_shop_price} </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('is_on_sale'); ">{$lang.is_on_sale}</a>{$sort_is_on_sale} </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('is_best'); ">{$lang.is_best}</a>{$sort_is_best} </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('is_new'); ">{$lang.is_new}</a>{$sort_is_new} </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('is_hot'); ">{$lang.is_hot}</a>{$sort_is_hot} </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('is_wish'); ">wish</a>{$sort_is_wish} </div>
+
+		<div class="sort_bar"><a href="javascript:listTable.sort('sort_order'); ">排序</a>{$sort_sort_order} </div>
+		{if $use_storage}
+		<div class="sort_bar"><a href="javascript:listTable.sort('goods_number'); ">{$lang.goods_number}</a>{$sort_goods_number} </div>
+		{/if}
+
+		<div class="sort_bar"><a href="javascript:listTable.sort('favorite_num'); ">喜欢数</a> </div>
+		<div class="sort_bar"><a href="javascript:listTable.sort('review_num'); ">评价数</a> </div>
+		
+    </div>
+
+	<div class="clear_both"></div>
+ <ul class="goods_card">   
+  {foreach from=$goods_list item=goods}
+ <!--wzys ecshop商品列表可以显示商品缩略图功能-->
+    <li>
+    <input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />{$goods.goods_id}
+		<div class="pic">			
+			<a href="../goods.php?id={$goods.goods_id}" target="_blank"> 
+			<img src="../{$goods.goods_thumb}" border="0" title="" class="img1"/> 
+			<img src="../{$goods.goods_thumb}" border="0" title="" class="img2"/>
+			</a>	  
+		</div>
+    
+	<!--wzys ecshop商品列表可以显示商品缩略图功能end-->
+	{if $suppliers_exists eq 1}
+	<div class="goods_bar">{$goods.supplier_name|escape:html}</div>
+	{/if}
+	
+	<div class="goods_bar">
+		<div style="font-weight:bold;{if $goods.is_promote}color:red;{/if}">
+			<span onclick="listTable.edit1(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|escape:html}</span>
+		</div>
+		
+		<span {if $filter.is_show_title_cn neq 1}style="display:none"{/if}>{$goods.goods_name_zh|default:N/A}</span>
+	</div>
+     
+    <div class="goods_bar">
+	    <a href="{$goods.collect_link}" target="_blank">{$goods.add_time|truncate:10} {$goods.goods_sn}</a>
+    </div>  
+      
+        
+   
+    <div class="goods_bar">
+	上架<img src="images/{if $goods.is_on_sale}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_on_sale', {$goods.goods_id})" />
+    精品<img src="images/{if $goods.is_best}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_best', {$goods.goods_id})" />
+    <img class="disable-by-cy" src="images/{if $goods.is_new}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_new', {$goods.goods_id})" />
+    <img class="disable-by-cy" src="images/{if $goods.is_hot}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_hot', {$goods.goods_id})" />
+    wish<img src="images/{if $goods.is_wish}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_wish', {$goods.goods_id})" />
+	
+
+ 	{if $suppliers_exists eq 1}
+		{* 代码增加_start  By  www.68ecshop.com *}
+	<div>
+		{if $goods.supplier_id}
+			{if $goods.supplier_status eq '-1'}
+			审核未通过
+			{else}
+			<img src="images/{if $goods.supplier_status eq '1'}yes{elseif $goods.supplier_status eq '0'}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_status', {$goods.goods_id})" />
+			{/if}
+		{/if}
+	</div>	{* 代码增加_end  By  www.68ecshop.com *}
+	{/if}
+
+	</div>
+	
+	<div class="goods_bar">
+		<span class="goods_label1">价格</span><span onclick="listTable.edit(this, 'edit_goods_price', {$goods.goods_id})">{$goods.shop_price}</span>
+		<span class="goods_label1">排序</span><span onclick="listTable.edit(this, 'edit_sort_order', {$goods.goods_id})">{$goods.sort_order}</span>
+		{if $use_storage}
+		<span class="goods_label1">库存</span><span onclick="listTable.edit(this, 'edit_goods_number', {$goods.goods_id})">{$goods.goods_number}</span>
+		{/if}
+		<span class="goods_label1">喜欢</span><span onclick="listTable.edit(this, 'edit_favorite_num', {$goods.goods_id})">{$goods.favorite_num}</span>
+		<span class="goods_label1">评价</span><span onclick="listTable.edit(this, 'edit_review_num', {$goods.goods_id})">{$goods.review_num}</span>
+	</div>
+	
+    <div class="disable-by-cy"><a href="goods_tag.php?act=list&goods_id={$goods.goods_id}" target="_blank">标签</a></div> <!-- 晒单插件 增加 by www.68ecshop.com -->
+    <div class="goods_bar">
+      <a href="../goods.php?id={$goods.goods_id}" target="_blank" title="{$lang.view}"><img src="images/icon_view.gif" width="16" height="16" border="0" /></a>
+      <a href="goods.php?act=edit&goods_id={$goods.goods_id}{if $code neq 'real_goods'}&extension_code={$code}{/if}" title="{$lang.edit}"><img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
+      <a href="goods.php?act=copy&goods_id={$goods.goods_id}{if $code neq 'real_goods'}&extension_code={$code}{/if}" title="{$lang.copy}"><img src="images/icon_copy.gif" width="16" height="16" border="0" /></a>
+      <a href="javascript:;" onclick="listTable.remove({$goods.goods_id}, '{$lang.trash_goods_confirm}')" title="{$lang.trash}"><img src="images/icon_trash.gif" width="16" height="16" border="0" /></a>
+      {if $specifications[$goods.goods_type] neq ''}<a href="goods.php?act=product_list&goods_id={$goods.goods_id}" title="{$lang.item_list}"><img src="images/icon_docs.gif" width="16" height="16" border="0" /></a>{else}<img src="images/empty.gif" width="16" height="16" border="0" />{/if}
+      {if $add_handler}
+        |
+        {foreach from=$add_handler item=handler}
+        <a href="{$handler.url}&goods_id={$goods.goods_id}" title="{$handler.title}"><img src="images/{$handler.img}" width="16" height="16" border="0" /></a>
+        {/foreach}
+      {/if}
+      <a href="getTaoBaoGoods.php?gid={$goods.goods_id}"><img src="images/comment_icon.png" border="0" width="21" height="18" /></a>
+	  
+    </div>
+	</li>
+  {foreachelse}
+  <div class="no-records" colspan="12">{$lang.no_records}</div>
+  {/foreach}
+  </ul>
+<!-- end goods list -->
+<div class="clear_both"></div>
