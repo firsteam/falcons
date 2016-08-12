@@ -43,11 +43,13 @@
         <form name="formLogin" action="user.php?XDEBUG_SESSION_START=ECLIPSE_DBGP" method="post" onSubmit="return userLogin()">
           <h2><span><a href="register.php">Sign up for a new account</a></span></h2>
           <div class="form">
-          
-            <div class="item" style="margin:30px 0px 30px 0px;">       
+            <div class="item" style="margin:30px 0px 0px 0px;"> 
+			{$message}			
+			</div>
+            <div class="item" style="margin:0px 0px 30px 0px;">       
                 <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="UserName or Email"/>  
 				<i class="i-name"></i>
-		   </div>
+		    </div>
 			
             <div class="item" style="margin:0px 0px 5px 0px;">           
                 <input type="password" id="password" name="password" class="text" tabindex="2" placeholder="Password"/>         
@@ -82,8 +84,8 @@
               <input type="submit" name="submit" class="btn-img btn-entry" id="loginsubmit" value="Sign in" />
             </div>
             <div class="blank"></div>
-            <div class="item disable-by-cy">
-              <table width="300" border="0" cellpadding="5" cellspacing="0">
+            <div class="item">
+              <table class="disable-by-cy" width="300" border="0" cellpadding="5" cellspacing="0">
                 <tr>
 		          <td><a style="text-decoration:none" href="user.php?act=oath&type=weixin"><i class="weixin"></i>&nbsp;&nbsp;微信</a></td>
                   <td><a style="text-decoration:none" href="user.php?act=oath&type=qq"><i class="qq"></i>&nbsp;&nbsp;QQ</a></td>
@@ -91,6 +93,8 @@
                   <td><a style="text-decoration:none" href="user.php?act=oath&type=alipay"><i class="alipay"></i>&nbsp;&nbsp;支付宝</a></td>
                 </tr>
               </table>
+				<a href="user.php?act=hyauth&provider=facebook"><img src='/includes/hybridauth/facebook.png'></img></a> <br>
+				<a href="includes\hybridauth\login-with.php?provider=Facebook">facebook</a> <br>
             </div>
           </div>
         </form>
@@ -119,7 +123,7 @@
         <script>var mobile_field=''; var mobile_field_sms='';</script>
         <form action="user.php" method="post" name="formUser" onsubmit="return register2();">
           <div class="form">
-			<h2><strong>欢迎注册</strong><span>已有账号！<a href="user.php?act=login">立即登录</a></span></h2>
+			<h2><strong>Welcome! </strong><span> Have account? <a href="user.php?act=login"> Login</a></span></h2>
             <div class="item">
               <input name="username" type="text" id="username" placeholder="{$lang.label_username}" onblur="is_registered(this.value);" class="text" >
               <i class="i-name"></i>
@@ -225,13 +229,13 @@ function ck_email()
 	 var email = document.getElementById('email').value;
 	 if(email == '')
 	 {
-		 document.getElementById('email_notice').innerHTML = '邮箱不能为空！';
+		 document.getElementById('email_notice').innerHTML = {$lang.passport_js.msg_email_blank};
 	 }
 	 else
 	 {
 		 if ( ! (Utils.isEmail(email)))
     	{
-			document.getElementById('email_notice').innerHTML = '邮箱格式不正确！';
+			document.getElementById('email_notice').innerHTML = {$lang.passport_js.msg_email_format};
     	}
 		else
 		{
@@ -259,7 +263,7 @@ function chemailResponse(result)
       <div id="login-box" class="uc_box">
         <form action="user.php" method="post" name="fpForm" onsubmit="return forget_pass();">
           <div class="form">
-            <h2><strong>找回密码</strong></h2>
+            <h2><strong>{$lang.get_password}</strong></h2>
             <div class="item">
               <input name="u_name" id="u_name" type="text" class="text" tabindex="1" value="{$lang.label_username}" onfocus="if(this.value=='{$lang.label_username}') this.value=''" onblur="if(this.value=='') this.value='{$lang.label_username}'" />
               <div><span class="label"></span></div>
@@ -270,7 +274,7 @@ function chemailResponse(result)
                   <select name="find_type" id="find_type" onchange="choose_type(this.value);">
                     <option value="0">请选择找回密码方式</option>
                     <option value="1">手机号找回密码</option>
-                    <option value="2">邮箱找回密码</option>
+                    <option value="2">{$lang.get_password_by_mail}</option>
                     
                   </select>
                   <span class="clr"></span> </div>
@@ -286,11 +290,11 @@ function chemailResponse(result)
               <div><span class="label"></span></div>
             </div>
             <div class="item" id="f_email" style="display:none">
-              <input type="text" name="email" id="email" class="text" value="邮箱"  onfocus="if(this.value=='邮箱') this.value=''" onblur="if(this.value=='') this.value='邮箱'" />
+              <input type="text" name="email" id="email" class="text" value="{$lang.email}"  onfocus="if(this.value=='{$lang.email}') this.value=''" onblur="if(this.value=='') this.value='{$lang.email}'" />
               <div><span class="label"></span></div>
             </div>
             <div class="item"> 
-              <input type="submit" name="submit" class="btn-img btn-regist" value="提交"  />
+              <input type="submit" name="submit" class="btn-img btn-regist" value="{$lang.submit}"  />
               <input type="hidden" name="act" value="act_forget_pass" />
             </div>
           </div>
@@ -312,7 +316,7 @@ function chemailResponse(result)
       <div id="login-box" class="uc_box">
         <form action="user.php" method="post" name="getPassword2" onSubmit="return submitPwd()">
           <div class="form">
-            <h2><strong>重置密码</strong></h2>
+            <h2><strong>{$lang.reset}{$lang.password}</strong></h2>
             <div class="item">
               <input id="new_password" name="new_password" type="password" class="text" tabindex="1" value="{$lang.new_password}" onfocus="if(this.value=='{$lang.new_password}') this.value=''" onblur="if(this.value=='') this.value='{$lang.new_password}'" />
               <div><span class="label"></span></div>
@@ -325,7 +329,7 @@ function chemailResponse(result)
               <input type="hidden" name="act" value="act_edit_password" />
               <input type="hidden" name="uid" value="{$uid}" />
               <input type="hidden" name="code" value="{$code}" />
-              <input type="submit" name="submit" class="btn-img btn-regist" value="提交" />
+              <input type="submit" name="submit" class="btn-img btn-regist" value="{$lang.submit}" />
             </div>
           </div>
         </form>
@@ -349,7 +353,7 @@ function chemailResponse(result)
       <div id="login-box" class="uc_box">
       	 <form action="user.php" method="post" name="getPassword" onsubmit="return submitPwdInfo();">
           <div class="form">
-            <h2><strong>找回密码</strong></h2>
+            <h2><strong>{$lang.get_password}</strong></h2>
             <div class="item item_gqu"> {$lang.username_and_email}</div>
             <div class="item"> 
               <span class="label">{$lang.username}</span>
@@ -383,7 +387,7 @@ function chemailResponse(result)
       <div id="login-box" class="uc_box">
       	<form action="user.php" method="post">
           <div class="form">
-            <h2><strong>找回密码</strong></h2>
+            <h2><strong>{$lang.get_password}</strong></h2>
             <div class="item item_gqu"> {$lang.get_question_username}</div>
             <div class="item"> 
               <span class="label">用户名：</span>
@@ -411,7 +415,7 @@ function chemailResponse(result)
       <div id="login-box" class="uc_box">
       	<form action="user.php" method="post">
           <div class="form">
-            <h2><strong>找回密码</strong></h2>
+            <h2><strong>{$lang.get_password}</strong></h2>
             <div class="item item_gqu"> {$lang.input_answer}</div>
             <div class="item"> 
               <span class="label">{$lang.passwd_question}：</span>
@@ -456,7 +460,7 @@ function chemailResponse(result)
       <div id="login-box" class="uc_box">
       	<form action="user.php" method="post" name="getPassword2" onSubmit="return submitPwd()">
           <div class="form">
-            <h2><strong>重置密码</strong></h2>
+            <h2><strong>{$lang.reset}{$lang.password}</strong></h2>
             <div class="item"> 
               <span class="label">{$lang.new_password}</span>
               <div>

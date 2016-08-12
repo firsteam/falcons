@@ -259,6 +259,7 @@ $_LANG['not_login'] = 'No login';
 $_LANG['half_info'] = 'Shortage of necessary information, please enter informations completely.';
 $_LANG['no_id'] = 'No ID';
 $_LANG['save_success'] = 'Saved successfully';
+$_LANG['action_success'] = 'Finished';
 $_LANG['drop_consignee_confirm'] = 'Are you sure delete the consignee information?';
 
 /* 夺宝奇兵 */

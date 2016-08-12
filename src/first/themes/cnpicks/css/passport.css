@@ -117,7 +117,7 @@ body {
 	float: right;
 	overflow: hidden;
 	border: 1px #ddd solid;
-	padding: 20px 40px;
+	padding: 20px 40px 60px 40px;
 	margin: 0px 0px 40px 0px;
 	width: 300px;
 	min-height: 300px;
@@ -226,8 +226,8 @@ body {
 }
 #entry .btn-entry, #entry .btn-img {
 	width: 300px;
-	height: 35px;
-	font-size: 14px;
+	height: 40px;
+	font-size: 20px;
 	color: #FFF;
 	background: #E4393C;
 	text-align: center;
@@ -893,7 +893,7 @@ dl.done {
 }
 .form label, .form input, .form select, .form textarea, .form button {
 	float: left;
-	font-size: 12px;
+	font-size: 14px;
 }
 #find-box select {
 	height: 35px;

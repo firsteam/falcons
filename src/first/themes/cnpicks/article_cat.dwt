@@ -16,7 +16,35 @@
 <link rel="stylesheet" type="text/css" href="themes/cnpicks/css/article_list.css" />
 
 {* 包含脚本文件 *}
-{insert_scripts files='common.js,transport.js'}
+{insert_scripts files='jquery.min.js'}
+{insert_scripts files='masonry.pkgd.js'}
+<style type="text/css">
+
+/* clearfix */
+.relativ_goods:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-item {
+  margin:5px;
+  float: left;
+}
+</style>
+
+<script type="text/javascript">
+document.onreadystatechange = function () {      
+   if(document.readyState=="complete") {            
+	   $('.relativ_goods').masonry({
+			itemSelector: '.grid-item',
+			columnWidth: '.grid-item',
+			percentPosition: false
+		});    
+   }     
+}
+</script>
+
 </head>
 <body>
 <div id="site-nav"> 
@@ -25,6 +53,7 @@
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   <div class="w main">
     <div class="right-extra">
+
       <h2 class="disable-by-cy">{$cat_name}</h2>
       <ul class="article_list">
         <!-- {foreach from=$artciles_list item=article name=article} -->
@@ -43,19 +72,19 @@
 		   <div class="relativ_goods">
 			
 			<!--{foreach from=$article.goods_list item=releated_goods_data name=releated_goods_data}--> 
-			<div class="goods_item">
+			<div class="grid-item">
 			
-			<div class="goods-img">
-				<a href="{$releated_goods_data.url}">
-					{if count($article.goods_list) eq 1}
-						<img style="width:600px" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
-					{elseif count($article.goods_list) eq 2 or count($article.goods_list) eq 4}
-						<img style="width:350px;max-height=350px" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
-					{else}
-						<img style="width:250px;max-height:250px" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
-					{/if}
-				</a>
-			</div>
+
+			<a href="{$releated_goods_data.url}">
+				{if count($article.goods_list) eq 1}
+					<img style="max-width:770px;" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+				{elseif count($article.goods_list) eq 2 or count($article.goods_list) eq 4}
+					<img style="width:380px;" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+				{else}
+					<img style="width:250px;" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+				{/if}
+			</a>
+
 			
 			<div class="goods-price">
 			<strong> 
@@ -95,4 +124,5 @@
 <script type="text/javascript">
 document.getElementById('cur_url').value = window.location.href;
 </script>
+
 </html>

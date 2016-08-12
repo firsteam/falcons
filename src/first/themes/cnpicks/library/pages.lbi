@@ -8,6 +8,7 @@
 .xm-pagenavi .numbers {
     display: inline-block;
     height: 18px;
+	width: 18px;
     padding: 8px 13px;
     margin: 0px 2px;
     border: 1px solid #ddd;
@@ -58,7 +59,7 @@
  <div id="pager">
  <div class="xm-pagenavi">
 
-    <!-- {if $pager.page_prev} --><a class="numbers first iconfont" href="{$pager.page_prev}">&lt;</a><!-- {/if} -->
+    <!-- {if $pager.page_prev} --><a class="numbers iconfont" href="{$pager.page_prev}">&lt;</a><!-- {/if} -->
      <!-- {if $pager.page_count neq 1} -->
      <!--{foreach from=$pager.page_number key=key item=item}-->
       <!-- {if $pager.page eq $key} -->

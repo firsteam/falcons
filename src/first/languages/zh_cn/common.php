@@ -262,6 +262,7 @@ $_LANG['not_login'] = '您还没有登陆';
 $_LANG['half_info'] = '信息不全，请填写所有信息';
 $_LANG['no_id'] = '没有商品ID';
 $_LANG['save_success'] = '修改成功';
+$_LANG['action_success'] = '操作成功';
 $_LANG['drop_consignee_confirm'] = '您确定要删除该收货人信息吗？';
 
 /* 夺宝奇兵 */
@@ -743,8 +744,8 @@ $_LANG['specifications'] = '规格';
 
 /* 相册JS语言项 */
 $_LANG['gallery_js']['close_window'] = '您是否关闭当前窗口';
-$_LANG['submit'] = '提 交';
-$_LANG['reset'] = '重 置';
+$_LANG['submit'] = '提交';
+$_LANG['reset'] = '重置';
 $_LANG['order_query'] = '订单查询';
 $_LANG['shipping_query'] = '发货查询';
 $_LANG['view_history'] = '浏览历史';

@@ -257,7 +257,7 @@ function action_act_supplier_reg()
 		$sql = "insert into " . $ecs->table('supplier') . "(user_id, supplier_name, rank_id, company_name, country, province, city, district, address, tel, guimo, email," . "company_type, bank, zhizhao, id_card, contact, contact_back, contact_shop, contact_yunying, contact_shouhou, contact_caiwu, contact_jishu, add_time) " . " values('$user_id', '$supplier_name', '$rank_id', '$company_name', '$country', '$province', '$city', '$district', '$address', '$tel', '$guimo', '$email', " . "'$company_type', '$bank',  '$zhizhao_img', '$id_card_img',  '$contact', '$contact_back', '$contact_shop', '$contact_yunying', '$contact_shouhou', '$contact_caiwu', '$contact_jishu', '$add_time')";
 	}
 	$db->query($sql);
-	show_message($mes, '返回上一页', 'user.php?act=supplier_reg', 'info');
+	show_message($mes, $_LANG['go_back'], 'user.php?act=supplier_reg', 'info');
 }
 function action_act_supplier_del()
 {
@@ -274,21 +274,21 @@ function action_act_supplier_del()
 	$supid = isset($_POST['supid']) ? intval($_POST['supid']) : 0;
 	if(empty($userid) || empty($supid))
 	{
-		show_message('请刷新页面，重新操作！', '返回上一页', 'user.php?act=supplier_reg', 'wrong');
+		show_message('请刷新页面，重新操作！', $_LANG['go_back'], 'user.php?act=supplier_reg', 'wrong');
 	}
 	if($userid != $user_id)
 	{
-		show_message('你没权限删除此申请！', '返回首页', '', 'wrong');
+		show_message($_LANG['no_priv'], $_LANG['home'], '', 'wrong');
 	}
 	$sql = "select supplier_id from " . $ecs->table('supplier') . " where user_id='$user_id'";
 	$supplier_id = $db->getOne($sql);
 	if($supid != $supplier_id)
 	{
-		show_message('你没权限删除此申请！', '返回首页', '', 'wrong');
+		show_message($_LANG['no_priv'], $_LANG['home'], '', 'wrong');
 	}
 	$sql = "delete from " . $ecs->table('supplier') . "  where supplier_id=" . $supplier_id;
 	$db->query($sql);
-	show_message('操作成功！', '返回上一页', 'user.php', 'info');
+	show_message('操作成功！', $_LANG['go_back'], 'user.php', 'info');
 }
 /* 代码增加_end By www.68ecshop.com */
 
@@ -845,13 +845,13 @@ function action_oath()
 		$url = $c->login($ecs->url() . 'user.php?act=oath_login&type=' . $type . '&callblock=' . urlencode($back_act) . '&open=' . $open);
 		if(! $url)
 		{
-			show_message($c->get_error(), '首页', $ecs->url(), 'error');
+			show_message($c->get_error(), $_LANG['home'], $ecs->url(), 'error');
 		}
 		header('Location: ' . $url);
 	}
 	else
 	{
-		show_message('服务器尚未注册该插件！', '首页', $ecs->url(), 'error');
+		show_message('服务器尚未注册该插件！', $_LANG['home'], $ecs->url(), 'error');
 	}
 }
 
@@ -876,22 +876,22 @@ function action_oath_login()
 		$access = $c->getAccessToken();
 		if(! $access)
 		{
-			show_message($c->get_error(), '首页', $ecs->url(), 'error');
+			show_message($c->get_error(), $_LANG['home'], $ecs->url(), 'error');
 		}
 		$c->setAccessToken($access);
 		$info = $c->getMessage();
 		if(! $info)
 		{
-			show_message($c->get_error(), '首页', $ecs->url(), 'error', false);
+			show_message($c->get_error(), $_LANG['home'], $ecs->url(), 'error', false);
 		}
 		if(! $info['user_id'])
-			show_message($c->get_error(), '首页', $ecs->url(), 'error', false);
+			show_message($c->get_error(), $_LANG['home'], $ecs->url(), 'error', false);
 		
 		$info_user_id = $type . '_' . $info['user_id']; // 加个标识！！！防止 其他的标识 一样 //
 		                                             // 以后的ID 标识 将以这种形式 辨认
 		$info['name'] = str_replace("'", "", $info['name']); // 过滤掉 逗号 不然出错 很难处理
 		if(! $info['user_id'])
-			show_message($c->get_error(), '首页', $ecs->url(), 'error', false);
+			show_message($c->get_error(), $_LANG['home'], $ecs->url(), 'error', false);
 		
 		$sql = 'SELECT user_name,password,aite_id FROM ' . $ecs->table('users') . ' WHERE aite_id = \'' . $info_user_id . '\' OR aite_id=\'' . $info['user_id'] . '\'';
 		
@@ -961,10 +961,10 @@ function action_other_login()
 	
 	if(empty($info))
 	{
-		show_message("非法访问或请求超时！", '首页', $ecs->url(), 'error', false);
+		show_message("非法访问或请求超时！", $_LANG['home'], $ecs->url(), 'error', false);
 	}
 	if(! $info['user_id'])
-		show_message("非法访问或访问出错，请联系管理员！", '首页', $ecs->url(), 'error', false);
+		show_message("非法访问或访问出错，请联系管理员！", $_LANG['home'], $ecs->url(), 'error', false);
 	
 	$info_user_id = $type . '_' . $info['user_id']; // 加个标识！！！防止 其他的标识 一样 //
 	                                                // 以后的ID
@@ -1889,11 +1889,11 @@ function action_act_identity()
 	$num = $GLOBALS['db']->query($sql);
 	if($num > 0)
 	{
-		show_message('您已申请实名认证，请等待管理员的审核！', '返回上一页', 'user.php?act=profile');
+		show_message('您已申请实名认证，请等待管理员的审核！', $_LANG['go_back'], 'user.php?act=profile');
 	}
 	else
 	{
-		show_message('实名认证失败！', '返回上一页', 'user.php?act=profile');
+		show_message('实名认证失败！', $_LANG['go_back'], 'user.php?act=profile');
 	}
 }
 function action_update_email()
@@ -1926,7 +1926,7 @@ function action_act_update_email()
 	include_once (ROOT_PATH . 'includes/lib_passport.php');
 	if(empty($_POST['v_captcha']))
 	{
-		show_message('验证码不能为空！', '返回', 'user.php?act=update_email', 'error');
+		show_message('验证码不能为空！', $_LANG['back'], 'user.php?act=update_email', 'error');
 	}
 	
 	/* 检查验证码 */
@@ -1936,7 +1936,7 @@ function action_act_update_email()
 	$validator->session_word = 'captcha_login';
 	if(! $validator->check_word($_POST['v_captcha']))
 	{
-		show_message($_LANG['invalid_captcha'], '返回', 'user.php?act=update_email', 'error');
+		show_message($_LANG['invalid_captcha'], $_LANG['back'], 'user.php?act=update_email', 'error');
 	}
 	else
 	{
@@ -2043,7 +2043,7 @@ function action_act_binding_email()
 	
 	if(empty($_POST['code']))
 	{
-		show_message('验证码不能为空！', '返回', 'user.php?act=re_binding_email', 'error');
+		show_message('验证码不能为空！', $_LANG['back'], 'user.php?act=re_binding_email', 'error');
 	}
 	
 	/* 检查验证码 */
@@ -2053,7 +2053,7 @@ function action_act_binding_email()
 	$validator->session_word = 'captcha_login';
 	if(! $validator->check_word($_POST['code']))
 	{
-		show_message($_LANG['invalid_captcha'], '返回', 'user.php?act=re_binding_email', 'error');
+		show_message($_LANG['invalid_captcha'], $_LANG['back'], 'user.php?act=re_binding_email', 'error');
 	}
 	else
 	{
@@ -2870,7 +2870,7 @@ function action_back_replay()
 	
 	$db->query("INSERT INTO " . $ecs->table('back_replay') . " (back_id, message, add_time, type) VALUES ('$back_id', '$message', '$add_time', 1)");
 	
-	show_message('恭喜，回复成功！', '返回', 'user.php?act=back_order_detail&id=' . $back_id);
+	show_message('恭喜，回复成功！', $_LANG['back'], 'user.php?act=back_order_detail&id=' . $back_id);
 }
 
 /*
@@ -2987,7 +2987,7 @@ function action_back_order()
 	
 	if(! $row_goods || $row_goods['user_id'] != $user_id)
 	{
-		show_message('对不起！您没权限针对该商品发起退款/退货及维修', '返回订单列表页', 'user.php?act=order_list', 'info');
+		show_message($_LANG['no_priv'], $_LANG['back'], 'user.php?act=order_list', 'info');
 	}
 	else
 	{
@@ -5797,25 +5797,25 @@ function action_vc_login_act()
 	$vc_pwd = isset($_POST['pwd']) ? trim($_POST['pwd']) : '';
 	if(empty($vc_sn) || empty($vc_pwd))
 	{
-		show_message('卡号或密码都不能为空', '返回重新登录', 'user.php?act=vc_login');
+		show_message('卡号或密码都不能为空', $_LANG['login'], 'user.php?act=vc_login');
 	}
 	$sql = "select vc.*, vt.type_money, vt.use_start_date, vt.use_end_date from " . $ecs->table('valuecard') . " AS vc " . " left join " . $ecs->table('valuecard_type') . " AS vt " . "on vc.vc_type_id = vt.type_id where vc.vc_sn= '$vc_sn' ";
 	$vcrow = $db->getRow($sql);
 	if(! $vcrow)
 	{
-		show_message('该储值卡号不存在', '请查证后重新登录', 'user.php?act=vc_login');
+		show_message('该储值卡号不存在', $_LANG['login'], 'user.php?act=vc_login');
 	}
 	if($vc_pwd != $vcrow['vc_pwd'])
 	{
-		show_message('密码错误', '请查证后重新登录', 'user.php?act=vc_login');
+		show_message('密码错误', $_LANG['login'], 'user.php?act=vc_login');
 	}
 	if($nowtime < $vcrow['use_start_date'])
 	{
-		show_message('对不起，该储值卡还未到开始使用日期', '请过几天再登录试试', 'user.php?act=vc_login');
+		show_message('对不起，该储值卡还未到开始使用日期', $_LANG['login'], 'user.php?act=vc_login');
 	}
 	if($nowtime > $vcrow['use_end_date'])
 	{
-		show_message('对不起，该储值卡已过期', '请换个卡号重新登录', 'user.php?act=vc_login');
+		show_message('对不起，该储值卡已过期', $_LANG['login'], 'user.php?act=vc_login');
 	}
 	if($vcrow['user_id'])
 	{
@@ -5829,7 +5829,7 @@ function action_vc_login_act()
 	$sql = "update " . $ecs->table('valuecard') . " set user_id='$user_id', used_time='$nowtime' where vc_id='$vcrow[vc_id]' ";
 	$db->query($sql);
 	
-	show_message('恭喜，已成功充值！', '返回上一页', 'user.php?act=vc_login');
+	show_message('恭喜，已成功充值！', $_LANG['go_back'], 'user.php?act=vc_login');
 	
 	$smarty->display('user_transaction.dwt');
 }
@@ -6212,11 +6212,11 @@ function action_act_update_surplus_password()
 						$GLOBALS['db']->query($sql);
 						if($GLOBALS['db']->affected_rows() == 1)
 						{
-							show_message('余额支付密码修改成功！', '返回', 'user.php?act=account_security', 'success');
+							show_message('余额支付密码修改成功！', $_LANG['back'], 'user.php?act=account_security', 'success');
 						}
 						else
 						{
-							show_message('余额支付密码修改失败！', '返回', 'user.php?act=account_security', 'fail');
+							show_message('余额支付密码修改失败！', $_LANG['back'], 'user.php?act=account_security', 'fail');
 						}
 					}
 					else
@@ -6231,7 +6231,7 @@ function action_act_update_surplus_password()
 			}
 			else
 			{
-				show_message('密码不能为空！', '返回', 'user.php?act=update_surplus_password', 'error');
+				show_message('密码不能为空！', $_LANG['back'], 'user.php?act=update_surplus_password', 'error');
 			}
 		}
 		elseif($_REQUEST['course'] == 'reset')
@@ -6298,7 +6298,7 @@ function action_act_update_surplus_password()
 							$GLOBALS['db']->query($sql);
 							if($GLOBALS['db']->affected_rows() == 1)
 							{
-								show_message('余额支付密码修改成功！', '返回', 'user.php?act=account_security', 'success');
+								show_message('余额支付密码修改成功！', $_LANG['back'], 'user.php?act=account_security', 'success');
 							}
 							else
 							{
@@ -6313,11 +6313,11 @@ function action_act_update_surplus_password()
 								}
 								if($info_array2['Rows matched'] == '1' && $info_array2['Changed'] == '0')
 								{
-									show_message('余额支付密码修改成功！', '返回', 'user.php?act=account_security', 'success');
+									show_message('余额支付密码修改成功！', $_LANG['back'], 'user.php?act=account_security', 'success');
 								}
 								else
 								{
-									show_message('余额支付密码修改失败！', '返回', 'user.php?act=account_security', 'fail');
+									show_message('余额支付密码修改失败！', $_LANG['back'], 'user.php?act=account_security', 'fail');
 								}
 							}
 						}
@@ -6368,7 +6368,7 @@ function action_act_forget_surplus_password()
 
 	if(empty($_POST['verify_method']))
 	{
-		show_message('未知错误！', '返回', 'user.php?act=forget_surplus_password', 'error');
+		show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 	}
 	else
 	{
@@ -6377,11 +6377,11 @@ function action_act_forget_surplus_password()
 		{
 			if(empty($_REQUEST['v_code']))
 			{
-				show_message('请输入手机验证码！', '返回', 'user.php?act=forget_surplus_password', 'error');
+				show_message('请输入手机验证码！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 			}
 			if(empty($_REQUEST['v_phone']))
 			{
-				show_message('请输入手机号！', '返回', 'user.php?act=forget_surplus_password', 'error');
+				show_message('请输入手机号！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 			}
 			$v_code = $_REQUEST['v_code'];
 			$v_phone = $_REQUEST['v_phone'];
@@ -6404,11 +6404,11 @@ function action_act_forget_surplus_password()
 		{
 			if(empty($_REQUEST['v_captcha']))
 			{
-				show_message('请输入验证码！', '返回', 'user.php?act=forget_surplus_password', 'error');
+				show_message('请输入验证码！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 			}
 			if(empty($_REQUEST['v_email']))
 			{
-				show_message('请输入邮箱！', '返回', 'user.php?act=forget_surplus_password', 'error');
+				show_message('请输入邮箱！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 			}
 			$v_captcha = trim($_REQUEST['v_captcha']);
 			$v_email = trim($_REQUEST['v_email']);
@@ -6428,7 +6428,7 @@ function action_act_forget_surplus_password()
 				
 				if($row['email'] != $v_email)
 				{
-					show_message('邮箱输入错误！', '返回', 'user.php?act=forget_surplus_password', 'error');
+					show_message('邮箱输入错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 				}
 				
 				$template = get_mail_template('reset_surplus_password');
@@ -6454,7 +6454,7 @@ function action_act_forget_surplus_password()
 					$GLOBALS['db']->query($sql);
 					if($GLOBALS['db']->affected_rows() == 1)
 					{
-						show_message('已发送邮件，请前往邮箱点击链接完成密码重置！', '返回', 'user.php?act=account_security', 'success');
+						show_message('已发送邮件，请前往邮箱点击链接完成密码重置！', $_LANG['back'], 'user.php?act=account_security', 'success');
 					}
 					else
 					{
@@ -6469,7 +6469,7 @@ function action_act_forget_surplus_password()
 		}
 		else
 		{
-			show_message('未知错误！', '返回', 'user.php?act=forget_surplus_password', 'error');
+			show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 		}
 	}
 }
@@ -6539,7 +6539,7 @@ function action_verify_reset_surplus_email()
 
 	if(empty($_REQUEST['hash']))
 	{
-		show_message('未知错误！', '返回', 'user.php?act=forget_surplus_password', 'error');
+		show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 	}
 	else
 	{
@@ -6565,7 +6565,7 @@ function action_verify_reset_surplus_email()
 		}
 		else
 		{
-			show_message('未知错误！', '返回', 'user.php?act=forget_surplus_password', 'error');
+			show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 		}
 	}
 }
