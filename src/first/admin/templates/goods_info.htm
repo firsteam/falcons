@@ -735,48 +735,102 @@
 				<!-- 鍟嗗搧鍒楄〃 -->
 				<tr>
 					<th>{$lang.all_goods}</th>
-					<th>{$lang.handler}</th>
 					<th>{$lang.link_goods}</th>
 				</tr>
 				<tr>
-					<td width="42%">
-						<select name="source_select1" size="20" style="width:100%" ondblclick="sz1.addItem(false, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" multiple="true">
-						</select>
+					<td width="50%" valign="top">
+						<div class="relative_goods" id="relative_goods1">
+						
+                        </div>
 					</td>
-					<td align="center">
-						<p>
-							<input name="is_single" type="radio" value="1" checked="checked" />
-							{$lang.single}
-							<br />
-							<input name="is_single" type="radio" value="0" />
-							{$lang.double}
-						</p>
-						<p>
-							<input type="button" value=">>" onclick="sz1.addItem(true, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value=">" onclick="sz1.addItem(false, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<" onclick="sz1.dropItem(false, 'drop_link_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<<" onclick="sz1.dropItem(true, 'drop_link_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-					</td>
-					<td width="42%">
-						<select name="target_select1" size="20" style="width:100%" multiple ondblclick="sz1.dropItem(false, 'drop_link_goods', goodsId, elements['is_single'][0].checked)">
-
-							{foreach from=$link_goods_list item=link_goods}
-
-							<option value="{$link_goods.goods_id}">{$link_goods.goods_name}</option>
-
-							{/foreach}
-
-						</select>
+					<td width="50%" class="relative_left" valign="top">
+                    
+                 <input name="relative_goods_all" type="checkbox" value="1" onclick="selectAll(this,'link_goods')"/> 全选
+                       <div class="relative_goods" id="relative_goods2">
+						{foreach from=$link_goods_list item=link_goods name=link_goods}
+                           <dl class="link_goods_{$link_goods.goods_id}" id="link_goods_{$link_goods.goods_id}">
+                             <dt>
+                               <img src="./../{$link_goods.goods_thumb}" width="150" height="150"/>
+                             </dt>
+                             <dd>
+                                <div class="goods_name">{$link_goods.goods_name}</div>
+                                <div>
+                                   <span class="selectd"><input name="link_goods[]" type="checkbox" value="{$link_goods.goods_id}" checked="checked" /> 选择</span>
+                                </div>
+                             </dd>
+                           </dl>
+                           
+                        {/foreach}
+                        </div>
 					</td>
 				</tr>
 			</table>
+            
+<script>
+
+function selectAll(obj, chk)
+{
+
+  if (chk == null)
+  {
+    chk = 'checkboxes';
+  }
+
+  var elems = obj.form.getElementsByTagName("INPUT");
+
+  for (var i=0; i < elems.length; i++)
+  {
+    if (elems[i].name == chk || elems[i].name == chk + "[]")
+    {
+      elems[i].checked = obj.checked;
+    }
+  }
+
+}
+$(document).ready(function(){
+				
+  $(".unselectitem").find(".selectGoodsCheck").live('click',function(){
+ 
+      var goods_id = $(this).val();
+	  if($(this).hasClass('checked')){
+		  $(this).removeClass('checked');
+		  $(".link_goods_text_"+goods_id).html('选择');
+		 $("#link_goods_"+goods_id).remove();
+	  }
+	  else
+	  {   
+	      
+		   $(this).addClass('checked');
+		   $(this).attr('checked',true);
+		   if($("#relative_goods2").find(".link_goods_"+goods_id).length==0)
+		   {
+		       var html =  "<dl class=\"link_goods_"+goods_id+"\" id=\"link_goods_"+goods_id+"\">";
+			   html += $(".unselectitem_"+goods_id).html();
+			   html +=  "</dl>";
+			   
+			   html = html.replace('class="selectGoodsCheck"','class="selectGoodsCheck" checked="checked"'),
+			   $("#relative_goods2").prepend(html);
+		   }
+		   
+		   var cartItem=$("#link_goods_"+goods_id);
+		   var img=$("#link_goods_img_"+goods_id+"");
+		   var newImg = img.clone().addClass('img-clone').css({"top": $(this).offset().top, "left": $(this).offset().left}).show();
+		   newImg.appendTo("body").animate({top:cartItem.offset().top, left: cartItem.offset().left, width: 45, height:45}, {duration: 800,  complete: function(){ newImg.remove(); }});
+		 	  
+			  
+		   $(".link_goods_"+goods_id).find('.selectGoodsCheck').attr('checked',true);
+		   //$(".link_goods_text_"+goods_id).html('已选择');
+		   
+	  }
+	  
+	  
+});
+
+
+	
+				
+			});
+			</script>
 
 			<!-- 閰嶄欢 -->
 			<table width="90%" id="groupgoods-table" style="display:none" align="center">
@@ -797,40 +851,15 @@
 				<!-- 鍟嗗搧鍒楄〃 -->
 				<tr>
 					<th>{$lang.all_goods}</th>
-					<th>{$lang.handler}</th>
 					<th>{$lang.group_goods}</th>
 				</tr>
 				<tr>
-					<td width="42%">
-						<select name="source_select2" size="20" style="width:100%" onchange="sz2.priceObj.value = this.options[this.selectedIndex].id" ondblclick="sz2.addItem(false, 'add_group_goods', goodsId, this.form.elements['price2'].value)">
-						</select>
+					<td width="50%">
+						
 					</td>
-					<td align="center">
-						<p>
-							{$lang.price}
-							<br />
-							<input name="price2" type="text" size="6" />
-						</p>
-						<p>
-							<input type="button" value=">" onclick="sz2.addItem(false, 'add_group_goods', goodsId, this.form.elements['price2'].value)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<" onclick="sz2.dropItem(false, 'drop_group_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<<" onclick="sz2.dropItem(true, 'drop_group_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-					</td>
-					<td width="42%">
-						<select name="target_select2" size="20" style="width:100%" multiple ondblclick="sz2.dropItem(false, 'drop_group_goods', goodsId, elements['is_single'][0].checked)">
-
-							{foreach from=$group_goods_list item=group_goods}
-
-							<option value="{$group_goods.goods_id}">{$group_goods.goods_name}</option>
-
-							{/foreach}
-
-						</select>
+					
+					<td width="50%">
+						
 					</td>
 				</tr>
 			</table>
@@ -1488,10 +1517,15 @@ function chu (result)
       filters.cat_id = elements[catId].value;
       filters.brand_id = elements[brandId].value;
       filters.keyword = Utils.trim(elements[keyword].value);
-      filters.exclude = document.forms['theForm'].elements['goods_id'].value;
-
-      szObject.loadOptions('get_goods_list', filters);
+	  
+	  Ajax.call('goods.php?is_ajax=1&act=get_goods_list', filters, searchGoodsResponse, 'GET', 'JSON');
   }
+  
+  function searchGoodsResponse(res)
+  {
+	  $("#relative_goods1").html(res.result)
+  }
+  
 
   /**
    * 鍏宠仈鏂囩珷鍑芥暟

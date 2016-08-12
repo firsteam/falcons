@@ -177,8 +177,21 @@ if ($_REQUEST['act'] == 'insert')
 
     /* 处理关联商品 */
     $article_id = $db->insert_id();
-    $sql = "UPDATE " . $ecs->table('goods_article') . " SET article_id = '$article_id' WHERE article_id = 0";
-    $db->query($sql);
+	
+	$article_id =  $_POST['id'];
+		$db->query("delete from " . $ecs->table('goods_article') . " WHERE article_id='$article_id'");
+		if(isset($_POST['link_goods']))
+		{
+			foreach($_POST['link_goods'] as $key=>$val)
+			{
+				$sql = 'replace INTO ' . $ecs->table('goods_article') . ' (goods_id, article_id) '.
+               "VALUES ('$val', '$article_id')";
+			   $db->query($sql);
+			}	
+		}
+	
+    //$sql = "UPDATE " . $ecs->table('goods_article') . " SET article_id = '$article_id' WHERE article_id = 0";
+   // $db->query($sql);
 
     $link[0]['text'] = $_LANG['continue_add'];
     $link[0]['href'] = 'article.php?act=add';
@@ -215,7 +228,8 @@ if ($_REQUEST['act'] == 'edit')
 
     /* 取得关联商品 */
     $goods_list = get_article_goods($_REQUEST['id']);
-    $smarty->assign('goods_list', $goods_list);
+	
+    $smarty->assign('link_goods_list', $goods_list);
 
     $smarty->assign('article',     $article);
     $smarty->assign('cat_select',  article_cat_list(0, $article['cat_id']));
@@ -296,6 +310,20 @@ if ($_REQUEST['act'] =='update')
         admin_log($_POST['title'], 'edit', 'article');
 
         clear_cache_files();
+		
+		$article_id =  $_POST['id'];
+		$db->query("delete from " . $ecs->table('goods_article') . " WHERE article_id='$article_id'");
+		
+		if(isset($_POST['link_goods']))
+		{
+			foreach($_POST['link_goods'] as $key=>$val)
+			{
+				$sql = 'replace INTO ' . $ecs->table('goods_article') . ' (goods_id, article_id) '.
+               "VALUES ('$val', '$article_id')";
+			  
+			   $db->query($sql);
+			}	
+		}
 		
 		/* 代码增加_start  By  www.68ecshop.com */
 	    clearhtml_file('article', $_POST['article_cat'], $_POST['id']);		
@@ -539,10 +567,10 @@ elseif ($_REQUEST['act'] == 'batch')
 
             foreach ($_POST['checkboxes'] AS $key => $id)
             {
-                $sql = "DELETE FROM `cnpicks`.`ecs_goods_article` WHERE `article_id`=".$id;
+				$sql = "DELETE FROM " .$ecs->table('goods_article')." WHERE `article_id`=".$id;
 				$db->query($sql);
 				
-				if ($exc->drop($id))
+                if ($exc->drop($id))
                 {
                     $name = $exc->get_name($id);
                     admin_log(addslashes($name),'remove','article');
@@ -621,7 +649,7 @@ function drop_link_goods($goods_id, $article_id)
 function get_article_goods($article_id)
 {
     $list = array();
-    $sql  = 'SELECT g.goods_id, g.goods_name'.
+    $sql  = 'SELECT g.goods_id, g.goods_name, goods_thumb'.
             ' FROM ' . $GLOBALS['ecs']->table('goods_article') . ' AS ga'.
             ' LEFT JOIN ' . $GLOBALS['ecs']->table('goods') . ' AS g ON g.goods_id = ga.goods_id'.
             " WHERE ga.article_id = '$article_id'";

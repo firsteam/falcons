@@ -342,7 +342,7 @@ function get_goods_list($filter)
     $where = get_where_sql($filter); // 取得过滤条件
 
     /* 取得数据 */
-    $sql = 'SELECT goods_id, goods_name, shop_price '.
+    $sql = 'SELECT goods_id, goods_name, goods_thumb, shop_price '.
            'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' . $where .
            'LIMIT 50';
     $row = $GLOBALS['db']->getAll($sql);

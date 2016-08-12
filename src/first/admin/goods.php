@@ -99,7 +99,7 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 
     $goods_list = goods_list($_REQUEST['act'] == 'list' ? 0 : 1, ($_REQUEST['act'] == 'list') ? (($code == '') ? 1 : 0) : -1);
     $smarty->assign('goods_list',   $goods_list['goods']);
-	$smarty->assign('cat_select',  article_cat_list(0));
+	$smarty->assign('cat_select',   article_cat_list(0));
     $smarty->assign('filter',       $goods_list['filter']);
     $smarty->assign('record_count', $goods_list['record_count']);
     $smarty->assign('page_count',   $goods_list['page_count']);
@@ -118,9 +118,7 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 
     /* 显示商品列表页面 */
     assign_query_info();
-	
 
-	
 	switch ($_REQUEST['act'])
 	{
 		case 'list':
@@ -134,6 +132,7 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 			$htm_file = 'group_list.htm';
 			break;
 	}
+	
     $smarty->display($htm_file);
 }
 
@@ -915,6 +914,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     {
         $smarty->assign('member_price_list', get_member_price_list($_REQUEST['goods_id']));
     }
+	
     $smarty->assign('link_goods_list', $link_goods_list);
     $smarty->assign('group_goods_list', $group_goods_list);
     $smarty->assign('goods_article_list', $goods_article_list);
@@ -1397,7 +1397,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "shop_price = '$shop_price', " .
                 "market_price = '$market_price', " .
                 "is_promote = '$is_promote', " .
-		        "zhekou = '$zhekou', " .
+		"zhekou = '$zhekou', " .
                 "promote_price = '$promote_price', " .
                 "promote_start_date = '$promote_start_date', " .
 				"is_buy = '$is_buy', " .
@@ -1678,9 +1678,9 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
     if ($is_insert)
-    {
-        /* 处理关联商品 */
-        handle_link_goods($goods_id);
+	{
+	/* 处理关联商品 */
+        ///handle_link_goods($goods_id);
 
         /* 处理组合商品 */
         handle_group_goods($goods_id);
@@ -1688,6 +1688,18 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         /* 处理关联文章 */
         handle_goods_article($goods_id);
     }
+	
+	
+		$db->query("delete from " . $ecs->table('link_goods') . " WHERE goods_id='$goods_id'");
+		if(isset($_POST['link_goods']))
+	{
+		foreach($_POST['link_goods'] as $key=>$val)
+		{
+			$sql = "replace INTO " . $ecs->table('link_goods') . " (goods_id, link_goods_id, is_double, admin_id) " .
+						"VALUES ('$goods_id', '$val', '0', '$_SESSION[admin_id]')";
+			 $db->query($sql, 'SILENT');
+		}	
+	}
 
     /* 重新格式化图片名称 */
     $original_img = reformat_image_name('goods', $goods_id, $original_img, 'source');
@@ -1882,8 +1894,6 @@ elseif ($_REQUEST['act'] == 'batch')
             update_goods($goods_id, 'is_wish', '0');
         }
 		
-		
-
         /* 设为热销 */
         elseif ($_POST['type'] == 'hot')
         {
@@ -1967,7 +1977,7 @@ elseif ($_REQUEST['act'] == 'batch')
 				update_goods($goods_id, 'goods_brief', 'concat("'.$_POST['brief_prefix'].'",goods_brief,"'.$_POST['brief_postfix'].'")');
 			}
         }
-
+		
         /* 转移到分类 */
         elseif ($_POST['type'] == 'move_to')
         {
@@ -2003,7 +2013,7 @@ elseif ($_REQUEST['act'] == 'batch')
 
 			/* 处理关联商品 */
 			$article_id = $db->insert_id();
-
+		
 			foreach($goods_id_arr as $key=>$id)
 			{
 				$sql = 'INSERT INTO ' . $ecs->table('goods_article') . ' (goods_id, article_id) '.
@@ -2713,10 +2723,9 @@ elseif ($_REQUEST['act'] == 'query')
     $smarty->assign('specifications', $specifications);
 
 
-
     //$tpl = $is_delete ? 'goods_trash.htm' : 'goods_list.htm';
 	$tpl = 'goods_list.htm';
-	
+
     make_json_result($smarty->fetch($tpl), '',
         array('filter' => $goods_list['filter'], 'page_count' => $goods_list['page_count']));
 }
@@ -2738,7 +2747,7 @@ elseif ($_REQUEST['act'] == 'remove')
 
         admin_log(addslashes($goods_name), 'trash', 'goods'); // 记录日志
 
-        $url = 'goods.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
+        $url = 'goods.php?' . str_replace('act=remove', 'act=query', $_SERVER['QUERY_STRING']);
 
         ecs_header("Location: $url\n");
         exit;
@@ -2762,8 +2771,8 @@ elseif ($_REQUEST['act'] == 'restore_goods')
 
     admin_log(addslashes($goods_name), 'restore', 'goods'); // 记录日志
 
-    $url = 'goods.php?act=query&' . str_replace('act=restore_goods', '', $_SERVER['QUERY_STRING']);
-
+    $url = 'goods.php?' . str_replace('act=restore_goods', 'act=query', $_SERVER['QUERY_STRING']);
+	echo($url);
     ecs_header("Location: $url\n");
     exit;
 }
@@ -2920,7 +2929,7 @@ elseif ($_REQUEST['act'] == 'drop_goods')
     }
 
     clear_cache_files();
-    $url = 'goods.php?act=query&' . str_replace('act=drop_goods', '', $_SERVER['QUERY_STRING']);
+    $url = 'goods.php?' . str_replace('act=drop_goods', 'act=query', $_SERVER['QUERY_STRING']);
 
     ecs_header("Location: $url\n");
 
@@ -3182,21 +3191,17 @@ elseif ($_REQUEST['act'] == 'drop_image')
 elseif ($_REQUEST['act'] == 'get_goods_list')
 {
     include_once(ROOT_PATH . 'includes/cls_json.php');
-    $json = new JSON;
+    $json = new JSON; $json   = new JSON;
+    $res    = array('err_msg' => '', 'result' => '');
+	
 
     $filters = $json->decode($_GET['JSON']);
-
     $arr = get_goods_list($filters);
-    $opt = array();
-
-    foreach ($arr AS $key => $val)
-    {
-        $opt[] = array('value' => $val['goods_id'],
-                        'text' => $val['goods_name'],
-                        'data' => $val['shop_price']);
-    }
-
-    make_json_result($opt);
+	
+    $smarty->assign('goods_list', $arr);
+    $res['result'] = $GLOBALS['smarty']->fetch('ajaxgoods.html');
+	die($json->encode($res));
+	
 }
 
 /*------------------------------------------------------ */

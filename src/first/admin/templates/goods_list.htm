@@ -12,7 +12,7 @@
   <!-- start goods list -->
   <div class="list-div" id="listDiv">
 {/if}
-{if $filter.is_show_card eq 1 and $smarty.get.act neq "trash"}
+{if $filter.is_show_card eq 1 and $list_type neq "trash"}
 	{include file="goods_list_card.htm"}
 {else}
 	{include file="goods_list_table.htm"}
@@ -47,7 +47,7 @@
     <option value="on_sale">{$lang.on_sale}</option>
     <option value="not_on_sale">{$lang.not_on_sale}</option>
 	
-	{if $smarty.get.act neq "trash"}
+	{if $list_type neq "trash"}
     <option value="best">{$lang.best}</option>
     <option value="not_best">{$lang.not_best}</option>
     <!--

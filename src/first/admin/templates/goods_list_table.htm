@@ -136,16 +136,17 @@ function deleteCatResponse(result)
     {if $filter.is_show_brief eq 1}<td><span onclick="listTable.edit1(this, 'edit_goods_brief', {$goods.goods_id})">{$goods.goods_brief|default:N/A}<span style="color:red;"> 编辑</span></span></td>{/if}
     <td style="width:120px;">
     <div id="url_list_{$goods.goods_id}">
-       {foreach from=$goods.goods_url item=item}
-   <div style="margin-bottom:10px;">
+
+	{foreach from=$goods.goods_url item=item}
+    <div style="margin-bottom:10px;">
    
-   <img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png"  width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
+      <img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png"  width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
    
       <a href="{$item.product_url}" target="_blank">{$item.product_url_formated}</a>
       <span onclick="listTable.edit(this, 'edit_collect_price', {$item.url_id})">{$item.price}</span>
       <a href="javascript:deleteUrl({$item.url_id},{$goods.goods_id})" class="special">-</a>
-      </div>
-{/foreach}
+    </div>
+	{/foreach}
 
     </div>
     <div id="url_field_{$goods.goods_id}" style="display:none">
@@ -191,7 +192,7 @@ function deleteCatResponse(result)
         <td align="center"><span onclick="listTable.edit(this, 'edit_review_num', {$goods.goods_id})">{$goods.review_num}</span></td>
     <td class="disable-by-cy" align="center"><a href="goods_tag.php?act=list&goods_id={$goods.goods_id}" target="_blank">标签</a></td> <!-- 晒单插件 增加 by www.68ecshop.com -->
     <td align="center">
-	{if $smarty.get.act neq "trash"}
+	{if $list_type neq "trash"}
       <a href="../goods.php?id={$goods.goods_id}" target="_blank" title="{$lang.view}"><img src="images/icon_view.gif" width="16" height="16" border="0" /></a>
       <a href="goods.php?act=edit&goods_id={$goods.goods_id}{if $code neq 'real_goods'}&extension_code={$code}{/if}" title="{$lang.edit}"><img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
       <a href="goods.php?act=copy&goods_id={$goods.goods_id}{if $code neq 'real_goods'}&extension_code={$code}{/if}" title="{$lang.copy}"><img src="images/icon_copy.gif" width="16" height="16" border="0" /></a>

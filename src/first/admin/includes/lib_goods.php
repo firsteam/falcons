@@ -756,7 +756,7 @@ function build_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
  */
 function get_linked_goods($goods_id)
 {
-    $sql = "SELECT lg.link_goods_id AS goods_id, g.goods_name, lg.is_double " .
+    $sql = "SELECT lg.link_goods_id AS goods_id, g.goods_name, g.goods_thumb, lg.is_double " .
             "FROM " . $GLOBALS['ecs']->table('link_goods') . " AS lg, " .
                 $GLOBALS['ecs']->table('goods') . " AS g " .
             "WHERE lg.goods_id = '$goods_id' " .
@@ -769,9 +769,9 @@ function get_linked_goods($goods_id)
 
     foreach ($row AS $key => $val)
     {
-        $linked_type = $val['is_double'] == 0 ? $GLOBALS['_LANG']['single'] : $GLOBALS['_LANG']['double'];
+        //$linked_type = $val['is_double'] == 0 ? $GLOBALS['_LANG']['single'] : $GLOBALS['_LANG']['double'];
 
-        $row[$key]['goods_name'] = $val['goods_name'] . " -- [$linked_type]";
+        $row[$key]['goods_name'] = $val['goods_name'] . "";
 
         unset($row[$key]['is_double']);
     }
@@ -869,17 +869,14 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         $filter['end_time'] = empty($_REQUEST['end_time']) ? '' : (strpos($_REQUEST['end_time'], '-') > 0 ?  local_strtotime($_REQUEST['end_time']) : $_REQUEST['end_time']);
 
 		$filter['is_show_card']   = isset($_REQUEST['is_show_card']) ? trim($_REQUEST['is_show_card'])  : (isset($_COOKIE['ECS']['is_show_card']) ? $_COOKIE['ECS']['is_show_card'] : 0);
-	
-        $filter['is_show_keywords']   = isset($_REQUEST['is_show_keywords']) ? trim($_REQUEST['is_show_keywords'])  : (isset($_COOKIE['ECS']['is_show_keywords']) ? $_COOKIE['ECS']['is_show_keywords'] : 0);		
-		$filter['is_show_brief']   = isset($_REQUEST['is_show_brief']) ? trim($_REQUEST['is_show_brief'])  : (isset($_COOKIE['ECS']['is_show_brief']) ? $_COOKIE['ECS']['is_show_brief'] : 0);		
+		$filter['is_show_keywords']   = isset($_REQUEST['is_show_keywords']) ? trim($_REQUEST['is_show_keywords'])  : (isset($_COOKIE['ECS']['is_show_keywords']) ? $_COOKIE['ECS']['is_show_keywords'] : 0);
+		$filter['is_show_brief']   = isset($_REQUEST['is_show_brief']) ? trim($_REQUEST['is_show_brief'])  : (isset($_COOKIE['ECS']['is_show_brief']) ? $_COOKIE['ECS']['is_show_brief'] : 0);
 		$filter['is_show_title_cn']   = isset($_REQUEST['is_show_title_cn']) ? trim($_REQUEST['is_show_title_cn'])  : (isset($_COOKIE['ECS']['is_show_title_cn']) ? $_COOKIE['ECS']['is_show_title_cn'] : 0);
 		
 		setcookie('ECS[is_show_card]', $filter['is_show_card'], gmtime() + 86400 * 7);
-		
 		setcookie('ECS[is_show_keywords]', $filter['is_show_keywords'], gmtime() + 86400 * 7);
 		setcookie('ECS[is_show_brief]', $filter['is_show_brief'], gmtime() + 86400 * 7);
 		setcookie('ECS[is_show_title_cn]', $filter['is_show_title_cn'], gmtime() + 86400 * 7);
-		
         
 		$filter['is_delete']        = $is_delete;
         $filter['real_goods']       = $real_goods;

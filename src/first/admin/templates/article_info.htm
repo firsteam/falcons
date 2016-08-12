@@ -15,7 +15,7 @@
 
   <div id="tabbody-div">
     <form  action="article.php" method="post" enctype="multipart/form-data" name="theForm" onsubmit="return validate();">
-    <table width="90%" id="general-table">
+    <table width="100%" id="general-table">
       <tr>
         <td class="narrow-label">{$lang.title}</td>
         <td><input type="text" name="title" size ="40" maxlength="60" value="{$article.title|escape}" />{$lang.require_field}</td>
@@ -80,11 +80,11 @@
       </tr>
     </table>
 
-    <table width="90%" id="detail-table" style="display:none">
+    <table width="100%" id="detail-table" style="display:none">
      <tr><td>{$FCKeditor}</td></tr>
     </table>
 
-    <table width="90%" id="goods-table" style="display:none">
+    <table width="100%" id="goods-table" style="display:none">
       <!-- 商品搜索 -->
       <tr>
       <td colspan="5">
@@ -95,34 +95,108 @@
         <select name="brand_id"><option value="0">{$lang.all_brand}</caption>{html_options options=$brand_list}</select>
         <!-- 关键字 -->
         <input type="text" name="keyword" size="30" />
-        <input type="button" value="{$lang.button_search}" onclick="searchGoods()" class="button" />
+        <input type="button" value="{$lang.button_search}" onclick="searchGoods(sz, 'cat_id','brand_id','keyword')" class="button" />
       <td>
       </tr>
       <!-- 商品列表 -->
       <tr>
-        <th>{$lang.all_goods}</th>
-        <th>{$lang.handler}</th>
-        <th>{$lang.send_bouns_goods}</th>
-      </tr>
-      <tr>
-        <td width="45%" align="center">
-          <select name="source_select" size="20" style="width:90%" ondblclick="sz.addItem(false, 'add_link_goods', articleId)" multiple="true">
-          </select>
-        </td>
-        <td align="center">
-          <p><input type="button" value="&gt;&gt;" onclick="sz.addItem(true, 'add_link_goods', articleId)" class="button" /></p>
-          <p><input type="button" value="&gt;" onclick="sz.addItem(false, 'add_link_goods', articleId)" class="button" /></p>
-          <p><input type="button" value="&lt;" onclick="sz.dropItem(false, 'drop_link_goods', articleId)" class="button" /></p>
-          <p><input type="button" value="&lt;&lt;" onclick="sz.dropItem(true, 'drop_link_goods', articleId)" class="button" /></p>
-        </td>
-        <td width="45%" align="center">
-          <select name="target_select" multiple="true" size="20" style="width:90%" ondblclick="sz.dropItem(false, 'drop_link_goods', articleId)">
-            {foreach from=$goods_list item=goods}
-            <option value="{$goods.goods_id}">{$goods.goods_name}</option>
-            {/foreach}
-          </select>
-        </td>
-      </tr>
+					<th>{$lang.all_goods}</th>
+					<th>{$lang.link_goods}</th>
+				</tr>
+				<tr>
+					<td width="50%" valign="top">
+						<div class="relative_goods" id="relative_goods1">
+						
+                        </div>
+					</td>
+					<td width="50%" class="relative_left" valign="top">
+                    
+                 <input name="relative_goods_all" type="checkbox" value="1" onclick="selectAll(this,'link_goods')"/> 全选
+                       <div class="relative_goods" id="relative_goods2">
+						{foreach from=$link_goods_list item=link_goods name=link_goods}
+                           <dl class="link_goods_{$link_goods.goods_id}" id="link_goods_{$link_goods.goods_id}">
+                             <dt>
+                               <img src="./../{$link_goods.goods_thumb}" width="150" height="150"/>
+                             </dt>
+                             <dd>
+                                <div class="goods_name">{$link_goods.goods_name}</div>
+                                <div>
+                                   <span class="selectd"><input name="link_goods[]" type="checkbox" value="{$link_goods.goods_id}" checked="checked" /> 选择</span>
+                                </div>
+                             </dd>
+                           </dl>
+                           
+                        {/foreach}
+                        </div>
+					</td>
+				</tr>
+			</table>
+            
+<script>
+
+function selectAll(obj, chk)
+{
+
+  if (chk == null)
+  {
+    chk = 'checkboxes';
+  }
+
+  var elems = obj.form.getElementsByTagName("INPUT");
+
+  for (var i=0; i < elems.length; i++)
+  {
+    if (elems[i].name == chk || elems[i].name == chk + "[]")
+    {
+      elems[i].checked = obj.checked;
+    }
+  }
+
+}
+$(document).ready(function(){
+				
+  $(".unselectitem").find(".selectGoodsCheck").live('click',function(){
+ 
+      var goods_id = $(this).val();
+	  if($(this).hasClass('checked')){
+		  $(this).removeClass('checked');
+		  $(".link_goods_text_"+goods_id).html('选择');
+		 $("#link_goods_"+goods_id).remove();
+	  }
+	  else
+	  {   
+	      
+		   $(this).addClass('checked');
+		   $(this).attr('checked',true);
+		   if($("#relative_goods2").find(".link_goods_"+goods_id).length==0)
+		   {
+		       var html =  "<dl class=\"link_goods_"+goods_id+"\" id=\"link_goods_"+goods_id+"\">";
+			   html += $(".unselectitem_"+goods_id).html();
+			   html +=  "</dl>";
+			   
+			   html = html.replace('class="selectGoodsCheck"','class="selectGoodsCheck" checked="checked"'),
+			   $("#relative_goods2").prepend(html);
+		   }
+		   
+		   var cartItem=$("#link_goods_"+goods_id);
+		   var img=$("#link_goods_img_"+goods_id+"");
+		   var newImg = img.clone().addClass('img-clone').css({"top": $(this).offset().top, "left": $(this).offset().left}).show();
+		   newImg.appendTo("body").animate({top:cartItem.offset().top, left: cartItem.offset().left, width: 45, height:45}, {duration: 800,  complete: function(){ newImg.remove(); }});
+		 	  
+			  
+		   $(".link_goods_"+goods_id).find('.selectGoodsCheck').attr('checked',true);
+		   //$(".link_goods_text_"+goods_id).html('已选择');
+		   
+	  }
+	  
+	  
+});
+
+
+	
+				
+			});
+			</script>
     </table>
     <div class="button-div">
       <input type="hidden" name="act" value="{$form_action}" />
@@ -237,19 +311,21 @@ function showNotice(objId)
     }
 }
 
-function searchGoods()
-{
-    var elements  = document.forms['theForm'].elements;
-    var filters   = new Object;
+function searchGoods(szObject, catId, brandId, keyword)
+  {
+      var filters = new Object;
 
-	filters.is_on_sale = 1;
-	filters.is_delete = 0;
-    filters.cat_id = elements['cat_id'].value;
-    filters.brand_id = elements['brand_id'].value;	
-    filters.keyword = Utils.trim(elements['keyword'].value);
-
-    sz.loadOptions('get_goods_list', filters);
-}
+      filters.cat_id = elements[catId].value;
+      filters.brand_id = elements[brandId].value;
+      filters.keyword = Utils.trim(elements[keyword].value);
+	  
+	  Ajax.call('goods.php?is_ajax=1&act=get_goods_list', filters, searchGoodsResponse, 'GET', 'JSON');
+  }
+  
+  function searchGoodsResponse(res)
+  {
+	  $("#relative_goods1").html(res.result)
+  }
 {/literal}
 
 /**

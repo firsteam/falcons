@@ -73,7 +73,6 @@
     <img class="disable-by-cy" src="images/{if $goods.is_new}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_new', {$goods.goods_id})" />
     <img class="disable-by-cy" src="images/{if $goods.is_hot}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_hot', {$goods.goods_id})" />
     wish<img src="images/{if $goods.is_wish}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_wish', {$goods.goods_id})" />
-	
 
  	{if $suppliers_exists eq 1}
 		{* 代码增加_start  By  www.68ecshop.com *}
@@ -90,6 +89,13 @@
 
 	</div>
 	
+	<div class="goods_bar">		
+	{foreach from=$goods.goods_url item=item}
+		<img src="images/{if $item.is_best}op_memo_1{else}op_memo_0{/if}.png"  width="16" height="16" onclick="listTable.toggle1(this, 'toggle_url_best', {$item.url_id})" />
+		<a href="{$item.product_url}" target="_blank">购{$item.price} </a> 
+	{/foreach}
+	</div>
+
 	<div class="goods_bar">
 		<span class="goods_label1">价格</span><span onclick="listTable.edit(this, 'edit_goods_price', {$goods.goods_id})">{$goods.shop_price}</span>
 		<span class="goods_label1">排序</span><span onclick="listTable.edit(this, 'edit_sort_order', {$goods.goods_id})">{$goods.sort_order}</span>

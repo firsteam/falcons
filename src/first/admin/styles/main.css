@@ -100,7 +100,7 @@ h1 .action-span1 {
 .form-div select, .form-div input, .form-div img,.main-div select, .main-div input,.main-div img {
 	vertical-align: middle;
 }
-.main-div input[type='text'], .form-div input[type='text'],p input[type='text'], input[type='text']  {
+.main-div input[type='text'], .form-div input[type='text'],p input[type='text'],input[type='text'] {
 	margin: 5px;
 	padding: 0px 4px;
 	height: 28px;
@@ -269,11 +269,10 @@ input.text_input1 {
 #tabbody-div input[type='text'] {
 	margin: 3px 0px;
 	padding: 0px 4px;
-	height: 28px;
 	line-height: 28px;
  *height:28px;
  *line-height: 28px;
- min-width:200px;
+ /*min-width:200px;*/
 	width: auto;
 	border: solid 1px #ddd;
 }
@@ -337,7 +336,7 @@ td.micro-label {
 }
 .button-div {
 	text-align: center;
-	padding: 3px 0;
+	padding: 30px 0px;
 }
 input.button {
 	padding: 5px 15px 5px;
@@ -1262,7 +1261,6 @@ a.status {
 .goods_select_area span:hover a{
 	background:url(../images/close.png) no-repeat 6px -12px #e31939;	
 }
-
 .sort_nav{
 	width:100%;
 	height:30px;
@@ -1293,3 +1291,13 @@ a.status {
 .clear_both {
 	clear:both;
 }
+
+.relative_left{border-left:#ddd solid 1px; padding-left:25px;}
+.relative_goods{}
+.relative_goods dl{ float:left; width:152px; float:left; margin:10px; height:240px;}
+.relative_goods dl dd{ padding:0px; margin:0px;}
+.relative_goods dl dt{padding:0px; margin:0px;}
+.relative_goods dl dt img{border:#ddd solid 1px;}
+.relative_goods dl dd .goods_name{border-bottom:10px; color:#666}
+.relative_goods dl dd .selectd{color:#F00}
+.img-clone{position:absolute}

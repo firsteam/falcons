@@ -48,11 +48,11 @@
 			<div class="goods-img">
 				<a href="{$releated_goods_data.url}">
 					{if count($article.goods_list) eq 1}
-						<img width="600" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+						<img style="width:600px" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
 					{elseif count($article.goods_list) eq 2 or count($article.goods_list) eq 4}
-						<img width="350" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+						<img style="width:350px;max-height=350px" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
 					{else}
-						<img width="250" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
+						<img style="width:250px;max-height:250px" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
 					{/if}
 				</a>
 			</div>

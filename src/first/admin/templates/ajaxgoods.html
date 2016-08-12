@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{if $goods_list}
+{foreach from=$goods_list item=link_goods name=link_goods}
+                           <dl class="unselectitem unselectitem_{$link_goods.goods_id}">
+                             <dt>
+                               <img src="./../{$link_goods.goods_thumb}" id="link_goods_img_{$link_goods.goods_id}" width="150" height="150"/>
+                             </dt>
+                             <dd>
+                                <div class="goods_name">{$link_goods.goods_name}</div>
+                                <div>
+                                   <span class="selectd"><input name="link_goods[]"  class="selectGoodsCheck" type="checkbox" value="{$link_goods.goods_id}"/> <font class="link_goods_text_{$link_goods.goods_id}">选择</font></span>
+                                </div>
+                             </dd>
+                           </dl>
+                           
+                        {/foreach}
+                        {else}
+                        <div style=" padding:50px;">没有搜索到相关商品！</div>
+                        {/if}
