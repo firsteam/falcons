@@ -127,7 +127,7 @@ function checkEmail(email, callback) {
 	}
 
 	if (submit_disabled) {
-		document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+		//document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 		return false;
 	}
 
@@ -169,7 +169,7 @@ function checkEmailExist(email, callback) {
 		} else {
 			document.getElementById('email_notice').innerHTML = msg_email_registered;
 			document.getElementById('email_notice').style.color = '#900';
-			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+			//document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 			
 			if (emailObj != null) {
 				//emailObj.focus();
@@ -223,7 +223,7 @@ function checkUsername(username, callback) {
 	}
 
 	if (submit_disabled) {
-		document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+		//document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 		return false;
 	}
 
@@ -265,7 +265,7 @@ function checkUsernameExist(username, callback) {
 		} else {
 			document.getElementById('username_notice').innerHTML = msg_un_registered;
 			document.getElementById('username_notice').style.color = '#900';
-			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+			//document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 			
 			if (usernameObj != null) {
 				//usernameObj.focus();
@@ -309,7 +309,7 @@ function checkMobilePhone(mobile, callback) {
 	}
 
 	if (submit_disabled) {
-		document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+		//document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 		return false;
 	}
 
@@ -350,7 +350,7 @@ function checkMobilePhoneExist(mobile, callback) {
 		} else {
 			document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_registered;
 			document.getElementById('mobile_phone_notice').style.color = '#900';
-			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+			//document.forms['formUser'].elements['Submit'].disabled = 'disabled';
 
 			if (mobileObj != null) {
 				mobileObj.focus();
@@ -736,7 +736,7 @@ function countdown(obj, msg) {
 			msg = obj.val();
 		}
 		obj.attr("disabled", "disabled");
-		obj.val(wait + "秒后重新获取");
+		obj.val(wait + " second to get another one.");
 		wait--;
 		setTimeout(function() {
 			countdown(obj, msg)

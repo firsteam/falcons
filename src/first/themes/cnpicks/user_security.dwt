@@ -32,7 +32,7 @@ function countdown(obj, msg) {
 			msg = obj.val();
 		}
 		obj.attr("disabled", "disabled");
-		obj.val(wait + "秒后重新获取");
+		obj.val(wait + " second to get another one.");
 		wait--;
 		setTimeout(function() {
 			countdown(obj, msg)

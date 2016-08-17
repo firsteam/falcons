@@ -188,7 +188,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 							<div id="c_mobile_code" class="item v_mobile_phone v_item" style="display: none">
 								<label>Mobile Message Verification Code</label>
 								<input type="text" id="mobile_code" name="mobile_code" class="text text_te2" value="" />
-								<input id="zphone" type="button" value="Get verification code" class="code">
+								<input id="zphone" type="button" value="{$lang.get_email_code}" class="code">
 							</div>
 							<div class="item v_email v_item" style="display: none">
 								<label>Email: </label>
@@ -197,7 +197,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 							<div id="c_email" class="item v_email v_item" style="display: none">
 								<label>Email Verification Code</label>
 								<input type="text" id="email_code" name="email_code" class="text text_te2" value="" />
-								<input id="zemail" type="button" value="Get Email Verification Code" class="code">
+								<input id="zemail" type="button" value="{$lang.get_email_code}" class="code">
 							</div>
 							<div class="item">
 								<input type="button" name="button" id="btn_submit" class="btn_next" value="Submit" />
@@ -534,7 +534,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 					<form action="user.php" method="post" name="getPassword" onsubmit="return submitPwdInfo();">
 						<div class="form">
 							<h2>
-								<strong>找回密码</strong>
+								<strong>{$lang.get_password}</strong>
 							</h2>
 							<div class="item item_gqu">{$lang.username_and_email}</div>
 							<div class="item">
@@ -569,11 +569,11 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 					<form action="user.php" method="post">
 						<div class="form">
 							<h2>
-								<strong>找回密码</strong>
+								<strong>{$lang.get_password}</strong>
 							</h2>
 							<div class="item item_gqu">{$lang.get_question_username}</div>
 							<div class="item">
-								<span class="label">用户名：</span>
+								<span class="label">{$lang.username}:</span>
 								<div>
 									<input name="user_name" type="text" class="text" />
 								</div>
@@ -598,7 +598,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 					<form action="user.php" method="post">
 						<div class="form">
 							<h2>
-								<strong>找回密码</strong>
+								<strong>{$lang.get_password}</strong>
 							</h2>
 							<div class="item item_gqu">{$lang.input_answer}</div>
 							<div class="item">
@@ -644,7 +644,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
 					<form action="user.php" method="post" name="getPassword2" onSubmit="return submitPwd()">
 						<div class="form">
 							<h2>
-								<strong>重置密码</strong>
+								<strong>{$lang.change_password}</strong>
 							</h2>
 							<div class="item">
 								<span class="label">{$lang.new_password}</span>

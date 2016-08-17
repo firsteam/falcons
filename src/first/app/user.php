@@ -288,7 +288,7 @@ function action_act_supplier_del()
 	}
 	$sql = "delete from " . $ecs->table('supplier') . "  where supplier_id=" . $supplier_id;
 	$db->query($sql);
-	show_message('操作成功！', $_LANG['go_back'], 'user.php', 'info');
+	show_message($_LANG['action_success'], $_LANG['go_back'], 'user.php', 'info');
 }
 /* 代码增加_end By www.68ecshop.com */
 
@@ -433,7 +433,7 @@ function action_binding()
 	$verifycode = isset($_POST['verifycode']) ? trim($_POST['verifycode']) : '';
 	if($phone == '')
 	{
-		show_message('手机号不能为空！');
+		show_message($_LANG['mobile_phone_empty']);
 	}
 	else
 	{
@@ -443,13 +443,13 @@ function action_binding()
 			$sql = "SELECT COUNT(user_id) FROM " . $ecs->table('users') . " WHERE mobile_phone = '$phone' and user_id <> '" . $_SESSION['user_id'] . "'";
 			if($db->getOne($sql) > 0)
 			{
-				show_message('手机号已经存在，请重新输入！');
+				show_message($_LANG['mobile_exist']);
 			}
 			else
 			{
 				if($verifycode == '')
 				{
-					show_message('手机验证码不能为空！');
+					show_message($_LANG['mobile_verification_empty']);
 				}
 				else
 				{
@@ -1451,7 +1451,7 @@ function action_ck_email()
 	{
 		$sql = "delete from " . $GLOBALS['ecs']->table('email') . " where hash = '$hash'";
 		$GLOBALS['db']->query($sql);
-		show_message('验证邮件已发送超过24小时，请重新验证！');
+		show_message($_LANG['validate_fail_over24']);
 	}
 	else
 	{
@@ -1462,7 +1462,7 @@ function action_ck_email()
 			$_SESSION['tag'] = 1;
 			$sql = "delete from " . $GLOBALS['ecs']->table('email') . " where hash = '$hash'";
 			$GLOBALS['db']->query($sql);
-			show_message('验证成功，请继续注册！');
+			show_message($_LANG['validate_succeed']);
 		}
 	}
 }
@@ -1926,7 +1926,7 @@ function action_act_update_email()
 	include_once (ROOT_PATH . 'includes/lib_passport.php');
 	if(empty($_POST['v_captcha']))
 	{
-		show_message('验证码不能为空！', $_LANG['back'], 'user.php?act=update_email', 'error');
+		show_message($_LANG['invalid_captcha'], $_LANG['back'], 'user.php?act=update_email', 'error');
 	}
 	
 	/* 检查验证码 */
@@ -1963,7 +1963,7 @@ function action_act_update_email()
 		}
 		else
 		{
-			show_message('邮件发送失败！');
+			show_message($_LANG['send_email_fail']);
 		}
 	}
 }
@@ -1987,7 +1987,7 @@ function action_valid_email()
 	{
 		$sql = "delete from " . $GLOBALS['ecs']->table('email') . " where hash = '$hash'";
 		$GLOBALS['db']->query($sql);
-		show_message('验证邮件已发送超过24小时，请重新验证！');
+		show_message($_LANG['validate_fail_over24']);
 	}
 	else
 	{
@@ -2038,12 +2038,12 @@ function action_act_binding_email()
 	$num = $GLOBALS['db']->getOne($sql);
 	if($num > 0)
 	{
-		show_message('邮箱已经存在请重新输入！');
+		show_message($_LANG['msg_email_registered']);
 	}
 	
 	if(empty($_POST['code']))
 	{
-		show_message('验证码不能为空！', $_LANG['back'], 'user.php?act=re_binding_email', 'error');
+		show_message($_LANG['invalid_captcha'], $_LANG['back'], 'user.php?act=re_binding_email', 'error');
 	}
 	
 	/* 检查验证码 */
@@ -2082,11 +2082,11 @@ function action_act_binding_email()
 			$add_time = time();
 			$sql = "insert into " . $GLOBALS['ecs']->table('email') . "(`email`,`hash`,`add_time`,`user_id`) values('$email','$hash','$add_time','" . $_SESSION['user_id'] . "')";
 			$GLOBALS['db']->query($sql);
-			show_message('已发送邮件，请前往邮箱点击链接完成验证！');
+			show_message($_LANG['have_sent_email']);
 		}
 		else
 		{
-			show_message('发送邮件失败！');
+			show_message($_LANG['send_email_fail']);
 		}
 	}
 }
@@ -2110,7 +2110,7 @@ function action_re_validate_email()
 	{
 		$sql = "delete from " . $GLOBALS['ecs']->table('email') . " where hash = '$hash'";
 		$GLOBALS['db']->query($sql);
-		show_message('验证邮件已发送超过24小时，请重新验证！');
+		show_message($_LANG['validate_fail_over24']);
 	}
 	else
 	{
@@ -6454,22 +6454,22 @@ function action_act_forget_surplus_password()
 					$GLOBALS['db']->query($sql);
 					if($GLOBALS['db']->affected_rows() == 1)
 					{
-						show_message('已发送邮件，请前往邮箱点击链接完成密码重置！', $_LANG['back'], 'user.php?act=account_security', 'success');
+						show_message($_LANG['have_sent_email'], $_LANG['back'], 'user.php?act=account_security', 'success');
 					}
 					else
 					{
-						show_message('发送邮件失败！');
+						show_message($_LANG['send_email_fail']);
 					}
 				}
 				else
 				{
-					show_message('发送邮件失败！');
+					show_message($_LANG['send_email_fail']);
 				}
 			}
 		}
 		else
 		{
-			show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
+			show_message($_LANG['unknow_error'], $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 		}
 	}
 }
@@ -6539,7 +6539,7 @@ function action_verify_reset_surplus_email()
 
 	if(empty($_REQUEST['hash']))
 	{
-		show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
+		show_message($_LANG['unknow_error'], $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 	}
 	else
 	{
@@ -6552,7 +6552,7 @@ function action_verify_reset_surplus_email()
 			{
 				$sql = 'DELETE FROM ' . $GLOBALS['ecs']->table('email') . ' WHERE `hash` = \'' . $hash . '\'';
 				$GLOBALS['db']->query($sql);
-				show_message('验证邮件已发送超过24小时，请重新验证！');
+				show_message($_LANG['validate_fail_over24']);
 			}
 			else
 			{
@@ -6565,7 +6565,7 @@ function action_verify_reset_surplus_email()
 		}
 		else
 		{
-			show_message('未知错误！', $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
+			show_message($_LANG['unknow_error'], $_LANG['back'], 'user.php?act=forget_surplus_password', 'error');
 		}
 	}
 }

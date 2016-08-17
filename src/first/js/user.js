@@ -1284,7 +1284,7 @@ function forget_pass() {
 	var code = frm.elements['code'].value;
 	var email = frm.elements['email'].value;
 	if (user_name.length == 0) {
-		alert('用户名不能为空！');
+		alert('User name could not be empty!');
 		return false;
 	}
 	if (find_type == 0) {
@@ -1293,7 +1293,7 @@ function forget_pass() {
 	}
 	if (find_type == 1) {
 		if (mobile.length == 0) {
-			alert('手机号不能为空！');
+			alert('Mobile could not be empty!');
 			return false;
 		} else {
 			if (mobile.length != 11) {
@@ -1301,7 +1301,7 @@ function forget_pass() {
 				return false;
 			} else {
 				if (code.length == 0) {
-					alert('验证码不能为空！');
+					alert('Please provide verification code!');
 					return false;
 				}
 			}
@@ -1310,11 +1310,11 @@ function forget_pass() {
 
 	if (find_type == 2) {
 		if (email.length == 0) {
-			alert('邮箱不能为空！');
+			alert('Email could not be empty!');
 			return false;
 		} else {
 			if (!(Utils.isEmail(email))) {
-				alert('邮箱格式不正确！');
+				alert('Email is invalid!');
 				return false;
 			}
 		}
@@ -1335,7 +1335,7 @@ function countdown(obj, msg) {
 			msg = obj.val();
 		}
 		obj.attr("disabled", "disabled");
-		obj.val(wait + "秒后重新获取");
+		obj.val(wait + " second to get another one.");
 		wait--;
 		setTimeout(function() {
 			countdown(obj, msg)

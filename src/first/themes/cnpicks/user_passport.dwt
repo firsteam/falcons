@@ -35,21 +35,18 @@
     
     <!--#Login Page start--> 
     <!-- {if $action eq 'login'} -->
-    
     <div class="w" id="entry">
     <div class="mcon">
       <div id="reg-pic" class="box-pic" style="display:none;"></div>
       <div id="login-box" class="uc_box">
-        <form name="formLogin" action="user.php?XDEBUG_SESSION_START=ECLIPSE_DBGP" method="post" onSubmit="return userLogin()">
-          <h2><span><a href="register.php">Sign up for a new account</a></span></h2>
+        <form name="formLogin" id="formLogin" action="user.php?XDEBUG_SESSION_START=ECLIPSE_DBGP" method="post" onSubmit="return userLogin()">
+          <h2><span><a href="register.php?back_act={$back_act}">Sign up for a new account</a></span></h2>
           <div class="form">
-            <div class="item" style="margin:30px 0px 0px 0px;"> 
-			{$message}			
-			</div>
-            <div class="item" style="margin:0px 0px 30px 0px;">       
+           <div id="login_error" style="color:#e4393c"></div>
+           <div class="item" style="margin:30px 0px 30px 0px;">       
                 <input type="text" id="username" name="username" class="text" tabindex="1" placeholder="UserName or Email"/>  
 				<i class="i-name"></i>
-		    </div>
+		   </div>
 			
             <div class="item" style="margin:0px 0px 5px 0px;">           
                 <input type="password" id="password" name="password" class="text" tabindex="2" placeholder="Password"/>         
@@ -81,11 +78,11 @@
             <div class="item">
               <input type="hidden" name="act" value="act_login" />
               <input type="hidden" name="back_act" value="{$back_act}" />
-              <input type="submit" name="submit" class="btn-img btn-entry" id="loginsubmit" value="Sign in" />
+              <input type="button" name="submit" onClick="userLogin()" class="btn-img btn-entry" id="loginBtn" value="Sign in" />
             </div>
             <div class="blank"></div>
-            <div class="item">
-              <table class="disable-by-cy" width="300" border="0" cellpadding="5" cellspacing="0">
+            <div class="item disable-by-cy">
+              <table width="300" border="0" cellpadding="5" cellspacing="0">
                 <tr>
 		          <td><a style="text-decoration:none" href="user.php?act=oath&type=weixin"><i class="weixin"></i>&nbsp;&nbsp;微信</a></td>
                   <td><a style="text-decoration:none" href="user.php?act=oath&type=qq"><i class="qq"></i>&nbsp;&nbsp;QQ</a></td>
@@ -93,14 +90,65 @@
                   <td><a style="text-decoration:none" href="user.php?act=oath&type=alipay"><i class="alipay"></i>&nbsp;&nbsp;支付宝</a></td>
                 </tr>
               </table>
-				<a href="user.php?act=hyauth&provider=facebook"><img src='/includes/hybridauth/facebook.png'></img></a> <br>
-				<a href="includes\hybridauth\login-with.php?provider=Facebook">facebook</a> <br>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+ <script>
+function userLogin()
+{
+  var frm      = document.forms['formLogin'];
+  var username = frm.elements['username'].value;
+  var password = frm.elements['password'].value;
+  var msg = '';
+
+  if (username.length == 0)
+  {
+    msg += username_empty + '\n';
+  }
+  if (password.length == 0)
+  {
+    msg += password_empty + '\n';
+  }
+  if (msg.length > 0)
+  {
+    alert(msg);
+    return;
+  }
+  
+  var params=$('#formLogin').serialize()
+  $.ajax({
+			url:"user.php",
+			dataType:'json',
+			type:"POST",
+			data:params,
+			beforeSend:function() {  
+			   $('#loginBtn').val('Loading...').attr('disabled',true);
+			},  
+			complete:function(result) {  
+			   
+			},  
+			success:function(result){
+				if(result.err_no==0)
+				{
+				   window.location.href=result.back_act
+				   return;
+				}
+				else
+				{
+				   $('#loginBtn').val('Sign in').attr('disabled',false);
+				   $("#login_error").html(result.err_msg);	
+				   return;
+				}
+			},
+			error:function(){
+				$('#loginBtn').val('Sign in').attr('disabled',false);
+			}
+	});
+}
+  </script>
     <!--{/if}--> 
     <!--#登录界面 end--> 
     
@@ -124,7 +172,7 @@
         <form action="user.php" method="post" name="formUser" onsubmit="return register2();">
           <div class="form">
 			<h2><strong>Welcome! </strong><span> Have account? <a href="user.php?act=login"> Login</a></span></h2>
-            <div class="item">
+          <div class="item">
               <input name="username" type="text" id="username" placeholder="{$lang.label_username}" onblur="is_registered(this.value);" class="text" >
               <i class="i-name"></i>
               <div><span class="label" id="username_notice"></span></div>
@@ -272,8 +320,8 @@ function chemailResponse(result)
               <div class="select-outer select-wh200"  style="margin-bottom:20px;">
                 <div class="select-inner">
                   <select name="find_type" id="find_type" onchange="choose_type(this.value);">
-                    <option value="0">请选择找回密码方式</option>
-                    <option value="1">手机号找回密码</option>
+                    <option value="0">请选择{$lang.get_password}方式</option>
+                    <option value="1">手机号{$lang.get_password}</option>
                     <option value="2">{$lang.get_password_by_mail}</option>
                     
                   </select>
@@ -339,7 +387,7 @@ function chemailResponse(result)
     <!--{/if}--> 
     <!-- 代码增加2014-12-23 by www.68ecshop.com  _end -->
     
-    <!--*找回密码界面 --> 
+    <!--*{$lang.get_password}界面 --> 
     <!--{if $action eq 'get_password'} --> 
     {insert_scripts files='utils.js'} 
     <script type="text/javascript">
@@ -379,7 +427,7 @@ function chemailResponse(result)
     </div>
     <!--{/if}--> 
     
-    <!--*通过问题找回密码的确认找回账号界面 --> 
+    <!--*通过问题{$lang.get_password}的确认找回账号界面 --> 
     <!--{if $action eq 'qpassword_name'} -->
     <div class="w" id="entry">
     <div class="mcon">
@@ -485,7 +533,7 @@ function chemailResponse(result)
     </div>
     </div>
     <!--{/if}--> 
-    <!--#找回密码界面 end-->
+    <!--#{$lang.get_password}界面 end-->
     <script>
 $(".mcon").height($(".uc_box").height());
 </script>  

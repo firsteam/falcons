@@ -818,27 +818,12 @@ function action_login ()
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $_SESSION['user_id'];
-	$back_act = $GLOBALS['back_act'];
 	
-	if(empty($back_act))
-	{
-		if(empty($back_act) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
-		{
-			$http_referer = $GLOBALS['_SERVER']['HTTP_REFERER'];
-			
-			// 如果来自找回密码页面则跳转到首页
-			if(strpos($http_referer, 'findPwd.php') != false)
-			{
-				$http_referer = './index.php';
-			}
-			
-			$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $http_referer;
-		}
-		else
-		{
-			$back_act = 'user.php';
-		}
-	}
+	$back_act = isset($_GET['back_act']) ? trim($_GET['back_act']) : '';
+    if ((!isset($back_act)||empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
+    {
+        $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+    }
 	
 	$captcha = intval($_CFG['captcha']);
 	if(($captcha & CAPTCHA_LOGIN) && (! ($captcha & CAPTCHA_LOGIN_FAIL) || (($captcha & CAPTCHA_LOGIN_FAIL) && $_SESSION['login_fail'] > 2)) && gd_version() > 0)
@@ -909,6 +894,12 @@ function action_login_check_yzm ()
 function action_act_login ()
 {
 	
+	include_once('includes/cls_json.php');
+    $json   = new JSON;
+    $res    = array('err_msg' => '', 'result' => '');
+
+
+
 	// 获取全局变量
 	$user = $GLOBALS['user'];
 	$_CFG = $GLOBALS['_CFG'];
@@ -927,17 +918,19 @@ function action_act_login ()
 	{
 		if(empty($_POST['captcha']))
 		{
-			show_message($_LANG['invalid_captcha'], $_LANG['relogin_lnk'], 'user.php', 'error');
+			$res['err_msg'] = $_LANG['invalid_captcha'];
+			$res['err_no']  = 1;
+			die($json->encode($res));
 		}
-		
 		/* 检查验证码 */
 		include_once ('includes/cls_captcha.php');
-		
 		$validator = new captcha();
 		$validator->session_word = 'captcha_login';
 		if(! $validator->check_word($_POST['captcha']))
 		{
-			show_message($_LANG['invalid_captcha'], $_LANG['relogin_lnk'], 'user.php', 'error');
+			$res['err_msg'] = $_LANG['invalid_captcha'];
+			$res['err_no']  = 1;
+			die($json->encode($res));
 		}
 	}
 	/* 代码增加2014-12-23 by www.68ecshop.com _star */
@@ -960,7 +953,9 @@ function action_act_login ()
 		}
 		if($kkk > 1)
 		{
-			show_message('本网站有多个会员ID绑定了和您相同的手机号，请使用其他登录方式，如：邮箱或用户名。', $_LANG['relogin_lnk'], 'user.php', 'error');
+			$res['err_msg'] = '本网站有多个会员ID绑定了和您相同的手机号，请使用其他登录方式，如：邮箱或用户名。';
+			$res['err_no']  = 1;
+			die($json->encode($res));
 		}
 		if($username_e)
 		{
@@ -972,18 +967,30 @@ function action_act_login ()
 	{
 		update_user_info();
 		recalculate_price();
+		$res['err_msg'] = '';
+		$res['err_no']  = 0;
 		
-		$ucdata = isset($user->ucdata) ? $user->ucdata : '';
+		if(empty($back_act))
+		{
+			$back_act ='index.php';
+		}
+		$res['back_act']  = $back_act;
+		
+		die($json->encode($res));
+		/*$ucdata = isset($user->ucdata) ? $user->ucdata : '';
 		show_message($_LANG['login_success'] . $ucdata, array(
 			$_LANG['back_up_page'], $_LANG['profile_lnk']
 		), array(
 			$back_act, 'user.php'
-		), 'info');
+		), 'info');*/
 	}
 	else
 	{
-		$_SESSION['login_fail'] ++;
-		show_message($_LANG['login_failure'], $_LANG['relogin_lnk'], 'user.php', 'error');
+		$res['err_msg'] = $_LANG['login_failure'];
+		$res['err_no']  = 1;
+		die($json->encode($res));
+		//$_SESSION['login_fail'] ++;
+		//show_message($_LANG['login_failure'], $_LANG['relogin_lnk'], 'user.php', 'error');
 	}
 }
 

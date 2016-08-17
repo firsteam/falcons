@@ -35,12 +35,12 @@ function action_send_email_code ()
 	
 	if(empty($email))
 	{
-		exit("邮箱不能为空");
+		exit($_LANG['msg_email_blank']);
 		return;
 	}
 	else if(! is_email($email))
 	{
-		exit("邮箱格式不正确");
+		exit($_LANG['msg_email_format']);
 		return;
 	}
 	else if(check_validate_record_exist($email))
@@ -53,7 +53,7 @@ function action_send_email_code ()
 		 */
 		if(time() - $record['last_send_time'] < 60)
 		{
-			echo ("每60秒内只能发送一次注册邮箱验证码，请稍候重试");
+			echo ("Only send once every 60 second, thank you for your patience.");
 			return;
 		}
 	}
@@ -105,7 +105,7 @@ function action_send_mobile_code ()
 	
 	if(empty($mobile_phone))
 	{
-		exit("手机号不能为空");
+		exit($_LANG['mobile_phone_empty']);
 		return;
 	}
 	else if(! is_mobile_phone($mobile_phone))

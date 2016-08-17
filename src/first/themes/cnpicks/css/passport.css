@@ -425,7 +425,8 @@ body {
 #regist .safety .mar-b {
 	height: 40px;
 	line-height: 40px;
-	margin-left: 5px
+	margin-left: 5px;
+	font-size: 12px;
 }
 #regist .img img {
 	height: 36px;

@@ -112,6 +112,7 @@ $_LANG['then_old_price'] = 'Then old Price：';
 $_LANG['free_goods'] = 'Free shipping goods';
 $_LANG['most_popular'] = 'Most popular';
 $_LANG['note'] = 'Note';
+$_LANG['unknow_error'] = 'Unknown errow';
 
 $_LANG['searchkeywords_notice'] = 'Search by more keywords, can be linked by keywords or "AND". Eg. win32 AND unix<br /> Search by part of "+", can be linked by rank or "OR". Eg. win32 OR unix';
 $_LANG['hidden_outstock'] = 'Hide outstock products';

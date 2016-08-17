@@ -193,7 +193,8 @@ $_LANG['username_and_email'] = 'Please enter your username and email address.';
 $_LANG['enter_new_password'] = 'Please enter your new password:';
 $_LANG['username_no_email'] = 'Please username and email must match. Please type it again.';
 $_LANG['fail_send_password'] = 'Failure, please contact with administrator!';
-$_LANG['send_success'] = 'Changed password has sent to your emailbox:';
+$_LANG['send_success'] = 'Change password has been sent to your Email';
+$_LANG['change_password'] = 'Change password';
 $_LANG['parm_error'] = 'Error, Please return!';
 $_LANG['edit_password_failure'] = 'The original password inaccuracy of your importation';
 $_LANG['edit_password_success'] = 'Change password successfully!';
@@ -403,6 +404,13 @@ $_LANG['msg_email_blank'] = 'Email address is blank';
 $_LANG['msg_email_registered'] = 'Email exists, please enter again';
 $_LANG['msg_email_format'] = 'Email address is unvalid';
 
+$_LANG['verification_code'] = 'Verification code';
+$_LANG['get_email_code'] = 'Get email verification code';
+$_LANG['invalid_email_code'] = 'Verification code is invalid, please double check.';
+$_LANG['invalid_mobile_phone_code'] = 'Verification code is invalid, please double check.';
+$_LANG['mobile_phone_changed'] = 'The mobile has been changed, please get the verification again.';
+$_LANG['email_changed'] = 'The Email has been changed, please get the verification again.';
+
 $_LANG['login_success'] = 'Login successfully.';
 $_LANG['confirm_login'] = 'Enter';
 $_LANG['profile_lnk'] = 'View my profile.';
@@ -424,10 +432,21 @@ $_LANG['confirm_register'] = 'Submit';
 
 $_LANG['agreement'] = "I have read and agree with《<a href=\"article.php?cat_id=-1\" style=\"color:blue\">User agreement</a>》";
 
+$_LANG['register_type_invalid'] = 'Register type invalid';
 $_LANG['email_empty'] = 'Email is blank';
 $_LANG['email_invalid'] = '%s is invalid email address.';
 $_LANG['email_exist'] = '%s already exists.';
 $_LANG['email_not_allow'] = 'Email %s not allow';
+$_LANG['send_email_fail'] = 'Send Email fail';
+$_LANG['have_sent_email'] = 'Have sent Email, please kindly click the link of the mail to reset the password.';
+
+$_LANG['mobile_phone_empty'] = 'Phone number required';
+$_LANG['mobile_verification_empty'] = 'Mobile verification required';
+$_LANG['mobile_invalid'] = 'Phone number is invalid';
+$_LANG['mobile_exist'] = 'Phone number is exist';
+$_LANG['mobile_phone_invalid'] = '%s is invalid mobile number';
+$_LANG['mobile_phone_exist'] = '%s has been exist';
+$_LANG['mobile_phone_not_allow'] = 'mobile %s is not rejected';
 $_LANG['register'] = 'Register.';
 $_LANG['register_success'] = '%s register successfully.';
 
@@ -605,6 +624,8 @@ $_LANG['register_points'] = 'Points for registeration';
 
 $_LANG['validate_ok'] = '%s hello, youremail %s is validated';
 $_LANG['validate_fail'] = 'Validate failed, please check your link';
+$_LANG['validate_succeed'] = 'Validate succeed, please continue';
+$_LANG['validate_fail_over24'] = 'Validation mail have been expired over 24 hour, please try again!';
 $_LANG['validate_mail_ok'] = 'Validated mail sent successfully';
 
 $_LANG['not_validated'] = 'Not validated';

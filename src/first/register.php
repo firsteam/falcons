@@ -327,10 +327,14 @@ function action_default ()
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
 	
-	if((! isset($back_act) || empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
-	{
-		$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
-	}
+		/*网银直连改的地方*/
+	$back_act = isset($_GET['back_act']) ? trim($_GET['back_act']) : '';
+	/*网银直连改的地方end*/
+    if ((!isset($back_act)||empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
+    {
+        $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+    }
+	
 	
 	/* 取出注册扩展字段 */
 	$sql = 'SELECT * FROM ' . $ecs->table('reg_fields') . ' WHERE type < 2 AND display = 1 ORDER BY dis_order, id';
@@ -361,7 +365,7 @@ function action_default ()
 		$register_type = 'email';
 	}
 	$smarty->assign('register_type', $register_type);
-	// $smarty->assign('back_act', $back_act);
+	$smarty->assign('back_act', $back_act);
 	$smarty->display('user_register.dwt');
 }
 
@@ -377,7 +381,13 @@ function action_register ()
 	$smarty = $GLOBALS['smarty'];
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
+	$err = $GLOBALS['err'];
 	
+	
+	include_once('includes/cls_json.php');
+    $json   = new JSON;
+    $res    = array('err_msg' => '', 'result' => '');
+		
 	/* 增加是否关闭注册 */
 	if($_CFG['shop_reg_closed'])
 	{
@@ -407,257 +417,113 @@ function action_register ()
 		$back_act = isset($_POST['back_act']) ? trim($_POST['back_act']) : '';
 
 		if(empty($_POST['agreement']))
-		{
-			show_message($_LANG['passport_js']['agreement']);
-		}
-		
-		// 注册类型不能为空
-		if(empty($register_type))
-		{
-			show_message($_LANG['passport_js']['msg_register_type_blank']);
-		}
-		
-		// 用户名将自动生成
-		if(strlen($username) < 3)
-		{
-			// show_message($_LANG['passport_js']['username_shorter']);
-		}
-		
-		if(strlen($password) < 6)
-		{
-			show_message($_LANG['passport_js']['password_shorter']);
-		}
-		
-		if(strpos($password, ' ') > 0)
-		{
-			show_message($_LANG['passwd_balnk']);
-		}
-		
-		/* 验证码检查 */
-		if((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
-		{
-			if(empty($_POST['captcha']))
-			{
-				show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			
-			/* 检查验证码 */
-			include_once ('includes/cls_captcha.php');
-			
-			$captcha = new captcha();
-			
-			if(! $captcha->check_word(trim($_POST['captcha'])))
-			{
-				show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-		}
-		
-		if($register_type == "email")
-		{
-			/* 邮箱验证码检查 */
-			require_once (ROOT_PATH . 'includes/lib_validate_record.php');
-			
-			if(empty($email))
-			{
-				show_message($_LANG['msg_email_blank'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			
-			$record = get_validate_record($email);
-			
-			$session_email = $_SESSION[VT_EMAIL_REGISTER];
-			
-			$email_code = ! empty($_POST['email_code']) ? trim($_POST['email_code']) : '';
-			
-			/*if(empty($email_code))
-			{
-				show_message($_LANG['msg_email_code_blank'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			else if($session_email != $email)
-			{
-				show_message($_LANG['email_changed'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			else if($email_code != $record['record_code'])
-			{
-				show_message($_LANG['invalid_email_code'], $_LANG['sign_up'], 'register.php', 'error');
-			}*/
-			
-			/* 邮箱注册时 */
-			// $username = generate_username();
-			
-			/* 邮箱注册 */
-			$result = register_by_email($username, $password, $email, $other);
+        {
+			$res['err_msg'] = $_LANG['passport_js']['agreement'];
+            $res['err_no']  = 1;
+		    die($json->encode($res));
+        }
+        if (strlen($username) < 3)
+        {
+			$res['err_msg'] = $_LANG['passport_js']['username_shorter'];
+            $res['err_no']  = 1;
+		    die($json->encode($res));
+        }
 
-			if($result)
-			{
-				/* 删除注册的验证记录 */
-				remove_validate_record($email);
-			}
-		}
-		else if($register_type == "mobile")
-		{
-			
-			require_once (ROOT_PATH . 'includes/lib_validate_record.php');
-			
-			$mobile_phone = ! empty($_POST['mobile_phone']) ? trim($_POST['mobile_phone']) : '';
-			$mobile_code = ! empty($_POST['mobile_code']) ? trim($_POST['mobile_code']) : '';
-			
-			$record = get_validate_record($mobile_phone);
-			
-			$session_mobile_phone = $_SESSION[VT_MOBILE_REGISTER];
-			
-			/* 手机验证码检查 */
-			
-			if(empty($mobile_code))
-			{
-				show_message($_LANG['msg_mobile_phone_blank'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			// 检查发送短信验证码的手机号码和提交的手机号码是否匹配
-			else if($session_mobile_phone != $mobile_phone)
-			{
-				show_message($_LANG['mobile_phone_changed'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			// 检查验证码是否正确
-			else if($record['record_code'] != $mobile_code)
-			{
-				show_message($_LANG['invalid_mobile_phone_code'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			// 检查过期时间
-			else if($record['expired_time'] < time())
-			{
-				show_message($_LANG['invalid_mobile_phone_code'], $_LANG['sign_up'], 'register.php', 'error');
-			}
-			
-			/* 手机注册时，用户名默认为u+手机号 */
-			$username = generate_username_by_mobile($mobile_phone);
-			
-			/* 手机注册 */
-			$result = register_by_mobile($username, $password, $mobile_phone, $other);
-			
-			if($result)
-			{
-				/* 删除注册的验证记录 */
-				remove_validate_record($mobile_phone);
-			}
-		}
-		else
-		{
-			/* 无效的注册类型 */
-			show_message($_LANG['register_type_invalid'], $_LANG['sign_up'], 'register.php', 'error');
-		}
+        if (strlen($password) < 6)
+        {
+			$res['err_msg'] = $_LANG['passport_js']['password_shorter'];
+            $res['err_no']  = 1;
+		    die($json->encode($res));
+        }
+
+        if (strpos($password, ' ') > 0)
+        {
+			$res['err_msg'] = $_LANG['passwd_balnk'];
+            $res['err_no']  = 1;
+		    die($json->encode($res));
+        }
 		
-		/* 随进生成用户名 */
-		// $username = generate_username();
+		 /* 验证码检查 */
+        if ((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
+        {
+            if (empty($_POST['captcha']))
+            {
+				$res['err_msg'] = $_LANG['invalid_captcha'];
+				$res['err_no']  = 1;
+				die($json->encode($res));
+            }
+
+            /* 检查验证码 */
+            include_once('includes/cls_captcha.php');
+            $validator = new captcha();
+            if (!$validator->check_word($_POST['captcha']))
+            {
+				$res['err_msg'] = $_LANG['invalid_captcha'];
+				$res['err_no']  = 1;
+				die($json->encode($res));
+            }
+        }
 		
-		if($result)
-		{
-			/* 把新注册用户的扩展信息插入数据库 */
-			$sql = 'SELECT id FROM ' . $ecs->table('reg_fields') . ' WHERE type = 0 AND display = 1 ORDER BY dis_order, id'; // 读出所有自定义扩展字段的id
-			$fields_arr = $db->getAll($sql);
-			
-			$extend_field_str = ''; // 生成扩展字段的内容字符串
-			foreach($fields_arr as $val)
+		
+		if (register($username, $password, $email, $other) !== false)
+        {
+	        
+            /*把新注册用户的扩展信息插入数据库*/
+            $sql = 'SELECT id FROM ' . $ecs->table('reg_fields') . ' WHERE type = 0 AND display = 1 ORDER BY dis_order, id';   //读出所有自定义扩展字段的id
+            $fields_arr = $db->getAll($sql);
+
+            $extend_field_str = '';    //生成扩展字段的内容字符串
+            foreach ($fields_arr AS $val)
+            {
+                $extend_field_index = 'extend_field' . $val['id'];
+                if(!empty($_POST[$extend_field_index]))
+                {
+                    $temp_field_content = strlen($_POST[$extend_field_index]) > 100 ? mb_substr($_POST[$extend_field_index], 0, 99) : $_POST[$extend_field_index];
+                    $extend_field_str .= " ('" . $_SESSION['user_id'] . "', '" . $val['id'] . "', '" . compile_str($temp_field_content) . "'),";
+                }
+            }
+            $extend_field_str = substr($extend_field_str, 0, -1);
+
+            if ($extend_field_str)      //插入注册扩展数据
+            {
+                $sql = 'INSERT INTO '. $ecs->table('reg_extend_info') . ' (`user_id`, `reg_field_id`, `content`) VALUES' . $extend_field_str;
+                $db->query($sql);
+            }
+
+            /* 写入密码提示问题和答案 */
+            if (!empty($passwd_answer) && !empty($sel_question))
+            {
+                $sql = 'UPDATE ' . $ecs->table('users') . " SET `passwd_question`='$sel_question', `passwd_answer`='$passwd_answer'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
+                $db->query($sql);
+            }
+            /* 判断是否需要自动发送注册邮件 */
+            if ($GLOBALS['_CFG']['member_email_validate'] && $GLOBALS['_CFG']['send_verify_email'])
+            {
+                send_regiter_hash($_SESSION['user_id']);
+            }
+            $ucdata = empty($user->ucdata)? "" : $user->ucdata;
+	   
+			if(empty($back_act))
 			{
-				$extend_field_index = 'extend_field' . $val['id'];
-				if(! empty($_POST[$extend_field_index]))
-				{
-					$temp_field_content = strlen($_POST[$extend_field_index]) > 100 ? mb_substr($_POST[$extend_field_index], 0, 99) : $_POST[$extend_field_index];
-					$extend_field_str .= " ('" . $_SESSION['user_id'] . "', '" . $val['id'] . "', '" . compile_str($temp_field_content) . "'),";
-				}
+				$back_act ='index.php';
 			}
-			$extend_field_str = substr($extend_field_str, 0, - 1);
-			
-			if($extend_field_str) // 插入注册扩展数据
-			{
-				$sql = 'INSERT INTO ' . $ecs->table('reg_extend_info') . ' (`user_id`, `reg_field_id`, `content`) VALUES' . $extend_field_str;
-				$db->query($sql);
-			}
-			/* 代码增加2014-12-23 by www.68ecshop.com _star */
-			// if($_SESSION['tag'] > 0)
-			// {
-			// $sql = "update " . $GLOBALS['ecs']->table('users') . " set
-			// is_validated = 1 where user_id = '" . $_SESSION['user_id'] . "'";
-			// $GLOBALS['db']->query($sql);
-			// }
-			
-			// if($other['mobile_phone'] != '')
-			// {
-			// if($_CFG['sms_register'] == 1)
-			// {
-			// $sql = "update " . $GLOBALS['ecs']->table('users') . " set
-			// validated = 1 where user_id = '" . $_SESSION['user_id'] . "'";
-			// $GLOBALS['db']->query($sql);
-			// }
-			// }
-			/* 代码增加2014-12-23 by www.68ecshop.com _end */
-			/*
-			 * 代码增加_start By www.68ecshop.com
-			 * include_once(ROOT_PATH . '/includes/cls_image.php');
-			 * $image = new cls_image($_CFG['bgcolor']);
-			 * $headimg_original =
-			 * $GLOBALS['image']->upload_image($_FILES['headimg'], 'headimg/'.
-			 * date('Ym'));
-			 *
-			 * $thumb_path=DATA_DIR. '/headimg/' . date('Ym').'/' ;
-			 * $headimg_thumb = $GLOBALS['image']->make_thumb($headimg_original,
-			 * '80', '50', $thumb_path);
-			 * $headimg_thumb = $headimg_thumb ? $headimg_thumb :
-			 * $headimg_original;
-			 * if ($headimg_thumb)
-			 * {
-			 * $sql = 'UPDATE ' . $ecs->table('users') . " SET
-			 * `headimg`='$headimg_thumb' WHERE `user_id`='" .
-			 * $_SESSION['user_id'] . "'";
-			 * $db->query($sql);
-			 * }
-			 * 代码增加_end By www.68ecshop.com
-			 */
-			
-			/* 写入密码提示问题和答案 */
-			if(! empty($passwd_answer) && ! empty($sel_question))
-			{
-				$sql = 'UPDATE ' . $ecs->table('users') . " SET `passwd_question`='$sel_question', `passwd_answer`='$passwd_answer'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
-				$db->query($sql);
-			}
-			
-			/* 代码增加_start By www.68ecshop.com */
-			$now = gmtime();
-			if($_CFG['bonus_reg_rand'])
-			{
-				$sql_bonus_ext = " order by rand() limit 0,1";
-			}
-			$sql_b = "SELECT type_id FROM " . $ecs->table("bonus_type") . " WHERE send_type='" . SEND_BY_REGISTER . "'  AND send_start_date<=" . $now . " AND send_end_date>=" . $now . $sql_bonus_ext;
-			$res_bonus = $db->query($sql_b);
-			$kkk_bonus = 0;
-			while($row_bonus = $db->fetchRow($res_bonus))
-			{
-				$sql = "INSERT INTO " . $ecs->table('user_bonus') . "(bonus_type_id, bonus_sn, user_id, used_time, order_id, emailed)" . " VALUES('" . $row_bonus['type_id'] . "', 0, '" . $_SESSION['user_id'] . "', 0, 0, 0)";
-				$db->query($sql);
-				$kkk_bonus = $kkk_bonus + 1;
-			}
-			if($kkk_bonus)
-			{
-				$_LANG['register_success'] = '用户名 %s 注册成功,并获得官方赠送的红包礼品';
-			}
-			/* 代码增加_end By www.68ecshop.com */
-			
-			/* 判断是否需要自动发送注册邮件 */
-			if($GLOBALS['_CFG']['member_email_validate'] && $GLOBALS['_CFG']['send_verify_email'])
-			{
-				send_regiter_hash($_SESSION['user_id']);
-			}
-			$ucdata = empty($user->ucdata) ? "" : $user->ucdata;
-			show_message(sprintf($_LANG['register_success'], $username . $ucdata), array(
-				$_LANG['back_up_page'],$_LANG['profile_lnk']
-			), array(
-				$back_act,'user.php'
-			), 'info');
-		}
-		else
-		{
-			$GLOBALS['err']->show($_LANG['sign_up'], 'register.php');
-		}
-	}
-	/* 代码增加2014-12-23 by www.68ecshop.com _star */
+		    $res['err_no']  = 0;
+			$res['back_act']  = $back_act;
+			$res['err_msg']  = '';
+			die($json->encode($res));
+        }
+        else
+        {
+			$message['content'] = '';
+			foreach ($err->_message AS $msg)
+            {
+                $message['content'] .= '' . htmlspecialchars($msg) . "\n";
+            }
+			$res['err_msg'] = $message['content'];
+			$res['err_no']  = 1;
+			die($json->encode($res));
+        }
+    }
 }
 
 /**

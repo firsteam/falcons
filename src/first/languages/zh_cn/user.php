@@ -195,6 +195,7 @@ $_LANG['enter_new_password'] = '请输入您的新密码';
 $_LANG['username_no_email'] = "您填写的用户名与电子邮件地址不匹配，请重新输入！";
 $_LANG['fail_send_password'] = '发送邮件出错，请与管理员联系！';
 $_LANG['send_success'] = '重置密码的邮件已经发到您的邮箱：';
+$_LANG['change_password'] = '重置密码';
 $_LANG['parm_error'] = '参数错误，请返回！';
 $_LANG['edit_password_failure'] = '您输入的原密码不正确！';
 $_LANG['edit_password_success'] = '您的新密码已设置成功！';
@@ -424,6 +425,8 @@ $_LANG['msg_email_blank'] = '邮件地址不能为空';
 $_LANG['msg_email_registered'] = '邮箱已存在,请重新输入';
 $_LANG['msg_email_format'] = '邮件地址不合法';
 
+$_LANG['verification_code'] = '验证码';
+$_LANG['get_email_code'] = '获取邮箱验证码';
 $_LANG['invalid_email_code'] = '对不起，您输入的邮箱验证码不正确或已过期';
 $_LANG['invalid_mobile_phone_code'] = '对不起，您输入的短信验证码不正确或已过期';
 $_LANG['mobile_phone_changed'] = '系统检测到您发送短信验证码的手机号已经改变，请重新获取验证码';
@@ -455,7 +458,13 @@ $_LANG['email_empty'] = 'email为空';
 $_LANG['email_invalid'] = '%s 不是合法的email地址';
 $_LANG['email_exist'] = '%s 已经存在';
 $_LANG['email_not_allow'] = 'Email %s 不允许注册';
-$_LANG['mobile_phone_empty'] = '手机号码为空';
+$_LANG['send_email_fail'] = '发送邮件失败';
+$_LANG['have_sent_email'] = '已发送邮件，请前往邮箱点击链接完成密码重置！';
+
+$_LANG['mobile_phone_empty'] = '手机号码不能为空';
+$_LANG['mobile_verification_empty'] = '手机验证码不能为空';
+$_LANG['mobile_invalid'] = '手机号码格式错误';
+$_LANG['mobile_exist'] = '手机号码已经存在';
 $_LANG['mobile_phone_invalid'] = '%s 不是合法的手机号码';
 $_LANG['mobile_phone_exist'] = '%s 已经存在';
 $_LANG['mobile_phone_not_allow'] = '手机号码 %s 不允许注册';
@@ -649,6 +658,8 @@ $_LANG['register_points'] = '注册送积分';
 
 $_LANG['validate_ok'] = '%s 您好，您email %s 已通过验证';
 $_LANG['validate_fail'] = '验证失败，请确认你的验证链接是否正确';
+$_LANG['validate_succeed'] = '验证成功，请继续';
+$_LANG['validate_fail_over24'] = '验证邮件已发送超过24小时，请重新验证！';
 $_LANG['validate_mail_ok'] = '验证邮件发送成功';
 
 $_LANG['not_validated'] = '您还没有通过邮件认证';
