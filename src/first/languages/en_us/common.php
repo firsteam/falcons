@@ -19,6 +19,7 @@ $_LANG['shot_message'] = "Short message";
 $_LANG['button_submit'] = 'Yes';
 $_LANG['button_cancel'] = 'Cancel';
 $_LANG['check_all'] = 'Check All';
+$_LANG['mobile'] = 'mobile';
 
 /* 公共语言项 */
 $_LANG['sys_msg'] = 'System Message';
@@ -601,7 +602,7 @@ $_LANG['btn_add_to_cart'] = 'Add to cart';
 $_LANG['btn_add_to_collect'] = 'Add to collect';
 
 $_LANG['stock_up'] = 'Out of stock';
-
+$_LANG['restock_remind'] = 'Restock remind';
 
 $_LANG['hot_search'] = 'Hot search';
 

@@ -208,7 +208,7 @@ $_LANG['wrong_passwd_answer'] = '您输入的密码答案是错误的';
 //JS语言项
 $_LANG['password_js']['user_name_empty'] = "请输入您的用户名！";
 $_LANG['password_js']['email_address_empty'] = '请输入您的电子邮件地址！';
-$_LANG['password_js']['email_address_error'] = '您输入的电子邮件地址格式不正确！';
+$_LANG['password_js']['email_address_error'] = 'Email格式不正确！';
 $_LANG['password_js']['new_password_empty'] = '请输入您的新密码！';
 $_LANG['password_js']['confirm_password_empty'] = '请输入您的确认密码！';
 $_LANG['password_js']['both_password_error'] = '您两次输入的密码不一致！';
@@ -454,8 +454,8 @@ $_LANG['confirm_register'] = '确认注册';
 $_LANG['agreement'] = "我已看过并接受《<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"article.php?cat_id=-1\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" style=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"color:blue\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" target=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"_blank\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">用户协议</a>》";
 
 $_LANG['register_type_invalid'] = '无效的注册类型';
-$_LANG['email_empty'] = 'email为空';
-$_LANG['email_invalid'] = '%s 不是合法的email地址';
+$_LANG['email_empty'] = '请输入有效的Email邮箱';
+$_LANG['email_invalid'] = '请输入有效的Email邮箱';
 $_LANG['email_exist'] = '%s 已经存在';
 $_LANG['email_not_allow'] = 'Email %s 不允许注册';
 $_LANG['send_email_fail'] = '发送邮件失败';

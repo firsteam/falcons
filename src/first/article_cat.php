@@ -93,7 +93,7 @@ if (!$smarty->is_cached('article_cat.dwt', $cache_id))
 
     $smarty->assign('keywords',    htmlspecialchars($meta['keywords']));
     $smarty->assign('description', htmlspecialchars($meta['cat_desc']));
-	 $smarty->assign('cat_name', htmlspecialchars($meta['cat_name']));
+	$smarty->assign('cat_name', htmlspecialchars($meta['cat_name']));
 	
 
     /* 获得文章总数 */

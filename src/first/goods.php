@@ -672,8 +672,11 @@ else
 /* 更新点击次数 */
 $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 1 WHERE goods_id = '$_REQUEST[id]'");
 
-$goods_n=$db->getOne('SELECT goods_number FROM' . $ecs->table('goods') . " WHERE goods_id = '$_REQUEST[id]'");
-$smarty->assign('goods_n',$goods_n);
+$sql = 'SELECT goods_number,is_on_sale FROM' . $ecs->table('goods') . " WHERE goods_id = '$_REQUEST[id]'";
+$res = $GLOBALS['db']->query($sql);
+$row = $GLOBALS['db']->fetchRow($res);
+$smarty->assign('goods_n',$row['goods_number']);
+$smarty->assign('is_on_sale',$row['is_on_sale']);
 
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 $smarty->display('goods.dwt',      $cache_id);

@@ -19,6 +19,7 @@ $_LANG['shot_message'] = "短消息";
 $_LANG['button_submit'] = '确定';
 $_LANG['button_cancel'] = '取消';
 $_LANG['check_all'] = '全选';
+$_LANG['mobile'] = '手机号码';
 
 /* 公共语言项 */
 $_LANG['sys_msg'] = '系统提示';
@@ -402,7 +403,7 @@ $_LANG['oos'][OOS_CONSULT] = '与店主协商';
 
 /* 评论部分 */
 $_LANG['username'] = '用户名';
-$_LANG['email'] = '电子邮件地址';
+$_LANG['email'] = 'Email';
 $_LANG['comment_rank'] = '评价等级';
 $_LANG['comment_content'] = '评论内容';
 $_LANG['submit_comment'] = '提交评论';
@@ -684,7 +685,7 @@ $_LANG['btn_add_to_cart'] = "加入购物车";
 $_LANG['btn_add_to_collect'] = '添加收藏';
 
 $_LANG['stock_up'] = '缺货';
-
+$_LANG['restock_remind'] = '缺货登记';
 
 $_LANG['hot_search'] = '热门搜索';
 

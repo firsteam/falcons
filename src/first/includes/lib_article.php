@@ -118,7 +118,7 @@ function article_related_goods($id)
             'LEFT JOIN ' . $GLOBALS['ecs']->table('goods') . ' AS g ON g.goods_id = ga.goods_id ' .
             "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
                     "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
-            "WHERE ga.article_id = '$id' AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0";
+            "WHERE ga.article_id = '$id' AND g.is_alone_sale = 1 AND g.is_delete = 0";
     $res = $GLOBALS['db']->query($sql);
 
     $arr = array();

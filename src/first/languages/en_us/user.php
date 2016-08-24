@@ -206,8 +206,8 @@ $_LANG['wrong_passwd_answer'] = 'You entered a wrong answer';
 
 //JS语言项
 $_LANG['password_js']['user_name_empty'] = 'Please enter your username!';
-$_LANG['password_js']['email_address_empty'] = 'Please enter your email address!';
-$_LANG['password_js']['email_address_error'] = 'Please enter a valid email address!';
+$_LANG['password_js']['email_address_empty'] = 'Email could not be empty';
+$_LANG['password_js']['email_address_error'] = 'Email is invalid, please double check!';
 $_LANG['password_js']['new_password_empty'] = 'Please enter a new password!';
 $_LANG['password_js']['confirm_password_empty'] = 'Re-enter the password!';
 $_LANG['password_js']['both_password_error'] = 'The two passwords you entered did not match. Please type it again!';
@@ -433,8 +433,8 @@ $_LANG['confirm_register'] = 'Submit';
 $_LANG['agreement'] = "I have read and agree with《<a href=\"article.php?cat_id=-1\" style=\"color:blue\">User agreement</a>》";
 
 $_LANG['register_type_invalid'] = 'Register type invalid';
-$_LANG['email_empty'] = 'Email is blank';
-$_LANG['email_invalid'] = '%s is invalid email address.';
+$_LANG['email_empty'] = 'Please enter valid Email.';
+$_LANG['email_invalid'] = 'Please enter valid Email.';
 $_LANG['email_exist'] = '%s already exists.';
 $_LANG['email_not_allow'] = 'Email %s not allow';
 $_LANG['send_email_fail'] = 'Send Email fail';

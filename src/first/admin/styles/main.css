@@ -1276,6 +1276,7 @@ a.status {
 	font-weight:bold;*/
 }
 .goods_card {
+	list-style:none;
 }
 
 .goods_card li{

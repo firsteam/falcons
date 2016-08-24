@@ -367,18 +367,12 @@
             </ul>
             <div class="buyNub-buy-wrap">
             
-             <div id="choose-btns1" class="buyNub-buy" style="display:none"> 
-               
-                <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>到货通知</a>
-                <a href="javascript:collect_goods({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">Favorite{if $goods.is_collet eq 1}d{/if}</a>   
-              </div>
-     
               <div id="choose-btns" class="buyNub-buy"> 
-                <!--{if $goods_n>0}--> 
+                <!--{if $goods_n>0 and $is_on_sale>0}--> 
                 <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1" style="display:none;">立即购买</a>
                 <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">Add to Cart</a> 
                 <!-- {else}--> 
-                <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>到货通知</a>
+                <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>{$lang.restock_remind}</a>
                 <!-- {/if}--> 
                 <a id="phone" class="btn-phone" style="display:none;position:relative;cursor:pointer">去手机购买
                 <div id="phone_tan" style="display:none"> <span class="arr"></span>

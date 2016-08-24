@@ -1316,9 +1316,9 @@ margin-top:expression(28-this.height/2);
 	line-height: 16px;
 	color: #999;
 	background-color: #FFF;
-	/*height: 34px;*/
+	height: 18px;
 	display: block;
-	padding: 10px 0px;
+	margin: 10px 0px;
 	overflow: hidden;
 }
 .squares .goods-name em {

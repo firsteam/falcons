@@ -387,7 +387,7 @@ function chemailResponse(result)
     <!--{/if}--> 
     <!-- 代码增加2014-12-23 by www.68ecshop.com  _end -->
     
-    <!--*{$lang.get_password}界面 --> 
+    <!--*找回密码界面 --> 
     <!--{if $action eq 'get_password'} --> 
     {insert_scripts files='utils.js'} 
     <script type="text/javascript">
@@ -427,7 +427,7 @@ function chemailResponse(result)
     </div>
     <!--{/if}--> 
     
-    <!--*通过问题{$lang.get_password}的确认找回账号界面 --> 
+    <!--*通过问题找回密码的确认找回账号界面 --> 
     <!--{if $action eq 'qpassword_name'} -->
     <div class="w" id="entry">
     <div class="mcon">
@@ -438,7 +438,7 @@ function chemailResponse(result)
             <h2><strong>{$lang.get_password}</strong></h2>
             <div class="item item_gqu"> {$lang.get_question_username}</div>
             <div class="item"> 
-              <span class="label">用户名：</span>
+              <span class="label">{$lang.username}:</span>
               <div>
                 <input name="user_name" type="text" class="text" />
               </div>
@@ -533,7 +533,7 @@ function chemailResponse(result)
     </div>
     </div>
     <!--{/if}--> 
-    <!--#{$lang.get_password}界面 end-->
+    <!--#找回密码界面 end-->
     <script>
 $(".mcon").height($(".uc_box").height());
 </script>  

@@ -151,7 +151,8 @@ $("#btnSubmit").click(function()
 				alert("出错了,请刷新页面重试:(");
 			}
 			});
-			 listTable.loadList();
+			listTable.query = 'query';
+			listTable.loadList();
 		}
 		else
 		{			

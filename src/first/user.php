@@ -4074,16 +4074,16 @@ function action_add_book_goods ()
 	$tel = $_GET['tel'];
 	$email = $_GET['em'];
 	
-	if(! preg_match("/^1(3|5|8)[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/", $tel))
+	/*if(! preg_match("/^1(3|5|8)[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/", $tel))
 	{
 		$result['error'] = 0;
-		$result['message'] = "手机格式不正确。";
+		$result['message'] = $_LANG['mobile_invalid'];
 		die($json->encode($result));
 	}
-	elseif(! preg_match("/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i", $email))
+	else*/if(! preg_match("/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i", $email))
 	{
 		$result['error'] = 0;
-		$result['message'] = "邮箱格式不正确。";
+		$result['message'] = $_LANG['email_invalid'];
 		die($json->encode($result));
 	}
 	else
@@ -4099,7 +4099,7 @@ function action_add_book_goods ()
 		else
 		{
 			$result['error'] = 0;
-			$result['message'] = "登记失败。";
+			$result['message'] = $_LANG['unknow_error'];
 			die($json->encode($result));
 		}
 	}
