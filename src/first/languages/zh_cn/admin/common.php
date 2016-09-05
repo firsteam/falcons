@@ -182,6 +182,7 @@ $_LANG['10_attribute_add'] = '添加属性';
 $_LANG['11_goods_trash'] = '商品回收站';
 $_LANG['12_batch_pic'] = '图片批量处理';
 $_LANG['13_batch_add'] = '商品批量上传';
+$_LANG['14_get_taobao'] = '批量获取淘宝';
 $_LANG['15_batch_edit'] = '商品批量修改';
 $_LANG['16_goods_script'] = '生成商品代码';
 $_LANG['17_tag_manage'] = '标签管理';

@@ -76,9 +76,9 @@
               <div class="mar_l">
                 <p> 
                   <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
-                  <span class="price"></span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                  <span class="price"></span><strong class="p-price" id="ECS_GOODS_AMOUNT">{$goods.promote_price}</strong> 
                   <!--{else}--> 
-                  <span class="price"></span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                  <span class="price"></span><strong class="p-price" id="ECS_GOODS_AMOUNT">{$goods.shop_price_formated}</strong> 
                   <!--{/if}--> 
                   <span class="depreciate" style="display:none;"><a href="javascript:showDiv({$goods.goods_id});" style="color:#ffffff;text-decoration:none;">降价通知</a></span> </p>
               </div>
@@ -301,7 +301,7 @@
                   <ul class="ys_xuan" id="xuan_{$spec_key}">
                     <div class="catt" id="catt_{$spec_key}"> 
                       <!-- {foreach from=$spec.values item=value key=key} --> 
-                      <a onclick="show_attr_status(this,{$goods.goods_id}, {$attr_id});{if $spec_key eq $attr_id}get_gallery_attr({$id}, {$value.id});{/if}"  href="javascript:" name="{$value.id}" id="xuan_a_{$value.id}"  title="[{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]"> {if  $value.goods_attr_thumb}
+                      <a onclick="show_attr_status(this,{$goods.goods_id}, {$attr_id});{if $spec_key eq $attr_id}get_gallery_attr({$id}, {$value.id});{/if}"  href="javascript:" name="{$value.id}" id="xuan_a_{$value.id}"  title="{$goods.shop_price_formated + $value.price}"> {if  $value.goods_attr_thumb}
                       <div style="float:left;cursor:pointer;"><img src="{$value.goods_attr_thumb}" width=40 height=40 title="{$value.label}" alt="{$value.label}" /></div>
                       <label style="float:left;cursor:pointer;line-height:40px;margin:0 10px 0 10px;color:#000;text-decoration:none;">{$value.label}</label>
                       {else}
@@ -367,6 +367,12 @@
             </ul>
             <div class="buyNub-buy-wrap">
             
+             <div id="choose-btns1" class="buyNub-buy" style="display:none"> 
+               
+                <a onclick="tell_me({$goods.goods_id})" class="tell_me"/><i></i>{$lang.restock_remind}</a>
+                <a href="javascript:collect_goods({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">Favorite{if $goods.is_collet eq 1}d{/if}</a>   
+              </div>
+     
               <div id="choose-btns" class="buyNub-buy"> 
                 <!--{if $goods_n>0 and $is_on_sale>0}--> 
                 <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1" style="display:none;">立即购买</a>

@@ -166,14 +166,12 @@ else
 
             /* 检查关键字中是否有空格，如果存在就是并 */
 
-            $arr[]        = $_REQUEST['keywords'];
+            $arr        = explode(' ', $_REQUEST['keywords']);
 
             $operator   = " AND ";
 
         }
        
-	   
-	  
 
 
         $keywords = 'AND (';
@@ -486,7 +484,7 @@ else
 	}
 	if($_REQUEST['keyword_zm'])
 	{
-		$smarty->assign('beizhuxinxi', '关键词<font color=#cc0000>'.$_REQUEST['keyword_zm'].'</font>搜索结果为零，<br>但是我们为您匹配到了相关关键词<font color=#cc0000>'.$_REQUEST['keywords'].'</font>，下面是它的查询结果！');
+		$smarty->assign('beizhuxinxi', 'Keyword:<font color=#cc0000>'.$_REQUEST['keyword_zm'].'</font>Could not find any result<br>但是我们为您匹配到了相关关键词<font color=#cc0000>'.$_REQUEST['keywords'].'</font>，下面是它的查询结果！');
 	}
     $max_page = ($count> 0) ? ceil($count / $size) : 1;
     if ($page > $max_page)
@@ -515,7 +513,7 @@ else
             exit;
         }
     }
-	
+
     /* fulltext_search_add_END_www.68ecshop.com */
     
     $res = $db->SelectLimit($sql, $size, ($page - 1) * $size);

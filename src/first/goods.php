@@ -558,7 +558,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('fittings',            get_goods_fittings(array($goods_id)));                   // 配件
         $smarty->assign('rank_prices',         get_user_rank_prices($goods_id, $shop_price));    // 会员等级价格
         
-		$smarty->assign('pictures',            get_goods_gallery_attr_www_ecshop68_com($goods_id, $goods_attr_id)); // 商品相册_修改 By www.ecshop68.com
+		$smarty->assign('pictures',            get_goods_gallery($goods_id, $goods_attr_id)); // 商品相册_修改 By www.ecshop68.com
 		$smarty->assign('new_goods',           get_recommend_goods('new'));     // 最新商品  改 By www.ecshop68.com
         $smarty->assign('bought_goods',        get_also_bought($goods_id));                      // 购买了该商品的用户还购买了哪些商品
         $smarty->assign('goods_rank',          get_goods_rank($goods_id));                       // 商品的销售排名

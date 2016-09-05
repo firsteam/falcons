@@ -69,9 +69,9 @@
 </div>
 <!-- header end -->
 
-<div class="block"> 
+<div class="block_jm"> 
   <!-- {if $step eq "cart"} -->
-  <div id="A_Stepbar" class="flowstep" style="right:166px;">
+  <div id="A_Stepbar" class="flowstep">
           <ol class="flowstep-5">
             <li class="step-first">
               <div class="step-done">
@@ -993,9 +993,9 @@ data-widget="tab-item">
             </li>
           </ol>
         </div>
-         <div class="flowBox" style="margin:30px auto 70px auto;">
-      <h6 style="text-align:center; height:30px; line-height:30px;color:#c40000">{$lang.ws_order_submitted_success}</h6>
-  <table width="99%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" class="split_order" style="border:1px solid #ddd; margin:20px auto;">
+         <div class="flowBox" style="margin:30px auto 70px auto; width:980px;">
+      <h6 style="text-align:center; height:30px; line-height:30px;color:#c40000;border:none;">{$lang.ws_order_submitted_success}</h6>
+  <table width="100%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" class="split_order" style="margin:20px auto;">
     <tr>
       <td style="padding-bottom:10px;"> {if $split_order.sub_order_count gt 1}
         <p style="padding-bottom:10px;font-weight:bold;">由于您的商品由不同的商家发出，此订单将分为<font style="color:#ff3300;">{$split_order.sub_order_count}</font>个不同的子订单配送：</p>

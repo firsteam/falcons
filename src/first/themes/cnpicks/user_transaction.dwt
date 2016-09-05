@@ -3666,7 +3666,7 @@ function doTrack(num) {
         YQ_Num:num     //必须，指定要查询的单号。
     });
 }
-doTrack('{$order.invoice_no}')
+
 </script>
 
 <script language="javascript">

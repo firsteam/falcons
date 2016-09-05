@@ -21,6 +21,10 @@
 <!-- 分页 -->
 <table id="page-table" cellspacing="0">
   <tr>
+	<td align="left" nowrap="true">
+    <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox" /> 全选
+	<a href="#top" class="special">回到顶部</a>
+    </td>
     <td align="right" nowrap="true">
     {include file="page.htm"}
     </td>
@@ -110,7 +114,7 @@
   {/if}
   <input type="button" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" id="btnSubmit" class="button"/>
   <span id="handel_success" style="color:#F00"></span>
-  <a href="#top" class="special">回到顶部</a>
+  
 </div>
 </form>
 
