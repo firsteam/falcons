@@ -32,6 +32,7 @@ if (!defined('IN_ECS'))
     $purview['11_goods_trash']       = array('goods_manage', 'remove_back');
     $purview['12_batch_pic']         = 'picture_batch';
     $purview['13_batch_add']         = 'goods_batch';
+	$purview['14_get_taobao']        = 'get_taobao';
     $purview['14_goods_export']      = 'goods_export';
     $purview['15_batch_edit']        = 'goods_batch';
     $purview['16_goods_script']      = 'gen_goods_script';

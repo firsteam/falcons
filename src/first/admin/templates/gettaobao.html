@@ -1,0 +1,48 @@
+{include file="pageheader.htm"}
+<div id="tabbody-div">
+<form name="theForm" method="get" action="getTaoBaoGoods.php">
+  <table width="100%">
+  <tbody>
+  <tr>
+    <td class="label">需采集的商品:</td>
+    <td><textarea style="width:80%;height:200px" name="urls"></textarea></td>
+  </tr>
+  <tr>
+    <td class="label">图片下载到本地：</td>
+    <td><input type="radio" name="localimg" value="1">是<input type="radio" name="localimg" checked="checked" value="0">否</td>
+  </tr>
+  <tr>
+    <td class="label">对应品牌:</td>
+    <td>
+	
+    <!-- 品牌 -->
+    <select name="brand_id"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
+    
+	</td>
+  </tr>
+  <tr>
+    <td class="label">对应分类:</td>
+    <td>
+	
+	<select name="cat_id">
+		<option value="0">{$lang.select_please}</option>{$cat_list}
+	</select>
+
+	</td>
+  </tr>
+  <tr>
+    <td class="label">关键字：</td>
+    <td><textarea style="width:80%;height:100px" name="keywords"></textarea></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+    <input type="reset" value="{$lang.button_reset}" class="button" />
+    </td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+{/literal}
+{include file="pagefooter.htm"}
