@@ -680,7 +680,7 @@ function order_fee($order, $goods, $consignee)
     $shipping_cod_fee = NULL;
     
     $sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
-	/*
+	//$order['shipping_id'] = 8;
     if ($order['shipping_id'] > 0 && $total['real_goods_count'] > 0)
     {
         $region['country']  = $consignee['country'];
@@ -728,10 +728,10 @@ function order_fee($order, $goods, $consignee)
     }
 
     $total['shipping_fee_formated']    = price_format($total['shipping_fee'], false);
-    $total['shipping_insure_formated'] = price_format($total['shipping_insure'], false);*/
+    $total['shipping_insure_formated'] = price_format($total['shipping_insure'], false);
 
 	/* 代码增加_start  By  www.68ecshop.com */	
-	if (count($order['shipping_pay']) > 0 && $total['real_goods_count'] > 0){
+	/*if (count($order['shipping_pay']) > 0 && $total['real_goods_count'] > 0){
 
 		
 
@@ -781,7 +781,7 @@ function order_fee($order, $goods, $consignee)
 			$total['shipping_fee'] += $supp_shipping['shipping_fee'];
 		}
 		$total['shipping_fee_formated']    = price_format($total['shipping_fee'], false);
-	}
+	}*/
 	
 	/* 代码增加_end  By  www.68ecshop.com */
 

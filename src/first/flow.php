@@ -2877,13 +2877,10 @@ elseif ($_REQUEST['step'] == 'select_shipping')
 
 
 		$recid = (isset($_REQUEST['recid'])) ? intval($_REQUEST['recid']) : 0;
-
         $suppid = (isset($_REQUEST['suppid'])) ? intval($_REQUEST['suppid']) : 0;
-
         if($recid){
 
         	$order['shipping_pay'][$suppid] = $recid;
-
         }
 
 		$_SESSION['flow_order'] = $order;

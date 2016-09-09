@@ -675,8 +675,20 @@ $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 
 $sql = 'SELECT goods_number,is_on_sale FROM' . $ecs->table('goods') . " WHERE goods_id = '$_REQUEST[id]'";
 $res = $GLOBALS['db']->query($sql);
 $row = $GLOBALS['db']->fetchRow($res);
-$smarty->assign('goods_n',$row['goods_number']);
+$goods_n = $row['goods_number'];
 $smarty->assign('is_on_sale',$row['is_on_sale']);
+
+if(empty($goods_n))
+{
+$sql = "SELECT SUM(product_number)
+            FROM " . $GLOBALS['ecs']->table('products') . "
+            WHERE goods_id = '$_REQUEST[id]'
+            " . $conditions;
+$nums = $GLOBALS['db']->getOne($sql);
+$goods_n = empty($nums) ? 0 : $nums;
+}
+
+$smarty->assign('goods_n',$goods_n);
 
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
 $smarty->display('goods.dwt',      $cache_id);
