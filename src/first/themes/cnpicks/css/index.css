@@ -2039,6 +2039,8 @@ margin-top:expression(72-this.height/2);
 }
 .m-floor .goods .wrap {
 	width:220px;
+	height:220px;
+	overflow:hidden;
 	margin: 20px 0px 0px 15px;
 	position: relative;
 	_zoom: 1

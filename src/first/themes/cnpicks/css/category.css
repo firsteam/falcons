@@ -1188,10 +1188,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 	background-position: -75px -75px;
 }
 .squares .goods-pic {
-	/*background: #FFF;
-	width: 200px;
-	height: 200px;
-	padding: 13px 12px 0 14px;
+	background: #FFF;
+	width: 220px;
+	height: 220px;
+	overflow: hidden;
+	/*padding: 13px 12px 0 14px;
 	margin: 0;
 	z-index: 1;
 	top: 0;
