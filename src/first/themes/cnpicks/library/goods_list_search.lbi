@@ -6,7 +6,6 @@
         <dl class='order'>
           <dt>Sort: </dt>
           <dd  class=<!-- {if $pager.search.sort == '(sort_order-is_best*100)'} -->curr<!-- {/if} -->><a href="search.php?keywords={$pager.search.keywords}&category={$category}&display={$pager.search.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.search.page}&sort=(sort_order-is_best*100)&order=<!-- {if $pager.search.sort == 'goods_id' && $pager.search.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">Default</a><b class="icon-order-{if $pager.search.sort == 'goods_id'}{$pager.search.order}{else}DESC{/if}ending"></b></dd>
-          <dd  class=<!-- {if $pager.search.sort == 'salenum'} -->curr<!-- {/if} -->><a href="search.php?keywords={$pager.search.keywords}&category={$category}&display={$pager.search.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.search.page}&sort=salenum&order=<!-- {if $pager.search.sort == 'salenum' && $pager.search.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">Volume</a><b class="icon-order-{if $pager.search.sort == 'salenum'}{$pager.search.order}{else}DESC{/if}ending"></b></dd>
           <dd  class=<!-- {if $pager.search.sort == 'shop_price'} -->curr<!--{/if}-->><a href="search.php?keywords={$pager.search.keywords}&category={$category}&display={$pager.search.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.search.page}&sort=shop_price&order=<!-- {if $pager.search.sort == 'shop_price' && $pager.search.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">Price</a><b class="icon-order-{if $pager.search.sort == 'shop_price'}{$pager.search.order}{else}DESC{/if}ending"></b></dd>
           <dd  class=<!-- {if $pager.search.sort == 'last_update'} -->curr<!-- {/if} -->><a href="search.php?keywords={$pager.search.keywords}&category={$category}&display={$pager.search.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.search.page}&sort=last_update&order=<!-- {if $pager.search.sort == 'last_update' && $pager.search.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list">New</a><b class="icon-order-{if $pager.search.sort == 'last_update'}{$pager.search.order}{else}DESC{/if}ending"></b></dd>
           <dd class=<!-- {if $pager.search.sort == 'click_count'} -->curr<!-- {/if} -->><a href="search.php?keywords={$pager.search.keywords}&category={$category}&display={$pager.search.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.search.page}&sort=click_count&order=<!-- {if $pager.search.sort == 'click_count' && $pager.search.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list" rel='nofollow'>Hot</a><b class="icon-order-{if $pager.search.sort == 'click_count'}{$pager.search.order}{else}DESC{/if}ending"></b></dd>
@@ -85,7 +84,7 @@
     	<!--{/if}-->
     	</li>
     	<li class="action">
-         	<!--{if $goods.goods_number eq 0}--><div class="shop_over" style="float:left">Sold</div><!-- {/if} -->
+         	<!--{if $goods.goods_number eq 0}--><div class="shop_over disable-by-cy" style="float:left">Sold</div><!-- {/if} -->
     		<a href="javascript:collect({$goods.goods_id});" class="abg">Favorite</a>
     		<a href="javascript:addToCart({$goods.goods_id});" nctype="add_cart" class="adc" {if $goods.goods_number eq 0}style="background-color:#CCC; color:#EEE"{/if}>Add Cart</a>
     	</li>
@@ -104,7 +103,7 @@
 		<!-- {if $goods.is_new eq 1} --><span class="little_pic disable-by-cy">New</span><!--{/if}--> 
             </span>
             <div class="goods-pic" ><a href="{$goods.url}" target="_blank"  title="{$goods.name|escape:html}"><img width="220" data-original="{$goods.goods_thumb}" src="themes/cnpicks/images/loading.gif" title="{$goods.name|escape:html}" class="pic_img_{$goods.goods_id}"></a> </div>
-		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1"></a><!-- {/if} -->
+		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1 disable-by-cy"></a><!-- {/if} -->
             <div class="goods-info"> 
               <div class="goods-name">
                 <a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.goods_name|escape:html}</a></div>

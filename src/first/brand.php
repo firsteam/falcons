@@ -134,7 +134,7 @@ if (!$smarty->is_cached('brand.dwt', $cache_id))
     $count = goods_count_by_brand($brand_id, $cate);
 
     $goodslist = brand_get_goods($brand_id, $cate, $size, $page, $sort, $order);
-
+    
     if($display == 'grid')
     {
         if(count($goodslist) % 2 != 0)
@@ -331,7 +331,7 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
             'LEFT JOIN ' . $GLOBALS['ecs']->table('member_price') . ' AS mp ' .
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
-            "WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 AND g.brand_id = '$brand_id' AND g.goods_number>0 $cate_where".
+            "WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 AND g.brand_id = '$brand_id' $cate_where".
             "ORDER BY $sort $order";
 	/* 代码增加_start  By  www.68ecshop.com */
 	if ($sort=='salenum')
@@ -341,7 +341,7 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
             'LEFT JOIN ' . $GLOBALS['ecs']->table('member_price') . ' AS mp ' .
-                "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " . "LEFT JOIN " . $GLOBALS['ecs']->table('order_goods') .  " as o ON o.goods_id = g.goods_id " . " where g.brand_id = '$brand_id' AND g.goods_number>0 $ext group by g.goods_id ORDER BY $sort $order";
+                "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " . "LEFT JOIN " . $GLOBALS['ecs']->table('order_goods') .  " as o ON o.goods_id = g.goods_id " . " where g.brand_id = '$brand_id' $cate_where group by g.goods_id ORDER BY $sort $order";
 				
 	}
 	
@@ -351,6 +351,7 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
     $arr = array();
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
+		
         if ($row['promote_price'] > 0)
         {
             $promote_price = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);

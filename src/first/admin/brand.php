@@ -88,8 +88,8 @@ elseif ($_REQUEST['act'] == 'insert')
 
     /*插入数据*/
 
-    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, brand_name_cn, site_url, brand_desc, brand_logo, is_show, sort_order,brand_cat) ".
-           "VALUES ('$_POST[brand_name]', '$_POST[brand_name_cn]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]','$brand_cat')";
+    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, brand_name_cn, site_url, brand_desc, brand_logo, is_show, sort_order,brand_cat,brand_policy) ".
+           "VALUES ('$_POST[brand_name]', '$_POST[brand_name_cn]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]','$brand_cat', '$_POST[brand_policy]')";
     $db->query($sql);
 
     admin_log($_POST['brand_name'],'add','brand');
@@ -113,7 +113,7 @@ elseif ($_REQUEST['act'] == 'edit')
 {
     /* 权限判断 */
     admin_priv('brand_manage');
-    $sql = "SELECT brand_id, brand_name, brand_name_cn, site_url, brand_logo, brand_desc, brand_logo, is_show, sort_order,brand_cat ".
+    $sql = "SELECT * ".
             "FROM " .$ecs->table('brand'). " WHERE brand_id='$_REQUEST[id]'";
     $brand = $db->GetRow($sql);
 
@@ -153,7 +153,7 @@ elseif ($_REQUEST['act'] == 'updata')
 	
     /* 处理图片 */
     $img_name = basename($image->upload_image($_FILES['brand_logo'],'brandlogo'));
-    $param = "brand_name = '$_POST[brand_name]', brand_name_cn = '$_POST[brand_name_cn]', site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]',brand_cat ='$brand_cat' ";
+    $param = "brand_name = '$_POST[brand_name]', brand_name_cn = '$_POST[brand_name_cn]', site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]',brand_cat ='$brand_cat',brand_policy ='$_POST[brand_policy]' ";
     if (!empty($img_name))
     {
         //有图片上传

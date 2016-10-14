@@ -118,6 +118,9 @@
             <!-- {if $goods.goods_brief} -->
             <div class="goods_brief"><span>{$goods.goods_brief}</span></div>
             <!-- {/if} -->
+            {if $goods.brand_policy}
+            <div class="goods_brief"><span>{$goods.brand_policy}</span></div>
+            {/if}
             
             <ul id="summary1">
               <!-- {if $cfg.show_goodssn} 显示商品货号 -->
@@ -130,6 +133,9 @@
                 <div class="dt">Product Brand: <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></div>
               </li>
               <!--{/if}--> 
+              
+              
+              
               <!-- {if $cfg.use_integral} 购买此商品可使用积分-->
               <li class="padd1">
                 <div class="dt">可使积分</div>
