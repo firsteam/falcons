@@ -5,6 +5,7 @@
 {insert_scripts files="../js/utils.js,listtable.js"}
 <script type='text/javascript' src='../js/calendar.php' ></script>
 <link href='../js/calendar/calendar.css' rel='stylesheet' type='text/css' />
+
 <!--搜索区域-->
 <div class="form-div">
 <form action="javascript:search_invoice()" name="search_form">
@@ -465,7 +466,7 @@ listTable.filter.{$key} = '{$item}';
     {
         create_goods_layer(layer_id);
         $layer_id = Utils.$(layer_id);
-        $layer_id.style.top = (Utils.y(e) + 12) + 'px';
+        $layer_id.style.top = (Utils.y(e) - 120) + 'px';
         $layer_id.style.left = (Utils.x(e) + 12) + 'px';
         if (typeof(goods_hash_table[order_id]) == 'object')
         {
