@@ -24,7 +24,7 @@
 			{foreach from=$shop.goods_info item=goods name=goods}
 				<li>
 					<a href="{$goods.url}" title="{$goods.goods_name}" target="_blank" class="img">
-						<div style="height:220px;width:220px;overflow:hidden"><img src="{$goods.goods_thumb}"> </div>
+						<div class="img220"><img src="{$goods.goods_thumb}"> </div>
 						<span>${$goods.shop_p}</span> 
 					</a> 
 					<a href="{$goods.url}" title="{$goods.goods_name}" target="_blank" class="name" style="display:none">{$goods.goods_name}</a> 

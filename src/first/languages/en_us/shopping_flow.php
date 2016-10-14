@@ -127,7 +127,7 @@ $_LANG['flow_js']['zip_not_num'] = 'Zip code should be numbers';
 $_LANG['flow_js']['mobile_invaild'] = 'Mobile No. is invalid';
 
 $_LANG['new_consignee_address'] = 'New consignee address';
-$_LANG['consignee_address'] = 'Address';
+$_LANG['consignee_address'] = 'Shipping Address';
 $_LANG['consignee_name'] = 'Name';
 $_LANG['country_province'] = 'Country/Province';
 $_LANG['please_select'] = 'Please select...';

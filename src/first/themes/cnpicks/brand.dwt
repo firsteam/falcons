@@ -59,8 +59,12 @@
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   <div class="w main">
     <div class="">
+	<div class="brand-name">
+		{$brand.brand_name}
+	</div>
       <div class="box">
         <div class="boxCenterList">
+			
             <!-- {if $brand.brand_logo} --> 
                 <img src="data/brandlogo/{$brand.brand_logo}" /> 
             <!-- {/if} --> 

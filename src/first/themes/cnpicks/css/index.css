@@ -2039,8 +2039,8 @@ margin-top:expression(72-this.height/2);
 }
 .m-floor .goods .wrap {
 	width:220px;
-	height:220px;
-	overflow:hidden;
+	/*height:220px;
+	overflow:hidden;*/
 	margin: 20px 0px 0px 15px;
 	position: relative;
 	_zoom: 1
@@ -2502,7 +2502,7 @@ margin-top:expression(72-this.height/2);
 }
 /*左侧楼层定位边栏*/
 .floorList {
-	width: 1210px;
+	/*width: 1210px;*/
 	margin: 0 auto
 }
 .floor {

@@ -104,7 +104,7 @@ function isSelectAttr(spec_arr) {
 			}
 		})
 		if ($('#choose').is('.catt_photo')) {
-			alert("请一定要选择商品属性！");
+			alert("Please select the option.");
 		}
 	}
 	return ret;
@@ -1023,7 +1023,7 @@ function openSpeDiv(message, goods_id, parent) {
 			newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
 		}
 	}
-	newDiv.innerHTML += "<br /><center>[<a href='javascript:submit_div(" + goods_id + "," + parent + ")' class='f6' >" + btn_buy + "</a>]&nbsp;&nbsp;[<a href='javascript:cancel_div()' class='f6' >" + is_cancel + "</a>]</center><br/>";
+	newDiv.innerHTML += "<br /><center><a href='javascript:submit_div(" + goods_id + "," + parent + ")' class='btn2 btn-tiny btn-primary' >" + btn_buy + "</a>&nbsp;&nbsp;<a href='javascript:cancel_div()' class='btn2 btn-tiny' >" + is_cancel + "</a></center><br/>";
 	document.body.appendChild(newDiv);
 
 	// mask图层

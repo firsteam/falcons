@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta name="p:domain_verify" content="2f35e689d1fa0333e414d388d6c25724"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="{$keywords}" />
 <meta name="Description" content="{$description}" />
@@ -52,8 +53,8 @@ var select_spe = "{$lang.select_spe}";
             <h3>商城公告</h3>
           </li>
         </ul>
-        <div class="tabs-panel"> <a href="apply_index.php" title="申请商家入驻；已提交申请，可查看当前审核状态。" class="store-join-btn" target="_blank">&nbsp;</a> <a href="supplier" target="_blank" class="store-join-help"><i class="icon-cog"></i>登录商家管理中心</a> </div>
-        <!-- TemplateBeginEditable name="首页主广告右侧公告" -->
+        <div class="tabs-panel"> <a href="apply_index.php" title="申请商家入驻；已提交申请，可查看当前审核状态�? class="store-join-btn" target="_blank">&nbsp;</a> <a href="supplier" target="_blank" class="store-join-help"><i class="icon-cog"></i>登录商家管理中心</a> </div>
+        <!-- TemplateBeginEditable name="首页主广告右侧公�? -->
 <!-- TemplateEndEditable --> </div>
     </div>
   </div>
@@ -215,7 +216,7 @@ var select_spe = "{$lang.select_spe}";
                 <!--{/if}--> 
                 <span class="original">{$goods.market_price}</span> </dd>
               <dd class="goods-price-discount"><em>{$goods.zhekou}</em></dd>
-              <dd class="time-remain" count_down="{$goods.lefttime}"><i></i><span id="leftTime{$key}"><em time_id="d"></em>天<em time_id="h"></em>小时 <em time_id="m"></em>分<em time_id="s"></em>秒 </span></dd>
+              <dd class="time-remain" count_down="{$goods.lefttime}"><i></i><span id="leftTime{$key}"><em time_id="d"></em>�?em time_id="h"></em>小时 <em time_id="m"></em>�?em time_id="s"></em>�?</span></dd>
               <dd class="goods-buy-btn"></dd>
             </dl>
           </li>

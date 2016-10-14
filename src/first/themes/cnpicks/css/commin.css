@@ -224,25 +224,28 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 *zoom:1;
 	margin-bottom: 0;
 	font-size: 14px;
-	height: 38px;
-	line-height: 38px;
+	/*height: 38px;
+	line-height: 38px;*/
 	text-align: center;
 	cursor: pointer;
 	background-color: #fff;
-	border: 1px solid #ff4a00;
-	color: #ff4a00;
-	padding: 0;
-	width: 148px
+	border: 1px solid #E31939;
+	color: #E31939;
+	padding: 5px 20px;
+	/*width: 148px*/
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 .btn2:hover, .btn2:focus {
 	color: #fff;
 	outline: 0;
 	text-decoration: none;
-	background-color: #ff4a00
+	background-color: #f33959
 }
 .btn2.active, .btn2:active {
 	outline: 0;
-	background-color: #ff4a00;
+	background-color: #f33959;
 	-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
 	-moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
 	box-shadow: inset 0 2px 4px rgba(0,0,0,.15)
@@ -263,15 +266,18 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	width: 118px;
 	font-size: 12px
 }
+.btn-tiny {
+	padding: 3px 15px;
+}
 .btn-primary {
-	background-color: #ff4a00;
-	border-color: #ff4a00;
+	background-color: #E31939;
+	border-color: #E31939;
 	color: #fff
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary.active, .btn-primary:active {
 	color: #fff;
-	border-color: #ee330a;
-	background-color: #ee330a
+	border-color: #f33959;
+	background-color: #f33959
 }
 .btn-yellow {
 	background-color: #ffdb3d;
@@ -2907,4 +2913,15 @@ a:hover img {
     border-bottom: 1px solid #DFE1E1;
     border-top: 1px solid #FFF;
     border-radius: 5px 5px 0 0;
+}
+.img220{
+	width:220px;
+	height:220px;
+	overflow:hidden;
+}
+.brand-name {
+	text-align: center;
+    font-size: 40px;
+    height: 80px;
+    line-height: 50px;
 }

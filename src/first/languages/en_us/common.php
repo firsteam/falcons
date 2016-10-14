@@ -298,7 +298,7 @@ $_LANG['not_for_you'] = 'It is not for you as you are not the winner';
 $_LANG['order_placed'] = 'Your order has been placed, if you would like to repurchase, please firstly cancel the original order';
 
 /* 购物流程中的前台部分 */
-$_LANG['select_spe'] = 'Please choose attributes of the goods';
+$_LANG['select_spe'] = 'Please select the option.';
 
 /* 购物流程中的订单部分 */
 $_LANG['price'] = 'Price';
@@ -333,11 +333,11 @@ $_LANG['complete_acquisition'] = 'The order is completed, you will receive';
 $_LANG['with_price'] = 'and bonus';
 $_LANG['de'] = '';
 $_LANG['bonus'] = 'bonus';
-$_LANG['goods_all_price'] = 'Total products money';
+$_LANG['goods_all_price'] = 'Sub Total';
 $_LANG['discount'] = 'discount';
 $_LANG['tax'] = 'tax';
-$_LANG['shipping_fee'] = 'Shipping money';
-$_LANG['pack_fee'] = 'Packing money';
+$_LANG['shipping_fee'] = 'Shipping cost';
+$_LANG['pack_fee'] = 'Packing cost';
 $_LANG['card_fee'] = 'Card fee';
 $_LANG['total_fee'] = 'Total payable money';
 $_LANG['self_site'] = 'Home';

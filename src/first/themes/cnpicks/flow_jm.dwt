@@ -802,7 +802,7 @@ else
     </div>
     {* 商品清单 *}
     <div class="checkBox_jm">
-      <div class="title">2 Items</div>
+      <div class="title">Order reviews</div>
       <div class="free_freight disable-by-cy">{$lang.can_use_integral}:{$your_integral|default:0} {$points_name}. </div>
       <div class="free_freight1 disable-by-cy">您当前的可用余额为:{$your_surplus|default:0} <span id="ECS_SURPLUS_NOTICE_{$key}" class="notice"></span></div>
       <table border=0 cellpadding=0 cellspacing=0 width="100%" class="checkgoods">
@@ -1176,7 +1176,7 @@ else
 	{/literal}
       </script> 
     {* 支付方式 *}
-    <div class="checkBox_jm">
+    <div class="checkBox_jm disable-by-cy">
       <div class="title">{$lang.payment_method}</div>
       <ul class="payment_tab_jm" id="payment_tab">
         <!-- {foreach from=$payment_list name="payment_list" item=payment} --> 

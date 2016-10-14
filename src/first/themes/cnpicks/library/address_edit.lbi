@@ -1,11 +1,12 @@
 <table cellpadding=4 cellspacing=4 width="100%" style="clear:both;margin-top:20px;">
   <tr>
-    <td style="text-align:left;width:10%">
-      {$lang.consignee_name}<font color=#ff3300>*</font>
+    <td style="text-align:left;width:30%">
+      {$lang.consignee_name}
     </td>
     <td>
       <input type="text" name="consignee" value="{$address.consignee}" onchange="checkConsigneeName(this,'consignee_name_notice')" class="input_addr2">
-    </td>
+      <font color=#ff3300> * </font>
+	</td>
     <td>
       <div class="verify_tips">
         <span class="label" id="consignee_name_notice"></span>
@@ -13,14 +14,15 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:left;width:10%">Gender<font color="#ff3300">*</font></td>
+    <td style="text-align:left;width:10%">Gender</td>
     <td>
       <input type="radio" name="sex" value="0" {if $address.sex eq 0}checked="checked"{/if} class="addtotable_m">Ms.&nbsp;&nbsp; 
-      <input type="radio" name="sex" value="1" {if $address.sex eq 1}checked="checked"{/if} class="addtotable_m">Mr.
+      <input type="radio" name="sex" value="1" {if $address.sex eq 1}checked="checked"{/if} class="addtotable_m">Mr.&nbsp;&nbsp; 
+	  <font color="#ff3300"> * </font>
     </td>
   </tr>
   <tr>
-    <td style="text-align:left;">Country<font color=#ff3300>*</font></td>
+    <td style="text-align:left;">Country</td>
     <td>
       <select name="country" style="width:155px;height:25px;border:1px solid #ccc;" onchange="checkCountry(this,'country_notice')">
         <option value="">{$lang.please_select}</option>
@@ -28,6 +30,7 @@
         <option value="{$country.region_id}" {if $country.region_id eq $address.country}selected{/if}>{$country.region_name}</option>
         <!-- {/foreach} -->
       </select>
+	  <font color=#ff3300> * </font>
     </td>
     <td>
       <div class="verify_tips">
@@ -47,9 +50,10 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:left;">{$lang.city_district}<font color=#ff3300>*</font></td>
+    <td style="text-align:left;">{$lang.city_district}</td>
     <td>
       <input type="text" name="city" value="{$address.city}" onchange="checkCity(this,'city_notice')" class="input_addr2">
+	  <font color=#ff3300> * </font>
     </td>
     <td>
       <div class="verify_tips">
@@ -58,9 +62,10 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:left;">{$lang.detailed_address}<font color=#ff3300>*</font></td>
+    <td style="text-align:left;">{$lang.detailed_address}</td>
     <td>
-      <textarea name="address" style="width:208px;" rows="3" onchange="checkAddress(this,'address_notice')">{$address.address}</textarea>
+      <input type="text" name="address" value="{$address.address}" onchange="checkAddress(this,'address_notice')" class="input_addr2">
+	  <font color=#ff3300> * </font>
     </td>
     <td>
       <div class="verify_tips">
@@ -69,9 +74,10 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:left;">{$lang.postalcode}<font color=#ff3300>*</font></td>
+    <td style="text-align:left;">{$lang.postalcode}</td>
     <td>
-      <input type="text" name="zipcode" class="input_addr3" value="{$address.zipcode}" onchange="checkZipcode(this,'zipcode_notice')">
+      <input type="text" name="zipcode" class="input_addr2" value="{$address.zipcode}" onchange="checkZipcode(this,'zipcode_notice')">
+	  <font color=#ff3300> * </font>
     </td>
     <td>
       <div class="verify_tips">
@@ -80,10 +86,11 @@
     </td>
   </tr>
   <tr>
-    <td style="text-align:left;">{$lang.mobile}<font color=#ff3300>*</font></td>
+    <td style="text-align:left;">{$lang.mobile}</td>
     <td>
       <input type="text" name="mobile" class="input_addr2 input_addr2_t" onchange="checkMobile(this,'mobile_notice')" value="{$address.mobile}">
-    </td>
+      <font color=#ff3300> * </font>
+	</td>
     <td>
       <div class="verify_tips">
         <span class="label" id="mobile_notice"></span>

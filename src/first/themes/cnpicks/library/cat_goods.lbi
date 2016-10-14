@@ -74,7 +74,12 @@ $GLOBALS['smarty']->assign('cat_recommend_type',get_cat_recommend_type($GLOBALS[
 		?>
               <!--{foreach from=$best_goods item=goods name=cat_item_goods}-->
               <div class="j_ItemInfo" id="li_{$goods.id}" {if $smarty.foreach.cat_item_goods.iteration % 5 == 0}style="border-right:none"{/if}>
-                <div class="wrap"> <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}"><img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" width="220" class="pic_img_{$goods.id}"> </a>
+                <div class="wrap"> 
+				  <a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">
+				     <div class="img220">
+					    <img data-original="{$goods.thumb}" src="themes/cnpicks/images/loading.gif" alt="{$goods.name|escape:html}" width="220" class="pic_img_{$goods.id}"> 
+					 </div>
+				  </a>
                   <p class="title"><a target="_blank" href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
                   <p class="o-price disable-by-cy">{$goods.market_price}</p>
                   <p class="price"><span class="j_CurPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span></p>

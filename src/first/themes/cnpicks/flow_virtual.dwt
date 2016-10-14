@@ -142,7 +142,8 @@
         <tr>
           <td align="right" width="120"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>{$lang.clear_cart} </font></a></td>
           <td align="right" id='cart_money_info'> {$lang.total} <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
-          <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">{$lang.check_out}</a></td>
+          
+		  <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">{$lang.check_out}</a></td>
         </tr>
       </table>
       {* 代码增加_start   By  www.68ecshop.com *} 
@@ -393,7 +394,7 @@ else
           <li>
             <p class="pic"><a href="{$bestgoods.url}" target="_blank" ><img src="{$bestgoods.goods_thumb}" ></a></p>
             <p class="name"><a href="{$bestgoods.url}" target="_blank" >{$bestgoods.goods_name}</a></p>
-            <p class="price"><del style="color:#999">{$bestgoods.market_price}</del></p>
+            <p class="price disable-by-cy"><del style="color:#999">{$bestgoods.market_price}</del></p>
             <p><font class="price">{$bestgoods.shop_price}</font></p>
             <a class="j_AddCart" href="javascript:addToCart({$bestgoods.goods_id})"></a> </li>
           {/foreach}
@@ -406,7 +407,7 @@ else
           <li>
             <p class="pic"><a href="{$hotgoods.url}" target="_blank" ><img src="{$hotgoods.goods_thumb}" ></a></p>
             <p class="name"><a href="{$hotgoods.url}" target="_blank" >{$hotgoods.goods_name}</a></p>
-            <p class="price"><del style="color:#999">{$hotgoods.market_price}</del></p>
+            <p class="price disable-by-cy"><del style="color:#999">{$hotgoods.market_price}</del></p>
             <p><font class="price">{$hotgoods.shop_price}</font></p>
             <a class="j_AddCart" href="javascript:addToCart({$hotgoods.goods_id})"></a> </li>
           {/foreach}
@@ -419,7 +420,7 @@ else
           <li>
             <p class="pic"><a href="goods.php?id={$goods.goods_id}" target="_blank" ><img src="{$goods.thumb}" ></a></p>
             <p class="name"><a href="goods.php?id={$goods.goods_id}" target="_blank" >{$goods.goods_name}</a></p>
-            <p class="price"><del style="color:#999">{$goods.market_price}</del></p>
+            <p class="price disable-by-cy"><del style="color:#999">{$goods.market_price}</del></p>
             <p><font class="price">{$goods.shop_price}</font></p>
             <a class="j_AddCart" href="javascript:addToCart({$goods.goods_id})"></a> </li>
           {/foreach}
@@ -472,7 +473,7 @@ else
             <li>
               <p class="pic"><a href="{$fittings.url}" target="_blank" ><img src="{$fittings.goods_thumb}" alt="{$fittings.name|escape:html}" ></a></p>
               <p class="name"><a href="{$fittings.url}" target="_blank" title="{$fittings.goods_name|escape:html}">{$fittings.short_name|escape:html}</a></p>
-              <p class="price"><del style="color:#999">{$fittings.shop_price}</del></p>
+              <p class="price disable-by-cy"><del style="color:#999">{$fittings.shop_price}</del></p>
               <p><font class="price">{$fittings.fittings_price}</font></p>
               <a class="j_AddCart" href="javascript:fittings_to_flow({$fittings.goods_id},{$fittings.parent_id})"></a> </li>
             {/foreach}

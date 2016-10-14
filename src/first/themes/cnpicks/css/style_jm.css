@@ -78,7 +78,7 @@
 .flowHot ul li p.price{
 	padding-bottom:0px;
 }
-.flowHot ul li a.j_AddCart{
+/*.flowHot ul li a.j_AddCart{
 	position: absolute;
 bottom: 13px;
 right: 0px;
@@ -86,6 +86,16 @@ width: 32px;
 height: 32px;
 background: transparent url("../images/upgrade_ad/add_to_cart.png") no-repeat scroll 0px 3px;
 cursor: pointer;
+}*/
+.flowHot ul li a.j_AddCart{
+	position: absolute;
+	bottom: 15px;
+	right: 5px;
+	cursor:pointer;
+	height: 21px;
+	width: 58px;
+	background:url(../images/upgrade_ad/common.png) no-repeat;
+	background-position: 0px -179px;
 }
 .flowHot ul li p .price {
 	font-family: "Microsoft YaHei", 微软雅黑;
@@ -275,11 +285,14 @@ a.jmclear:hover {
 	text-decoration: none;
 	font-size: 17px;
 	width: 150px;
-	height: 40px;
-	line-height: 40px;
+	height: 44px;
+	line-height: 44px;
 	background: #E31939;
-	margin-right: 25px;
-	margin-left: 10px;
+	margin-right: 10px;
+	margin-left: 5px;
+	-moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
 }
 a.jm_buy {
 	background: url(../images/jmpic/jm_buy.gif);
@@ -593,7 +606,7 @@ a.a_other1_h {
 	border:1px #ddd solid
 }
 .input_addr2 {
-	width: 200px;
+	width: 250px;
 	height:25px;
 	line-height:25px;
 	padding:0px 5px;
@@ -907,16 +920,16 @@ body {
 	background: #fff;
 	border: 1px solid #ddd;
 	text-align: center;
-	line-height: 40px;
+	line-height: 35px;
 	font-size: 12px;
 	font-weight: bold;
 	z-index: 99999;
 	width: 500px;
-	height: 480px;
+	height: 500px;
 	left: 50%;/*FF IE7*/
 	top: 50%;/*FF IE7*/
 	margin-left: -250px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
-	margin-top: -240px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
+	margin-top: -300px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
 
 	-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
@@ -951,11 +964,11 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
 	cursor: pointer;
 }
 .mydiv table {
-	padding: 20px;
+	padding: 10px 30px;
 	margin: 0;
 }
 .mydiv table td {
-	line-height: 130%;
+	/*line-height: 130%;*/
 	text-align: left;
 	font-weight: normal;
 }
@@ -1186,7 +1199,7 @@ background-position: 0 0;
 }
 /*支付按钮*/
 .split_order td input{
-	border:none;
+/*border:none;
 width: auto;
 height: 36px;
 font-family: "微软雅黑";
@@ -1197,7 +1210,7 @@ background: #E31939 none repeat scroll 0% 0%;
 color: #FFF;
 text-align: center;
 text-decoration: none;
-padding:0px 15px;
+padding:0px 15px;*/
 }
 
 
@@ -1212,4 +1225,15 @@ input.addtotable_m {
 .verify_tips
 {
 	color: #ff0000;
+}
+.flow_receipt
+{
+	padding:10px;
+	width:90%;
+}
+.flow_receipt td
+{
+ padding:10px;
+ line-height:20px;
+ border: 1px solid #ddd;
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+<channel>
+<title>storefav google shopping feed</title>
+<link></link>
+<description>storefav google shopping feed</description>
+{foreach from=$goods_list item=goods}
+<item>
+<g:id>{$goods.goods_id}</g:id>
+<g:item_group_id>{$goods.goods_id}</g:item_group_id>
+<title>{$goods.goods_name}</title>
+<link>../goods.php?id={$goods.goods_id}</link>
+<g:price>{$goods.shop_price}</g:price>
+<g:sale_price>{$goods.shop_price}</g:sale_price>
+<g:online_only>y</g:online_only>
+<description>{$goods.goods_brief|escape:html}</description>
+<g:condition>new</g:condition>
+<g:google_product_category>{$goods.google_cat_id}</g:google_product_category>
+<g:product_type>{$goods.product_type}</g:product_type>
+<g:image_link>{$goods.goods_img}</g:image_link>
+<g:availability>{$goods.is_on_sale}</g:availability>
+<g:quantity>{$goods.goods_number}</g:quantity>
+<g:featured_product>{$goods.featured_product}</g:featured_product>
+<g:color>{$goods.color}</g:color>
+<g:shipping_weight>{$goods.shipping_weight}</g:shipping_weight>
+<g:manufacturer>{$goods.manufacturer}</g:manufacturer>
+<g:brand>{$goods.brand}</g:brand>
+<g:upc>{$goods.upc}</g:upc>
+<g:adwords_labels>{product_category}</g:adwords_labels>
+</item>
+{/foreach}
+</channel>
+</rss>

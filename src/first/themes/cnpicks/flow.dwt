@@ -280,7 +280,11 @@
 	}
 	</script> 
   {* 代码增加_End    By  www.68ecshop.com *}
-  <div class="cart-button clearfix"> <a class="btn continue" href="index.php"  id="continue"><span class="btn-text" >{$lang.continue_shopping}</span></a> <a class="checkout" href="javascript:void(0);" onclick="return selcart_submit();"  id="toSettlement">{$lang.check_out}</a> </div>
+  <div class="cart-button clearfix"> 
+      <a class="btn continue" href="index.php"  id="continue"><span class="btn-text" >{$lang.continue_shopping}</span></a> 
+      <a class="checkout" href="javascript:void(0);" onclick="return selcart_submit();"  id="toSettlement">{$lang.check_out}</a> 
+	  
+  </div>
   <?php
 $this->assign('hot_1',get_hot_cat_goods('promote',12)); //1：对应分类ID ;20：显示数量
 ?>
@@ -994,28 +998,53 @@ data-widget="tab-item">
           </ol>
         </div>
          <div class="flowBox" style="margin:30px auto 70px auto; width:980px;">
-      <h6 style="text-align:center; height:30px; line-height:30px;color:#c40000;border:none;">{$lang.ws_order_submitted_success}</h6>
+      
   <table width="100%" align="center" border="0" cellpadding="15" cellspacing="0" bgcolor="#fff" class="split_order" style="margin:20px auto;">
     <tr>
-      <td style="padding-bottom:10px;"> {if $split_order.sub_order_count gt 1}
+      <td> 
+	    <h6 style="text-align:center; height:30px; line-height:30px;color:#c40000;border:none;">{$lang.ws_order_submitted_success}</h6>
+	  {if $split_order.sub_order_count gt 1}
         <p style="padding-bottom:10px;font-weight:bold;">由于您的商品由不同的商家发出，此订单将分为<font style="color:#ff3300;">{$split_order.sub_order_count}</font>个不同的子订单配送：</p>
         {/if}
-        <table width="100%" align=left cellpadding=0 cellspacing=0 bgcolor="#fff"  style="border:1px solid #ddd;border-bottom:none">
+        <table cellpadding=0 cellspacing=0 bgcolor="#fff" class="flow_receipt">
           {foreach from=$split_order.suborder_list item=suborder}
-          <tr >
-            <td style="border-bottom:1px solid #ddd;padding-left:15px;background:#FAFAFA" height=30>{$lang.order_number} {$suborder.order_sn}</td>
-            <td style="border-bottom:1px solid #ddd;background:#FAFAFA">{$order.pay_name}: {$suborder.order_amount_formated}</td>
-            <td style="border-bottom:1px solid #ddd;background:#FAFAFA">{$order.shipping_name}</td>
+          <tr>
+            <td>{$lang.order_number}</td>
+			<td>{$suborder.order_sn}</td>
+          </tr>
+		  <tr>
+			<td>{$lang.shipping_method}</td>
+			<td>{$order.shipping_name}</td>
+          </tr>
+		  <tr>
+			<td>Total</td>
+			<td>{$suborder.order_amount_formated}</td>
           </tr>
           {/foreach}
-        </table></td>
+        </table>
+	  </td>
+	  <td style="width:50%">
+	  <table>
+		<tr>
+			<td>
+			<div style="width:480px;">
+			<img src="themes/cnpicks/images/jmpic/paypal.png"><br>
+			If you have a PayPal account, please pay via PayPal account directly.<br>
+			If you don't have a paypal account, you can also pay via paypal with your credit card or bank debit card. Payment can be submitted in any currency!
+			{if $pay_online}
+			   {$pay_online}
+			{else} 
+				<a href="user.php?act=order_list"><img src="images/btn_my_orders.gif" border=0 align="absmiddle"></a> 
+			{/if} 
+			</div>
+			</td>
+		</tr>
+	  </table>
+	  </td>
     </tr>
-    <tr>
-      <td align="center" style="padding-bottom:30px;"> {if $pay_online}
-        {$pay_online}
-        {else} <a href="user.php?act=order_list"><img src="images/btn_my_orders.gif" border=0 align="absmiddle"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color=#999999>订单已经提交成功</font> {/if} </td>
-    </tr>
-  </table>
+	</table>
+	
+  
   <style>
   		  table.split_order tbody{background:#fff}
           .submit_back a{ color:#F00;}
