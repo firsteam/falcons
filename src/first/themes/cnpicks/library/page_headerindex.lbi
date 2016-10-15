@@ -1,4 +1,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript"> 
+<!--
+/*屏蔽所有的js错误*/
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+
+var base_url='{$base_url}';
+</script>
 <?php
 function get_brands1($cat = 0, $app = 'brand')
 {

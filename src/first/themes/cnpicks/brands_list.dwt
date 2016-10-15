@@ -28,7 +28,8 @@
     <div class="flow">
 
       <!-- #BeginLibraryItem "/library/brand_list.lbi" --><!-- #EndLibraryItem --> 
-	  <!-- #BeginLibraryItem "/library/brand_pager.lbi" --><!-- #EndLibraryItem --> 
+	  <div class="blank5"></div>
+	  <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem --> 
     </div>
     <div class="blank5"></div>
   </div>

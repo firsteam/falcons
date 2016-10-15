@@ -34,6 +34,7 @@
 	border:1px #E4393C solid
 }
 </style>
+
 <!--翻页 start--> 
 <form name="selectPageForm" action="{$smarty.server.PHP_SELF}" method="get">
 <!-- {if $pager.styleid eq 0 } -->

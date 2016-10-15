@@ -134,7 +134,7 @@ if (!$smarty->is_cached('brand.dwt', $cache_id))
     $count = goods_count_by_brand($brand_id, $cate);
 
     $goodslist = brand_get_goods($brand_id, $cate, $size, $page, $sort, $order);
-    
+
     if($display == 'grid')
     {
         if(count($goodslist) % 2 != 0)
@@ -150,7 +150,7 @@ if (!$smarty->is_cached('brand.dwt', $cache_id))
 		$brand_id = $brand_id.'&suppId='.$suppId;
 	}
 
-    assign_pager('brand',              $cate, $count, $size, $sort, $order, $page, '', $brand_id, 0, 0, $display); // 分页
+    assign_pager('brand',              $cate, $count, $size, $sort, $order, $page, $brand_info['brand_name'], $brand_id, 0, 0, $display); // 分页
     assign_dynamic('brand'); // 动态内容
 }
 $smarty->assign('actname','brand.php');
@@ -351,7 +351,6 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
     $arr = array();
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
-		
         if ($row['promote_price'] > 0)
         {
             $promote_price = bargain_price($row['promote_price'], $row['promote_start_date'], $row['promote_end_date']);

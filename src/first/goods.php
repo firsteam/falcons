@@ -82,7 +82,7 @@ if($path_name)
 	$pathrow['path_name'] = $pathrow['path_name'] ? $pathrow['path_name'] : ("cat".$pathrow['cat_id']);
 	if ($path_name != $pathrow['path_name'])
 	{
-		ecs_header("Location: ../\n");
+		ecs_header("Location: ".$GLOBALS['ecs']->url()."\n");
 		exit;
 	}
 }
@@ -357,7 +357,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
     if ($goods === false)
     {
         /* 如果没有找到任何记录则跳回到首页 */
-        ecs_header("Location: ./\n");
+        ecs_header("Location:".$GLOBALS['ecs']->url()."\n");
         exit;
     }
     else
@@ -440,8 +440,17 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('keywords',           htmlspecialchars($goods['keywords']));
         $smarty->assign('description',        htmlspecialchars($goods['goods_brief']));
 
-		
-
+		//相关关键词
+		$keywords = htmlspecialchars($goods['keywords']);
+		$keywords = explode(',',$keywords);
+		$relative_keywords = array();
+		foreach($keywords as $key=>$val)
+		{
+			$relative_keywords[$key]['label'] = $val;
+			$relative_keywords[$key]['url'] = build_uri('search', array('keywords' => $val));
+		}
+		$smarty->assign('relative_keywords',   $relative_keywords);
+         
 
         $catlist = array();
         foreach(get_parent_cats($goods['cat_id']) as $k=>$v)
@@ -471,11 +480,11 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $brand_cat_str = '';       
         if( !empty($brand_info) && !empty($brand_info['brand_cat']) )
         {
-        	$brand_cat_str = ' <code>&gt;</code> <a href="' . build_uri('brand_cat', array('bid'=>$brand_cat_arr['cat_id']), $val['cat_name']) . '">' . htmlspecialchars($brand_cat_arr['cat_name']) . '</a>';
+        	$brand_cat_str = ' <code>&gt;</code> <a href="' . build_uri('brand_cat', array('bid'=>$brand_cat_arr['cat_id']), $brand_cat_arr['cat_name']) . '">' . htmlspecialchars($brand_cat_arr['cat_name']) . '</a>';
         }
         if( !empty($brand_info['brand_name']) )
         {
-        	$brand_cat_str .= ' <code>&gt;</code> <a href="' . build_uri('brand', array('bid'=>$brand_info['brand_id']), $val['brand_name']) . '">' . htmlspecialchars($brand_info['brand_name']) . '</a>';
+        	$brand_cat_str .= ' <code>&gt;</code> <a href="' . build_uri('brand', array('bid'=>$brand_info['brand_id']), $brand_info['brand_name']) . '">' . htmlspecialchars($brand_info['brand_name']) . '</a>';
         }
 
         $position = assign_ur_here(0, $goods['goods_name'], $brand_cat_str);

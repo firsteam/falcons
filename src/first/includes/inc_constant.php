@@ -260,8 +260,9 @@ define('REBATE_LOG_ORDER', 1);//佣金涉及到的订单
 define('REBATE_LOG_LIST', 2);//佣金表状态
 
 /* 生成静态页面的配置 */
-define('PREFIX_CATEGORY', 'shangpin');   //保存 商品页、商品列表页的子目录前缀，不需要写 -
-define('PREFIX_ARTICLECAT', 'wenzhang'); //保存 文章页、文章列表页的子目录前缀，不需要写 -
+define('PREFIX_CATEGORY', 'category');   //保存 商品页、商品列表页的子目录前缀，不需要写 -
+define('PREFIX_ARTICLECAT', 'article_cat'); //保存 文章页、文章列表页的子目录前缀，不需要写 -
+define('PREFIX_BRANDCAT', 'brand_cat');
 define('PREFIX_TOPIC', 'zhuanti');
 
 /* license接口 */

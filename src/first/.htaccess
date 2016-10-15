@@ -32,47 +32,53 @@ RewriteRule ^category-([0-9]+)(.*)\.html$                                       
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/compare\.php$   compare.php  [QSA,L]
+RewriteRule ^category/([0-9a-zA-Z]+)/compare\.php$   compare.php  [QSA,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category\.php$   category.php  [QSA,L]
+RewriteRule ^category/([0-9a-zA-Z]+)/category\.php$   category.php  [QSA,L]
 
 
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-fil([0-2])-attr([^-]*)-([0-9]+)-(.*)\.html$ ?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter=$6&filter_attr=$7&page=$8 [C,NC]
-#RewriteRule ^(.*)-(.+)-([a-zA-Z]+)(.*)$ category\.php\?sort=$2&order=$3 [QSA,L,NC]
+#RewriteRule ^(.*)-(.+)-([a-zA-Z]+)(.*)$ 																				category\.php\?sort=$2&order=$3 [QSA,L,NC]
 
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-fil([0-2])-attr([^-]*)-([0-9]+)-(.+)\.html$ shangpin-$9&id=$2&brand=$3&price_min=$4&price_max=$5&filter=$6&filter_attr=$7&page=$8 [C,NC]
-RewriteRule ^shangpin-([a-zA-Z_]+)-(.*)\.html$ category\.php\?sort=$1&order=$2$3 [QSA,L,NC]
+RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-fil([0-2])-attr([^-]*)-([0-9]+)-(.+)\.html$  	category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter=$6&filter_attr=$7&page=$8 [C,NC]
+RewriteRule ^category/([a-zA-Z_]+)-(.*)\.html$ 																			category\.php\?sort=$1&order=$2$3 [QSA,L,NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-attr([^-]*)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter_attr=$6&page=$7&sort=$8&order=$9 [QSA,L]
+RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-attr([^-]*)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter_attr=$6&page=$7&sort=$8&order=$9 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-fil([0-2])-attr([^-]*)(.*)\.html$                            category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter=$6&filter_attr=$7 [QSA,L]
+RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-fil([0-2])-attr([^-]*)(.*)\.html$                 category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter=$6&filter_attr=$7 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$                                      category\.php\?path_name=$1&id=$2&brand=$3&page=$4&sort=$5&order=$6 [QSA,L]
+RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$                                      category\.php\?path_name=$1&id=$2&brand=$3&page=$4&sort=$5&order=$6 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)-([0-9]+)(.*)\.html$                                                       category\.php\?path_name=$1&id=$2&brand=$3&page=$4  [QSA,L]
+RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-([0-9]+)(.*)\.html$                                                       category\.php\?path_name=$1&id=$2&brand=$3&page=$4  [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)-b([0-9_]+)(.*)\.html$                                                                category\.php\?path_name=$1&id=$2&brand=$3  [QSA,L]
+RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)(.*)\.html$                                                                category\.php\?path_name=$1&id=$2&brand=$3  [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/category-([0-9]+)(.*)\.html$                                                                          category\.php\?path_name=$1&id=$2  [QSA,L]
+RewriteRule ^category/(.*)-([0-9]+)(.*)\.html$                                                                          category\.php\?path_name=$1&id=$2  [QSA,L]
+
+
+RewriteRule ^market/(.*)\.html                                            search\.php\?keywords=$1 [QSA,L]
+RewriteRule ^product/(.*)-([0-9]+)\.html$                                goods\.php\?id=$2   [QSA,L]
 
 
 #RewriteRule ^goods-([0-9]+)(.*)\.html$  goods\.php\?id=$1 [QSA,L]
 RewriteRule ^goods-([0-9]+)(.*)\.html$	url301\.php\?pagetype=goods&id=$1 [QSA,L]
+
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^shangpin-([0-9a-zA-Z]+)/goods-([0-9]+)(.*)\.html(.*)$  goods\.php\?path_name=$1&id=$2 [QSA,L]
+RewriteRule ^product-([0-9a-zA-Z]+)/goods-([0-9]+)(.*)\.html(.*)$  goods\.php\?path_name=$1&id=$2 [QSA,L]
 
 RewriteRule ^article_cat-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  url301\.php\?pagetype=article_cat&id=$1&page=$2&sort=$3&order=$4  [QSA,L]
 RewriteRule ^article_cat-([0-9]+)-([0-9]+)-(.+)(.*)\.html$              url301\.php\?pagetype=article_cat&id=$1&page=$2&keywords=$3 [QSA,L]
@@ -81,31 +87,37 @@ RewriteRule ^article_cat-([0-9]+)(.*)\.html$                            url301\.
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^wenzhang-([0-9a-z]+)/article_cat-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  article_cat\.php\?path_name=$1&id=$2&page=$3&sort=$4&order=$5  [QSA,L]
+RewriteRule ^article_cat/(.*)-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  article_cat\.php\?path_name=$1&id=$2&page=$3&sort=$4&order=$5  [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^wenzhang-([0-9a-z]+)/article_cat-([0-9]+)-([0-9]+)-(.+)(.*)\.html$              article_cat\.php\?path_name=$1&id=$2&page=$3&keywords=$4 [QSA,L]
+RewriteRule ^article_cat/(.*)-([0-9]+)-([0-9]+)-(.+)(.*)\.html$              article_cat\.php\?path_name=$1&id=$2&page=$3&keywords=$4 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^wenzhang-([0-9a-z]+)/article_cat-([0-9]+)-([0-9]+)(.*)\.html$                   article_cat\.php\?path_name=$1&id=$2&page=$3   [QSA,L]
+RewriteRule ^article_cat/(.*)-([0-9]+)-([0-9]+)(.*)\.html$                   article_cat\.php\?path_name=$1&id=$2&page=$3   [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^wenzhang-([0-9a-z]+)/article_cat-([0-9]+)(.*)\.html$                            article_cat\.php\?path_name=$1&id=$2   [QSA,L]
+RewriteRule ^article_cat/(.*)-([0-9]+)(.*)\.html$                            article_cat\.php\?path_name=$1&id=$2   [QSA,L]
 
 
 RewriteRule ^article-([0-9]+)(.*)\.html$                                url301\.php\?pagetype=article&id=$1   [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^wenzhang-([0-9a-z]+)/article-([0-9]+)(.*)\.html$                                article\.php\?path_name=$1&id=$2   [QSA,L]
+RewriteRule ^article-([0-9a-z]+)/article-([0-9]+)(.*)\.html$                                article\.php\?path_name=$1&id=$2   [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^zhuanti/topic-([0-9]+)\.html$                                topic\.php\?topic_id=$1   [QSA,L]
 
 
-RewriteRule ^brand-([0-9]+)-c([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)\.html   brand\.php\?id=$1&cat=$2&page=$3&sort=$4&order=$5 [QSA,L]
-RewriteRule ^brand-([0-9]+)-c([0-9]+)-([0-9]+)(.*)\.html                brand\.php\?id=$1&cat=$2&page=$3 [QSA,L]
-RewriteRule ^brand-([0-9]+)-c([0-9]+)(.*)\.html                         brand\.php\?id=$1&cat=$2 [QSA,L]
-RewriteRule ^brand-([0-9]+)(.*)\.html                                   brand\.php\?id=$1 [QSA,L]
+RewriteRule ^store/(.*)-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)\.html   brand\.php\?id=$2&page=$3&sort=$4&order=$5 [QSA,L]
+RewriteRule ^store/(.*)-([0-9]+)-([0-9]+)(.*)\.html                brand\.php\?id=$2&page=$3 [QSA,L]
+RewriteRule ^store/(.*)-([0-9]+)(.*)\.html                         brand\.php\?id=$2 [QSA,L]
+
+RewriteRule ^brand_cat/(.*)-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)\.html   brandcat\.php\?id=$2&page=$3&sort=$4&order=$5 [QSA,L]
+RewriteRule ^brand_cat/(.*)-([0-9]+)-([0-9]+)(.*)\.html                brandcat\.php\?id=$2&page=$3 [QSA,L]
+RewriteRule ^brand_cat/(.*)-([0-9]+)(.*)\.html                         brandcat\.php\?id=$2 [QSA,L]
+
+
+
 
 RewriteRule ^stores-([0-9]+)\.html$                                     stores\.php\?id=$1 [QSA,L]
 

@@ -35,6 +35,17 @@ $filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'sort_order' : trim(
 $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
 $filter['page'] = empty($_REQUEST['page']) || (intval($_REQUEST['page']) <= 0) ? 1 : intval($_REQUEST['page']);
 
+if (isset($_REQUEST['page_size']) && intval($_REQUEST['page_size']) > 0)
+{
+	$filter['page_size'] = intval($_REQUEST['page_size']);
+}elseif (isset($_COOKIE['ECSCP']['page_size']) && intval($_COOKIE['ECSCP']['page_size']) > 0)
+{
+	$filter['page_size'] = intval($_COOKIE['ECSCP']['page_size']);
+}else{
+	$filter['page_size'] = 10;
+}
+$filter['start']       = ($filter['page'] - 1) * $filter['page_size'];
+
 $cache_id = sprintf('%X', crc32(date('ymd' . '-' . $filter)));
 
 if (!$smarty->is_cached($tpl, $cache_id))
@@ -44,7 +55,7 @@ if (!$smarty->is_cached($tpl, $cache_id))
 	
 	
 	//品牌列表
-	$shop_list = get_all_supplier();
+	$shop_list = get_all_supplier($filter);
 	
 	
 	//推荐分类中的品牌
@@ -63,24 +74,17 @@ if (!$smarty->is_cached($tpl, $cache_id))
     $smarty->assign('logopath',		'/'.DATA_DIR.'/supplier/logo/');
     $smarty->assign('shops_list',   $shop_list['shops']);
     $smarty->assign('filter',       $shop_list['filter']);
-    $smarty->assign('record_count', $shop_list['record_count']);
-    $smarty->assign('page_count',   $shop_list['page_count']);
-    
-    $page = (isset($_REQUEST['page'])) ? intval($_REQUEST['page']) : 1;
-    
-    $start_array = range(1,$page);
-    $end_array   = range($page,$shop_list['page_count']);
-    if($page-5>0){
-    	$smarty->assign('start',$page-3);
-    	$start_array = range($page,$page-2);
-    }
-    if($shop_list['page_count'] - $page > 5){
-    	$smarty->assign('end',$page+3);
-    	$end_array   = range($page,$page+2);
-    }
-    $page_array  = array_merge($start_array,$end_array);
-    sort($page_array);
-    $smarty->assign('page_array',	array_unique($page_array));
+	
+    $filter = $shop_list['filter'];
+	
+    $page = $filter['page'];
+	$cid = $filter['id'];
+	$count = $filter['record_count'];
+	$size = $filter['page_size'];
+	$sort = $filter['sort_by'];
+	$order = $filter['sort_order'];
+	//var_dump($filter); exit;
+	assign_pager('brand_cat',   $cid, $count, $size, $sort, $order, $page, ''); // 分页
 	assign_dynamic('brands');
 }
 /* 显示模板 */
@@ -116,6 +120,8 @@ function get_tuijian_shop($tuijian){
 	$sql = "select * from ".$GLOBALS['ecs']->table('supplier_street')." where supplier_type in($types) and is_groom=1 and status=1 order by sort_order";
 	$all = $GLOBALS['db']->getAll($sql);
 	foreach($all as $k => $v){
+		
+		
 		$tuijian[$v['supplier_type']]['shoplist'][$v['supplier_id']] = $v;
 	}
 	return $tuijian;
@@ -124,32 +130,15 @@ function get_tuijian_shop($tuijian){
 /**
  * 获取品牌品牌街中的品牌
  */
-function get_all_supplier(){
+function get_all_supplier($filter){
 	global $tpl;
+	
 	$is_search = 0;//是否是搜索过来的
-	$filter['id']               = empty($_REQUEST['id']) ? 0 : intval($_REQUEST['id']);
-	$filter['keywords']         = isset($_REQUEST['keywords']) ? trim(addslashes(htmlspecialchars($_REQUEST['keywords']))) : '';
-	$filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'sort_order' : trim($_REQUEST['sort_by']);
-    $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
-	/* 分页大小 */
-    $filter['page'] = empty($_REQUEST['page']) || (intval($_REQUEST['page']) <= 0) ? 1 : intval($_REQUEST['page']);
-    if (isset($_REQUEST['page_size']) && intval($_REQUEST['page_size']) > 0)
-    {
-        $filter['page_size'] = intval($_REQUEST['page_size']);
-    }elseif (isset($_COOKIE['ECSCP']['page_size']) && intval($_COOKIE['ECSCP']['page_size']) > 0)
-    {
-        $filter['page_size'] = intval($_COOKIE['ECSCP']['page_size']);
-    }else{
-    	$filter['page_size'] = 13;
-    }
-    $filter['start']       = ($filter['page'] - 1) * $filter['page_size'];
 	
 	$where = " where  is_show=1 ";
     if($filter['id']){
         $where .= ' and brand_cat='.$filter['id'];
     }
-
-
 	
 	/* 记录总数 */
      $sql = "SELECT COUNT(*) FROM " .$GLOBALS['ecs']->table('brand'). " $where";
@@ -164,7 +153,7 @@ function get_all_supplier(){
 	           " LIMIT " . $filter['start'] . ",$filter[page_size]";
 	$arr = $GLOBALS['db']->getAll($sql);
 	foreach($arr as $key=>$val){
-		
+		$arr[$key]['url'] = build_uri('brand', array('bid'=>$val['brand_id']), $val['brand_name']);
 		$arr[$key]['address'] = "";//地址
 		//所在地
 		$arr[$key]['brand_name'] = trim($arr[$key]['brand_name'],',');

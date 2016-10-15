@@ -37,7 +37,6 @@
     <div>
       <!--name end--> 
       <script type='text/javascript'>var warestatus = 1; </script>
-
       <div class="goods_left" class="w600">
         <div id="preview" class="w600">
           <div  class="goods_img" id="li_{$goods.goods_id}">
@@ -431,6 +430,23 @@
       
       <!--preview end--> 
     </div>
+       
+       
+       <style type="text/css">
+	   .relative_goods{}
+	   .relative_goods h2{ color:#666; font-size:14px; margin-bottom:10px; font-weight:bold}
+	   .relative_goods a{ display:inline-block; padding:5px 10px; border-radius:5px; border:solid 1px #ddd; margin:2px;}
+	   
+	   </style>
+       <div style="clear:both"></div>
+       <div class="relative_goods">
+          <h2>Ralated to this item </h2>
+          <ul>
+             {foreach from=$relative_keywords item=keywords}
+             <a href="{$keywords.url}">{$keywords.label}</a>
+             {/foreach}
+          </ul>
+       </div>
   </div>
 
     <div class="left" style="display:none">
@@ -786,7 +802,7 @@ function changePrice()
 {
   var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
   var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
-  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+  Ajax.call(base_url+'goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
 }
 
 /**
@@ -830,7 +846,7 @@ function changePriceAll()
 {
 	var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
 	var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
-	Ajax.call('goods.php', 'act=allprice&id=' + goodsId + '&attr=' + attr + '&number=1', changePriceResponse, 'GET', 'JSON');
+	Ajax.call(base_url+'goods.php', 'act=allprice&id=' + goodsId + '&attr=' + attr + '&number=1', changePriceResponse, 'GET', 'JSON');
 }
 
 
@@ -853,7 +869,7 @@ function changePriceAll()
 <a class="compareHolder" href="javascript:void(0)" onClick="toggle_compare_box()" style="display:none;">对比栏</a>
 <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js" type="text/javascript"></script>
 <script>
-Ajax.call('goods.php', 'act=get_pickup_info&province='+remote_ip_info.province+'&city='+remote_ip_info.city+'&district='+remote_ip_info.district+'&suppid='+suppid,
+Ajax.call(base_url+'goods.php', 'act=get_pickup_info&province='+remote_ip_info.province+'&city='+remote_ip_info.city+'&district='+remote_ip_info.district+'&suppid='+suppid,
 	function(res){
 		if(res.error == 0) {
 			var result = '<ul>';
@@ -972,7 +988,7 @@ function get_pickup_point_list(region_id, obj)
 				document.getElementById('district').innerHTML;
 	document.getElementById('area_label').innerHTML = label;
 	
-	Ajax.call('goods.php', 'act=get_pickup_point_list&district_id='+region_id+'&suppid='+suppid, function(res) {
+	Ajax.call(base_url+'goods.php', 'act=get_pickup_point_list&district_id='+region_id+'&suppid='+suppid, function(res) {
 		var result = '<ul>';
 			if(res.length > 0)
 			{
@@ -1025,7 +1041,7 @@ function next_img()
 function del_collect(id)
 {
   goods_id = (typeof(id) == "undefined" ? 0 : id);
-  Ajax.call('user.php?act=del_collect', 'id=' + goods_id, del_collectResponse, 'GET', 'JSON');
+  Ajax.call(base_url+'user.php?act=del_collect', 'id=' + goods_id, del_collectResponse, 'GET', 'JSON');
 }
 
 function del_collectResponse(result)

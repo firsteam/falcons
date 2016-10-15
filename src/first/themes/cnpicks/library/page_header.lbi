@@ -7,6 +7,8 @@ return true;
 } 
 window.onerror = killerrors; 
 //-->
+
+var base_url='{$base_url}';
 </script>
 <?php
 function get_brands1($cat = 0, $app = 'brand')
@@ -240,9 +242,9 @@ function checkSearchForm()
 {
     if(document.getElementById('keyword').value)
     {
-	var frm  = document.getElementById('searchForm');
-	var type = parseInt(document.getElementById('searchtype').value);
-	frm.action = type==0 ? 'search.php' : 'stores.php';
+		var frm  = document.getElementById('searchForm');
+		var type = parseInt(document.getElementById('searchtype').value);
+		frm.action = type==0 ? 'search.php' : 'stores.php';
         return true;
     }
     else

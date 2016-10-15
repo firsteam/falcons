@@ -3041,6 +3041,8 @@ elseif ($_REQUEST['act'] == 'operate')
         {
             $_delivery[$value] = $delivery[$value];
         }
+		
+		$_delivery['how_oos'] = addslashes($_delivery['how_oos']);
         /* 发货单入库 */
         $query = $db->autoExecute($ecs->table('delivery_order'), $_delivery, 'INSERT', '', 'SILENT');
         $delivery_id = $db->insert_id();
@@ -3431,15 +3433,15 @@ elseif ($_REQUEST['act'] == 'operate')
             {
                 $msg = $_LANG['send_mail_fail'];
             }
-        }
+        }/* */
 
         /* 如果需要，发短信 */
         if ($GLOBALS['_CFG']['sms_order_shipped'] == '1' && $order['mobile'] != '')
         {
             include_once('../send.php');
 			$content = sprintf($_CFG['sms_order_shipped_tpl'],$order['order_sn'],$order['consignee'],$order['address'],$_CFG['sms_sign']);
-			//$content = '您的订单已发货，订单号为'.$order['order_sn'].'收货人为'.$order['consignee'].'收货地址为'.$order['address'].'，请注意查收【'.$GLOBALS['_CFG']['shop_name'].'】';
-				sendSMS($order['mobile'],$content);
+			$content = '您的订单已发货，订单号为'.$order['order_sn'].'收货人为'.$order['consignee'].'收货地址为'.$order['address'].'，请注意查收【'.$GLOBALS['_CFG']['shop_name'].'】';
+			sendSMS($order['mobile'],$content);
         }
     }
 

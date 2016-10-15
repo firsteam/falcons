@@ -2234,12 +2234,12 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
                     }
                 }
             }
-	    elseif ($go == 'article')
+			elseif ($go == 'article')
             {
                 //$uri = $rewrite ? $app.'-article-'.$suppid.'-' . $aid : $app.'.php?go=article&suppId='.$suppid.'&id=' . $aid;
-		$uri = $rewrite ? $app.'.php?go=article&suppId='.$suppid.'&id=' . $aid : $app.'.php?go=article&suppId='.$suppid.'&id=' . $aid;
+				$uri = $rewrite ? $app.'.php?go=article&suppId='.$suppid.'&id=' . $aid : $app.'.php?go=article&suppId='.$suppid.'&id=' . $aid;
             }
-	    elseif($go == 'search')
+			elseif($go == 'search')
             {
             	if ($rewrite)
                 {
@@ -2387,7 +2387,6 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
                     }
                 }
             }
-
             break;
         case 'category':
             if (empty($cid))
@@ -2398,7 +2397,12 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             {
                 if ($rewrite)
                 {
-                   $uri = 'category-' . $cid;
+                    if(empty($append))
+					{
+						$append = $GLOBALS['db']->getOne("select cat_name from  ". $GLOBALS['ecs']->table('category')." where cat_id = '$cid'");
+					}
+					$uri = PREFIX_CATEGORY.'/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$gid;
+				   //$uri = 'category-' . $cid;
                     if (isset($bid))
                     {
                         $uri .= '-b' . $bid;
@@ -2430,42 +2434,8 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
                     if (!empty($order))
                     {
                         $uri .= '-' . $order;
-                    }	
-					$uri = get_dir('category', $cid). '/'.$uri;		
+                    }		
 					//$uri = 'category.php?id=' . $cid;
-//                    if (!empty($bid))
-//                    {
-//                        $uri .= '&amp;brand=' . $bid;
-//                    }
-//                    if (isset($price_min))
-//                    {
-//                        $uri .= '&amp;price_min=' . $price_min;
-//                    }
-//                    if (isset($price_max))
-//                    {
-//                        $uri .= '&amp;price_max=' . $price_max;
-//                    }
-//                	if (isset($filter))
-//                    {
-//                        $uri .= '&amp;filter=' . $filter;
-//                    }
-//                    if (!empty($filter_attr))
-//                    {
-//                        $uri .='&amp;filter_attr=' . $filter_attr;
-//                    }
-//
-//                    if (!empty($page))
-//                    {
-//                        $uri .= '&amp;page=' . $page;
-//                    }
-//                    if (!empty($sort))
-//                    {
-//                        $uri .= '&amp;sort=' . $sort;
-//                    }
-//                    if (!empty($order))
-//                    {
-//                        $uri .= '&amp;order=' . $order;
-//                    }
                 }
                 else
                 {
@@ -2517,18 +2487,24 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             {
 				if ($rewrite)
 				{	
-					$uri =  'goods-' . $gid;
-					$pathrow = $GLOBALS['db']->getRow("select c.path_name,c.cat_id from ". $GLOBALS['ecs']->table('goods')." AS g left join ". $GLOBALS['ecs']->table('category') ." AS c on g.cat_id=c.cat_id where g.goods_id='$gid'" );
-					$pathrow['path_name'] = $pathrow['path_name'] ? $pathrow['path_name'] : ("cat".$pathrow['cat_id']);
-					$pathrow['path_name'] = PREFIX_CATEGORY ."-".$pathrow['path_name'];
-					$uri = $pathrow['path_name']. '/'.$uri;
+					if(empty($append))
+					{
+						$appendrow = $GLOBALS['db']->getRow("select goods_name from  ". $GLOBALS['ecs']->table('goods')." where goods_id = '$gid'");
+						$append = $appendrow['goods_name'];
+						/*$uri =  'goods-' . $gid;
+						$pathrow = $GLOBALS['db']->getRow("select c.path_name,c.cat_id from ". $GLOBALS['ecs']->table('goods')." AS g left join ". $GLOBALS['ecs']->table('category') ." AS c on g.cat_id=c.cat_id where g.goods_id='$gid'" );
+						$pathrow['path_name'] = $pathrow['path_name'] ? $pathrow['path_name'] : ("cat".$pathrow['cat_id']);
+						$pathrow['path_name'] = PREFIX_CATEGORY ."-".$pathrow['path_name'];
+						$uri = $pathrow['path_name']. '/'.$uri;*/
+					}
+					$uri = 'product/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$gid;
+					//$uri .= '-' . urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append));
 				}
 				else
 				{
 					$uri = 'goods.php?id=' . $gid;
 				}
             }
-
             break;
 		// case 'pre_sale':
   //           	if (empty($pre_sale_id))
@@ -2557,11 +2533,15 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             {
                 if ($rewrite)
                 {
-                    $uri = 'brand-' . $bid;
-                    if (isset($cid))
+					if(empty($append))
+					{
+						$append = $GLOBALS['db']->getOne("select brand_name from  ". $GLOBALS['ecs']->table('brand')." where brand_id = '$bid'");
+					}
+					$uri = 'store/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$bid;
+                    /*if (isset($cid))
                     {
                         $uri .= '-c' . $cid;
-                    }
+                    }*/
                     if (!empty($page))
                     {
                         $uri .= '-' . $page;
@@ -2607,11 +2587,16 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             {
                 if ($rewrite)
                 {
-                    $uri = 'brandcat-' . $bid;
-                    if (isset($cid))
+					if(empty($append))
+					{
+						$append = $GLOBALS['db']->getOne("select cat_name from  ". $GLOBALS['ecs']->table('brands_category')." where cat_id = '$bid'");
+					}
+					
+					$uri = PREFIX_BRANDCAT.'/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$bid;
+                    /*if (!empty($cid))
                     {
                         $uri .= '-c' . $cid;
-                    }
+                    }*/
                     if (!empty($page))
                     {
                         $uri .= '-' . $page;
@@ -2657,7 +2642,13 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             {
                 if ($rewrite)
                 {
-                    $uri = 'article_cat-' . $acid;
+                    if(empty($append))
+					{
+						$append = $GLOBALS['db']->getOne("select cat_name from  ". $GLOBALS['ecs']->table('article_cat')." where cat_id = '$acid'");
+					}
+					
+					$uri = PREFIX_ARTICLECAT.'/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$acid;
+					//$uri = 'article_cat-' . $acid;
                     if (!empty($page))
                     {
                         $uri .= '-' . $page;
@@ -2674,7 +2665,6 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
                     {
                         $uri .= '-' . $keywords;
                     }
-					$uri = get_dir('article_cat', $acid). '/'.$uri;
                 }
                 else
                 {
@@ -2756,7 +2746,55 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             break;
 		case 'pro_search':
             break;
-        case 'search':
+       case 'search':
+		    
+			if (empty($keywords))
+            {
+                return false;
+            }
+            else
+            {
+                if ($rewrite)
+                {
+					
+					//$keywords =  urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $keywords));
+					$uri = 'market/' . $keywords.'.html';
+					$params1 = '';
+                    if (!empty($page))
+                    {
+                        $params1 .= 'page=' . $page;
+                    }
+                    if (!empty($sort))
+                    {
+                        $params1 .= '&amp;sort=' . $sort;
+                    }
+                    if (!empty($order))
+                    {
+                        $params1 .= '&amp;order=' . $order;
+                    }
+					if(!empty($params1))
+					{
+						$uri .= '?'.$params1;
+					}
+                }
+                else
+                {
+                    $uri = 'search.php?id=' . $keywords;
+                    if (!empty($page))
+                    {
+                        $uri .= '&amp;page=' . $page;
+                    }
+                    if (!empty($sort))
+                    {
+                        $uri .= '&amp;sort=' . $sort;
+                    }
+                    if (!empty($order))
+                    {
+                        $uri .= '&amp;order=' . $order;
+                    }
+                    
+                }
+            }
             break;
         case 'exchange':
             if ($rewrite)
@@ -2828,20 +2866,24 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 
     if ($rewrite)
     {
-        if ($rewrite == 2 && !empty($append))
+        if ($rewrite == 2 && !empty($append) && $app='goods')
         {
             $uri .= '-' . urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append));
         }
-		if($app != 'supplier')
+		
+		
+		if($app != 'supplier' && $app != 'search')
 		{
         	$uri .= '.html';
 		}
+		
+		
     }
     if (($rewrite == 2) && (strpos(strtolower(EC_CHARSET), 'utf') !== 0))
     {
         $uri = urlencode($uri);
     }
-    return $uri;
+    return $GLOBALS['ecs']->url().$uri;
 }
 
 /**
@@ -3216,8 +3258,13 @@ function exception_handler($errno, $errstr, $errfile, $errline)
 function get_image_path($goods_id, $image='', $thumb=false, $call='goods', $del=false)
 {
     $url = empty($image) ? $GLOBALS['_CFG']['no_picture'] : $image;
+    //$url = (stristr($url , 'http') ||stristr($url , 'www') )? $url : '../'.$url;
+	if ( strpos ( $url, 'http://' ) === false && strpos ( $url, 'https://' ) === false) {
+		$url = $GLOBALS['ecs']->url().$url;
+	}
     return $url;
 }
+
 
 /**
  * 调用使用UCenter插件时的函数
@@ -4230,14 +4277,16 @@ function clearhtml_file($type, $cid, $id)
 {
 	if ($type=='goods')
 	{
-		$dir = ROOT_PATH . get_dir('category', $cid);
-		$file = $dir. "/goods-".$id.".html";
+		$dir = build_uri("goods", array('gid'=> $id));
+		$dir = str_replace($GLOBALS['ecs']->url(),ROOT_PATH,$dir);
+		$file = $dir. ".html";
 		@unlink($file);
 	}
 	elseif($type=='article')
 	{
-		$dir = ROOT_PATH . get_dir('article_cat', $cid);
-		$file = $dir. "/article-".$id.".html";
+		$dir = build_uri("article", array('aid'=> $id));
+		$dir = str_replace($GLOBALS['ecs']->url(),ROOT_PATH,$dir);
+		$file = $dir. ".html";
 		@unlink($file);
 	}
 	elseif($type=='index')
@@ -4325,24 +4374,24 @@ function get_dir($type, $id)
 
 	if ($type == 'category')
 	{
-		$sql = "select path_name, cat_id from ". $GLOBALS['ecs']->table('category') ."  where cat_id= '$id' ";
+		$sql = "select cat_name, cat_id from ". $GLOBALS['ecs']->table('category') ."  where cat_id= '$id' ";
 		$path_row = $GLOBALS['db'] ->getRow($sql);
-		$path_row['path_name'] = $path_row['path_name'] ? $path_row['path_name'] : ("cat".$path_row['cat_id']);
-		$path_row['path_name'] = PREFIX_CATEGORY."-".$path_row['path_name'];
+		$path_row['cat_name'] = $path_row['cat_name'] ? urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $path_row['cat_name'])) : ("cat".$path_row['cat_id']);
+		$path_row['cat_name'] = PREFIX_CATEGORY."/".$path_row['cat_name']."-".$id;
 	}
 	elseif($type == 'article_cat')
 	{
-		$sql = "select path_name, cat_id from ". $GLOBALS['ecs']->table('article_cat') ." where cat_id= '$id' ";
+		$sql = "select cat_name, cat_id from ". $GLOBALS['ecs']->table('article_cat') ." where cat_id= '$id' ";
 		$path_row = $GLOBALS['db'] ->getRow($sql);
-		$path_row['path_name'] = $path_row['path_name'] ? $path_row['path_name'] : "cat".$path_row['cat_id'];	
-		$path_row['path_name'] = PREFIX_ARTICLECAT."-".$path_row['path_name'];
+		$path_row['cat_name'] = $path_row['cat_name'] ? urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $path_row['cat_name'])) : "cat".$path_row['cat_id'];	
+		$path_row['cat_name'] = PREFIX_ARTICLECAT."/".$path_row['cat_name']."-".$id;
 	}
 	elseif($type == 'brand')
 	{
-		$path_row['path_name'] = "brand";
+		$path_row['cat_name'] = "brand";
 	}
 
-	$dirname=trim($path_row['path_name']);
+	$dirname=trim($path_row['cat_name']);
     
 	/*
 	if (!file_exists($dirname))

@@ -150,7 +150,7 @@ function addToCart(goodsId, parentId, isnowbuy) {
 		goods.number = number;
 		goods.parent = (typeof (parentId) == "undefined") ? 0 : parseInt(parentId);
 		//Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
-                Ajax.call('flow.php?step=add_to_cart', 'goods=' + JSON.stringify(goods), addToCartResponse, 'POST', 'JSON');
+                Ajax.call(base_url+'flow.php?step=add_to_cart', 'goods=' + JSON.stringify(goods), addToCartResponse, 'POST', 'JSON');
 	}
 
 }
@@ -172,9 +172,9 @@ function addToCartNums(goodsId, parentId) {
 		goods.parent = (typeof (parentId) == "undefined") ? 0 : parseInt(parentId);
 
 		if (i == buynum) {
-			Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
+			Ajax.call(base_url+'flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
 		} else {
-			Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), '', 'POST', 'JSON');
+			Ajax.call(base_url+'flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), '', 'POST', 'JSON');
 		}
 
 	}
@@ -255,7 +255,7 @@ function MoveBox(gid) {
 		flyCollect(gid, 'collectBox');// 飞入购物车
 	} else {
 		// 购物车页面加入操作，刷新页面
-		location.href = 'flow.php?step=cart';
+		location.href = base_url+'flow.php?step=cart';
 	}
 }
 
@@ -263,7 +263,7 @@ function MoveBox(gid) {
  * 添加商品到收藏夹
  */
 function collect(goodsId) {
-	Ajax.call('user.php?act=collect', 'id=' + goodsId, collectResponse, 'GET', 'JSON');
+	Ajax.call(base_url+'user.php?act=collect', 'id=' + goodsId, collectResponse, 'GET', 'JSON');
 }
 
 /*******************************************************************************
