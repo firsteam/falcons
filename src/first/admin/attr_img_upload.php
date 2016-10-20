@@ -116,7 +116,14 @@ if ($img_list)
 		{
 			echo '<div class="shuxingtupian">属性图片</div>';		
 		}
-		echo '<img src="../'.$img['thumb_url'].'"  class="gallery_img">';
+		if (substr($img['thumb_url'],0,4)!='http')
+		{
+			echo '<img src="../'.$img['thumb_url'].'"  class="gallery_img">';
+		}
+		else
+		{
+			echo '<img src="'.$img['thumb_url'].'"  class="gallery_img">';
+		}
 		echo '<br><br><a href="?act=drop_image&goods_id=' . $goods_id . '&goods_attr_id=' . $goods_attr_id . '&img_id='. $img['img_id'] .'" onclick="javascript: return  (confirm(\'确认删除此图片吗\'))">[删除]</a> <a href="?act=set_attrimage&goods_id=' . $goods_id . '&goods_attr_id=' . $goods_attr_id . '&img_id='. $img['img_id'] .'">[属性图片]</a><br>顺序:<input type="text" name="sort" value="'.$img['img_sort'].'" style="width:20px;" onblur="set_sort(this.value,'.$img['img_id'].')">';
 		echo '</div>';
 	}

@@ -2489,8 +2489,7 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 				{	
 					if(empty($append))
 					{
-						$appendrow = $GLOBALS['db']->getRow("select goods_name from  ". $GLOBALS['ecs']->table('goods')." where goods_id = '$gid'");
-						$append = $appendrow['goods_name'];
+						$append = $GLOBALS['db']->getOne("select goods_name from  ". $GLOBALS['ecs']->table('goods')." where goods_id = '$gid'");
 						/*$uri =  'goods-' . $gid;
 						$pathrow = $GLOBALS['db']->getRow("select c.path_name,c.cat_id from ". $GLOBALS['ecs']->table('goods')." AS g left join ". $GLOBALS['ecs']->table('category') ." AS c on g.cat_id=c.cat_id where g.goods_id='$gid'" );
 						$pathrow['path_name'] = $pathrow['path_name'] ? $pathrow['path_name'] : ("cat".$pathrow['cat_id']);

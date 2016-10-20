@@ -706,7 +706,7 @@
 							</span>
 							{/foreach}
 						</div>
-						<iframe name="attr_upload" src="attr_img_upload.php?goods_id={$goods.goods_id}&goods_attr_id={$color_list_www_ecshop68_com.0.goods_attr_id}" frameborder=1 scrolling=no width="100%" height="auto" style="min-height:630px; border:1px #eee solid; margin-top:5px;"> </iframe>
+						<iframe name="attr_upload" src="attr_img_upload.php?goods_id={$goods.goods_id}&goods_attr_id={$color_list_www_ecshop68_com.0.goods_attr_id}" frameborder=1 width="100%" height="auto" style="min-height:630px; border:1px #eee solid; margin-top:5px;"> </iframe>
 					</td>
 				</tr>
 				<tr>
@@ -750,7 +750,7 @@
 						{foreach from=$link_goods_list item=link_goods name=link_goods}
                            <dl class="link_goods_{$link_goods.goods_id}" id="link_goods_{$link_goods.goods_id}">
                              <dt>
-                               <img src="./../{$link_goods.goods_thumb}" width="150" height="150"/>
+                               <img src="{if substr($link_goods.goods_thumb,0,4)!='http' }./../{/if}{$link_goods.goods_thumb}" width="150" height="150"/>
                              </dt>
                              <dd>
                                 <div class="goods_name">{$link_goods.goods_name}</div>

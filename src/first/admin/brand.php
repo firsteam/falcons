@@ -376,7 +376,7 @@ function get_brandlist()
         /* 记录总数以及页数 */
         if (isset($_POST['brand_name']))
         {
-            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE site_url like \'%'.$_POST['brand_name'].'%\' or brand_name = \''.$_POST['brand_name'].'\'';
+            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE site_url like \'%'.$_POST['brand_name'].'%\' or brand_name like \'%'.$_POST['brand_name'].'%\' or brand_name_cn like \'%'.$_POST['brand_name'].'%\'';
         }
         else
         {
@@ -398,7 +398,7 @@ function get_brandlist()
             {
                 $keyword = $_POST['brand_name'];
             }
-            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE site_url like '%{$keyword}%' or brand_name like '%{$keyword}%' ORDER BY sort_order ASC";
+            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE site_url like '%{$keyword}%' or brand_name like '%{$keyword}%' or brand_name_cn like '%{$keyword}%' ORDER BY sort_order ASC";
         }
         else
         {

@@ -12,6 +12,7 @@
 
   <table cellpadding="3" cellspacing="1">
     <tr>
+	  <th>brand_id</th>
       <th>{$lang.brand_name}</th>
 	  <th>{$lang.brand_name}</th>
       <th>{$lang.site_url}</th>
@@ -22,6 +23,9 @@
     </tr>
     {foreach from=$brand_list item=brand}
     <tr>
+	  <td class="first-cell">
+        {$brand.brand_id}
+      </td>
       <td class="first-cell">
         <span style="float:right">{$brand.brand_logo}</span>
         <span onclick="javascript:listTable.edit(this, 'edit_brand_name', {$brand.brand_id})">{$brand.brand_name|escape:html}</span>

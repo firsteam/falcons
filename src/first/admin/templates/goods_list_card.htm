@@ -43,8 +43,8 @@
     <input type="checkbox" name="checkboxes[]" value="{$goods.goods_id}" />{$goods.goods_id}
 		<div class="pic">			
 			<a href="../goods.php?id={$goods.goods_id}" target="_blank"> 
-			<img src="../{$goods.goods_thumb}" border="0" title="" class="img1"/> 
-			<img src="../{$goods.goods_thumb}" border="0" title="" class="img2"/>
+			<img src="{if substr($goods.goods_thumb,0,4)!='http' }../{/if}{$goods.goods_thumb}" border="0" title="" class="img1"/> 
+			<img src="{if substr($goods.goods_thumb,0,4)!='http' }../{/if}{$goods.goods_thumb}" border="0" title="" class="img2"/>
 			</a>	  
 		</div>
     

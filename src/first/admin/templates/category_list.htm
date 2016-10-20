@@ -11,6 +11,7 @@
 
 <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
   <tr>
+	<th>cat_id</th>
     <th>{$lang.cat_name}&nbsp;&nbsp;<a href="javascript:;" onclick="expandAll(this)">{$lang.cat_collect}</a></th>
     <th>{$lang.goods_number}</th>
     <th>{$lang.measure_unit}</th>
@@ -22,6 +23,7 @@
   </tr>
   {foreach from=$cat_info item=cat}
   <tr align="center" class="{$cat.level}" id="{$cat.level}_{$cat.cat_id}">
+	<td>{$cat.cat_id}</td>
     <td align="left" class="first-cell" >
       {if $cat.is_leaf neq 1}
       <img src="images/menu_minus.gif" id="icon_{$cat.level}_{$cat.cat_id}" width="9" height="9" border="0" style="margin-left:{$cat.level}em" onclick="rowClicked(this)" />
@@ -42,12 +44,12 @@
       <img src="../{$cat.cat_image}" border="0" style="vertical-align:middle;" width="60px" height="21px">
     {/if}
     </td>
-    <td width="8%">{$cat.goods_num}</td>
-    <td width="8%"><span onclick="listTable.edit(this, 'edit_measure_unit', {$cat.cat_id})">{$cat.measure_unit|default:N/A}</span></td>
-    <td width="8%"><img src="images/{if $cat.show_in_nav eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show_in_nav', {$cat.cat_id})" /></td>
-    <td width="8%"><img src="images/{if $cat.is_show eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_is_show', {$cat.cat_id})" /></td>
-    <td width="8%" ><span onclick="listTable.edit(this, 'edit_grade', {$cat.cat_id})">{$cat.grade}</span></td>
-    <td width="8%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td>
+    <td width="6%">{$cat.goods_num}</td>
+    <td width="6%"><span onclick="listTable.edit(this, 'edit_measure_unit', {$cat.cat_id})">{$cat.measure_unit|default:N/A}</span></td>
+    <td width="6%"><img src="images/{if $cat.show_in_nav eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show_in_nav', {$cat.cat_id})" /></td>
+    <td width="6%"><img src="images/{if $cat.is_show eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_is_show', {$cat.cat_id})" /></td>
+    <td width="6%" ><span onclick="listTable.edit(this, 'edit_grade', {$cat.cat_id})">{$cat.grade}</span></td>
+    <td width="6%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td>
     <td width="25%" align="center">
       <a href="category.php?act=move&cat_id={$cat.cat_id}">{$lang.move_goods}</a> |
       <a href="category.php?act=edit&amp;cat_id={$cat.cat_id}">{$lang.edit}</a> |
