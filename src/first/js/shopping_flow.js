@@ -16,19 +16,23 @@ var groupBuyPayment = null;
 var selected_pay_code = null;
 /* 余额额支付密码_添加_END_www.68ecshop.com */
 
-function selectShipping(recid, suppid) {
-	Ajax.call('flow.php?step=select_shipping', 'recid=' + recid + '&suppid=' + suppid, orderShipping, 'GET', 'JSON');
-}
+function selectShipping(obj)
+{
+  if (selectedShipping == obj)
+  {
+    return;
+  }
+  else
+  {
+    selectedShipping = obj;
+  }
 
-function orderShipping(result) {
-	if (result.error) {
-		alert(result.error);
-	} else {
-		orderSelectedResponse(result.content);
-		if (document.getElementById('picktxt' + result.suppid)) {
-			document.getElementById('picktxt' + result.suppid).innerHTML = result.picktxt;
-		}
-	}
+  $("#shipping_tab").find('.seled').removeClass('seled');
+  $("#shipping_item_"+obj.value).addClass('seled');
+
+
+  var now = new Date();
+  Ajax.call('flow.php?step=select_shipping', 'shipping=' + obj.value, orderShippingSelectedResponse, 'GET', 'JSON');
 }
 
 /*******************************************************************************
@@ -84,6 +88,8 @@ function selectShipping_old(obj) {
 		document.getElementById('ECS_NEEDINSURE').disabled = false;
 	}
 
+
+
 	var now = new Date();
 	Ajax.call('flow.php?step=select_shipping', 'shipping=' + obj.value + '&pickup=' + supportPickup, orderShippingSelectedResponse, 'GET', 'JSON');
 }
@@ -115,8 +121,13 @@ function orderShippingSelectedResponse(result) {
 	if (document.getElementById('pickup_point_box')) {
 		document.getElementById('pickup_point_box').innerHTML = result.pickup_content;
 	}
+	
+	
+	
+	
 	/* 代码增加_end By www.68ecshop.com */
-
+//window.location.href="flow.php?step=checkout#shipping_tab";
+//return;
 	orderSelectedResponse(result);
 }
 
@@ -275,11 +286,11 @@ function orderSelectedResponse(result) {
 
 	try {
 		/* 余额额支付密码_添加_START_www.68ecshop.com */
-		selected_pay_code = result.pay_code;
 		/* 余额额支付密码_添加_END_www.68ecshop.com */
 		var layer = document.getElementById("ECS_ORDERTOTAL");
 
 		layer.innerHTML = (typeof result == "object") ? result.content : result;
+		selected_pay_code = result.pay_code;
 
 		if (result.payment != undefined) {
 			var surplusObj = document.forms['theForm'].elements['surplus'];
@@ -728,85 +739,79 @@ function checkOrderForm(frm) {
 /*******************************************************************************
  * 检查收货地址信息表单中填写的内容
  */
-function checkConsignee(frm) {
-	var msg = new Array();
-	var err = false;
+function submitAddress() {
+	var frm = document.forms['theForm'];
+    var cmt = new Object;
+    cmt.address_id      = frm.elements['address_id'].value;
+    cmt.consignee       = frm.elements['consignee'].value;
+	cmt.last_name       = frm.elements['last_name'].value;
+    cmt.address         = frm.elements['address'].value;
+	cmt.address1         = frm.elements['address1'].value;
+    cmt.zipcode         = frm.elements['zipcode'].value;
+    cmt.country         = frm.elements['country'].value;
+    cmt.province        = frm.elements['province'].value;
+    cmt.city            = frm.elements['city'].value;
+	cmt.mobile          = frm.elements['mobile'].value;
+	/*cmt.closediv	      = frm.elements['closediv'].value;
+	cmt.shipping_bian	  = frm.elements['shipping_bian'].value;
+    cmt.sex             = frm.elements['sex'].value;*/
 
-	if (frm.elements['country'] && frm.elements['country'].value == 0) {
-		msg.push(country_not_null);
-		err = true;
-	}
+    /* 邮箱不是必填项
+    if (cmt.email.length == 0)
+    {
+		  alert('邮箱地址不能为空');
+		  return false;
+    }
+   */
+    var err;
+    if( cmt.country.length<1 )
+    {                
+      document.getElementById('country_notice').innerHTML = 'Please select Country.';
+      err = true;
+    }
+	if( cmt.province.length<1 )
+    {                
+      document.getElementById('province_notice').innerHTML = 'Please select Province.';
+      err = true;
+    }
+    if( cmt.consignee.length<1 )
+    {
+      document.getElementById('consignee_name_notice').innerHTML = 'Please input your first name.';
+      err = true;
+    }
+	if( cmt.last_name.length<1 )
+    {
+      document.getElementById('last_name_notice').innerHTML = 'Please input your last name.';
+      err = true;
+    }
+    if( cmt.city.length<2 )
+    {
+      document.getElementById('city_notice').innerHTML = 'At least 2 characters.';
+      err = true;
+    }
+    if( cmt.address.length<5 )
+    {
+      document.getElementById('address_notice').innerHTML = 'At least 5 characters.';
+      err = true;
+    }
+    if( cmt.mobile.length<5 )
+    {
+      document.getElementById('mobile_notice').innerHTML = 'At least 5 numbers.';
+      err = true;
+    }
+    if( cmt.zipcode.length<4 )
+    {
+      document.getElementById('zipcode_notice').innerHTML = 'At least 4 characters.';
+      err = true;
+    }
 
-	if (frm.elements['province'] && frm.elements['province'].value == 0 && frm.elements['province'].length > 1) {
-		err = true;
-		msg.push(province_not_null);
-	}
+    if( err )
+    {
+      return false;
+    }
 
-	if (frm.elements['city'] && frm.elements['city'].value == 0 && frm.elements['city'].length > 1) {
-		err = true;
-		msg.push(city_not_null);
-	}
-
-	if (frm.elements['district'] && frm.elements['district'].length > 1) {
-		if (frm.elements['district'].value == 0) {
-			err = true;
-			msg.push(district_not_null);
-		}
-	}
-
-	if (Utils.isEmpty(frm.elements['consignee'].value)) {
-		err = true;
-		msg.push(consignee_not_null);
-	}
-	
-	//邮箱如果不为空则验证邮箱是否合法
-	if (frm.elements['email'].value.length > 0 &&!Utils.isEmail(frm.elements['email'].value)) {
-		err = true;
-		msg.push(invalid_email);
-	}
-
-	if (frm.elements['address'] && Utils.isEmpty(frm.elements['address'].value)) {
-		err = true;
-		msg.push(address_not_null);
-	}
-
-	if (frm.elements['zipcode'] && frm.elements['zipcode'].value.length > 0 && (!Utils.isNumber(frm.elements['zipcode'].value))) {
-		err = true;
-		msg.push(zip_not_num);
-	}
-
-	/*
-	 * if (Utils.isEmpty(frm.elements['tel'].value)) { err = true;
-	 * msg.push(tele_not_null); } else { if
-	 * (!Utils.isTel(frm.elements['tel'].value)) { err = true;
-	 * msg.push(tele_invaild); } }
-	 * 
-	 */
-//	if (frm.elements['mobile'] && frm.elements['mobile'].value.length > 0 && (!Utils.isMobile(frm.elements['mobile'].value))) {
-//		err = true;
-//		msg.push(mobile_invaild);
-//	}
-
-	if (Utils.isEmpty(frm.elements['mobile'].value)) {
-		err = true;
-		msg.push(mobile_not_null);
-	} else {
-		if (!Utils.isMobile(frm.elements['mobile'].value)) {
-			err = true;
-			msg.push(mobile_invaild);
-		}
-	}
-
-	if (frm.elements['tel'] && frm.elements['tel'].value.length > 0 && (!Utils.isTel(frm.elements['tel'].value))) {
-		err = true;
-		msg.push(tele_invaild);
-	}
-
-	if (err) {
-		message = msg.join("\n");
-		alert(message);
-	}
-	return err;
+    /*Ajax.call('flow.php?act=saveAddress', 'address=' + $.toJSON(cmt), addressResponse, 'POST', 'JSON');*/
+   
 }
 // 增值税发票_添加_START_www.68ecshop.com
 function check_taxpayer_id(t, id) {

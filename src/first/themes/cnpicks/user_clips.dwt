@@ -128,7 +128,7 @@
                 <li class="name"><a href="user.php?act=order_detail&order_id={$jiao.order_id}" title="{$jiao.goods_name}" target="_blank">{$jiao.goods_name}</a></li>
                 <li class="attr">{$jiao.goods_attr}</li>
                 <li class="type">{$jiao.handler}</li>
-                <li class="check"> <a href="user.php?act=order_detail&order_id={$jiao.order_id}" title="查看订单" target="_blank">查看</a> </li>
+                <li class="check"> <a href="user.php?act=order_detail&order_id={$jiao.order_id}" title="{$lang.view_order}" target="_blank">{$lang.view}</a> </li>
               </ul>
               {/foreach} </div>
             {/if} 

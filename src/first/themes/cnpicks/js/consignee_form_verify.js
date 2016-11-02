@@ -1,8 +1,23 @@
 function checkConsigneeName(t,id)
 {
 	var submit_disabled = false;
-	if (t.value.length < 2) { 
-		document.getElementById(id).innerHTML = '2 characters at least for your last name.';
+	if (t.value.length < 1) { 
+		document.getElementById(id).innerHTML = 'Please input your first name.';
+		submit_disabled = true;
+	} else {
+		document.getElementById(id).innerHTML = '';
+	}
+
+	if (submit_disabled) {
+		document.forms['theForm'].elements['Submit'].disabled = 'disabled';
+		return false;
+	}
+}
+function checkLastName(t,id)
+{
+	var submit_disabled = false;
+	if (t.value.length < 1) { 
+		document.getElementById(id).innerHTML = 'Please input your last name';
 		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
@@ -31,11 +46,16 @@ function checkCountry(t,id)
 function checkProvince(t,id)
 {
 	var submit_disabled = false;
-	if (t.value.length < 0) { 
-		document.getElementById(id).innerHTML = 'At least 2 characters.';
+	if (t.value.length<1) {
+		document.getElementById(id).innerHTML = 'Please select Province.';
 		submit_disabled = true;
 	} else {
 		document.getElementById(id).innerHTML = '';
+	}
+
+	if (submit_disabled) {
+		document.forms['theForm'].elements['Submit'].disabled = 'disabled';
+		return false;
 	}
 }
 function checkCity(t,id)

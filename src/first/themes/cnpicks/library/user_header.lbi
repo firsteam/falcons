@@ -1,6 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";
+var base_url='{$base_url}';
 </script>
 <div id="sn-bd">
   <div class="sn-container">   	

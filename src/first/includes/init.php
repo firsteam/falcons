@@ -159,7 +159,20 @@ if (!defined('INIT_NO_USERS'))
 
     $sess = new cls_session($db, $ecs->table('sessions'), $ecs->table('sessions_data'));
 
-    define('SESS_ID', $sess->get_session_id());
+    if(!empty($_SESSION['user_id']))
+	{
+	   define('SESS_ID', md5($_SESSION['user_id'].'_'.$_SESSION['user_name']));
+	   //echo SESS_ID;
+	}
+	else
+	{  
+		//define('SESS_ID', $sess->get_session_id());
+		/*if(empty($_COOKIE['randnumber']))
+		{
+		   setcookie("randnumber",rand(0,1000),time()+86400);
+		}*/
+		define('SESS_ID', md5(real_ip()));
+    }
 }
 if(isset($_SERVER['PHP_SELF']))
 {

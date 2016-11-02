@@ -755,7 +755,7 @@ function get_goods_gallery($goods_id)
 {
     $sql = 'SELECT img_id, img_url, thumb_url, img_desc' .
         ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
-        " WHERE goods_id = '$goods_id'";
+        " WHERE goods_id = '$goods_id' ORDER BY `img_id` ASC, `img_sort` ASC ";
     $row = $GLOBALS['db']->getAll($sql);
     /* 格式化相册图片路径 */
     foreach($row as $key => $gallery_img)

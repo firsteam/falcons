@@ -261,10 +261,8 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	background: #ccd0d9
 }
 .btn-small {
-	height: 28px;
-	line-height: 28px;
-	width: 118px;
-	font-size: 12px
+	padding: 5px 15px;
+	font-size: 14px
 }
 .btn-tiny {
 	padding: 3px 15px;
@@ -2846,6 +2844,10 @@ a:hover img {
 }
 .p-img a{
 	text-decoration: none;
+}
+.p-img a img{
+	max-height: 160px;
+	max-width: 160px;
 }
 .p-img .pi {
 	cursor: pointer;

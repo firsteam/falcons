@@ -377,7 +377,7 @@ else
     <div class="flowBox_jm">
       <div class="title_jm">
         <ul id="HotBoxTit">
-          <li class="curr">{$lang.best_goods}</li>
+          <li class="curr">Browsing History</li>
           <!-- <li>{$lang.hot_goods}</li> -->
           <!-- {if $collection_goods} -->
           <li>{$lang.favorite}</li>
@@ -389,16 +389,7 @@ else
       </div>
       <div class="flowHot" id="HotBox" >
         <ul class="curr clearfix">
-          {if $bestgoods_list}
-          {foreach from=$bestgoods_list item=bestgoods}
-          <li>
-            <p class="pic"><a href="{$bestgoods.url}" target="_blank" ><img src="{$bestgoods.goods_thumb}" ></a></p>
-            <p class="name"><a href="{$bestgoods.url}" target="_blank" >{$bestgoods.goods_name}</a></p>
-            <p class="price disable-by-cy"><del style="color:#999">{$bestgoods.market_price}</del></p>
-            <p><font class="price">{$bestgoods.shop_price}</font></p>
-            <a class="j_AddCart" href="javascript:addToCart({$bestgoods.goods_id})"></a> </li>
-          {/foreach}
-          {/if}
+        {insert name=history_1}
         </ul>
         <!--
 		<ul class="clearfix">

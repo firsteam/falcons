@@ -199,7 +199,7 @@ cursor: pointer;
 	text-decoration: underline;
 }
 .thumb_name dl dd a.f6{
-	font-size:12px;	
+	/*font-size:12px;	*/
 }
 .cart_jmprice {
 	font-size: 14px;
@@ -389,26 +389,46 @@ a.jm_buy {
 .payment_tab_jm {
 	width: 100%;
 	margin-top: 20px;
-	border-top: 1px solid #ccc;
+	/*border-top: 1px solid #ccc;*/
 }
-.payment_tab_jm li {
-	border: 1px solid #ccc;
-	border-top: none;
-	padding: 15px 15px 25px 15px;
+
+.payment_tab_jm label {
+	padding: 10px 20px;
+	margin:10px 0px;
 	overflow: hidden;
 	font-size: 14px;
+	display:block;
+	cursor:pointer;	
+}
+.payment_tab_jm label.seled {
+	border: 2px solid #ff3300;
 	font-weight: bold;
 }
-.payment_subbox {
-	display: none;
+
+.payment_tab_jm li {
+	/*border: 1px solid #ccc;
+	border-top: none;*/
+	padding: 0px 20px;
+	margin:10px 0px;
+	overflow: hidden;
+	font-size: 14px;
 }
+
 .payment_tab_jm li.seled {
-	padding:15px 15px 25px 15px;
-	border: 2px solid# ff3300;
+	border: 2px solid #ff3300;
+	font-weight: bold;
 }
+.payment_tab_jm li .address-item{float:left;width:700px;padding:10px 0px}
+.payment_tab_jm li .edit_addr{float:right;font-weight:normal;padding:10px 0px}
+
 .payment_tab_jm li.seled .payment_subbox {
 	display: block;
 }
+
+.payment_subbox {
+	display: none;
+}
+
 .payment_subbox ul {
 	margin: 10px;
 }
@@ -426,7 +446,7 @@ a.jm_buy {
 	cursor:pointer;	
 }
 .checkgoods {
-	border: 1px solid #ccc;
+	/*border: 1px solid #ccc;*/
 	margin-top: 10px;
 }
 .checkgoods th {
@@ -437,7 +457,7 @@ a.jm_buy {
 .checkgoods td {
 	background: #fff;
 	padding: 15px 10px;
-	border-top: 1px dotted #e2e2e2;
+	/*border-top: 1px dotted #e2e2e2;*/
 }
 .checkgoods td.shipping_type
 {
@@ -472,7 +492,7 @@ a.jm_buy {
 .checkgoods .tdother2 {
 	padding: 15px 30px;
 	background: #fafafa;
-	border-top: 1px solid #ddd;
+	/*border-top: 1px solid #ddd;*/
 }
 .checkgoods .price_font {
 	font-family: "Microsoft YaHei", 微软雅黑;
@@ -544,7 +564,7 @@ a.a_other1_h {
 	margin-bottom: 20px;
 	overflow: hidden;
 }
-.address_jm ul {
+/*.address_jm ul {
 	float: left;
 	padding-top: 15px;
 }
@@ -576,13 +596,15 @@ a.a_other1_h {
 }
 .address_jm ul li.xxxxxx .edit_addr {
 	display: block;
-}
+}*/
+.address-item{ cursor:pointer}
+
 .address_jm_add {
 	float: left;
 	border: 1px solid #ccc;
-	text-indent: 22px;
-	width: 93px;
-	height: 27px;
+	text-indent: 25px;
+	width: 80px;
+	height: 28px;
 	line-height: 28px;
 	background: url(../images/jmpic/add_btn_address.jpg) no-repeat 0 0;
 	cursor: pointer;
@@ -598,6 +620,12 @@ a.a_other1_h {
 	color: #ff3300;
 	text-decoration: none;
 }
+.input_necessary {
+	color:#ff3300;
+	font-size:14px;
+	font-weight:bold;
+	padding:0px 10px;
+}
 .input_addr1 {
 	width: 477px;
 	height:30px;
@@ -606,10 +634,10 @@ a.a_other1_h {
 	border:1px #ddd solid
 }
 .input_addr2 {
-	width: 250px;
-	height:25px;
-	line-height:25px;
-	padding:0px 5px;
+	width: 300px;
+	height:30px;
+	/*line-height:25px;*/
+	padding:0px 10px;
 	border:1px #ddd solid
 }
 .input_addr2_t{
@@ -921,23 +949,14 @@ body {
 	border: 1px solid #ddd;
 	text-align: center;
 	line-height: 35px;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 	z-index: 99999;
-	width: 500px;
-	height: 500px;
-	left: 50%;/*FF IE7*/
-	top: 50%;/*FF IE7*/
-	margin-left: -250px!important;/*FF IE7 该值为本身宽的一半 150 *2 =300 */
-	margin-top: -300px!important;/*FF IE7 该值为本身高的一半 60*2=120 */
-
-	-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
+	height: auto;
+	/*-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
-	box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
-	position: fixed!important;/*FF IE7*/
-	position: relative;/*IE6*/
-_top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Compat') ?  documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
- document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+	box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);*/
+	position: relative;/*IE5 IE5.5*/
 }
 .mydiv-l {
 	float: left;
@@ -973,7 +992,7 @@ _top:       expression(eval(document.compatMode &&  document.compatMode=='CSS1Co
 	font-weight: normal;
 }
 #PopAddressCon {
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 .bg {
 	background-color: #ccc;
@@ -1237,3 +1256,13 @@ input.addtotable_m {
  line-height:20px;
  border: 1px solid #ddd;
 }
+
+
+#gateway_list{padding:0; background:none;}
+#gateway_list .gateway_ul_box{border-top:1px solid #d5d5d5; margin-top:15px; overflow:hidden;}
+.gateway_list li{padding: 10px 15px; clear:both; cursor:pointer}
+.gateway_line{border: 1px solid #d5d5d5; border-top: 0;}
+.gateway_list .payment{float:left; margin-top:13px;}
+.gateway_list li .tit{cursor: pointer;display: inline-block;font-size: 14px;font-weight: 700;line-height: 40px;padding: 0 15px 0 7px; float:left}
+.gateway_list li .gateway_desc{color: #959595; font-size: 12px; font-weight: 300; padding: 0;}
+.gateway_list li.ul_on{background: #fff9f9;border: 2px solid #fb7f89;}

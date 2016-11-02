@@ -76,25 +76,16 @@ function shipping_info($shipping_id)
  * @param   array   $region_id_list     收货人地区id数组（包括国家、省、市、区）
  * @return  array   配送方式数组
  */
-function available_shipping_list($region_id_list,$suppid=0)
+function available_shipping_list($region_id_list)
 {
-     $sql = 'SELECT s.shipping_id, s.shipping_code, s.shipping_name, ' .
-                's.shipping_desc, s.insure, s.support_cod, a.configure , s.support_pickup ' .
-             'FROM ' . $GLOBALS['ecs']->table('shipping') . ' AS s, ' .
-                 $GLOBALS['ecs']->table('shipping_area') . ' AS a, ' .
-                 $GLOBALS['ecs']->table('area_region') . ' AS r ' .
-             'WHERE s.supplier_id='.$suppid.' and r.region_id ' . db_create_in($region_id_list) .
-             ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1 ORDER BY s.shipping_order';
+    $sql = 'SELECT s.shipping_id, s.shipping_code, s.shipping_name, ' .
+                's.shipping_desc, s.insure, s.support_cod, a.configure ' .
+            'FROM ' . $GLOBALS['ecs']->table('shipping') . ' AS s, ' .
+                $GLOBALS['ecs']->table('shipping_area') . ' AS a, ' .
+                $GLOBALS['ecs']->table('area_region') . ' AS r ' .
+            'WHERE r.region_id ' . db_create_in($region_id_list) .
+            ' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND s.enabled = 1 ORDER BY s.shipping_order';
 
-/*    $sql = "SELECT s.shipping_id, s.shipping_code, s.shipping_name, " .
-                "s.shipping_desc, s.insure, s.support_cod, a.configure , s.support_pickup " .
-            "FROM " . $GLOBALS['ecs']->table('shipping') . " AS s, " .
-                $GLOBALS['ecs']->table('shipping_area') . " AS a, " .
-                $GLOBALS['ecs']->table('area_region') . " AS r, " .
-                $GLOBALS['ecs']->table('region') . " AS o " .
-            "WHERE s.supplier_id=".$suppid." and o.region_name like '%" . $region_id_list .
-            "%' AND r.shipping_area_id = a.shipping_area_id AND a.shipping_id = s.shipping_id AND r.region_id=o.region_id AND s.enabled = 1 ORDER BY s.shipping_order";
-*/
     return $GLOBALS['db']->getAll($sql);
 }
 
@@ -679,7 +670,7 @@ function order_fee($order, $goods, $consignee)
     /* 配送费用 */
     $shipping_cod_fee = NULL;
     
-    $sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
+    $sql_where = "session_id = '" . SESS_ID . "'";
 	//$order['shipping_id'] = 8;
     if ($order['shipping_id'] > 0 && $total['real_goods_count'] > 0)
     {
@@ -705,10 +696,12 @@ function order_fee($order, $goods, $consignee)
             }
 
             // 查看购物车中是否全为免运费商品，若是则把运费赋为零
-            $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE  $sql_where AND `extension_code` != 'package_buy' AND `is_shipping` = 0 AND rec_id in (".$_SESSION['sel_cartgoods'].")";  //jx
+            $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE  `extension_code` != 'package_buy' AND `is_shipping` = 0 AND rec_id in (".$_SESSION['sel_cartgoods'].")";  //jx
             $shipping_count = $GLOBALS['db']->getOne($sql);
 
-            $total['shipping_fee'] = ($shipping_count == 0 AND $weight_price['free_shipping'] == 1) ?0 :  shipping_fee($shipping_info['shipping_code'],$shipping_info['configure'], $weight_price['weight'], $total['goods_price'], $weight_price['number']);
+            $total['shipping_fee'] = ($shipping_count == 0 AND $weight_price['free_shipping'] == 1) ? 0 :  shipping_fee($shipping_info['shipping_code'],$shipping_info['configure'], $weight_price['weight'], $weight_price['amount'], $weight_price['number']);
+			
+			
 
             if (!empty($order['need_insure']) && $shipping_info['insure'] > 0)
             {
@@ -729,61 +722,6 @@ function order_fee($order, $goods, $consignee)
 
     $total['shipping_fee_formated']    = price_format($total['shipping_fee'], false);
     $total['shipping_insure_formated'] = price_format($total['shipping_insure'], false);
-
-	/* 代码增加_start  By  www.68ecshop.com */	
-	/*if (count($order['shipping_pay']) > 0 && $total['real_goods_count'] > 0){
-
-		
-
-		foreach ($goods AS $val)
-		{
-			$sql_supp = "select g.supplier_id, IF(g.supplier_id='0', '本网站', s.supplier_name) AS supplier_name2 from ".$GLOBALS['ecs']->table('goods').
-								  " AS g left join ".$GLOBALS['ecs']->table('supplier')." AS s on g.supplier_id=s.supplier_id where g.goods_id='". $val['goods_id'] ."' ";
-			$row_supp = $GLOBALS['db']->getRow($sql_supp);
-			$row_supp['supplier_id'] = $row_supp['supplier_id'] ? intval($row_supp['supplier_id']) :0;
-
-			$region['country']  = $consignee['country_id'];
-			// $region['province'] = $consignee['province'];
-			// $region['city']     = $consignee['city'];
-			// $region['district'] = $consignee['district'];
-			$shipping_info = shipping_area_info($order['shipping_pay'][$row_supp['supplier_id']], $region);
-
-			$total['supplier_shipping'][$row_supp['supplier_id']]['supplier_name'] =$row_supp['supplier_name2'];
-			$total['supplier_shipping'][$row_supp['supplier_id']]['goods_number'] += $val['goods_number'];
-
-			$total['supplier_goodsnumber'][$row_supp['supplier_id']] += $val['goods_number'];
-
-			$total['goods_price_supplier'][$row_supp['supplier_id']]  += $val['goods_price'] * $val['goods_number'];
-
-			if ($order['extension_code'] == 'group_buy')
-			{
-					$weight_price2 = cart_weight_price2(CART_GROUP_BUY_GOODS, $row_supp['supplier_id']);
-			}
-			else
-			{
-					$weight_price2 = cart_weight_price2(CART_GENERAL_GOODS, $row_supp['supplier_id']);
-			}
-
-			// 查看购物车中是否全为免运费商品，若是则把运费赋为零
-		   $sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
-		   $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods') ." AS g on c.goods_id=g.goods_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 AND c.rec_id in (".$_SESSION['sel_cartgoods'].")";  //jx
-		   $shipping_count_supp = $GLOBALS['db']->getOne($sql);
-
-		   $total['supplier_shipping'][$row_supp['supplier_id']]['shipping_fee'] = ($shipping_count_supp == 0 AND $weight_price2['free_shipping'] == 1) ?0 :  shipping_fee($shipping_info['shipping_code'],$shipping_info['configure'], $weight_price2['weight'], $total['goods_price_supplier'][$row_supp['supplier_id']], $weight_price2['number']);
-		   $total['supplier_shipping'][$row_supp['supplier_id']]['formated_shipping_fee'] = price_format($total['supplier_shipping'][$row_supp['supplier_id']]['shipping_fee'], false);
-		}
-	
-		krsort($total['supplier_shipping']);
-		
-		$total['shipping_fee']    = 0;
-		foreach($total['supplier_shipping'] AS $supp_shipping)
-		{
-			$total['shipping_fee'] += $supp_shipping['shipping_fee'];
-		}
-		$total['shipping_fee_formated']    = price_format($total['shipping_fee'], false);
-	}*/
-	
-	/* 代码增加_end  By  www.68ecshop.com */
 
     // 购物车中的商品能享受红包支付的总额
     $bonus_amount = compute_discount_amount();
@@ -945,10 +883,10 @@ function cart_goods($type = CART_GENERAL_GOODS)
 	$id_ext = "";
 	if ($_SESSION['sel_cartgoods'])
 	{
-		$id_ext = " AND c.rec_id in (". $_SESSION['sel_cartgoods'] .") ";
+		$id_ext = " AND c.rec_id in (". $_SESSION['sel_cartgoods'] .") and c.session_id = '" . SESS_ID . "' ";
 	}
 /* 代码增加_end  By www.68ecshop.com */
-$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+    $sql_where = "c.session_id = '" . SESS_ID . "'";
     $sql = "SELECT c.rec_id, c.user_id, c.goods_id, c.goods_name, c.goods_sn, c.goods_number, c.market_price, " .
 			" c.goods_price, c.goods_attr, c.is_real, c.extension_code, c.parent_id, c.is_gift, c.is_shipping, " .
 			" package_attr_id, c.goods_price * c.goods_number AS subtotal, " .
@@ -995,7 +933,7 @@ $sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " 
  */
 function cart_amount($include_gift = true, $type = CART_GENERAL_GOODS)
 {
-	$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
+	$sql_where = "session_id = '" . SESS_ID . "'";
     $sql = "SELECT SUM(goods_price * goods_number) " .
             " FROM " . $GLOBALS['ecs']->table('cart') .
             " WHERE $sql_where " .
@@ -1018,7 +956,7 @@ function cart_amount($include_gift = true, $type = CART_GENERAL_GOODS)
  */
 function cart_amount_new($cartids='', $include_gift = true, $type = CART_GENERAL_GOODS)
 {
-	$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
+	$sql_where = "session_id = '" . SESS_ID . "'";
     $sql = "SELECT SUM(goods_price * goods_number) " .
             " FROM " . $GLOBALS['ecs']->table('cart') .
             " WHERE $sql_where " .
@@ -1071,7 +1009,7 @@ function cart_weight_price($type = CART_GENERAL_GOODS)
     $packages_row['free_shipping'] = 1;
 
     /* 计算超值礼包内商品的相关配送参数 */
-    $sql = 'SELECT goods_id, goods_number, goods_price FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE extension_code = 'package_buy' AND session_id = '" . SESS_ID . "'";
+    $sql = 'SELECT goods_id, goods_number, goods_price FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE extension_code = 'package_buy' AND session_id = '" . SESS_ID . "' and rec_id in (".$_SESSION['sel_cartgoods'].")";
     $row = $GLOBALS['db']->getAll($sql);
 
     if ($row)
@@ -1118,8 +1056,9 @@ function cart_weight_price($type = CART_GENERAL_GOODS)
                 'FROM ' . $GLOBALS['ecs']->table('cart') . ' AS c '.
                 'LEFT JOIN ' . $GLOBALS['ecs']->table('goods') . ' AS g ON g.goods_id = c.goods_id '.
                 "WHERE c.session_id = '" . SESS_ID . "' " .
-                "AND rec_type = '$type' AND g.is_shipping = 0 AND c.extension_code != 'package_buy'";
+                "AND rec_type = '$type' AND g.is_shipping = 0 AND c.extension_code != 'package_buy' AND c.rec_id in (".$_SESSION['sel_cartgoods'].")";
     $row = $GLOBALS['db']->getRow($sql);
+	
 
     $packages_row['weight'] = floatval($row['weight']) + $package_row['weight'];
     $packages_row['amount'] = floatval($row['amount']) + $package_row['amount'];
@@ -1435,7 +1374,7 @@ function clear_cart($type = null,$other='')
       //      " WHERE session_id = '" . SESS_ID . "' AND rec_type = '$type'";
 
 	
-	$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' ";
+	$sql_where = "session_id = '" . SESS_ID . "' ";
 	if($type != null)
 	{
 		$sql_where = $sql_where . "AND rec_type = '$type'";
@@ -1784,7 +1723,7 @@ function get_cart_goods($other='')
     /* 循环、统计 */
 
     /* 代码增加_start    By   www.68ecshop.com */
-	$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+	$sql_where =  "c.session_id = '" . SESS_ID . "'";
 	$sql = "SELECT c.*, IF(ga.act_id, ga.supplier_id, g.supplier_id) as supplier_id, IF(c.parent_id, c.parent_id, c.goods_id) AS pid  " .
             " FROM " . $GLOBALS['ecs']->table('cart') . " AS c left join " .$GLOBALS['ecs']->table('goods')." AS g ".
 			" on c.goods_id=g.goods_id ".
@@ -2029,10 +1968,8 @@ function get_total_bonus($supplier_money_info)
     $day    = getdate();
     $today  = local_mktime(23, 59, 59, $day['mon'], $day['mday'], $day['year']);
 
-	$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
-    
-
-	$sql_where1 = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
+	$sql_where = "c.session_id = '" . SESS_ID . "'";
+	$sql_where1 =  "session_id = '" . SESS_ID . "'";
 
     /* 取得购物车中非赠品总金额 */
 	if(!is_array($supplier_money_info)){
@@ -2707,7 +2644,7 @@ function compute_discount($supplierid=-1)
     }
 
     /* 查询购物车商品 */
-    $sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+    $sql_where = "c.session_id = '" . SESS_ID . "'";
     
 	if ($supplierid >= 0)
 	{
@@ -2834,7 +2771,7 @@ function compute_discount($supplierid=-1)
  */
 function get_give_integral()
 {
-	$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+	$sql_where = "c.session_id = '" . SESS_ID . "'";
     $sql = "SELECT " .
 		" SUM(IF(c.extension_code = 'package_buy', 0, c.goods_number * IF(g.give_integral > -1, g.give_integral, c.goods_price))) " .
 		" FROM " . $GLOBALS['ecs']->table('cart') . " AS c " .
@@ -3052,7 +2989,7 @@ function compute_discount_amount($suppid=-1)
     }
 
     /* 查询购物车商品 */
-    $sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+    $sql_where = "c.session_id = '" . SESS_ID . "'";
 	$where_suppid = (isset($_SESSION['sel_cartgoods']) && !empty($_SESSION['sel_cartgoods'])) ? " AND c.rec_id in (". $_SESSION['sel_cartgoods'] .") " : "";
 	if($suppid>-1)
 	{
@@ -3368,7 +3305,7 @@ function cart_weight_price2($type = CART_GENERAL_GOODS, $supplier_id)
 
     $packages_row['free_shipping'] = 1;
 
-	$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
+	$sql_where = "session_id = '" . SESS_ID . "'";
 
     /* 计算超值礼包内商品的相关配送参数 */
 	$sql = 'SELECT goods_id, goods_number, goods_price FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE extension_code = 'package_buy' AND ".$sql_where." AND rec_id in (".$_SESSION['sel_cartgoods'].")";

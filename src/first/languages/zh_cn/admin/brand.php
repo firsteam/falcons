@@ -16,6 +16,7 @@
 $_LANG['brand_name'] = '品牌名称';
 $_LANG['site_url'] = '品牌网址';
 $_LANG['brand_desc'] = '品牌描述';
+$_LANG['brand_policy'] = '品牌政策';
 $_LANG['brand_logo'] = '品牌LOGO';
 $_LANG['sort_order'] = '排序';
 $_LANG['is_show'] = '是否显示';

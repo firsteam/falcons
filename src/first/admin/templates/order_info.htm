@@ -238,10 +238,10 @@
     <th colspan="4">{$lang.consignee_info}<a href="order.php?act=edit&order_id={$order.order_id}&step=consignee" class="special">{$lang.edit}</a></th>
     </tr>
   <tr>
-    <td><div align="right"><strong>{$lang.label_consignee}</strong></div></td>
-    <td>{$order.consignee|escape}</td>
-    <td><div align="right"><strong>{$lang.label_email}</strong></div></td>
-    <td>{$order.email}</td>
+    <td><div align="right"><strong>{$lang.first_name}</strong{$order.consignee|escape}></div></td>
+    <td><div align="right"><strong>{$lang.last_name}</strong{$order.last_name|escape}></div></td>
+    <td><div align="right"><strong>{$lang.label_best_time}</strong></div></td>
+    <td>{$order.best_time|escape}</td>
   </tr>
   <tr>
     <td><div align="right"><strong>{$lang.label_address}</strong></div></td>
@@ -250,16 +250,16 @@
     <td>{$order.zipcode|escape}</td>
   </tr>
   <tr>
-    <td><div align="right"><strong>{$lang.label_tel}</strong></div></td>
-    <td>{$order.tel}</td>
+    <td><div align="right"><strong>address line 2</strong></div></td>
+    <td>[{$order.region}] {$order.address1|escape}</td>
     <td><div align="right"><strong>{$lang.label_mobile}</strong></div></td>
-    <td>{$order.mobile|escape}</td>
+    <td>{$order.mobile|escape} {$order.tel}</td>
   </tr>
   <tr>
     <td><div align="right"><strong>{$lang.label_sign_building}</strong></div></td>
     <td>{$order.sign_building|escape}</td>
-    <td><div align="right"><strong>{$lang.label_best_time}</strong></div></td>
-    <td>{$order.best_time|escape}</td>
+    <td><div align="right"><strong>{$lang.label_email}</strong></div></td>
+    <td>{$order.email}</td>
   </tr>
 </table>
 </div>

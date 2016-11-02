@@ -34,3 +34,11 @@ ADD `rand_ids` VARCHAR( 255 ) NOT NULL AFTER `rand_date`;
 
 ALTER TABLE `ecs_category` ADD `rand_date` DATE NOT NULL,
 ADD `rand_ids` VARCHAR( 255 ) NOT NULL;
+
+2016-10-20 =========================
+
+alter table ecs_order_info add column address1 varchar(255) not null default '';
+alter table ecs_user_address add column address1 varchar(255) not null default '';
+alter table ecs_order_info add column last_name varchar(60) not null default '';
+alter table ecs_user_address add column last_name varchar(60) not null default '';
+

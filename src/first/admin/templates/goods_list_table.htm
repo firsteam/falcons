@@ -132,8 +132,8 @@ function deleteCatResponse(result)
      
     
     
-    {if $filter.is_show_keywords eq 1}<td><span onclick="listTable.edit1(this, 'edit_keywords', {$goods.goods_id})">{$goods.keywords|default:N/A}</span></td>{/if}
-    {if $filter.is_show_brief eq 1}<td><span onclick="listTable.edit1(this, 'edit_goods_brief', {$goods.goods_id})">{$goods.goods_brief|default:N/A}<span style="color:red;"> 编辑</span></span></td>{/if}
+    {if $filter.is_show_keywords eq 1}<td><span onclick="listTable.edit1(this, 'edit_keywords', {$goods.goods_id})">{$goods.keywords}<span style="color:red;"> 编辑</span></span></td>{/if}
+    {if $filter.is_show_brief eq 1}<td><span onclick="listTable.edit1(this, 'edit_goods_brief', {$goods.goods_id})">{$goods.goods_brief}<span style="color:red;"> 编辑</span></span></td>{/if}
     <td style="width:120px;">
     <div id="url_list_{$goods.goods_id}">
 

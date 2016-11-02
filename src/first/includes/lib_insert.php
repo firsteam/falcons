@@ -217,7 +217,7 @@ function insert_history_list()
  */
 function insert_cart_info()
 {
-	$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+	$sql_where = "c.session_id = '" . SESS_ID . "'";
     $sql = 'SELECT c.*,IF(c.extension_code = "package_buy",act_name,g.goods_name) as goods_name, ' .
 		' IF(c.extension_code = "package_buy","package_img",g.goods_thumb) as goods_thumb,g.goods_id,c.goods_number,c.goods_price' .
 		' FROM ' . $GLOBALS['ecs']->table('cart') ." AS c ".
@@ -765,7 +765,7 @@ function insert_get_shop_shipping($arr){
 			$shipping_id[] = $v['shipping_id'];
 		}
 		$i=0;
-		$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
+		$sql_where =  "session_id = '" . SESS_ID . "'";
 		$sql = 'SELECT count(*) FROM ' . $ecs->table('cart') . " WHERE $sql_where AND `extension_code` != 'package_buy' AND `is_shipping` = 0 AND rec_id in (".$_SESSION['sel_cartgoods'].")"; //jx
 		$shipping_count = $db->getOne($sql);
 
@@ -809,5 +809,36 @@ function insert_get_shop_shipping($arr){
    $val = $GLOBALS['smarty']->fetch('library/shipping_list.lbi');
 	$_SESSION['flow_order'] = $order;
 	return $val;
+}
+
+
+function insert_history_1()
+{
+    $str = '';
+    if (!empty($_COOKIE['ECS']['history']))
+    {
+        $where = db_create_in($_COOKIE['ECS']['history'], 'goods_id');
+	
+        $sql   = 'SELECT goods_id, goods_name, goods_thumb, shop_price,market_price FROM ' . $GLOBALS['ecs']->table('goods') .
+                " WHERE $where AND is_on_sale = 1 AND is_alone_sale = 1 AND is_delete = 0";
+        $query = $GLOBALS['db']->query($sql);
+        $res = array();
+        while ($row = $GLOBALS['db']->fetch_array($query))
+        {
+            $goods[$row['goods_id']]['id'] = $row['goods_id'];
+            $goods[$row['goods_id']]['name'] = $row['goods_name'];
+            $goods[$row['goods_id']]['short_name'] = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
+            $goods[$row['goods_id']]['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
+            $goods[$row['goods_id']]['shop_price'] = price_format($row['shop_price']);
+			$goods[$row['goods_id']]['market_price'] = price_format($row['market_price']);
+            $goods[$row['goods_id']]['url'] = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
+           //$str.='<ul class="clearfix"><li class="goodsimg"><a href="'.$goods['url'].'" target="_blank"><img src="'.$goods['goods_thumb'].'" alt="'.$goods['goods_name'].'" class="B_blue" /></a></li><li><a href="'.$goods['url'].'" target="_blank" title="'.$goods['goods_name'].'">'.$goods['short_name'].'</a><br />'.$GLOBALS['_LANG']['shop_price'].'<font class="f1">'.$goods['shop_price'].'</font><br /></li></ul>';
+        }
+        //$str .= '<ul id="clear_history"><a onclick="clear_history()">' . $GLOBALS['_LANG']['clear_history'] . '</a></ul>';
+    }
+	$GLOBALS['smarty']->assign('goods_list', $goods);
+	$output = $GLOBALS['smarty']->fetch('library/history1.lbi');
+    $GLOBALS['smarty']->caching = $need_cache;
+    return $output;
 }
 ?>

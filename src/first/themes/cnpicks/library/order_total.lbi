@@ -26,9 +26,7 @@
       <!-- {if $total.tax gt 0} 税 -->
       + {$lang.tax}: <font class="f4_b">{$total.tax_formated}</font>
       <!-- {/if} -->
-      <!-- {if $total.shipping_fee > 0} 配送费用 -->
       + {$lang.shipping_fee}: <font class="f4_b">{$total.shipping_fee_formated}</font>
-      <!-- {/if} -->
       <!-- {if $total.shipping_insure > 0} 保价费用 -->
       + {$lang.insure_fee}: <font class="f4_b">{$total.shipping_insure_formated}</font>
       <!-- {/if} -->

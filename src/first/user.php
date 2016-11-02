@@ -2832,58 +2832,75 @@ function action_address_list ()
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $_SESSION['user_id'];
 	
-	include_once (ROOT_PATH . 'includes/lib_transaction.php');
-	include_once (ROOT_PATH . 'languages/' . $_CFG['lang'] . '/shopping_flow.php');
-	$smarty->assign('lang', $_LANG);
-	
-	/* 取得国家列表、商店所在国家、商店所在国家的省列表 */
-	$smarty->assign('country_list', get_regions());
-	$smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
-	
 	/* 获得用户所有的收货人信息 */
-	$consignee_list = get_consignee_list($_SESSION['user_id']);
+    require_once(ROOT_PATH . 'languages/' .$_CFG['lang']. '/shopping_flow.php');
+    $smarty->assign('lang',             $_LANG);
+    include_once(ROOT_PATH . 'includes/lib_transaction.php');
+    $consignee_list = get_consignee_list($_SESSION['user_id']);
+    $smarty->assign('consignee_list', $consignee_list);
 	
-	if(count($consignee_list) < 5 && $_SESSION['user_id'] > 0)
+	$address_id = isset($_REQUEST['address_id']) ? intval($_REQUEST['address_id']) : 0;
+	if ($address_id > 0)
 	{
-		/* 如果用户收货人信息的总数小于5 则增加一个新的收货人信息 */
-		$consignee_list[] = array(
-			// 如果Session中有有效的email则放入
-			'country' => $_CFG['shop_country'], 'email' => isset($_SESSION['email']) && is_email($_SESSION['email']) ? $_SESSION['email'] : ''
-		);
+		$sql = "SELECT * FROM " . $ecs->table('user_address') . " WHERE address_id = '".$address_id."'";
+		$address = $db->getRow($sql);
+		if ($address)
+		{
+			$order['address_id']     = $address['address_id'];
+			$order['consignee']     = $address['consignee'];
+			$order['last_name']     = $address['last_name'];
+			$order['country']       = $address['country'];
+			$order['province']      = $address['province'];
+			$order['city']          = $address['city'];
+			$order['district']      = $address['district'];
+			$order['email']         = $address['email'];
+			$order['address']       = $address['address'];
+			$order['address1']       = $address['address1'];
+			$order['zipcode']       = $address['zipcode'];
+			$order['tel']           = $address['tel'];
+			$order['mobile']        = $address['mobile'];
+			$order['sign_building'] = $address['sign_building'];
+			$order['best_time']     = $address['best_time'];
+			$consignee = $order;
+			$smarty->assign('consignee', $consignee);
+		}
 	}
-	
-	$smarty->assign('consignee_list', $consignee_list);
-	
-	// 取得国家列表，如果有收货人列表，取得省市区列表
-	foreach($consignee_list as $region_id => $consignee)
+	else
 	{
-		$consignee['country'] = isset($consignee['country']) ? intval($consignee['country']) : 0;
-		$consignee['province'] = isset($consignee['province']) ? intval($consignee['province']) : 0;
-		$consignee['city'] = isset($consignee['city']) ? intval($consignee['city']) : 0;
-		
-		$province_list[$region_id] = get_regions(1, $consignee['country']);
-		$city_list[$region_id] = get_regions(2, $consignee['province']);
-		$district_list[$region_id] = get_regions(3, $consignee['city']);
+		$consignee['country'] = $_CFG['shop_country'];
+		$consignee['province'] = $GLOBALS['_CFG']['shop_province'];
+		$consignee['city'] = $GLOBALS['_CFG']['shop_city'];
 	}
+	if(empty($consignee['country']))
+	{
+		$consignee['country'] = $_CFG['shop_country'];
+	}
+	if(empty($consignee['province']))
+	{
+		$consignee['province'] = $GLOBALS['_CFG']['shop_province'];
+	}
+	/*if(empty($consignee['city']))
+	{
+		$consignee['city'] = $GLOBALS['_CFG']['shop_city'];
+	}*/
 	
-	/* 获取默认收货ID */
-	$address_id = $db->getOne("SELECT address_id FROM " . $ecs->table('users') . " WHERE user_id='$user_id'");
-	
-	// 赋值于模板
-	$smarty->assign('real_goods_count', 1);
-	$smarty->assign('shop_country', $_CFG['shop_country']);
-	$smarty->assign('shop_province', get_regions(1, $_CFG['shop_country']));
+	$smarty->assign('consignee', $consignee);
+	$province_list = get_regions(1, $consignee['country']);
+	$city_list     = get_regions(2, $consignee['province']);
+	$district_list = get_regions(3, $consignee['city']);
 	$smarty->assign('province_list', $province_list);
-	$smarty->assign('address', $address_id);
-	$smarty->assign('city_list', $city_list);
+	$smarty->assign('city_list',     $city_list);
 	$smarty->assign('district_list', $district_list);
-	$smarty->assign('currency_format', $_CFG['currency_format']);
-	$smarty->assign('integral_scale', $_CFG['integral_scale']);
-	$smarty->assign('name_of_region', array(
-		$_CFG['name_of_region_1'], $_CFG['name_of_region_2'], $_CFG['name_of_region_3'], $_CFG['name_of_region_4']
-	));
+	$smarty->assign('country_list', get_regions(0));
+
+	$sql = "SELECT * FROM " . $ecs->table('user_address') . " WHERE user_id = '".$_SESSION['user_id']."'";
+	$smarty->assign('address_list', $db->getAll($sql));
 	
-	$smarty->display('user_transaction.dwt');
+	$sql = "select address_id from ".$GLOBALS['ecs']->table('users') ." WHERE user_id = '" .$_SESSION['user_id']. "'";
+	$default_address_id = $db->getOne($sql);
+	$smarty->assign('default_address_id',     $default_address_id);
+    $smarty->display('user_transaction.dwt');
+	
 }
 
 /* 添加/编辑收货地址的处理 */
@@ -2906,10 +2923,14 @@ function action_act_edit_address ()
 		'address_id' => intval($_POST['address_id']),
 		'country' => isset($_POST['country']) ? compile_str(trim($_POST['country'])) : '', 
 		'province' => isset($_POST['province']) ? compile_str(trim($_POST['province'])) : '', 
+		
 		'city' => isset($_POST['city']) ? compile_str(trim($_POST['city'])) : '', 
 		'district' => isset($_POST['district']) ? compile_str(trim($_POST['district'])) : 0, 
 		'address' => isset($_POST['address']) ? compile_str(trim($_POST['address'])) : '', 
+		'address1' => isset($_POST['address1']) ? compile_str(trim($_POST['address1'])) : '', 
+		
 		'consignee' => isset($_POST['consignee']) ? compile_str(trim($_POST['consignee'])) : '', 
+		'last_name' => isset($_POST['last_name']) ? compile_str(trim($_POST['last_name'])) : '', 
 		'email' => isset($_POST['email']) ? compile_str(trim($_POST['email'])) : '', 
 		'tel' => isset($_POST['tel']) ? compile_str(make_semiangle(trim($_POST['tel']))) : '', 
 		'sex' => isset($_POST['sex']) ? $_POST['sex'] : 0,

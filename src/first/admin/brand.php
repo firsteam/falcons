@@ -233,6 +233,24 @@ elseif ($_REQUEST['act'] == 'edit_brand_name_cn')
     }
 }
 
+elseif ($_REQUEST['act'] == 'edit_brand_policy')
+{
+    check_authz_json('brand_manage');
+
+    $id     = intval($_POST['id']);
+    $brand_policy   = json_str_iconv(trim($_POST['val']));
+
+    if ($exc->edit("brand_policy = '$brand_policy'", $id))
+	{
+		admin_log($brand_policy,'edit','brand');
+		make_json_result(stripslashes($brand_policy));
+	}
+	else
+	{
+		make_json_result(sprintf($_LANG['brandedit_fail'], $brand_policy));
+	}
+}
+
 elseif($_REQUEST['act'] == 'add_brand')
 {
     $brand = empty($_REQUEST['brand']) ? '' : json_str_iconv(trim($_REQUEST['brand']));

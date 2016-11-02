@@ -14,6 +14,7 @@
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="themes/cnpicks/css/new_order_member.css" />
+
 <script type="text/javascript" src="themes/cnpicks/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="themes/cnpicks/js/validate/jquery.validate.js"></script>
 <script type="text/javascript" src="themes/cnpicks/js/validate/messages_zh.js"></script>
@@ -888,7 +889,8 @@ menu.className=i==cursel?"active":"";
                 </dl>
               </form>
             </div>
-            <div class="ncm-default-form"  id="con_tab_3"  style="display:none"> {insert_scripts files='transport.js,region.js,shopping_flow.js'} 
+            <div class="ncm-default-form"  id="con_tab_3"  style="display:none">
+			{insert_scripts files='transport.js,region.js,shopping_flow.js'} 
               <script type="text/javascript">
               region.isAdmin = false;
               {foreach from=$lang.flow_js item=item key=key}
@@ -3227,6 +3229,7 @@ function updateEndTime(){
           <!--#会员余额 end--> 
           <!--#收货地址页面 --> 
           <!--{if $action eq 'address_list'} --> 
+
           {* 包含脚本文件 *}
           {insert_scripts files='utils.js,transport.js,region.js,shopping_flow.js'} 
           <script type="text/javascript">
@@ -3245,179 +3248,204 @@ function updateEndTime(){
             </script>
           <div class="tabmenu">
             <ul class="tab pngFix">
-              <li class="first active">{$lang.label_address}</li>
+              <li class="first active">Address List</li>
             </ul>
           </div>
-          <div class="alert alert-success" style="disable-by-cy">
+          <div class="alert alert-success disable-by-cy">
             <h4>Tips:</h4>
             <ul>
               <li>Edit delete or add address.</li>
             </ul>
           </div>
-          <div class="mar_top"> 
-            <!-- {foreach from=$consignee_list item=consignee key=sn} -->
-            <form action="user.php" method="post" name="theForm{$sn}" onsubmit="return submit_address({$sn})">
-            <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#E6E6E6">
-                <tr>
-                  <td align="right" width="23%" bgcolor="#fff">Country：</td>
-                  <td align="left" width="77%" bgcolor="#fff">
-                    <select name="country" id="selCountries_{$sn}" onchange="checkCountry(this,'country_notice_{$sn}')" style="width: 210px;">
-                      <option value="">{$lang.please_select}{$name_of_region[0]}</option>
-                      <!-- {foreach from=$country_list item=country} -->
-                      <option value="{$country.region_id}" {if $consignee.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
-                      <!-- {/foreach} -->
-                    </select>
-                    {$lang.require_field}
-                    <p class="verify_tips">
-                      <span class="label" id="country_notice_{$sn}"></span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.state_province}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="province" type="text" class="inputBg" id="province_{$sn}" value="{$consignee.province|escape}" />
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.city_district}</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="city" type="text" class="inputBg" id="city_{$sn}" value="{$consignee.city|escape}" onblur="checkCity(this,'city_notice_{$sn}')" />
-                    {$lang.require_field}
-                    <p class="verify_tips">
-                      <span class="label" id="city_notice_{$sn}"></span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.consignee_name}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="consignee" type="text" class="inputBg" id="consignee_{$sn}" value="{$consignee.consignee|escape}" onblur="checkConsigneeName(this,'consignee_notice_{$sn}')" />
-                    {$lang.require_field}
-                    <p class="verify_tips">
-                      <span class="label" id="consignee_notice_{$sn}"></span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.backup_phone}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="mobile" type="text" class="inputBg" id="mobile_{$sn}" value="{$consignee.mobile|escape}" onblur="checkMobile(this,'mobile_notice_{$sn}')"/>
-                    {$lang.require_field}
-                    <p class="verify_tips">
-                      <span class="label" id="mobile_notice_{$sn}"></span>
-                    </p>                    
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.detailed_address}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="address" type="text" class="inputBg" id="address_{$sn}" value="{$consignee.address|escape}" onblur="checkAddress(this,'address_notice_{$sn}')" />
-                    {$lang.require_field}
-                    <p class="verify_tips">
-                      <span class="label" id="address_notice_{$sn}"></span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.postalcode}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="zipcode" type="text" class="inputBg" id="zipcode_{$sn}" value="{$consignee.zipcode|escape}" onblur="checkZipcode(this,'zipcode_notice_{$sn}')" />
-                    {$lang.require_field}
-                    <p class="verify_tips">
-                      <span class="label" id="zipcode_notice_{$sn}"></span>
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.sign_building}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="sign_building" type="text" class="inputBg" id="sign_building_{$sn}" value="{$consignee.sign_building|escape}" />
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">{$lang.deliver_goods_time}：</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <input name="best_time" type="text"  class="inputBg" id="best_time_{$sn}" value="{$consignee.best_time|escape}" />
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#fff">Gender：</td>
-                  <td align="left" bgcolor="#fff">
-                    <input type="radio" name="sex" value="1" {if $consignee.sex eq 1}checked="checked"{/if} class="addtotable_m"> Ms.&nbsp;&nbsp; 
-                    <input type="radio" name="sex" value="0" {if $consignee.sex eq 0}checked="checked"{/if} class="addtotable_m"> Mr.
-                  </td>
-                </tr>
-                <tr>
-                  <td align="right" bgcolor="#ffffff">&nbsp;</td>
-                  <td align="left" bgcolor="#ffffff">
-                    <!-- {if $consignee.consignee} -->
-                    <input type="submit" name="submit" class="bnt_blue_1" value="{$lang.confirm_edit}" />
-                    <input name="button" type="button" class="bnt_blue"  onclick="if (confirm('{$lang.confirm_drop_address}'))location.href='user.php?act=drop_consignee&id={$consignee.address_id}'" value="{$lang.drop}" />
-                    <!-- {else} -->
-                    <input type="submit" name="submit" class="bnt_blue_2"  value="{$lang.add_address}" />
-                    <!-- {/if} -->
-                    <input type="hidden" name="act" value="act_edit_address" />
-                    <input name="address_id" type="hidden" value="{$consignee.address_id}" />
-                  </td>
-                </tr>
-              </table>
-            </form>
-			<div style="height:30px;"></div>
-            <!-- {/foreach} --> 
+          
+		  
+          <ul class="payment_tab_jm">
+<!-- {foreach from=$consignee_list item=consignee1 key=sn} -->
+        <li {if $consignee1.def_addr eq 1}class="seled"{/if}>
+           <div class="address-item" onclick="selAddress(this, {$consignee1.address_id});">
+           
+           {$consignee1.consignee|escape},{$consignee1.address|escape},{$consignee1.address1|escape},{$consignee1.city|escape},{$consignee1.zipcode|escape},{$consignee1.country|escape}{if $consignee1.tel}{$consignee1.tel},{/if}{if $consignee1.mobile},{$consignee1.mobile|escape}{/if}</div>
+           
+           <div  class="edit_addr" id="address_edit_{$sn}"><a href="user.php?act=address_list&address_id={$consignee1.address_id}">{$lang.edit}</a> <a href="javascript:if (confirm('{$lang.confirm_drop_address}'))location.href='user.php?act=drop_consignee&id={$consignee1.address_id}'">{$lang.drop}</a></div>
+           
+        </li>
+      <!-- {/foreach} -->
+</ul>
+
+
+ <div class="tabmenu" style="margin-top:25px;">
+            <ul class="tab pngFix">
+              <li class="first active">{if $consignee.address_id}Edit{else}Add{/if} Address</li>
+            </ul>
           </div>
-          <script type="text/javascript">  
-            function submit_address(sn)
-            {
-              var frm = document.forms['theForm'+sn];
-              var cmt = new Object;
-              cmt.consignee       = frm.elements['consignee'].value;
-              cmt.address         = frm.elements['address'].value;
-              cmt.zipcode         = frm.elements['zipcode'].value;
-              cmt.country         = frm.elements['country'].value;
-              cmt.province        = frm.elements['province'].value;
-              cmt.city            = frm.elements['city'].value;
-              cmt.mobile          = frm.elements['mobile'].value;
-              cmt.sex             = frm.elements['sex'].value;
+          <div class="mar_top" style="border:#ddd solid 1px; padding:10px; margin-top:25px;"> 
+             {insert_scripts files='region.js'}
+        <script type="text/javascript">
+              region.isAdmin = false;
+              {foreach from=$lang.flow_js item=item key=key}
+              var {$key} = "{$item}";
+              {/foreach}
+              {literal}
+              onload = function() {
+                if (!document.all)
+                {
+                  document.forms['theForm'].reset();
+                }
+              }
+              {/literal}
+            </script>
+            
 
-              var err;
-              if( cmt.country.length<1 )
-              {                
-                document.getElementById('country_notice_'+sn).innerHTML = 'Please select Country.';
-                err = true;
-              }
-              if( cmt.consignee.length<2 )
-              {
-                document.getElementById('consignee_notice_'+sn).innerHTML = 'At least 2 characters.';
-                err = true;
-              }
-              if( cmt.city.length<2 )
-              {
-                document.getElementById('city_notice_'+sn).innerHTML = 'At least 2 characters.';
-                err = true;
-              }
-              if( cmt.address.length<5 )
-              {
-                document.getElementById('address_notice_'+sn).innerHTML = 'At least 5 characters.';
-                err = true;
-              }
-              if( cmt.mobile.length<5 )
-              {
-                document.getElementById('mobile_notice_'+sn).innerHTML = 'At least 5 numbers.';
-                err = true;
-              }
-              if( cmt.zipcode.length<4 )
-              {
-                document.getElementById('zipcode_notice_'+sn).innerHTML = 'At least 4 characters.';
-                err = true;
-              }
+<form action="user.php" method="post" name="theForm" id="theForm" onsubmit="return submitAddress()">
 
-              if( err )
-              {
-                return false;
-              }
-            }
-          </script>
+<table width="100%" border="0" cellpadding="5" cellspacing="1"  >
+  <tr>
+    <td style="text-align:left;width:25%">
+     {$lang.first_name}:
+    </td>
+    <td>
+      <input type="text" name="consignee" value="{$consignee.consignee}" onblur="checkConsigneeName(this,'consignee_name_notice')" class="input_addr2">
+      <span class="input_necessary"> * </span>
+	</td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="consignee_name_notice"></span>
+      </div>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="text-align:left">
+      {$lang.last_name}:
+    </td>
+    <td>
+      <input type="text" name="last_name" value="{$consignee.last_name}" onblur="checkLastName(this,'last_name_notice')" class="input_addr2">
+      <span class="input_necessary"> * </span>
+	</td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="last_name_notice"></span>
+      </div>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="text-align:left;">Address line 1：</td>
+    <td>
+      <input type="text" name="address" value="{$consignee.address}" onblur="checkAddress(this,'address_notice')" class="input_addr2">
+	  <span class="input_necessary"> * </span>
+    </td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="address_notice"></span>
+      </div>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="text-align:left;">Address line 2：</td>
+    <td>
+      <input type="text" name="address1" value="{$consignee.address1}" onblur="checkAddress(this,'address_notice1')" class="input_addr2">
+	  <font class="input_necessary"></font>
+    </td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="address_notice1"></span>
+      </div>
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="text-align:left;">{$lang.country}</td>
+    <td>
+      <select name="country" class="input_addr2 " onblur="region.changed(this, 1, 'selProvinces');checkCountry(this,'country_notice')">
+        <option value="">{$lang.please_select}</option>
+        <!-- {foreach from=$country_list item=country} -->
+        <option value="{$country.region_id}" {if $country.region_id eq $consignee.country}selected{/if}>{$country.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+	  <span class="input_necessary"> * </span>
+    </td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="country_notice"></span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">{$lang.state_province}</td>
+    <td>
+       <select name="province" id="selProvinces" class="input_addr2" onblur="checkProvince(this,'province_notice')">
+        <option value="">{$lang.please_select}{$name_of_region[1]}</option>
+        <!-- {foreach from=$province_list item=province} -->
+        <option value="{$province.region_id}" {if $consignee.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+        <!-- {/foreach} -->
+      </select>
+	  <span class="input_necessary"> * </span>
+    </td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="province_notice"></span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">{$lang.city_district}</td>
+    <td>
+      <input type="text" name="city" value="{$consignee.city}" onblur="checkCity(this,'city_notice')" class="input_addr2">
+	  <span class="input_necessary"> * </span>
+    </td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="city_notice"></span>
+      </div>
+    </td>
+  </tr>
+  
+  
+  <tr>
+    <td style="text-align:left;">{$lang.postalcode}</td>
+    <td>
+      <input type="text" name="zipcode" class="input_addr2" value="{$consignee.zipcode}" onblur="checkZipcode(this,'zipcode_notice')">
+	  <span class="input_necessary"> * </span>
+    </td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="zipcode_notice"></span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">{$lang.mobile}</td>
+    <td>
+      <input type="text" name="mobile" class="input_addr2 " onblur="checkMobile(this,'mobile_notice')" value="{$consignee.mobile}">
+      <span class="input_necessary"> * </span>
+	</td>
+    <td>
+      <div class="verify_tips">
+        <span class="label" id="mobile_notice"></span>
+      </div>
+    </td>
+  </tr>
+  <!-- <tr><td></td><td><font color=#cccccc>At least one</font></td></tr> -->
+  <tr><td></td><td style="padding-top:10px;">
+  <input type="hidden" name="address_id" value="{$consignee.address_id}" >
+  <input type="hidden" name="shipping_bian" value="0" >
+  <input type="hidden" name="act" value="act_edit_address" />
+  <input type="Submit" class="btn btn-primary btn-small" id="shipping_address_submit" name="commit" value="Save Address">
+  </td></tr>
+</table>
+</form>			
+			
+          <table width="100%" border="0" cellpadding="5" cellspacing="1"  >
+            
+          </table>
+
+        
+        
+        
+          </div>
+         
           <!--{/if} --> 
           <!--#收货地址添加页面 --> 
           <!--* 积分兑换--> 

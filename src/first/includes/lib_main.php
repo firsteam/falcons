@@ -103,6 +103,41 @@ function update_user_info()
            " last_login = '" .gmtime(). "'".
            " WHERE user_id = '" . $_SESSION['user_id'] . "'";
     $GLOBALS['db']->query($sql);
+	
+	/* 将cart表当前session下的user_id为的当前登陆的user_id created by marshao at 2012-09-19 */
+	//$GLOBALS['db']->query("UPDATE ".$GLOBALS['ecs']->table('cart')." SET user_id ='" . $_SESSION['user_id']."' WHERE session_id = '".SESS_ID."'");
+	
+	/* 将cart表中当前user_id的以前的session更新为当前session */
+	//$GLOBALS['db']->query("UPDATE ".$GLOBALS['ecs']->table('cart')." SET session_id = '".SESS_ID."' WHERE user_id = '".$_SESSION['user_id']."'");
+	
+	/*删除购物车中已下架的商品 created by marshao at 2012-09-19 02:35 */
+	$ssql = "SELECT distinct(c.goods_id) FROM " . $GLOBALS['ecs']->table('cart') . " as c LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON c.goods_id = g.goods_id WHERE g.is_on_sale = 0 AND c.extension_code=''";
+    $data = $GLOBALS['db'] -> getAll($ssql);
+     if($data)
+	 {
+         foreach ($data as $k=>$v){
+		     $dsql = "DELETE FROM " .$GLOBALS['ecs']->table('cart'). " WHERE goods_id = '".$v['goods_id']."'"; 
+             $GLOBALS['db'] -> query($dsql);    
+         }    
+     }
+
+
+	$sql = "update ".$GLOBALS['ecs']->table('cart')." set user_id ='".$_SESSION['user_id']."',session_id ='".md5($_SESSION['user_id'].'_'.$_SESSION['user_name'])."' where session_id = '".SESS_ID."'";
+	$GLOBALS['db'] -> query($sql);
+	
+	
+	$sql2="select distinct(c.goods_id) from".$GLOBALS['ecs']->table('cart')."as c left join " . $GLOBALS['ecs']->table('goods') . "AS g ON c.goods_id = g.goods_id where g.is_on_sale =0 AND c.user_id = '".$_SESSION['user_id']."'";
+	$data = $GLOBALS['db'] -> getAll($sql2);
+	if($data)
+	{
+		foreach ($data as $k=>$v)
+		{
+			$sql="delete from".$GLOBALS['ecs']->table('cart')." where goods_id = '".$v['goods_id']."'";
+			$GLOBALS['db'] -> query($sql);    
+		}    
+	}
+	
+	
 }
 
 /**
@@ -532,9 +567,6 @@ function assign_pager($app, $cat, $record_count, $size, $sort, $order, $page = 1
             break;
         case 'article_cat':
             $uri_args = array('acid' => $cat, 'sort' => $sort, 'order' => $order);
-            break;
-		case 'brand_cat':
-            $uri_args = array('bid' => $cat, 'sort' => $sort, 'order' => $order);
             break;
         case 'brand':
             $uri_args = array('cid' => $cat, 'bid' => $brand, 'sort' => $sort, 'order' => $order, 'display' => $display_type);

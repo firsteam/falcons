@@ -157,6 +157,10 @@ $_LANG['pay_fee'] = 'Poundage';
 
 /* 收货地址 */
 $_LANG['consignee_name'] = 'Name';
+$_LANG['first_name'] = 'First name';
+$_LANG['last_name'] = 'Last name';
+$_LANG['address_line_1'] = 'Address line 1';
+$_LANG['address_line_2'] = 'Address line 2';
 $_LANG['country_province'] = 'Country/Province';
 $_LANG['please_select'] = 'Please select...';
 $_LANG['city_district'] = 'City/District';
