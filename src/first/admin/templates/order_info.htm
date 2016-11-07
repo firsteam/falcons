@@ -238,14 +238,14 @@
     <th colspan="4">{$lang.consignee_info}<a href="order.php?act=edit&order_id={$order.order_id}&step=consignee" class="special">{$lang.edit}</a></th>
     </tr>
   <tr>
-    <td><div align="right"><strong>{$lang.first_name}</strong{$order.consignee|escape}></div></td>
-    <td><div align="right"><strong>{$lang.last_name}</strong{$order.last_name|escape}></div></td>
+    <td><div align="right"><strong>{$lang.label_user_name}</strong></div></td>
+    <td>{$order.consignee|escape} {$order.last_name|escape}</td>
     <td><div align="right"><strong>{$lang.label_best_time}</strong></div></td>
     <td>{$order.best_time|escape}</td>
   </tr>
   <tr>
     <td><div align="right"><strong>{$lang.label_address}</strong></div></td>
-    <td>[{$order.region}] {$order.address|escape}</td>
+    <td>[{$order.region}] {$order.city|escape} {$order.address|escape}</td>
     <td><div align="right"><strong>{$lang.label_zipcode}</strong></div></td>
     <td>{$order.zipcode|escape}</td>
   </tr>

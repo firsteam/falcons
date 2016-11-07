@@ -2836,7 +2836,39 @@ function action_address_list ()
     require_once(ROOT_PATH . 'languages/' .$_CFG['lang']. '/shopping_flow.php');
     $smarty->assign('lang',             $_LANG);
     include_once(ROOT_PATH . 'includes/lib_transaction.php');
-    $consignee_list = get_consignee_list($_SESSION['user_id']);
+	
+	if ($_SESSION['user_id'] > 0)
+    { 			
+		$sql="SELECT * FROM " . $GLOBALS['ecs']->table('user_address') .
+		" WHERE user_id = '". $_SESSION['user_id'] ."' order by address_id ";
+		$consignee_list_ecshop68 = $GLOBALS['db']->getAll($sql);
+		foreach ($consignee_list_ecshop68  as $cons_key => $cons_val)
+		{
+			
+			$cons_val['country']  = $db->getOne("SELECT region_name as country_name from " . $GLOBALS['ecs']->table('region') . " WHERE region_id = '$cons_val[country]'");
+			$cons_val['province']  = $db->getOne("SELECT region_name as province_name from " . $GLOBALS['ecs']->table('region') . " WHERE region_id = '$cons_val[province]'");
+			
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] =   $cons_val['consignee'].$cons_val['last_name']."<br>";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  sub_str($cons_val['address'],16)."-";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  sub_str($cons_val['address1'],16)."-";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['city']."-";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['province']."-";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['zipcode'] ? $cons_val['zipcode'].'' : "";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  $cons_val['country']."-";
+			$consignee_list_ecshop68[$cons_key]['address_short_name'] .=  "".$cons_val['mobile'];
+			if ($consignee['address_id'] == $cons_val['address_id'])
+			{
+				$consignee_list_ecshop68[$cons_key]['def_addr'] =1;
+				$have_def_addr=1;
+			}
+			
+			$consignee_list_ecshop68[$cons_key]['country'] = $cons_val['country'];
+			$consignee_list_ecshop68[$cons_key]['province'] = $cons_val['province'];
+		}
+		if ( count($consignee_list_ecshop68) && !$have_def_addr){ $consignee_list_ecshop68[0]['def_addr'] =1; }          
+   }
+	
+    $consignee_list = $consignee_list_ecshop68;
     $smarty->assign('consignee_list', $consignee_list);
 	
 	$address_id = isset($_REQUEST['address_id']) ? intval($_REQUEST['address_id']) : 0;
@@ -2869,7 +2901,7 @@ function action_address_list ()
 	{
 		$consignee['country'] = $_CFG['shop_country'];
 		$consignee['province'] = $GLOBALS['_CFG']['shop_province'];
-		$consignee['city'] = $GLOBALS['_CFG']['shop_city'];
+		//$consignee['city'] = $GLOBALS['_CFG']['shop_city'];
 	}
 	if(empty($consignee['country']))
 	{

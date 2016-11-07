@@ -143,7 +143,7 @@ cursor: pointer;
 }
 .thumb_name dl {
 	float: left;
-	margin: 13px 10px 13px 30px;
+	margin: 13px 10px 13px 0px;
 }
 .thumb_name dl dt {
 	float: left;
@@ -156,7 +156,7 @@ cursor: pointer;
 }
 .thumb_name dl dd {
 	float: left;
-	width: 245px;
+	width: 445px;
 	text-align: left;
 	font-size: 14px;
 }

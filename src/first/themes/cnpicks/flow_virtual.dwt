@@ -121,11 +121,11 @@
             <td width="10%" align=center><input type="checkbox" autocomplete="off" id="chkAll" name="chkAll" checked=true  onclick="return chkAll_onclick()" style="height:28px;vertical-align:middle;" >
               {$lang.check_all}</td>
             {* 代码增加_end  By  www.68ecshop.com *}
-            <td width="37%" align=center>{$lang.goods_name}</td>
-            <td width="15%" align=center>{$lang.number}</td>
-            <td width="15%" align=center>{$lang.shop_prices}</td>
-            <td width="15%" align=center>{$lang.subtotal}</td>
-            <td width="10%" align=center>{$lang.handle}</td>
+            <td width="47%" align=center>{$lang.goods_name}</td>
+            <td width="14%" align=center>{$lang.number}</td>
+            <td width="8%" align=center>{$lang.shop_prices}</td>
+            <td width="8%" align=center>{$lang.subtotal}</td>
+            <td width="8%" align=center>{$lang.handle}</td>
           </tr>
         </table>
       </div>

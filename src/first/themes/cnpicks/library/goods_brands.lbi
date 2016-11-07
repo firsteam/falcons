@@ -13,7 +13,7 @@
 		<ul>
       	<!--{foreach from=$category_related_brand_goods key=key item=goods name=best_goods}-->
       	<li <!--{if $key%2 eq 0}-->style=""<!--{/if}-->>
-            	<div class="p-img"><a href="{$goods.url}" title="{$goods.name}"><img width="160" height="160" alt="{$goods.name}"  src="{$goods.goods_thumb}"/></a></div>
+            	<div class="p-img"><a href="{$goods.url}" title="{$goods.name}"><img alt="{$goods.name}"  src="{$goods.goods_thumb}"/></a></div>
                 <div class="rain-product-info">
             	<div class="p-price"><strong class="best_goods_price"> 
               	<!-- {if $goods.promote_price neq 0} --> 

@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <div class="box">
-  <div id="filter">
+  <div id="filter" class="disable-by-cy">
     <form method="GET" name="listform" action="{$actname}">
       <div class='fore1' style="border:none;">
         <dl class='order'>

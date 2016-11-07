@@ -813,7 +813,7 @@ else
       <div class="free_freight1 disable-by-cy">您当前的可用余额为:{$your_surplus|default:0} <span id="ECS_SURPLUS_NOTICE_{$key}" class="notice"></span></div>
       <table border=0 cellpadding=0 cellspacing=0 width="100%" class="checkgoods">
         <tr>
-          <th width='50%' align=left class="tdone">{$lang.goods_name}</th>
+          <th width='60%' align=left class="tdone">{$lang.goods_name}</th>
           <th>{$lang.number}</th>
           <th>{$lang.shop_prices}</th>
           <th>{$lang.amount}</th>
@@ -824,7 +824,7 @@ else
         </tr> -->
         <!-- {foreach from=$goodsinfo.goodlist item=goods name=name} -->
         <tr>
-          <td width='50%' {if $smarty.foreach.name.first}style="border-top:none;"{/if}><!-- {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'} 商品 -->
+          <td width='60%' {if $smarty.foreach.name.first}style="border-top:none;"{/if}><!-- {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'} 商品 -->
             
             <div class="thumb_name">
               <dl >

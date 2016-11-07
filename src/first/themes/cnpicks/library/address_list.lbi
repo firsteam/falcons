@@ -5,7 +5,7 @@
            <div class="address-item" onclick="selAddress(this, {$consignee.address_id});">
            <input name="address3" value="{$consignee.address_id}" {if $consignee.def_addr eq 1} checked{/if} type="radio">
            
-           {$consignee.consignee|escape} {$consignee.last_name|escape},{$consignee.address|escape},{$consignee.address1|escape},{$consignee.city|escape},{$consignee.zipcode|escape},{$consignee.country|escape}{if $consignee.tel}{$consignee.tel},{/if}{if $consignee.mobile},{$consignee.mobile|escape}{/if}</div>
+           {$consignee.consignee|escape},{$consignee.address|escape},{$consignee.address1|escape},{$consignee.city|escape},{$consignee.province|escape},{$consignee.zipcode|escape},{$consignee.country|escape}{if $consignee.tel}{$consignee.tel},{/if}{if $consignee.mobile},{$consignee.mobile|escape}{/if}</div>
            
            <div  class="edit_addr" id="address_edit_{$sn}"><a  href="javascript:AddressEdit({$consignee.address_id});">{$lang.edit}</a> <a  href="javascript:del_Address({$consignee.address_id});" onclick="return confirm('{$lang.drop_consignee_confirm}');">{$lang.drop}</a></div>
            
