@@ -43,7 +43,7 @@ $smartuachar = "/(ipad)/i";
 //if(($ua == '' || preg_match($uachar, $ua))&& !strpos(strtolower($_SERVER['REQUEST_URI']),'wap'))
 if(!(preg_match($smartuachar, $ua)) && ($ua == '' || preg_match($uachar, $ua))&& !strpos(strtolower($_SERVER['REQUEST_URI']),'wap'))
 {
-    $Loaction = 'mobile/';
+    //$Loaction = 'mobile/'; //disable-by-cy 关闭手机页面
 
     if (!empty($Loaction))
     {

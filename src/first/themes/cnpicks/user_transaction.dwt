@@ -3264,7 +3264,7 @@ function updateEndTime(){
         <li {if $consignee1.def_addr eq 1}class=""{/if}>
            <div class="address-item" onclick="selAddress(this, {$consignee1.address_id});">
            
-           {$consignee1.consignee|escape} {$consignee1.last_name|escape},{$consignee1.address|escape},{$consignee1.address1|escape},{$consignee1.city|escape},{$consignee1.zipcode|escape},{$consignee1.province},{$consignee1.country}{if $consignee1.tel}{$consignee1.tel},{/if}{if $consignee1.mobile},{$consignee1.mobile|escape}{/if}</div>
+           {$consignee1.consignee|escape} {$consignee1.last_name|escape}, {$consignee1.address|escape}, {$consignee1.address1|escape}, {$consignee1.city|escape}, {$consignee1.zipcode|escape}, {$consignee1.province}, {$consignee1.country}{if $consignee1.tel}{$consignee1.tel}, {/if}{if $consignee1.mobile}, {$consignee1.mobile|escape}{/if}</div>
            
            <div  class="edit_addr" id="address_edit_{$sn}"><a href="user.php?act=address_list&address_id={$consignee1.address_id}">{$lang.edit}</a> <a href="javascript:if (confirm('{$lang.confirm_drop_address}'))location.href='user.php?act=drop_consignee&id={$consignee1.address_id}'">{$lang.drop}</a></div>
            

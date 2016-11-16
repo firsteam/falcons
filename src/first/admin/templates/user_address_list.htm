@@ -3,27 +3,31 @@
 <div class="list-div">
   <table width="100%" cellpadding="3" cellspacing="1">
      <tr>
-      <th>{$lang.first_name}</th>
-	  <th>{$lang.last_name}</th>
-      <th>{$lang.address}</th>
-      <th>address line 2</th>
+      <th>name</th>
+      <th>Country</th>
+      <th>Address</th>
       <th>{$lang.link}</th>
       <th>{$lang.other}</th>
     </tr>
   {foreach from=$address key=Key item=val}
     <tr>
-      <td>{$val.consignee|escape}</td>
-	  <td>{$val.last_name|escape}</td>
-      <td>{$val.country_name}&nbsp;&nbsp;{$val.province_name}&nbsp;&nbsp;{$val.city_name}&nbsp;&nbsp;{$val.district_name}<br />
-      {$val.address|escape}{if $val.zipcode}[{$val.zipcode|escape}]{/if}</td>
+      <td>{$val.consignee|escape} {$val.last_name|escape}</td>
+      <td>[Country:] {$val.country_name}</br>
+	  [Provice:] {$val.province_name}</br>
+	  [City:] {$val.city}</br>
+	  {if $val.district}[District:] {$val.district}{/if} 
+      </td>
     
     
-     <td>{$val.country_name}&nbsp;&nbsp;{$val.province_name}&nbsp;&nbsp;{$val.city_name}&nbsp;&nbsp;{$val.district_name}<br />
-      {$val.address1|escape}</td>
+     <td>[Line1:] {$val.address|escape} </br>
+	  {if $val.zipcode}[Zipcode:] {$val.zipcode|escape}</br>{/if} 
+      [Line2:] {$val.address1|escape}</td>
       
       
       
-      <td>{$lang.tel}：{$val.tel}<br />{$lang.mobile}：{$val.mobile}<br/>email: {$val.email}</td>
+      <td>{if $val.tel}{$lang.tel}：{$val.tel}<br />{/if} 
+	  {if $val.mobile}{$lang.mobile}：{$val.mobile}<br/>{/if} 
+	  {if $val.email}email: {$val.email}</td>{/if} 
       <td>{$lang.best_time}:{$val.best_time|escape}<br/>{$lang.sign_building}:{$val.sign_building|escape}</td>
     </tr>
   {foreachelse}

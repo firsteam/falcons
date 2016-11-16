@@ -418,7 +418,7 @@ a.jm_buy {
 	border: 2px solid #ff3300;
 	font-weight: bold;
 }
-.payment_tab_jm li .address-item{float:left;width:700px;padding:10px 0px}
+.payment_tab_jm li .address-item{float:left;width:800px;padding:10px 0px}
 .payment_tab_jm li .edit_addr{float:right;font-weight:normal;padding:10px 0px}
 
 .payment_tab_jm li.seled .payment_subbox {
