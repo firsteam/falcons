@@ -160,6 +160,8 @@ $_LANG['01_virtual_goods_district']	= '入驻商商圈管理';
 
 /* 商品管理 */
 /* 代码增加_start  By  supplier.68ecshop.com */
+$_LANG['favorite_num'] = '喜欢数';
+$_LANG['review_num'] = '评价数';
 $_LANG['01_goods_list'] = '商品列表';
 $_LANG['02_supplier_goods_list'] = '入驻商商品列表';
 $_LANG['03_goods_add'] = '添加新商品';
@@ -174,6 +176,8 @@ $_LANG['05_question_manage'] = '用户咨询';
 $_LANG['05_shaidan_manage'] = '用户晒单';
 $_LANG['05_goods_tags'] = '标签审核';
 $_LANG['06_goods_brand_list'] = '商品品牌';
+$_LANG['06_brand_list'] = '品牌列表';
+$_LANG['06_brand_trash'] = '品牌回收站';
 $_LANG['0688_goods_brand_cat'] = '品牌分类';
 $_LANG['07_brand_add'] = '添加品牌';
 $_LANG['08_goods_type'] = '商品类型';

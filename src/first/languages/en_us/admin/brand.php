@@ -16,13 +16,22 @@
 $_LANG['brand_name'] = '品牌名称';
 $_LANG['site_url'] = '品牌网址';
 $_LANG['brand_desc'] = '品牌描述';
+$_LANG['brand_policy'] = '品牌政策';
 $_LANG['brand_logo'] = '品牌LOGO';
 $_LANG['sort_order'] = '排序';
-$_LANG['is_show'] = '是否显示';
+$_LANG['intro_type'] = '全部';
+$_LANG['is_show'] = '显示';
+$_LANG['not_show'] = '未显示';
+$_LANG['is_best'] = '精品';
+$_LANG['not_best'] = '非精品';
+$_LANG['product_img'] = '产品图片';
+$_LANG['keyword'] = '关键字';
+
 $_LANG['drop_brand_logo'] = '删除图标';
 $_LANG['confirm_drop_logo'] = '你确认要删除该图标吗？';
 $_LANG['drop_brand_logo_success'] = '删除品牌logo成功';
 
+$_LANG['batch_handle_ok'] = '批量操作成功。';
 $_LANG['brand_edit_lnk'] = '重新编辑该品牌';
 $_LANG['brand_list_lnk'] = '返回列表页面';
 

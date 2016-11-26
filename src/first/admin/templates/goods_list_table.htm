@@ -1,17 +1,9 @@
 <!--wzys ecshop商品列表可以显示商品缩略图功能-->
 <style type="text/css">
-.pic {
-  border: 1px solid #d8ebe9;
-  display: block;
-  float: right;
-  height: 80px;
-  margin-right: 0;
-  position: relative;
-  width: 80px;
-}
+.pic {display: block; max-width: 80px; max-height: 80px;  position: relative;}
 .pic a {position:relative; display:block; background:transparent;}
-.pic a .img1 {width:80px; height:80px; border:0;}
-.pic a .img2 {width:280px; height:280px; border:0; position:absolute;left:90px; top:-80px; display:none; z-index:99999}
+.pic a .img1 {max-width:80px; max-height:80px; border:0;}
+.pic a .img2 {max-width:280px;max-height:280px; border:0; position:absolute;left:90px; top:-80px; display:none; z-index:99999}
 .pic a:hover .img2{display:block}
 </style>
 <!--wzys ecshop商品列表可以显示商品缩略图功能end-->

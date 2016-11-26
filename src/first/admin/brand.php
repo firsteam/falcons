@@ -24,15 +24,33 @@ $exc = new exchange($ecs->table("brand"), $db, 'brand_id', 'brand_name');
 /*------------------------------------------------------ */
 //-- 品牌列表
 /*------------------------------------------------------ */
-if ($_REQUEST['act'] == 'list')
+if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 {
-    $smarty->assign('ur_here',      $_LANG['06_goods_brand_list']);
+    admin_priv('brand_manage');
+    
+    $is_delete = ($_REQUEST['act'] == 'trash')? 1 : 0;
+    
+    $is_show = isset($_REQUEST['is_show']) ? ((empty($_REQUEST['is_show']) && $_REQUEST['is_show'] === 0) ? '' : trim($_REQUEST['is_show'])) : '';   
+    
+
+    if($_REQUEST['act'] == 'list'){
+        $action_link2 = array('href' => 'brand.php?act=trash', 'text' => $_LANG['06_brand_trash']) ;
+        $smarty->assign('action_link2',  $action_link2);
+    } 
+    else{
+        $action_link2 = array('href' => 'brand.php?act=list', 'text' => $_LANG['06_brand_list']);
+        $smarty->assign('action_link2',  $action_link2);
+    }
+    
+    $smarty->assign('ur_here',      $_LANG['06_brand_brand_list']);
     $smarty->assign('action_link',  array('text' => $_LANG['07_brand_add'], 'href' => 'brand.php?act=add'));
     $smarty->assign('full_page',    1);
 
-    $brand_list = get_brandlist();
+    $brand_list = get_brandlist($is_delete);
 
     $smarty->assign('brand_list',   $brand_list['brand']);
+    $smarty->assign('intro_list',   get_intro_list());
+    $smarty->assign('list_type',    $_REQUEST['act'] == 'list' ? 'brand' : 'trash');
     $smarty->assign('filter',       $brand_list['filter']);
     $smarty->assign('record_count', $brand_list['record_count']);
     $smarty->assign('page_count',   $brand_list['page_count']);
@@ -41,6 +59,109 @@ if ($_REQUEST['act'] == 'list')
     $smarty->display('brand_list.htm');
 }
 
+elseif ($_REQUEST['act'] == 'batch')
+{
+    $code = empty($_REQUEST['extension_code'])? '' : trim($_REQUEST['extension_code']);
+
+    /* 取得要操作的商品编号 */
+	$brand_id_arr = !empty($_POST['checkboxes']) ? $_POST['checkboxes'] : 0;
+    $brand_id = !empty($_POST['checkboxes']) ? join(',', $_POST['checkboxes']) : 0;
+
+    if (isset($_POST['type']))
+    {
+        /* 放入回收站 */
+        if ($_POST['type'] == 'trash')
+        {
+            /* 检查权限 */
+            check_authz_json('remove_back');
+
+            update_brand($brand_id, 'is_delete', '1');
+
+            /* 记录日志 */
+            admin_log('', 'batch_trash', 'brand');
+        }
+        /* 上架 */
+        elseif ($_POST['type'] == 'show')
+        {
+            /* 检查权限 */
+            check_authz_json('brand_manage');
+            update_brand($brand_id, 'is_show', '1');
+        }
+
+        /* 下架 */
+        elseif ($_POST['type'] == 'not_show')
+        {
+            /* 检查权限 */
+            check_authz_json('brand_manage');
+            update_brand($brand_id, 'is_show', '0');
+        }
+
+        /* 设为精品 */
+        elseif ($_POST['type'] == 'best')
+        {
+            /* 检查权限 */
+            check_authz_json('brand_manage');
+            update_brand($brand_id, 'is_best', '1');
+        }
+
+        /* 取消精品 */
+        elseif ($_POST['type'] == 'not_best')
+        {
+            /* 检查权限 */
+            check_authz_json('brand_manage');
+            update_brand($brand_id, 'is_best', '0');
+        }
+
+        /* 编辑政策 */
+        elseif ($_POST['type'] == 'edit_policy')
+        {
+            /* 检查权限 */
+            check_authz_json('brand_manage');
+			if($_POST['policy_middle'])
+			{
+				update_brand($brand_id, 'brand_policy', '"'.$_POST['policy_prefix'].$_POST['policy_middle'].$_POST['policy_postfix'].'"');
+			}
+			else
+			{
+				update_brand($brand_id, 'brand_policy', 'concat("'.$_POST['policy_prefix'].'",brand_policy,"'.$_POST['policy_postfix'].'")');
+			}
+        }
+		
+        /* 还原 */
+        elseif ($_POST['type'] == 'restore')
+        {
+            /* 检查权限 */
+            check_authz_json('remove_back');
+
+            update_brand($brand_id, 'is_delete', '0');
+
+            /* 记录日志 */
+            admin_log('', 'batch_restore', 'brand');
+        }
+        /* 删除 */
+        elseif ($_POST['type'] == 'drop')
+        {
+            /* 检查权限 */
+            check_authz_json('remove_back');
+
+            delete_brand($brand_id);
+
+            /* 记录日志 */
+            admin_log('', 'batch_remove', 'brand');
+        }
+		
+    }
+    /* 清除缓存 */
+    clear_cache_files();
+
+
+    make_json_result(stripslashes($_LANG['batch_handle_ok']));
+   
+	//$url = 'brand.php?act=query&' . str_replace('act=batch', '', $_SERVER['QUERY_STRING']);
+	//ecs_header("Location: $url\n");
+	exit;
+    
+}
 /*------------------------------------------------------ */
 //-- 添加品牌
 /*------------------------------------------------------ */
@@ -295,6 +416,45 @@ elseif ($_REQUEST['act'] == 'edit_sort_order')
     }
 }
 
+elseif ($_REQUEST['act'] == 'edit_keywords')
+{
+    check_authz_json('brand_manage');
+
+    $id     = intval($_POST['id']);
+    $keywords  = ($_POST['val']);
+    $name   = $exc->get_name($id);
+
+    if ($exc->edit("keywords = '$keywords'", $id))
+    {
+        admin_log(addslashes($name),'edit','brand');
+
+        make_json_result($keywords);
+    }
+    else
+    {
+        make_json_error(sprintf($_LANG['brandedit_fail'], $name));
+    }
+}
+
+elseif ($_REQUEST['act'] == 'edit_brand_policy')
+{
+    check_authz_json('brand_manage');
+
+    $id     = intval($_POST['id']);
+    $brand_policy  = ($_POST['val']);
+    $name   = $exc->get_name($id);
+
+    if ($exc->edit("brand_policy = '$brand_policy'", $id))
+    {
+        admin_log(addslashes($name),'edit','brand');
+
+        make_json_result($brand_policy);
+    }
+    else
+    {
+        make_json_error(sprintf($_LANG['brandedit_fail'], $name));
+    }
+}
 /*------------------------------------------------------ */
 //-- 切换是否显示
 /*------------------------------------------------------ */
@@ -306,6 +466,18 @@ elseif ($_REQUEST['act'] == 'toggle_show')
     $val    = intval($_POST['val']);
 
     $exc->edit("is_show='$val'", $id);
+
+    make_json_result($val);
+}
+
+elseif ($_REQUEST['act'] == 'toggle_best')
+{
+    check_authz_json('brand_manage');
+
+    $id     = intval($_POST['id']);
+    $val    = intval($_POST['val']);
+
+    $exc->edit("is_best='$val'", $id);
 
     make_json_result($val);
 }
@@ -367,12 +539,23 @@ elseif ($_REQUEST['act'] == 'drop_logo')
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'query')
 {
-    $brand_list = get_brandlist();
+    $is_delete = empty($_REQUEST['is_delete']) ? 0 : intval($_REQUEST['is_delete']);
+    
+    $code = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
+        
+    $brand_list = get_brandlist($is_delete);
     $smarty->assign('brand_list',   $brand_list['brand']);
     $smarty->assign('filter',       $brand_list['filter']);
     $smarty->assign('record_count', $brand_list['record_count']);
     $smarty->assign('page_count',   $brand_list['page_count']);
+    
+    $smarty->assign('list_type',    $is_delete ? 'trash' : 'brand');
+    $smarty->assign('use_storage',  empty($_CFG['use_storage']) ? 0 : 1);
 
+    /* 排序标记 */
+    $sort_flag  = sort_flag($brand_list['filter']);
+    $smarty->assign($sort_flag['tag'], $sort_flag['img']);
+    
     make_json_result($smarty->fetch('brand_list.htm'), '',
         array('filter' => $brand_list['filter'], 'page_count' => $brand_list['page_count']));
 }
@@ -383,69 +566,128 @@ elseif ($_REQUEST['act'] == 'query')
  * @access  public
  * @return  array
  */
-function get_brandlist()
+function get_brandlist($is_delete)
 {
-    $result = get_filter();
+    $param_str = '-' . $is_delete;
+    $result = get_filter($param_str);
     if ($result === false)
     {
         /* 分页大小 */
         $filter = array();
-
+        
+        $filter['intro_type']       = empty($_REQUEST['intro_type']) ? '' : trim($_REQUEST['intro_type']);
+        $filter['is_show'] = isset($_REQUEST['is_show']) ? ((empty($_REQUEST['is_show']) && $_REQUEST['is_show'] === 0) ? '' : trim($_REQUEST['is_show'])) : '';
+		$filter['favorite_num']   = empty($_REQUEST['favorite_num']) ? 0 : intval($_REQUEST['favorite_num']);
+		$filter['review_num']   = empty($_REQUEST['review_num']) ? 0 : intval($_REQUEST['review_num']);
+        $filter['keyword']   = empty($_REQUEST['keyword']) ? '' : trim($_REQUEST['keyword']);
+        
+        if (isset($_REQUEST['is_ajax']) && $_REQUEST['is_ajax'] == 1)
+        {
+            $filter['keyword'] = json_str_iconv($filter['keyword']);
+        }
+        
+		$filter['is_show_card']   = isset($_REQUEST['is_show_card']) ? trim($_REQUEST['is_show_card'])  : (isset($_COOKIE['ECS']['is_show_card']) ? $_COOKIE['ECS']['is_show_card'] : 0);
+		$filter['is_show_keywords']   = isset($_REQUEST['is_show_keywords']) ? trim($_REQUEST['is_show_keywords'])  : (isset($_COOKIE['ECS']['is_show_keywords']) ? $_COOKIE['ECS']['is_show_keywords'] : 0);
+		$filter['is_show_desc']   = isset($_REQUEST['is_show_desc']) ? trim($_REQUEST['is_show_desc'])  : (isset($_COOKIE['ECS']['is_show_desc']) ? $_COOKIE['ECS']['is_show_desc'] : 0);
+		$filter['is_show_policy']   = isset($_REQUEST['is_show_policy']) ? trim($_REQUEST['is_show_policy'])  : (isset($_COOKIE['ECS']['is_show_policy']) ? $_COOKIE['ECS']['is_show_policy'] : 0);
+		
+		setcookie('ECS[is_show_card]', $filter['is_show_card'], gmtime() + 86400 * 7);
+		setcookie('ECS[is_show_keywords]', $filter['is_show_keywords'], gmtime() + 86400 * 7);
+		setcookie('ECS[is_show_desc]', $filter['is_show_desc'], gmtime() + 86400 * 7);
+		setcookie('ECS[is_show_policy]', $filter['is_show_policy'], gmtime() + 86400 * 7);
+        
+        $filter['sort_by']          = empty($_REQUEST['sort_by']) ? 'sort_order' : trim($_REQUEST['sort_by']);
+        $filter['sort_order']       = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
+        
+		$filter['is_delete'] = $is_delete;
+        
+        /* 推荐类型 */
+        switch ($filter['intro_type'])
+        {
+            case 'is_best':
+                $where .= " AND is_best=1";
+                break;
+           
+            case 'not_best';
+                $where .= " AND is_best!=1";
+        }
+        
+        /* 上架 */
+        if ($filter['is_show'] !== '')
+        {
+            $where .= " AND (is_show = '" . $filter['is_show'] . "')";
+        }
+        
+        if ($filter['favorite_num'])
+        {
+            $where .= " AND favorite_num>='$filter[favorite_num]'";
+        }
+		if ($filter['review_num'])
+        {
+            $where .= " AND review_num>='$filter[review_num]'";
+        }
+        
+        /* 关键字 */
+        if (!empty($filter['keyword']))
+        {
+            $keyword = mysql_like_quote($filter['keyword']);
+            $where .= ' AND site_url like \'%'.$keyword.'%\' or brand_name like \'%'.$keyword.'%\' or brand_name_cn like \'%'.$keyword.'%\'';
+        }
+        
+        
         /* 记录总数以及页数 */
-        if (isset($_POST['brand_name']))
-        {
-            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE site_url like \'%'.$_POST['brand_name'].'%\' or brand_name like \'%'.$_POST['brand_name'].'%\' or brand_name_cn like \'%'.$_POST['brand_name'].'%\'';
-        }
-        else
-        {
-            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand');
-        }
-
+        $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE is_delete='.$is_delete. $where;
+        
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 
         $filter = page_and_size($filter);
 
         /* 查询记录 */
-        if (isset($_POST['brand_name']))
-        {
-            if(strtoupper(EC_CHARSET) == 'GBK')
-            {
-                $keyword = iconv("UTF-8", "gb2312", $_POST['brand_name']);
-            }
-            else
-            {
-                $keyword = $_POST['brand_name'];
-            }
-            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE site_url like '%{$keyword}%' or brand_name like '%{$keyword}%' or brand_name_cn like '%{$keyword}%' ORDER BY sort_order ASC";
-        }
-        else
-        {
-            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." ORDER BY sort_order ASC";
-        }
-
-        set_filter($filter, $sql);
+    
+        $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE is_delete=".$is_delete. $where. 
+                " ORDER BY $filter[sort_by] $filter[sort_order] ".
+                " LIMIT " . $filter['start'] . ",$filter[page_size]";
+        
+        $filter['keyword'] = stripslashes($filter['keyword']);
+        set_filter($filter, $sql, $param_str);
     }
     else
     {
         $sql    = $result['sql'];
         $filter = $result['filter'];
     }
-    $res = $GLOBALS['db']->selectLimit($sql, $filter['page_size'], $filter['start']);
-
-    $arr = array();
-    while ($rows = $GLOBALS['db']->fetchRow($res))
+    $row = $GLOBALS['db']->getAll($sql);
+    
+    if($filter['is_show_card'])
     {
-        $brand_logo = empty($rows['brand_logo']) ? '' :
-            '<a href="../' . DATA_DIR . '/brandlogo/'.$rows['brand_logo'].'" target="_brank"><img src="images/picflag.gif" width="16" height="16" border="0" alt='.$GLOBALS['_LANG']['brand_logo'].' /></a>';
-        $site_url   = empty($rows['site_url']) ? 'N/A' : '<a href="'.$rows['site_url'].'" target="_brank">'.$rows['site_url'].'</a>';
-
-        $rows['brand_logo'] = $brand_logo;
-        $rows['site_url']   = $site_url;
-
-        $arr[] = $rows;
+        foreach($row as $key=>$val)
+    	{
+    		 $goods = array();
+             $goods_sql = "select goods_id,goods_name,goods_thumb,goods_img,shop_price,collect_link from " . $GLOBALS['ecs']->table('goods') . " where goods_id ".db_create_in($val['rand_ids']);
+    		 $all = $GLOBALS['db']->getAll($goods_sql);
+    		 foreach($all as $k=>$v)
+    		 {
+    			 $goods[$v['goods_id']]['goods_name'] = $v['goods_name'];
+    			 $goods[$v['goods_id']]['goods_thumb'] = $v['goods_thumb'];
+    			 $goods[$v['goods_id']]['goods_img'] = $v['goods_img'];
+    			 $goods[$v['goods_id']]['shop_price'] = $v['shop_price'];
+    			 $goods[$v['goods_id']]['collect_link'] = $v['collect_link'];
+    		 }
+    		
+    		 $row[$key]['goods'] = $goods;
+    	}
     }
+    
+    
+    return array('brand' => $row, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
+}
 
-    return array('brand' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
+function get_intro_list()
+{
+    return array(
+        'is_best'    => $GLOBALS['_LANG']['is_best'],
+        'not_best'     => $GLOBALS['_LANG']['not_best']
+    );
 }
 
 function get_street_type(){
@@ -458,4 +700,77 @@ function get_street_type(){
     return $ret;
 }
 
+/**
+ * 修改商品某字段值
+ * @param   string  $brand_id   商品编号，可以为多个，用 ',' 隔开
+ * @param   string  $field      字段名
+ * @param   string  $value      字段值
+ * @return  bool
+ */
+function update_brand($brand_id, $field, $value)
+{
+    if ($brand_id)
+    {
+        /* 清除缓存 */
+        clear_cache_files();
+
+        $sql = "UPDATE " . $GLOBALS['ecs']->table('brand') .
+                " SET $field = $value " .
+                "WHERE brand_id " . db_create_in($brand_id);
+        return $GLOBALS['db']->query($sql);
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/**
+ * 从回收站删除多个商品
+ * @param   mix     $brand_id   商品id列表：可以逗号格开，也可以是数组
+ * @return  void
+ */
+function delete_brand($brand_id)
+{
+    if (empty($brand_id))
+    {
+        return;
+    }
+
+    check_authz_json('brand_manage');
+
+    $sql = "SELECT DISTINCT brand_id FROM " .$ecs->table('brand'). " WHERE brand_id ". db_create_in($brand_id) . " AND is_delete = 1";;
+    $brand_id = $GLOBALS['db']->getCol($sql);
+    if (empty($brand_id))
+    {
+        return;
+    }
+    
+    /* 删除该品牌的图标 */
+    $sql = "SELECT brand_id,brand_logo FROM " .$ecs->table('brand'). " WHERE brand_id ". db_create_in($brand_id) . " AND is_delete = 1";;
+    $res = $GLOBALS['db']->query($sql);
+    while ($brand= $GLOBALS['db']->fetchRow($res))
+    {
+        /* 更新商品的品牌编号 */
+        $sql = "UPDATE " .$ecs->table('brand'). " SET brand_id=0 WHERE brand_id='".$brand['brand_id']."'";
+        
+        if (!$GLOBALS['db']->query($sql, 'SILENT') && $GLOBALS['db']->errno() != 1146)
+        {
+            die($GLOBALS['db']->error());
+        }
+        
+        if (!empty($brand['brand_logo']))
+        {
+            @unlink(ROOT_PATH . DATA_DIR . '/brandlogo/' .$brand['brand_logo']);
+        }
+    }
+
+    $sql = "DELETE FROM " . $GLOBALS['ecs']->table('brand') .
+            " WHERE brand_id " . db_create_in($brand_id);
+    $GLOBALS['db']->query($sql);
+
+    /* 清除缓存 */
+    clear_cache_files();
+    exit;
+}
 ?>

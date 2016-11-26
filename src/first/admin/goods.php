@@ -76,9 +76,10 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 		
     }
 
-    //$action_link2 = array('href' => 'goods.php?act=download', 'text' => "导出商品");
-   // $smarty->assign('action_link2',  $action_link2);
-		
+    if($_REQUEST['act'] == 'list'){
+        $action_link2 = array('href' => 'goods.php?act=trash', 'text' => $_LANG['11_goods_trash']) ;
+        $smarty->assign('action_link2',  $action_link2);
+    }	
 		
     /* 模板赋值 */
     $goods_ur = array('' => $_LANG['01_goods_list'], 'virtual_card'=>$_LANG['50_virtual_card_list']);
@@ -2670,10 +2671,8 @@ elseif ($_REQUEST['act'] == 'query')
 {
     $is_delete = empty($_REQUEST['is_delete']) ? 0 : intval($_REQUEST['is_delete']);
 	
-	
-    $code = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
-    
-    
+	$code = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
+        
 	if(intval($_REQUEST['supp'])>0){
 		/* 代码增加_start  By www.68ecshop.com */
 		$supplier_list_name=array();

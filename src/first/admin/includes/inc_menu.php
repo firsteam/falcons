@@ -33,7 +33,6 @@ $modules['02_cat_and_goods']['05_goods_tags']       = 'goods_tags.php?act=list';
 $modules['02_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
 $modules['02_cat_and_goods']['0688_goods_brand_cat'] = 'brands_category.php?act=list';
 $modules['02_cat_and_goods']['08_goods_type']       = 'goods_type.php?act=manage';
-$modules['02_cat_and_goods']['11_goods_trash']      = 'goods.php?act=trash';        // 商品回收站
 $modules['02_cat_and_goods']['12_batch_pic']        = 'picture_batch.php';
 $modules['02_cat_and_goods']['13_batch_add']        = 'goods_batch.php?act=add';    // 商品批量上传 
 $modules['02_cat_and_goods']['14_get_taobao']        = 'getTaoBao.php';    // 获取淘宝商品

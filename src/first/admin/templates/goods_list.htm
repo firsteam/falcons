@@ -43,15 +43,16 @@
     <option value="not_audit">{$lang.not_audit}</option>
     <option value="not_pass_audit">{$lang.not_pass_audit}</option>
     {/if}
-
+    {if $list_type eq "trash"}
     <option value="restore">{$lang.restore}</option>
     <option value="drop">{$lang.remove}</option>
-	  
+	{/if}
+    {if $list_type neq "trash"}
     <option value="trash">{$lang.trash}</option>
+    
     <option value="on_sale">{$lang.on_sale}</option>
     <option value="not_on_sale">{$lang.not_on_sale}</option>
 	
-	{if $list_type neq "trash"}
     <option value="best">{$lang.best}</option>
     <option value="not_best">{$lang.not_best}</option>
     <!--
