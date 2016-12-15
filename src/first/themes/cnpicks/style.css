@@ -3251,7 +3251,6 @@ margin-top:expression(32-this.height/2);
 }
 .pic-model div.favorite-goods-thumb a img {
 	width: 180px;
-	height: 180px;
 	/*max-height: 180px;*/
 margin-top:expression(180-this.height/2);
 *margin-top:expression(90-this.height/2)/*IE6,7*/;
