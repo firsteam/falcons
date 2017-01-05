@@ -38,7 +38,7 @@ function get_collection_goods($user_id, $num = 10, $start = 0)
                 "ON g.goods_id = c.goods_id ".
             " LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
-            " WHERE c.user_id = '$user_id' ORDER BY c.rec_id DESC";
+            " WHERE c.user_id = '$user_id' and c.goods_id>0 ORDER BY c.rec_id DESC";
     $res = $GLOBALS['db'] -> selectLimit($sql, $num, $start);
 
     $goods_list = array();

@@ -2496,7 +2496,12 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 						$pathrow['path_name'] = PREFIX_CATEGORY ."-".$pathrow['path_name'];
 						$uri = $pathrow['path_name']. '/'.$uri;*/
 					}
-					$uri = 'product/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$gid;
+					
+					$qian=array("\t","\n","\r",":");
+					$hou=array("","",""," ");
+					$append =  str_replace($qian,$hou,$append); 
+					
+					$uri = 'product/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,|:|：]+/', '', $append))."-".$gid;
 					//$uri .= '-' . urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append));
 				}
 				else
@@ -2865,7 +2870,7 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 
     if ($rewrite)
     {
-        if ($rewrite == 2 && !empty($append) && $app='goods')
+        if ($rewrite == 2 && !empty($append) && $app=='goods')
         {
             $uri .= '-' . urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append));
         }

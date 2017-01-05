@@ -49,20 +49,6 @@
 	clear: both;
 	visibility: hidden;
 }
-.collect {
-  background: url(images/shengji_ad/goods_act.png) no-repeat 0 0;
-  background-position: -75px 4px;
-  border: 1px solid #c8c9cd;
-  display: inline-block;
-  font-size: 14px;
-  height: 34px;
-  line-height: 34px;
-  padding-left: 30px;
-  padding-right: 10px;
-  text-decoration: none;
-  width: auto;
-}
-
 
 </style>
 </head><body>
@@ -84,7 +70,7 @@
 		{$brand.brand_name}
         
         
-        <span id="collect_brand_{$brand.brand_id}">{insert name=collect_btn id=$brand.brand_id}</span>
+        <span id="collect_brand_{$brand.brand_id}" style="position: absolute; margin: 20px 0px 0px 20px;">{insert name=collect_btn id=$brand.brand_id}</span>
         
         
 	</div>

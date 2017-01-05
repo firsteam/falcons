@@ -246,13 +246,13 @@ if ($_REQUEST['act'] =='update')
     /* 权限判断 */
     admin_priv('article_manage');
 
-    /*检查文章名是否相同*/
+    /*检查文章名是否相同
     $is_only = $exc->is_only('title', $_POST['title'], $_POST['id'], "cat_id = '$_POST[article_cat]'");
 
     if (!$is_only)
     {
         sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
-    }
+    }*/
 
 
     if (empty($_POST['cat_id']))
@@ -347,12 +347,12 @@ elseif ($_REQUEST['act'] == 'edit_title')
     $id    = intval($_POST['id']);
     $title = json_str_iconv(trim($_POST['val']));
 
-    /* 检查文章标题是否重复 */
+    /* 检查文章标题是否重复 
     if ($exc->num("title", $title, $id) != 0)
     {
         make_json_error(sprintf($_LANG['title_exist'], $title));
     }
-    else
+    else*/
     {
         if ($exc->edit("title = '$title'", $id))
         {

@@ -4,7 +4,7 @@ function guanzhu1(sid){
 }
 function selcartResponse1(result){
 	if(result.error == 0){
-		alert(result.info)
+		//alert(result.info)
 		$("#collect_brand_"+result.brand_id).html(result.content);
 	}else if(result.error == 1){
 		$('#myModal').modal();
@@ -13,7 +13,7 @@ function selcartResponse1(result){
 		//window.location.href='user.php';
 		//return;
 	}else{
-		alert(result.info)
+		//alert(result.info)
 		$("#collect_brand_"+result.brand_id).html(result.content);
 	}
 }
@@ -23,7 +23,7 @@ function cancel_fav(sid){
 }
 function cancel_favResponse1(result){
 	if(result.error == 0){
-		alert(result.info)
+		//alert(result.info)
 		$("#collect_brand_"+result.brand_id).html(result.content);
 	}else if(result.error == 1){
 		$('#myModal').modal();
@@ -32,7 +32,7 @@ function cancel_favResponse1(result){
 		//window.location.href='user.php';
 		//return;
 	}else{
-		alert(result.info)
+		//alert(result.info)
 		$("#collect_brand_"+result.brand_id).html(result.content);
 	}
 }

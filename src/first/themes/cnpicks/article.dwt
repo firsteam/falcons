@@ -19,7 +19,36 @@
 {insert_scripts files='jquery.json.js,transport.js'}
 {* 包含脚本文件 *}
 {insert_scripts files='common.js'}
+{insert_scripts files='masonry.pkgd.js'}
+<style type="text/css">
+
+/* clearfix */
+.relativ_goods:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-item {
+  margin:12px;
+  float: left;
+}
+</style>
+
+<script type="text/javascript">
+document.onreadystatechange = function () {      
+   if(document.readyState=="complete") {            
+	   $('.relativ_goods').masonry({
+			itemSelector: '.grid-item',
+			columnWidth: '.grid-item',
+			percentPosition: false
+		});    
+   }     
+}
+</script>
+
 </head>
+
 <body>
 <div id="site-nav"> 
   <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
@@ -35,23 +64,25 @@
 			  <font class="f7">{$article.title|escape:html}</font><br />
               <font class="f3">{$article.author|escape:html} / {$article.add_time}</font> 
 			  
-			<div style="padding:20px 10px;">  
-            <!-- {if $article.content } --> 
-            {$article.content} 
-            <!-- {/if} --> 
+			<!-- {if $article.content } -->  
+				<div style="padding:20px 10px;">  
+				{$article.content} 
+            
             {if $article.open_type eq 2 or $article.open_type eq 1}<br />
             <a href="{$article.file_url}" target="_blank">{$lang.relative_file}</a>
             {/if}
 			</div>
+			
+			<!-- {/if} --> 
+			
 			</div>
            <div style="clear:both;"></div>
           <!--{ if $related_goods}-->
 		  <div class="m m2 related-buy">
-			<div class="mc">
-			  <ul>
+			<div class="relativ_goods">
 				<!--{foreach from=$related_goods item=releated_goods_data name=releated_goods_data}--> 
-				<li style="float:left">
-				<div style="margin:10px">
+				<div class="grid-item">
+				<div>
 					<a href="{$releated_goods_data.url}">
 						{if count($related_goods) eq 1}
 							<img max-width="928" alt="{$releated_goods_data.name}"  src="{$releated_goods_data.goods_img}"/>
@@ -63,12 +94,12 @@
 						
 					</a>
 				</div>
-				<div style="padding:0px 10px;{if count($related_goods) eq 3 OR count($related_goods) gt 3}width:293px{/if}">
+				<div>
 					<a href="{$releated_goods_data.url}" target="_blank" title="{$releated_goods_data.goods_name|escape:html}">
 						{$releated_goods_data.goods_name}
 					</a>
 				</div>
-				<div style="padding:5px 10px;" class="p-price"><strong> 
+				<div class="p-price"><strong> 
 				<!-- {if $releated_goods_data.promote_price neq 0} -->
 				  {$releated_goods_data.formated_promote_price}
 				  <!-- {else} -->
@@ -76,9 +107,8 @@
 				  <!-- {/if} -->
 				  </strong>
 				  </div>
-				</li>
+				</div>
 				<!-- {/foreach} -->
-			  </ul>
 			</div>
 		  </div>
 		  <!-- {/if} --> 

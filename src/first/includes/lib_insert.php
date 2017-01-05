@@ -849,15 +849,15 @@ function insert_collect_btn($arr)
     $number = $GLOBALS['db']->getOne($sql);
 	if(empty($_SESSION['user_id']))
 	{
-		return '<a href="javascript:openLogin()" class="collect">Favorite</a>';
+		return '<a href="javascript:openLogin()" class="collet-btn"></a>';
 	}
 	elseif($number==0)
 	{
-        return '<a href="javascript:guanzhu1('.$arr['id'].')" class="collect">Favorite</a>';
+        return '<a href="javascript:guanzhu1('.$arr['id'].')" class="collet-btn"></a>';
 	}
 	else
 	{
-		return '<a href="javascript:cancel_fav('.$arr['id'].')" class="collect">Cancel Favorite</a>';
+		return '<a href="javascript:cancel_fav('.$arr['id'].')" class="collet-btn collet-btn-t"></a>';
 	}
 }
 ?>

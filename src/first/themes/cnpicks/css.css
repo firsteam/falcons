@@ -168,7 +168,7 @@ button, input, select, textarea {
 
 .modal-body {
 	position: relative;
-	padding: 20px;
+	padding: 20px 40px;
 }
 
 .modal-footer {
@@ -211,7 +211,7 @@ button, input, select, textarea {
 
 @media screen and (min-width:768px) {
 	.modal-dialog {
-		width: 600px;
+		width: 400px;
 		margin: 30px auto;
 	}
 
@@ -309,7 +309,7 @@ button, input, select, textarea {
 }
 
 #myModal .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #myModal label {
