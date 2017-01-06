@@ -220,9 +220,15 @@ function addToCartResponse(result) {
 			}
 		} else if (result.error == 888) {
 			alert(result.message);
-		} else {
+		} 
+		else if (result.error == 1000) {
+			window.open (result.collect_link, "newwindow", "") 
+			return;
+		} 
+		else {
 			alert(result.message);
 		}
+		
 	} else {
 		var cartInfo = document.getElementById('ECS_CARTINFO');
 		var cart_url = domain_url+'flow.php?step=cart';

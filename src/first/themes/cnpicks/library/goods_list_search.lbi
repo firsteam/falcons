@@ -106,7 +106,7 @@
 		<!--{if $goods.goods_number eq 0}--><a href="{$goods.url}" class="shop_over1 disable-by-cy"></a><!-- {/if} -->
             <div class="goods-info"> 
               <div class="goods-name">
-                <a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.goods_name|escape:html}</a></div>
+                <a href="{$goods.url}" target="_blank" title="{$goods.name|escape:html}">{$goods.goods_name}</a></div>
               <div class="goods-price"> <em class="sale-price" title="Price: <!--{if $goods.promote_price neq "" } -->{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}-->"><!--{if $goods.promote_price neq "" } -->#{$goods.promote_price}<!--{else}-->{$goods.shop_price}<!--{/if}--></em> <em class="market-price disable-by-cy" title="">{$goods.market_price}</em>
               <a href="javascript:addToCart({$goods.goods_id});" class="buy-btn"></a>
 			  

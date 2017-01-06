@@ -66,7 +66,7 @@
 			{
 				attr_list_dl[i].style.display= i >= begin_hidden ? 'none' : 'block';
 			}
-			attr_group_more_text.innerHTML="更多选项（" + attr_group_more_txt + "）";
+			attr_group_more_text.innerHTML="more(" + attr_group_more_txt + ")";
 			init_position_left();
 			begin_hidden=0;
 		}
@@ -76,7 +76,7 @@
 			{
 				attr_list_dl[i].style.display='block';				
 			}
-			attr_group_more_text.innerHTML="收起";
+			attr_group_more_text.innerHTML="";
 			init_position_left();
 			begin_hidden=2;
 		}
@@ -90,7 +90,7 @@
 	     {
 		obj_brand.style.height= height+ "px";
 		obj_brand.style.overflow="hidden";
-		more_brand.innerHTML='<a href="javascript:void(0);"  onclick="slideDiv(this, \''+boxid+'\', \''+height+'\');" class="more_68ecshop_1" >更多</a>';
+		more_brand.innerHTML='<a href="javascript:void(0);"  onclick="slideDiv(this, \''+boxid+'\', \''+height+'\');" class="more_68ecshop_1" ></a>';
 	     }
 	 }
 	 function slideDiv(thisobj, divID,Height)
@@ -100,7 +100,7 @@
 	     {  
                obj.height= Height+ "px";  
                obj.overflow="hidden";
-	       thisobj.innerHTML="更多";
+	       thisobj.innerHTML="";
 	       thisobj.className="more_68ecshop_1";
 	        // 如果是品牌，额外处理
 		if(divID=='brand_abox')
@@ -116,7 +116,7 @@
 	    {  
                obj.height="";  
                obj.overflow="";  
-	       thisobj.innerHTML="收起";
+	       thisobj.innerHTML="";
 	       thisobj.className="more_68ecshop_2";
 	        // 如果是品牌，额外处理
 		if(divID=='brand_abox')
@@ -151,7 +151,7 @@
 	//点击字母切换品牌
 	function getBrand_By_Zimu(obj, zimu)
 	{
-		document.getElementById('brand_sobox_input').value="可搜索拼音、汉字查找品牌";
+		document.getElementById('brand_sobox_input').value="Search";
 		obj.focus();
 		var brand_zimu=document.getElementById('brand_zimu');
 		var zimu_span_list = brand_zimu.getElementsByTagName('span');
@@ -325,7 +325,7 @@
           <!--{if $condition}-->
           <dl style="border-bottom:1px dotted #ccc;border-top:none;">
             <dt>Filter:</dt>
-            <dd class="moredd" style="text-align:right;">&nbsp;<a href="category.php?id={$category}">Disable All</dd>
+            <dd class="moredd" style="text-align:right;">&nbsp;<a href="category.php?id={$category}">Clear</dd>
             <dd >
               <ul class="selected_attr">
                 {foreach from=$condition item=cond}
@@ -345,8 +345,8 @@
             </dd>
             <dd>
               <div id="brand_sobox" style="display:none;">
-                <input type="text" id="brand_sobox_input" value="可搜索拼音、汉字查找品牌" onfocus="if(this.value=='可搜索拼音、汉字查找品牌') {this.value=''}" 
-	     onblur="if (this.value=='') {this.value='可搜索拼音、汉字查找品牌'}" onkeyup="getBrand_By_Name(this.value);">
+                <input type="text" id="brand_sobox_input" value="Search" onfocus="if(this.value=='Search') {this.value=''}" 
+	     onblur="if (this.value=='') {this.value='Search'}" onkeyup="getBrand_By_Name(this.value);">
               </div>
               <div id="brand_zimu" style="display:none;"> <span class="span"><a href="javascript:void(0);" onmouseover="getBrand_By_Zimu(this,'')" id="brand_zimu_all">All</a></span> {foreach from=$brand_zimu_68ecshop item=bzimu} <span><a href="javascript:void(0);"  onmouseover="getBrand_By_Zimu(this,'{$bzimu}')" >{$bzimu}</a></span> {/foreach} </div>
               <div id="brand_abox_father" > {if $brand_have_logo}
@@ -408,7 +408,7 @@
 	     <input type="text" name="price_max" id="price_max" value="{$price_max}" class="price_68ecshop" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" autocomplete="off">
 		 
 		 <!-- safety_20150625 change_end -->
-                  <a class="button_jd" href="javascript:void()" onclick="location.href='{$url_no_price}&price_min='+document.getElementById('price_min').value+'&price_max='+document.getElementById('price_max').value " >确定</a> </li>
+                  <a class="button_jd" href="javascript:void()" onclick="location.href='{$url_no_price}&price_min='+document.getElementById('price_min').value+'&price_max='+document.getElementById('price_max').value " >Yes</a> </li>
               </ul>
             </dd>
           </dl>
@@ -440,7 +440,7 @@
                   <tr>
 		  <!-- safety_20150625 change_start -->
 		  
-	      <td><a id="button_{$smarty.foreach.filter_attr_list.iteration}"></a><a class="button_jd" onclick="duoxuan_Submit({$smarty.foreach.filter_attr_list.iteration}, '{$kattr}', '{$filter_attr_count_num}', '{$category}','{$brand_id}', '{$price_min}', '{$price_max}', '{$filter_attr_value}','{$filter}');" >确定</a><a href="javascript:void(0);" onclick="hiddenDuoXuan('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}', '{$smarty.foreach.filter_attr_list.iteration}');" class="button_jd" style="margin-left:10px;white-space:nowrap;">取消</a></td>
+	      <td><a id="button_{$smarty.foreach.filter_attr_list.iteration}"></a><a class="button_jd" onclick="duoxuan_Submit({$smarty.foreach.filter_attr_list.iteration}, '{$kattr}', '{$filter_attr_count_num}', '{$category}','{$brand_id}', '{$price_min}', '{$price_max}', '{$filter_attr_value}','{$filter}');" >Yes</a><a href="javascript:void(0);" onclick="hiddenDuoXuan('attr_group_dl_{$smarty.foreach.filter_attr_list.iteration}', '{$smarty.foreach.filter_attr_list.iteration}');" class="button_jd" style="margin-left:10px;white-space:nowrap;">No</a></td>
 		  
 		  <!-- safety_20150625 change_end -->
 		  </tr>
@@ -459,14 +459,13 @@
           
           {if $attr_group_more_count gt 2} 
           <script type="text/javascript">var attr_group_more_txt = "{$attr_group_more_txt}";</script>
-          <div class="attr_group_more" id="attr_group_more"> <a href="javascript:void(0);" onclick="Show_More_Attrgroup();" id="attr_group_more_text">更多选项（{$attr_group_more_txt}）</a> </div>
+          <div class="attr_group_more" id="attr_group_more"> <a href="javascript:void(0);" onclick="Show_More_Attrgroup();" id="attr_group_more_text">More({$attr_group_more_txt})</a> </div>
           <script type="text/javascript" >init_position_left(); </script> 
           {/if} 
           <script type="text/javascript" >init_position_left(); </script> 
         </div>
       </form>
       <div class="blank5"></div>
-      <div class="blank40"></div>
       
       <!--{/if}--> 
       <!--组合搜索 结束--> 

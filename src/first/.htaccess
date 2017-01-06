@@ -47,6 +47,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-fil([0-2])-attr([^-]*)-([0-9]+)-(.+)\.html$  	category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter=$6&filter_attr=$7&page=$8 [C,NC]
 RewriteRule ^category/([a-zA-Z_]+)-(.*)\.html$ 																			category\.php\?sort=$1&order=$2$3 [QSA,L,NC]
 
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^category/(.*)-([0-9]+)-b([0-9_]+)-min([0-9]+)-max([0-9]+)-attr([^-]*)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  category\.php\?path_name=$1&id=$2&brand=$3&price_min=$4&price_max=$5&filter_attr=$6&page=$7&sort=$8&order=$9 [QSA,L]
@@ -98,11 +100,10 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^article_cat/(.*)-([0-9]+)(.*)\.html$                            article_cat\.php\?path_name=$1&id=$2   [QSA,L]
 
-
-RewriteRule ^article-([0-9]+)(.*)\.html$                                url301\.php\?pagetype=article&id=$1   [QSA,L]
+RewriteRule ^article/(.*)-([0-9]+)\.html$                                    article\.php\?id=$2   [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^article-([0-9a-z]+)/article-([0-9]+)(.*)\.html$                                article\.php\?path_name=$1&id=$2   [QSA,L]
+RewriteRule ^article-([0-9a-zA-Z]+)/article-([0-9]+)(.*)\.html(.*)$            article\.php\?path_name=$1&id=$2 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^zhuanti/topic-([0-9]+)\.html$                                topic\.php\?topic_id=$1   [QSA,L]

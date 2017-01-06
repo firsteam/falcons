@@ -451,13 +451,13 @@ function get_category_recommend_goods($type = '', $cats = '', $brand = 0, $min =
     switch ($type)
     {
         case 'best':
-            $sql .= ' AND is_best = 1';
+            $sql .= ' AND g.is_best = 1';
             break;
         case 'new':
-            $sql .= ' AND is_new = 1';
+            $sql .= ' AND g.is_new = 1';
             break;
         case 'hot':
-            $sql .= ' AND is_hot = 1';
+            $sql .= ' AND g.is_hot = 1';
             break;
         case 'promote':
             $time = gmtime();

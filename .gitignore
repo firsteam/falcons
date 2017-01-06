@@ -7,4 +7,5 @@ src/*.rar
 Thumbs.db
 src/first/product/*
 src/first/article_cat/*
+src/first/article/*
 src/first/mobile/temp/*

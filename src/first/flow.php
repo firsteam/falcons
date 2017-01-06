@@ -389,7 +389,17 @@ if ($_REQUEST['step'] == 'add_to_cart')
     $goods = $json->decode($_POST['goods']);
 	//www.68ecshop.com start add 2015-3-26
 	$time_xg_now=gmtime();
-	$row_xg= $GLOBALS['db']->getRow("select is_buy,buymax, buymax_start_date, buymax_end_date from ". $GLOBALS['ecs']->table('goods') ." where goods_id='".$goods->goods_id."' " );
+	
+	$row_xg= $GLOBALS['db']->getRow("select is_buy,buymax, buymax_start_date, buymax_end_date,is_outsite,collect_link from ". $GLOBALS['ecs']->table('goods') ." where goods_id='".$goods->goods_id."' " );
+	
+	if($row_xg['is_outsite']==1)
+	{
+		$result['error'] = 1000;
+		$result['collect_link'] = $row_xg['collect_link'];
+        die($json->encode($result));
+	}
+	
+	
 	if ( $row_xg['is_buy'] == 1 && $row_xg['buymax'] >0 && $row_xg['buymax_start_date'] < $time_xg_now  && $row_xg['buymax_end_date'] > $time_xg_now  )
 	{
 		if ($_SESSION['user_id'] == 0 )

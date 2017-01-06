@@ -121,85 +121,48 @@ else
    
     if (!empty($_REQUEST['keywords']))
     {
-
-        $arr = array();
-
-        if (stristr($_REQUEST['keywords'], ' AND ') !== false)
-
-        {
-
-            /* 检查关键字中是否有AND，如果存在就是并 */
-
-            $arr        = explode('AND', $_REQUEST['keywords']);
-
-            $operator   = " AND ";
-
-        }
-
-        elseif (stristr($_REQUEST['keywords'], ' OR ') !== false)
-
-        {
-
-            /* 检查关键字中是否有OR，如果存在就是或 */
-
-            $arr        = explode('OR', $_REQUEST['keywords']);
-
-            $operator   = " OR ";
-
-        }
-
-        elseif (stristr($_REQUEST['keywords'], ' + ') !== false)
-
-        {
-
-            /* 检查关键字中是否有加号，如果存在就是或 */
-
-            $arr        = explode('+', $_REQUEST['keywords']);
-
-            $operator   = " OR ";
-
-        }
-
-        else
-
-        {
-
-            /* 检查关键字中是否有空格，如果存在就是并 */
-
-            $arr        = explode(' ', $_REQUEST['keywords']);
-
-            $operator   = " AND ";
-
-        }
-       
-
-
+    /*分词效果*/
+		/* 修改_START */
+		include_once('includes/lib_splitword_full.php');
+	
+		$Recordkw = str_replace(array("\'"), array(''), trim($_REQUEST['keywords']));
+		$cfg_soft_lang = 'utf-8';
+        $sp = new SplitWord($cfg_soft_lang, $cfg_soft_lang);
+        $sp->SetSource($Recordkw, $cfg_soft_lang, $cfg_soft_lang);
+        $sp->SetResultType(2);
+        $sp->StartAnalysis(TRUE);
+        $word = $sp->GetFinallyResult(' ');
+	
+		  
+        $word = preg_replace("/[ ]{1,}/", " ", trim($word));
+        $replacef = explode(' ', $word);
+		
+		$replacet = array_map('highlight', $replacef);
         $keywords = 'AND (';
         $goods_ids = array();
 
-        foreach ($arr AS $key => $val)
+        foreach ($replacef AS $key => $val)
 
         {
-
-            if ($key > 0 && $key < count($arr) && count($arr) > 1)
-
+            if ($key > 0 && $key < count($replacef) && count($replacef) > 1)
             {
-
-                $keywords .= $operator;
-
+                $keywords .= " AND ";
             }
             $val        = mysql_like_quote(trim($val));
             $sc_dsad    = $_REQUEST['sc_ds'] ? " OR goods_desc LIKE '%$val%'" : '';
             $keywords  .= "(goods_name LIKE '%$val%' OR goods_sn LIKE '%$val%' OR keywords LIKE '%$val%' $sc_dsad)";
 
-            
-
-
-
-            $db->autoReplace($ecs->table('keywords'), array('date' => local_date('Y-m-d'),'searchengine' => 'ecshop', 'keyword' => addslashes(str_replace('%', '', $val)), 'count' => 1), array('count' => 1));
-
+            $sql = 'SELECT DISTINCT goods_id FROM ' . $ecs->table('tag') . " WHERE tag_words LIKE '%$val%' ";
+            $res = $db->query($sql);
+            while ($row = $db->FetchRow($res))
+            {
+                $goods_ids[] = $row['goods_id'];
+            }
         }
-
+		
+		//$db->autoReplace($ecs->table('keywords'), array('date' => local_date('Y-m-d'),
+                //'searchengine' => 'ecshop', 'keyword' => htmlspecialchars_decode(str_replace('%', '', $Recordkw)), 'count' => 1), array('count' => 1));
+		/* 修改_END */
         $keywords .= ')';
 
 
@@ -211,17 +174,6 @@ else
             $tag_where = 'OR g.goods_id ' . db_create_in($tag_where);
         }
     }
-	
-    //$keywords  = " and (goods_name LIKE '%".$_REQUEST['keywords']."%' OR goods_sn LIKE '%".$_REQUEST['keywords']."%' OR keywords LIKE ''%".$_REQUEST['keywords']."%'')";
-	/*
-	$sql = 'SELECT DISTINCT goods_id FROM ' . $ecs->table('tag') . " WHERE tag_words LIKE '%".$_REQUEST['keywords']."%' ";
-	$res = $db->query($sql);
-	while ($row = $db->FetchRow($res))
-	{
-		$goods_ids[] = $row['goods_id'];
-	}*/
-			
-	
 
     $category   = !empty($_REQUEST['category']) ? intval($_REQUEST['category'])        : 0;
     $categories = ($category > 0)               ? ' AND ' . get_children($category)    : '';
@@ -362,34 +314,16 @@ else
             $attr_in = " AND " . db_create_in($col, 'g.goods_id');
         }
     }
-   /* fulltext_search_add_START_www.68ecshop.com */
-    if($_CFG['fulltext_search'] == '0'){
-   /* fulltext_search_add_END_www.68ecshop.com */
+
     /* 获得符合条件的商品总数 */
     $sql   = "SELECT COUNT(*) FROM " .$ecs->table('goods'). " AS g ".
-        "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_virtual=0  $attr_in $categories ".
-        "AND (( 1 "  . $keywords . $brand . $min_price . $max_price . $intro . $outstock ." ) ".$tag_where." )";
+        "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 $attr_in ".
+        "AND (( 1 " . $categories . $keywords . $brand . $min_price . $max_price . $intro . $outstock ." ) ".$tag_where." )";
     $count = $db->getOne($sql);
-	/* 代码添加_START   By  www.68ecshop.com  */	
-    if ($page == 1 && $Recordkw && $count && !$category) Recordkeyword($Recordkw, $count, 'ecshop');  // 代码修改  By   www.68ecshop.com
-	if($count==0)
-	{
-		if (preg_match('/^[a-zA-z]+$/i', $_REQUEST['keywords']))
-		{
-			$sql_www_68ecshop_com = "select keyword from ". $ecs->table('keyword') ." where letter='". $_REQUEST['keywords'] ."' order by items desc limit 0,1";
-			$keyword_www_68ecshop_com = $db->getOne($sql_www_68ecshop_com);
-			if($keyword_www_68ecshop_com && $keyword_www_68ecshop_com!=$_REQUEST['keywords'])
-			{
-				header('Location: search.php?keywords='.$keyword_www_68ecshop_com.'&keyword_zm='.$_REQUEST['keywords']);
-				exit;
-			}
-		}
-	}
-	if($_REQUEST['keyword_zm'])
-	{
-		$smarty->assign('beizhuxinxi_www_68ecshop_com', '关键词<font color=#cc0000>'.$_REQUEST['keyword_zm'].'</font>搜索结果为零，<br>但是我们为您匹配到了相关关键词<font color=#cc0000>'.$_REQUEST['keywords'].'</font>，下面是它的查询结果！');
-	}
-	/* 代码添加_END   By  www.68ecshop.com  */
+  
+	/* 添加_START */
+    if ($page == 1 && $Recordkw) Recordkeyword($Recordkw, $count, 'ecshop');
+	/* 添加_END */
     $max_page = ($count> 0) ? ceil($count / $size) : 1;
     if ($page > $max_page)
     {
@@ -397,21 +331,18 @@ else
     }
 
     /* 查询商品 */
-    $sql = "SELECT g.goods_id, g.goods_name, g.market_price, g.click_count, g.goods_number, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
+    $sql = "SELECT g.goods_id, g.goods_name, g.market_price, g.click_count, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                 "g.promote_price, g.promote_start_date, g.promote_end_date, g.goods_thumb, g.goods_img, g.goods_brief, g.goods_type ".
             "FROM " .$ecs->table('goods'). " AS g ".
             "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
                     "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
-            "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_virtual=0 $attr_in $categories ".
-                "AND (( 1 " . $keywords . $brand . $min_price . $max_price . $intro . $outstock . " ) ".$tag_where." ) " .
+            "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 $attr_in ".
+                "AND (( 1 " . $categories . $keywords . $brand . $min_price . $max_price . $intro . $outstock . " ) ".$tag_where." ) " .
             "ORDER BY $sort $order";
-    
-	
 	if ($sort=='salenum')
 	{
-		
-		  $sql = "SELECT IFNULL(o.num,0) AS salenum,g.goods_id, g.goods_name, g.market_price, g.click_count, g.goods_number, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
+		 $sql = "SELECT IFNULL(o.num,0) AS salenum,g.goods_id, g.goods_name, g.market_price, g.click_count, g.goods_number, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                 "g.promote_price, g.promote_start_date, g.promote_end_date, g.goods_thumb, g.goods_img, g.goods_brief, g.goods_type ".
             "FROM " .$ecs->table('goods'). " AS g ".
@@ -433,89 +364,7 @@ else
             "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_virtual=0 $attr_in $categories ".
                 "AND (( 1 " . $keywords . $brand . $min_price . $max_price . $intro . $outstock . " ) ".$tag_where." ) " .
             "ORDER BY $sort $order";
-		
 	}
-	
-	
-    }
-    /* fulltext_search_add_START_www.68ecshop.com */
-    
-    if($_CFG['fulltext_search'] == '1'){
-        require ( "./includes/sphinxapi.php" );
-        $s = new SphinxClient();
-        $s->SetServer('localhost',9312);
-        $s->setLimits (0,1000);
-        //$s->SetMatchMode ( SPH_MATCH_ANY);  // 分词
-		$result = $s->Query($_REQUEST['keywords'],'goods');
-            if($result){
-		$idarray = array_keys($result['matches']);
-		if(empty($idarray)){
-			$idarray = array();
-				foreach($replacef_www_68ecshop_com as $key => $value){
-				$result = $s->Query($value,'goods');
-				$idss = array_keys($result['matches']);
-				if(empty($idss)){
-					$idss = array();
-				}
-				$idarray = array_merge($idarray,$idss);
-			}
-		}
-		$ids = join(',', $idarray);
-
-        if(empty($ids)) $ids = '-1';
-        $sql   = "SELECT COUNT(*) FROM " .$ecs->table('goods'). " AS g ".
-        "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 $attr_in $categories ".
-        "AND (( 1 "  ."and g.goods_id in ({$ids})"." ) ".$tag_where." )";
-		
-    $count = $db->getOne($sql);
-    if ($page == 1 && $Recordkw && $count && !$category) Recordkeyword($Recordkw, $count, 'ecshop');
-	if($count==0)
-	{
-		if (preg_match('/^[a-zA-z]+$/i', $_REQUEST['keywords']))
-		{
-			$sql = "select keyword from ". $ecs->table('keyword') ." where letter='". $_REQUEST['keywords'] ."' order by items desc limit 0,1";
-			$keyword = $db->getOne($sql);
-			if($keyword && $keyword!=$_REQUEST['keywords'])
-			{
-				header('Location: search.php?keywords='.$keyword.'&keyword_zm='.$_REQUEST['keywords']);
-				exit;
-			}
-		}
-	}
-	if($_REQUEST['keyword_zm'])
-	{
-		$smarty->assign('beizhuxinxi', 'Keyword:<font color=#cc0000>'.$_REQUEST['keyword_zm'].'</font>Could not find any result<br>但是我们为您匹配到了相关关键词<font color=#cc0000>'.$_REQUEST['keywords'].'</font>，下面是它的查询结果！');
-	}
-    $max_page = ($count> 0) ? ceil($count / $size) : 1;
-    if ($page > $max_page)
-    {
-        $page = $max_page;
-    }
-        
-        
-        //$sqls = "select * from ecs_goods where goods_id in ({$ids})";
-        $sql = "SELECT g.goods_id, g.goods_name, g.market_price, g.click_count, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
-                    "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
-                    "g.promote_price, g.promote_start_date, g.promote_end_date, g.goods_thumb, g.goods_img, g.goods_brief, g.goods_type ".
-                "FROM " .$ecs->table('goods'). " AS g ".
-                "LEFT JOIN " . $GLOBALS['ecs']->table('member_price') . " AS mp ".
-                        "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
-                "WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1 $attr_in $categories ".
-                    "AND (( 1 " ."and g.goods_id in ({$ids})". " ) ".$tag_where." ) " .
-                "ORDER BY sort_order asc";  			
-			
-        }else{
-            //如果服务关闭则关闭全文搜索功能
-            $sql = "update ".$ecs->table('shop_config')." set value = 0 where code = 'fulltext_search'";
-            $db -> query($sql);
-            clear_cache_files(); 
-            echo "<script>alert('引擎服务未开启,自动关闭全文搜索功能!');location.reload();</script>";
-            exit;
-        }
-    }
-
-    /* fulltext_search_add_END_www.68ecshop.com */
-    
     $res = $db->SelectLimit($sql, $size, ($page - 1) * $size);
 
     $arr = array();
@@ -530,6 +379,7 @@ else
             $promote_price = 0;
         }
 
+        /* 处理商品水印图片 */
         /* 处理商品水印图片 */
         $watermark_img = '';
 
@@ -556,30 +406,20 @@ else
         }
 
         $arr[$row['goods_id']]['goods_id']      = $row['goods_id'];
-        if($display == 'grid')
-        {
-            $arr[$row['goods_id']]['goods_name']    = $GLOBALS['_CFG']['goods_name_length'] > 0 ? sub_str($row['goods_name'], $GLOBALS['_CFG']['goods_name_length']) : $row['goods_name'];
-        }
-        else
-        {
-            $arr[$row['goods_id']]['goods_name'] = $row['goods_name'];
-        }
-		/* 代码添加_START   By    www.68ecshop.com */
-		$arr[$row['goods_id']]['goods_name_www_68ecshop_com'] =  $arr[$row['goods_id']]['goods_name'];
-		foreach($replacef_www_68ecshop_com as $key_www_68ecshop_com =>$temp_qq)
-		{
-				//$replacet[$key_www_68ecshop_com]=  '<strong style="color:#cc0000;">'. $temp_qq .'</strong>';;
-				$arr[$row['goods_id']]['goods_name_www_68ecshop_com'] = preg_replace('/(?!<[^>]*)'.$temp_qq.'(?![^<]*>)/i', '<strong style="color:#cc0000;">'. $temp_qq .'</strong>', $arr[$row['goods_id']]['goods_name_www_68ecshop_com']);
-		}
-		/* 代码添加_END  By  www.68ecshop.com */
-        $arr[$row['goods_id']]['type']          = $row['goods_type'];
-        $arr[$row['goods_id']]['market_price']  = price_format($row['market_price']);
+		/* 添加_START */
+		$arr[$row['goods_id']]['name'] = $row['goods_name'];
+		/* 添加_START */
+		$arr[$row['goods_id']]['goods_name'] = str_replace($replacef, $replacet, $row['goods_name']);
+	    $arr[$row['goods_id']]['type']          = $row['goods_type'];
+		$arr[$row['goods_id']]['market_price']  = price_format($row['market_price']);
         $arr[$row['goods_id']]['shop_price']    = price_format($row['shop_price']);
         $arr[$row['goods_id']]['promote_price'] = ($promote_price > 0) ? price_format($promote_price) : '';
         $arr[$row['goods_id']]['goods_brief']   = $row['goods_brief'];
         $arr[$row['goods_id']]['goods_thumb']   = get_image_path($row['goods_id'], $row['goods_thumb'], true);
         $arr[$row['goods_id']]['goods_img']     = get_image_path($row['goods_id'], $row['goods_img']);
         $arr[$row['goods_id']]['url']           = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
+		
+		
 		$arr[$row['goods_id']]['evaluation']     = get_evaluation_sum($row['goods_id']);
 		$arr[$row['goods_id']]['is_new']          = $row['is_new'];
 		$arr[$row['goods_id']]['is_best']          = $row['is_best'];
@@ -600,7 +440,8 @@ else
 		{
 			$arr[$row['goods_id']]['is_collet'] = 0;
 		}
-  }
+		
+    }
 
     if($display == 'grid')
     {
@@ -610,6 +451,7 @@ else
         }
     }
     $smarty->assign('goods_list', $arr);
+    //print_r( $arr );
     $smarty->assign('category',   $category);
     $smarty->assign('keywords',   htmlspecialchars(stripslashes($_REQUEST['keywords'])));
     $smarty->assign('search_keywords',   stripslashes(htmlspecialchars_decode($_REQUEST['keywords'])));
@@ -855,6 +697,12 @@ function get_seachable_attributes($cat_id = 0)
 
     return $attributes;
 }
+/* 添加_START */
+function highlight($str)
+{
+	return '<strong style="color:red;">'.$str.'</strong>';
+}
+/* 添加_END */
 function get_evaluation_sum($goods_id)
 {
 $sql = "SELECT count(*) FROM " . $GLOBALS['ecs']->table('comment') . " WHERE status=1 and  comment_type =0 and id_value =".$goods_id ;//status=1表示通过了的评论才算  comment_type =0表示针对商品的评价 感谢zhangyh的提醒

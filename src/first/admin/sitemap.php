@@ -59,35 +59,46 @@ else
 
     $db->query("UPDATE " .$ecs->table('shop_config'). " SET VALUE='$config' WHERE code='sitemap'");
 
-    /* 商品分类 */
+    /* 商品分类 
     $sql = "SELECT cat_id,cat_name FROM " .$ecs->table('category'). " ORDER BY parent_id";
     $res = $db->query($sql);
 
     while ($row = $db->fetchRow($res))
     {
-        $smi = new google_sitemap_item($domain . build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']), $today,
+        $smi = new google_sitemap_item( build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']), $today,
             $_POST['category_changefreq'], $_POST['category_priority']);
         $sm->add_item($smi);
-    }
+    }*/
 
-    /* 文章分类 */
+    /* 文章分类 
     $sql = "SELECT cat_id,cat_name FROM " .$ecs->table('article_cat'). " WHERE cat_type=1";
     $res = $db->query($sql);
 
     while ($row = $db->fetchRow($res))
     {
-        $smi = new google_sitemap_item($domain . build_uri('article_cat', array('acid' => $row['cat_id']), $row['cat_name']), $today,
+        $smi = new google_sitemap_item( build_uri('article_cat', array('acid' => $row['cat_id']), $row['cat_name']), $today,
+            $_POST['category_changefreq'], $_POST['category_priority']);
+        $sm->add_item($smi);
+    }*/
+	
+    /* 店铺 */
+    $sql = "SELECT brand_id,brand_name FROM " .$ecs->table('brand'). " ORDER BY brand_id";
+    $res = $db->query($sql);
+
+    while ($row = $db->fetchRow($res))
+    {
+        $smi = new google_sitemap_item( build_uri('brand', array('bid' => $row['brand_id']), $row['brand_name']), $today,
             $_POST['category_changefreq'], $_POST['category_priority']);
         $sm->add_item($smi);
     }
-
+	
     /* 商品 */
     $sql = "SELECT goods_id, goods_name FROM " .$ecs->table('goods'). " WHERE is_delete = 0";
     $res = $db->query($sql);
 
     while ($row = $db->fetchRow($res))
     {
-        $smi = new google_sitemap_item($domain . build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']), $today,
+        $smi = new google_sitemap_item( build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']), $today,
             $_POST['content_changefreq'], $_POST['content_priority']);
         $sm->add_item($smi);
     }
@@ -99,7 +110,7 @@ else
     while ($row = $db->fetchRow($res))
     {
         $article_url=$row['open_type'] != 1 ? build_uri('article', array('aid'=>$row['article_id']), $row['title']) : trim($row['file_url']);
-        $smi = new google_sitemap_item($domain . $article_url,
+        $smi = new google_sitemap_item( $article_url,
             $today, $_POST['content_changefreq'], $_POST['content_priority']);
         $sm->add_item($smi);
     }

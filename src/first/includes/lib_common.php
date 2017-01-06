@@ -2401,7 +2401,7 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 					{
 						$append = $GLOBALS['db']->getOne("select cat_name from  ". $GLOBALS['ecs']->table('category')." where cat_id = '$cid'");
 					}
-					$uri = PREFIX_CATEGORY.'/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$gid;
+					$uri = PREFIX_CATEGORY.'/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append))."-".$cid;
 				   //$uri = 'category-' . $cid;
                     if (isset($bid))
                     {
@@ -2702,11 +2702,18 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             {
 				if ($rewrite)
 				{	
-					$uri = 'article-' . $aid;
-					$pathrow = $GLOBALS['db']->getRow("select c.path_name,c.cat_id from ". $GLOBALS['ecs']->table('article')." AS a left join ". $GLOBALS['ecs']->table('article_cat') ." AS c on a.cat_id=c.cat_id where a.article_id='$aid'" );
-					$pathrow['path_name'] = $pathrow['path_name'] ? $pathrow['path_name'] : ("cat". $pathrow['cat_id']);
-					$pathrow['path_name'] = PREFIX_ARTICLECAT ."-".$pathrow['path_name'];
-					$uri = $pathrow['path_name']. '/'.$uri;
+					if(empty($append))
+					{
+						$append = $GLOBALS['db']->getOne("select title from  ". $GLOBALS['ecs']->table('article')." where article_id = '$aid'");
+					}
+					
+					$qian=array("\t","\n","\r",":");
+					$hou=array("","",""," ");
+					$append =  str_replace($qian,$hou,$append); 
+					
+					$uri = 'article/'.urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,|:|：]+/', '', $append))."-".$aid;
+					//$uri .= '-' . urlencode(preg_replace('/[\.|\/|\?|&|\+|\\\|\'|"|,]+/', '', $append));
+					
 				}
 				else
 				{
@@ -3970,6 +3977,7 @@ function gb2py($text, $exp = '')
 function Recordkeyword($word_www_68ecshop_com, $items = 0, $searchengine = 'ecshop')
 {
 	if(strlen($word_www_68ecshop_com) < 3 || strlen($word_www_68ecshop_com) > 30 || strpos($word_www_68ecshop_com, ' ') !== false) return;
+	
 	$sql_www_68ecshop_com = "SELECT * FROM " .$GLOBALS['ecs']->table('keyword'). " WHERE searchengine='ecshop' AND word='$word_www_68ecshop_com'";
 	$r = $GLOBALS['db']->getRow($sql_www_68ecshop_com);
 	if($r)
