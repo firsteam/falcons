@@ -157,6 +157,9 @@ function get_article_info($article_id)
 
     if ($row !== false)
     {
+/*--wzys内链修改过代码--*/
+	   $row['content'] = within_links($row['content']);
+	   /*--wzys内链修改过代码 end--*/
         $row['comment_rank'] = ceil($row['comment_rank']);                              // 用户评论级别取整
         $row['add_time']     = local_date($GLOBALS['_CFG']['date_format'], $row['add_time']); // 修正添加时间显示
 

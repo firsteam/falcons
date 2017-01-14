@@ -153,6 +153,9 @@ $modules['11_system']['navigator']                  = 'navigator.php?act=list';
 $modules['11_system']['file_check']                 = 'filecheck.php';
 //$modules['11_system']['fckfile_manage']             = 'fckfile_manage.php?act=list';
 $modules['11_system']['021_reg_fields']             = 'reg_fields.php?act=list';
+/*--wzys内链修改过代码--*/
+$modules['11_system']['024_within_links']           = 'within_links.php?act=list';
+/*--wzys内链修改过代码end--*/
 
 
 $modules['12_template']['02_template_select']       = 'template.php?act=list';

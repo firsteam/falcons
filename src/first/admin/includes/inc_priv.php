@@ -109,7 +109,9 @@ if (!defined('IN_ECS'))
     $purview['flashplay']            = 'flash_manage';
     $purview['ucenter_setup']        = 'integrate_users';
     $purview['021_reg_fields']       = 'reg_fields';
-    $purview['website']       		 = 'website_login';
+    /*--wzys内链修改过代码--*/
+    $purview['024_within_links']     = 'links_manage';
+/*--wzys内链修改过代码end--*/
 
 //广告管理
     $purview['z_clicks_stats']       = 'ad_manage';

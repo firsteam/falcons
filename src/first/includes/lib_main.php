@@ -2208,6 +2208,87 @@ function url_domain()
     return $root;
 }
 
+/*--wzys内链修改过代码--*/
+/**
+ * 内链关键词替换
+ *
+ * @return  str
+ */
+function within_links($content)
+{
+
+    
+	$org_content=$content;
+
+	if(empty($content))
+	{
+	   return $content;
+	}
+	
+	preg_match_all ( '/(<[^\s].*?>)/i', $content,$match);
+    $content_1 = array_unique($match[0]);
+    $content_1_temp = array();
+    foreach($content_1 as $key=>$val)
+	{
+		$content_1_temp[]=$val;
+	}
+
+	$content_1=$content_1_temp;
+	$count = count($content_1);
+	
+	foreach ($content_1 as $key => $value )
+	{
+		$content = str_replace("$value","pattern_str[$key]",$content);
+	    $pattern_str[$key] = $value;
+	}
+	
+	
+	$content_2 = $content;
+	
+	$keywords = $GLOBALS['db']->getAll("select keywords,keywords_times,keywords_links,is_opennew from ". $GLOBALS['ecs']->table('within_links') . " where is_show=1 order by sort_order asc");
+	if(empty($keywords))
+	{
+		return $org_content;
+	}
+	else
+	{
+		foreach($keywords as $key=>$val)
+		{
+			$target = '';
+			if($val['is_opennew']>0)
+			{
+				$target = "target = '_blank'";
+			}
+
+			$within_links[$key] = "<a href='".$val['keywords_links']."' style='color:red'  title='".$val['keywords']."' $target>".$val['keywords']."</a>";
+
+			if(empty($val['keywords_times']))
+			{
+			   $val['keywords_times'] = 10000;
+			}
+			
+			$content_2 = preg_replace("/".$val['keywords']."/",'within_links['.$key.']',$content_2,$val['keywords_times']);
+		}
+	 }
+	 
+	 $within_links_count = count($within_links);
+	 for($j=0;$j<$within_links_count;$j++)
+	 {
+		 $content_2 = str_replace("within_links[$j]",$within_links[$j],$content_2);
+	 }
+	 
+
+	 for($i=0;$i<$count;$i++)
+	 {
+		 $content_2 = str_replace("pattern_str[$i]",$pattern_str[$i],$content_2);
+	 }
+	 
+	 
+	 
+	 return $content_2;
+	
+}
+/*--wzys内链修改过代码 end--*/
 
 /*  代码增加_start By www.68ecshop.com */
 /**

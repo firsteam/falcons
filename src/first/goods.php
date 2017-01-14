@@ -362,6 +362,9 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
     }
     else
     {
+     /*--wzys内链修改过代码--*/
+$goods['goods_desc'] = within_links($goods['goods_desc']);//内链
+/*--wzys内链修改过代码end--*/
         if ($goods['brand_id'] > 0)
         {
             $goods['goods_brand_url'] = build_uri('brand', array('bid'=>$goods['brand_id']), $goods['goods_brand']);

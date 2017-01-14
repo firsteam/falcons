@@ -70,6 +70,7 @@ RewriteRule ^category/(.*)-([0-9]+)(.*)\.html$                                  
 
 
 RewriteRule ^market/(.*)\.html                                            search\.php\?keywords=$1 [QSA,L]
+RewriteRule ^search/(.*)\.html                                            search\.php\?keywords=$1 [QSA,L]
 RewriteRule ^product/(.*)-([0-9]+)\.html$                                goods\.php\?id=$2   [QSA,L]
 
 

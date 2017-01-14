@@ -101,6 +101,9 @@ $_LANG['file_priv'] = '文件权限检验';
 $_LANG['reg_fields'] = '会员注册项管理';
 $_LANG['website_login'] = '合作登录管理';
 
+/*--wzys内链修改过代码--*/
+$_LANG['links_manage'] = '内链关键字管理';
+/*--wzys内链修改过代码end--*/
 
 //订单管理部分权限
 $_LANG['order_os_edit'] = '编辑订单状态';
