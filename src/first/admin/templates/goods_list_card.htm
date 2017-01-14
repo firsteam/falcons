@@ -54,14 +54,14 @@
 	{/if}
 	
 	<div class="goods_bar">
-		<div style="font-weight:bold;{if $goods.is_promote}color:red;{/if}">
+		<div style="overflow:hidden;height:30px; font-weight:bold;{if $goods.is_promote}color:red;{/if}">
 			<span onclick="listTable.edit1(this, 'edit_goods_name', {$goods.goods_id})">{$goods.goods_name|default:N/A}</span>
 		</div>
 		
 		<span {if $filter.is_show_title_cn neq 1}style="display:none"{/if}>{$goods.goods_name_zh|default:N/A}</span>
 	</div>
      
-    <div class="goods_bar">
+    <div class="goods_bar disable-by-cy">
 	    <a href="{$goods.collect_link}" target="_blank">{$goods.add_time|truncate:10} {$goods.goods_sn}</a>
     </div>  
       

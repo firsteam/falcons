@@ -789,6 +789,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu {
 	position: absolute;
 	right: 0;
 	top: 0;
+	width:100%;
 	height: 32px;
 	line-height: 32px;
 	-webkit-backface-visibility: hidden

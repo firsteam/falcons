@@ -59,8 +59,8 @@ else
 
     $db->query("UPDATE " .$ecs->table('shop_config'). " SET VALUE='$config' WHERE code='sitemap'");
 
-    /* 商品分类 
-    $sql = "SELECT cat_id,cat_name FROM " .$ecs->table('category'). " ORDER BY parent_id";
+    /* 商品分类 */
+    $sql = "SELECT cat_id,cat_name FROM " .$ecs->table('category'). " WHERE is_show=1 ORDER BY sort_order";
     $res = $db->query($sql);
 
     while ($row = $db->fetchRow($res))
@@ -68,7 +68,7 @@ else
         $smi = new google_sitemap_item( build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']), $today,
             $_POST['category_changefreq'], $_POST['category_priority']);
         $sm->add_item($smi);
-    }*/
+    }
 
     /* 文章分类 
     $sql = "SELECT cat_id,cat_name FROM " .$ecs->table('article_cat'). " WHERE cat_type=1";
