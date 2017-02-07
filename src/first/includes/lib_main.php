@@ -2254,6 +2254,7 @@ function within_links($content)
 	{
 		foreach($keywords as $key=>$val)
 		{
+			$val['keywords'] = str_replace('/','',$val['keywords']);
 			$target = '';
 			if($val['is_opennew']>0)
 			{

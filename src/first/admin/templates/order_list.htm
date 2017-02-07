@@ -235,32 +235,71 @@
 	<th><a href="javascript:listTable.sort('supplier_name', 'DESC'); ">供货商家</a>{$sort_supplier_name}</th>
 	{/if}
     <!-- 代码增加_start   By www.ecshop68.com -->
-    <th>{$lang.order_type}</th>
+    <th class="disable-by-cy">{$lang.order_type}</th>
 	<!-- 代码增加_end   By www.ecshop68.com -->
     <th><a href="javascript:listTable.sort('add_time', 'DESC'); ">{$lang.order_time}</a>{$sort_order_time}</th>
     <th><a href="javascript:listTable.sort('consignee', 'DESC'); ">{$lang.consignee}</a>{$sort_consignee}</th>
-    <th><a href="javascript:listTable.sort('total_fee', 'DESC'); ">{$lang.total_fee}</a>{$sort_total_fee}</th>
-    <th><a href="javascript:listTable.sort('order_amount', 'DESC'); ">{$lang.order_amount}</a>{$sort_order_amount}</th>
-	<th>订单来源</th>
+    <th class="disable-by-cy"><a href="javascript:listTable.sort('total_fee', 'DESC'); ">{$lang.total_fee}</a>{$sort_total_fee}</th>
+    <th class="disable-by-cy"><a href="javascript:listTable.sort('order_amount', 'DESC'); ">{$lang.order_amount}</a>{$sort_order_amount}</th>
+	<th class="disable-by-cy">订单来源</th>
     <th>{$lang.all_status}</th>
     <th>{$lang.handler}</th>
   <tr>
   {foreach from=$order_list item=order key=okey}
   <tr>
-    <td valign="top" nowrap="nowrap"><input type="checkbox" name="checkboxes" value="{$order.order_sn}" /><a href="order.php?act=info&order_id={$order.order_id}" id="order_{$okey}">{$order.order_sn}{if $order.extension_code eq "group_buy"}<br /><div align="center">{$lang.group_buy}</div>{elseif $order.extension_code eq "exchange_goods"}<br /><div align="center">{$lang.exchange_goods}</div>{/if}</a></td>
+    <td valign="top" nowrap="nowrap"><input type="checkbox" name="checkboxes" value="{$order.order_sn}" /><a href="order.php?act=info&order_id={$order.order_id}" id="order_{$okey}">{$order.order_sn}{if $order.extension_code eq "group_buy"}<br /><div align="center">{$lang.group_buy}</div>{elseif $order.extension_code eq "exchange_goods"}<br /><div align="center">{$lang.exchange_goods}</div>{/if}</a>
+    <ul class="order_goods_list">
+    {foreach from = $order.goods_list item = item1}
+    <li style=" margin-bottom:10px; float:left; width:100%">
+    {if $item1.goods_thumb}
+	   <div class="pic"><a href="../goods.php?id={$item1.goods_id}" target="_blank"><img src="{$item1.goods_thumb}" border=0 widht=40 height=40></a></div>
+    {/if}   
+       <div class="info" style="word-wrap: break-word;white-space:normal;">
+       <span>{$item1.goods_name}</span>
+       {if $item1.goods_attr}
+       <br />
+        <span style="color:#666">{$item1.goods_attr}</span>   {/if}
+               <div class="info"><font color="red">￥{$item1.goods_price}</font>×<font color="red">{$item1.goods_number}</font>件</div>
+
+        
+        </div>
+     
+    </li>
+	{/foreach}
+    </ul>
+    
+    
+    </td>
 	{if $supp_list}
 	<td>{$order.supplier_name|escape:html}</td>
 	{/if}
     <!-- 代码增加_start   By www.ecshop68.com -->
-	<td>{if $order.is_pickup eq 1}{$lang.pickup_order}{else}{$lang.normal_order}{/if}</td>
+	<td class="disable-by-cy">{if $order.is_pickup eq 1}{$lang.pickup_order}{else}{$lang.normal_order}{/if}</td>
 	<!-- 代码增加_end   By www.ecshop68.com -->
-    <td>{$order.buyer|escape}<br />{$order.short_order_time}</td>
-    <td align="left" valign="top"><a href="mailto:{$order.email}"> {$order.consignee|escape}</a>{if $order.tel} [TEL: {$order.tel|escape}]{/if} <br />{$order.address|escape}</td>
-    <td align="right" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
-    <td align="right" valign="top" nowrap="nowrap">{$order.formated_order_amount}</td>
-	<td align="right" valign="top" nowrap="nowrap">{$order.froms}</td>
+    <td><a href="mailto:{$order.email}">{$order.buyer|escape}</a><br />{$order.short_order_time}</td>
+    <td align="left" valign="top"> {$order.consignee|escape} {$order.last_name|escape}<br />
+		<strong>国家 州/省：</strong>{$order.country}  {$order.province} 
+		<strong>城市：</strong>{$order.city|escape}
+		<strong>地址1：</strong>{$order.address|escape}
+		<strong>地址2：</strong>{$order.address1|escape}<br />
+		<strong>{$lang.label_zipcode}</strong>{$order.zipcode|escape}
+		<strong>{$lang.label_mobile}</strong>{$order.mobile|escape} {$order.tel}
+	</td>
+    <td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
+    <td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.formated_order_amount}</td>
+	<td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.froms}</td>
     <td align="center" valign="top" nowrap="nowrap">{$lang.os[$order.order_status]},{$lang.ps[$order.pay_status]},{$lang.ss[$order.shipping_status]}</td>
     <td align="center" valign="top"  nowrap="nowrap">
+     {if $order.pay_status == 2 && $order.shipping_status != 1 && $order.order_status == 1 }
+        <!-- {if $order.is_pre_sale == 0 || $order.pre_sale_success == 1} -->
+        
+        <input name="invoice_no_{$order.order_id}" id="invoice_no_{$order.order_id}" type="text" style="color:#00F" onclick="this.value=''" value="请输入快递单号" />
+        <input type="button" style="color:#F00" value="一键发货" class="button" onclick="to_shipping({$order.order_id})" />
+        
+        <!--{else}-->
+        {$order.invoice_no}
+    <!--{/if}-->
+{/if}
      <a href="order.php?act=info&order_id={$order.order_id}">{$lang.detail}</a>
      {if $order.can_remove}
      <br /><a href="javascript:;" onclick="listTable.remove({$order.order_id}, remove_confirm, 'remove_order')">{$lang.remove}</a>
@@ -272,7 +311,13 @@
   </tr>
   {/foreach}
 </table>
-
+<script language="javascript">
+function to_shipping(order_id)
+{
+	var invoice_no = document.getElementById('invoice_no_'+order_id);
+	window.location.href='order.php?to_shipping=1&act=operate&order_id='+order_id+'&invoice_no='+invoice_no;
+}
+</script>
 <!-- 分页 -->
 <table id="page-table" cellspacing="0">
   <tr>
@@ -422,11 +467,11 @@ listTable.filter.{$key} = '{$item}';
      */
     if (Browser.isIE)
     {
-        window.attachEvent("onload", bind_order_event);
+       // window.attachEvent("onload", bind_order_event);
     }
     else
     {
-        window.addEventListener("load", bind_order_event, false);
+        //window.addEventListener("load", bind_order_event, false);
     }
 
     /**

@@ -478,6 +478,7 @@ function order_goods($order_id)
 
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
+		$row['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'],true);
         if ($row['extension_code'] == 'package_buy')
         {
             $row['package_goods_list'] = get_package_goods($row['goods_id'], $row['package_attr_id']); // 修改 by www.ecshop68.com

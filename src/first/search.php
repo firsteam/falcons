@@ -558,7 +558,7 @@ else
 
 			foreach($cat_arr as $val){
 				$name.= $val['cat_name'].'&gt;';
-				$cat_two_arr[$cat_arr[$anum]['cat_id']][$cat_arr[0]['cat_id']]['name'] = rtrim($name,'&gt;');
+				$cat_two_arr[$cat_arr[$anum]['cat_id']][$cat_arr[0]['cat_id']]['name'] = $name;//rtrim($name,'&gt;');
 				$cat_two_arr[$cat_arr[$anum]['cat_id']][$cat_arr[0]['cat_id']]['url'] = 'search.php?category='. $val['cat_id'] .'&keywords='.$Recordkw;
 				$cat_two_arr[$cat_arr[$anum]['cat_id']][$cat_arr[0]['cat_id']]['count'] = $kkcat;
 			}

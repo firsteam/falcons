@@ -658,7 +658,7 @@ else
 	}
 	
 	//扩展分类
-	/*
+	/**/
 	$sql_k =  "select gc.cat_id, count(*) AS cat_count from ".$ecs->table('goods_cat')." AS gc ".
 				" left join ". $ecs->table('goods') ." AS g  on g.goods_id= gc.goods_id ".
 				"WHERE g.is_delete = 0 AND g.is_on_sale = 1 AND g.is_alone_sale = 1  ".
@@ -677,7 +677,7 @@ else
 			$kcat_list[$row_kcat['cat_id']] = $row_kcat['cat_count'];
 		}
 	}
-	*/
+	
 
 	arsort($kcat_list);
 	//echo "<pre>";

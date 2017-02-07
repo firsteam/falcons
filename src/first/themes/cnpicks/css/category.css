@@ -1533,8 +1533,8 @@ margin-top:expression(28-this.height/2);
 	float: left;
 	width: 980px;
 	text-align: left;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 	position: relative;
 }
 .box_attr_ecshop68 h4 {
@@ -1549,8 +1549,8 @@ margin-top:expression(28-this.height/2);
 	font-size: 15px;
 	color: #333;
 	font-weight: normal;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
 }
 .box_attr_ecshop68 dl {
 	float: left;
@@ -1559,15 +1559,15 @@ margin-top:expression(28-this.height/2);
 	padding: 10px 10px 5px 10px;
 	margin: 0;
 	overflow: hidden;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
 }
 .box_attr_ecshop68 dl.nobor {
 	border-top: none;
 }
 .box_attr_ecshop68 dl dt {
 	float: left;
-	width: 70px;
+	/*width: 70px;*/
 	height: 16px;
 	text-align: right;
 	padding: 0px 5px 5px 0;

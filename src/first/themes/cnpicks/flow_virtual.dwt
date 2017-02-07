@@ -40,7 +40,7 @@
   <div class="headerLayout">
     <div class="headerCon">
       <h1 id="mallLogo" class="mall-logo"> 
-      	<a href="#" class="header-logo" title="logo"><img src="../images/header/logo.jpg" /></a> 
+      	<a href="#" class="header-logo" title="logo"><img src="../images/header/logo.png" /></a> 
       </h1>
       <div class="header-extra">
         {include file='library/user_header_right.lbi'} 
@@ -113,6 +113,7 @@
     var {$key} = "{$item}";
   {/foreach}
   </script>
+  
     <div class="blank5"></div>
     <div class="flowBox_jm" style="margin:0px auto 20px auto;">
       <div class="title_jm" >
@@ -141,11 +142,14 @@
       <table width="100%" align="center" border="0" cellpadding="5" cellspacing="6"  style="border-top:1px solid #efefef;">
         <tr>
           <td align="right" width="120"><a href="flow.php?step=clear" class="jmclear"><font color=#aaaaaa>{$lang.clear_cart} </font></a></td>
+		  <td align="right" width="420" style="color:red">Only charging one shipping fee for multiple quantities</td>
           <td align="right" id='cart_money_info'> {$lang.total} <span>{$shopping_money}</span><!-- {if $show_marketprice} -->，{$market_price_desc}<!-- {/if} --></td>
           
 		  <td align="right" width="150"><a href="javascript:void(0);" onclick="return selcart_submit();" class="jmcheckout" style="color:#ffffff">{$lang.check_out}</a></td>
         </tr>
       </table>
+	  
+	
       {* 代码增加_start   By  www.68ecshop.com *} 
       <script type="text/javascript" charset="utf-8">
 	function chkAll_onclick() 
@@ -371,7 +375,10 @@ else
         }
       </script> 
       <!-- {/if} --> 
+	 
     </div>
+	
+	
     <div class="blank"></div>
     {* 购买的用户还买了 *}
     <div class="flowBox_jm">

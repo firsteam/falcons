@@ -2306,17 +2306,18 @@ dt#qqdt {
 .globa-nav ul.allMenu li a {
 	color: #3C3C3C;
 	height: 36px;
-	padding: 0 20px 0 20px;
+	padding: 0 18px 0 18px;
 	line-height: 36px;
 	display: inline-block;
 	text-decoration: none;
-	font-size: 15px
+	font-size: 16px;
+	font-weight: bold;
 }
 .globa-nav ul.allMenu li a.index {
-	padding: 0px 20px 0px 0px;
+	padding: 0px 18px 0px 0px;
 	/*width: 88px;
 	margin-left: 20px;*/
-	font-size: 15px
+	font-size: 16px
 }
 .globa-nav ul.allMenu li a.nav:hover, .globa-nav ul.allMenu li a.current {
 	color: #E31939!important;
@@ -2867,8 +2868,13 @@ a:hover img {
 	color:#000;	
 }
 .breadcrumb{
-	font-size:16px;
+	font-size:14px;
 	margin:10px 0px;
+	color:#ccc;
+}
+.breadcrumb a{
+	font-size:14px;
+	color:#aaa;
 }
 .breadcrumb i{
 	background-position:-427px -208px;

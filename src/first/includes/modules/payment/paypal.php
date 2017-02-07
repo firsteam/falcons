@@ -116,7 +116,7 @@ class paypal
             "<input type='hidden' name='rm' value='2'>" .
             "<input type='hidden' name='cancel_return' value='$cancel_return'>" .
 			"<input type='image' src='https://www.paypalobjects.com/webstatic/en_AU/i/buttons/btn_paywith_primary_l.png' onclick='submit()' >" .
-			"<input type='hidden' name='PAGE_STYLE' value='storefav'>" .
+			"<input type='hidden' name='PAGE_STYLE' value='FavFac'>" .
             "</form><br />";
 
         return $def_url;

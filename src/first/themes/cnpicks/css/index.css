@@ -2063,8 +2063,8 @@ margin-top:expression(72-this.height/2);
 	line-height: 20px
 }
 .m-floor .goods .title {
-	margin-bottom: 5px;
-	height:25px;
+	line-height:34px;
+	height:34px;
 	overflow:hidden;
 }
 .m-floor .goods .title a{

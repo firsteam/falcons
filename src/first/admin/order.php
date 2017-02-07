@@ -2822,6 +2822,7 @@ elseif ($_REQUEST['act'] == 'operate')
     {
         $order_id= $_REQUEST['order_id'];
     }
+	
     $batch          = isset($_REQUEST['batch']); // 是否批处理
     $action_note    = isset($_REQUEST['action_note']) ? trim($_REQUEST['action_note']) : '';
 
@@ -2835,14 +2836,14 @@ elseif ($_REQUEST['act'] == 'operate')
 /*------------------------------------------------------ */
 //-- start一键发货 增加 by www.68ecshop.com
 /*------------------------------------------------------ */
-    elseif (isset($_POST['to_shipping']))
+    elseif (isset($_REQUEST['to_shipping']))
 	{
 	   $invoice_no = empty($_REQUEST['invoice_no']) ? '' : trim($_REQUEST['invoice_no']);  //快递单号
 
        if (!empty($invoice_no))
-        {
-        $order_id = intval(trim($order_id));
-
+       {
+        
+		$order_id = intval(trim($order_id));
         $action_note = trim($action_note);
 
         /* 查询：根据订单id查询订单信息 */
@@ -2863,7 +2864,7 @@ elseif ($_REQUEST['act'] == 'operate')
         {
             admin_priv('order_view');
         }
-
+       
         /* 查询：如果管理员属于某个办事处，检查该订单是否也属于这个办事处 */
         $sql = "SELECT agency_id FROM " . $ecs->table('admin_user') . " WHERE user_id = '$_SESSION[admin_id]'";
         $agency_id = $db->getOne($sql);
@@ -6592,7 +6593,7 @@ function order_list()
 					',o.vat_inv_deposit_bank,o.vat_inv_bank_account'.
 					',o.inv_consignee_name,o.inv_consignee_phone,o.inv_consignee_country'.
 					',o.inv_consignee_province,o.inv_consignee_city,o.inv_consignee_district'.
-					',o.inv_consignee_address,o.inv_status,o.inv_payee_type,o.inv_money'.
+					',o.inv_consignee_address,o.inv_status,o.inv_payee_type,o.inv_money,last_name,o.country,o.province,o.city,address1,zipcode,mobile,invoice_no '.
         			/*增值税发票_添加_END_www.68ecshop.com*/
 			    " FROM " . $GLOBALS['ecs']->table('order_info') . " AS o " .
         		" LEFT JOIN " . $GLOBALS['ecs']->table('supplier') . " AS s ON s.supplier_id=o.supplier_id ".
@@ -6611,7 +6612,7 @@ function order_list()
 					',o.vat_inv_deposit_bank,o.vat_inv_bank_account'.
 					',o.inv_consignee_name,o.inv_consignee_phone,o.inv_consignee_country'.
 					',o.inv_consignee_province,o.inv_consignee_city,o.inv_consignee_district'.
-					',o.inv_consignee_address,o.inv_status,o.inv_payee_type,o.inv_money'.
+					',o.inv_consignee_address,o.inv_status,o.inv_payee_type,o.inv_money,last_name,o.country,o.province,o.city,address1,zipcode,mobile,invoice_no'.
         			/*增值税发票_添加_END_www.68ecshop.com*/
 				" FROM " . $GLOBALS['ecs']->table('order_info') . " AS o " .
                 " LEFT JOIN " .$GLOBALS['ecs']->table('users'). " AS u ON u.user_id=o.user_id ". $where .
@@ -6638,6 +6639,11 @@ function order_list()
     /* 格式话数据 */
     foreach ($row AS $key => $value)
     {
+		
+		$row[$key]['country']  = $GLOBALS['db']->getOne("SELECT region_name as country_name from " . $GLOBALS['ecs']->table('region') . " WHERE region_id = '$value[country]'");
+		$row[$key]['province']  = $GLOBALS['db']->getOne("SELECT region_name as province_name from " . $GLOBALS['ecs']->table('region') . " WHERE region_id = '$value[province]'");
+
+
         $row[$key]['formated_order_amount'] = price_format($value['order_amount']);
         $row[$key]['formated_money_paid'] = price_format($value['money_paid']);
         $row[$key]['formated_total_fee'] = price_format($value['total_fee']);
@@ -6660,6 +6666,29 @@ function order_list()
 		{
 			$row[$key]['tuihuan'] = 1;
 		}
+	    $row[$key]['goods_list'] = order_goods($value['order_id']);
+		
+		
+		if($value['extension_code'] == PRE_SALE_CODE)
+		{
+			$pre_sale_id = $value['extension_id'];
+			$sql = "select is_finished from " . $GLOBALS['ecs']->table('goods_activity') . " where act_id = '" . $pre_sale_id . "'";
+			$is_finished = $GLOBALS['db']->getOne($sql);
+			if($is_finished == PSS_SUCCEED)
+			{
+				$row[$key]['pre_sale_success'] = 1;
+			}
+			else 
+			{
+				$row[$key]['pre_sale_success'] = 0;
+			}
+			$row[$key]['is_pre_sale'] = 1;
+		}
+		else 
+		{
+			$row[$key]['is_pre_sale'] = 0;
+		}
+		
     }
     $arr = array('orders' => $row, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
 	/*增值税发票_添加_START_www.68ecshop.com*/

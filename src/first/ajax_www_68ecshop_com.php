@@ -49,7 +49,7 @@ if ($_REQUEST['act'] == 'tipword')
 		/* start  By  68ecshop.com */
 		if($iii==1 && $rows_www_68ecshop_com['keyword_cat_count'])
 		{  
-			$rows_www_68ecshop_com['keyword_cat'] =  '<a href="' . $rows_www_68ecshop_com['keyword_cat_url'] . '"><font color=#666>在<font color=#cc0000>'. $rows_www_68ecshop_com['keyword_cat'] .'</font>分类中搜索</font></a>';
+			$rows_www_68ecshop_com['keyword_cat'] =  '<a href="' . $rows_www_68ecshop_com['keyword_cat_url'] . '"><font color=#666>In <font color=#cc0000>'. $rows_www_68ecshop_com['keyword_cat'] .'</font></font></a>';
 			$rows_www_68ecshop_com['keyword_cat_count'] = intval($rows_www_68ecshop_com['keyword_cat_count']);
 		}
 		$iii=$iii+1;  

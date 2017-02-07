@@ -244,14 +244,20 @@
     <td>{$order.best_time|escape}</td>
   </tr>
   <tr>
-    <td><div align="right"><strong>{$lang.label_address}</strong></div></td>
-    <td>[{$order.region}] {$order.city|escape} {$order.address|escape}</td>
-    <td><div align="right"><strong>{$lang.label_zipcode}</strong></div></td>
-    <td>{$order.zipcode|escape}</td>
+    <td><div align="right"><strong>国家 州/省：</strong></div></td>
+    <td>{$order.region} </td>
+    <td><div align="right"><strong>城市：</strong></div></td>
+	<td>{$order.city|escape}</td>	
   </tr>
   <tr>
-    <td><div align="right"><strong>address line 2</strong></div></td>
-    <td>[{$order.region}] {$order.address1|escape}</td>
+    <td><div align="right"><strong>地址1：</strong></div></td>
+    <td>{$order.address|escape} </td>
+    <td><div align="right"><strong>地址2：</strong></div></td>
+	<td>{$order.address1|escape}</td>	
+  </tr>  
+  <tr>
+	<td><div align="right"><strong>{$lang.label_zipcode}</strong></div></td>
+    <td>{$order.zipcode|escape}</td>
     <td><div align="right"><strong>{$lang.label_mobile}</strong></div></td>
     <td>{$order.mobile|escape} {$order.tel}</td>
   </tr>
@@ -293,6 +299,7 @@
     <div id="suit_{$goods.goods_id}" style="padding-left:20px;">
 	包括以下商品：<br />
         {foreach from=$goods.package_goods_list item=package_goods_list}
+			{$package_goods_list.goods_img}
           <a href="../goods.php?id={$package_goods_list.goods_id}" target="_blank">{$package_goods_list.goods_name}</a><br />
         {/foreach}
     </div>
@@ -374,8 +381,8 @@
     <td colspan="2">
     <!-- 如果为预售活动的订单，那么预售活动为成功处理前，不能发货 -->
     <!-- {if $is_pre_sale == 0 || $pre_sale_success == 1} -->
-    <input name="invoice_no" type="text" style="color:#00F" value="请输入快递单号" />
-    <input name="to_shipping" type="submit" style="color:#F00" value="一键发货" class="button" />
+    <input name="invoice_no" type="text" style="color:#00F" value="" />
+    <input name="to_shipping" type="submit" style="color:#F00" value="输入快递单号" class="button" />
     <!-- {/if} -->
     </td>
     <td><div align="right"><strong style="color:#c00">若一键发货请忽略此操作</strong></div></td><td colspan="2">

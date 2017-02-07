@@ -31,7 +31,7 @@
 <div id="site-nav" style="position:relative;"> <!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
   <div class="headerLayout" style="padding-top:15px; padding-bottom:5px;">
     <div class="headerCon ">
-      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.jpg" /></a></h1>
+      <h1 id="mallLogo" style="padding-top:10px;"> <a href="index.php" class="header-logo"><img src="../images/header/logo.png" /></a></h1>
       <div class="header-extra"> </div>
     </div>
   </div>

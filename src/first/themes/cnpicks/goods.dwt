@@ -399,7 +399,7 @@
                 {if $smarty.session.user_id gt 0}
                   <a href="javascript:collect_goods({$goods.goods_id})" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}" id="collect_goods">Favorite{if $goods.is_collet eq 1}d{/if}</a>
                 {else}
-                  <a href="javascript:openLogin()" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">Favorite{if $goods.is_collet eq 1}d{/if}</a>
+                  <a href="user.php" class="btn-coll {if $goods.is_collet eq 1}btn-coll-t{/if}">Favorite{if $goods.is_collet eq 1}d{/if}</a>
                 {/if}
               </div>          
               <script type="text/javascript">

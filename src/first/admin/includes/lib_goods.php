@@ -1001,7 +1001,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         $filter = page_and_size($filter);
         
         if(intval($_REQUEST['supp'])>0){
-        	$sql = "SELECT goods_id, goods_name, keywords, add_time, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
+        	$sql = "SELECT goods_id, goods_name, keywords, add_time, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, cost_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
 					", supplier_status, g.supplier_id,supplier_name,favorite_num,review_num,collect_link,goods_brief,is_wish ".
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g ".
@@ -1010,7 +1010,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
                     " ORDER BY $filter[sort_by] $filter[sort_order] ".
                     " LIMIT " . $filter['start'] . ",$filter[page_size]";
         }else{
-        	$sql = "SELECT goods_id, add_time, goods_name, keywords, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
+        	$sql = "SELECT goods_id, add_time, goods_name, keywords, goods_thumb, product_url, goods_name_zh, goods_type, goods_sn, shop_price, cost_price, is_on_sale, is_best, is_new, is_hot, sort_order, goods_number, integral, " .
                     " (promote_price > 0 AND promote_start_date <= '$today' AND promote_end_date >= '$today') AS is_promote ". 
 					", supplier_status, supplier_id,favorite_num,review_num,collect_link,goods_brief,is_wish ".	//代码增加   By  www.68ecshop.com
                     " FROM " . $GLOBALS['ecs']->table('goods') . " AS g WHERE is_delete='$is_delete' $where" .
