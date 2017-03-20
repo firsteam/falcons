@@ -36,7 +36,7 @@
   <div class="headerLayout">
     <div class="headerCon">
       <h1 id="mallLogo" class="mall-logo"> 
-      	<a href="#" class="header-logo" title="logo"><img src="../images/header/logo.png" /></a> 
+      	<a href="#" class="header-logo" title="logo"><img src="../images/header/logo.jpg" /></a> 
       </h1>
       <div class="header-extra">
         {include file='library/user_header_right.lbi'} 
@@ -550,14 +550,25 @@ else
     <div class="blank10"></div>
     <div class="checkBox_jm clearfix" >
       <div class="title">{$lang.consignee_address}</div>
-      <div class="address_jm" id="AddressList" > <!-- #BeginLibraryItem "/library/address_list.lbi" --><!-- #EndLibraryItem --> </div>
+     {if $consignee_list}
+      <div class="address_jm" id="AddressList" > 
+	  <!-- #BeginLibraryItem "/library/address_list.lbi" --><!-- #EndLibraryItem --> </div>
      
       <div id="popDiv" class="mydiv" style="display:none; position:relative;">
         <div class="mydiv-l" id="PopAddressTitle">{$lang.new_consignee_address}</div>
         <!--<div class="mydiv-r" onclick="javascript:closePopDiv()" ></div>-->
         <div id="PopAddressCon"></div>
       </div>
-      
+      {else}
+      <div id="popDiv" class="mydiv" style="display:block; position:relative; margin-top:25px;">
+        <div class="mydiv-l" id="PopAddressTitle">{$lang.new_consignee_address}</div>
+        <!--<div class="mydiv-r" onclick="javascript:closePopDiv()" ></div>-->
+        <div id="PopAddressCon">
+        <!-- #BeginLibraryItem "/library/address_edit.lbi" --><!-- #EndLibraryItem -->
+        
+        </div>
+      </div>
+      {/if}
       
     </div>
     <script type="text/javascript">
@@ -579,6 +590,7 @@ else
 		var PopAddressCon=document.getElementById('PopAddressCon');
 		PopAddressCon.innerHTML= result.content;
 		document.getElementById('popDiv').style.display='block';
+		
 		//document.getElementById('bg').style.display='block';
 	}
 
@@ -1153,7 +1165,7 @@ else
       </div>
       
       <div class="checkBox_jm">
-      <div class="title">{$lang.shipping_method} <span style="font-size:14px; color:#aaa;">Only charging one shipping fee for multiple quantities</span></div>
+      <div class="title">{$lang.shipping_method}</div>
       
       
       <ul class="payment_tab_jm" id="shipping_tab">

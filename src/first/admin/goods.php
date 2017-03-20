@@ -1382,11 +1382,11 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
 		if ($_REQUEST['supplier_status'] == '1')
 		{
-			$is_on_sale = '1';
+			//$is_on_sale = '1';
 		}
 		else
 		{
-			$is_on_sale = '0';
+			//$is_on_sale = '0';
 		}
 
         $sql = "UPDATE " . $ecs->table('goods') . " SET " .
@@ -2327,22 +2327,7 @@ elseif ($_REQUEST['act'] == 'edit_goods_price')
         }
     }
 }
-/*------------------------------------------------------ */
-//-- 修改商品成本价
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'edit_cost_price')
-{
-    check_authz_json('goods_manage');
 
-    $goods_id   = intval($_POST['id']);
-    $cost_price = json_str_iconv(trim($_POST['val']));
-
-    if ($exc->edit("cost_price = '$cost_price', last_update=" .gmtime(), $goods_id))
-    {
-        clear_cache_files();
-        make_json_result(stripslashes($cost_price));
-    }
-}
 /*------------------------------------------------------ */
 //-- 修改商品库存数量
 /*------------------------------------------------------ */

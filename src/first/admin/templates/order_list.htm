@@ -288,18 +288,29 @@
     <td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
     <td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.formated_order_amount}</td>
 	<td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.froms}</td>
-    <td align="center" valign="top" nowrap="nowrap">{$lang.os[$order.order_status]},{$lang.ps[$order.pay_status]},{$lang.ss[$order.shipping_status]}</td>
+    <td align="center" valign="top" nowrap="nowrap">
+    
+     <div id="order_status_{$order.order_id}">
+    {$lang.os[$order.order_status]},{$lang.ps[$order.pay_status]},{$lang.ss[$order.shipping_status]}
+    
+    </div>
+    </td>
     <td align="center" valign="top"  nowrap="nowrap">
+    
+    <span id="invoice_no_status_{$order.order_id}">
      {if $order.pay_status == 2 && $order.shipping_status != 1 && $order.order_status == 1 }
         <!-- {if $order.is_pre_sale == 0 || $order.pre_sale_success == 1} -->
         
-        <input name="invoice_no_{$order.order_id}" id="invoice_no_{$order.order_id}" type="text" style="color:#00F" onclick="this.value=''" value="请输入快递单号" />
+        <input name="invoice_no_{$order.order_id}" id="invoice_no_{$order.order_id}" type="text" style="color:#00F" onclick="this.value=''" placeholder="请输入快递单号" />
         <input type="button" style="color:#F00" value="一键发货" class="button" onclick="to_shipping({$order.order_id})" />
         
         <!--{else}-->
         {$order.invoice_no}
     <!--{/if}-->
 {/if}
+</span>
+
+
      <a href="order.php?act=info&order_id={$order.order_id}">{$lang.detail}</a>
      {if $order.can_remove}
      <br /><a href="javascript:;" onclick="listTable.remove({$order.order_id}, remove_confirm, 'remove_order')">{$lang.remove}</a>
@@ -314,8 +325,38 @@
 <script language="javascript">
 function to_shipping(order_id)
 {
-	var invoice_no = document.getElementById('invoice_no_'+order_id);
-	window.location.href='order.php?to_shipping=1&act=operate&order_id='+order_id+'&invoice_no='+invoice_no;
+	var invoice_no = document.getElementById('invoice_no_'+order_id).value;
+	//window.location.href='order.php?to_shipping=1&act=operate&order_id='+order_id+'&invoice_no='+invoice_no;
+	$.ajax({
+				url:"order.php?act=to_shipping",
+				dataType:'json',
+				type:"POST",
+				data:'order_id='+order_id+"&invoice_no="+invoice_no,
+				beforeSend:function() {  
+			       
+				},  
+				complete:function(result) {  
+				   
+				},  
+				success:function(result){
+					if(result.error_no==1)
+					{
+					  alert(result.err_msg);
+					}
+					else
+					{
+					   alert(result.err_msg);
+					   $('#order_status_'+result.order_id).html(result.order_status);
+					   $('#invoice_no_status_'+result.order_id).html(result.invoice_no);
+					   
+					}
+				},
+				error:function(){
+					alert("出错了,请刷新页面重试:(");
+				}
+			});
+			
+			
 }
 </script>
 <!-- 分页 -->
