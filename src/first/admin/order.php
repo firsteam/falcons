@@ -680,6 +680,8 @@ elseif ($_REQUEST['act'] == 'to_shipping')
 		  $arr['invoice_no']          = trim($order['invoice_no'] . '<br>' . $invoice_no, '<br>');
 		  update_order($order_id, $arr);
 		  
+		  $action_note = $action_note."运单号：".$invoice_no;
+		  
 		  /* 发货单发货记录log */
 		  order_action($order['order_sn'], OS_CONFIRMED, $shipping_status, $order['pay_status'], $action_note, null, 1);
 		  /* 如果当前订单已经全部发货 */
@@ -702,7 +704,7 @@ elseif ($_REQUEST['act'] == 'to_shipping')
 			  }
 			  
 			  /* 发送邮件 */
-			  $cfg = $_CFG['send_ship_email'];
+			 /* $cfg = $_CFG['send_ship_email'];
 			  if ($cfg == '1')
 			  {
 				  $order['invoice_no'] = $invoice_no;
@@ -719,16 +721,18 @@ elseif ($_REQUEST['act'] == 'to_shipping')
 				  {
 					  $msg = $_LANG['send_mail_fail'];
 				  }
-			  }/* */
+			  }*/
+			  
+			  /* */
 			  
 			  /* 如果需要，发短信 */
-			  if ($GLOBALS['_CFG']['sms_order_shipped'] == '1' && $order['mobile'] != '')
+			 /* if ($GLOBALS['_CFG']['sms_order_shipped'] == '1' && $order['mobile'] != '')
 			  {
 				  include_once('../send.php');
 				  $content = sprintf($_CFG['sms_order_shipped_tpl'],$order['order_sn'],$order['consignee'],$order['address'],$_CFG['sms_sign']);
 				  $content = '您的订单已发货，订单号为'.$order['order_sn'].'收货人为'.$order['consignee'].'收货地址为'.$order['address'].'，请注意查收【'.$GLOBALS['_CFG']['shop_name'].'】';
 				  sendSMS($order['mobile'],$content);
-			  }
+			  }*/
 		  }
 		  
 		  /* 清除缓存 */
@@ -825,7 +829,7 @@ elseif ($_REQUEST['act'] == 'info')
 	{
 		$order['tc_express'] = 1;
 			
-		$ko_order_sn  = $db->getOne("select invoice_no from ".$ecs->table('delivery_order')." where order_id=".$order_id);
+		$ko_order_sn  = $db->getOne("select invoice_no from ".$ecs->table('delivery_order')." where order_id='".$order_id."'");
 		if ($ko_order_sn)
 		{
 			$kos_order_id = $db->getOne("select order_id from ".$ecs->table('kuaidi_order')." where order_sn='".$ko_order_sn."'");
@@ -4058,6 +4062,7 @@ elseif ($_REQUEST['act'] == 'operate')
     $arr['shipping_status']     = $shipping_status;
     $arr['shipping_time']       = GMTIME_UTC; // 发货时间
     $arr['invoice_no']          = trim($order['invoice_no'] . '<br>' . $invoice_no, '<br>');
+	$action_note = $action_note."运单号：".$invoice_no;
     update_order($order_id, $arr);
 
     /* 发货单发货记录log */
@@ -8698,8 +8703,8 @@ function del_kuaidi_order($delivery_id)
 {
 	$kuaidi_order_id = $GLOBALS['db']->getRow("select order_id from ".$GLOBALS['ecs']->table('kuaidi_order')." where goods_name='".$delivery_id."' and send_name=''");
 
-	$GLOBALS['db']->query("delete from ".$GLOBALS['ecs']->table('kuaidi_order')." where order_id=".$kuaidi_order_id['order_id']);
-	$GLOBALS['db']->query("delete from ".$GLOBALS['ecs']->table('kuaidi_order_status')." where order_id=".$kuaidi_order_id['order_id']);
+	$GLOBALS['db']->query("delete from ".$GLOBALS['ecs']->table('kuaidi_order')." where order_id='".$kuaidi_order_id['order_id']."'");
+	$GLOBALS['db']->query("delete from ".$GLOBALS['ecs']->table('kuaidi_order_status')." where order_id='".$kuaidi_order_id['order_id']."'");
 }
 
 function update_kuaidi_order($delivery_id, $order_sn = "")

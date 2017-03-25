@@ -1592,11 +1592,11 @@ menu.className=i==cursel?"active":"";
                   
 
                   <div class="goods_desc {if $smarty.foreach.goods.last}last{/if}"> 
-				  <a {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}href="{if $goods.extension_code eq 'virtual_good'}virtual_group_goods.php?id={$goods.goods_id}{else}{$goods.url}{/if}"{else}{/if} title="查看宝贝详情" target="_blank"> 
+				  <a {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'}href="{if $goods.extension_code eq 'virtual_good'}virtual_group_goods.php?id={$goods.goods_id}{else}{$goods.url}{/if}"{else}{/if} title="{$goods.goods_name}" target="_blank"> 
                     <!-- {if $goods.goods_id gt 0 && $goods.extension_code neq 'package_buy'} 商品 --> 
-                    <img class="pic" src="{$goods.thumb}" alt="Goods detail" width="50" height="50"> 
+                    <img class="pic" src="{$goods.thumb}" alt="{$goods.goods_name}"> 
                     <!-- {elseif $goods.goods_id gt 0 && $goods.extension_code eq 'package_buy'} --> 
-                    <img class="pic" src="themes/cnpicks/images/jmpic/ico_cart_package.gif" alt="Goods detail" width="50" height="50"/> 
+                    <img class="pic" src="themes/cnpicks/images/jmpic/ico_cart_package.gif" alt="{$goods.goods_name}"/> 
                     <!-- {/if} -->  
 					
                     <div class="goods_name">

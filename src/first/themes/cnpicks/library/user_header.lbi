@@ -27,16 +27,16 @@ var base_url='{$base_url}';
 	  </script>
       <li class="menu-item" style="display:none;">
       	<div class="sn-menu">
-        <a aria-haspopup="menu-6" tabindex="0" class="menu-hd sn-mobile-link" href="" target="_top">手机版<b></b></a>
+        <a aria-haspopup="menu-6" tabindex="0" class="menu-hd sn-mobile-link" href="" target="_top">Mobile Version<b></b></a>
         <div class="menu-bd sn-qrcode" id="menu-5">
           <ul>
             <li class="app_xiazai">
               <a href="#" target="_top" class="app_store"></a>
-              <img src="../images/app.jpg" alt="手机客户端" width="76px" height="76px" />               
+              <img src="../images/app.jpg" alt="App" width="76px" height="76px" />               
             </li>
             <li class="app_xiazai1">
               <a href="#" target="_top" class="app_android"></a> 
-              <img src="../images/android.jpg" alt="手机客户端" width="76px" height="76px" /> 
+              <img src="../images/android.jpg" alt="App" width="76px" height="76px" /> 
             </li>
            
           </ul>

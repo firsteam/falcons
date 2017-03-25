@@ -1306,3 +1306,12 @@ a.status {
 .relative_goods dl dd .goods_name{border-bottom:10px; color:#666}
 .relative_goods dl dd .selectd{color:#F00}
 .img-clone{position:absolute}
+
+.order_goods_list{ width:400px; text-align:left; padding:0px; margin:0px;}
+.order_goods_list li{ clear:both; list-style:none}
+.order_goods_list li .pic{float:left; max-width:100px; max-height:100px; border:#ddd solid 1px; margin-right:10px; position: relative;}
+.order_goods_list li .pic a {position:relative; display:block; background:transparent;}
+.order_goods_list li .pic a .img1{ max-width:100px; max-height:100px; border:0;}
+.order_goods_list li .pic a .img2 {max-width:280px;max-height:280px; border:0; position:absolute;left:90px; top:-80px; display:none; z-index:99999}
+.order_goods_list li .pic a:hover .img2{display:block}
+.order_goods_list li .info{float:left; width:280px;}

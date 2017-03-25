@@ -339,7 +339,7 @@ $_LANG['tax'] = 'tax';
 $_LANG['shipping_fee'] = 'Shipping cost';
 $_LANG['pack_fee'] = 'Packing cost';
 $_LANG['card_fee'] = 'Card fee';
-$_LANG['total_fee'] = 'Total payable money';
+$_LANG['total_fee'] = 'Total';
 $_LANG['self_site'] = 'Home';
 $_LANG['order_gift_integral'] = 'Order %s integral gift';
 

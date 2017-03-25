@@ -35,16 +35,16 @@
 	border: 1px solid #E9E9E9;
 	margin-right: 10px;
 	float: left;
-	height: 50px;
-	width: 50px;
+	max-height: 120px;
+	max-width: 120px;
 }
 .bought-table .baobei .pic img {
-	height: 50px;
-	width: 50px;
+	max-height: 120px;
+	max-width: 120px;
 }
 .bought-table .baobei .goods_name{
 	float:right;
-	width:580px;
+	width:480px;
 	height:auto;
 	text-align:left	
 }

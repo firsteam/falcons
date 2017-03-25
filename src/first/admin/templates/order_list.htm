@@ -217,7 +217,7 @@
     <input type="submit" value="{$lang.button_search}" class="button" />
     <a href="order.php?act=list&supp={$smarty.request.supp|default:0}&composite_status={$os_unconfirmed}">{$lang.cs.$os_unconfirmed}</a>
     <a href="order.php?act=list&supp={$smarty.request.supp|default:0}&composite_status={$cs_await_pay}">{$lang.cs.$cs_await_pay}</a>
-    <a href="order.php?act=list&supp={$smarty.request.supp|default:0}&composite_status={$cs_await_ship}">{$lang.cs.$cs_await_ship}</a>
+    <a style="font-weight:bold;font-size:15px; color:red;" href="order.php?act=list&supp={$smarty.request.supp|default:0}&composite_status={$cs_await_ship}">{$lang.cs.$cs_await_ship}</a>
   </form>
 </div>
 
@@ -252,16 +252,20 @@
     {foreach from = $order.goods_list item = item1}
     <li style=" margin-bottom:10px; float:left; width:100%">
     {if $item1.goods_thumb}
-	   <div class="pic"><a href="../goods.php?id={$item1.goods_id}" target="_blank"><img src="{$item1.goods_thumb}" border=0 widht=40 height=40></a></div>
+		<div class="pic">
+			<a href="../goods.php?id={$item1.goods_id}" target="_blank">
+				<img src="{if substr($item1.goods_thumb,0,4)!='http' }../{/if}{$item1.goods_thumb}" class="img1"/>
+				<img src="{if substr($item1.goods_thumb,0,4)!='http' }../{/if}{$item1.goods_thumb}" class="img2"/>
+			</a>
+		</div>
+	   
     {/if}   
        <div class="info" style="word-wrap: break-word;white-space:normal;">
-       <span>{$item1.goods_name}</span>
+       <span style="font-size:14px;">{$item1.goods_name}</span>
        {if $item1.goods_attr}
        <br />
-        <span style="color:#666">{$item1.goods_attr}</span>   {/if}
-               <div class="info"><font color="red">￥{$item1.goods_price}</font>×<font color="red">{$item1.goods_number}</font>件</div>
-
-        
+        <span style="font-weight:bold;font-size:15px; color:red;">{$item1.goods_attr}</span>   {/if}
+               <div class="info"><font>{$item1.goods_price}</font> × <font color="red" style="font-weight:bold;font-size:20px;">{$item1.goods_number}</font></div>
         </div>
      
     </li>
@@ -278,11 +282,11 @@
 	<!-- 代码增加_end   By www.ecshop68.com -->
     <td><a href="mailto:{$order.email}">{$order.buyer|escape}</a><br />{$order.short_order_time}</td>
     <td align="left" valign="top"> {$order.consignee|escape} {$order.last_name|escape}<br />
-		<strong>国家 州/省：</strong>{$order.country}  {$order.province} 
-		<strong>城市：</strong>{$order.city|escape}
-		<strong>地址1：</strong>{$order.address|escape}
+		<strong>国家 州/省：</strong>{$order.country}  {$order.province}<br />
+		<strong>城市：</strong>{$order.city|escape}<br />
+		<strong>地址1：</strong>{$order.address|escape}<br />
 		<strong>地址2：</strong>{$order.address1|escape}<br />
-		<strong>{$lang.label_zipcode}</strong>{$order.zipcode|escape}
+		<strong>{$lang.label_zipcode}</strong>{$order.zipcode|escape}<br />
 		<strong>{$lang.label_mobile}</strong>{$order.mobile|escape} {$order.tel}
 	</td>
     <td class="disable-by-cy" align="right" valign="top" nowrap="nowrap">{$order.formated_total_fee}</td>
@@ -298,15 +302,36 @@
     <td align="center" valign="top"  nowrap="nowrap">
     
     <span id="invoice_no_status_{$order.order_id}">
+    
+    {if $order.invoice_no}
+	
+		<a href="javascript:;" id="YQElem{$order.order_id}">
+		运单号：{$order.invoice_no}</a>
+		<script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
+		<script type="text/javascript">
+		YQV5.trackSingleF1({
+			YQ_ElementId:"YQElem{$order.order_id}",      //必须，指定悬浮位置的元素ID。
+			YQ_Width:800,        //可选，指定查询结果宽度，最小宽度为600px，默认撑满容器。
+			YQ_Height:400,       //可选，指定查询结果高度，最大高度为800px，默认撑满容器。
+			YQ_Top:40,
+			YQ_Fc:"0",       //可选，指定运输商，默认为自动识别。
+			//YQ_Lang:"en",        //可选，指定UI语言，默认根据浏览器自动识别。
+			YQ_Num:"{$order.invoice_no}"       //必须，指定要查询的单号。
+		});
+		</script>
+	{/if}
+	
      {if $order.pay_status == 2 && $order.shipping_status != 1 && $order.order_status == 1 }
         <!-- {if $order.is_pre_sale == 0 || $order.pre_sale_success == 1} -->
-        
         <input name="invoice_no_{$order.order_id}" id="invoice_no_{$order.order_id}" type="text" style="color:#00F" onclick="this.value=''" placeholder="请输入快递单号" />
         <input type="button" style="color:#F00" value="一键发货" class="button" onclick="to_shipping({$order.order_id})" />
         
         <!--{else}-->
-        {$order.invoice_no}
+        
     <!--{/if}-->
+    
+    
+    
 {/if}
 </span>
 
@@ -347,7 +372,7 @@ function to_shipping(order_id)
 					{
 					   alert(result.err_msg);
 					   $('#order_status_'+result.order_id).html(result.order_status);
-					   $('#invoice_no_status_'+result.order_id).html(result.invoice_no);
+					   $('#invoice_no_status_'+result.order_id).html("运单号："+result.invoice_no);
 					   
 					}
 				},
