@@ -1986,7 +1986,15 @@ elseif ($_REQUEST['act'] == 'batch')
             check_authz_json('goods_manage');
             update_goods($goods_id, 'cat_id', $_POST['target_cat']);
         }
-
+		
+		/* 转移品牌 */
+        elseif ($_POST['type'] == 'move_brand')
+        {
+            /* 检查权限 */
+            check_authz_json('goods_manage');
+            update_goods($goods_id, 'brand_id', $_POST['target_brand']);
+        }
+		
         /* 转移到供货商 */
         elseif ($_POST['type'] == 'suppliers_move_to')
         {
